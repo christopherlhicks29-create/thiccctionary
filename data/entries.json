@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-05-02",
+    "word": "Cement Truck",
+    "pronunciation": "/sɪˈmɛnt trʌk/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A heavily built vehicle designed for the transport of wet cement, boasting a robust exterior that exudes both strength and a certain je ne sais quoi.",
+      "Colloquially, a favorite amongst construction enthusiasts, often admired for its curvaceous body and the way it carries its load with remarkable poise."
+    ],
+    "example": "<em>When parked at the site, the cement truck's voluptuous silhouette drew the attention of all passerby, especially during twilight.</em>",
+    "etymology": "Derived from the Latin 'caementum', meaning 'chipped stone', combined with 'truck', a late Middle English term for a vehicle that brings home the goods—essentially, the original heavy-duty supplier of good vibes and gritty aesthetics.",
+    "image": "images/2026-05-02.jpg",
+    "caption": "Plate N. — The cement truck, embraced by daylight, reveals a structural elegance that captivates all who behold it.",
+    "tags": [
+      "infrastructure",
+      "heavy machinery",
+      "construction"
+    ],
+    "photographer": "Alberto Biondi",
+    "photographerUrl": "https://unsplash.com/@albertobiondifoto",
+    "unsplashUrl": "https://unsplash.com/photos/a-crane-lifting-a-container-Q3X_hfcb0a4"
+  },
+  {
     "date": "2026-05-01",
     "word": "Thiccc Boeing",
     "pronunciation": "/ˈθɪk ˈboʊ.ɪŋ/",
@@ -12,7 +34,11 @@
     "etymology": "From <em>thiccc</em> (internet vernacular, c. 2015, \"voluptuous; full-bodied,\" with an extra <em>c</em> for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026.",
     "image": "images/sample-1.svg",
     "caption": "Plate I. — A specimen of considerable rear-end displacement.",
-    "tags": ["aircraft", "aviation", "tail-heavy"]
+    "tags": [
+      "aircraft",
+      "aviation",
+      "tail-heavy"
+    ]
   },
   {
     "date": "2026-04-30",
@@ -27,7 +53,11 @@
     "etymology": "From Spanish <em>aguacate</em>, from Nahuatl <em>āhuacatl</em>, originally meaning \"testicle\" — which, frankly, tracks.",
     "image": "images/sample-2.svg",
     "caption": "Plate II. — Note the pronounced lower bulb.",
-    "tags": ["fruit", "produce", "bottom-heavy"]
+    "tags": [
+      "fruit",
+      "produce",
+      "bottom-heavy"
+    ]
   },
   {
     "date": "2026-04-29",
@@ -42,7 +72,11 @@
     "etymology": "From Henry Ford (industrialist) + the model code for the heaviest-duty pickup in the lineup. The numerical suffix correlates positively with girth.",
     "image": "images/sample-3.svg",
     "caption": "Plate III. — Dually configuration, viewed astern.",
-    "tags": ["truck", "vehicle", "heavy-duty"]
+    "tags": [
+      "truck",
+      "vehicle",
+      "heavy-duty"
+    ]
   },
   {
     "date": "2026-04-28",
@@ -57,7 +91,11 @@
     "etymology": "From <em>heritage</em> (denoting ancestral cultivars) + <em>tomato</em>. The word \"heritage\" here implies that the tomato has a sense of history, gravitas, and lower-body presence.",
     "image": "images/sample-4.svg",
     "caption": "Plate IV. — A Brandywine of unusual proportions.",
-    "tags": ["fruit", "produce", "garden"]
+    "tags": [
+      "fruit",
+      "produce",
+      "garden"
+    ]
   },
   {
     "date": "2026-04-27",
@@ -72,7 +110,11 @@
     "etymology": "From <em>concrete</em> (Latin <em>concretus</em>, \"grown together\") + <em>mixer</em>. The drum's rotation is, for our purposes, decorative.",
     "image": "images/sample-5.svg",
     "caption": "Plate V. — At rest. Engine idle. Drum rotating.",
-    "tags": ["vehicle", "industrial", "construction"]
+    "tags": [
+      "vehicle",
+      "industrial",
+      "construction"
+    ]
   },
   {
     "date": "2026-04-26",
@@ -87,6 +129,10 @@
     "etymology": "From <em>mid-century</em> (denoting an era of design optimism and tapered furniture legs) + <em>armchair</em>. The era's commitment to organic curves was, in retrospect, very on-brand.",
     "image": "images/sample-6.svg",
     "caption": "Plate VI. — Walnut frame. Wool upholstery. Notable rear cushioning.",
-    "tags": ["furniture", "design", "vintage"]
+    "tags": [
+      "furniture",
+      "design",
+      "vintage"
+    ]
   }
 ]
