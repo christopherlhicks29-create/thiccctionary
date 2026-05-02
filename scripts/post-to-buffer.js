@@ -24,7 +24,35 @@ const BUFFER_GRAPHQL = 'https://api.buffer.com/';
 
 const stripHtml = s => (s || '').replace(/<[^>]+>/g, '');
 
-async function postToChannel({ channelId, text, imageUrl, token }) {
+async function getChannelService(channelId, token) {
+  const query = `
+    query GetChannel($id: ChannelId!) {
+      channel(id: $id) {
+        id
+        service
+      }
+    }
+  `;
+  const res = await fetch(BUFFER_GRAPHQL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({ query, variables: { id: channelId } }),
+  });
+  const json = await res.json();
+  return json.data?.channel?.service?.toLowerCase() || null;
+}
+
+function metadataForService(service) {
+  if (service === 'twitter' || service === 'x') return undefined;
+  if (service === 'facebook' || service === 'facebookpage') return { facebook: { type: 'post' } };
+  if (service === 'instagram' || service === 'instagrambusiness') return { instagram: { type: 'post', shouldShareToFeed: true } };
+  return undefined;
+}
+
+async function postToChannel({ channelId, text, imageUrl, token, service }) {
   const mutation = `
     mutation CreatePost($input: CreatePostInput!) {
       createPost(input: $input) {
@@ -42,21 +70,18 @@ async function postToChannel({ channelId, text, imageUrl, token }) {
     }
   `;
 
-  const variables = {
-    input: {
-      channelId,
-      text,
-      schedulingType: 'automatic',
-      mode: 'addToQueue',
-      assets: {
-        images: [{ url: imageUrl }],
-      },
-      metadata: {
-        facebook: { type: 'post' },
-        instagram: { type: 'post', shouldShareToFeed: true },
-      },
+  const input = {
+    channelId,
+    text,
+    schedulingType: 'automatic',
+    mode: 'addToQueue',
+    assets: {
+      images: [{ url: imageUrl }],
     },
   };
+  const metadata = metadataForService(service);
+  if (metadata) input.metadata = metadata;
+  const variables = { input };
 
   const res = await fetch(BUFFER_GRAPHQL, {
     method: 'POST',
@@ -117,9 +142,11 @@ Today's entry → ${baseUrl}
   console.log(`Posting to ${channelIds.length} channels with image: ${imageUrl}`);
 
   const results = await Promise.all(
-    channelIds.map(channelId =>
-      postToChannel({ channelId, text, imageUrl, token: process.env.BUFFER_ACCESS_TOKEN })
-    )
+    channelIds.map(async channelId => {
+      const service = await getChannelService(channelId, process.env.BUFFER_ACCESS_TOKEN);
+      console.log(`Channel ${channelId} → service: ${service}`);
+      return postToChannel({ channelId, text, imageUrl, token: process.env.BUFFER_ACCESS_TOKEN, service });
+    })
   );
 
   let successes = 0;
