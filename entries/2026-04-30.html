@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<!--
+  Per-entry page template.
+  Tokens (replaced by scripts/generate-daily.js or by hand for seed entries):
+    Avocado, Domestic                 — headword (e.g. "Thiccc Boeing")
+    Avocado, Domestic            — same, but allowing HTML (for ccc styling fallback)
+    /a-vuh-KAH-doh/        — IPA, e.g. "/ˈθɪk ˈboʊ.ɪŋ/"
+    n.                  — part of speech, e.g. "n."
+    A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis.                — first definition (HTML allowed)
+    <li><strong>2.</strong> Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'.</li>          — second definition wrapped in <li> ... </li>, or empty string
+    Cut it in half — this avocado is doing serious work.              — example sentence
+    From Spanish <em>aguacate</em>, from Nahuatl <em>āhuacatl</em>, originally meaning "testicle" — which, frankly, tracks.            — etymology paragraph (HTML allowed)
+    ../images/2026-04-30.jpg                — relative or absolute image path (../images/foo.jpg)
+    https://thiccctionary.com/images/2026-04-30.jpg             — absolute URL of the image for OG card
+    Plate II. — Note the pronounced lower bulb.              — image caption
+    Photo by <a href="https://unsplash.com/@ananuri?utm_source=thiccctionary&amp;utm_medium=referral" target="_blank" rel="noopener">Georgi Guruli</a> on <a href="https://unsplash.com/?utm_source=thiccctionary&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>          — Photo by ... on Unsplash (or empty)
+    <span class="tag">fruit</span><span class="tag">produce</span><span class="tag">bottom-heavy</span>            — span.tag elements joined together
+    2026-04-30                 — YYYY-MM-DD
+    Thursday, April 30, 2026           — "Friday, May 1, 2026"
+    https://thiccctionary.com/entries/2026-04-30.html            — full URL of this page
+    A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis.          — meta description (~155 chars)
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -7,13 +28,19 @@
 <meta name="description" content="A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="canonical" href="https://thiccctionary.com/entries/2026-04-30.html" />
+
 <meta property="og:title" content="Avocado, Domestic — Thiccctionary" />
-<meta property="og:description" content="A pear-shaped fruit of disproportionate hip-to-waist ratio." />
+<meta property="og:description" content="A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thiccctionary.com/entries/2026-04-30.html" />
-<meta property="og:image" content="https://thiccctionary.com/images/sample-2.svg" />
+<meta property="og:image" content="https://thiccctionary.com/images/2026-04-30.jpg" />
 <meta property="article:published_time" content="2026-04-30" />
+
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Avocado, Domestic — Thiccctionary" />
+<meta name="twitter:description" content="A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis." />
+<meta name="twitter:image" content="https://thiccctionary.com/images/2026-04-30.jpg" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -22,7 +49,10 @@
 <body>
 
 <header class="masthead">
-  <div class="masthead-top"><span class="meta-line">An Entry</span><span class="meta-line meta-line--right">Thursday, April 30, 2026</span></div>
+  <div class="masthead-top">
+    <span class="meta-line">An Entry</span>
+    <span class="meta-line meta-line--right">Thursday, April 30, 2026</span>
+  </div>
   <h1 class="wordmark">
     <span class="wordmark-the">The</span>
     <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
@@ -37,33 +67,44 @@
 
 <main>
   <a href="../archive.html" class="entry-back">← Back to the archive</a>
+
   <article class="entry entry--single">
     <p class="entry-date-stamp">Entry · Thursday, April 30, 2026</p>
+
     <div class="entry-grid">
       <div class="entry-image-wrap">
-        <div class="entry-image"><img src="../images/sample-2.svg" alt="Avocado, Domestic" /></div>
+        <div class="entry-image">
+          <img src="../images/2026-04-30.jpg" alt="Avocado, Domestic" />
+        </div>
         <p class="entry-caption">Plate II. — Note the pronounced lower bulb.</p>
+        <p class="entry-credit">Photo by <a href="https://unsplash.com/@ananuri?utm_source=thiccctionary&amp;utm_medium=referral" target="_blank" rel="noopener">Georgi Guruli</a> on <a href="https://unsplash.com/?utm_source=thiccctionary&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
+
       <div class="entry-text">
         <div class="entry-headword">
           <h2 class="headword">Avocado, Domestic</h2>
           <span class="part-of-speech">/a-vuh-KAH-doh/ &nbsp;<em>n.</em></span>
         </div>
+
         <ol class="definitions">
           <li><strong>1.</strong> A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis.</li>
           <li><strong>2.</strong> Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'.</li>
         </ol>
+
         <div class="example-block">
           <span class="example-label">In a sentence —</span>
           <p class="example">"Cut it in half — this avocado is doing serious work."</p>
         </div>
+
         <div class="etymology">
           <span class="ety-label">Etymology —</span>
           <p>From Spanish <em>aguacate</em>, from Nahuatl <em>āhuacatl</em>, originally meaning "testicle" — which, frankly, tracks.</p>
         </div>
+
         <div class="entry-tags"><span class="tag">fruit</span><span class="tag">produce</span><span class="tag">bottom-heavy</span></div>
       </div>
     </div>
+
     <div class="entry-share">
       <span class="share-label">Spread the thiccc:</span>
       <a href="https://twitter.com/intent/tweet?text=Avocado%2C%20Domestic&url=https%3A%2F%2Fthiccctionary.com%2Fentries%2F2026-04-30.html" class="share-btn" target="_blank" rel="noopener">Twitter</a>
@@ -71,15 +112,36 @@
       <a href="#" class="share-btn" data-share="copy">Copy link</a>
     </div>
   </article>
-  <p style="text-align: center; margin: 60px 0;"><a href="../random.html" class="btn-primary">Show me a random entry →</a></p>
+
+  <p style="text-align: center; margin: 60px 0;">
+    <a href="../random.html" class="btn-primary">Show me a random entry →</a>
+  </p>
 </main>
 
 <footer class="footer">
   <div class="footer-grid">
-    <div><p class="footer-wordmark">Thiccctionary</p><p class="footer-tag">Documenting girth, since 2026.</p></div>
-    <div><p class="footer-head">Sections</p><a href="../archive.html">Archive</a><a href="../submit.html">Submit</a><a href="../index.html#about">About</a></div>
-    <div><p class="footer-head">Follow</p><a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a></div>
-    <div><p class="footer-head">Legal</p><a href="#">Terms</a><a href="#">Privacy</a><a href="mailto:hello@thiccctionary.com">Contact</a></div>
+    <div>
+      <p class="footer-wordmark">Thiccctionary</p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="../archive.html">Archive</a>
+      <a href="../submit.html">Submit</a>
+      <a href="../index.html#about">About</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="mailto:hello@thiccctionary.com">Contact</a>
+    </div>
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
 </footer>
@@ -90,11 +152,15 @@ function highlightCcc(root) {
   const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA']);
   const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) { let p = node.parentElement;
-      while (p) { if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+    acceptNode(node) {
+      let p = node.parentElement;
+      while (p) {
+        if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
         for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
-        p = p.parentElement; }
-      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; }
+        p = p.parentElement;
+      }
+      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
   });
   const targets = []; let n;
   while ((n = walker.nextNode())) targets.push(n);
@@ -102,19 +168,29 @@ function highlightCcc(root) {
     const frag = document.createDocumentFragment();
     const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
     parts.forEach(part => {
-      if (/^[cC]{3}$/.test(part)) { const span = document.createElement('span');
-        span.className = 'ccc'; span.textContent = part; frag.appendChild(span);
-      } else if (part) frag.appendChild(document.createTextNode(part));
+      if (/^[cC]{3}$/.test(part)) {
+        const span = document.createElement('span');
+        span.className = 'ccc';
+        span.textContent = part;
+        frag.appendChild(span);
+      } else if (part) {
+        frag.appendChild(document.createTextNode(part));
+      }
     });
     node.parentNode.replaceChild(frag, node);
   }
 }
 highlightCcc(document.body);
+
 document.querySelectorAll('[data-share="copy"]').forEach(btn => {
-  btn.addEventListener('click', e => { e.preventDefault();
+  btn.addEventListener('click', e => {
+    e.preventDefault();
     navigator.clipboard.writeText(window.location.href);
-    btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy link', 1500); });
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy link', 1500);
+  });
 });
 </script>
+
 </body>
 </html>

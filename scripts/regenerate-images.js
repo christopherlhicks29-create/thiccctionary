@@ -1,6 +1,8 @@
 /**
  * Re-runs Unsplash image search + AI vision pick for existing entries,
- * replacing their images with (hopefully better) picks using the tuned prompt.
+ * replacing their images with picks made by the tuned prompt. Also
+ * rebuilds each updated entry's per-entry HTML page + the sitemap so
+ * the static pages reference the new image paths.
  *
  * Triggered by .github/workflows/regenerate-images.yml (manual only).
  *
@@ -14,13 +16,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 const IMAGES_DIR = path.join(ROOT, 'images');
 
-// ---------- Unsplash search ----------
 async function searchUnsplash(query) {
   const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=30&orientation=landscape&content_filter=high`;
   const res = await fetch(url, {
@@ -40,7 +42,6 @@ async function searchUnsplash(query) {
   }));
 }
 
-// ---------- AI vision picker (tuned prompt — same as generate-daily.js) ----------
 async function pickThiccestImage(subject, candidates) {
   const subset = candidates.slice(0, 12);
   const imageMessages = subset.map(c => ({
@@ -100,21 +101,17 @@ Output JSON only:
   return subset[idx];
 }
 
-// ---------- Download image ----------
 async function downloadImage(photo, filename) {
   const res = await fetch(photo.fullUrl);
   if (!res.ok) throw new Error(`Image download failed: ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   await fs.mkdir(IMAGES_DIR, { recursive: true });
   await fs.writeFile(path.join(IMAGES_DIR, filename), buf);
-
-  // Unsplash API guidelines: ping download_location when using a photo
   await fetch(photo.downloadLocation, {
     headers: { 'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
   }).catch(() => {});
 }
 
-// ---------- main ----------
 async function main() {
   if (!process.env.OPENAI_API_KEY || !process.env.UNSPLASH_ACCESS_KEY) {
     console.error('OPENAI_API_KEY and UNSPLASH_ACCESS_KEY are required.');
@@ -128,7 +125,7 @@ async function main() {
   let toProcess;
   if (datesInput === 'all-except-today' || datesInput === '') {
     toProcess = entries.filter(e => e.date !== today);
-    console.log(`Processing all entries except today (${today}). ${toProcess.length} entries to update.`);
+    console.log(`Processing all entries except today (${today}). ${toProcess.length} entries.`);
   } else {
     const dates = datesInput.split(',').map(s => s.trim()).filter(Boolean);
     toProcess = entries.filter(e => dates.includes(e.date));
@@ -165,7 +162,6 @@ async function main() {
       await downloadImage(chosen, filename);
       console.log(`  Saved new image: images/${filename}`);
 
-      // Update entry photo metadata AND image path (fixes longstanding sample-N.svg bug)
       entry.image = `images/${filename}`;
       entry.photographer = chosen.photographer;
       entry.photographerUrl = chosen.photographerUrl;
@@ -176,11 +172,27 @@ async function main() {
       failed++;
     }
 
-    // Rate limit: 1.5s between iterations to stay well under Unsplash 50/hour
     await new Promise(r => setTimeout(r, 1500));
   }
 
   await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
+
+  // Rebuild per-entry HTML pages and sitemap so the static pages reference the new images.
+  console.log('\nRebuilding entry HTML pages...');
+  for (const entry of toProcess) {
+    try {
+      const updated = entries.find(e => e.date === entry.date);
+      if (updated) {
+        await buildEntryPage(updated);
+        console.log(`  Rebuilt entries/${entry.date}.html`);
+      }
+    } catch (err) {
+      console.error(`  Failed to rebuild ${entry.date}.html: ${err.message}`);
+    }
+  }
+  await buildSitemap(entries);
+  console.log('  Sitemap rebuilt.');
+
   console.log(`\nDone. ${succeeded} succeeded, ${failed} failed (out of ${toProcess.length}).`);
   if (failed > 0 && succeeded === 0) {
     process.exit(1);
