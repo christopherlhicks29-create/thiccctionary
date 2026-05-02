@@ -4,8 +4,13 @@ name: Daily Thiccc — Generate Draft PR
 # Merge the PR (one tap on GitHub mobile) to publish.
 on:
   schedule:
-    - cron: '0 13 * * *'   # 13:00 UTC daily; adjust to taste
-  workflow_dispatch: {}
+    - cron: '0 13 * * *'   # 13:00 UTC daily
+  workflow_dispatch:
+    inputs:
+      force_regenerate:
+        description: "Replace today's entry if one already exists (otherwise the workflow exits early)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -28,6 +33,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          FORCE_REGENERATE: ${{ inputs.force_regenerate || 'false' }}
         run: node generate-daily.js
 
       - name: Read entry metadata

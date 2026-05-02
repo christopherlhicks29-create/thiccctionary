@@ -198,9 +198,16 @@ async function main() {
   const entries = JSON.parse(raw);
   const today = new Date().toISOString().slice(0, 10);
 
-  if (entries.some(e => e.date === today)) {
-    console.log(`Entry for ${today} already exists. Exiting.`);
-    return;
+  const force = process.env.FORCE_REGENERATE === 'true';
+  const existingIdx = entries.findIndex(e => e.date === today);
+  if (existingIdx !== -1) {
+    if (force) {
+      console.log(`Entry for ${today} already exists. FORCE_REGENERATE=true — removing it and regenerating.`);
+      entries.splice(existingIdx, 1);
+    } else {
+      console.log(`Entry for ${today} already exists. Exiting. (Set FORCE_REGENERATE=true to override.)`);
+      return;
+    }
   }
 
   // Step 1: subject
