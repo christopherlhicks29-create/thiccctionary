@@ -1,25 +1,27 @@
 [
   {
     "date": "2026-05-02",
-    "word": "Cement Truck",
-    "pronunciation": "/sih-MENT truk/",
+    "word": "Bulky Refrigerator",
+    "pronunciation": "/BUL-ky re-FRIJ-er-ay-tor/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A heavily built vehicle designed for the transport of wet cement, boasting a robust exterior that exudes both strength and a certain je ne sais quoi.",
-      "Colloquially, a favorite amongst construction enthusiasts, often admired for its curvaceous body and the way it carries its load with remarkable poise."
+      "An unapologetically large cooling appliance, often characterized by an ample physical presence and an inability to hide its considerable girth behind mere cabinetry.",
+      "A formidable kitchen companion that commands attention, particularly when situated beside a vintage bicycle, allowing observers to ponder the aesthetics of cold storage under low evening light."
     ],
-    "example": "<em>When parked at the site, the cement truck's voluptuous silhouette drew the attention of all passerby, especially during twilight.</em>",
-    "etymology": "Derived from the Latin 'caementum', meaning 'chipped stone', combined with 'truck', a late Middle English term for a vehicle that brings home the goods—essentially, the original heavy-duty supplier of good vibes and gritty aesthetics.",
+    "example": "I couldn't help but admire the bulky refrigerator's confident stance next to the old bike; it had a certain charm that was hard to resist.",
+    "etymology": "Derived from the Latin <em>refrigerare</em>, meaning 'to cool,' coupled with the Middle English term <em>bulk</em>, which connotes largeness and a sense of undeniable presence. Together, they conjure an image of a colossal custodian of chilled goods.",
     "image": "images/2026-05-02.jpg",
-    "caption": "Plate N. — The cement truck, embraced by daylight, reveals a structural elegance that captivates all who behold it.",
+    "caption": "Plate N. — A sturdy sentinel of the kitchen realm, accentuated by its curve and depth.",
     "tags": [
-      "infrastructure",
-      "heavy machinery",
-      "construction"
+      "appliances",
+      "kitchen",
+      "home",
+      "thicc",
+      "bold"
     ],
-    "photographer": "Alberto Biondi",
-    "photographerUrl": "https://unsplash.com/@albertobiondifoto",
-    "unsplashUrl": "https://unsplash.com/photos/a-crane-lifting-a-container-Q3X_hfcb0a4"
+    "photographer": "Andy Bodemer",
+    "photographerUrl": "https://unsplash.com/@andybodemer",
+    "unsplashUrl": "https://unsplash.com/photos/an-old-bike-rests-by-a-weathered-refrigerator-7fQAiR3bOcQ"
   },
   {
     "date": "2026-05-01",
