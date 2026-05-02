@@ -59,7 +59,10 @@
       "fruit",
       "produce",
       "bottom-heavy"
-    ]
+    ],
+    "photographer": "Georgi Guruli",
+    "photographerUrl": "https://unsplash.com/@ananuri",
+    "unsplashUrl": "https://unsplash.com/photos/a-bowl-of-assorted-fruits-on-a-kitchen-counter-TTYzyKpylak"
   },
   {
     "date": "2026-04-29",
@@ -78,7 +81,10 @@
       "truck",
       "vehicle",
       "heavy-duty"
-    ]
+    ],
+    "photographer": "Y S",
+    "photographerUrl": "https://unsplash.com/@santonii",
+    "unsplashUrl": "https://unsplash.com/photos/blue-tractor-on-brown-field-during-daytime-wmvrQealD4w"
   },
   {
     "date": "2026-04-28",
@@ -97,7 +103,10 @@
       "fruit",
       "produce",
       "garden"
-    ]
+    ],
+    "photographer": "Andreea Popa",
+    "photographerUrl": "https://unsplash.com/@elfcodobelf",
+    "unsplashUrl": "https://unsplash.com/photos/brown-bread-on-blue-ceramic-bowl-fKEopCMtlsY"
   },
   {
     "date": "2026-04-27",
@@ -116,7 +125,10 @@
       "vehicle",
       "industrial",
       "construction"
-    ]
+    ],
+    "photographer": "Strange Happenings",
+    "photographerUrl": "https://unsplash.com/@strangehappenings",
+    "unsplashUrl": "https://unsplash.com/photos/an-old-rusty-cement-mixer-truck-sits-abandoned-0tYkYoNLBYI"
   },
   {
     "date": "2026-04-26",
@@ -135,6 +147,9 @@
       "furniture",
       "design",
       "vintage"
-    ]
+    ],
+    "photographer": "Clay Banks",
+    "photographerUrl": "https://unsplash.com/@claybanks",
+    "unsplashUrl": "https://unsplash.com/photos/cozy-living-room-with-eames-lounge-chair-and-fireplace-6uYe3CbKb8A"
   }
 ]
