@@ -1,43 +1,39 @@
 /**
- * One-time introspection helper. Asks Buffer's GraphQL API what fields
- * the CreatePostInput type accepts. Run once to get the schema, then
- * delete this file.
+ * One-time introspection helper. Asks Buffer's GraphQL API about the
+ * input types we need (CreatePostInput → AssetsInput → ImageInput).
  */
 
 const BUFFER_GRAPHQL = 'https://api.buffer.com/';
 
-const introspection = `
-  query IntrospectInput {
-    __type(name: "CreatePostInput") {
-      name
-      inputFields {
+async function introspect(typeName) {
+  const query = `
+    query I {
+      __type(name: "${typeName}") {
         name
-        type {
+        inputFields {
           name
-          kind
-          ofType {
+          type {
             name
             kind
-            ofType {
-              name
-              kind
-            }
+            ofType { name kind ofType { name kind } }
           }
         }
       }
     }
-  }
-`;
+  `;
+  const res = await fetch(BUFFER_GRAPHQL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.BUFFER_ACCESS_TOKEN}`,
+    },
+    body: JSON.stringify({ query }),
+  });
+  return res.json();
+}
 
-const res = await fetch(BUFFER_GRAPHQL, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${process.env.BUFFER_ACCESS_TOKEN}`,
-  },
-  body: JSON.stringify({ query: introspection }),
-});
-
-const json = await res.json();
-console.log('CreatePostInput fields:');
-console.log(JSON.stringify(json, null, 2));
+for (const typeName of ['AssetsInput', 'ImageInput', 'PhotoInput', 'MediaInput', 'PostInputMetaData']) {
+  console.log(`\n=== ${typeName} ===`);
+  const json = await introspect(typeName);
+  console.log(JSON.stringify(json, null, 2));
+}
