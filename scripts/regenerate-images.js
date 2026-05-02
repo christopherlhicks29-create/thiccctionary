@@ -9,8 +9,9 @@
  * Required env vars:
  *   - OPENAI_API_KEY
  *   - UNSPLASH_ACCESS_KEY
- *   - DATES (optional)  — comma-separated YYYY-MM-DD dates to regenerate.
- *                         Default: every entry except today.
+ *   - DATES (optional)            comma-separated YYYY-MM-DD dates. Default: every entry except today.
+ *   - SUBJECT_OVERRIDE (optional) hand-pick a search query for these dates instead of entry.word.
+ *                                  Useful when entry.word returns wrong-subject Unsplash results.
  */
 
 import fs from 'node:fs/promises';
@@ -137,27 +138,33 @@ async function main() {
     return;
   }
 
+  const override = (process.env.SUBJECT_OVERRIDE || '').trim();
+  if (override) {
+    console.log(`SUBJECT_OVERRIDE active: using "${override}" as search query for all selected dates.`);
+  }
+
   let succeeded = 0;
   let failed = 0;
 
   for (const entry of toProcess) {
     console.log(`\n--- ${entry.date}: ${entry.word} ---`);
     try {
-      // Strip "thiccc"/"thicc" prefixes/words — Unsplash doesn't index our coined slang.
       const cleanedQuery = entry.word.replace(/\bthicc+(c+|er|est)?\b/gi, '').replace(/\s+/g, ' ').trim();
-      let candidates = await searchUnsplash(entry.word);
-      if (candidates.length === 0 && cleanedQuery && cleanedQuery !== entry.word) {
-        console.log(`  No results for "${entry.word}". Retrying with cleaned query "${cleanedQuery}".`);
+      const primaryQuery = override || entry.word;
+      let candidates = await searchUnsplash(primaryQuery);
+      console.log(`  Searched "${primaryQuery}" -> ${candidates.length} results.`);
+      if (candidates.length === 0 && !override && cleanedQuery && cleanedQuery !== entry.word) {
+        console.log(`  Retrying with cleaned query "${cleanedQuery}".`);
         candidates = await searchUnsplash(cleanedQuery);
       }
-      console.log(`  Found ${candidates.length} candidate photos.`);
       if (candidates.length === 0) {
-        console.log(`  No Unsplash results — skipping.`);
+        console.log(`  No Unsplash results -- skipping.`);
         failed++;
         continue;
       }
 
-      const chosen = await pickThiccestImage(entry.word, candidates);
+      const subjectForVision = override || entry.word;
+      const chosen = await pickThiccestImage(subjectForVision, candidates);
       const filename = `${entry.date}.jpg`;
       await downloadImage(chosen, filename);
       console.log(`  Saved new image: images/${filename}`);
@@ -177,7 +184,6 @@ async function main() {
 
   await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
 
-  // Rebuild per-entry HTML pages and sitemap so the static pages reference the new images.
   console.log('\nRebuilding entry HTML pages...');
   for (const entry of toProcess) {
     try {

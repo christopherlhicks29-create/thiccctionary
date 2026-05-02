@@ -11,6 +11,10 @@ on:
         description: "Comma-separated YYYY-MM-DD dates to regenerate, or 'all-except-today' (default)"
         type: string
         default: "all-except-today"
+      subject_override:
+        description: "Optional. Hand-picked Unsplash search query for these dates (use when entry.word returns wrong-subject results, e.g. 'beefsteak tomato' for Heritage Tomato). Leave blank to use the entry's own word."
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -34,6 +38,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           DATES: ${{ inputs.dates }}
+          SUBJECT_OVERRIDE: ${{ inputs.subject_override }}
         run: node regenerate-images.js
 
       - name: Open Pull Request
@@ -42,14 +47,15 @@ jobs:
           commit-message: "Regenerate images for older entries (tuned prompt)"
           branch: regenerate-images/${{ github.run_id }}
           delete-branch: true
-          title: "🖼️ Regenerated images — ${{ inputs.dates }}"
+          title: "🖼️ Regenerated images — ${{ inputs.dates }}${{ inputs.subject_override && format(' [query: {0}]', inputs.subject_override) || '' }}"
           body: |
-            **What this PR does:** swaps the images on existing entries for fresh picks using the tuned vision prompt (rejects tight crops, requires the whole subject in frame).
+            **What this PR does:** swaps the images on existing entries for fresh picks using the tuned vision prompt.
 
             **Dates processed:** `${{ inputs.dates }}`
+            **Subject override:** `${{ inputs.subject_override }}` *(empty = use entry word)*
 
             Review the **Files changed** tab — open each new image and confirm it's better than what was there. If any pick looks weak, you can:
             - Close this PR (no changes go to main)
-            - Or merge as-is and re-run the workflow for specific dates that need another pass
+            - Or merge as-is and re-run the workflow with a different override for specific dates
 
             **To merge:** Squash and merge as usual.
