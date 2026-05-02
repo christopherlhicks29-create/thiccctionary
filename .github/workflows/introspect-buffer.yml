@@ -1,0 +1,17 @@
+name: Introspect Buffer Schema (debug)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  introspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+        run: node introspect-buffer.js
