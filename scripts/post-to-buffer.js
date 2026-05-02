@@ -129,7 +129,14 @@ async function main() {
 
   const baseUrl = process.env.SITE_BASE_URL.replace(/\/$/, '');
   const imageUrl = `${baseUrl}/${entry.image}`;
-  const channelIds = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean);
+  // BUFFER_PROFILE_IDS format: "twitter:CHANNEL_ID,facebook:CHANNEL_ID,instagram:CHANNEL_ID"
+  // Service prefix is required so we send the right metadata per platform.
+  // If only an ID is given (no colon), service is treated as unknown — works for Twitter.
+  const channels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).map(entry => {
+    const idx = entry.indexOf(':');
+    if (idx === -1) return { service: null, channelId: entry };
+    return { service: entry.slice(0, idx).toLowerCase(), channelId: entry.slice(idx + 1) };
+  });
 
   const text = `📖 ${entry.word}
 
@@ -139,14 +146,11 @@ Today's entry → ${baseUrl}
 
 #thiccctionary #thiccc #everydayobjects`;
 
-  console.log(`Posting to ${channelIds.length} channels with image: ${imageUrl}`);
-
+  console.log(`Posting to ${channels.length} channels with image: ${imageUrl}`);
   const results = await Promise.all(
-    channelIds.map(async channelId => {
-      const service = await getChannelService(channelId, process.env.BUFFER_ACCESS_TOKEN);
-      console.log(`Channel ${channelId} → service: ${service}`);
-      return postToChannel({ channelId, text, imageUrl, token: process.env.BUFFER_ACCESS_TOKEN, service });
-    })
+    channels.map(({ channelId, service }) =>
+      postToChannel({ channelId, text, imageUrl, token: process.env.BUFFER_ACCESS_TOKEN, service })
+    )
   );
 
   let successes = 0;
