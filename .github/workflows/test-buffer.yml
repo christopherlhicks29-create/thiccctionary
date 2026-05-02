@@ -1,0 +1,27 @@
+name: Test Buffer Post (manual)
+
+# Manually-triggered workflow that runs post-to-buffer.js
+# against the latest entry in entries.json. Use this to verify
+# Buffer integration works without waiting for the daily cron.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Buffer post test
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+        run: node post-to-buffer.js

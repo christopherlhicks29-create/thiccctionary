@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Profile Image Generator — Thiccctionary</title>
+<style>
+  body { font-family: Georgia, serif; background: #f4ecdc; padding: 40px; max-width: 700px; margin: 0 auto; }
+  h1 { color: #1a1410; }
+  p { color: #4a3d33; line-height: 1.6; }
+  canvas { display: block; margin: 24px auto; border: 2px solid #1a1410; max-width: 400px; }
+  button { font-family: monospace; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 32px; background: #7a1f1f; color: #f4ecdc; border: none; cursor: pointer; display: block; margin: 0 auto; }
+  button:hover { background: #1a1410; }
+</style>
+</head>
+<body>
+<h1>Profile Image Generator</h1>
+<p>This generates a 400×400 PNG for use as a profile picture on Twitter, Instagram, Facebook Page, Buffer, etc.</p>
+
+<canvas id="profile" width="400" height="400"></canvas>
+
+<button id="download">Download thiccctionary-profile.png</button>
+
+<script>
+const canvas = document.getElementById('profile');
+const ctx = canvas.getContext('2d');
+
+// Cream background
+ctx.fillStyle = '#f4ecdc';
+ctx.fillRect(0, 0, 400, 400);
+
+// Subtle grain
+ctx.fillStyle = 'rgba(60, 30, 15, 0.06)';
+for (let i = 0; i < 1500; i++) {
+  ctx.fillRect(Math.random() * 400, Math.random() * 400, 1, 1);
+}
+
+// Border
+ctx.strokeStyle = '#1a1410';
+ctx.lineWidth = 4;
+ctx.strokeRect(20, 20, 360, 360);
+
+// "T" + "ccc" mark — recreate the wordmark visually
+// Big T, slight italic ccc to right
+ctx.fillStyle = '#1a1410';
+ctx.font = '900 220px Georgia, serif';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('T', 145, 195);
+
+ctx.fillStyle = '#7a1f1f';
+ctx.font = 'italic 900 130px Georgia, serif';
+ctx.fillText('ccc', 270, 220);
+
+// Bottom label
+ctx.fillStyle = '#7a1f1f';
+ctx.font = '900 14px monospace';
+ctx.letterSpacing = '4px';
+ctx.fillText('THICCCTIONARY.COM', 200, 350);
+
+document.getElementById('download').addEventListener('click', () => {
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'thiccctionary-profile.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 'image/png');
+});
+</script>
+</body>
+</html>
