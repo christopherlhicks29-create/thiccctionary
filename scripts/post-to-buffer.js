@@ -48,7 +48,9 @@ async function postToChannel({ channelId, text, imageUrl, token }) {
       text,
       schedulingType: 'automatic',
       mode: 'addToQueue',
-      imageUrl,
+      assets: {
+        images: [{ url: imageUrl }],
+      },
     },
   };
 
