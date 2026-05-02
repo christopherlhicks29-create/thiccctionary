@@ -53,7 +53,7 @@ async function postToChannel({ channelId, text, imageUrl, token }) {
       },
       metadata: {
         facebook: { type: 'post' },
-        instagram: { type: 'post' },
+        instagram: { type: 'post', shouldShareToFeed: true },
       },
     },
   };
