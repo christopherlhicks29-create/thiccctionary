@@ -146,7 +146,13 @@ async function main() {
   for (const entry of toProcess) {
     console.log(`\n--- ${entry.date}: ${entry.word} ---`);
     try {
-      const candidates = await searchUnsplash(entry.word);
+      // Strip "thiccc"/"thicc" prefixes/words — Unsplash doesn't index our coined slang.
+      const cleanedQuery = entry.word.replace(/\bthicc+(c+|er|est)?\b/gi, '').replace(/\s+/g, ' ').trim();
+      let candidates = await searchUnsplash(entry.word);
+      if (candidates.length === 0 && cleanedQuery && cleanedQuery !== entry.word) {
+        console.log(`  No results for "${entry.word}". Retrying with cleaned query "${cleanedQuery}".`);
+        candidates = await searchUnsplash(cleanedQuery);
+      }
       console.log(`  Found ${candidates.length} candidate photos.`);
       if (candidates.length === 0) {
         console.log(`  No Unsplash results — skipping.`);
@@ -159,7 +165,8 @@ async function main() {
       await downloadImage(chosen, filename);
       console.log(`  Saved new image: images/${filename}`);
 
-      // Update entry photo metadata
+      // Update entry photo metadata AND image path (fixes longstanding sample-N.svg bug)
+      entry.image = `images/${filename}`;
       entry.photographer = chosen.photographer;
       entry.photographerUrl = chosen.photographerUrl;
       entry.unsplashUrl = chosen.unsplashUrl;
