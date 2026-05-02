@@ -32,7 +32,7 @@ async function introspect(typeName) {
   return res.json();
 }
 
-for (const typeName of ['AssetsInput', 'ImageInput', 'PhotoInput', 'MediaInput', 'PostInputMetaData']) {
+for (const typeName of ['ImageAssetInput']) {
   console.log(`\n=== ${typeName} ===`);
   const json = await introspect(typeName);
   console.log(JSON.stringify(json, null, 2));
