@@ -1,0 +1,63 @@
+name: Daily Thiccc — Generate Draft PR
+
+# Generates a new entry once a day and opens a Pull Request for your review.
+# Merge the PR (one tap on GitHub mobile) to publish.
+on:
+  schedule:
+    - cron: '0 13 * * *'   # 13:00 UTC daily; adjust to taste
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate today's entry
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        run: node generate-daily.js
+
+      - name: Read entry metadata
+        id: entry
+        run: |
+          DATE=$(date -u +%Y-%m-%d)
+          WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
+          PHOTOG=$(node -e "const e=require('./data/entries.json'); console.log(e[0].photographer || 'unknown');")
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "word=$WORD" >> $GITHUB_OUTPUT
+          echo "photographer=$PHOTOG" >> $GITHUB_OUTPUT
+
+      - name: Open Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Daily entry: ${{ steps.entry.outputs.date }} — ${{ steps.entry.outputs.word }}"
+          branch: daily/${{ steps.entry.outputs.date }}
+          delete-branch: true
+          title: "📖 ${{ steps.entry.outputs.word }} — ${{ steps.entry.outputs.date }}"
+          body: |
+            **Today's entry:** ${{ steps.entry.outputs.word }}
+            **Photo by:** ${{ steps.entry.outputs.photographer }} (via Unsplash)
+
+            Review the image and copy in the **Files changed** tab. Open the new image to preview it.
+
+            **To publish:** click "Squash and merge" (or "Merge pull request").
+            On merge, the site auto-deploys via Cloudflare Pages, and the Buffer post fires.
+
+            **To skip today:** close this PR without merging. The branch will be auto-deleted.
+
+            **To regenerate:** close this PR, then re-run "Daily Thiccc — Generate Draft PR" from the Actions tab.
+          labels: |
+            daily-entry

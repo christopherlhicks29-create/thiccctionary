@@ -1,0 +1,12 @@
+{
+  "name": "thiccctionary-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node generate-daily.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

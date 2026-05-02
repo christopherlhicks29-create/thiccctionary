@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thiccctionary — A Daily Reference for Thiccc Things</title>
+<meta name="description" content="The world's first satirical dictionary of objects, vehicles, fruits, and other entities of unusual width. Updated daily." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Thiccctionary — A Daily Reference for Thiccc Things" />
+<meta property="og:description" content="A satirical daily dictionary of objects, vehicles, and entities of unusual girth. Updated every morning." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Thiccctionary" />
+<meta name="twitter:description" content="A satirical daily dictionary of objects of unusual girth." />
+<meta name="twitter:image" content="https://thiccctionary.com/og-default.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">Vol. I &nbsp;·&nbsp; Iss. <span id="issue-number">001</span> &nbsp;·&nbsp; <span id="today-date">Friday, May 1, 2026</span></span>
+    <span class="meta-line meta-line--right">Est. MMXXVI &nbsp;·&nbsp; A Daily Reference</span>
+  </div>
+  <h1 class="wordmark">
+    <span class="wordmark-the">The</span>
+    <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+  </h1>
+  <p class="tagline"><em>n.</em> &nbsp;a comprehensive lexicon of objects, vehicles, and entities of unusual girth &nbsp;·&nbsp; updated daily, mostly</p>
+  <nav class="nav">
+    <a href="index.html" class="nav-link nav-link--active">Today's Entry</a>
+    <a href="archive.html" class="nav-link">The Archive</a>
+    <a href="#submit" class="nav-link">Submit a Thiccc</a>
+    <a href="#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Today's featured entry -->
+  <article class="entry entry--feature">
+    <div class="entry-stamp">Entry of the Day</div>
+
+    <div class="entry-grid">
+      <div class="entry-image-wrap">
+        <div class="entry-image" id="featured-image">
+          <!-- Image populated by JS from entries.json. SVG fallback below. -->
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-label="placeholder">
+            <defs>
+              <pattern id="grain" patternUnits="userSpaceOnUse" width="3" height="3">
+                <circle cx="1" cy="1" r="0.5" fill="rgba(0,0,0,0.08)" />
+              </pattern>
+              <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e8d5b7" />
+                <stop offset="100%" stop-color="#c89968" />
+              </linearGradient>
+            </defs>
+            <rect width="600" height="600" fill="url(#bg)" />
+            <rect width="600" height="600" fill="url(#grain)" />
+            <text x="300" y="290" text-anchor="middle" font-family="Fraunces, serif" font-size="28" fill="#5a2a1f" font-style="italic">[ today's image will</text>
+            <text x="300" y="330" text-anchor="middle" font-family="Fraunces, serif" font-size="28" fill="#5a2a1f" font-style="italic">load here ]</text>
+          </svg>
+        </div>
+        <p class="entry-caption" id="featured-caption">Plate I. — A specimen of considerable rear-end displacement.</p>
+        <p class="entry-credit" id="featured-credit"></p>
+      </div>
+
+      <div class="entry-text">
+        <div class="entry-headword">
+          <h2 class="headword" id="featured-word">Thiccc Boeing</h2>
+          <span class="part-of-speech">/ˈθɪk &nbsp;ˈboʊ.ɪŋ/ &nbsp;<em>n.</em></span>
+        </div>
+
+        <ol class="definitions">
+          <li id="featured-def-1"><strong>1.</strong> A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; <em>esp.</em> one parked tail-toward the camera at golden hour.</li>
+          <li id="featured-def-2"><strong>2.</strong> <em>colloq.</em> Any commercial jet you'd describe as "built."</li>
+        </ol>
+
+        <div class="example-block">
+          <span class="example-label">In a sentence —</span>
+          <p class="example" id="featured-example">"That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural."</p>
+        </div>
+
+        <div class="etymology">
+          <span class="ety-label">Etymology —</span>
+          <p id="featured-etymology">From <em>thiccc</em> (internet vernacular, c. 2015, "voluptuous; full-bodied," with an extra <em>c</em> for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026.</p>
+        </div>
+
+        <div class="entry-tags">
+          <span class="tag">aircraft</span>
+          <span class="tag">aviation</span>
+          <span class="tag">tail-heavy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry-share">
+      <span class="share-label">Spread the thiccc:</span>
+      <a href="#" class="share-btn" data-share="twitter">Twitter</a>
+      <a href="#" class="share-btn" data-share="facebook">Facebook</a>
+      <a href="#" class="share-btn" data-share="instagram">Instagram</a>
+      <a href="#" class="share-btn" data-share="copy">Copy link</a>
+    </div>
+  </article>
+
+  <!-- Recent archive strip -->
+  <section class="recents">
+    <div class="recents-head">
+      <h3 class="section-title">Recently Catalogued</h3>
+      <a href="archive.html" class="see-all">See the full archive →</a>
+    </div>
+    <div class="recents-grid" id="recents-grid">
+      <!-- Populated from entries.json. Static fallback below. -->
+      <a class="recent-card" href="#">
+        <div class="recent-thumb" style="background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);"></div>
+        <div class="recent-meta">
+          <span class="recent-date">Apr 30</span>
+          <h4 class="recent-word">Avocado, Domestic</h4>
+          <p class="recent-snip">A pear-shaped fruit of disproportionate hip-to-waist ratio…</p>
+        </div>
+      </a>
+      <a class="recent-card" href="#">
+        <div class="recent-thumb" style="background: linear-gradient(135deg, #6b8e23 0%, #2f4f2f 100%);"></div>
+        <div class="recent-meta">
+          <span class="recent-date">Apr 29</span>
+          <h4 class="recent-word">Ford F-450</h4>
+          <p class="recent-snip">A pickup truck of such posterior magnitude that…</p>
+        </div>
+      </a>
+      <a class="recent-card" href="#">
+        <div class="recent-thumb" style="background: linear-gradient(135deg, #c97b6b 0%, #5a2a1f 100%);"></div>
+        <div class="recent-meta">
+          <span class="recent-date">Apr 28</span>
+          <h4 class="recent-word">Heritage Tomato</h4>
+          <p class="recent-snip">A cultivar whose girth defies its stem…</p>
+        </div>
+      </a>
+      <a class="recent-card" href="#">
+        <div class="recent-thumb" style="background: linear-gradient(135deg, #b8a888 0%, #4a4035 100%);"></div>
+        <div class="recent-meta">
+          <span class="recent-date">Apr 27</span>
+          <h4 class="recent-word">Concrete Mixer</h4>
+          <p class="recent-snip">An industrial vehicle of contemplative rotundity…</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Newsletter / social -->
+  <section class="signup" id="submit">
+    <div class="signup-inner">
+      <h3 class="section-title section-title--invert">A Daily Dose of Thiccc, Delivered.</h3>
+      <p class="signup-copy">Subscribe to the morning broadsheet. One image. One definition. One satisfying noun.</p>
+      <form class="signup-form" onsubmit="event.preventDefault(); alert('Email signup not yet wired — see README for setup.');">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">Enlist</button>
+      </form>
+      <div class="social-row">
+        <a href="#" class="social-link">Instagram</a>
+        <span class="dot">·</span>
+        <a href="#" class="social-link">Facebook</a>
+        <span class="dot">·</span>
+        <a href="#" class="social-link">X / Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <h3 class="section-title">A Note from the Editors</h3>
+    <p>Thiccctionary is satire. Specifically, it is satire of how the internet talks about bodies, applied to <em>literally anything but bodies</em> — aircraft, fruit, freight vehicles, mid-century furniture, certain breeds of dog, and the occasional well-built bridge abutment.</p>
+    <p>No bodies are catalogued here. No people are subjects of entries. Every photograph is of an object. If we have done our job, you will laugh briefly and then describe a 1973 Cadillac DeVille with the word "stacked" for the rest of your natural life.</p>
+    <p class="signoff">— The Editorial Board</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary</p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="archive.html">Archive</a>
+      <a href="#submit">Submit</a>
+      <a href="#about">About</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">X / Twitter</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="mailto:hello@thiccctionary.com">Contact</a>
+    </div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
+</footer>
+
+<script>
+  // Auto-highlight: wrap every "ccc" cluster in body copy with the red-italic ccc style.
+  // Skips elements that are already styled (.wordmark, .ccc, code, pre, etc.) and skips inputs.
+  function highlightCcc(root) {
+    const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA']);
+    const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        let p = node.parentElement;
+        while (p) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
+          p = p.parentElement;
+        }
+        return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const targets = [];
+    let n;
+    while ((n = walker.nextNode())) targets.push(n);
+    for (const node of targets) {
+      const frag = document.createDocumentFragment();
+      // Match exactly 3 c's, case-insensitive, not preceded or followed by another c (so "Thiccctionary" with "ccc" matches but "Thicccc" with "cccc" doesn't double-wrap)
+      const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+      parts.forEach(part => {
+        if (/^[cC]{3}$/.test(part)) {
+          const span = document.createElement('span');
+          span.className = 'ccc';
+          span.textContent = part;
+          frag.appendChild(span);
+        } else if (part) {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    }
+  }
+
+  // Tiny progressive-enhancement script. Loads today's entry from entries.json if present.
+  (async function () {
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const today = new Date();
+    document.getElementById('today-date').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+    try {
+      const res = await fetch('data/entries.json', { cache: 'no-store' });
+      if (!res.ok) return;
+      const entries = await res.json();
+      if (!Array.isArray(entries) || entries.length === 0) return;
+
+      // Sort by date desc
+      entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const featured = entries[0];
+
+      // Issue number = entry count
+      document.getElementById('issue-number').textContent = String(entries.length).padStart(3, '0');
+
+      // Populate featured. Link headword to its permalink.
+      if (featured.image) {
+        const wrap = document.getElementById('featured-image');
+        const slug = featured.date;
+        wrap.innerHTML = `<a href="entries/${slug}.html"><img src="${featured.image}" alt="${featured.word}" /></a>`;
+      }
+      document.getElementById('featured-caption').textContent = featured.caption || '';
+      const creditEl = document.getElementById('featured-credit');
+      if (featured.photographer) {
+        creditEl.innerHTML = `Photo by <a href="${featured.photographerUrl}?utm_source=thiccctionary&utm_medium=referral" target="_blank" rel="noopener">${featured.photographer}</a> on <a href="https://unsplash.com/?utm_source=thiccctionary&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>`;
+      } else {
+        creditEl.style.display = 'none';
+      }
+      document.getElementById('featured-word').textContent = featured.word;
+      document.getElementById('featured-def-1').innerHTML = `<strong>1.</strong> ${featured.definitions[0]}`;
+      if (featured.definitions[1]) {
+        document.getElementById('featured-def-2').innerHTML = `<strong>2.</strong> ${featured.definitions[1]}`;
+      } else {
+        document.getElementById('featured-def-2').remove();
+      }
+      document.getElementById('featured-example').textContent = `"${featured.example}"`;
+      document.getElementById('featured-etymology').innerHTML = featured.etymology;
+
+      // Populate recents (skip the featured = index 0)
+      const grid = document.getElementById('recents-grid');
+      grid.innerHTML = '';
+      entries.slice(1, 9).forEach(e => {
+        const a = document.createElement('a');
+        a.className = 'recent-card';
+        a.href = `entries/${e.date}.html`;
+        a.innerHTML = `
+          <div class="recent-thumb" style="background-image: url('${e.image}'); background-size: cover; background-position: center;"></div>
+          <div class="recent-meta">
+            <span class="recent-date">${new Date(e.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+            <h4 class="recent-word">${e.word}</h4>
+            <p class="recent-snip">${e.definitions[0].replace(/<[^>]+>/g, '').slice(0, 70)}…</p>
+          </div>`;
+        grid.appendChild(a);
+      });
+    } catch (err) {
+      console.warn('No entries.json yet — showing placeholder content.', err);
+    }
+
+    // Run the brand-voice ccc highlighter after content is in the DOM.
+    highlightCcc(document.body);
+  })();
+
+  // Share buttons (basic prototype handlers)
+  document.querySelectorAll('[data-share]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const word = document.getElementById('featured-word').textContent;
+      const url = window.location.href;
+      const text = `Today's Thiccctionary entry: ${word}`;
+      const target = btn.dataset.share;
+      if (target === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+      else if (target === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      else if (target === 'copy') { navigator.clipboard.writeText(url); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy link', 1500); }
+      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automation.');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dust" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8d5b0" />
+      <stop offset="100%" stop-color="#a87d4a" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#dust)" />
+  <!-- Truck rear-three-quarter silhouette -->
+  <rect x="80" y="280" width="440" height="180" fill="#1a1410" />
+  <rect x="100" y="200" width="280" height="100" fill="#1a1410" />
+  <rect x="380" y="260" width="140" height="40" fill="#5a3818" />
+  <!-- dual rear wheels -->
+  <circle cx="120" cy="470" r="38" fill="#0a0805" />
+  <circle cx="180" cy="470" r="38" fill="#0a0805" />
+  <circle cx="440" cy="470" r="38" fill="#0a0805" />
+  <circle cx="500" cy="470" r="38" fill="#0a0805" />
+  <text x="300" y="555" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#3a2a1f">— dually configuration, viewed astern —</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="avobg" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#f0e5c8" />
+      <stop offset="100%" stop-color="#c89968" />
+    </radialGradient>
+    <radialGradient id="avoflesh" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0%" stop-color="#d4c87a" />
+      <stop offset="100%" stop-color="#6b8e23" />
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#avobg)" />
+  <!-- Avocado, exaggerated bottom -->
+  <ellipse cx="300" cy="390" rx="180" ry="180" fill="url(#avoflesh)" />
+  <ellipse cx="300" cy="220" rx="80" ry="90" fill="url(#avoflesh)" />
+  <ellipse cx="300" cy="400" rx="60" ry="70" fill="#5a3818" opacity="0.9" />
+  <text x="300" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#3a2a1f">— Persea americana, bottom-heavy —</text>
+</svg>

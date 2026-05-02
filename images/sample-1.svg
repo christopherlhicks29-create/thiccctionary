@@ -1,0 +1,21 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4d4a3" />
+      <stop offset="100%" stop-color="#e8a87c" />
+    </linearGradient>
+    <pattern id="grain1" patternUnits="userSpaceOnUse" width="3" height="3">
+      <circle cx="1" cy="1" r="0.4" fill="rgba(0,0,0,0.06)" />
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#sky)" />
+  <rect width="600" height="600" fill="url(#grain1)" />
+  <!-- Stylized plane silhouette with exaggerated rear -->
+  <ellipse cx="380" cy="350" rx="220" ry="80" fill="#3a2a20" opacity="0.85" />
+  <ellipse cx="450" cy="350" rx="100" ry="120" fill="#3a2a20" opacity="0.95" />
+  <polygon points="450,250 540,180 510,260" fill="#3a2a20" />
+  <polygon points="180,330 130,360 180,370" fill="#3a2a20" />
+  <circle cx="380" cy="450" r="20" fill="#1a1410" />
+  <circle cx="430" cy="450" r="20" fill="#1a1410" />
+  <text x="300" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#5a2a1f">— a thiccc Boeing —</text>
+</svg>

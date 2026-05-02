@@ -1,0 +1,23 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wallbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8d5b7" />
+      <stop offset="100%" stop-color="#c4a878" />
+    </linearGradient>
+    <radialGradient id="cushion" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0%" stop-color="#a87d4a" />
+      <stop offset="100%" stop-color="#5a3818" />
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#wallbg)" />
+  <!-- Floor line -->
+  <line x1="0" y1="500" x2="600" y2="500" stroke="#3a2a1f" stroke-width="2" />
+  <!-- Chair seat (thick cushion) -->
+  <ellipse cx="300" cy="380" rx="180" ry="60" fill="url(#cushion)" />
+  <!-- Backrest -->
+  <path d="M 150 380 Q 150 200, 300 200 Q 450 200, 450 380 Z" fill="url(#cushion)" />
+  <!-- Wooden tapered legs -->
+  <path d="M 170 410 L 145 500 L 165 500 L 185 410 Z" fill="#3a2a1f" />
+  <path d="M 430 410 L 455 500 L 435 500 L 415 410 Z" fill="#3a2a1f" />
+  <text x="300" y="555" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#3a2a1f">— walnut frame, generous cushion —</text>
+</svg>

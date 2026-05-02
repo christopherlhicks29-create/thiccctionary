@@ -1,0 +1,23 @@
+<!--
+  Placeholder OG share image. Convert to og-default.png (1200x630) for production.
+  You can do this by opening this SVG in a browser, taking a screenshot,
+  or running: rsvg-convert og-default.png.svg -o og-default.png
+  Or use any online SVG-to-PNG converter.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4ecdc"/>
+      <stop offset="100%" stop-color="#ebe0c8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="600" y="180" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="32" fill="#7a1f1f" letter-spacing="8">THE</text>
+  <text x="600" y="340" text-anchor="middle" font-family="Georgia, serif" font-weight="900" font-size="160" fill="#1a1410">
+    Thi<tspan fill="#7a1f1f" font-style="italic">ccc</tspan>tionary
+  </text>
+  <text x="600" y="420" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#4a3d33">a daily reference for thiccc things</text>
+  <text x="600" y="540" text-anchor="middle" font-family="monospace" font-size="20" fill="#7a1f1f" letter-spacing="6">UPDATED · DAILY · MOSTLY</text>
+  <line x1="200" y1="500" x2="500" y2="500" stroke="#1a1410" stroke-width="2"/>
+  <line x1="700" y1="500" x2="1000" y2="500" stroke="#1a1410" stroke-width="2"/>
+</svg>

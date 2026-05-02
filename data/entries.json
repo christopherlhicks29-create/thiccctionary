@@ -1,0 +1,92 @@
+[
+  {
+    "date": "2026-05-01",
+    "word": "Thiccc Boeing",
+    "pronunciation": "/ˈθɪk ˈboʊ.ɪŋ/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; <em>esp.</em> one parked tail-toward the camera at golden hour.",
+      "<em>colloq.</em> Any commercial jet you'd describe as \"built.\""
+    ],
+    "example": "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural.",
+    "etymology": "From <em>thiccc</em> (internet vernacular, c. 2015, \"voluptuous; full-bodied,\" with an extra <em>c</em> for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026.",
+    "image": "images/sample-1.svg",
+    "caption": "Plate I. — A specimen of considerable rear-end displacement.",
+    "tags": ["aircraft", "aviation", "tail-heavy"]
+  },
+  {
+    "date": "2026-04-30",
+    "word": "Avocado, Domestic",
+    "pronunciation": "/ˌævəˈkɑː.doʊ/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis.",
+      "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
+    ],
+    "example": "Cut it in half — this avocado is doing serious work.",
+    "etymology": "From Spanish <em>aguacate</em>, from Nahuatl <em>āhuacatl</em>, originally meaning \"testicle\" — which, frankly, tracks.",
+    "image": "images/sample-2.svg",
+    "caption": "Plate II. — Note the pronounced lower bulb.",
+    "tags": ["fruit", "produce", "bottom-heavy"]
+  },
+  {
+    "date": "2026-04-29",
+    "word": "Ford F-450",
+    "pronunciation": "/fɔːrd ɛf ˈfɔːr.fɪf.ti/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A pickup truck of such posterior magnitude that it requires dual rear wheels per side to remain in physical contact with the road.",
+      "<em>slang.</em> A vehicle that, were it sentient, would be described as 'thiccc with three Cs.'"
+    ],
+    "example": "Pulled into the diner lot in his F-450 — back end wider than the booth he sat in.",
+    "etymology": "From Henry Ford (industrialist) + the model code for the heaviest-duty pickup in the lineup. The numerical suffix correlates positively with girth.",
+    "image": "images/sample-3.svg",
+    "caption": "Plate III. — Dually configuration, viewed astern.",
+    "tags": ["truck", "vehicle", "heavy-duty"]
+  },
+  {
+    "date": "2026-04-28",
+    "word": "Heritage Tomato",
+    "pronunciation": "/ˈhɛr.ɪ.tɪdʒ təˈmeɪ.toʊ/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A cultivar of <em>Solanum lycopersicum</em> whose girth defies its stem; structurally suspect, aesthetically blessed.",
+      "Any tomato that, if it were furniture, would require two people to move."
+    ],
+    "example": "Three pounds. One tomato. They had to use two hands at the farmer's market.",
+    "etymology": "From <em>heritage</em> (denoting ancestral cultivars) + <em>tomato</em>. The word \"heritage\" here implies that the tomato has a sense of history, gravitas, and lower-body presence.",
+    "image": "images/sample-4.svg",
+    "caption": "Plate IV. — A Brandywine of unusual proportions.",
+    "tags": ["fruit", "produce", "garden"]
+  },
+  {
+    "date": "2026-04-27",
+    "word": "Concrete Mixer",
+    "pronunciation": "/ˈkɒŋ.kriːt ˈmɪk.sər/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.",
+      "<em>The platonic ideal of thicccness:</em> all body, no apologies."
+    ],
+    "example": "She stopped traffic. Eight cubic yards of slow-spinning confidence.",
+    "etymology": "From <em>concrete</em> (Latin <em>concretus</em>, \"grown together\") + <em>mixer</em>. The drum's rotation is, for our purposes, decorative.",
+    "image": "images/sample-5.svg",
+    "caption": "Plate V. — At rest. Engine idle. Drum rotating.",
+    "tags": ["vehicle", "industrial", "construction"]
+  },
+  {
+    "date": "2026-04-26",
+    "word": "Mid-Century Armchair",
+    "pronunciation": "/mɪd ˈsɛn.tʃər.i ˈɑːrm.tʃɛər/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A piece of upholstered seating, c. 1955–1970, distinguished by an aggressively curved backside and tapered wooden legs that seem to be holding up too much.",
+      "Any chair you'd describe as 'a whole mood' but also 'a whole structural concern.'"
+    ],
+    "example": "That Eames knock-off is a thiccc piece of furniture. The cushion alone is a continent.",
+    "etymology": "From <em>mid-century</em> (denoting an era of design optimism and tapered furniture legs) + <em>armchair</em>. The era's commitment to organic curves was, in retrospect, very on-brand.",
+    "image": "images/sample-6.svg",
+    "caption": "Plate VI. — Walnut frame. Wool upholstery. Notable rear cushioning.",
+    "tags": ["furniture", "design", "vintage"]
+  }
+]

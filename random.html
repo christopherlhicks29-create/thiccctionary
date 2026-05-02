@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Random Entry — Thiccctionary</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="center-page">
+  <p class="error-stamp">Selecting a Random Entry…</p>
+  <h2 class="error-headline" style="font-size: 60px;">Loading.</h2>
+  <p class="error-body">If you don't get redirected in a moment, <a href="archive.html" style="color: var(--oxblood); border-bottom: 1px solid var(--oxblood);">visit the archive</a>.</p>
+</div>
+<script>
+(async function () {
+  try {
+    const res = await fetch('data/entries.json', { cache: 'no-store' });
+    const entries = await res.json();
+    if (!entries.length) { window.location.href = 'archive.html'; return; }
+    const pick = entries[Math.floor(Math.random() * entries.length)];
+    window.location.href = `entries/${pick.date}.html`;
+  } catch (e) {
+    window.location.href = 'archive.html';
+  }
+})();
+</script>
+</body>
+</html>

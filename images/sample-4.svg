@@ -1,0 +1,16 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="tomred" cx="0.4" cy="0.4" r="0.7">
+      <stop offset="0%" stop-color="#f0905a" />
+      <stop offset="60%" stop-color="#c14a2a" />
+      <stop offset="100%" stop-color="#7a1f1f" />
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="#f4ecdc" />
+  <!-- Lumpy heritage tomato -->
+  <path d="M 300 480 C 120 480, 100 280, 200 220 C 240 180, 280 200, 300 200 C 320 200, 360 180, 400 220 C 500 280, 480 480, 300 480 Z" fill="url(#tomred)" />
+  <path d="M 280 200 L 290 160 L 310 160 L 320 200 Z" fill="#3a5a28" />
+  <ellipse cx="280" cy="170" rx="20" ry="8" fill="#3a5a28" />
+  <ellipse cx="320" cy="170" rx="20" ry="8" fill="#3a5a28" />
+  <text x="300" y="555" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#3a2a1f">— a Brandywine of unusual proportions —</text>
+</svg>

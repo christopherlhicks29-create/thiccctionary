@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Not Found — Thiccctionary</title>
+<meta name="description" content="That entry is not in our lexicon. Yet." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top"><span class="meta-line">Status: Not Found</span><span class="meta-line meta-line--right">Error 404</span></div>
+  <h1 class="wordmark">
+    <span class="wordmark-the">The</span>
+    <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+  </h1>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Today's Entry</a>
+    <a href="archive.html" class="nav-link">The Archive</a>
+    <a href="submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="index.html#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main>
+  <div class="center-page">
+    <p class="error-stamp">Entry Not Found</p>
+    <h2 class="error-headline">404</h2>
+    <p class="error-body">This page is not in our lexicon. It may have been thiccc once, but it is no longer documented here.</p>
+    <p>
+      <a href="index.html" class="btn-primary">Take me to today's entry</a>
+    </p>
+    <p style="margin-top: 18px;">
+      <a href="random.html" class="see-all">…or show me something random</a>
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><p class="footer-wordmark">Thiccctionary</p><p class="footer-tag">Documenting girth, since 2026.</p></div>
+    <div><p class="footer-head">Sections</p><a href="archive.html">Archive</a><a href="submit.html">Submit</a><a href="index.html#about">About</a></div>
+    <div><p class="footer-head">Follow</p><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">X / Twitter</a></div>
+    <div><p class="footer-head">Legal</p><a href="#">Terms</a><a href="#">Privacy</a><a href="mailto:hello@thiccctionary.com">Contact</a></div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+function highlightCcc(root) {
+  const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA']);
+  const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) { let p = node.parentElement;
+      while (p) { if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+        for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
+        p = p.parentElement; }
+      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; }
+  });
+  const targets = []; let n;
+  while ((n = walker.nextNode())) targets.push(n);
+  for (const node of targets) {
+    const frag = document.createDocumentFragment();
+    const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+    parts.forEach(part => {
+      if (/^[cC]{3}$/.test(part)) { const span = document.createElement('span');
+        span.className = 'ccc'; span.textContent = part; frag.appendChild(span);
+      } else if (part) frag.appendChild(document.createTextNode(part));
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+}
+highlightCcc(document.body);
+</script>
+
+</body>
+</html>

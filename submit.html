@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submit a Thiccc — Thiccctionary</title>
+<meta name="description" content="Spotted something thiccc? Send it in. Best submissions get featured." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/submit.html" />
+<meta property="og:title" content="Submit a Thiccc — Thiccctionary" />
+<meta property="og:description" content="Spotted something thiccc? Send it in." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/submit.html" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top"><span class="meta-line">Reader Submissions</span><span class="meta-line meta-line--right">Best Get Featured</span></div>
+  <h1 class="wordmark">
+    <span class="wordmark-the">The</span>
+    <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+  </h1>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Today's Entry</a>
+    <a href="archive.html" class="nav-link">The Archive</a>
+    <a href="submit.html" class="nav-link nav-link--active">Submit a Thiccc</a>
+    <a href="index.html#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main>
+  <div class="center-page">
+    <p class="error-stamp">Submit an Entry</p>
+    <h2 class="error-headline" style="font-size: clamp(36px, 6vw, 64px);">Spotted something thiccc?</h2>
+    <p class="error-body">Send it in. The editorial board reviews every submission. Best ones get catalogued — with credit.</p>
+
+    <!--
+      To activate this form:
+      1. Sign up at https://formspree.io (free tier: 50 submissions/mo)
+      2. Create a new form, copy your form ID
+      3. Replace YOUR_FORMSPREE_ID below with that ID
+    -->
+    <form class="submit-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <label for="word">The thiccc thing</label>
+      <input type="text" id="word" name="word" placeholder="e.g. 1973 Cadillac DeVille" required />
+
+      <label for="why">Why is it thiccc?</label>
+      <textarea id="why" name="why" placeholder="Be specific. Where's the girth? Rear three-quarter? Side profile? The drum?" required></textarea>
+
+      <label for="image_url">Photo URL (optional but encouraged)</label>
+      <input type="url" id="image_url" name="image_url" placeholder="https://… (Imgur, Unsplash, your own host)" />
+
+      <label for="email">Your email (so we can credit you if it's featured)</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" />
+
+      <button type="submit">Send to the Editors</button>
+    </form>
+
+    <p style="margin-top: 28px; font-size: 14px; color: var(--ink-soft); font-style: italic;">
+      We do not catalogue people, animals, or anything that could be considered a person, animal, or part thereof. Submissions of such will be quietly disregarded.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><p class="footer-wordmark">Thiccctionary</p><p class="footer-tag">Documenting girth, since 2026.</p></div>
+    <div><p class="footer-head">Sections</p><a href="archive.html">Archive</a><a href="submit.html">Submit</a><a href="index.html#about">About</a></div>
+    <div><p class="footer-head">Follow</p><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">X / Twitter</a></div>
+    <div><p class="footer-head">Legal</p><a href="#">Terms</a><a href="#">Privacy</a><a href="mailto:hello@thiccctionary.com">Contact</a></div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+function highlightCcc(root) {
+  const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA']);
+  const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) { let p = node.parentElement;
+      while (p) { if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+        for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
+        p = p.parentElement; }
+      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; }
+  });
+  const targets = []; let n;
+  while ((n = walker.nextNode())) targets.push(n);
+  for (const node of targets) {
+    const frag = document.createDocumentFragment();
+    const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+    parts.forEach(part => {
+      if (/^[cC]{3}$/.test(part)) { const span = document.createElement('span');
+        span.className = 'ccc'; span.textContent = part; frag.appendChild(span);
+      } else if (part) frag.appendChild(document.createTextNode(part));
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+}
+highlightCcc(document.body);
+</script>
+
+</body>
+</html>
