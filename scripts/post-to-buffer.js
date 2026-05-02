@@ -51,6 +51,10 @@ async function postToChannel({ channelId, text, imageUrl, token }) {
       assets: {
         images: [{ url: imageUrl }],
       },
+      metadata: {
+        facebook: { type: 'post' },
+        instagram: { type: 'post' },
+      },
     },
   };
 
