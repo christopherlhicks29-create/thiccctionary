@@ -98,17 +98,26 @@ async function pickThiccestImage(subject, candidates) {
     image_url: { url: c.thumbUrl, detail: 'low' }, // 'low' = cheap, fine for picking
   }));
 
-  const sysPrompt = `You evaluate photos for "Thiccctionary," a satirical site about THICK objects. Pick the photo that best showcases the subject's chunkiness, curvature, mass, or rear-end displacement. Avoid:
-- photos that include people, bodies, or body parts
-- photos that look like marketing/product renders
-- photos with watermarks or text overlays
-- photos where the subject is too small or in shadow
+  const sysPrompt = `You evaluate photos for "Thiccctionary," a satirical site about THICK objects. Your goal: pick the photo where the subject's overall girth and silhouette are most obvious to someone seeing it for the first time.
+
+CRITICAL — the photo MUST show the WHOLE subject in frame:
+- The full silhouette must be visible — head to tail, end to end
+- A reader should be able to see the subject's overall shape at a glance
+- REJECT tight crops, detail shots, side panels, single wheels, engine close-ups, or any composition where you can only see PART of the subject
+- If NONE of the candidates show the full subject, pick the one with the most of it visible
+
+Avoid:
+- Photos that include people, bodies, body parts, or hands
+- Photos that look like marketing/product renders or illustrations
+- Photos with watermarks or text overlays
+- Photos where the subject is too small, obscured, or in deep shadow
+- Detail shots focused on engineering parts rather than overall form
 
 Prefer:
-- rear-three-quarter angles or side profiles that emphasize girth
-- isolated subjects against clean backgrounds
-- natural light, especially golden hour
-- vintage / character-rich examples`;
+- Rear three-quarter angles, side profiles, or back views that show the FULL subject silhouette and emphasize girth
+- Isolated subjects against clean backgrounds with good separation from clutter
+- Natural light, especially golden hour
+- Vintage / weathered / character-rich examples`;
 
   const userPrompt = `Subject: ${subject}
 
