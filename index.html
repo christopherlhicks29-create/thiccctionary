@@ -291,7 +291,7 @@
       } else {
         document.getElementById('featured-def-2').remove();
       }
-      document.getElementById('featured-example').textContent = `"${featured.example}"`;
+      document.getElementById('featured-example').innerHTML = `"${featured.example}"`;
       document.getElementById('featured-etymology').innerHTML = featured.etymology;
 
       // Populate recents (skip the featured = index 0)

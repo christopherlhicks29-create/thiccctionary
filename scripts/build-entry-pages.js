@@ -81,7 +81,7 @@ export async function buildEntryPage(entry) {
     POS: escapeHtml(entry.partOfSpeech || 'n.'),
     DEF_1: entry.definitions[0],
     DEF_2_BLOCK: def2Block,
-    EXAMPLE: escapeHtml(entry.example || ''),
+    EXAMPLE: entry.example || '',
     ETYMOLOGY: entry.etymology || '',
     IMAGE: imageUrlForPage(entry),
     OG_IMAGE: imageUrlForOg(entry),
