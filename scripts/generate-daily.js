@@ -168,7 +168,7 @@ Write the dictionary entry. Reference the actual photo loosely (e.g. "esp. when 
 Schema:
 {
   "word": "${subject}",
-  "pronunciation": "/ˈfo.nɛ.tɪk/",
+  "pronunciation": "/sim-pul re-SPEL-ing/",  // simple respelling — capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Do NOT use IPA.
   "partOfSpeech": "n.",
   "definitions": ["definition 1 (1-2 sentences, dictionary register)", "optional definition 2 (often colloquial / slangier)"],
   "example": "An italic example sentence using the word in a believable conversational context.",
