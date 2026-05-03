@@ -11,3 +11,6 @@ PUSH_ARTICLES.bat
 fix-*.ps1
 fix-*.bat
 run-*.bat
+
+tiktok-videos/
+tiktok-output/

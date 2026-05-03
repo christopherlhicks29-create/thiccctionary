@@ -1,0 +1,45 @@
+name: Build TikTok Video
+
+# Generates a 9:16 vertical TikTok video for a given entry: image + typography
+# overlay + OpenAI TTS deadpan voiceover. Manual-trigger only. Uploads the
+# finished MP4 as a workflow artifact (download from the Actions run page).
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Required. YYYY-MM-DD of the entry to build a TikTok for."
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Build TikTok video
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DATE: ${{ inputs.date }}
+        run: node build-tiktok-video.js
+
+      - name: Upload MP4 as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tiktok-${{ inputs.date }}
+          path: tiktok-output/*.mp4
+          retention-days: 30
