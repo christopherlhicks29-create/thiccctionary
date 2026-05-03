@@ -156,6 +156,8 @@ export async function buildSitemap(entries) {
     { loc: `${base}/articles/the-five-thicccest-things.html`, priority: '0.7', lastmod: '2026-05-02' },
     { loc: `${base}/articles/what-counts-as-thiccc.html`, priority: '0.7', lastmod: '2026-05-02' },
     { loc: `${base}/articles/history-of-thiccc.html`, priority: '0.7', lastmod: '2026-05-02' },
+    { loc: `${base}/articles/field-guide-spotting-thiccc.html`, priority: '0.7', lastmod: '2026-05-03' },
+    { loc: `${base}/articles/cement-trucks-original-thiccc.html`, priority: '0.7', lastmod: '2026-05-03' },
     { loc: `${base}/legal/terms.html`, priority: '0.3' },
     { loc: `${base}/legal/privacy.html`, priority: '0.3' },
     { loc: `${base}/press/`, priority: '0.5' },
