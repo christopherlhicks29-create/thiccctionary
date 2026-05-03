@@ -36,14 +36,33 @@ const IMAGES_DIR = path.join(ROOT, 'images');
 async function pickSubject(usedWords) {
   const sysPrompt = `You suggest subjects for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS (never people, never bodies, never animals). Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods. The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
 
+HEADWORD STYLE — this is the most important part. The headword should feel like a real dictionary entry, with VOICE and SPECIFICITY. Three patterns work; rotate through them:
+
+1. COMMA-QUALIFIER ("Avocado, Domestic" / "Refrigerator, Side-by-Side" / "Cadillac, c. 1959") — dictionary-cataloguing register. Strong default.
+2. ALLITERATIVE-DESCRIPTOR ("Concrete Cathedral" / "Bulbous Bouy" / "Pendulous Pumpkin") — only if the alliteration is genuinely good.
+3. PROPER-NOUN-FORWARD ("Thiccc Boeing" / "Frigidaire Imperial" / "Steinway, Concert Grand") — when the brand IS the punchline.
+
+AVOID weak generic patterns: "Big X", "Bulky X", "Large X", "Round X", "Heavy X". These are filler. Push for specificity, period-detail, model numbers, cultivar names, or branded language.
+
 Output strict JSON only.`;
 
   const userPrompt = `Suggest today's subject. Avoid recently used: ${usedWords.join(', ') || '(none)'}.
 
+Reference for the bar (these were strong picks):
+- "Avocado, Domestic"  (comma-qualifier — botanical register)
+- "Thiccc Boeing"  (proper-noun-forward — brand carries the joke)
+- "Ford F-450"  (model number specificity)
+- "Heritage Tomato"  (cultivar-language qualifier)
+- "Mid-Century Armchair"  (period-detail qualifier)
+
+Reference for what to AVOID (these were weak):
+- "Bulky Refrigerator"  ← generic adjective. Better: "Frigidaire, Side-by-Side" or "Refrigerator, Mid-Century Apartment"
+- "Big Truck"  ← no specificity. Better: model + qualifier.
+
 Schema:
 {
-  "subject": "the noun phrase being defined (capitalized, dictionary-style, e.g. 'Heritage Tomato' or 'Concrete Mixer Truck')",
-  "unsplashQuery": "a 1-3 word search query for Unsplash that will return relevant photos (e.g. 'concrete mixer' or 'heirloom tomato')",
+  "subject": "the noun phrase being defined — must follow one of the three style patterns above",
+  "unsplashQuery": "a 1-3 word search query for Unsplash that will return relevant photos (e.g. 'concrete mixer' or 'heirloom tomato'). Use the literal object name, not the qualifier.",
   "category": "one of: aircraft, vehicle, fruit, vegetable, furniture, building, appliance, tool, machinery, instrument, other"
 }`;
 
@@ -167,7 +186,27 @@ async function downloadImage(photo, filename) {
 
 // ---------- 5. Generate the satirical entry ----------
 async function generateEntry(subject, photo) {
-  const sysPrompt = `You write entries for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful — the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.`;
+  const sysPrompt = `You write entries for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful — the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.
+
+VOICE TARGETS — match these patterns:
+
+DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Use dictionary register (esp., colloq., slang.) but slip in voicy flourishes. The second definition (when present) should be sharper/colloquial. Examples that worked:
+- "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one parked tail-toward the camera at golden hour."
+- "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection."
+- "The platonic ideal of thicccness: all body, no apologies."
+- "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
+
+ETYMOLOGIES — lead with REAL etymology (Latin/Greek/Middle English/Spanish/etc., dated coinages, named industrialists), then close with a comedic kicker that lands. This is where the personality lives. Examples that worked:
+- "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle' — which, frankly, tracks."
+- "From thiccc (internet vernacular, c. 2015, 'voluptuous; full-bodied,' with an extra c for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026."
+- "From Henry Ford (industrialist) + the model code for the heaviest-duty pickup in the lineup. The numerical suffix correlates positively with girth."
+AVOID generic etymologies that just gloss the parts ("from Latin X meaning Y, combined with Z meaning W"). The kicker is mandatory.
+
+EXAMPLES — must include "thiccc" (three c's). Should be ONE crisp sentence or a sentence + a sharp tag. Use brand/model/proper-noun specificity, not generic placeholders. Strong examples that worked:
+- "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural."
+- "Florida grew an avocado so thiccc it required two hands and a pre-meal stretch. Toast was just the canvas."
+- "He pulled up in a thiccc F-450 and the parking lot reorganized around him. The dually rear axle takes up two spaces by birthright."
+AVOID flat constructions like "Replaced my X with this thiccc Y" — pick a specific scene/moment.`;
 
   const userPrompt = `Today's subject: "${subject}"
 
@@ -180,9 +219,9 @@ Schema:
   "word": "${subject}",
   "pronunciation": "/sim-pul re-SPEL-ing/",  // simple respelling — capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Do NOT use IPA.
   "partOfSpeech": "n.",
-  "definitions": ["definition 1 (1-2 sentences, dictionary register)", "optional definition 2 (often colloquial / slangier)"],
-  "example": "An italic example sentence using BOTH the headword AND the literal word \"thiccc\" (always with three c's — that is the brand). Conversational, dictionary-illustration register. Example pattern: \"That [subject] is one thiccc [noun/feature]\" or \"...exhibits a remarkably thiccc silhouette\". The word 'thiccc' MUST appear in this sentence — it is the conceit of the entire site.",
-  "etymology": "1-3 sentences. Mix real linguistic etymology with comedic commentary.",
+  "definitions": ["definition 1 (1-2 sentences, dictionary register, voicy)", "optional definition 2 (sharper / colloquial — labeled with <em>colloq.</em> or <em>slang.</em>)"],
+  "example": "ONE sentence (optionally + a short tag) using BOTH the headword AND the literal word \"thiccc\" (always three c's). Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y' — pick a scene.",
+  "etymology": "Real etymology FIRST (Latin/Greek/Middle English/Spanish/Nahuatl/etc., dated coinages, named industrialists) THEN a comedic kicker. The kicker is what makes the entry sing.",
   "caption": "Plate N. — A short caption for the image, dictionary-illustration style.",
   "tags": ["tag1", "tag2", "tag3"]
 }`;
@@ -194,7 +233,7 @@ Schema:
       model: 'gpt-4o-mini',
       messages: [{ role: 'system', content: sysPrompt }, { role: 'user', content: userPrompt }],
       response_format: { type: 'json_object' },
-      temperature: 0.95,
+      temperature: 0.85,
     }),
   });
   if (!res.ok) throw new Error(`Entry gen failed: ${res.status} ${await res.text()}`);
