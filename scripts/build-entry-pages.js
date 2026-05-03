@@ -154,6 +154,10 @@ export async function buildSitemap(entries) {
     { loc: `${base}/archive.html`, priority: '0.8' },
     { loc: `${base}/articles/`, priority: '0.7' },
     { loc: `${base}/articles/the-five-thicccest-things.html`, priority: '0.7', lastmod: '2026-05-02' },
+    { loc: `${base}/articles/what-counts-as-thiccc.html`, priority: '0.7', lastmod: '2026-05-02' },
+    { loc: `${base}/articles/history-of-thiccc.html`, priority: '0.7', lastmod: '2026-05-02' },
+    { loc: `${base}/legal/terms.html`, priority: '0.3' },
+    { loc: `${base}/legal/privacy.html`, priority: '0.3' },
     { loc: `${base}/submit.html`, priority: '0.5' },
   ];
   const entryPages = entries.map(e => ({

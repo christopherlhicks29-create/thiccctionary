@@ -18,6 +18,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/articles/what-counts-as-thiccc.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/articles/history-of-thiccc.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/legal/terms.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/legal/privacy.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/submit.html</loc>
     <priority>0.5</priority>
   </url>
