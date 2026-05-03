@@ -73,7 +73,48 @@ export async function buildEntryPage(entry) {
     : '';
   const description = trimDescription(entry.definitions[0]);
 
+  // Build schema.org JSON-LD for this entry: DefinedTerm + Article
+  const jsonld = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "DefinedTerm",
+        "@id": canonical + "#term",
+        "name": entry.word,
+        "description": stripHtml(entry.definitions[0]),
+        "inDefinedTermSet": {
+          "@type": "DefinedTermSet",
+          "@id": "https://thiccctionary.com/#dictionary",
+          "name": "Thiccctionary",
+          "url": "https://thiccctionary.com/"
+        }
+      },
+      {
+        "@type": "Article",
+        "@id": canonical + "#article",
+        "url": canonical,
+        "headline": entry.word + " — Thiccctionary",
+        "name": entry.word,
+        "description": description,
+        "image": imageUrlForOg(entry),
+        "datePublished": entry.date,
+        "dateModified": entry.date,
+        "inLanguage": "en-US",
+        "isPartOf": { "@id": "https://thiccctionary.com/#website" },
+        "publisher": { "@id": "https://thiccctionary.com/#organization" },
+        "mainEntity": { "@id": canonical + "#term" },
+        "keywords": (entry.tags || []).join(", "),
+        "author": entry.photographer ? {
+          "@type": "Organization",
+          "@id": "https://thiccctionary.com/#organization",
+          "name": "Thiccctionary"
+        } : undefined
+      }
+    ]
+  }, null, 2);
+
   const replacements = {
+    JSONLD: jsonld,
     WORD: escapeHtml(entry.word),
     WORD_HTML: escapeHtml(entry.word), // ccc highlighter runs client-side
     WORD_ENC: encodeURIComponent(entry.word),

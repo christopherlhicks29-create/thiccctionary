@@ -25,6 +25,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- Mobile theme + locale -->
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta name="twitter:site" content="@thiccctionary" />
+<meta name="twitter:creator" content="@thiccctionary" />
+
+<!-- Schema.org JSON-LD: WebSite + Organization + Sitelinks search box -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://thiccctionary.com/#website",
+      "url": "https://thiccctionary.com/",
+      "name": "Thiccctionary",
+      "description": "A satirical daily dictionary of objects of unusual girth. Strictly things, never people.",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://thiccctionary.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://thiccctionary.com/archive.html?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://thiccctionary.com/#organization",
+      "name": "Thiccctionary",
+      "url": "https://thiccctionary.com/",
+      "logo": "https://thiccctionary.com/og-default.png",
+      "sameAs": [
+        "https://www.instagram.com/ogthiccctionary/",
+        "https://www.facebook.com/Thiccctionary/",
+        "https://x.com/thiccctionary"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
