@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Thiccctionary</title>
+    <link>https://thiccctionary.com/</link>
+    <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
+    <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 May 2026 03:20:09 GMT</lastBuildDate>
+    <generator>Thiccctionary build pipeline</generator>
+    <image>
+      <url>https://thiccctionary.com/og-default.png</url>
+      <title>Thiccctionary</title>
+      <link>https://thiccctionary.com/</link>
+    </image>
+    <item>
+      <title>Bulky Refrigerator</title>
+      <link>https://thiccctionary.com/entries/2026-05-02.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-02.html</guid>
+      <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
+      <description>An unapologetically large cooling appliance, often characterized by an ample physical presence and an inability to hide its considerable girth behind mere cabinetry.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-02.jpg" type="image/jpeg" length="0" />
+      <category>appliances</category><category>kitchen</category><category>home</category><category>thicc</category><category>bold</category>
+    </item>
+    <item>
+      <title>Thiccc Boeing</title>
+      <link>https://thiccctionary.com/entries/2026-05-01.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-01.html</guid>
+      <pubDate>Fri, 01 May 2026 12:00:00 GMT</pubDate>
+      <description>A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one parked tail-toward the camera at golden hour.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-01.jpg" type="image/jpeg" length="0" />
+      <category>aircraft</category><category>aviation</category><category>tail-heavy</category>
+    </item>
+    <item>
+      <title>Avocado, Domestic</title>
+      <link>https://thiccctionary.com/entries/2026-04-30.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-30.html</guid>
+      <pubDate>Thu, 30 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-30.jpg" type="image/jpeg" length="0" />
+      <category>fruit</category><category>produce</category><category>bottom-heavy</category>
+    </item>
+    <item>
+      <title>Ford F-450</title>
+      <link>https://thiccctionary.com/entries/2026-04-29.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-29.html</guid>
+      <pubDate>Wed, 29 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A pickup truck of such posterior magnitude that it requires dual rear wheels per side to remain in physical contact with the road.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-29.jpg" type="image/jpeg" length="0" />
+      <category>truck</category><category>vehicle</category><category>heavy-duty</category>
+    </item>
+    <item>
+      <title>Heritage Tomato</title>
+      <link>https://thiccctionary.com/entries/2026-04-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-28.html</guid>
+      <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cultivar of Solanum lycopersicum whose girth defies its stem; structurally suspect, aesthetically blessed.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-28.jpg" type="image/jpeg" length="0" />
+      <category>fruit</category><category>produce</category><category>garden</category>
+    </item>
+    <item>
+      <title>Concrete Mixer</title>
+      <link>https://thiccctionary.com/entries/2026-04-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-27.html</guid>
+      <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+      <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>industrial</category><category>construction</category>
+    </item>
+    <item>
+      <title>Mid-Century Armchair</title>
+      <link>https://thiccctionary.com/entries/2026-04-26.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-26.html</guid>
+      <pubDate>Sun, 26 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A piece of upholstered seating, c. 1955–1970, distinguished by an aggressively curved backside and tapered wooden legs that seem to be holding up too much.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-26.jpg" type="image/jpeg" length="0" />
+      <category>furniture</category><category>design</category><category>vintage</category>
+    </item>
+  </channel>
+</rss>

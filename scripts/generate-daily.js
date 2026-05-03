@@ -22,6 +22,7 @@
  */
 
 import fs from 'node:fs/promises';
+import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
@@ -268,6 +269,8 @@ async function main() {
   const entryPagePath = await buildEntryPage(entry);
   console.log(`Built entry page: ${path.relative(ROOT, entryPagePath)}`);
   await buildSitemap(entries);
+  await buildRssFeed(entries);
+  console.log(`RSS feed rebuilt.`);
   console.log(`Sitemap rebuilt with ${entries.length} entries.`);
 }
 

@@ -11,6 +11,7 @@
  */
 
 import fs from 'node:fs/promises';
+import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -151,6 +152,8 @@ export async function buildSitemap(entries) {
   const staticPages = [
     { loc: `${base}/`, priority: '1.0' },
     { loc: `${base}/archive.html`, priority: '0.8' },
+    { loc: `${base}/articles/`, priority: '0.7' },
+    { loc: `${base}/articles/the-five-thicccest-things.html`, priority: '0.7', lastmod: '2026-05-02' },
     { loc: `${base}/submit.html`, priority: '0.5' },
   ];
   const entryPages = entries.map(e => ({
@@ -186,5 +189,7 @@ if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || proce
   }
 
   await buildSitemap(entries);
+  await buildRssFeed(entries);
+  console.log(`Wrote feed.xml with ${entries.length} entries.`);
   console.log(`Updated sitemap.xml with ${entries.length} entries.`);
 }
