@@ -42,7 +42,7 @@ HEADWORD STYLE — this is the most important part. The headword should feel lik
 2. ALLITERATIVE-DESCRIPTOR ("Concrete Cathedral" / "Bulbous Bouy" / "Pendulous Pumpkin") — only if the alliteration is genuinely good.
 3. PROPER-NOUN-FORWARD ("Thiccc Boeing" / "Frigidaire Imperial" / "Steinway, Concert Grand") — when the brand IS the punchline.
 
-AVOID weak generic patterns: "Big X", "Bulky X", "Large X", "Round X", "Heavy X". These are filler. Push for specificity, period-detail, model numbers, cultivar names, or branded language.
+AVOID weak generic-adjective + noun patterns. The full ban list of qualifiers that you MAY NOT use as the lead adjective: Big, Bulky, Large, Round, Heavy, Chunky, Hefty, Plump, Plush, Thick, Wide, Fat, Stout, Sturdy, Massive, Huge, Dense, Solid. If your headword starts with any of these, START OVER. They are filler — they tell the reader nothing the eye doesn't already see. Instead, push for: specific cultivar/model/era ("Heritage Tomato", "Ford F-450", "Mid-Century Armchair"); branded specificity ("Frigidaire Imperial", "Steinway, Concert Grand"); botanical or mechanical register ("Concrete Mixer", "Avocado, Domestic"); or proper-noun-forward construction where the brand IS the punchline ("Thiccc Boeing").
 
 Output strict JSON only.`;
 
@@ -196,17 +196,30 @@ DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Us
 - "The platonic ideal of thicccness: all body, no apologies."
 - "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
 
-ETYMOLOGIES — lead with REAL etymology (Latin/Greek/Middle English/Spanish/etc., dated coinages, named industrialists), then close with a comedic kicker that lands. This is where the personality lives. Examples that worked:
+ETYMOLOGIES — lead with REAL, VERIFIABLE etymology (Latin/Greek/Middle English/Old French/Spanish/Nahuatl/named industrialists/dated coinages), then close with a comedic kicker that lands. This is where the personality lives.
+
+CRITICAL — the etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. If you cannot recall the real etymology of the word with confidence, fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke — the entire conceit of Thiccctionary is fake-academic register applied to real linguistic facts. A made-up "Old English 'cynce'" is brand-damaging, not funny.
+
+Examples that worked:
 - "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle' — which, frankly, tracks."
 - "From thiccc (internet vernacular, c. 2015, 'voluptuous; full-bodied,' with an extra c for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026."
 - "From Henry Ford (industrialist) + the model code for the heaviest-duty pickup in the lineup. The numerical suffix correlates positively with girth."
-AVOID generic etymologies that just gloss the parts ("from Latin X meaning Y, combined with Z meaning W"). The kicker is mandatory.
+
+AVOID:
+- Fabricated word origins ("from Old English 'cynce'" — there is no such word)
+- Generic glosses that just translate the parts ("from Latin X meaning Y, combined with Z meaning W")
+- Etymologies without a comedic kicker — the kicker is mandatory.
 
 EXAMPLES — must include "thiccc" (three c's). Should be ONE crisp sentence or a sentence + a sharp tag. Use brand/model/proper-noun specificity, not generic placeholders. Strong examples that worked:
 - "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural."
 - "Florida grew an avocado so thiccc it required two hands and a pre-meal stretch. Toast was just the canvas."
 - "He pulled up in a thiccc F-450 and the parking lot reorganized around him. The dually rear axle takes up two spaces by birthright."
-AVOID flat constructions like "Replaced my X with this thiccc Y" — pick a specific scene/moment.`;
+
+AVOID:
+- Flat constructions ("Replaced my X with this thiccc Y")
+- Real-estate / interior-design copy ("effortlessly enhancing the aesthetic of any living space", "elevating any room")
+- Generic compliments ("such a statement piece", "absolute showstopper")
+- Marketing language. The example is a witness account, not a product description.`;
 
   const userPrompt = `Today's subject: "${subject}"
 
@@ -233,7 +246,7 @@ Schema:
       model: 'gpt-4o-mini',
       messages: [{ role: 'system', content: sysPrompt }, { role: 'user', content: userPrompt }],
       response_format: { type: 'json_object' },
-      temperature: 0.85,
+      temperature: 0.75,
     }),
   });
   if (!res.ok) throw new Error(`Entry gen failed: ${res.status} ${await res.text()}`);
