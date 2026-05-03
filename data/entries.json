@@ -23,23 +23,21 @@
   },
   {
     "date": "2026-05-02",
-    "word": "Bulky Refrigerator",
-    "pronunciation": "/BUL-ky re-FRIJ-er-ay-tor/",
+    "word": "Frigidaire, Side-by-Side",
+    "pronunciation": "/fri-juh-dair, sahyd-bahy-sahyd/",
     "partOfSpeech": "n.",
     "definitions": [
-      "An unapologetically large cooling appliance, often characterized by an ample physical presence and an inability to hide its considerable girth behind mere cabinetry.",
-      "A formidable kitchen companion that commands attention, particularly when situated beside a vintage bicycle, allowing observers to ponder the aesthetics of cold storage under low evening light."
+      "A domestic paragon of capacious elegance, featuring dual chilled chambers that stand in ostentatious parallel, prepared to preserve victuals with all the subtlety of a colossus.",
+      "An appliance of notable girth, commanding respect and access in equal measure, often seen occupying kitchen territory with unapologetic breadth; esp. one that fits a week's groceries with room to spare."
     ],
-    "example": "Replaced our old fridge with this thiccc Frigidaire and the kitchen had to accommodate. Negative space? Gone.",
-    "etymology": "Derived from the Latin <em>refrigerare</em>, meaning 'to cool,' coupled with the Middle English term <em>bulk</em>, which connotes largeness and a sense of undeniable presence. Together, they conjure an image of a colossal custodian of chilled goods.",
+    "example": "The Frigidaire, Side-by-Side, is the thiccc centerpiece of my culinary domain.",
+    "etymology": "The brand name 'Frigidaire' is derived from the company founded in 1918 by General Motors, stemming from 'frigid' plus 'air', suggesting an icy breath of preservation; side-by-side refers to the dashing duet of doors that beckons from the kitchen, a double act of coolness and confidence.",
     "image": "images/2026-05-02.jpg",
     "caption": "Plate N. — A sturdy sentinel of the kitchen realm, accentuated by its curve and depth.",
     "tags": [
-      "appliances",
+      "appliance",
       "kitchen",
-      "home",
-      "thicc",
-      "bold"
+      "refrigeration"
     ],
     "photographer": "Andy Bodemer",
     "photographerUrl": "https://unsplash.com/@andybodemer",
