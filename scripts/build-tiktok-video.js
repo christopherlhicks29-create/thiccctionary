@@ -100,7 +100,7 @@ async function main() {
   // Closing line ends with "thiccctionary dot com" so the TTS gets a falling
   // cadence — bare "Thiccctionary" was being read with rising intonation.
   const cleanEtymology = entry.etymology.replace(/<[^>]+>/g, '').trim();
-  const script = `${entry.word}. The thiccc one. ${cleanEtymology} Today's word, at thiccctionary dot com.`;
+  const script = `${entry.word}. The thiccc one. ${cleanEtymology}`;
   console.log(`Script (${script.length} chars):\n${script}\n`);
 
   await fs.mkdir(OUT_DIR, { recursive: true });
