@@ -3,14 +3,8 @@
  *
  * Pipeline:
  *   1. Read entry from data/entries.json by date
- *   2. Generate voiceover MP3 via OpenAI TTS (model: gpt-4o-mini-tts, voice: onyx — deadpan)
- *   3. Use ffmpeg to:
- *        - Pad the entry's image to 1080x1920 cream background
- *        - Draw "Headword (n.)" + hairline rule at top
- *        - Draw big "thiccc" below image (appears at 2s)
- *        - Footer "thiccctionary.com"
- *        - Mix in the voiceover audio
- *        - Output 1080x1920 30fps MP4
+ *   2. Generate voiceover MP3 via OpenAI TTS (model: gpt-4o-mini-tts, voice: onyx)
+ *   3. Use ffmpeg to compose the image + typography + audio into a 1080x1920 MP4
  *
  * Triggered by .github/workflows/build-tiktok.yml (manual only).
  *
@@ -31,7 +25,7 @@ const ROOT = path.resolve(__dirname, '..');
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 const OUT_DIR = path.join(ROOT, 'tiktok-output');
 
-// Brand colors (must match site)
+// Brand colors
 const CREAM = '0xF4ECDC';
 const INK = '0x1A1410';
 const OXBLOOD = '0x7A1F1F';
@@ -45,11 +39,10 @@ function run(cmd, args, opts = {}) {
 }
 
 function escFFText(s) {
-  // Escape for ffmpeg drawtext: backslash, colon, single quote, percent
   return s
     .replace(/\\/g, '\\\\')
     .replace(/:/g, '\\:')
-    .replace(/'/g, "’") // smart quote — way easier than escaping
+    .replace(/'/g, '’')
     .replace(/,/g, '\\,');
 }
 
@@ -63,9 +56,9 @@ async function generateVoiceover(text, outPath) {
     },
     body: JSON.stringify({
       model: 'gpt-4o-mini-tts',
-      voice: 'onyx',          // deepest, most deadpan
+      voice: 'onyx',
       input: text,
-      instructions: 'Read in a calm, deadpan tone, like a dictionary narrator. Pause briefly after each sentence. Slightly slower than conversational pace. Dry, dignified delivery — never excited or salesy.',
+      instructions: 'Read in a calm, deadpan tone, like a dictionary narrator on a documentary. Pause briefly after each sentence. Slightly slower than conversational pace. Dry, dignified delivery — never excited or salesy. Critical: end every sentence with a falling, declarative cadence — never let the final sentence rise as if continuing.',
       response_format: 'mp3',
     }),
   });
@@ -104,10 +97,10 @@ async function main() {
     process.exit(1);
   }
 
-  // Build TikTok script: "Headword. The thiccc one. Etymology. Today, on Thiccctionary."
-  // Strip <em>/HTML from etymology
+  // Closing line ends with "thiccctionary dot com" so the TTS gets a falling
+  // cadence — bare "Thiccctionary" was being read with rising intonation.
   const cleanEtymology = entry.etymology.replace(/<[^>]+>/g, '').trim();
-  const script = `${entry.word}. The thiccc one. ${cleanEtymology} Today, on Thiccctionary.`;
+  const script = `${entry.word}. The thiccc one. ${cleanEtymology} Today's word, at thiccctionary dot com.`;
   console.log(`Script (${script.length} chars):\n${script}\n`);
 
   await fs.mkdir(OUT_DIR, { recursive: true });
@@ -116,32 +109,22 @@ async function main() {
   const videoPath = path.join(OUT_DIR, `${date}-${slug}.mp4`);
   const imagePath = path.resolve(ROOT, entry.image);
 
-  // 1. Generate voiceover
   await generateVoiceover(script, audioPath);
   const audioDuration = await probeDuration(audioPath);
-  // Pad video duration slightly past audio so the last syllable doesn't get clipped
   const totalDuration = Math.max(15, Math.ceil(audioDuration + 0.5));
   console.log(`Audio duration: ${audioDuration.toFixed(2)}s. Video duration: ${totalDuration}s.`);
 
-  // 2. Build the video with ffmpeg
-  // Use DejaVu Serif Bold (always present on ubuntu-latest GitHub runners) for the typography
   const FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf';
   const FONT_ITALIC = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf';
 
-  const headword = escFFText(entry.word);
+  // Combine headword + (n.) into one drawtext — single-call avoids overlap bugs
+  const headwordLine = escFFText(`${entry.word} (n.)`);
   const filterParts = [
-    // Scale image to fit 1080 wide, then pad to 1080x1920 with cream background, image vertically centered
     `[0:v]scale=1080:-1:force_original_aspect_ratio=decrease,pad=1080:1920:0:(1920-ih)/2:color=${CREAM}[bg]`,
-    // Headword text near top
-    `[bg]drawtext=fontfile=${FONT}:text='${headword}':fontcolor=${INK}:fontsize=78:x=(w-text_w)/2-26:y=220[h1]`,
-    // "(n.)" italic, sitting next to headword
-    `[h1]drawtext=fontfile=${FONT_ITALIC}:text='(n.)':fontcolor=${INK}:fontsize=50:x=(w+text_w*4)/2:y=248[h2]`,
-    // Hairline rule below headword (drawn as a 3px-tall text block of underscores — simpler than custom filter)
-    `[h2]drawbox=x=194:y=355:w=692:h=3:color=${INK}:t=fill[h3]`,
-    // Big "thiccc" below image — appears starting at 2s
-    `[h3]drawtext=fontfile=${FONT}:text='thiccc':fontcolor=${INK}:fontsize=220:x=(w-text_w)/2:y=1540:enable='gte(t,2)'[h4]`,
-    // Footer
-    `[h4]drawtext=fontfile=${FONT_ITALIC}:text='thiccctionary.com':fontcolor=${OXBLOOD}:fontsize=38:x=(w-text_w)/2:y=h-90[v]`,
+    `[bg]drawtext=fontfile=${FONT}:text='${headwordLine}':fontcolor=${INK}:fontsize=70:x=(w-text_w)/2:y=240[h1]`,
+    `[h1]drawbox=x=194:y=350:w=692:h=3:color=${INK}:t=fill[h2]`,
+    `[h2]drawtext=fontfile=${FONT}:text='thiccc':fontcolor=${INK}:fontsize=220:x=(w-text_w)/2:y=1540:enable='gte(t,2)'[h3]`,
+    `[h3]drawtext=fontfile=${FONT_ITALIC}:text='thiccctionary.com':fontcolor=${OXBLOOD}:fontsize=38:x=(w-text_w)/2:y=h-90[v]`,
   ];
 
   const ffArgs = [
@@ -159,7 +142,7 @@ async function main() {
   ];
   console.log('Running ffmpeg...');
   await run('ffmpeg', ffArgs);
-  console.log(`\n✅ Built ${path.relative(ROOT, videoPath)}`);
+  console.log(`\nBuilt ${path.relative(ROOT, videoPath)}`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
