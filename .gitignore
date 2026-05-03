@@ -3,3 +3,11 @@ node_modules/
 .env.local
 .DS_Store
 *.log
+
+# Local helper scripts (don't commit)
+*.bat
+*.ps1
+PUSH_ARTICLES.bat
+fix-*.ps1
+fix-*.bat
+run-*.bat

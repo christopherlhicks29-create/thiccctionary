@@ -1,0 +1,21 @@
+name: Buffer channel status (debug)
+
+# Manually triggered diagnostic. Lists every Buffer channel on the account
+# and flags any configured channel that's disconnected or missing.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+        run: node buffer-status.js
