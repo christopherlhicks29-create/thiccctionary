@@ -116,19 +116,19 @@ function buildText(entry, mode, baseUrl) {
     // Example sentence (naturally short, illustrative, satirical) — fits X easily.
     const prefix = `📝 Use it in a sentence — ${entry.word}\n\n"`;
     const body = stripHtml(entry.example || entry.definitions[0]);
-    const suffix = `"\n\nFull entry → ${entryUrl}\n\n#thiccctionary #thiccc`;
+    const suffix = `"\n\nFull entry → ${entryUrl}\n\n#thiccctionary #etymology`;
     return fitToX(prefix, body, suffix);
   }
   if (mode === 'evening') {
     const prefix = `📚 From the Thiccctionary archives:\n\n${entry.word} — `;
     const body = stripHtml(entry.definitions[0]);
-    const suffix = `\n\nRe-read the full entry → ${entryUrl}\n\n#thiccctionary #throwback #thiccc`;
+    const suffix = `\n\nRe-read the full entry → ${entryUrl}\n\n#thiccctionary #throwback #satire`;
     return fitToX(prefix, body, suffix);
   }
   // morning (default)
   const prefix = `📖 ${entry.word}\n\n`;
   const body = stripHtml(entry.definitions[0]);
-  const suffix = `\n\nToday's entry → ${baseUrl}\n\n#thiccctionary #thiccc #everydayobjects`;
+  const suffix = `\n\nToday's entry → ${baseUrl}\n\n#thiccctionary #wordoftheday #everydayobjects`;
   return fitToX(prefix, body, suffix);
 }
 
