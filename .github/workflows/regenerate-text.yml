@@ -1,0 +1,61 @@
+name: Regenerate Text (Backfill Old Entries)
+
+# Re-runs the entry-text generation for existing entries WITHOUT changing
+# the image. Useful when entry text is weak but the image is fine, or after
+# tuning the entry-gen prompt.
+# Manual-trigger only. Opens a single PR with all updates for review.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dates:
+        description: "Required. Comma-separated YYYY-MM-DD dates to regenerate text for."
+        type: string
+        required: true
+      word_override:
+        description: "Optional. Replace the headword with this string. Only valid when 'dates' contains a single date. Use to upgrade weak headwords (e.g. 'Bulky Refrigerator' -> 'Frigidaire, Side-by-Side')."
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerate text
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DATES: ${{ inputs.dates }}
+          WORD_OVERRIDE: ${{ inputs.word_override }}
+        run: node regenerate-text.js
+
+      - name: Open Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Regenerate entry text for older entries"
+          branch: regenerate-text/${{ github.run_id }}
+          delete-branch: true
+          title: "✏️ Regenerated text — ${{ inputs.dates }}${{ inputs.word_override && format(' [word: {0}]', inputs.word_override) || '' }}"
+          body: |
+            **What this PR does:** re-runs the satirical entry-text generation on existing entries. Image, photographer, and date are preserved; definitions, etymology, example, pronunciation, caption, and tags are all replaced.
+
+            **Dates processed:** `${{ inputs.dates }}`
+            **Word override:** `${{ inputs.word_override }}` *(empty = keep original headword)*
+
+            Review the **Files changed** tab — read the new copy on each entry. If a regenerated entry still looks weak, you can:
+            - Close this PR (no changes go to main)
+            - Or merge as-is and re-run the workflow on the same date for another shot
+
+            **To merge:** Squash and merge as usual.
