@@ -180,7 +180,7 @@ Schema:
   "pronunciation": "/sim-pul re-SPEL-ing/",  // simple respelling — capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Do NOT use IPA.
   "partOfSpeech": "n.",
   "definitions": ["definition 1 (1-2 sentences, dictionary register)", "optional definition 2 (often colloquial / slangier)"],
-  "example": "An italic example sentence using the word in a believable conversational context.",
+  "example": "An italic example sentence using BOTH the headword AND the literal word \"thiccc\" (always with three c's — that is the brand). Conversational, dictionary-illustration register. Example pattern: \"That [subject] is one thiccc [noun/feature]\" or \"...exhibits a remarkably thiccc silhouette\". The word 'thiccc' MUST appear in this sentence — it is the conceit of the entire site.",
   "etymology": "1-3 sentences. Mix real linguistic etymology with comedic commentary.",
   "caption": "Plate N. — A short caption for the image, dictionary-illustration style.",
   "tags": ["tag1", "tag2", "tag3"]
