@@ -1,7 +1,8 @@
 name: Post to Buffer on Daily Merge
 
 # Triggers when a PR with the "daily-entry" label is merged into main.
-# Pushes the day's new entry to Buffer for IG / FB / Twitter posting (morning slot).
+# Pushes the day's new entry to Buffer for IG / FB / Twitter posting (morning slot)
+# and sends the entry as a newsletter to Buttondown subscribers.
 on:
   pull_request:
     types: [closed]
@@ -33,3 +34,10 @@ jobs:
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: morning
         run: node post-to-buffer.js
+
+      - name: Send newsletter to Buttondown subscribers
+        working-directory: scripts
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+        run: node send-newsletter.js
