@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-05-03",
+    "word": "Banana, Cavendish",
+    "pronunciation": "/ka-VEN-dish/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A cultivar of banana, predominantly yellow and curved, known for its substantial girth; esp. one basking in the glow of a fruit bowl under diffused light.",
+      "<em>colloq.</em> Any banana that commands attention with its full-bodied presence and unapologetic curvature."
+    ],
+    "example": "The Cavendish banana on display was so thiccc it practically overshadowed the apples, asserting its dominance in the fruit hierarchy.",
+    "etymology": "Named after William Cavendish, 6th Duke of Devonshire, who sponsored the cultivation of this banana variety in the 19th century. The Cavendish knew how to peel back expectations.",
+    "image": "images/2026-05-03.jpg",
+    "caption": "Plate N. — An assemblage of Cavendish bananas contemplating their place in the sun, as captured by Giorgio Trovato.",
+    "tags": [
+      "fruit",
+      "agriculture",
+      "botany"
+    ],
+    "photographer": "Giorgio Trovato",
+    "photographerUrl": "https://unsplash.com/@giorgiotrovato",
+    "unsplashUrl": "https://unsplash.com/photos/yellow-bananas-fczCr7MdE7U"
+  },
+  {
     "date": "2026-05-02",
     "word": "Bulky Refrigerator",
     "pronunciation": "/BUL-ky re-FRIJ-er-ay-tor/",
