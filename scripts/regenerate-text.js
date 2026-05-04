@@ -32,16 +32,22 @@ DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Us
 - "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection."
 - "The platonic ideal of thicccness: all body, no apologies."
 
+Provide TWO definitions when possible — first formal dictionary register, second sharper / colloquial (label with <em>colloq.</em> or <em>slang.</em>).
+
 ETYMOLOGIES — lead with REAL, VERIFIABLE etymology, then close with a comedic kicker that lands. The etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. Fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke.
 
 EXAMPLES — must include "thiccc" (three c's). One crisp sentence (optionally + a short tag). Use brand/model/proper-noun specificity.
+
+PRONUNCIATION format: simple respelling ONLY. Capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Example: /HAIR-ih-tij tuh-MAY-toh/. Do NOT use IPA notation (/ˈhɛr.ɪ.tɪdʒ/) — IPA is banned.
 
 AVOID:
 - Fabricated word origins
 - Generic glosses that just translate the parts
 - Etymologies without a comedic kicker
 - Flat constructions ("Replaced my X with this thiccc Y")
-- Marketing language`;
+- Marketing language
+- IPA pronunciations
+- Overwrought example sentences ("caprese extravaganza", "begging to be sliced")`;
 
   const userPrompt = `Today's subject: "${subject}"
 
