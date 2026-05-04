@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-05-04",
+    "word": "Sofa, Chesterfield",
+    "pronunciation": "/CHOOS-ter-feeld/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A capacious upholstered seating apparatus characterized by its deep button-tufting and rolled arms, exuding an air of dignified opulence; esp. one that commands the room from its plush vantage point.",
+      "<em>colloq.</em> A sofa so thiccc it practically lounges for you. For the discerning who appreciate girth and gravity in their furniture."
+    ],
+    "example": "The Chesterfield sofa in the corner was so thiccc and inviting, even the sunlight took a moment to bask on its expansive curves. Cozy royalty.",
+    "etymology": "Named after the 4th Earl of Chesterfield, Philip Dormer Stanhope (1694–1773), who is credited with commissioning the first such sofa. The design was reputedly intended to prevent unseemly wrinkling of one's finely tailored attire—while delivering an unexpected bonus in thicccness.",
+    "image": "images/2026-05-04.jpg",
+    "caption": "Plate N. — The Chesterfield: where the elegance of form meets the exuberance of thicccness.",
+    "tags": [
+      "furniture",
+      "upholstery",
+      "opulence"
+    ],
+    "photographer": "BUTAFORYA COM",
+    "photographerUrl": "https://unsplash.com/@butaforya",
+    "unsplashUrl": "https://unsplash.com/photos/a-pink-couch-with-a-pattern-on-it-O0_2EHAaT3I"
+  },
+  {
     "date": "2026-05-03",
     "word": "Banana, Cavendish",
     "pronunciation": "/ka-VEN-dish/",
