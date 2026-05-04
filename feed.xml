@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 May 2026 00:27:05 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 18:06:07 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Sofa, Chesterfield</title>
+      <link>https://thiccctionary.com/entries/2026-05-04.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-04.html</guid>
+      <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
+      <description>A capacious upholstered seating apparatus characterized by its deep button-tufting and rolled arms, exuding an air of dignified opulence; esp. one that commands the room from its plush vantage point.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-04.jpg" type="image/jpeg" length="0" />
+      <category>furniture</category><category>upholstery</category><category>opulence</category>
+    </item>
     <item>
       <title>Banana, Cavendish</title>
       <link>https://thiccctionary.com/entries/2026-05-03.html</link>
