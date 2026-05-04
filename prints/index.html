@@ -94,6 +94,22 @@
     font-weight: 600;
   }
   .notify-card button:hover { background: var(--oxblood); }
+
+  .print-link { display: block; cursor: zoom-in; transition: transform 0.15s ease; }
+  .print-link:hover { transform: translateY(-2px); }
+  .print-link:hover img { box-shadow: 0 12px 32px rgba(60, 30, 15, 0.18); }
+  #lightbox {
+    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(26, 20, 16, 0.92); z-index: 9999; cursor: zoom-out;
+    align-items: center; justify-content: center; padding: 2rem;
+  }
+  #lightbox.open { display: flex; }
+  #lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  #lightbox-close {
+    position: absolute; top: 1.5rem; right: 2rem; color: var(--cream);
+    font-size: 2rem; cursor: pointer; background: none; border: none; font-family: inherit;
+  }
+
 </style>
 </head>
 <body>
@@ -133,56 +149,56 @@
 
     <div class="print-grid">
     <div class="print-card">
-      <img src="thumbs/2026-05-01-thiccc-boeing.jpg" alt="Thiccc Boeing print" loading="lazy" />
+      <a class="print-link" href="large/2026-05-01-thiccc-boeing.jpg"><img src="thumbs/2026-05-01-thiccc-boeing.jpg" alt="Thiccc Boeing print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Thiccc Boeing</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-04-30-avocado-domestic.jpg" alt="Avocado, Domestic print" loading="lazy" />
+      <a class="print-link" href="large/2026-04-30-avocado-domestic.jpg"><img src="thumbs/2026-04-30-avocado-domestic.jpg" alt="Avocado, Domestic print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Avocado, Domestic</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-05-03-banana-cavendish.jpg" alt="Banana, Cavendish print" loading="lazy" />
+      <a class="print-link" href="large/2026-05-03-banana-cavendish.jpg"><img src="thumbs/2026-05-03-banana-cavendish.jpg" alt="Banana, Cavendish print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Banana, Cavendish</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-04-29-ford-f-450.jpg" alt="Ford F-450 print" loading="lazy" />
+      <a class="print-link" href="large/2026-04-29-ford-f-450.jpg"><img src="thumbs/2026-04-29-ford-f-450.jpg" alt="Ford F-450 print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Ford F-450</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-04-27-concrete-mixer.jpg" alt="Concrete Mixer print" loading="lazy" />
+      <a class="print-link" href="large/2026-04-27-concrete-mixer.jpg"><img src="thumbs/2026-04-27-concrete-mixer.jpg" alt="Concrete Mixer print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Concrete Mixer</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-04-26-mid-century-armchair.jpg" alt="Mid-Century Armchair print" loading="lazy" />
+      <a class="print-link" href="large/2026-04-26-mid-century-armchair.jpg"><img src="thumbs/2026-04-26-mid-century-armchair.jpg" alt="Mid-Century Armchair print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Mid-Century Armchair</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-05-02-frigidaire-side-by-side.jpg" alt="Frigidaire, Side-by-Side print" loading="lazy" />
+      <a class="print-link" href="large/2026-05-02-frigidaire-side-by-side.jpg"><img src="thumbs/2026-05-02-frigidaire-side-by-side.jpg" alt="Frigidaire, Side-by-Side print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Frigidaire, Side-by-Side</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
       </div>
     </div>
     <div class="print-card">
-      <img src="thumbs/2026-04-28-heritage-tomato.jpg" alt="Heritage Tomato print" loading="lazy" />
+      <a class="print-link" href="large/2026-04-28-heritage-tomato.jpg"><img src="thumbs/2026-04-28-heritage-tomato.jpg" alt="Heritage Tomato print" loading="lazy" /></a>
       <div class="print-meta">
         <p class="print-word">Heritage Tomato</p>
         <p class="print-spec">18 × 24 in · matte · $32</p>
@@ -227,6 +243,24 @@
 <script>
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
+</script>
+
+
+<div id="lightbox" onclick="this.classList.remove('open')">
+  <button id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+<script>
+  document.querySelectorAll('.print-link').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('lightbox-img').src = a.href;
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+  });
 </script>
 
 </body>
