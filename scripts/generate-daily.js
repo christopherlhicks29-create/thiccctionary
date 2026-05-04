@@ -36,6 +36,18 @@ const IMAGES_DIR = path.join(ROOT, 'images');
 async function pickSubject(usedWords) {
   const sysPrompt = `You suggest subjects for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS (never people, never bodies, never animals). Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods. The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
 
+SCROLL-STOPPING BIAS — this is critical. The reader is scrolling past on social. A clean photo of a regular sofa won't stop them. A real photo of a 2,500-lb championship pumpkin, a Saturn V booster on a transport crawler, a Brutalist concrete bunker, a 40-foot-tall industrial tuba, a sousaphone, a giant hay bale, a Cadbury Creme Egg the size of a microwave, or a comically thicc submarine WILL. The subject's REAL form should be inherently striking — visually absurd in its own right, with no Photoshop or AI needed.
+
+Bias your picks toward subjects that are absurdly thicc IN REALITY. Brands and models help (Saturn V, Sousaphone, Champion Prize Pumpkin, Boeing 747, Chesterfield Sofa). Strong absurd-real subjects that would land:
+- Giant gourds and championship-cultivar fruit/veg (record-setting pumpkins, watermelons, rutabagas)
+- Industrial machinery at scale (mining-truck tires, transformer drums, smokestacks, Saturn V boosters, pipe organs)
+- Brutalist or fortress architecture (concrete bunkers, Soviet apartment blocks, Hoover Dam)
+- Outsized musical instruments (tubas, sousaphones, contrabassoons, kettledrums)
+- Comically large food (industrial-bakery loaves, wheel of Parmigiano-Reggiano, Costco-tier cheesecake)
+- Strange-but-real vehicles (cement mixers, dump-truck haulers, Bagger 288, the Antonov An-225)
+
+Avoid mundane subjects whose photos can't carry on their own (regular chair, regular fridge, regular sedan). If the subject's real-world photo wouldn't make someone stop scrolling, pick a more extreme/specific variant. "Sofa" is weak; "Chesterfield, Tufted Leather" is better; "Sectional, U-Shaped Pit" is better still.
+
 HEADWORD STYLE — this is the most important part. The headword should feel like a real dictionary entry, with VOICE and SPECIFICITY. Three patterns work; rotate through them:
 
 1. COMMA-QUALIFIER ("Avocado, Domestic" / "Refrigerator, Side-by-Side" / "Cadillac, c. 1959") — dictionary-cataloguing register. Strong default.
@@ -55,9 +67,18 @@ Reference for the bar (these were strong picks):
 - "Heritage Tomato"  (cultivar-language qualifier)
 - "Mid-Century Armchair"  (period-detail qualifier)
 
+Reference for scroll-stopping absurd-real picks (favor these heavily):
+- "Pumpkin, Atlantic Giant"  (championship cultivar — real specimens exceed 2,500 lbs)
+- "Sousaphone, Marching"  (instrument whose real form is inherently absurd)
+- "Saturn V, First Stage"  (largest rocket booster ever flown — real photos are jaw-dropping)
+- "Bagger 288"  (actual largest land vehicle on Earth)
+- "Wheel, Parmigiano-Reggiano"  (88-lb cheese wheel — visually preposterous in real photos)
+- "Submarine, Typhoon-Class"  (largest submarine ever built — actual proportions read as cartoon)
+
 Reference for what to AVOID (these were weak):
 - "Bulky Refrigerator"  ← generic adjective. Better: "Frigidaire, Side-by-Side" or "Refrigerator, Mid-Century Apartment"
 - "Big Truck"  ← no specificity. Better: model + qualifier.
+- "Sofa, Standard"  ← mundane. Better: "Sectional, U-Shaped Pit" or "Chesterfield, Tufted Leather"
 
 Schema:
 {
