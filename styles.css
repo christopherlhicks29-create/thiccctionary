@@ -1033,3 +1033,42 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   .inline-signup-form, .entry-subscribe-form { flex-direction: column; }
   .inline-signup, .entry-subscribe { padding: 24px 20px; }
 }
+
+
+/* ---------- First-time visitor orientation strip (homepage) ---------- */
+.orientation-strip {
+  max-width: 720px;
+  margin: 24px auto 8px;
+  padding: 14px 20px;
+  background: var(--cream-deep);
+  border-left: 3px solid var(--oxblood);
+  border-radius: 0 4px 4px 0;
+}
+.orientation-strip p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.orientation-strip em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--oxblood);
+  margin-right: 6px;
+}
+
+/* Multi-path follow line (entry pages + homepage inline) */
+.entry-subscribe-alt, .inline-signup-alt {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.entry-subscribe-alt a, .inline-signup-alt a {
+  color: var(--oxblood);
+  border-bottom: 1px solid var(--oxblood);
+  text-decoration: none;
+}
+.entry-subscribe-alt a:hover, .inline-signup-alt a:hover {
+  background: var(--cream);
+}
