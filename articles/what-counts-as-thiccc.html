@@ -32,16 +32,50 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "What Counts as Thiccc? An Editorial Guide",
-  "description": "The Thiccctionary editorial guide to what qualifies as thiccc.",
-  "image": "https://thiccctionary.com/og-default.png",
-  "datePublished": "2026-05-02",
-  "dateModified": "2026-05-02",
-  "inLanguage": "en-US",
-  "isPartOf": { "@id": "https://thiccctionary.com/#website" },
-  "publisher": { "@id": "https://thiccctionary.com/#organization" },
-  "author": { "@id": "https://thiccctionary.com/#organization" }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thiccctionary.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://thiccctionary.com/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What Counts as Thiccc? An Editorial Guide",
+          "item": "https://thiccctionary.com/articles/what-counts-as-thiccc.html"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What Counts as Thiccc? An Editorial Guide",
+      "description": "The Thiccctionary editorial guide to what qualifies as thiccc.",
+      "image": "https://thiccctionary.com/og-default.png",
+      "datePublished": "2026-05-02",
+      "dateModified": "2026-05-02",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "https://thiccctionary.com/#website"
+      },
+      "publisher": {
+        "@id": "https://thiccctionary.com/#organization"
+      },
+      "author": {
+        "@id": "https://thiccctionary.com/#organization"
+      }
+    }
+  ]
 }
 </script>
 

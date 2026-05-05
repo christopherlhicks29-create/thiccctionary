@@ -1365,3 +1365,25 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   outline: 2px solid var(--mustard);
   outline-offset: 2px;
 }
+
+
+/* ---------- Orientation strip dismiss button ---------- */
+.orientation-strip { position: relative; }
+.orientation-dismiss {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+  transition: background 0.15s, color 0.15s;
+}
+.orientation-dismiss:hover {
+  background: var(--cream);
+  color: var(--ink);
+}

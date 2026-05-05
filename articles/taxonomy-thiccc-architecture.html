@@ -32,16 +32,50 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "A Taxonomy of Thiccc Architecture",
-  "description": "Why fortresses, Brutalist concrete blocks, and Soviet apartment buildings share a silhouette.",
-  "image": "https://thiccctionary.com/og-default.png",
-  "datePublished": "2026-05-04",
-  "dateModified": "2026-05-04",
-  "inLanguage": "en-US",
-  "isPartOf": { "@id": "https://thiccctionary.com/#website" },
-  "publisher": { "@id": "https://thiccctionary.com/#organization" },
-  "author": { "@id": "https://thiccctionary.com/#organization" }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thiccctionary.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://thiccctionary.com/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "A Taxonomy of Thiccc Architecture",
+          "item": "https://thiccctionary.com/articles/taxonomy-thiccc-architecture.html"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "A Taxonomy of Thiccc Architecture",
+      "description": "Why fortresses, Brutalist concrete blocks, and Soviet apartment buildings share a silhouette.",
+      "image": "https://thiccctionary.com/og-default.png",
+      "datePublished": "2026-05-04",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "https://thiccctionary.com/#website"
+      },
+      "publisher": {
+        "@id": "https://thiccctionary.com/#organization"
+      },
+      "author": {
+        "@id": "https://thiccctionary.com/#organization"
+      }
+    }
+  ]
 }
 </script>
 

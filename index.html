@@ -100,9 +100,10 @@
 
 <main id="main-content">
 
-  <!-- First-time visitor orientation strip -->
-  <aside class="orientation-strip" aria-label="What is this">
+  <!-- First-time visitor orientation strip — hides after dismiss -->
+  <aside class="orientation-strip" id="orientation-strip" aria-label="What is this">
     <p><em>What is this?</em> A satirical daily dictionary of objects, vehicles, and other things of unusual girth. Strictly things, never people. New entry each morning.</p>
+    <button class="orientation-dismiss" id="orientation-dismiss" aria-label="Dismiss this introduction" type="button">×</button>
   </aside>
 
   <!-- Today's featured entry -->
@@ -359,6 +360,22 @@
   // Tiny progressive-enhancement script. Loads today's entry from entries.json if present.
   (async function () {
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Orientation strip dismiss (persists across visits via localStorage)
+    try {
+      const strip = document.getElementById('orientation-strip');
+      const dismissBtn = document.getElementById('orientation-dismiss');
+      if (strip && dismissBtn) {
+        if (localStorage.getItem('thiccctionary-orientation-dismissed') === '1') {
+          strip.style.display = 'none';
+        }
+        dismissBtn.addEventListener('click', () => {
+          strip.style.display = 'none';
+          try { localStorage.setItem('thiccctionary-orientation-dismissed', '1'); } catch (e) {}
+        });
+      }
+    } catch (e) { /* no localStorage = no dismiss persistence; strip stays */ }
+
     const today = new Date();
     document.getElementById('today-date').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
