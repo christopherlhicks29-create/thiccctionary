@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Embed — Thiccctionary</title>
+<meta name="description" content="Embed today\'s Thiccctionary entry on your blog or site. Free. One iframe, zero setup." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/embed/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">For Bloggers &amp; Site Owners</span>
+    <span class="meta-line meta-line--right">Free · MIT-licensed · No tracking</span>
+  </div>
+  <h1 class="wordmark">
+    <span class="wordmark-the">The</span>
+    <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+  </h1>
+  <nav class="nav">
+    <a href="../index.html" class="nav-link">Today\'s Entry</a>
+    <a href="../archive.html" class="nav-link">The Archive</a>
+    <a href="../articles/" class="nav-link">Articles</a>
+    <a href="../random.html" class="nav-link">Random</a>
+    <a href="../submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="../index.html#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main>
+  <div style="max-width: 720px; margin: 40px auto; padding: 0 24px;">
+    <h2 style="font-family: var(--font-display); font-weight: 600; font-size: 36px; margin: 0 0 12px;">Embed Today&rsquo;s Thiccc</h2>
+    <p style="font-style: italic; opacity: 0.75; margin-bottom: 32px;">Drop today&rsquo;s entry on your site. Updates automatically each morning. Costs you nothing.</p>
+
+    <h3 style="font-family: var(--font-display); margin-top: 32px;">The embed code</h3>
+    <p>Paste this anywhere on your site (blog post, sidebar, footer):</p>
+    <pre style="background: var(--cream-deep); border: 1px solid var(--rule); padding: 16px; border-radius: 4px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px;"><code>&lt;iframe src="https://thiccctionary.com/embed/today.html"
+        width="100%" height="280" frameborder="0"
+        style="max-width: 600px; border: 0;"
+        title="Today&rsquo;s Thiccctionary entry"
+        loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+
+    <h3 style="font-family: var(--font-display); margin-top: 32px;">What it looks like</h3>
+    <p>Live preview, fetching the actual current entry:</p>
+    <iframe src="today.html" width="100%" height="280" frameborder="0" style="max-width: 600px; border: 0; display: block; margin: 0 auto;" title="Today\'s Thiccctionary entry" loading="lazy"></iframe>
+
+    <h3 style="font-family: var(--font-display); margin-top: 40px;">Notes</h3>
+    <ul style="line-height: 1.8;">
+      <li>Updates automatically every morning when our daily cron publishes a new entry.</li>
+      <li>No tracking pixels, no third-party scripts, no cookies. Just a small HTML widget.</li>
+      <li>Recommended height: 280px desktop, 480px mobile (it goes vertical at narrow widths).</li>
+      <li>Style respects your site\'s background — the widget is transparent at the body level.</li>
+      <li>If you embed it, drop us a note at <a href="mailto:admin@thiccctionary.com" style="color: var(--oxblood);">admin@thiccctionary.com</a>. We&rsquo;ll thank you.</li>
+    </ul>
+
+    <h3 style="font-family: var(--font-display); margin-top: 40px;">Want something custom?</h3>
+    <p>If you want a different layout (bigger image, just the headword, audio, etc.) email us. We&rsquo;ll consider building variants.</p>
+
+    <p style="margin-top: 48px; text-align: center;">
+      <a href="../index.html" class="btn-primary">← Back to today&rsquo;s entry</a>
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><p class="footer-wordmark">Thiccctionary</p><p class="footer-tag">Documenting girth, since 2026.</p></div>
+    <div><p class="footer-head">Sections</p><a href="../archive.html">Archive</a><a href="../articles/">Articles</a><a href="../submit.html">Submit</a><a href="../index.html#about">About</a><a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a></div>
+    <div><p class="footer-head">Follow</p><a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a></div>
+    <div><p class="footer-head">Legal</p><a href="../legal/terms.html">Terms</a><a href="../legal/privacy.html">Privacy</a><a href="mailto:admin@thiccctionary.com">Contact</a></div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
