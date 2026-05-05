@@ -1387,3 +1387,43 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   background: var(--cream);
   color: var(--ink);
 }
+
+
+/* ---------- Tags index page (tag cloud) ---------- */
+.tag-cloud {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.tag-cloud-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--cream);
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.tag-cloud-item:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+.tag-cloud-name { font-weight: 500; }
+.tag-cloud-count {
+  font-family: var(--font-display);
+  font-size: 11px;
+  opacity: 0.7;
+  letter-spacing: 0;
+}

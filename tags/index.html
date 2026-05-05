@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tags — Thiccctionary</title>
+<meta name="description" content="Every tag in the Thiccctionary archive. Click one to filter the archive." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/tags/" />
+
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta property="og:title" content="Tags — Thiccctionary" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/tags/" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">An Index</span>
+    <span class="meta-line meta-line--right">Click a tag to filter</span>
+  </div>
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <span class="wordmark-the">The</span>
+    <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+  </h1>
+  <nav class="nav">
+    <a href="../index.html" class="nav-link">Today\'s Entry</a>
+    <a href="../archive.html" class="nav-link">The Archive</a>
+    <a href="../articles/" class="nav-link">Articles</a>
+    <a href="../random.html" class="nav-link">Random</a>
+    <a href="../compare.html" class="nav-link">Compare</a>
+    <a href="../submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="../index.html#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <section style="max-width: 720px; margin: 32px auto 24px; padding: 0 24px; text-align: center;">
+    <h2 style="font-family: var(--font-display); font-weight: 600; font-size: 32px; margin: 0 0 8px;">All Tags</h2>
+    <p style="font-style: italic; opacity: 0.75; margin: 0;">Every tag we&rsquo;ve catalogued. Click one to see all entries with that tag.</p>
+  </section>
+
+  <div class="tag-cloud" id="tag-cloud">
+    <p style="text-align: center; padding: 40px; opacity: 0.5;">Loading tags…</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><p class="footer-wordmark">Thiccctionary</p><p class="footer-tag">Documenting girth, since 2026.</p></div>
+    <div><p class="footer-head">Sections</p><a href="../archive.html">Archive</a><a href="../articles/">Articles</a><a href="../compare.html">Compare</a><a href="../submit.html">Submit</a><a href="../embed/">Embed</a><a href="../index.html#about">About</a><a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a></div>
+    <div><p class="footer-head">Follow</p><a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a></div>
+    <div><p class="footer-head">Legal</p><a href="../legal/terms.html">Terms</a><a href="../legal/privacy.html">Privacy</a><a href="mailto:admin@thiccctionary.com">Contact</a></div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
+</footer>
+
+<script>
+(async function () {
+  document.getElementById(\'year\').textContent = new Date().getFullYear();
+  let entries = [];
+  try {
+    const res = await fetch(\'../data/entries.json\', { cache: \'no-store\' });
+    entries = await res.json();
+  } catch (e) {}
+  const cloud = document.getElementById(\'tag-cloud\');
+  if (!entries.length) {
+    cloud.innerHTML = \'<p style="text-align: center; padding: 40px; opacity: 0.5;">No tags yet. Check back soon.</p>\';
+    return;
+  }
+  const counts = new Map();
+  entries.forEach(e => (e.tags || []).forEach(t => {
+    const k = t.toLowerCase();
+    counts.set(k, (counts.get(k) || 0) + 1);
+  }));
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  cloud.innerHTML = sorted.map(([t, n]) =>
+    `<a class="tag-cloud-item" href="../archive.html?tag=${encodeURIComponent(t)}"><span class="tag-cloud-name">${t}</span><span class="tag-cloud-count">${n}</span></a>`
+  ).join(\'\');
+})();
+</script>
+
+</body>
+</html>

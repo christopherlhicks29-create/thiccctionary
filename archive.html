@@ -95,6 +95,7 @@
     <div>
       <p class="footer-head">Sections</p>
       <a href="archive.html">Archive</a>
+      <a href="tags/">Tags</a>
       <a href="articles/">Articles</a>
       <a href="index.html#submit">Submit</a>
       <a href="index.html#about">About</a>
@@ -192,7 +193,10 @@ function highlightCcc(root) {
     highlightCcc(grid);
   }
 
-  let activeTag = null;
+  // Pick up ?tag=X URL param so /tags/ links pre-filter the archive
+  const urlParams = new URLSearchParams(window.location.search);
+  let activeTag = urlParams.get('tag') || null;
+  if (activeTag) activeTag = activeTag.toLowerCase();
 
   function renderTags() {
     const tagsContainer = document.getElementById('archive-tags');
