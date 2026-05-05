@@ -1672,3 +1672,21 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   .vote-spread { grid-template-columns: 1fr; }
   .vote-vs { padding: 4px 0; }
 }
+
+/* ---------- Wordmark as link (clickable header → home) ---------- */
+.wordmark-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  /* Remove default focus outline; show our own on focus-visible */
+  outline: none;
+}
+.wordmark-link:hover {
+  /* Subtle hover to signal it's clickable, without breaking the editorial feel */
+  filter: brightness(0.9);
+}
+.wordmark-link:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
