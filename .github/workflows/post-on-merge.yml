@@ -2,7 +2,8 @@ name: Post to Buffer on Daily Merge
 
 # Triggers when a PR with the "daily-entry" label is merged into main.
 # Pushes the day's new entry to Buffer for IG / FB / Twitter posting (morning slot)
-# and sends the entry as a newsletter to Buttondown subscribers.
+# AND, if a video file exists for today, also posts a FB Reel + IG Reel.
+# Sends the entry as a newsletter to Buttondown subscribers.
 on:
   pull_request:
     types: [closed]
@@ -26,7 +27,7 @@ jobs:
         # Pages typically deploys in 30-90s after a push to main. Wait a bit so the image URL resolves.
         run: sleep 90
 
-      - name: Post to Buffer (morning)
+      - name: Post to Buffer (morning, image)
         working-directory: scripts
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
@@ -34,6 +35,29 @@ jobs:
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: morning
         run: node post-to-buffer.js
+
+      - name: Check if today's Reel video exists
+        id: reel
+        run: |
+          DATE=$(date -u +%Y-%m-%d)
+          if [ -f "videos/$DATE.mp4" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Reel video found at videos/$DATE.mp4 — will cross-post."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "No Reel video for $DATE. Skipping Reel cross-post."
+          fi
+
+      - name: Post to Buffer (Reel — FB + IG only)
+        if: steps.reel.outputs.exists == 'true'
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          POST_MODE: reels
+        run: node post-to-buffer.js
+        continue-on-error: true
 
       - name: Send newsletter to Buttondown subscribers
         working-directory: scripts

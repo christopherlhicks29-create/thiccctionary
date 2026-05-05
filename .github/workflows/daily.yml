@@ -1,6 +1,9 @@
 name: Daily Thiccc — Generate Draft PR
 
 # Generates a new entry once a day and opens a Pull Request for your review.
+# Also builds a 9:16 vertical Reel-style MP4 alongside the entry, committed
+# to /videos/<date>.mp4 — used by the post-on-merge workflow to cross-post
+# to FB Reels and IG Reels via Buffer (TikTok-the-platform is skipped).
 # Merge the PR (one tap on GitHub mobile) to publish.
 on:
   schedule:
@@ -28,6 +31,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install ffmpeg (for video build)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
       - name: Generate today's entry
         working-directory: scripts
         env:
@@ -46,6 +52,26 @@ jobs:
           echo "word=$WORD" >> $GITHUB_OUTPUT
           echo "photographer=$PHOTOG" >> $GITHUB_OUTPUT
 
+      - name: Build vertical Reel video
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DATE: ${{ steps.entry.outputs.date }}
+        run: node build-tiktok-video.js
+        continue-on-error: true
+
+      - name: Move MP4 to /videos/<date>.mp4
+        run: |
+          mkdir -p videos
+          if ls scripts/tiktok-output/*.mp4 1>/dev/null 2>&1; then
+            mv scripts/tiktok-output/*.mp4 "videos/${{ steps.entry.outputs.date }}.mp4"
+            echo "Video committed: videos/${{ steps.entry.outputs.date }}.mp4"
+            ls -la "videos/${{ steps.entry.outputs.date }}.mp4"
+          else
+            echo "No MP4 produced — skipping video commit. Reel cross-post will be skipped on merge."
+          fi
+        continue-on-error: true
+
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
@@ -58,6 +84,7 @@ jobs:
             **Photo by:** ${{ steps.entry.outputs.photographer }} (via Unsplash)
 
             Review the image and copy in the **Files changed** tab. Open the new image to preview it.
+            If a `videos/${{ steps.entry.outputs.date }}.mp4` is present, it will auto-cross-post as a FB+IG Reel on merge.
 
             **To publish:** click "Squash and merge" (or "Merge pull request").
             On merge, the site auto-deploys via Cloudflare Pages, and the Buffer post fires.
