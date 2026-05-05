@@ -178,19 +178,29 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 
 .entry-image {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  /* Removed forced 1:1 aspect-ratio — was cropping landscape photos by 25-40%.
+     Natural ratio preserves the photographer's framing. Hard limits prevent
+     extremely tall portraits from breaking the layout. */
   background: var(--cream-deep);
   border: 1px solid var(--ink);
   box-shadow: 12px 12px 0 var(--oxblood);
   overflow: hidden;
   position: relative;
+  max-height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .entry-image svg, .entry-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 720px;
   display: block;
-  object-fit: cover;
+  /* object-fit: contain ensures the entire image is visible if the container
+     ever applies dimensions; with width:100% / height:auto it'll size to the
+     natural image ratio inside the max-height cap. */
+  object-fit: contain;
 }
 
 .entry-image::before {
