@@ -1,5 +1,5 @@
 {
   "dates": "2026-04-29",
-  "subject_override": "dually pickup truck rear",
-  "reason": "First regen attempt got a single-rear-wheel Super Duty. Trying narrower query that biases Unsplash toward dual-rear-wheel photos. Term 'rear' biases the vision picker toward rear-angle shots where the dually is visible."
+  "subject_override": "dually truck",
+  "reason": "Attempt #2 with 'dually pickup truck rear' returned 0 Unsplash results and the workflow failed. Trying simpler 'dually truck' which should have actual photos. The vision picker will then choose the most thiccc one."
 }
