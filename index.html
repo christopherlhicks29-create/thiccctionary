@@ -230,7 +230,8 @@
     <h3 class="section-title">From the Editorial Desk</h3>
     <p>Long-form essays, rankings, and analysis. New entries land in <a href="archive.html">the archive</a>; deeper takes go here.</p>
     <div style="margin-top: 1.5rem; display: grid; gap: 1.25rem;">
-      <a href="articles/everyday-sidewalk-thiccc.html" style="display: block; padding: 1rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; text-decoration: none; color: inherit; transition: background 0.15s;">
+      <!-- ARTICLES:HOMEPAGE:START -->
+<a href="articles/everyday-sidewalk-thiccc.html" style="display: block; padding: 1rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; text-decoration: none; color: inherit; transition: background 0.15s;">
         <p style="margin: 0; font-weight: 600;">Thiccc Things You Walk Past Every Day</p>
         <p style="margin: 0.4rem 0 0; opacity: 0.75; font-size: 0.95rem;">Five thiccc objects on your block: fire hydrants, mailboxes, bollards, dumpsters, HVAC. The unsung architecture of a sidewalk.</p>
       </a>
@@ -250,6 +251,7 @@
         <p style="margin: 0; font-weight: 600;">How to Spot a Thiccc Thing in the Wild: A Field Guide</p>
         <p style="margin: 0.4rem 0 0; opacity: 0.75; font-size: 0.95rem;">Three tests. No instruments required. Silhouette, ratio, character.</p>
       </a>
+      <!-- ARTICLES:HOMEPAGE:END -->
     </div>
     <p style="margin-top: 1.5rem; text-align: center;"><a href="articles/" style="font-size: 0.95rem;">All articles &rarr;</a></p>
   </section>
@@ -409,10 +411,4 @@
       if (target === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
       else if (target === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
       else if (target === 'copy') { navigator.clipboard.writeText(url); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy link', 1500); }
-      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automation.');
-    });
-  });
-</script>
-
-</body>
-</html>
+      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automa
