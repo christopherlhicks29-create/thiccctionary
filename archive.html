@@ -75,6 +75,10 @@
     <span class="meta-line"><span id="result-count">0</span> entries</span>
   </div>
 
+  <div class="archive-tags" id="archive-tags" aria-label="Filter by tag">
+    <!-- populated by JS -->
+  </div>
+
   <div class="archive-grid" id="archive-grid">
     <!-- populated by JS -->
   </div>
@@ -186,14 +190,37 @@ function highlightCcc(root) {
     highlightCcc(grid);
   }
 
+  let activeTag = null;
+
+  function renderTags() {
+    const tagsContainer = document.getElementById('archive-tags');
+    if (!tagsContainer) return;
+    const tagSet = new Set();
+    entries.forEach(e => (e.tags || []).forEach(t => tagSet.add(t.toLowerCase())));
+    const tags = [...tagSet].sort();
+    if (tags.length === 0) { tagsContainer.style.display = 'none'; return; }
+    tagsContainer.innerHTML = `<button class="archive-tag${activeTag === null ? ' archive-tag--active' : ''}" data-tag="">All</button>` +
+      tags.map(t => `<button class="archive-tag${activeTag === t ? ' archive-tag--active' : ''}" data-tag="${t}">${t}</button>`).join('');
+    tagsContainer.querySelectorAll('.archive-tag').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const t = btn.dataset.tag;
+        activeTag = t || null;
+        renderTags();
+        applyFilters();
+      });
+    });
+  }
+
   function applyFilters() {
     const q = search.value.trim().toLowerCase();
-    let list = entries.filter(e =>
-      !q ||
-      e.word.toLowerCase().includes(q) ||
-      e.definitions.some(d => d.toLowerCase().includes(q)) ||
-      (e.tags || []).some(t => t.toLowerCase().includes(q))
-    );
+    let list = entries.filter(e => {
+      const matchesQuery = !q ||
+        e.word.toLowerCase().includes(q) ||
+        e.definitions.some(d => d.toLowerCase().includes(q)) ||
+        (e.tags || []).some(t => t.toLowerCase().includes(q));
+      const matchesTag = !activeTag || (e.tags || []).some(t => t.toLowerCase() === activeTag);
+      return matchesQuery && matchesTag;
+    });
     list.sort((a, b) => sortMode === 'newest'
       ? new Date(b.date) - new Date(a.date)
       : a.word.localeCompare(b.word));
@@ -208,6 +235,7 @@ function highlightCcc(root) {
     applyFilters();
   });
 
+  renderTags();
   applyFilters();
   highlightCcc(document.body);
 })();

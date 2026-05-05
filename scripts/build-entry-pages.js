@@ -66,15 +66,45 @@ function renderCredit(entry) {
   return `Photo by <a href="${escapeHtml(photogUrl)}" target="_blank" rel="noopener">${escapeHtml(entry.photographer)}</a> on <a href="https://unsplash.com/${utm}" target="_blank" rel="noopener">Unsplash</a>`;
 }
 
+// Normalize tags so related-entry matches catch obvious variants
+// (botany ↔ botanical, agriculture ↔ agricultural, vehicle ↔ vehicles, etc.)
+const TAG_ALIASES = {
+  'botanical': 'botany',
+  'agricultural': 'agriculture',
+  'vehicles': 'vehicle',
+  'fruits': 'fruit',
+  'vegetables': 'vegetable',
+  'gourds': 'botany',
+  'produce': 'agriculture',
+  'horticulture': 'botany',
+  'competitive horticulture': 'botany',
+  'gastronomy': 'agriculture',
+  'kitchen': 'appliance',
+  'refrigeration': 'appliance',
+  'aviation': 'aircraft',
+  'tail-heavy': 'aircraft',
+  'heavy-duty': 'vehicle',
+  'truck': 'vehicle',
+  'industrial': 'machinery',
+  'construction': 'machinery',
+  'upholstery': 'furniture',
+  'opulence': 'furniture',
+};
+function normTag(t) {
+  if (!t) return '';
+  const k = String(t).trim().toLowerCase();
+  return TAG_ALIASES[k] || k;
+}
+
 function findRelatedEntries(entry, allEntries, limit = 3) {
   // Score other entries by shared tag count, return top N (shared >= 1).
   // Fall back to random recent entries if no tag overlap exists.
-  const myTags = new Set((entry.tags || []).map(t => t.toLowerCase()));
+  const myTags = new Set((entry.tags || []).map(normTag));
   const others = allEntries.filter(e => e.date !== entry.date);
   if (myTags.size > 0) {
     const scored = others
       .map(e => {
-        const theirTags = (e.tags || []).map(t => t.toLowerCase());
+        const theirTags = (e.tags || []).map(normTag);
         const shared = theirTags.filter(t => myTags.has(t)).length;
         return { entry: e, shared };
       })
