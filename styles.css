@@ -1427,3 +1427,86 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   opacity: 0.7;
   letter-spacing: 0;
 }
+
+
+/* ---------- Secondary share button (Compare with today) ---------- */
+.share-btn--secondary {
+  background: var(--cream-deep);
+  border-color: var(--rule);
+  color: var(--ink);
+}
+.share-btn--secondary:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+
+/* ---------- Print stylesheet (dictionary-spread aesthetic) ---------- */
+@media print {
+  * { color: black !important; background: white !important; }
+  body { font-family: 'Times New Roman', Georgia, serif; line-height: 1.5; }
+  .masthead, .nav, .footer, .signup, .inline-signup, .entry-subscribe,
+  .entry-share, .entry-back, .entry-context, .related-entries, .entry-nav,
+  .archive-controls, .archive-tags, .skip-link, .orientation-strip,
+  .compare-controls, .compare-shuffle, button, .btn-primary {
+    display: none !important;
+  }
+  .wordmark {
+    font-family: 'Times New Roman', serif;
+    font-size: 28pt;
+    margin: 0 0 12pt;
+    text-align: center;
+    page-break-after: avoid;
+  }
+  .ccc { color: black !important; font-style: italic; }
+  .entry, .entry--single {
+    max-width: 100%;
+    margin: 0;
+    page-break-inside: avoid;
+  }
+  .entry-grid {
+    display: block;
+  }
+  .entry-image-wrap {
+    width: 50%;
+    float: left;
+    margin: 0 12pt 12pt 0;
+  }
+  .entry-image img { max-width: 100%; height: auto; }
+  .headword, .entry-word {
+    font-size: 20pt;
+    margin: 0 0 4pt;
+    page-break-after: avoid;
+  }
+  .definitions, .compare-defs {
+    list-style: none;
+    padding-left: 0;
+  }
+  .definitions li, .compare-defs li {
+    margin-bottom: 6pt;
+    font-size: 11pt;
+  }
+  .example, .compare-example {
+    font-style: italic;
+    border: none;
+    padding: 0;
+    margin: 6pt 0;
+  }
+  .etymology {
+    margin: 6pt 0;
+    font-size: 10pt;
+  }
+  .tag, .archive-tag {
+    background: none;
+    border: 1pt solid black;
+    padding: 1pt 4pt;
+    font-size: 8pt;
+  }
+  a, a:visited { color: black !important; text-decoration: underline; }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555 !important;
+  }
+}
