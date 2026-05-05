@@ -42,15 +42,31 @@ jobs:
           FORCE_REGENERATE: ${{ inputs.force_regenerate || 'false' }}
         run: node generate-daily.js
 
-      - name: Read entry metadata
+      - name: Read entry metadata + design critique
         id: entry
         run: |
           DATE=$(date -u +%Y-%m-%d)
           WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
           PHOTOG=$(node -e "const e=require('./data/entries.json'); console.log(e[0].photographer || 'unknown');")
+          # Read critique if it exists (added by generate-daily.js as part of design review)
+          if [ -f data/.critique.json ]; then
+            CRIT_SCORE=$(node -e "const c=require('./data/.critique.json'); console.log(c.score ?? '?');")
+            CRIT_VERDICT=$(node -e "const c=require('./data/.critique.json'); console.log(c.verdict || 'unknown');")
+            CRIT_TEXT=$(node -e "const c=require('./data/.critique.json'); console.log((c.critique||'').replace(/\\n/g,' '));")
+          else
+            CRIT_SCORE='?'
+            CRIT_VERDICT='unknown'
+            CRIT_TEXT='No critique available'
+          fi
           echo "date=$DATE" >> $GITHUB_OUTPUT
           echo "word=$WORD" >> $GITHUB_OUTPUT
           echo "photographer=$PHOTOG" >> $GITHUB_OUTPUT
+          echo "crit_score=$CRIT_SCORE" >> $GITHUB_OUTPUT
+          echo "crit_verdict=$CRIT_VERDICT" >> $GITHUB_OUTPUT
+          # Multi-line output requires heredoc syntax
+          echo "crit_text<<EOF" >> $GITHUB_OUTPUT
+          echo "$CRIT_TEXT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Build vertical Reel video
         working-directory: scripts
@@ -78,10 +94,17 @@ jobs:
           commit-message: "Daily entry: ${{ steps.entry.outputs.date }} — ${{ steps.entry.outputs.word }}"
           branch: daily/${{ steps.entry.outputs.date }}
           delete-branch: true
-          title: "📖 ${{ steps.entry.outputs.word }} — ${{ steps.entry.outputs.date }}"
+          title: "📖 ${{ steps.entry.outputs.word }} — ${{ steps.entry.outputs.date }}${{ steps.entry.outputs.crit_verdict == 'needs-review' && ' ⚠️ NEEDS REVIEW' || '' }}${{ steps.entry.outputs.crit_verdict == 'reject' && ' 🚫 REJECT?' || '' }}"
           body: |
             **Today's entry:** ${{ steps.entry.outputs.word }}
             **Photo by:** ${{ steps.entry.outputs.photographer }} (via Unsplash)
+
+            ### 🎨 Design critique (auto)
+            **Score:** ${{ steps.entry.outputs.crit_score }}/10 — **Verdict:** `${{ steps.entry.outputs.crit_verdict }}`
+
+            > ${{ steps.entry.outputs.crit_text }}
+
+            ---
 
             Review the image and copy in the **Files changed** tab. Open the new image to preview it.
             If a `videos/${{ steps.entry.outputs.date }}.mp4` is present, it will auto-cross-post as a FB+IG Reel on merge.

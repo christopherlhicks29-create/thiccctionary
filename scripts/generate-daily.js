@@ -275,6 +275,65 @@ Schema:
   return JSON.parse(data.choices[0].message.content);
 }
 
+// ---------- 5b. Design critique (post-pick QA) ----------
+// Runs after the image is selected, before the PR opens. Asks GPT-4o vision
+// to evaluate whether the chosen photo actually works on the live site:
+// silhouette completeness, framing, brand-fit, whether anything will be cropped
+// in the layout. Returns a score (1-10) and a short critique string.
+async function critiqueChosenImage(subject, photo) {
+  const sysPrompt = `You are a design reviewer for "Thiccctionary," a satirical daily dictionary of thiccc inanimate objects. You evaluate the chosen photo for a daily entry against these criteria:
+
+1. SILHOUETTE COMPLETENESS — is the WHOLE subject visible? (rear-three-quarter, side-profile, full-frame views work; tight crops fail)
+2. FRAMING — is the subject centered enough that a 4:3 or natural-aspect crop preserves it?
+3. BRAND FIT — does the photo look like a documentary / dictionary plate, or a marketing render? (Documentary good, marketing bad)
+4. CLUTTER — is the subject clearly the focal point, or surrounded by distractions?
+5. PEOPLE/BODIES — anyone visible? (Disqualifies — site is strictly inanimate)
+
+Score the photo from 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
+
+  const userPrompt = `Subject: ${subject}
+Photo description: ${photo.description || '(no caption available)'}
+Photographer: ${photo.photographer}
+Photo URL: ${photo.fullUrl}
+
+Evaluate this image and output JSON:
+{
+  "score": <1-10>,
+  "verdict": "ship" | "needs-review" | "reject",
+  "critique": "one paragraph explaining the score — what's good, what's weak"
+}`;
+
+  try {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: sysPrompt },
+          { role: 'user', content: [
+            { type: 'text', text: userPrompt },
+            { type: 'image_url', image_url: { url: photo.fullUrl, detail: 'high' } }
+          ]}
+        ],
+        response_format: { type: 'json_object' },
+        temperature: 0.3,
+      }),
+    });
+    if (!res.ok) {
+      console.warn(`Design critique skipped: ${res.status}`);
+      return { score: null, verdict: 'unknown', critique: 'Critique step failed (non-blocking).' };
+    }
+    const data = await res.json();
+    const c = JSON.parse(data.choices[0].message.content);
+    console.log(`Design critique: score=${c.score}/10, verdict=${c.verdict}`);
+    return c;
+  } catch (e) {
+    console.warn(`Design critique error: ${e.message}`);
+    return { score: null, verdict: 'unknown', critique: 'Critique step errored (non-blocking).' };
+  }
+}
+
 // ---------- main ----------
 async function main() {
   const raw = await fs.readFile(ENTRIES_PATH, 'utf8').catch(() => '[]');
@@ -315,6 +374,9 @@ async function main() {
   await downloadImage(chosen, filename);
   console.log(`Saved image to images/${filename}`);
 
+  // Step 4b: design critique (logged to PR body so Christopher can see if image needs review)
+  const critique = await critiqueChosenImage(subjectInfo.subject, chosen);
+
   // Step 5: write the entry
   const entryCopy = await generateEntry(subjectInfo.subject, chosen);
 
@@ -337,6 +399,10 @@ async function main() {
   entries.unshift(entry);
   await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
   console.log(`Saved entry: ${entry.word}`);
+
+  // Write critique to a side-channel file so the GH Actions workflow can pick it up
+  // for the PR body. Not committed to entries.json — it's purely review metadata.
+  await fs.writeFile(path.join(ROOT, 'data', '.critique.json'), JSON.stringify(critique, null, 2));
 
   // Step 7: build the per-entry HTML page and refresh the sitemap
   const entryPagePath = await buildEntryPage(entry);

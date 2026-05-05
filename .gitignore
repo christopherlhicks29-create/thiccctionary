@@ -18,3 +18,5 @@ internal/
 posters/
 
 .gh-token
+
+data/.critique.json
