@@ -1,0 +1,94 @@
+name: Regenerate Images on Push (queue file trigger)
+
+# Triggered when data/regen-queue.json changes. Lets Claude (or anyone with
+# repo write access) queue image regenerations without needing api.github.com
+# access (which the sandbox blocks). The workflow reads the queue, runs the
+# existing regenerate-images.js logic, opens a PR, then deletes the queue file
+# as part of the PR so it doesn't re-fire.
+#
+# Queue format (data/regen-queue.json):
+#   {
+#     "dates": "2026-04-29",
+#     "subject_override": "Ford F-450 dually rear wheels truck",
+#     "reason": "image was single-rear-wheel; entry describes a dually"
+#   }
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/regen-queue.json'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Verify queue file exists
+        id: check
+        run: |
+          if [ ! -f data/regen-queue.json ]; then
+            echo "Queue file not present; skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "skip=false" >> $GITHUB_OUTPUT
+          cat data/regen-queue.json
+
+      - name: Set up Node 20
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Read queue inputs
+        if: steps.check.outputs.skip != 'true'
+        id: queue
+        run: |
+          DATES=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/regen-queue.json','utf8')).dates || '')")
+          OVERRIDE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/regen-queue.json','utf8')).subject_override || '')")
+          REASON=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/regen-queue.json','utf8')).reason || '')")
+          echo "dates=$DATES" >> $GITHUB_OUTPUT
+          echo "override=$OVERRIDE" >> $GITHUB_OUTPUT
+          echo "reason=$REASON" >> $GITHUB_OUTPUT
+          echo "Queued: $DATES (override='$OVERRIDE')"
+
+      - name: Regenerate images
+        if: steps.check.outputs.skip != 'true' && steps.queue.outputs.dates != ''
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          DATES: ${{ steps.queue.outputs.dates }}
+          SUBJECT_OVERRIDE: ${{ steps.queue.outputs.override }}
+        run: node regenerate-images.js
+
+      - name: Remove queue file (so this doesn't re-fire)
+        if: steps.check.outputs.skip != 'true'
+        run: rm -f data/regen-queue.json
+
+      - name: Open Pull Request
+        if: steps.check.outputs.skip != 'true' && steps.queue.outputs.dates != ''
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Regenerate image for ${{ steps.queue.outputs.dates }} (queued via push)"
+          branch: regen-on-push/${{ github.run_id }}
+          delete-branch: true
+          title: "🖼️ Image regen — ${{ steps.queue.outputs.dates }}${{ steps.queue.outputs.override && format(' [{0}]', steps.queue.outputs.override) || '' }}"
+          body: |
+            **Triggered by:** push to `data/regen-queue.json` (autonomous queue)
+
+            **Dates:** `${{ steps.queue.outputs.dates }}`
+            **Subject override:** `${{ steps.queue.outputs.override }}`
+            **Reason:** ${{ steps.queue.outputs.reason }}
+
+            Review the new image. If it's good, merge. If not, close this PR and queue another with a different `subject_override`.
+
+            **To merge:** Squash and merge.
