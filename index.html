@@ -155,7 +155,7 @@
           <p id="featured-etymology">From <em>thiccc</em> (internet vernacular, c. 2015, "voluptuous; full-bodied," with an extra <em>c</em> for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026.</p>
         </div>
 
-        <div class="entry-tags">
+        <div class="entry-tags" id="featured-tags">
           <span class="tag">aircraft</span>
           <span class="tag">aviation</span>
           <span class="tag">tail-heavy</span>
@@ -416,6 +416,12 @@
       }
       document.getElementById('featured-example').innerHTML = `"${featured.example}"`;
       document.getElementById('featured-etymology').innerHTML = featured.etymology;
+
+      // Populate tags from the actual entry (was previously frozen on Boeing static fallback)
+      const tagsEl = document.getElementById('featured-tags');
+      if (tagsEl && Array.isArray(featured.tags)) {
+        tagsEl.innerHTML = featured.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      }
 
       // Populate recents (skip the featured = index 0)
       const grid = document.getElementById('recents-grid');
