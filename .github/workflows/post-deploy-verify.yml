@@ -1,0 +1,67 @@
+name: Post-Deploy Verify
+
+# Runs after each push to main. Waits for Cloudflare Pages to redeploy,
+# then curls the live site and checks for markers that prove key features
+# are still working. Fails loudly if something is broken — earlier in the
+# session (commit 12c97405) a silent file truncation pushed broken HTML
+# and nobody noticed until Christopher pulled up the live page. This
+# guards that class of bug.
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Cloudflare Pages deploy
+        run: sleep 75
+
+      - name: Verify homepage hydrates and has key markers
+        run: |
+          set -e
+          HOME=$(curl -sf https://thiccctionary.com/)
+          echo "$HOME" | grep -q "</html>" || (echo "FAIL: homepage missing closing </html>" && exit 1)
+          echo "$HOME" | grep -q "Thi<span" || (echo "FAIL: wordmark missing" && exit 1)
+          echo "$HOME" | grep -q "What is this?" || (echo "FAIL: orientation strip missing" && exit 1)
+          echo "$HOME" | grep -q "ARTICLES:HOMEPAGE:START" || (echo "FAIL: editorial-desk sentinel missing" && exit 1)
+          echo "$HOME" | grep -q "inline-signup" || (echo "FAIL: inline signup missing" && exit 1)
+          echo "$HOME" | grep -q "fetch.*entries.json" || (echo "FAIL: hydration script missing" && exit 1)
+          echo "Homepage OK"
+
+      - name: Verify latest entry page renders
+        run: |
+          set -e
+          # Get the date of the latest entry from entries.json on the live site
+          LATEST=$(curl -sf https://thiccctionary.com/data/entries.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d[0]['date'])")
+          echo "Latest entry: $LATEST"
+          ENTRY=$(curl -sf "https://thiccctionary.com/entries/$LATEST.html")
+          echo "$ENTRY" | grep -q "</html>" || (echo "FAIL: entry page missing </html>" && exit 1)
+          echo "$ENTRY" | grep -q "entry-subscribe" || (echo "FAIL: entry subscribe block missing" && exit 1)
+          echo "$ENTRY" | grep -q "entry-nav" || (echo "FAIL: prev/next nav missing" && exit 1)
+          echo "$ENTRY" | grep -q "BreadcrumbList" || (echo "FAIL: BreadcrumbList JSON-LD missing" && exit 1)
+          echo "Entry page OK"
+
+      - name: Verify RSS feed has both entries and articles
+        run: |
+          set -e
+          FEED=$(curl -sf https://thiccctionary.com/feed.xml)
+          ITEM_COUNT=$(echo "$FEED" | grep -c "<item>")
+          ARTICLE_COUNT=$(echo "$FEED" | grep -c "\\[Article\\]")
+          echo "Feed has $ITEM_COUNT items, $ARTICLE_COUNT articles"
+          if [ "$ITEM_COUNT" -lt 9 ]; then echo "FAIL: too few items in feed" && exit 1; fi
+          if [ "$ARTICLE_COUNT" -lt 1 ]; then echo "FAIL: no articles in feed" && exit 1; fi
+          echo "RSS feed OK"
+
+      - name: Verify compare and tags pages exist
+        run: |
+          set -e
+          curl -sfI https://thiccctionary.com/compare.html | grep -q "200" || (echo "FAIL: /compare.html missing" && exit 1)
+          curl -sfI https://thiccctionary.com/tags/ | grep -q "200" || (echo "FAIL: /tags/ missing" && exit 1)
+          curl -sfI https://thiccctionary.com/embed/today.html | grep -q "200" || (echo "FAIL: /embed/today.html missing" && exit 1)
+          curl -sfI https://thiccctionary.com/random.html | grep -q "200" || (echo "FAIL: /random.html missing" && exit 1)
+          echo "Feature pages OK"
+
+      - name: Summary
+        run: echo "✓ All post-deploy checks passed for $GITHUB_SHA"
