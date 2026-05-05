@@ -159,6 +159,7 @@ export async function buildSitemap(entries) {
     { loc: `${base}/articles/field-guide-spotting-thiccc.html`, priority: '0.7', lastmod: '2026-05-03' },
     { loc: `${base}/articles/cement-trucks-original-thiccc.html`, priority: '0.7', lastmod: '2026-05-03' },
     { loc: `${base}/articles/industrial-scale-thiccc.html`, priority: '0.7', lastmod: '2026-05-04' },
+    { loc: `${base}/articles/taxonomy-thiccc-architecture.html`, priority: '0.7', lastmod: '2026-05-04' },
     { loc: `${base}/legal/terms.html`, priority: '0.3' },
     { loc: `${base}/legal/privacy.html`, priority: '0.3' },
     { loc: `${base}/press/`, priority: '0.5' },
@@ -193,11 +194,4 @@ if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || proce
 
   for (const entry of targets) {
     const out = await buildEntryPage(entry);
-    console.log(`Built ${path.relative(ROOT, out)}`);
-  }
-
-  await buildSitemap(entries);
-  await buildRssFeed(entries);
-  console.log(`Wrote feed.xml with ${entries.length} entries.`);
-  console.log(`Updated sitemap.xml with ${entries.length} entries.`);
-}
+    console.log(`Built ${path.relative(ROOT, out)
