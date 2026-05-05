@@ -411,4 +411,10 @@
       if (target === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
       else if (target === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
       else if (target === 'copy') { navigator.clipboard.writeText(url); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy link', 1500); }
-      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automa
+      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automation.');
+    });
+  });
+</script>
+
+</body>
+</html>
