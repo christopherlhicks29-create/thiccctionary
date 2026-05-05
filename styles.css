@@ -1072,3 +1072,57 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 .entry-subscribe-alt a:hover, .inline-signup-alt a:hover {
   background: var(--cream);
 }
+
+
+/* ---------- Related entries (entry pages, by tag) ---------- */
+.related-entries {
+  max-width: 720px;
+  margin: 56px auto 8px;
+  padding: 0 16px;
+}
+.related-heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 0 0 20px;
+}
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+.related-card {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--cream);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s, border-color 0.15s;
+}
+.related-card:hover {
+  background: var(--cream-deep);
+  border-color: var(--ink-soft);
+}
+.related-word {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.related-snip {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+  .related-grid { grid-template-columns: 1fr; }
+}

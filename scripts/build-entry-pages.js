@@ -66,7 +66,53 @@ function renderCredit(entry) {
   return `Photo by <a href="${escapeHtml(photogUrl)}" target="_blank" rel="noopener">${escapeHtml(entry.photographer)}</a> on <a href="https://unsplash.com/${utm}" target="_blank" rel="noopener">Unsplash</a>`;
 }
 
-export async function buildEntryPage(entry, prev = null, next = null) {
+function findRelatedEntries(entry, allEntries, limit = 3) {
+  // Score other entries by shared tag count, return top N (shared >= 1).
+  // Fall back to random recent entries if no tag overlap exists.
+  const myTags = new Set((entry.tags || []).map(t => t.toLowerCase()));
+  const others = allEntries.filter(e => e.date !== entry.date);
+  if (myTags.size > 0) {
+    const scored = others
+      .map(e => {
+        const theirTags = (e.tags || []).map(t => t.toLowerCase());
+        const shared = theirTags.filter(t => myTags.has(t)).length;
+        return { entry: e, shared };
+      })
+      .filter(x => x.shared > 0)
+      .sort((a, b) => b.shared - a.shared || Math.random() - 0.5);
+    if (scored.length >= limit) return scored.slice(0, limit).map(x => x.entry);
+    // Fewer than `limit` tag-matches — top them up with random other entries.
+    const taken = new Set(scored.map(x => x.entry.date));
+    const fillers = others
+      .filter(e => !taken.has(e.date))
+      .sort(() => Math.random() - 0.5)
+      .slice(0, limit - scored.length);
+    return [...scored.map(x => x.entry), ...fillers];
+  }
+  // No tags on the source entry — pick random recent.
+  return others.sort(() => Math.random() - 0.5).slice(0, limit);
+}
+
+function renderRelated(related) {
+  if (!related || related.length === 0) return '';
+  const items = related.map(e => {
+    const word = String(e.word).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const def = String(e.definitions[0] || '').replace(/<[^>]+>/g, '').slice(0, 110).trim();
+    return `    <a class="related-card" href="${e.date}.html">
+      <span class="related-word">${word}</span>
+      <span class="related-snip">${def.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}…</span>
+    </a>`;
+  }).join('\n');
+  return `  <!-- Related-by-tag entries -->
+  <section class="related-entries" aria-label="More like this">
+    <h3 class="related-heading">More like this</h3>
+    <div class="related-grid">
+${items}
+    </div>
+  </section>`;
+}
+
+export async function buildEntryPage(entry, prev = null, next = null, allEntries = null) {
   const template = await fs.readFile(TEMPLATE_PATH, 'utf8');
   const canonical = `${SITE.replace(/\/$/, '')}/entries/${entry.date}.html`;
   const def2Block = entry.definitions[1]
@@ -119,6 +165,7 @@ export async function buildEntryPage(entry, prev = null, next = null) {
     WORD: escapeHtml(entry.word),
     WORD_HTML: escapeHtml(entry.word), // ccc highlighter runs client-side
     WORD_ENC: encodeURIComponent(entry.word),
+    TWEET_TEXT: encodeURIComponent(`Today's Thiccctionary entry: ${entry.word}\n\n"${stripHtml(entry.definitions[0]).slice(0, 140).trim()}${entry.definitions[0].length > 140 ? '…' : ''}"`),
     PRONUNCIATION: escapeHtml(entry.pronunciation || ''),
     POS: escapeHtml(entry.partOfSpeech || 'n.'),
     DEF_1: entry.definitions[0],
@@ -141,6 +188,7 @@ export async function buildEntryPage(entry, prev = null, next = null) {
     NEXT_NAV: next
       ? `<a class="entry-nav-link entry-nav-link--next" href="${next.date}.html"><span class="entry-nav-direction">Next entry →</span><span class="entry-nav-word">${escapeHtml(next.word)}</span></a>`
       : `<span class="entry-nav-link entry-nav-link--placeholder"></span>`,
+    RELATED_ENTRIES: renderRelated(allEntries ? findRelatedEntries(entry, allEntries, 3) : []),
   };
 
   let html = template;
@@ -206,7 +254,7 @@ if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || proce
     const i = indexByDate.get(entry.date);
     const next = i > 0 ? entries[i - 1] : null;
     const prev = i < entries.length - 1 ? entries[i + 1] : null;
-    const out = await buildEntryPage(entry, prev, next);
+    const out = await buildEntryPage(entry, prev, next, entries);
     console.log(`Built ${path.relative(ROOT, out)}`);
   }
 
