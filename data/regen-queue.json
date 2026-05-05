@@ -1,5 +1,0 @@
-{
-  "dates": "2026-04-29",
-  "subject_override": "dually truck",
-  "reason": "Attempt #2 with 'dually pickup truck rear' returned 0 Unsplash results and the workflow failed. Trying simpler 'dually truck' which should have actual photos. The vision picker will then choose the most thiccc one."
-}
