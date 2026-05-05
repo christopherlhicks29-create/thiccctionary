@@ -1040,22 +1040,24 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   max-width: 720px;
   margin: 24px auto 8px;
   padding: 14px 20px;
-  background: var(--cream-deep);
-  border-left: 3px solid var(--oxblood);
-  border-radius: 0 4px 4px 0;
+  background: rgba(245, 232, 199, 0.5);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-align: center;
 }
 .orientation-strip p {
   margin: 0;
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--ink-soft);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .orientation-strip em {
   font-family: var(--font-display);
   font-style: italic;
-  color: var(--oxblood);
+  color: var(--ink);
   margin-right: 6px;
+  font-weight: 500;
 }
 
 /* Multi-path follow line (entry pages + homepage inline) */
@@ -1140,16 +1142,17 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 }
 .archive-tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 6px 12px;
+  padding: 9px 14px;
   border: 1px solid var(--rule);
   background: var(--cream);
   color: var(--ink-soft);
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
+  min-height: 36px;
 }
 .archive-tag:hover {
   background: var(--cream-deep);
@@ -1165,4 +1168,27 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   background: var(--oxblood);
   border-color: var(--oxblood);
   color: var(--cream);
+}
+
+
+/* ---------- Entry page mini-context (for first-time landings) ---------- */
+.entry-context {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 10px 16px;
+  background: rgba(245, 232, 199, 0.4);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-style: italic;
+}
+.entry-context p { margin: 0; }
+.entry-context a {
+  color: var(--oxblood);
+  border-bottom: 1px solid var(--oxblood);
+  text-decoration: none;
+  font-style: normal;
 }

@@ -290,7 +290,8 @@ if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || proce
   }
 
   await buildSitemap(entries);
-  await buildRssFeed(entries);
+  const articles = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'articles.json'), 'utf8').catch(() => '[]'));
+  await buildRssFeed(entries, articles);
   console.log(`Wrote feed.xml with ${entries.length} entries.`);
   console.log(`Updated sitemap.xml with ${entries.length} entries.`);
 }
