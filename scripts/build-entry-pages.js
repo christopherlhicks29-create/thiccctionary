@@ -245,6 +245,7 @@ export async function buildSitemap(entries) {
     { loc: `${base}/articles/industrial-scale-thiccc.html`, priority: '0.7', lastmod: '2026-05-04' },
     { loc: `${base}/articles/taxonomy-thiccc-architecture.html`, priority: '0.7', lastmod: '2026-05-04' },
     { loc: `${base}/articles/everyday-sidewalk-thiccc.html`, priority: '0.7', lastmod: '2026-05-04' },
+    { loc: `${base}/articles/concrete-material-study.html`, priority: '0.7', lastmod: '2026-05-05' },
     { loc: `${base}/legal/terms.html`, priority: '0.3' },
     { loc: `${base}/legal/privacy.html`, priority: '0.3' },
     { loc: `${base}/press/`, priority: '0.5' },
