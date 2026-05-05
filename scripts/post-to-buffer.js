@@ -143,11 +143,39 @@ function buildText(entry, mode, baseUrl) {
     // Short caption suited to Reels. No URL in caption (Reels strip links anyway).
     return `${entry.word}\n\n${stripHtml(entry.definitions[0])}\n\nFull entry on thiccctionary.com\n\n#wordoftheday #etymology #satire`;
   }
-  // morning (default)
-  const prefix = `📖 ${entry.word}\n\n`;
-  const body = stripHtml(entry.definitions[0]);
-  const suffix = `\n\nToday's entry → ${baseUrl}\n\n#thiccctionary #wordoftheday #everydayobjects`;
-  return fitToX(prefix, body, suffix);
+  // morning (default) — rotate through 4 templates by day-of-year so consecutive
+  // days don't read identically. Each template targets a slightly different hook.
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  const variant = dayOfYear % 4;
+  const def0 = stripHtml(entry.definitions[0]);
+  const example = stripHtml(entry.example || '').replace(/^"|"$/g, '');
+
+  if (variant === 0) {
+    // Standard: emoji + word + definition + URL + hashtags
+    const prefix = `📖 ${entry.word}\n\n`;
+    const suffix = `\n\nToday's entry → ${baseUrl}\n\n#wordoftheday #etymology #satire`;
+    return fitToX(prefix, def0, suffix);
+  }
+  if (variant === 1) {
+    // Sentence-first: lead with the example, drop the headword as the reveal
+    const prefix = `Use it in a sentence —\n\n"`;
+    const body = example || def0;
+    const suffix = `"\n\n— ${entry.word}, today on Thiccctionary\n${baseUrl}\n\n#wordoftheday #etymology`;
+    return fitToX(prefix, body, suffix);
+  }
+  if (variant === 2) {
+    // Etymology-forward: lead with the etymology hook
+    const ety = stripHtml(entry.etymology || '');
+    const prefix = `📚 ${entry.word}\n\nEtymology: `;
+    const suffix = `\n\nFull entry → ${baseUrl}\n\n#etymology #wordoftheday`;
+    if (ety) return fitToX(prefix, ety, suffix);
+    // fallback to standard
+    return fitToX(`📖 ${entry.word}\n\n`, def0, `\n\nToday's entry → ${baseUrl}\n\n#wordoftheday`);
+  }
+  // variant 3 — definitional pause
+  const prefix = `Today: ${entry.word}\n\n`;
+  const suffix = `\n\nthiccctionary.com\n\n#satire #etymology #wordoftheday`;
+  return fitToX(prefix, def0, suffix);
 }
 
 function filterChannelsForMode(channels, mode) {
