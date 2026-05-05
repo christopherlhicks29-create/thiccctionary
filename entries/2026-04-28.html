@@ -116,6 +116,7 @@
     <a href="../index.html" class="nav-link">Today's Entry</a>
     <a href="../archive.html" class="nav-link">The Archive</a>
     <a href="../articles/" class="nav-link">Articles</a>
+    <a href="../random.html" class="nav-link">Random</a>
     <a href="../submit.html" class="nav-link">Submit a Thiccc</a>
     <a href="../index.html#about" class="nav-link">About</a>
   </nav>
@@ -169,7 +170,23 @@
     </div>
   </article>
 
-  <p style="text-align: center; margin: 60px 0;">
+  <!-- Conversion CTA — landing page from social, push to subscribe -->
+  <section class="entry-subscribe">
+    <p class="entry-subscribe-eyebrow">A new entry every morning, delivered.</p>
+    <form class="entry-subscribe-form" action="https://buttondown.email/api/emails/embed-subscribe/thiccctionary" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/thiccctionary', 'popupwindow')">
+      <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="entry-subscribe-rss">Or via <a href="../feed.xml">RSS</a>.</p>
+  </section>
+
+  <!-- Prev/next entry navigation -->
+  <nav class="entry-nav" aria-label="Adjacent entries">
+    <a class="entry-nav-link entry-nav-link--prev" href="2026-04-27.html"><span class="entry-nav-direction">← Previous entry</span><span class="entry-nav-word">Concrete Mixer</span></a>
+    <a class="entry-nav-link entry-nav-link--next" href="2026-04-29.html"><span class="entry-nav-direction">Next entry →</span><span class="entry-nav-word">Ford F-450</span></a>
+  </nav>
+
+  <p style="text-align: center; margin: 32px 0 60px;">
     <a href="../random.html" class="btn-primary">Show me a random entry →</a>
   </p>
 </main>
@@ -223,4 +240,31 @@ function highlightCcc(root) {
   while ((n = walker.nextNode())) targets.push(n);
   for (const node of targets) {
     const frag = document.createDocumentFragment();
-    const parts = node.nodeValue.split(/((?<!
+    const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+    parts.forEach(part => {
+      if (/^[cC]{3}$/.test(part)) {
+        const span = document.createElement('span');
+        span.className = 'ccc';
+        span.textContent = part;
+        frag.appendChild(span);
+      } else if (part) {
+        frag.appendChild(document.createTextNode(part));
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+}
+highlightCcc(document.body);
+
+document.querySelectorAll('[data-share="copy"]').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    navigator.clipboard.writeText(window.location.href);
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy link', 1500);
+  });
+});
+</script>
+
+</body>
+</html>

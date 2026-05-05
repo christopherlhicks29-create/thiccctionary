@@ -90,6 +90,7 @@
     <a href="index.html" class="nav-link nav-link--active">Today's Entry</a>
     <a href="archive.html" class="nav-link">The Archive</a>
     <a href="articles/" class="nav-link">Articles</a>
+    <a href="random.html" class="nav-link">Random</a>
     <a href="#submit" class="nav-link">Submit a Thiccc</a>
     <a href="#about" class="nav-link">About</a>
   </nav>
@@ -163,6 +164,18 @@
     </div>
   </article>
 
+  <!-- Inline conversion CTA — first push after reader finishes the entry -->
+  <section class="inline-signup" aria-labelledby="inline-signup-heading">
+    <div class="inline-signup-inner">
+      <p class="inline-signup-eyebrow">Liked it? You can have one of these every morning.</p>
+      <form class="inline-signup-form" action="https://buttondown.email/api/emails/embed-subscribe/thiccctionary" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/thiccctionary', 'popupwindow')">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="inline-signup-rss">Prefer RSS? <a href="feed.xml">Add the feed →</a></p>
+    </div>
+  </section>
+
   <!-- Recent archive strip -->
   <section class="recents">
     <div class="recents-head">
@@ -215,6 +228,7 @@
         <input type="email" name="email" placeholder="your@email.com" required />
         <button type="submit">Enlist</button>
       </form>
+      <p class="signup-alt">Or subscribe via <a href="feed.xml">RSS</a>.</p>
       <div class="social-row">
         <a href="https://www.instagram.com/ogthiccctionary/" class="social-link" target="_blank" rel="noopener">Instagram</a>
         <span class="dot">·</span>

@@ -66,7 +66,7 @@ function renderCredit(entry) {
   return `Photo by <a href="${escapeHtml(photogUrl)}" target="_blank" rel="noopener">${escapeHtml(entry.photographer)}</a> on <a href="https://unsplash.com/${utm}" target="_blank" rel="noopener">Unsplash</a>`;
 }
 
-export async function buildEntryPage(entry) {
+export async function buildEntryPage(entry, prev = null, next = null) {
   const template = await fs.readFile(TEMPLATE_PATH, 'utf8');
   const canonical = `${SITE.replace(/\/$/, '')}/entries/${entry.date}.html`;
   const def2Block = entry.definitions[1]
@@ -135,6 +135,12 @@ export async function buildEntryPage(entry) {
     CANONICAL: canonical,
     CANONICAL_ENC: encodeURIComponent(canonical),
     DESCRIPTION: escapeHtml(description),
+    PREV_NAV: prev
+      ? `<a class="entry-nav-link entry-nav-link--prev" href="${prev.date}.html"><span class="entry-nav-direction">← Previous entry</span><span class="entry-nav-word">${escapeHtml(prev.word)}</span></a>`
+      : `<span class="entry-nav-link entry-nav-link--placeholder"></span>`,
+    NEXT_NAV: next
+      ? `<a class="entry-nav-link entry-nav-link--next" href="${next.date}.html"><span class="entry-nav-direction">Next entry →</span><span class="entry-nav-word">${escapeHtml(next.word)}</span></a>`
+      : `<span class="entry-nav-link entry-nav-link--placeholder"></span>`,
   };
 
   let html = template;
@@ -193,8 +199,14 @@ if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || proce
   const filterDate = process.argv[2];
   const targets = filterDate ? entries.filter(e => e.date === filterDate) : entries;
 
+  // Compute prev/next per entry. entries.json is sorted newest-first;
+  // "next" in chronological terms = entries[i-1] (newer), "prev" = entries[i+1] (older).
+  const indexByDate = new Map(entries.map((e, i) => [e.date, i]));
   for (const entry of targets) {
-    const out = await buildEntryPage(entry);
+    const i = indexByDate.get(entry.date);
+    const next = i > 0 ? entries[i - 1] : null;
+    const prev = i < entries.length - 1 ? entries[i + 1] : null;
+    const out = await buildEntryPage(entry, prev, next);
     console.log(`Built ${path.relative(ROOT, out)}`);
   }
 

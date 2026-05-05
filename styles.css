@@ -118,6 +118,8 @@ a { color: inherit; text-decoration: none; }
   margin-top: 22px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 12px;
   gap: 32px;
   flex-wrap: wrap;
   padding-top: 18px;
@@ -847,4 +849,187 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   text-transform: uppercase;
   color: var(--oxblood);
   margin-bottom: 8px;
+}
+
+
+/* ---------- Inline conversion CTA (homepage, after entry) ---------- */
+.inline-signup {
+  margin: 56px auto 80px;
+  max-width: 720px;
+  padding: 28px 32px;
+  background: var(--cream-deep);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-align: center;
+}
+.inline-signup-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.inline-signup-form {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.inline-signup-form input[type="email"] {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  border-radius: 3px;
+}
+.inline-signup-form button {
+  padding: 12px 20px;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.15s, color 0.15s;
+}
+.inline-signup-form button:hover {
+  background: var(--oxblood);
+  border-color: var(--oxblood);
+}
+.inline-signup-rss {
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.inline-signup-rss a {
+  color: var(--oxblood);
+  border-bottom: 1px solid var(--oxblood);
+  text-decoration: none;
+}
+
+/* ---------- Alt RSS line under main signup ---------- */
+.signup-alt {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--cream-deep);
+  font-style: italic;
+}
+.signup-alt a {
+  color: var(--mustard);
+  border-bottom: 1px solid var(--mustard);
+  text-decoration: none;
+}
+
+/* ---------- Entry page subscribe block + prev/next ---------- */
+.entry-subscribe {
+  max-width: 640px;
+  margin: 48px auto 24px;
+  padding: 24px 28px;
+  background: var(--cream-deep);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-align: center;
+}
+.entry-subscribe-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+.entry-subscribe-form {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.entry-subscribe-form input[type="email"] {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-radius: 3px;
+}
+.entry-subscribe-form button {
+  padding: 10px 16px;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.entry-subscribe-form button:hover { background: var(--oxblood); border-color: var(--oxblood); }
+.entry-subscribe-rss {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.entry-subscribe-rss a {
+  color: var(--oxblood);
+  border-bottom: 1px solid var(--oxblood);
+  text-decoration: none;
+}
+
+/* ---------- Prev/next entry navigation ---------- */
+.entry-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 16px;
+  max-width: 720px;
+  margin: 32px auto 16px;
+  padding: 0 16px;
+}
+.entry-nav-link {
+  flex: 1;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--cream);
+  transition: background 0.15s, border-color 0.15s;
+  font-family: var(--font-body);
+}
+.entry-nav-link:hover {
+  background: var(--cream-deep);
+  border-color: var(--ink-soft);
+}
+.entry-nav-link.entry-nav-link--placeholder {
+  visibility: hidden;
+}
+.entry-nav-direction {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.entry-nav-word {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+}
+.entry-nav-link--next {
+  text-align: right;
+}
+
+@media (max-width: 560px) {
+  .entry-nav { flex-direction: column; gap: 10px; }
+  .entry-nav-link--next { text-align: left; }
+  .inline-signup-form, .entry-subscribe-form { flex-direction: column; }
+  .inline-signup, .entry-subscribe { padding: 24px 20px; }
 }
