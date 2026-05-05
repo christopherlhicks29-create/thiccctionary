@@ -1510,3 +1510,165 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
     color: #555 !important;
   }
 }
+
+/* ---------- Vote / "Which is thicccer?" ---------- */
+.vote-hero {
+  max-width: 820px;
+  margin: 32px auto 16px;
+  padding: 0 24px;
+  text-align: center;
+}
+.vote-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.vote-sub {
+  font-style: italic;
+  opacity: 0.75;
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+.vote-stats {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin: 0;
+  min-height: 18px;
+}
+.vote-spread {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 24px auto 16px;
+  padding: 0 24px;
+  align-items: stretch;
+}
+.vote-vs {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--oxblood);
+  align-self: center;
+  text-align: center;
+  padding: 0 4px;
+}
+.vote-card {
+  display: block;
+  text-align: left;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.vote-card:hover:not(:disabled) {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.vote-card:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 2px;
+}
+.vote-card-image {
+  aspect-ratio: 1.4 / 1;
+  background-color: var(--cream-deep);
+  background-size: cover;
+  background-position: center;
+}
+.vote-card-body {
+  padding: 18px 20px 20px;
+}
+.vote-card-word {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.15;
+  margin: 0 0 4px;
+}
+.vote-card-pron {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+.vote-card-def {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.vote-card-cta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+}
+.vote-card--winner {
+  background: var(--cream-deep);
+  border-color: var(--oxblood);
+  border-width: 2px;
+}
+.vote-card--winner .vote-card-cta {
+  color: var(--ink);
+  font-weight: 600;
+}
+.vote-card--winner .vote-card-cta::after { content: ' — your pick'; }
+.vote-card--loser {
+  opacity: 0.55;
+}
+.vote-verdict {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+  padding: 16px 0 0;
+}
+.vote-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 16px auto 24px;
+  padding: 0 24px;
+}
+.btn-primary--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+.btn-primary--ghost:hover {
+  background: var(--cream-deep);
+  border-color: var(--ink-soft);
+  color: var(--ink);
+}
+.vote-credit {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin: 32px auto 8px;
+  max-width: 600px;
+  padding: 0 24px;
+}
+
+@media (max-width: 720px) {
+  .vote-spread { grid-template-columns: 1fr; }
+  .vote-vs { padding: 4px 0; }
+}
