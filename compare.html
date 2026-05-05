@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compare two thiccc things — Thiccctionary</title>
+<meta name="description" content="Pick any two entries from the archive and see them side by side. A two-column dictionary spread." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/compare.html" />
+
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta property="og:title" content="Compare two thiccc things — Thiccctionary" />
+<meta property="og:description" content="Two entries, side by side. A dictionary spread." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/compare.html" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@thiccctionary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">A Comparative Spread</span>
+    <span class="meta-line meta-line--right">Two entries · One page</span>
+  </div>
+  <h1 class="wordmark">
+    <span class="wordmark-the">The</span>
+    <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+  </h1>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Today\'s Entry</a>
+    <a href="archive.html" class="nav-link">The Archive</a>
+    <a href="articles/" class="nav-link">Articles</a>
+    <a href="random.html" class="nav-link">Random</a>
+    <a href="#submit" class="nav-link">Submit a Thiccc</a>
+    <a href="index.html#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main>
+  <section style="max-width: 1200px; margin: 32px auto 16px; padding: 0 24px; text-align: center;">
+    <h2 style="font-family: var(--font-display); font-weight: 600; font-size: 32px; margin: 0 0 8px;">Compare Two Thiccc Things</h2>
+    <p style="font-style: italic; opacity: 0.75; margin: 0 0 24px;">Pick any two entries. We&rsquo;ll lay them out side by side. Like a real dictionary spread, except neither of these belongs in a real dictionary.</p>
+  </section>
+
+  <div class="compare-controls">
+    <div class="compare-picker">
+      <label for="compare-left">Left</label>
+      <select id="compare-left"></select>
+    </div>
+    <button class="compare-shuffle" id="compare-shuffle">Surprise me</button>
+    <div class="compare-picker">
+      <label for="compare-right">Right</label>
+      <select id="compare-right"></select>
+    </div>
+  </div>
+
+  <div class="compare-spread" id="compare-spread">
+    <!-- populated by JS -->
+  </div>
+
+  <p style="text-align: center; margin: 40px 0;">
+    <button id="compare-share" class="btn-primary" type="button">Copy share link →</button>
+  </p>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><p class="footer-wordmark">Thiccctionary</p><p class="footer-tag">Documenting girth, since 2026.</p></div>
+    <div><p class="footer-head">Sections</p><a href="archive.html">Archive</a><a href="articles/">Articles</a><a href="#submit">Submit</a><a href="embed/">Embed</a><a href="index.html#about">About</a><a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a></div>
+    <div><p class="footer-head">Follow</p><a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a></div>
+    <div><p class="footer-head">Legal</p><a href="legal/terms.html">Terms</a><a href="legal/privacy.html">Privacy</a><a href="mailto:admin@thiccctionary.com">Contact</a></div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
+</footer>
+
+<script>
+function highlightCcc(root) {
+  const skipTags = new Set([\'SCRIPT\', \'STYLE\', \'CODE\', \'PRE\', \'INPUT\', \'TEXTAREA\']);
+  const skipClasses = [\'wordmark\', \'wordmark-extra\', \'ccc\'];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      let p = node.parentElement;
+      while (p) {
+        if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+        for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
+        p = p.parentElement;
+      }
+      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const targets = []; let n;
+  while ((n = walker.nextNode())) targets.push(n);
+  for (const node of targets) {
+    const frag = document.createDocumentFragment();
+    const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+    parts.forEach(part => {
+      if (/^[cC]{3}$/.test(part)) {
+        const span = document.createElement(\'span\');
+        span.className = \'ccc\'; span.textContent = part; frag.appendChild(span);
+      } else if (part) frag.appendChild(document.createTextNode(part));
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+}
+
+(async function () {
+  document.getElementById(\'year\').textContent = new Date().getFullYear();
+  let entries = [];
+  try {
+    const res = await fetch(\'data/entries.json\', { cache: \'no-store\' });
+    entries = await res.json();
+    entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } catch (e) { entries = []; }
+
+  const leftSel = document.getElementById(\'compare-left\');
+  const rightSel = document.getElementById(\'compare-right\');
+  const spread = document.getElementById(\'compare-spread\');
+  const shuffleBtn = document.getElementById(\'compare-shuffle\');
+  const shareBtn = document.getElementById(\'compare-share\');
+
+  // Populate dropdowns
+  entries.forEach(e => {
+    [leftSel, rightSel].forEach(sel => {
+      const opt = document.createElement(\'option\');
+      opt.value = e.date; opt.textContent = e.word;
+      sel.appendChild(opt);
+    });
+  });
+
+  function renderEntry(e) {
+    if (!e) return \'<div class="compare-col compare-col--empty"><p style="text-align: center; opacity: 0.5; padding: 80px 20px;">Pick an entry</p></div>\';
+    const tags = (e.tags || []).map(t => `<span class="tag">${t}</span>`).join(\'\');
+    const def2 = e.definitions[1] ? `<li><strong>2.</strong> ${e.definitions[1]}</li>` : \'\';
+    const credit = e.photographer ? `Photo by <a href="${e.photographerUrl || \'#\'}" target="_blank" rel="noopener">${e.photographer}</a> on Unsplash` : \'\';
+    return `
+      <div class="compare-col">
+        <a class="compare-image-wrap" href="entries/${e.date}.html">
+          <img src="${e.image}" alt="${e.word}" loading="lazy" />
+        </a>
+        <p class="compare-caption">${e.caption || \'\'}</p>
+        <p class="compare-credit">${credit}</p>
+        <h3 class="compare-word"><a href="entries/${e.date}.html">${e.word}</a></h3>
+        <p class="compare-pron">${e.pronunciation || \'\'} <em>${e.partOfSpeech || \'n.\'}</em></p>
+        <ol class="compare-defs">
+          <li><strong>1.</strong> ${e.definitions[0]}</li>
+          ${def2}
+        </ol>
+        <p class="compare-example">"${e.example || \'\'}"</p>
+        <div class="compare-tags">${tags}</div>
+      </div>`;
+  }
+
+  function applyFromState() {
+    const left = entries.find(e => e.date === leftSel.value);
+    const right = entries.find(e => e.date === rightSel.value);
+    spread.innerHTML = renderEntry(left) + \'<div class="compare-divider"></div>\' + renderEntry(right);
+    highlightCcc(spread);
+
+    // Update URL hash for shareability
+    const params = new URLSearchParams();
+    if (left) params.set(\'a\', left.date);
+    if (right) params.set(\'b\', right.date);
+    history.replaceState(null, \'\', \'#\' + params.toString());
+  }
+
+  function pickFromHash() {
+    const hash = window.location.hash.replace(/^#/, \'\');
+    const params = new URLSearchParams(hash);
+    const a = params.get(\'a\'); const b = params.get(\'b\');
+    if (a && entries.some(e => e.date === a)) leftSel.value = a;
+    if (b && entries.some(e => e.date === b)) rightSel.value = b;
+  }
+
+  function randomPick() {
+    if (entries.length < 2) return;
+    const i = Math.floor(Math.random() * entries.length);
+    let j = Math.floor(Math.random() * entries.length);
+    while (j === i) j = Math.floor(Math.random() * entries.length);
+    leftSel.value = entries[i].date;
+    rightSel.value = entries[j].date;
+    applyFromState();
+  }
+
+  leftSel.addEventListener(\'change\', applyFromState);
+  rightSel.addEventListener(\'change\', applyFromState);
+  shuffleBtn.addEventListener(\'click\', randomPick);
+  shareBtn.addEventListener(\'click\', () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      shareBtn.textContent = \'Copied!\';
+      setTimeout(() => shareBtn.textContent = \'Copy share link →\', 1500);
+    }).catch(() => {
+      prompt(\'Copy this link:\', url);
+    });
+  });
+
+  // Initial: respect hash, else random pick
+  pickFromHash();
+  if (!leftSel.value || !rightSel.value || leftSel.value === rightSel.value) {
+    randomPick();
+  } else {
+    applyFromState();
+  }
+
+  highlightCcc(document.body);
+})();
+</script>
+
+</body>
+</html>
