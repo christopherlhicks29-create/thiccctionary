@@ -59,13 +59,14 @@
 <link rel="alternate" type="application/rss+xml" title="Thiccctionary RSS Feed" href="https://thiccctionary.com/feed.xml" />
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="masthead">
   <div class="masthead-top">
     <span class="meta-line">An Entry</span>
     <span class="meta-line meta-line--right">{{DATE_HUMAN}}</span>
   </div>
-  <h1 class="wordmark">
+  <h1 class="wordmark" aria-label="Thiccctionary">
     <span class="wordmark-the">The</span>
     <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
   </h1>
@@ -80,7 +81,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main-content">
   <a href="../archive.html" class="entry-back">← Back to the archive</a>
 
   <aside class="entry-context" aria-label="What is this">
@@ -150,8 +151,11 @@
     {{NEXT_NAV}}
   </nav>
 
-  <p style="text-align: center; margin: 32px 0 60px;">
+  <p style="text-align: center; margin: 32px 0 24px;">
     <a href="../random.html" class="btn-primary">Show me a random entry →</a>
+  </p>
+  <p style="text-align: center; margin: 0 0 60px; font-size: 13px; color: var(--ink-soft); font-style: italic;">
+    Run a blog? <a href="../embed/" style="color: var(--oxblood); border-bottom: 1px solid var(--oxblood); text-decoration: none;">Embed today\'s entry on your site</a>.
   </p>
 </main>
 

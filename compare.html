@@ -27,13 +27,14 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="masthead">
   <div class="masthead-top">
     <span class="meta-line">A Comparative Spread</span>
     <span class="meta-line meta-line--right">Two entries · One page</span>
   </div>
-  <h1 class="wordmark">
+  <h1 class="wordmark" aria-label="Thiccctionary">
     <span class="wordmark-the">The</span>
     <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
   </h1>
@@ -47,7 +48,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main-content">
   <section style="max-width: 1200px; margin: 32px auto 16px; padding: 0 24px; text-align: center;">
     <h2 style="font-family: var(--font-display); font-weight: 600; font-size: 32px; margin: 0 0 8px;">Compare Two Thiccc Things</h2>
     <p style="font-style: italic; opacity: 0.75; margin: 0 0 24px;">Pick any two entries. We&rsquo;ll lay them out side by side. Like a real dictionary spread, except neither of these belongs in a real dictionary.</p>
@@ -58,7 +59,7 @@
       <label for="compare-left">Left</label>
       <select id="compare-left"></select>
     </div>
-    <button class="compare-shuffle" id="compare-shuffle">Surprise me</button>
+    <button class="compare-shuffle" id="compare-shuffle" aria-label="Pick two random entries to compare">Surprise me</button>
     <div class="compare-picker">
       <label for="compare-right">Right</label>
       <select id="compare-right"></select>
@@ -70,7 +71,7 @@
   </div>
 
   <p style="text-align: center; margin: 40px 0;">
-    <button id="compare-share" class="btn-primary" type="button">Copy share link →</button>
+    <button id="compare-share" class="btn-primary" type="button" aria-label="Copy a link to this comparison to your clipboard">Copy share link →</button>
   </p>
 </main>
 

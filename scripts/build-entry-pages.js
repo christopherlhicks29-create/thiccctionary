@@ -150,10 +150,18 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     : '';
   const description = trimDescription(entry.definitions[0]);
 
-  // Build schema.org JSON-LD for this entry: DefinedTerm + Article
+  // Build schema.org JSON-LD for this entry: DefinedTerm + Article + BreadcrumbList
   const jsonld = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thiccctionary.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Archive", "item": "https://thiccctionary.com/archive.html" },
+          { "@type": "ListItem", "position": 3, "name": entry.word, "item": canonical }
+        ]
+      },
       {
         "@type": "DefinedTerm",
         "@id": canonical + "#term",

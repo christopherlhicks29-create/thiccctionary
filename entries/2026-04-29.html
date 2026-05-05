@@ -58,6 +58,29 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thiccctionary.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Archive",
+          "item": "https://thiccctionary.com/archive.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ford F-450",
+          "item": "https://thiccctionary.com/entries/2026-04-29.html"
+        }
+      ]
+    },
+    {
       "@type": "DefinedTerm",
       "@id": "https://thiccctionary.com/entries/2026-04-29.html#term",
       "name": "Ford F-450",
@@ -102,13 +125,14 @@
 <link rel="alternate" type="application/rss+xml" title="Thiccctionary RSS Feed" href="https://thiccctionary.com/feed.xml" />
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="masthead">
   <div class="masthead-top">
     <span class="meta-line">An Entry</span>
     <span class="meta-line meta-line--right">Wednesday, April 29, 2026</span>
   </div>
-  <h1 class="wordmark">
+  <h1 class="wordmark" aria-label="Thiccctionary">
     <span class="wordmark-the">The</span>
     <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
   </h1>
@@ -123,7 +147,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main-content">
   <a href="../archive.html" class="entry-back">← Back to the archive</a>
 
   <aside class="entry-context" aria-label="What is this">
@@ -183,9 +207,9 @@
       <span class="related-word">Concrete Mixer</span>
       <span class="related-snip">An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped mids…</span>
     </a>
-    <a class="related-card" href="2026-04-26.html">
-      <span class="related-word">Pumpkin, Atlantic Giant</span>
-      <span class="related-snip">A cultivar of pumpkin renowned for its prodigious girth, cultivated primarily for competitive size and decorat…</span>
+    <a class="related-card" href="2026-05-04.html">
+      <span class="related-word">Sofa, Chesterfield</span>
+      <span class="related-snip">A capacious upholstered seating apparatus characterized by its deep button-tufting and rolled arms, exuding an…</span>
     </a>
     <a class="related-card" href="2026-05-03.html">
       <span class="related-word">Banana, Cavendish</span>
@@ -210,8 +234,11 @@
     <a class="entry-nav-link entry-nav-link--next" href="2026-04-30.html"><span class="entry-nav-direction">Next entry →</span><span class="entry-nav-word">Avocado, Domestic</span></a>
   </nav>
 
-  <p style="text-align: center; margin: 32px 0 60px;">
+  <p style="text-align: center; margin: 32px 0 24px;">
     <a href="../random.html" class="btn-primary">Show me a random entry →</a>
+  </p>
+  <p style="text-align: center; margin: 0 0 60px; font-size: 13px; color: var(--ink-soft); font-style: italic;">
+    Run a blog? <a href="../embed/" style="color: var(--oxblood); border-bottom: 1px solid var(--oxblood); text-decoration: none;">Embed today\'s entry on your site</a>.
   </p>
 </main>
 
