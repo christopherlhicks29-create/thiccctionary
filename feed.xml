@@ -6,13 +6,21 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 May 2026 21:30:15 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 05 May 2026 21:37:03 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] The Anatomy of a Thiccc Vehicle</title>
+      <link>https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html</guid>
+      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
+      <description>Five parts worth knowing: wheelbase, aft, dually, cargo bay, kin. A field guide to the parts of a thiccc vehicle.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>[Article] Concrete: A Material Study</title>
       <link>https://thiccctionary.com/articles/concrete-material-study.html</link>
