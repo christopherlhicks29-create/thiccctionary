@@ -87,7 +87,67 @@ ${items}
 
   const outPath = path.join(ROOT, 'feed.xml');
   await fs.writeFile(outPath, xml);
+
+  // ---- Per-tag feeds ------------------------------------------------------
+  // Generate a /feed/<tag>.xml for any tag that appears in 2+ entries.
+  // Lets serious followers subscribe to e.g. only the vehicle entries.
+  await buildTagFeeds(entries);
+
   return outPath;
+}
+
+async function buildTagFeeds(entries) {
+  const feedsDir = path.join(ROOT, 'feed');
+  await fs.mkdir(feedsDir, { recursive: true });
+
+  // Tally tags
+  const counts = new Map();
+  for (const e of entries) {
+    for (const t of (e.tags || [])) {
+      const k = String(t).toLowerCase().trim();
+      if (!k) continue;
+      counts.set(k, (counts.get(k) || 0) + 1);
+    }
+  }
+
+  // Filter to tags that appear in >= 2 entries
+  const eligible = [...counts.entries()].filter(([, n]) => n >= 2).map(([t]) => t);
+
+  // Also delete stale feeds (tags that no longer qualify)
+  try {
+    const existing = await fs.readdir(feedsDir);
+    for (const f of existing) {
+      if (f.endsWith('.xml')) {
+        const tag = f.slice(0, -4);
+        if (!eligible.includes(tag)) {
+          await fs.unlink(path.join(feedsDir, f));
+        }
+      }
+    }
+  } catch (e) {}
+
+  for (const tag of eligible) {
+    const matching = entries.filter(e => (e.tags || []).map(t => String(t).toLowerCase().trim()).includes(tag));
+    matching.sort((a, b) => b.date.localeCompare(a.date));
+    const items = matching.map(entryItem).join('\n');
+    const tagLabel = tag.charAt(0).toUpperCase() + tag.slice(1);
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary — ${escapeXml(tagLabel)}</title>
+    <link>${SITE}/archive.html?tag=${encodeURIComponent(tag)}</link>
+    <atom:link href="${SITE}/feed/${tag}.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "${escapeXml(tag)}".</description>
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${items}
+  </channel>
+</rss>
+`;
+    await fs.writeFile(path.join(feedsDir, `${tag}.xml`), xml);
+  }
+
+  console.log(`Per-tag feeds: ${eligible.length} written (tags with 2+ entries)`);
 }
 
 // CLI

@@ -72,15 +72,15 @@
 
 <script>
 (async function () {
-  document.getElementById(\'year\').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
   let entries = [];
   try {
-    const res = await fetch(\'../data/entries.json\', { cache: \'no-store\' });
+    const res = await fetch('../data/entries.json', { cache: 'no-store' });
     entries = await res.json();
   } catch (e) {}
-  const cloud = document.getElementById(\'tag-cloud\');
+  const cloud = document.getElementById('tag-cloud');
   if (!entries.length) {
-    cloud.innerHTML = \'<p style="text-align: center; padding: 40px; opacity: 0.5;">No tags yet. Check back soon.</p>\';
+    cloud.innerHTML = '<p style="text-align: center; padding: 40px; opacity: 0.5;">No tags yet. Check back soon.</p>';
     return;
   }
   const counts = new Map();
@@ -89,9 +89,12 @@
     counts.set(k, (counts.get(k) || 0) + 1);
   }));
   const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  cloud.innerHTML = sorted.map(([t, n]) =>
-    `<a class="tag-cloud-item" href="../archive.html?tag=${encodeURIComponent(t)}"><span class="tag-cloud-name">${t}</span><span class="tag-cloud-count">${n}</span></a>`
-  ).join(\'\');
+  cloud.innerHTML = sorted.map(([t, n]) => {
+    const feedLink = n >= 2
+      ? `<a class="tag-cloud-rss" href="../feed/${encodeURIComponent(t)}.xml" title="RSS feed for ${t}" aria-label="RSS feed for ${t}">RSS</a>`
+      : '';
+    return `<span class="tag-cloud-row"><a class="tag-cloud-item" href="../archive.html?tag=${encodeURIComponent(t)}"><span class="tag-cloud-name">${t}</span><span class="tag-cloud-count">${n}</span></a>${feedLink}</span>`;
+  }).join('');
 })();
 </script>
 

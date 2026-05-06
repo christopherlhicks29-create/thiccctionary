@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary — Botanical</title>
+    <link>https://thiccctionary.com/archive.html?tag=botanical</link>
+    <atom:link href="https://thiccctionary.com/feed/botanical.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "botanical".</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 May 2026 05:02:51 GMT</lastBuildDate>
+    <item>
+      <title>Heritage Tomato</title>
+      <link>https://thiccctionary.com/entries/2026-04-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-28.html</guid>
+      <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A variety of tomato plant cultivated from traditional, non-hybrid seeds, noted for its rich flavor and often irregular, voluptuous form.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-28.jpg" type="image/jpeg" length="0" />
+      <category>botanical</category><category>gastronomy</category><category>agriculture</category>
+    </item>
+    <item>
+      <title>Pumpkin, Atlantic Giant</title>
+      <link>https://thiccctionary.com/entries/2026-04-26.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-26.html</guid>
+      <pubDate>Sun, 26 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cultivar of pumpkin renowned for its prodigious girth, cultivated primarily for competitive size and decorative impact.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-26.jpg" type="image/jpeg" length="0" />
+      <category>botanical</category><category>gourds</category><category>competitive horticulture</category>
+    </item>
+  </channel>
+</rss>
