@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Is It Thiccc? — Rate any image · Thiccctionary</title>
+<meta name="description" content="Drop in a photo, get a thiccc rating with editorial commentary in the dictionary register. Strictly things, never people." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/rate/" />
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta property="og:title" content="Is It Thiccc? — Rate any image" />
+<meta property="og:description" content="Drop in any photo and get a thiccc rating with editorial commentary. Strictly things, never people." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/rate/" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@thiccctionary" />
+<meta name="twitter:image" content="https://thiccctionary.com/og-default.png" />
+<link rel="alternate" type="application/rss+xml" title="Thiccctionary RSS Feed" href="https://thiccctionary.com/feed.xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">An Apparatus</span>
+    <span class="meta-line meta-line--right">For Editorial Rating</span>
+  </div>
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+    </a>
+  </h1>
+  <nav class="nav">
+    <a href="../index.html" class="nav-link">Today's Entry</a>
+    <a href="../archive.html" class="nav-link">The Archive</a>
+    <a href="../articles/" class="nav-link">Articles</a>
+    <a href="../random.html" class="nav-link">Random</a>
+    <a href="../compare.html" class="nav-link">Compare</a>
+    <a href="../rate/" class="nav-link nav-link--active">Rate</a>
+    <a href="../submit.html" class="nav-link">Submit a Thiccc</a>
+  </nav>
+</header>
+
+<main id="main-content" style="max-width: 880px; margin: 3rem auto 4rem; padding: 0 1.5rem;">
+
+  <section class="rate-hero" style="text-align: center; margin-bottom: 2.5rem;">
+    <p class="entry-date-stamp" style="display: inline-block;">An Apparatus · The Editorial Apparatus</p>
+    <h2 class="entry-word" style="margin-top: 0.75rem;">Is It Thiccc?</h2>
+    <p style="font-style: italic; opacity: 0.75; max-width: 560px; margin: 0.75rem auto 0;">Drop in a photograph. Receive a thicccness rating, in the editorial register, with full commentary on silhouette, ratio, and character. Strictly things, never people.</p>
+  </section>
+
+  <!-- Drop zone -->
+  <section id="rate-input" aria-label="Submit an image">
+    <label for="rate-file" id="rate-dropzone" style="display: block; border: 2px dashed var(--rule); border-radius: 6px; padding: 3rem 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s;">
+      <p style="margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6;">Step One</p>
+      <p style="margin: 0.5rem 0 0; font-size: 1.25rem;"><strong>Drop a photograph here</strong> — or click to browse.</p>
+      <p style="margin: 0.5rem 0 0; opacity: 0.6; font-size: 0.95rem;">JPEG / PNG / WebP. Up to 8 MB.</p>
+    </label>
+    <input id="rate-file" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+
+    <details style="margin-top: 1rem;">
+      <summary style="cursor: pointer; opacity: 0.65; font-size: 0.95rem;">Or paste an image URL</summary>
+      <div style="display: flex; gap: 8px; margin-top: 0.75rem;">
+        <input id="rate-url" type="url" placeholder="https://example.com/photo.jpg" style="flex: 1; padding: 0.6rem 0.8rem; font-family: var(--font-body); border: 1px solid var(--rule); border-radius: 4px; background: transparent; color: inherit;" />
+        <button id="rate-url-submit" type="button" class="share-btn">Plate it</button>
+      </div>
+    </details>
+
+    <p id="rate-quota" style="margin-top: 1rem; text-align: center; opacity: 0.55; font-size: 0.9rem; font-family: var(--font-mono); letter-spacing: 0.05em;">5 of 5 ratings remaining today</p>
+  </section>
+
+  <!-- Result panel -->
+  <section id="rate-result" hidden style="margin-top: 3rem;" aria-live="polite">
+    <div id="rate-result-card" style="border: 1px solid var(--rule); border-radius: 6px; padding: 2rem; background: rgba(0,0,0,0.02);">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- Stand-alone refusal panel for "no humans" -->
+  <section id="rate-refusal" hidden style="margin-top: 3rem;">
+    <div style="border-left: 4px solid var(--oxblood); padding: 1.5rem 1.5rem 1.5rem 2rem; background: rgba(139,31,31,0.04);">
+      <p style="margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood);">Editorial Decline</p>
+      <p style="margin: 0.5rem 0 0; font-size: 1.15rem;"><strong>We do not rate humans here.</strong></p>
+      <p style="margin: 0.5rem 0 0; font-style: italic; opacity: 0.85;">The Thiccctionary is a catalog of objects, vehicles, and produce. Bodies belong to their owners. Try a fire hydrant.</p>
+      <button type="button" class="share-btn" style="margin-top: 1rem;" onclick="resetRater()">Try another</button>
+    </div>
+  </section>
+
+  <!-- About this tool -->
+  <section style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);">
+    <h3 style="margin-top: 0;">About this apparatus</h3>
+    <p>The classifier reads the image, weighs it against our editorial standards (silhouette, ratio, character, presence), and returns a rating from 1 to 10 with commentary in the dictionary register.</p>
+    <p>It refuses photographs of people. This is not a body-rating tool. The rule is the brand promise.</p>
+    <p>You may rate up to 5 photographs per day at no cost. Subscribers to the Thiccctionary newsletter receive unlimited ratings.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary</p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="../archive.html">Archive</a>
+      <a href="../tags/">Tags</a>
+      <a href="../articles/">Articles</a>
+      <a href="../compare.html">Compare</a>
+      <a href="../rate/">Rate</a>
+      <a href="../submit.html">Submit</a>
+      <a href="../embed/">Embed</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="../legal/terms.html">Terms</a>
+      <a href="../legal/privacy.html">Privacy</a>
+      <a href="../press/">Press</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/*
+ * Is It Thiccc? — classifier UI
+ *
+ * STUB MODE: API call returns mock data so the UI flow can be verified
+ * end-to-end without spending OpenAI tokens. Toggle USE_LIVE_API once
+ * Christopher approves the live integration. The system prompt below is
+ * the full prompt that will be sent to GPT-4o vision when live.
+ */
+
+const USE_LIVE_API = false;  // <-- flip to true after approval
+
+// ---- The system prompt that drives editorial output ---------------------
+const SYSTEM_PROMPT = `You are the editorial apparatus of Thiccctionary, a satirical daily dictionary of objects of unusual girth. Strictly things, never people.
+
+Your job: rate one photograph for thicccness on a 1.0 to 10.0 scale, with one decimal, and write commentary in the dictionary register.
+
+VOICE:
+- Pseudo-academic, dry, faintly Victorian. Like a 1924 trade journal.
+- Em-dashes are welcome — they do comic timing work.
+- No promotional language. No "groundbreaking" or "stunning". This is criticism, not marketing.
+- Write 2-3 sentences of commentary. Specific. Reference the silhouette, the ratio, the character.
+
+RULES:
+- If the image contains a person, a face, a body, or any human subject: refuse. Output exactly: {"refused": true, "reason": "human subject"}
+- If the image is illegible, blurry beyond recognition, or empty: refuse with reason "illegible".
+- Otherwise: identify what the object is (a noun phrase), rate its thicccness, and write commentary.
+
+OUTPUT FORMAT (strict JSON, no surrounding text):
+{
+  "subject": "fire hydrant, municipal",
+  "rating": 8.5,
+  "commentary": "A solid lower-third stance with a tapered bonnet — the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
+  "tags": ["industrial", "municipal", "iron"]
+}
+
+GRADING REFERENCE (calibration):
+- 9.5-10: defines the form. Cement mixer, Bagger 288, Saturn V.
+- 8.0-9.4: textbook example. F-450 dually, side-by-side fridge, Atlantic Giant pumpkin.
+- 6.5-7.9: meets the standard. Chesterfield sofa, banana, mailbox.
+- 5.0-6.4: present but unremarkable. Standard sedan, regular tomato.
+- 1.0-4.9: thin or insubstantial. Whippet, lamppost, drinking straw.`;
+
+// ---- Mock responses for stub mode ---------------------------------------
+const MOCK_RESPONSES = [
+  {
+    subject: "fire hydrant, municipal",
+    rating: 8.5,
+    commentary: "A solid lower-third stance with a tapered bonnet — the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
+    tags: ["industrial", "municipal", "iron"],
+    closest: { word: "Concrete Mixer", date: "2026-04-27" }
+  },
+  {
+    subject: "kitchen stand mixer, retro",
+    rating: 7.8,
+    commentary: "A dignified industrial silhouette miniaturized for the domestic counter — the head-and-bowl ratio is correct, the chrome announces itself without theatre. Loses half a point for the bowl, which strains for height it doesn't quite earn.",
+    tags: ["domestic", "appliance", "kitchen"],
+    closest: { word: "Frigidaire, Side-by-Side", date: "2026-05-02" }
+  },
+  {
+    subject: "watermelon, transit",
+    rating: 6.9,
+    commentary: "Substantial without commitment. The oblong profile reads as transitional — neither the disciplined sphere of a true thiccc gourd nor the considered length of a heritage cylinder. A working-class fruit that knows its station.",
+    tags: ["produce", "summer"],
+    closest: { word: "Pumpkin, Atlantic Giant", date: "2026-04-26" }
+  }
+];
+
+let mockIndex = 0;
+
+// ---- Quota management (localStorage) ------------------------------------
+const QUOTA_KEY = 'thiccc_rate_quota';
+const QUOTA_MAX = 5;
+function getQuotaState() {
+  try {
+    const raw = localStorage.getItem(QUOTA_KEY);
+    if (!raw) return { date: new Date().toDateString(), used: 0 };
+    const parsed = JSON.parse(raw);
+    if (parsed.date !== new Date().toDateString()) return { date: new Date().toDateString(), used: 0 };
+    return parsed;
+  } catch (e) { return { date: new Date().toDateString(), used: 0 }; }
+}
+function bumpQuota() {
+  const s = getQuotaState();
+  s.used += 1;
+  try { localStorage.setItem(QUOTA_KEY, JSON.stringify(s)); } catch (e) {}
+  return s;
+}
+function renderQuota() {
+  const s = getQuotaState();
+  const remaining = Math.max(0, QUOTA_MAX - s.used);
+  const el = document.getElementById('rate-quota');
+  if (remaining === 0) {
+    el.innerHTML = '<strong>Daily allotment exhausted.</strong> <a href="../index.html#subscribe">Subscribe</a> for unlimited ratings.';
+  } else {
+    el.textContent = `${remaining} of ${QUOTA_MAX} ratings remaining today`;
+  }
+}
+
+// ---- API call (stubbed) -------------------------------------------------
+async function classifyImage(imageData) {
+  if (!USE_LIVE_API) {
+    // Stub: cycle through mock responses, occasionally trigger refusal
+    await new Promise(r => setTimeout(r, 900));  // simulate latency
+    if (mockIndex === 1 && imageData.simulateRefusal) {
+      return { refused: true, reason: 'human subject' };
+    }
+    const r = MOCK_RESPONSES[mockIndex % MOCK_RESPONSES.length];
+    mockIndex++;
+    return r;
+  }
+  // Live mode (TBD): POST to a Cloudflare Worker that proxies OpenAI vision
+  // with the SYSTEM_PROMPT above. Worker handles rate limiting + face detection
+  // pre-check. Returns the same JSON shape.
+  throw new Error('Live API not yet wired');
+}
+
+// ---- UI wiring ----------------------------------------------------------
+const fileInput = document.getElementById('rate-file');
+const dropzone = document.getElementById('rate-dropzone');
+const urlInput = document.getElementById('rate-url');
+const urlSubmit = document.getElementById('rate-url-submit');
+const resultSection = document.getElementById('rate-result');
+const resultCard = document.getElementById('rate-result-card');
+const refusalSection = document.getElementById('rate-refusal');
+
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.background = 'rgba(139,31,31,0.04)'; });
+dropzone.addEventListener('dragleave', () => { dropzone.style.background = ''; });
+dropzone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropzone.style.background = '';
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+urlSubmit.addEventListener('click', () => {
+  const u = urlInput.value.trim();
+  if (!u) return;
+  handleUrl(u);
+});
+
+async function handleFile(file) {
+  if (!checkQuota()) return;
+  const reader = new FileReader();
+  reader.onload = async (ev) => {
+    await runClassify({ dataUrl: ev.target.result, simulateRefusal: false });
+  };
+  reader.readAsDataURL(file);
+}
+
+async function handleUrl(url) {
+  if (!checkQuota()) return;
+  // For "no humans" demo, simulate refusal if URL contains "person" or "face"
+  const simulateRefusal = /person|face|body/i.test(url);
+  await runClassify({ url: url, simulateRefusal });
+}
+
+function checkQuota() {
+  const s = getQuotaState();
+  if (s.used >= QUOTA_MAX) {
+    alert('Daily allotment exhausted. Subscribe for unlimited ratings.');
+    return false;
+  }
+  return true;
+}
+
+async function runClassify(imageData) {
+  resultSection.hidden = true;
+  refusalSection.hidden = true;
+  resultCard.innerHTML = '<p style="text-align: center; opacity: 0.6; font-style: italic;">The apparatus considers your submission…</p>';
+  resultSection.hidden = false;
+
+  try {
+    const result = await classifyImage(imageData);
+    bumpQuota();
+    renderQuota();
+    if (result.refused) {
+      resultSection.hidden = true;
+      refusalSection.hidden = false;
+      return;
+    }
+    renderResult(result, imageData);
+  } catch (e) {
+    resultCard.innerHTML = `<p style="color: var(--oxblood);">The apparatus has failed: ${e.message}. Try again.</p>`;
+  }
+}
+
+function renderResult(r, imageData) {
+  const previewSrc = imageData.dataUrl || imageData.url || '';
+  resultCard.innerHTML = `
+    <div style="display: grid; grid-template-columns: minmax(200px, 1fr) 2fr; gap: 1.5rem; align-items: start;">
+      <img src="${previewSrc}" alt="Submitted photograph" style="width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--rule); border-radius: 4px;" />
+      <div>
+        <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin: 0;">Editorial Verdict</p>
+        <p style="font-family: var(--font-display); font-size: 3rem; line-height: 1; margin: 0.25rem 0 0; color: var(--oxblood); font-weight: 700;">${r.rating.toFixed(1)} <span style="font-size: 1.5rem; opacity: 0.5;">/ 10</span></p>
+        <p style="margin: 0.25rem 0 0; font-style: italic; opacity: 0.75;">Subject: ${escapeHtml(r.subject)}</p>
+      </div>
+    </div>
+    <p style="margin: 1.5rem 0 0; font-size: 1.05rem; line-height: 1.6;">${escapeHtml(r.commentary)}</p>
+    ${r.closest ? `<p style="margin: 1rem 0 0; opacity: 0.75;">Closest match in our archive: <a href="../entries/${r.closest.date}.html"><strong>${escapeHtml(r.closest.word)}</strong></a></p>` : ''}
+    <div class="entry-share" style="margin-top: 1.5rem;">
+      <span class="share-label">Spread the verdict:</span>
+      <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('I had ' + r.subject + ' rated by @thiccctionary. Verdict: ' + r.rating.toFixed(1) + '/10. ' + r.commentary)}&url=${encodeURIComponent('https://thiccctionary.com/rate/')}" class="share-btn" target="_blank" rel="noopener">Twitter</a>
+      <a href="#" class="share-btn" data-share="copy" data-share-url="https://thiccctionary.com/rate/">Copy link</a>
+      <a href="#" class="share-btn share-btn--secondary" onclick="resetRater(); return false;">Rate another</a>
+    </div>
+  `;
+
+  // Wire copy-link
+  resultCard.querySelectorAll('[data-share="copy"]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const u = btn.getAttribute('data-share-url') || window.location.href;
+      navigator.clipboard.writeText(u).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 1400);
+      });
+    });
+  });
+}
+
+function resetRater() {
+  resultSection.hidden = true;
+  refusalSection.hidden = true;
+  fileInput.value = '';
+  urlInput.value = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+// Initialize
+renderQuota();
+</script>
+
+</body>
+</html>
