@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 May 2026 18:18:42 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 18:44:41 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Watermelon, Moon and Stars</title>
+      <link>https://thiccctionary.com/entries/2026-05-05.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-05.html</guid>
+      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
+      <description>A heritage variety of watermelon noted for its celestial patterning, with pale yellow spots and splotches resembling lunar and astral bodies on its verdant rind; esp. when admired in repose at golden hour.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-05.jpg" type="image/jpeg" length="0" />
+      <category>botany</category><category>heritage</category><category>astronomy</category>
+    </item>
     <item>
       <title>[Article] The Anatomy of a Thiccc Vehicle</title>
       <link>https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html</link>
