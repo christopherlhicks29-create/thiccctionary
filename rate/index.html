@@ -606,6 +606,23 @@ function escapeHtml(s) {
 
 // Initialize
 renderQuota();
+
+// If we got here from the browser extension (or a deep link with ?u=URL),
+// auto-fill the URL input and kick off classification.
+(() => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const u = params.get('u') || params.get('url');
+    if (u) {
+      const urlInput = document.getElementById('rate-url');
+      if (urlInput) urlInput.value = u;
+      // Clean URL so a refresh doesn't re-fire
+      try { history.replaceState(null, '', '/rate/'); } catch (e) {}
+      // Auto-submit
+      handleUrl(u);
+    }
+  } catch (e) { /* no-op */ }
+})();
 </script>
 
 </body>
