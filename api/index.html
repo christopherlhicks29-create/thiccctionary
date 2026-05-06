@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Developer API — Thiccctionary</title>
+<meta name="description" content="Programmatic access to Thiccctionary entries — today's word, random, and the full archive. CORS-open, no auth, free." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="canonical" href="https://thiccctionary.com/api/" />
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta property="og:title" content="Developer API — Thiccctionary" />
+<meta property="og:description" content="Programmatic access to Thiccctionary entries. Build a Slack bot, a desk display, anything." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/api/" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@thiccctionary" />
+<meta name="twitter:image" content="https://thiccctionary.com/og-default.png" />
+<link rel="alternate" type="application/rss+xml" title="Thiccctionary RSS Feed" href="https://thiccctionary.com/feed.xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">For Tinkerers</span>
+    <span class="meta-line meta-line--right">Developer Reference</span>
+  </div>
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+    </a>
+  </h1>
+  <nav class="nav">
+    <a href="../index.html" class="nav-link">Today's Entry</a>
+    <a href="../archive.html" class="nav-link">The Archive</a>
+    <a href="../articles/" class="nav-link">Articles</a>
+    <a href="../random.html" class="nav-link">Random</a>
+    <a href="../compare.html" class="nav-link">Compare</a>
+    <a href="../rate/" class="nav-link">Rate</a>
+    <a href="../submit.html" class="nav-link">Submit a Thiccc</a>
+  </nav>
+</header>
+
+<main id="main-content" style="max-width: 880px; margin: 3rem auto 4rem; padding: 0 1.5rem; line-height: 1.7;">
+
+  <p class="entry-date-stamp" style="display: inline-block;">For Tinkerers · Developer Reference</p>
+  <h2 style="margin-top: 0.75rem;">Developer API</h2>
+  <p style="font-style: italic; opacity: 0.75; max-width: 620px;">Programmatic access to Thiccctionary entries. Build a Slack bot, a Discord notifier, a desk display, an RPi e-paper sign, a daily Stripe internal-tools widget — anything. Free, CORS-open, no auth required.</p>
+
+  <h3 style="margin-top: 2.5rem;">Endpoints</h3>
+
+  <h4 style="margin-top: 1.5rem;">GET /api/today</h4>
+  <p>Returns today's entry as JSON. Updates once per day around 13:00 UTC when the cron pipeline ships a new entry.</p>
+  <pre style="background: rgba(0,0,0,0.04); padding: 1rem 1.25rem; border-radius: 4px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.5;"><code>curl https://thiccctionary.com/api/today
+
+{
+  "date": "2026-05-04",
+  "word": "Sofa, Chesterfield",
+  "pronunciation": "/CHOOS-ter-feeld/",
+  "partOfSpeech": "n.",
+  "definitions": [
+    "A capacious upholstered seating apparatus..."
+  ],
+  "etymology": "From the Earl of Chesterfield...",
+  "example": "...",
+  "image": {
+    "url": "https://thiccctionary.com/images/2026-05-04.jpg",
+    "caption": "...",
+    "credit": "..."
+  },
+  "tags": ["furniture", "upholstery", "opulence"],
+  "url": "https://thiccctionary.com/entries/2026-05-04.html"
+}</code></pre>
+
+  <h4 style="margin-top: 1.5rem;">GET /api/random</h4>
+  <p>Returns one random entry from the archive as JSON. Same shape as <code>/api/today</code>. Cache-Control: no-store.</p>
+  <pre style="background: rgba(0,0,0,0.04); padding: 1rem 1.25rem; border-radius: 4px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px;"><code>curl https://thiccctionary.com/api/random</code></pre>
+
+  <h4 style="margin-top: 1.5rem;">GET /data/entries.json</h4>
+  <p>The full archive as a single JSON array, sorted descending by date. This is the source of truth — both <code>/api/today</code> and <code>/api/random</code> read from it. Use this if you want to mirror the catalog or run analytics over it.</p>
+
+  <h4 style="margin-top: 1.5rem;">POST /api/rate</h4>
+  <p>Image-rating classifier. POST a JSON body with either <code>imageUrl</code> (remote URL) or <code>imageDataUrl</code> (base64 data URL). Returns a verdict with rating, commentary, and closest archive match. Refuses photographs of people.</p>
+  <pre style="background: rgba(0,0,0,0.04); padding: 1rem 1.25rem; border-radius: 4px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px;"><code>curl -X POST https://thiccctionary.com/api/rate \
+  -H 'content-type: application/json' \
+  -d '{"imageUrl": "https://example.com/fire-hydrant.jpg"}'</code></pre>
+
+  <h3 style="margin-top: 2.5rem;">RSS feeds</h3>
+  <ul>
+    <li><a href="../feed.xml">/feed.xml</a> — full archive (entries + articles), sorted by date desc</li>
+    <li><a href="../feed/vehicle.xml">/feed/vehicle.xml</a> — only vehicle-tagged entries</li>
+    <li><a href="../feed/fruit.xml">/feed/fruit.xml</a> — only fruit-tagged entries</li>
+    <li><a href="../feed/botanical.xml">/feed/botanical.xml</a> — only botanical-tagged entries</li>
+    <li><a href="../feed/agriculture.xml">/feed/agriculture.xml</a> — only agriculture-tagged entries</li>
+  </ul>
+  <p style="opacity: 0.7; font-size: 0.95rem;"><em>Per-tag feeds appear automatically when a tag reaches 2+ entries. Stale feeds are cleaned up when their tags drop below threshold.</em></p>
+
+  <h3 style="margin-top: 2.5rem;">Rate limits and fair use</h3>
+  <p>The read endpoints (<code>/api/today</code>, <code>/api/random</code>, RSS, and <code>/data/entries.json</code>) are cached aggressively at the edge. Hammer them all you want — they cost us nothing.</p>
+  <p>The classifier (<code>/api/rate</code>) hits OpenAI's API, which we pay for per call. Browser-side users are capped at 5 ratings per day in localStorage. Programmatic clients should self-limit similarly. We may impose server-side limits later if abuse appears.</p>
+
+  <h3 style="margin-top: 2.5rem;">Embed widget</h3>
+  <p>If you don't want to call the API yourself, drop our <a href="../embed/">iframe widget</a> on your site and let it render today's entry for you.</p>
+
+  <h3 style="margin-top: 2.5rem;">Show us what you build</h3>
+  <p>If you ship something interesting, tag <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">@thiccctionary</a> on X or DM <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">@ogthiccctionary</a> on Instagram. We will plausibly retweet or repost.</p>
+
+  <p style="margin-top: 3rem; text-align: center; opacity: 0.5; font-style: italic;">All endpoints stable and free. Strictly things, never people.</p>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary</p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="../archive.html">Archive</a>
+      <a href="../tags/">Tags</a>
+      <a href="../articles/">Articles</a>
+      <a href="../compare.html">Compare</a>
+      <a href="../rate/">Rate</a>
+      <a href="../api/">API</a>
+      <a href="../embed/">Embed</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="../legal/terms.html">Terms</a>
+      <a href="../legal/privacy.html">Privacy</a>
+      <a href="../press/">Press</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>
