@@ -375,7 +375,17 @@ async function main() {
   console.log(`Saved image to images/${filename}`);
 
   // Step 4b: design critique (logged to PR body so Christopher can see if image needs review)
-  const critique = await critiqueChosenImage(subjectInfo.subject, chosen);
+  // Wrapped in extra try/catch + 20s timeout so it can NEVER block the daily pipeline.
+  let critique = { score: null, verdict: 'unknown', critique: 'Critique step skipped.' };
+  try {
+    const critiquePromise = critiqueChosenImage(subjectInfo.subject, chosen);
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('critique timeout')), 20000));
+    critique = await Promise.race([critiquePromise, timeoutPromise]);
+  } catch (e) {
+    console.warn('Design critique skipped (outer catch):', e.message);
+    critique = { score: null, verdict: 'unknown', critique: `Critique unavailable: ${e.message}` };
+  }
 
   // Step 5: write the entry
   const entryCopy = await generateEntry(subjectInfo.subject, chosen);
@@ -402,7 +412,11 @@ async function main() {
 
   // Write critique to a side-channel file so the GH Actions workflow can pick it up
   // for the PR body. Not committed to entries.json — it's purely review metadata.
-  await fs.writeFile(path.join(ROOT, 'data', '.critique.json'), JSON.stringify(critique, null, 2));
+  try {
+    await fs.writeFile(path.join(ROOT, 'data', '.critique.json'), JSON.stringify(critique, null, 2));
+  } catch (e) {
+    console.warn('Failed to write critique side-channel file:', e.message);
+  }
 
   // Step 7: build the per-entry HTML page and refresh the sitemap
   const entryPagePath = await buildEntryPage(entry);
