@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-05-06",
+    "word": "Wheel, Parmigiano-Reggiano",
+    "pronunciation": "par-mih-JAH-noh red-jee-AH-noh",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A cylindrical mass of aged cheese, notable for its robust curvature and dense, granular interior; often showcased in markets and delicatessens worldwide.",
+      "<em>Colloq.</em> A creamy behemoth of Italian craftsmanship, remarkably thiccc and unapologetically flavorful."
+    ],
+    "example": "The thiccc Parmigiano-Reggiano wheel was so monumental, it turned the cheese counter into a stage for dairy divas. Golden hour never tasted so good.",
+    "etymology": "From Italian, named after the regions of Parma and Reggio Emilia where it is produced, combined with the word 'wheel,' which rolls with the best of them.",
+    "image": "images/2026-05-06.jpg",
+    "caption": "Plate N. — A Parmigiano-Reggiano wheel, captured at its most serene, contemplating its own thicccness.",
+    "tags": [
+      "cheese",
+      "Italian",
+      "culinary"
+    ],
+    "photographer": "David Xeli",
+    "photographerUrl": "https://unsplash.com/@dxelihside",
+    "unsplashUrl": "https://unsplash.com/photos/several-stacks-of-cheese-stacked-on-top-of-each-other-CxjyaNjSdzY"
+  },
+  {
     "date": "2026-05-05",
     "word": "Watermelon, Moon and Stars",
     "pronunciation": "/WAW-ter-mel-un, MUN and STARZ/",
