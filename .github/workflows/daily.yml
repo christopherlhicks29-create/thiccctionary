@@ -38,6 +38,8 @@ jobs:
           node-version: '20'
 
       - name: Install ffmpeg (for video build)
+        timeout-minutes: 3
+        continue-on-error: true
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
       - name: Fetch open daily/* branches
