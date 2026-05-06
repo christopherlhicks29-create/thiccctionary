@@ -14,6 +14,12 @@ on:
         description: "Replace today's entry if one already exists (otherwise the workflow exits early)"
         type: boolean
         default: false
+  # Manual fire-from-anywhere trigger: touch data/.fire-daily and push.
+  # Useful when the cron is failing and we need a daily entry to ship anyway.
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-daily'
 
 permissions:
   contents: write
