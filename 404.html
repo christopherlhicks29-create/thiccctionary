@@ -6,6 +6,8 @@
 <title>Not Found — Thiccctionary</title>
 <meta name="description" content="That entry is not in our lexicon. Yet. Browse the archive of catalogued thiccc objects, read editorial articles, or submit a new candidate for the Thiccctionary." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -87,5 +89,12 @@ function highlightCcc(root) {
 highlightCcc(document.body);
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

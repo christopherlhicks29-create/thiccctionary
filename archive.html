@@ -6,6 +6,8 @@
 <title>The Archive — Thiccctionary</title>
 <meta name="description" content="Browse every entry in the Thiccctionary archive — the satirical lexicon of objects, vehicles, and produce of unusual girth. Search by name, sort by date. Updated daily." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/archive.html" />
 
 <meta property="og:title" content="The Archive — Thiccctionary" />
@@ -251,5 +253,12 @@ function highlightCcc(root) {
 })();
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

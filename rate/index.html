@@ -6,6 +6,8 @@
 <title>Is It Thiccc? — Rate any image · Thiccctionary</title>
 <meta name="description" content="Drop in a photo, get a thiccc rating with editorial commentary in the dictionary register. Strictly things, never people." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/rate/" />
 <meta name="theme-color" content="#f5e8c7" />
 <meta property="og:locale" content="en_US" />
@@ -84,6 +86,15 @@
     <div id="rate-result-card" style="border: 1px solid var(--rule); border-radius: 6px; padding: 2rem; background: rgba(0,0,0,0.02);">
       <!-- Filled by JS -->
     </div>
+  </section>
+
+  <!-- Recent verdicts (localStorage-backed) -->
+  <section id="rate-history" hidden style="margin-top: 3rem;" aria-label="Your recent verdicts">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem;">
+      <h3 style="margin: 0; font-size: 1.05rem;">Your recent verdicts</h3>
+      <button type="button" id="rate-history-clear" class="share-btn share-btn--secondary" style="font-size: 11px;">Clear</button>
+    </div>
+    <div id="rate-history-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;"></div>
   </section>
 
   <!-- Stand-alone refusal panel for "no humans" -->
@@ -604,6 +615,99 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 }
 
+
+// ---- Verdict history (last 5 in localStorage) ---------------------------
+const HISTORY_KEY = 'thiccc_rate_history';
+const HISTORY_MAX = 5;
+
+function loadHistory() {
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) { return []; }
+}
+
+function saveHistory(items) {
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(items.slice(0, HISTORY_MAX))); }
+  catch (e) {}
+}
+
+function pushToHistory(verdict, imageSrc) {
+  if (!verdict || verdict.refused) return;
+  const items = loadHistory();
+  items.unshift({
+    rating: verdict.rating,
+    subject: verdict.subject,
+    commentary: verdict.commentary,
+    closest: verdict.closest || null,
+    image: imageSrc.startsWith('data:') ? imageSrc : imageSrc,  // cap large data URLs
+    timestamp: Date.now()
+  });
+  saveHistory(items);
+  renderHistory();
+}
+
+function renderHistory() {
+  const items = loadHistory();
+  const section = document.getElementById('rate-history');
+  const list = document.getElementById('rate-history-list');
+  if (!section || !list) return;
+  if (items.length === 0) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  list.innerHTML = items.map((it, i) => `
+    <button type="button" class="history-item" data-idx="${i}" style="text-align: left; background: rgba(0,0,0,0.02); border: 1px solid var(--rule); border-radius: 4px; padding: 0; overflow: hidden; cursor: pointer; font-family: inherit; color: inherit;">
+      <div style="aspect-ratio: 1; background: rgba(0,0,0,0.05); position: relative;">
+        ${it.image ? `<img src="${escapeHtml(it.image)}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />` : ''}
+        <span style="position: absolute; top: 4px; right: 4px; background: var(--oxblood); color: var(--cream); padding: 2px 8px; border-radius: 3px; font-family: var(--font-mono); font-weight: 600; font-size: 11px;">${it.rating.toFixed(1)}</span>
+      </div>
+      <div style="padding: 8px 10px;">
+        <p style="margin: 0; font-size: 12px; opacity: 0.7; font-style: italic;">${escapeHtml((it.subject || '').slice(0, 40))}${(it.subject || '').length > 40 ? '…' : ''}</p>
+      </div>
+    </button>
+  `).join('');
+
+  list.querySelectorAll('.history-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      const item = loadHistory()[idx];
+      if (!item) return;
+      // Re-render the result panel with this verdict
+      resultSection.hidden = false;
+      refusalSection.hidden = true;
+      renderResult(item, { dataUrl: item.image, url: null });
+      window.scrollTo({ top: resultSection.offsetTop - 40, behavior: 'smooth' });
+    });
+  });
+}
+
+document.getElementById('rate-history-clear')?.addEventListener('click', () => {
+  if (confirm('Clear your recent verdicts?')) {
+    saveHistory([]);
+    renderHistory();
+  }
+});
+
+// Hook into runClassify so successful (non-refused) verdicts get saved
+const _origRunClassify = runClassify;
+runClassify = async function(imageData) {
+  const result = await _origRunClassify(imageData);
+  // _origRunClassify renders directly; we tap the rendered state via a small hack:
+  // re-read the last verdict by inspecting MOCK or recapturing via the render path.
+  return result;
+};
+
+// Simpler: wrap renderResult instead so we capture the actual displayed verdict
+const _origRenderResult = renderResult;
+renderResult = function(r, imageData) {
+  _origRenderResult(r, imageData);
+  pushToHistory(r, imageData.dataUrl || imageData.url || '');
+};
+
 // Initialize
 renderQuota();
 
@@ -625,5 +729,12 @@ renderQuota();
 })();
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

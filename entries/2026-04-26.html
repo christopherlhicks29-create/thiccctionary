@@ -27,6 +27,8 @@
 <title>Pumpkin, Atlantic Giant — Thiccctionary</title>
 <meta name="description" content="A cultivar of pumpkin renowned for its prodigious girth, cultivated primarily for competitive size and decorative impact." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/entries/2026-04-26.html" />
 
 <meta property="og:title" content="Pumpkin, Atlantic Giant — Thiccctionary" />
@@ -332,5 +334,12 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
 </script>
 
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

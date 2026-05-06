@@ -27,6 +27,8 @@
 <title>Heritage Tomato — Thiccctionary</title>
 <meta name="description" content="A variety of tomato plant cultivated from traditional, non-hybrid seeds, noted for its rich flavor and often irregular, voluptuous form." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/entries/2026-04-28.html" />
 
 <meta property="og:title" content="Heritage Tomato — Thiccctionary" />
@@ -332,5 +334,12 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
 </script>
 
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

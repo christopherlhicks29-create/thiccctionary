@@ -6,6 +6,8 @@
 <title>The Anatomy of a Thiccc Vehicle — Thiccctionary</title>
 <meta name="description" content="A field guide to the parts of a thiccc vehicle. Wheelbase, aft, drum, dually, and what each part is doing for the silhouette." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html" />
 
 <meta name="theme-color" content="#f5e8c7" />
@@ -216,6 +218,13 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
     }
   });
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

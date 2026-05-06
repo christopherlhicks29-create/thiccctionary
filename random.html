@@ -5,6 +5,8 @@
 <title>Random Entry — Thiccctionary</title>
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -26,6 +28,13 @@
     window.location.href = 'archive.html';
   }
 })();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

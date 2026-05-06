@@ -6,6 +6,8 @@
 <title>Press Kit — Thiccctionary</title>
 <meta name="description" content="Press kit for Thiccctionary.com — brand assets, official descriptions, and contact for journalists and bloggers." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/press/" />
 <meta name="theme-color" content="#f5e8c7" />
 <meta property="og:locale" content="en_US" />
@@ -165,5 +167,12 @@
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
 </footer>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

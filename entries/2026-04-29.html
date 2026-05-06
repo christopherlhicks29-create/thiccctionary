@@ -27,6 +27,8 @@
 <title>Ram 3500, Dually — Thiccctionary</title>
 <meta name="description" content="A heavy-duty pickup truck of substantial posterior breadth, distinguished by dual rear wheels per side and an aggressively flared bedside that reads as…" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/entries/2026-04-29.html" />
 
 <meta property="og:title" content="Ram 3500, Dually — Thiccctionary" />
@@ -332,5 +334,12 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
 </script>
 
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

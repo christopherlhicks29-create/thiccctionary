@@ -6,6 +6,8 @@
 <title>Articles — Thiccctionary</title>
 <meta name="description" content="Long-form essays, rankings, and analysis from the Thiccctionary editorial desk. Editorial guides, hierarchies of girth, and the linguistic history of thiccc — updated as we have things worth saying." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/articles/" />
 <meta name="theme-color" content="#f5e8c7" />
 <meta property="og:locale" content="en_US" />
@@ -170,5 +172,12 @@
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
 </footer>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

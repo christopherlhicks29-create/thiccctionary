@@ -6,6 +6,8 @@
 <title>Submit a Thiccc — Thiccctionary</title>
 <meta name="description" content="Spotted a thiccc thing in the wild? Submit it to the Thiccctionary editorial desk. We catalog objects of unusual girth — vehicles, fruits, appliances, never people. Best submissions get published in the daily archive." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/submit.html" />
 <meta property="og:title" content="Submit a Thiccc — Thiccctionary" />
 <meta property="og:description" content="Spotted something thiccc? Send it in." />
@@ -121,5 +123,12 @@ function highlightCcc(root) {
 highlightCcc(document.body);
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

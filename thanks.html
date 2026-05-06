@@ -6,6 +6,8 @@
 <title>Thanks — Thiccctionary</title>
 <meta name="description" content="Thanks for reaching out. The editorial board reviews every submission." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <meta name="robots" content="noindex" />
 <link rel="canonical" href="https://thiccctionary.com/thanks.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,5 +71,12 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

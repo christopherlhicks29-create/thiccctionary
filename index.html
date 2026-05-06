@@ -6,6 +6,8 @@
 <title>Thiccctionary — A Daily Reference for Thiccc Things</title>
 <meta name="description" content="The world's first satirical dictionary of objects, vehicles, fruits, and other entities of unusual width. Updated daily." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/" />
 
 <!-- Open Graph -->
@@ -467,5 +469,12 @@
   });
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

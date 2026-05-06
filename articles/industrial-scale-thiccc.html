@@ -6,6 +6,8 @@
 <title>The Inherent Thicccness of Industrial Scale — Thiccctionary</title>
 <meta name="description" content="At a certain size, thiccc stops being a stylistic choice and becomes a structural requirement. A tour through the largest machines and structures on Earth — and why physics insists on their silhouette." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/articles/industrial-scale-thiccc.html" />
 
 <meta name="theme-color" content="#f5e8c7" />
@@ -252,6 +254,13 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
     }
   });
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

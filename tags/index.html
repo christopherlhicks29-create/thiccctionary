@@ -6,6 +6,8 @@
 <title>Tags — Thiccctionary</title>
 <meta name="description" content="Every tag in the Thiccctionary archive. Click one to filter the archive." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/tags/" />
 
 <meta name="theme-color" content="#f5e8c7" />
@@ -93,5 +95,12 @@
 })();
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

@@ -6,6 +6,8 @@
 <title>The Five Thiccc-est Things We've Catalogued (So Far) — Thiccctionary</title>
 <meta name="description" content="A working ranking of the thiccc-est entries in the Thiccctionary archive. From heritage tomatoes to wide-body airliners, a hierarchy of girth." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/articles/the-five-thicccest-things.html" />
 
 <meta name="theme-color" content="#f5e8c7" />
@@ -203,6 +205,13 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
     }
   });
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
