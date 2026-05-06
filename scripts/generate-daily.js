@@ -180,12 +180,14 @@ CRITICAL — the photo MUST show the WHOLE subject in frame:
 - REJECT tight crops, detail shots, side panels, single wheels, engine close-ups, or any composition where you can only see PART of the subject
 - If NONE of the candidates show the full subject, pick the one with the most of it visible
 
-Avoid:
-- Photos that include people, bodies, body parts, or hands
-- Photos that look like marketing/product renders or illustrations
-- Photos with watermarks or text overlays
-- Photos where the subject is too small, obscured, or in deep shadow
-- Detail shots focused on engineering parts rather than overall form
+HARD VETOES (these are AUTOMATIC rejection — never pick a photo with any of these):
+- ANY person, partial body, head, hand, arm, finger, leg — even in the background
+- Watermarks, text overlays, logos, captions
+- Marketing/product renders, illustrations, AI-generated stock — only real photographs
+- The subject occupies less than ~30% of the frame
+- The subject is in deep shadow or silhouette where its girth can't be seen
+
+If MORE THAN HALF of the candidates have any HARD VETO trigger, output {"pick": -1, "reason": "all candidates fail veto"}. The workflow will re-search with a broader query.
 
 Prefer:
 - Rear three-quarter angles, side profiles, or back views that show the FULL subject silhouette and emphasize girth
@@ -219,6 +221,14 @@ Output JSON only:
   if (!res.ok) throw new Error(`Vision pick failed: ${res.status} ${await res.text()}`);
   const data = await res.json();
   const result = JSON.parse(data.choices[0].message.content);
+
+  // Handle the explicit veto signal — pick == -1 means all candidates failed
+  // veto. Surface this so the caller can re-search with a broader query.
+  if (typeof result.pick === 'number' && result.pick === -1) {
+    console.warn(`Vision rejected all ${subset.length} candidates: ${result.reason || 'no reason'}`);
+    return { rejected: true, reason: result.reason || 'all candidates failed veto' };
+  }
+
   const idx = Math.max(1, Math.min(subset.length, result.pick)) - 1;
   console.log(`Vision picked #${idx + 1} of ${subset.length}: ${result.reason}`);
   return subset[idx];
@@ -416,7 +426,19 @@ async function main() {
   console.log(`Found ${candidates.length} candidate photos.`);
 
   // Step 3: pick the thiccest
-  const chosen = await pickThiccestImage(subjectInfo.subject, candidates);
+  let chosen = await pickThiccestImage(subjectInfo.subject, candidates);
+
+  // If the picker rejected ALL candidates (e.g. all have people in the frame),
+  // re-search with a broader query that biases toward isolated product shots.
+  if (chosen && chosen.rejected) {
+    console.warn('Picker rejected all candidates. Re-searching with isolation bias.');
+    const broaderQuery = `${subjectInfo.unsplashQuery} isolated studio no people`;
+    const retryCandidates = await searchUnsplash(broaderQuery);
+    chosen = await pickThiccestImage(subjectInfo.subject, retryCandidates);
+    if (chosen && chosen.rejected) {
+      throw new Error(`No acceptable photo found for subject "${subjectInfo.subject}". All candidates failed veto on both queries.`);
+    }
+  }
 
   // Step 4: download
   const filename = `${today}.jpg`;
@@ -434,6 +456,21 @@ async function main() {
   } catch (e) {
     console.warn('Design critique skipped (outer catch):', e.message);
     critique = { score: null, verdict: 'unknown', critique: `Critique unavailable: ${e.message}` };
+  }
+
+  // Critique acts as a GATE for the worst failures. Anything that explicitly
+  // says 'reject' or scores below 4 OR mentions people gets the workflow to
+  // exit non-zero, leaving no PR. Subtle issues still surface in the PR body
+  // for review without halting.
+  if (critique && (
+    critique.verdict === 'reject' ||
+    (typeof critique.score === 'number' && critique.score < 4) ||
+    /\bpeople\b|\bperson\b|\bhuman\b|\bbody\b|\bbodies\b|\bhand\b|\bhands\b/i.test(critique.critique || '')
+  )) {
+    console.error('GATE: critique flagged the image as unacceptable. Aborting before PR.');
+    console.error('  score:', critique.score, ' verdict:', critique.verdict);
+    console.error('  critique:', critique.critique);
+    process.exit(2);  // exit before write — workflow run fails, no PR opens, the subject remains available for next run
   }
 
   // Step 5: write the entry
