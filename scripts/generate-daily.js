@@ -419,11 +419,33 @@ async function main() {
   }
 
   // Step 7: build the per-entry HTML page and refresh the sitemap
-  const entryPagePath = await buildEntryPage(entry);
+  // entries.json is sorted newest-first so the new entry is at index 0; "next" in
+  // chronological terms is entries[i-1] (newer) — there is none for today, so null.
+  // "prev" is entries[i+1] (older).
+  const prev = entries.length > 1 ? entries[1] : null;
+  const next = null;
+  const entryPagePath = await buildEntryPage(entry, prev, next, entries);
   console.log(`Built entry page: ${path.relative(ROOT, entryPagePath)}`);
+
+  // ALSO rebuild prev's page so its "next entry →" link points to today.
+  if (prev) {
+    const prevPrev = entries.length > 2 ? entries[2] : null;
+    await buildEntryPage(prev, prevPrev, entry, entries);
+    console.log(`Rebuilt prev entry page (${prev.date}) so its next-link points to today.`);
+  }
+
   await buildSitemap(entries);
-  await buildRssFeed(entries);
-  console.log(`RSS feed rebuilt.`);
+
+  // Load articles so the RSS feed stays unified (entries + articles, newest first).
+  // Loss of articles in feed.xml has been the trigger for post-deploy-verify failures.
+  let articles = [];
+  try {
+    articles = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'articles.json'), 'utf8'));
+  } catch (e) {
+    console.warn('articles.json not loaded — RSS will not include articles:', e.message);
+  }
+  await buildRssFeed(entries, articles);
+  console.log(`RSS feed rebuilt with ${entries.length} entries + ${articles.length} articles.`);
   console.log(`Sitemap rebuilt with ${entries.length} entries.`);
 }
 
