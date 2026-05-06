@@ -40,6 +40,12 @@ jobs:
       - name: Install ffmpeg (for video build)
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
+      - name: Fetch open daily/* branches
+        # generate-daily.js reads these to avoid picking a subject that's already
+        # pending merge in another PR. Without this, watermelon gets picked twice
+        # in a row when yesterday's PR is unmerged at today's run.
+        run: git fetch origin "+refs/heads/daily/*:refs/remotes/origin/daily/*" 2>&1 || true
+
       - name: Generate today's entry
         working-directory: scripts
         env:

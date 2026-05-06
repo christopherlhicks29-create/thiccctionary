@@ -33,6 +33,39 @@ const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 const IMAGES_DIR = path.join(ROOT, 'images');
 
 // ---------- 1. Pick today's subject ----------
+
+// Read words from open daily/* PR branches so the subject picker doesn't
+// re-pick something that's already pending merge. Without this, watermelon
+// gets picked twice in a row when 5/5's PR is unmerged at 5/6's run.
+function pendingPrWords() {
+  try {
+    const { execSync } = require('node:child_process');
+    // Note: workflow MUST fetch daily/* refs before running this script.
+    // See .github/workflows/daily.yml — git fetch step.
+    const branches = execSync(
+      "git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/daily/*'",
+      { encoding: 'utf8' }
+    ).trim().split('\n').filter(Boolean);
+    const words = [];
+    for (const branch of branches) {
+      try {
+        const raw = execSync(
+          `git show ${branch}:data/entries.json`,
+          { encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }
+        );
+        const arr = JSON.parse(raw);
+        if (Array.isArray(arr) && arr.length > 0 && arr[0].word) {
+          words.push(arr[0].word);
+        }
+      } catch (e) { /* branch missing entries.json — skip */ }
+    }
+    return words;
+  } catch (e) {
+    // git not available, or no daily/* refs locally — degrade gracefully
+    return [];
+  }
+}
+
 async function pickSubject(usedWords) {
   const sysPrompt = `You suggest subjects for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS (never people, never bodies, never animals). Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods. The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
 
@@ -353,12 +386,28 @@ async function main() {
   }
 
   // Step 1: subject
-  const usedWords = entries.slice(0, 30).map(e => e.word);
+  const recentWords = entries.slice(0, 30).map(e => e.word);
+  const pendingWords = pendingPrWords();
+  if (pendingWords.length > 0) {
+    console.log(`Found ${pendingWords.length} word(s) in open daily PRs: ${pendingWords.join(', ')}`);
+  }
+  const usedWords = [...new Set([...recentWords, ...pendingWords])];
   let subjectInfo;
   if (process.env.SUBJECT_OVERRIDE) {
     subjectInfo = { subject: process.env.SUBJECT_OVERRIDE, unsplashQuery: process.env.SUBJECT_OVERRIDE, category: 'other' };
   } else {
     subjectInfo = await pickSubject(usedWords);
+    // Soft-collision check: if the FIRST word of the subject matches any recent
+    // first word (e.g., "Watermelon, Titan" colliding with "Watermelon, Moon and Stars"),
+    // retry once with that explicit collision called out in the avoid list.
+    const firstWord = subj => String(subj || '').split(/[,\s]+/)[0].toLowerCase();
+    const subjFirst = firstWord(subjectInfo.subject);
+    const collision = usedWords.find(w => firstWord(w) === subjFirst);
+    if (collision) {
+      console.log(`Soft-collision: "${subjectInfo.subject}" shares first word with recent "${collision}". Retrying once.`);
+      const widened = [...usedWords, subjectInfo.subject, `anything starting with "${subjFirst}"`];
+      subjectInfo = await pickSubject(widened);
+    }
   }
   console.log(`Subject: ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
 
