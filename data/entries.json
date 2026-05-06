@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-05-06",
+    "word": "Titan, Watermelon",
+    "pronunciation": "/tahy-tuhn, waw-ter-mel-uhn/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A cultivar of Citrullus lanatus bred for its immense size and rotundity, rivaling small boulders in girth and heft; esp. one that challenges the structural integrity of the average picnic table.",
+      "<em>colloq.</em> A watermelon so thiccc it could double as a ceremonial cornerstone; not recommended for those without a robust knife."
+    ],
+    "example": "The Titan, Watermelon that arrived at the county fair was so thiccc it required its own trailer. The judges were shook.",
+    "etymology": "From Greek Titan, mythological giants of great strength, + watermelon, from Middle English <em>watrmeloun</em>, derived from Old French <em>melon</em>, augmentative of Latin <em>melopepo</em> meaning 'apple-shaped melon.' This fruit is the Herculean bouncer of the produce aisle.",
+    "image": "images/2026-05-06.jpg",
+    "caption": "Plate N. — A Titan, Watermelon perched with quiet authority, its thicccness undiminished by mere photography.",
+    "tags": [
+      "fruit",
+      "agriculture",
+      "colossal"
+    ],
+    "photographer": "Art Rachen",
+    "photographerUrl": "https://unsplash.com/@artrachen",
+    "unsplashUrl": "https://unsplash.com/photos/watermelon-fruit-on-white-table-izi5AnlbRIA"
+  },
+  {
     "date": "2026-05-04",
     "word": "Sofa, Chesterfield",
     "pronunciation": "/CHOOS-ter-feeld/",
@@ -9,9 +31,9 @@
       "<em>colloq.</em> A sofa so thiccc it practically lounges for you. For the discerning who appreciate girth and gravity in their furniture."
     ],
     "example": "The Chesterfield sofa in the corner was so thiccc and inviting, even the sunlight took a moment to bask on its expansive curves. Cozy royalty.",
-    "etymology": "Named after the 4th Earl of Chesterfield, Philip Dormer Stanhope (1694\u20131773), who is credited with commissioning the first such sofa. The design was reputedly intended to prevent unseemly wrinkling of one's finely tailored attire\u2014while delivering an unexpected bonus in thicccness.",
+    "etymology": "Named after the 4th Earl of Chesterfield, Philip Dormer Stanhope (1694–1773), who is credited with commissioning the first such sofa. The design was reputedly intended to prevent unseemly wrinkling of one's finely tailored attire—while delivering an unexpected bonus in thicccness.",
     "image": "images/2026-05-04.jpg",
-    "caption": "Plate N. \u2014 The Chesterfield: where the elegance of form meets the exuberance of thicccness.",
+    "caption": "Plate N. — The Chesterfield: where the elegance of form meets the exuberance of thicccness.",
     "tags": [
       "furniture",
       "upholstery",
@@ -33,7 +55,7 @@
     "example": "The Cavendish banana on display was so thiccc it practically overshadowed the apples, asserting its dominance in the fruit hierarchy.",
     "etymology": "Named after William Cavendish, 6th Duke of Devonshire, who sponsored the cultivation of this banana variety in the 19th century. The Cavendish knew how to peel back expectations.",
     "image": "images/2026-05-03.jpg",
-    "caption": "Plate N. \u2014 An assemblage of Cavendish bananas contemplating their place in the sun, as captured by Giorgio Trovato.",
+    "caption": "Plate N. — An assemblage of Cavendish bananas contemplating their place in the sun, as captured by Giorgio Trovato.",
     "tags": [
       "fruit",
       "agriculture",
@@ -55,7 +77,7 @@
     "example": "The Frigidaire, Side-by-Side, is the thiccc centerpiece of my culinary domain.",
     "etymology": "The brand name 'Frigidaire' is derived from the company founded in 1918 by General Motors, stemming from 'frigid' plus 'air', suggesting an icy breath of preservation; side-by-side refers to the dashing duet of doors that beckons from the kitchen, a double act of coolness and confidence.",
     "image": "images/2026-05-02.jpg",
-    "caption": "Plate N. \u2014 A sturdy sentinel of the kitchen realm, accentuated by its curve and depth.",
+    "caption": "Plate N. — A sturdy sentinel of the kitchen realm, accentuated by its curve and depth.",
     "tags": [
       "appliance",
       "kitchen",
@@ -77,7 +99,7 @@
     "example": "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural.",
     "etymology": "From <em>thiccc</em> (internet vernacular, c. 2015, \"voluptuous; full-bodied,\" with an extra <em>c</em> for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026.",
     "image": "images/2026-05-01.jpg",
-    "caption": "Plate I. \u2014 A specimen of considerable rear-end displacement.",
+    "caption": "Plate I. — A specimen of considerable rear-end displacement.",
     "tags": [
       "aircraft",
       "aviation",
@@ -97,9 +119,9 @@
       "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
     ],
     "example": "Florida grew an avocado so thiccc it required two hands and a pre-meal stretch. Toast was just the canvas.",
-    "etymology": "From Spanish <em>aguacate</em>, from Nahuatl <em>\u0101huacatl</em>, originally meaning \"testicle\" \u2014 which, frankly, tracks.",
+    "etymology": "From Spanish <em>aguacate</em>, from Nahuatl <em>āhuacatl</em>, originally meaning \"testicle\" — which, frankly, tracks.",
     "image": "images/2026-04-30.jpg",
-    "caption": "Plate II. \u2014 Note the pronounced lower bulb.",
+    "caption": "Plate II. — Note the pronounced lower bulb.",
     "tags": [
       "fruit",
       "produce",
@@ -118,10 +140,10 @@
       "A heavy-duty pickup truck of substantial posterior breadth, distinguished by dual rear wheels per side and an aggressively flared bedside that reads as architectural; <em>esp.</em> one photographed in golden-hour parking-lot stillness.",
       "<em>colloq.</em> A truck that does not back into a parking spot so much as occupy it with permanent intent."
     ],
-    "example": "He pulled up in a thiccc Ram 3500 dually and the parking lot reorganized around him \u2014 the flared rear quarters take up two spaces by birthright.",
-    "etymology": "From the Ram Trucks brand (spun off from Dodge by Chrysler in 2009 as a standalone marque) + the model code denoting one of the heaviest-duty consumer pickup configurations. The trim <em>dually</em> is short for \"dual rear wheel\" \u2014 the doubled axle that gives the truck its rear-three-quarter silhouette. The Ram nameplate itself goes back to the 1981 Dodge Ram, trading from the start on the imagery of a literally thiccc-necked beast.",
+    "example": "He pulled up in a thiccc Ram 3500 dually and the parking lot reorganized around him — the flared rear quarters take up two spaces by birthright.",
+    "etymology": "From the Ram Trucks brand (spun off from Dodge by Chrysler in 2009 as a standalone marque) + the model code denoting one of the heaviest-duty consumer pickup configurations. The trim <em>dually</em> is short for \"dual rear wheel\" — the doubled axle that gives the truck its rear-three-quarter silhouette. The Ram nameplate itself goes back to the 1981 Dodge Ram, trading from the start on the imagery of a literally thiccc-necked beast.",
     "image": "images/2026-04-29.jpg",
-    "caption": "Plate III. \u2014 Dually configuration, viewed from rear-quarter at sunset.",
+    "caption": "Plate III. — Dually configuration, viewed from rear-quarter at sunset.",
     "tags": [
       "truck",
       "vehicle",
@@ -141,9 +163,9 @@
       "<em>colloq.</em> A tomato with superior girth and juiciness, making lesser tomatoes feel self-conscious about their thin skins."
     ],
     "example": "The Brandywine heritage tomato is undeniably thiccc, flaunting its curves like it's fresh off the vine runway.",
-    "etymology": "The term 'heritage' in this context derives from the Old French 'eritage', meaning inheritance, reflecting the plant's lineage from older, preserved seed varieties. These tomatoes are the vintage fashion models of the produce aisle\u2014pre-GMO and proud.",
+    "etymology": "The term 'heritage' in this context derives from the Old French 'eritage', meaning inheritance, reflecting the plant's lineage from older, preserved seed varieties. These tomatoes are the vintage fashion models of the produce aisle—pre-GMO and proud.",
     "image": "images/2026-04-28.jpg",
-    "caption": "Plate IV. \u2014 A Brandywine of unusual proportions.",
+    "caption": "Plate IV. — A Brandywine of unusual proportions.",
     "tags": [
       "botanical",
       "gastronomy",
@@ -165,7 +187,7 @@
     "example": "That mixer is a thiccc rig - eight cubic yards of slow-spinning confidence and a drum that hums when shes full.",
     "etymology": "From <em>concrete</em> (Latin <em>concretus</em>, \"grown together\") + <em>mixer</em>. The drum's rotation is, for our purposes, decorative.",
     "image": "images/2026-04-27.jpg",
-    "caption": "Plate V. \u2014 At rest. Engine idle. Drum rotating.",
+    "caption": "Plate V. — At rest. Engine idle. Drum rotating.",
     "tags": [
       "vehicle",
       "industrial",
@@ -187,7 +209,7 @@
     "example": "The Pumpkin, Atlantic Giant, stood proudly in the garden, its thiccc presence a testament to horticultural ambition.",
     "etymology": "The term 'pumpkin' traces back to the Greek word 'pepon', meaning 'large melon', via Middle French 'pompon'. The 'Atlantic Giant' variety was developed by Howard Dill in Nova Scotia in the 1970s, proving that even pumpkins can dream big.",
     "image": "images/2026-04-26.jpg",
-    "caption": "Plate VI. \u2014 A prodigious specimen exhibiting unparalleled circumference.",
+    "caption": "Plate VI. — A prodigious specimen exhibiting unparalleled circumference.",
     "tags": [
       "botanical",
       "gourds",
