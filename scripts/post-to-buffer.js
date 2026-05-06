@@ -9,11 +9,15 @@
  *   POST_MODE=reels     — today's entry, vertical video (Reel) to FB + IG,
  *                         SKIPS Twitter (no Reels concept). Requires
  *                         videos/<date>.mp4 to exist on the live site.
+ *   POST_MODE=article   — long-form article promotion, rotates through
+ *                         data/articles.json by ISO week. Uses the
+ *                         per-article OG card as the image. ALL platforms.
  *
  * Called by:
  *   - .github/workflows/post-on-merge.yml      (POST_MODE=morning + POST_MODE=reels)
  *   - .github/workflows/post-evening.yml       (POST_MODE=evening, cron 03:00 UTC)
  *   - .github/workflows/post-afternoon.yml     (POST_MODE=afternoon)                [manual only]
+ *   - .github/workflows/post-article.yml       (POST_MODE=article, cron weekly)
  *   - .github/workflows/test-buffer.yml        (manual)
  *
  * Uses Buffer's GraphQL API (post-2024). Personal Keys only work here,
@@ -24,7 +28,7 @@
  *   - BUFFER_PROFILE_IDS      Comma-separated channel IDs (one per platform)
  *                             Format: "twitter:ID,facebook:ID,instagram:ID"
  *   - SITE_BASE_URL           e.g. https://thiccctionary.com
- *   - POST_MODE               Optional. morning | afternoon | evening | reels. Default: morning.
+ *   - POST_MODE               Optional. morning | afternoon | evening | reels | article. Default: morning.
  */
 
 import fs from 'node:fs/promises';
@@ -100,6 +104,26 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   const result = json.data?.createPost;
   if (result?.message) return { ok: false, channelId, status: 200, body: result.message };
   return { ok: true, channelId, postId: result?.post?.id };
+}
+
+function pickArticle(articles) {
+  // Rotate by ISO week so consecutive weekly cron runs land on different
+  // articles. Articles list is small (~10), so weekOfYear mod len cycles
+  // through the whole catalog every ~10 weeks.
+  if (!articles || articles.length === 0) return null;
+  const now = new Date();
+  const start = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
+  const dayOfYear = Math.floor((now - start) / 86400000) + 1;
+  const weekOfYear = Math.ceil(dayOfYear / 7);
+  return articles[weekOfYear % articles.length];
+}
+
+function buildArticleText(article, baseUrl) {
+  const articleUrl = `${baseUrl}/articles/${article.slug}.html`;
+  const prefix = `📚 An article from Thiccctionary —\n\n${article.title}\n\n`;
+  const body = article.description || '';
+  const suffix = `\n\nRead → ${articleUrl}\n\n#thiccctionary #satire`;
+  return fitToX(prefix, body, suffix);
 }
 
 function pickEntry(entries, mode) {
@@ -202,11 +226,66 @@ async function main() {
   }
 
   const mode = (process.env.POST_MODE || 'morning').toLowerCase();
-  if (!['morning', 'afternoon', 'evening', 'reels'].includes(mode)) {
+  if (!['morning', 'afternoon', 'evening', 'reels', 'article'].includes(mode)) {
     console.error(`Invalid POST_MODE="${mode}".`);
     process.exit(1);
   }
   console.log(`Post mode: ${mode}`);
+
+  // ---- article mode: independent from entries.json ----
+  if (mode === 'article') {
+    const articlesPath = path.join(ROOT, 'data', 'articles.json');
+    let articles;
+    try {
+      articles = JSON.parse(await fs.readFile(articlesPath, 'utf8'));
+    } catch (e) {
+      console.error(`Could not read ${articlesPath}: ${e.message}`);
+      process.exit(1);
+    }
+    const article = pickArticle(articles);
+    if (!article) {
+      console.error('No articles found in data/articles.json.');
+      process.exit(1);
+    }
+    console.log(`Selected article: ${article.slug} -- "${article.title}"`);
+
+    const baseUrl = process.env.SITE_BASE_URL.replace(/\/$/, '');
+    const imageUrl = `${baseUrl}/articles/og/${article.slug}.png`;
+    const text = buildArticleText(article, baseUrl);
+
+    const allChannels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).map(s => {
+      const idx = s.indexOf(':');
+      if (idx === -1) return { service: null, channelId: s };
+      return { service: s.slice(0, idx).toLowerCase(), channelId: s.slice(idx + 1) };
+    });
+    if (allChannels.length === 0) {
+      console.log('No channels configured.');
+      return;
+    }
+
+    console.log(`Posting article promo to ${allChannels.length} channels with image: ${imageUrl}`);
+    console.log(`--- Post text ---\n${text}\n---`);
+
+    const results = await Promise.all(
+      allChannels.map(({ channelId, service }) =>
+        postToChannel({ channelId, text, imageUrl, videoUrl: null, thumbnailUrl: null, token: process.env.BUFFER_ACCESS_TOKEN, service, mode: 'morning' })
+      )
+    );
+
+    let successes = 0, failures = 0;
+    for (const r of results) {
+      if (r.ok) {
+        successes++;
+        console.log(`OK channel ${r.channelId} (post id: ${r.postId})`);
+      } else {
+        failures++;
+        console.error(`FAIL channel ${r.channelId}: status=${r.status} body=${r.body}`);
+      }
+    }
+    console.log(`\nSummary: ${successes} succeeded, ${failures} failed (out of ${results.length}).`);
+    if (failures > 0) process.exit(1);
+    return;
+  }
 
   const entries = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'entries.json'), 'utf8'));
   if (entries.length === 0) {
