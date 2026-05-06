@@ -403,8 +403,23 @@ async function main() {
   }
   const usedWords = [...new Set([...recentWords, ...pendingWords])];
   let subjectInfo;
-  if (process.env.SUBJECT_OVERRIDE) {
-    subjectInfo = { subject: process.env.SUBJECT_OVERRIDE, unsplashQuery: process.env.SUBJECT_OVERRIDE, category: 'other' };
+  // Sentinel-file override: data/.fire-daily-subject (one line: a subject string) lets
+  // me steer the picker from the sandbox without needing workflow_dispatch inputs.
+  // Lower priority than SUBJECT_OVERRIDE env var; cleared after use.
+  let fileOverride = null;
+  try {
+    const fileText = (await fs.readFile(path.join(ROOT, 'data', '.fire-daily-subject'), 'utf8')).trim();
+    if (fileText && fileText.length > 0) fileOverride = fileText;
+  } catch (e) { /* file absent — normal */ }
+
+  const overrideSubject = process.env.SUBJECT_OVERRIDE || fileOverride;
+  if (overrideSubject) {
+    // Use the override as the editorial subject AND default the Unsplash query to a
+    // simplified version — drop the comma-qualifier and keep just the head noun phrase
+    // so Unsplash's keyword search returns more matches.
+    const simpleQuery = overrideSubject.split(/[,(]/)[0].trim();
+    subjectInfo = { subject: overrideSubject, unsplashQuery: simpleQuery, category: 'other' };
+    console.log(`SUBJECT_OVERRIDE active: subject="${overrideSubject}" query="${simpleQuery}" (source: ${process.env.SUBJECT_OVERRIDE ? 'env' : 'file'})`);
   } else {
     subjectInfo = await pickSubject(usedWords);
     // Soft-collision check: if the FIRST word of the subject matches any recent
@@ -532,6 +547,14 @@ async function main() {
   await buildRssFeed(entries, articles);
   console.log(`RSS feed rebuilt with ${entries.length} entries + ${articles.length} articles.`);
   console.log(`Sitemap rebuilt with ${entries.length} entries.`);
+
+  // Clear the sentinel-file override so the next run uses the auto-picker again.
+  // (The FIRE-daily file is also cleared by the workflow's commit step. We do
+  //  the subject one here so it survives even in dry-run dev contexts.)
+  try {
+    await fs.unlink(path.join(ROOT, 'data', '.fire-daily-subject'));
+    console.log('Cleared data/.fire-daily-subject so the next run auto-picks.');
+  } catch (e) { /* file absent — normal */ }
 }
 
 main().catch(err => {
