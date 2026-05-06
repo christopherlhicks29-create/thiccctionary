@@ -363,6 +363,7 @@ function renderResult(r, imageData) {
     <div class="entry-share" style="margin-top: 1.5rem;">
       <span class="share-label">Spread the verdict:</span>
       <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('I had ' + r.subject + ' rated by @thiccctionary. Verdict: ' + r.rating.toFixed(1) + '/10. ' + r.commentary)}&url=${encodeURIComponent('https://thiccctionary.com/rate/')}" class="share-btn" target="_blank" rel="noopener">Twitter</a>
+      <a href="#" class="share-btn" id="rate-download-btn">Download card</a>
       <a href="#" class="share-btn" data-share="copy" data-share-url="https://thiccctionary.com/rate/">Copy link</a>
       <a href="#" class="share-btn share-btn--secondary" onclick="resetRater(); return false;">Rate another</a>
     </div>
@@ -379,6 +380,215 @@ function renderResult(r, imageData) {
         setTimeout(() => { btn.textContent = orig; }, 1400);
       });
     });
+  });
+
+  // Wire download-card button
+  const dlBtn = resultCard.querySelector('#rate-download-btn');
+  if (dlBtn) {
+    dlBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const orig = dlBtn.textContent;
+      dlBtn.textContent = 'Rendering…';
+      try {
+        const blob = await renderVerdictCanvas(r, previewSrc);
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `thiccctionary-verdict-${r.rating.toFixed(1)}.png`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        dlBtn.textContent = 'Downloaded ✓';
+      } catch (err) {
+        console.error(err);
+        dlBtn.textContent = 'Failed';
+      }
+      setTimeout(() => { dlBtn.textContent = orig; }, 1800);
+    });
+  }
+}
+
+// Compose a 1080x1080 verdict card from the verdict data + the submitted image.
+// Returns a Blob (PNG). Plays well with Instagram, Twitter, LinkedIn, FB.
+function renderVerdictCanvas(r, imageSrc) {
+  return new Promise((resolve, reject) => {
+    const W = 1080, H = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    const CREAM = '#f5e8c7';
+    const INK = '#1a1a1a';
+    const OXBLOOD = '#8b1f1f';
+    const RULE = 'rgba(0,0,0,0.18)';
+
+    // Background
+    ctx.fillStyle = CREAM;
+    ctx.fillRect(0, 0, W, H);
+
+    // Outer hairline border
+    ctx.strokeStyle = RULE;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(40, 40, W - 80, H - 80);
+
+    // Eyebrow text
+    ctx.fillStyle = INK;
+    ctx.font = '600 22px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('AN EDITORIAL VERDICT  ·  THICCCTIONARY', W/2, 100);
+
+    // Hairline rule under eyebrow
+    ctx.strokeStyle = OXBLOOD;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(W/2 - 220, 130);
+    ctx.lineTo(W/2 + 220, 130);
+    ctx.stroke();
+
+    // Helper to wrap text
+    const wrapText = (text, x, y, maxW, lineH, font, color, align='center', maxLines=99) => {
+      ctx.fillStyle = color;
+      ctx.font = font;
+      ctx.textAlign = align;
+      ctx.textBaseline = 'top';
+      const words = String(text).split(/\s+/);
+      let line = '';
+      let lineCount = 0;
+      const lines = [];
+      for (let i = 0; i < words.length; i++) {
+        const test = line ? (line + ' ' + words[i]) : words[i];
+        if (ctx.measureText(test).width > maxW && line) {
+          lines.push(line);
+          line = words[i];
+          if (lines.length >= maxLines) break;
+        } else {
+          line = test;
+        }
+      }
+      if (line && lines.length < maxLines) lines.push(line);
+      // If we hit the cap and there's more, append ellipsis to last line
+      if (lines.length === maxLines && words.length > 0) {
+        const joined = lines.join(' ');
+        const fullJoin = words.join(' ');
+        if (joined.length < fullJoin.length) {
+          lines[maxLines - 1] = lines[maxLines - 1].replace(/[.,;:\s]+$/, '') + '…';
+        }
+      }
+      lines.forEach((ln, i) => {
+        ctx.fillText(ln, x, y + i * lineH);
+      });
+      return y + lines.length * lineH;
+    };
+
+    const drawImageAndFinish = (img) => {
+      // Image area: 760x420 centered, top ~165
+      const IW = 760, IH = 420;
+      const IX = (W - IW) / 2;
+      const IY = 165;
+      // Letterbox / cover the image area
+      const imgRatio = img.naturalWidth / img.naturalHeight;
+      const boxRatio = IW / IH;
+      let sx, sy, sw, sh;
+      if (imgRatio > boxRatio) {
+        sh = img.naturalHeight;
+        sw = sh * boxRatio;
+        sx = (img.naturalWidth - sw) / 2;
+        sy = 0;
+      } else {
+        sw = img.naturalWidth;
+        sh = sw / boxRatio;
+        sx = 0;
+        sy = (img.naturalHeight - sh) / 2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, IX, IY, IW, IH);
+      ctx.strokeStyle = RULE;
+      ctx.lineWidth = 1;
+      ctx.strokeRect(IX, IY, IW, IH);
+
+      // Rating big — centered around y=665
+      ctx.fillStyle = OXBLOOD;
+      ctx.font = '700 130px "Fraunces", Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(r.rating.toFixed(1), W/2 - 90, 700);
+      ctx.font = '500 50px "Fraunces", Georgia, serif';
+      ctx.fillStyle = 'rgba(139,31,31,0.55)';
+      ctx.fillText('/ 10', W/2 + 110, 720);
+
+      // Subject (italic, smaller)
+      ctx.fillStyle = INK;
+      ctx.font = 'italic 28px "Newsreader", Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('Subject: ' + r.subject, W/2, 770);
+
+      // Commentary, wrapped, max 4 lines
+      wrapText(r.commentary, W/2, 825, W - 200, 36,
+               '24px "Newsreader", Georgia, serif', INK, 'center', 4);
+
+      // Footer wordmark
+      ctx.fillStyle = OXBLOOD;
+      ctx.font = '600 24px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('thiccctionary.com', W/2, H - 75);
+
+      // Export PNG
+      canvas.toBlob(blob => {
+        if (blob) resolve(blob);
+        else reject(new Error('toBlob returned null'));
+      }, 'image/png');
+    };
+
+    // Load the submitted image. Handles both data URLs (no CORS) and remote URLs (may CORS-block).
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => drawImageAndFinish(img);
+    img.onerror = () => {
+      // Remote URL probably blocked by CORS. Render the card without the image.
+      // Better than failing.
+      ctx.fillStyle = 'rgba(0,0,0,0.04)';
+      ctx.fillRect((W - 760) / 2, 165, 760, 420);
+      ctx.fillStyle = 'rgba(0,0,0,0.4)';
+      ctx.font = 'italic 22px "Newsreader", Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('(Image not embeddable — CORS)', W/2, 165 + 210);
+      // Continue with the rest using a stub image-finish path
+      drawImageAndFinishWithoutImage();
+    };
+
+    // Same as drawImageAndFinish but no image draw
+    const drawImageAndFinishWithoutImage = () => {
+      ctx.fillStyle = OXBLOOD;
+      ctx.font = '700 130px "Fraunces", Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(r.rating.toFixed(1), W/2 - 90, 700);
+      ctx.font = '500 50px "Fraunces", Georgia, serif';
+      ctx.fillStyle = 'rgba(139,31,31,0.55)';
+      ctx.fillText('/ 10', W/2 + 110, 720);
+      ctx.fillStyle = INK;
+      ctx.font = 'italic 28px "Newsreader", Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('Subject: ' + r.subject, W/2, 770);
+      wrapText(r.commentary, W/2, 825, W - 200, 36,
+               '24px "Newsreader", Georgia, serif', INK, 'center', 4);
+      ctx.fillStyle = OXBLOOD;
+      ctx.font = '600 24px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('thiccctionary.com', W/2, H - 75);
+      canvas.toBlob(blob => {
+        if (blob) resolve(blob);
+        else reject(new Error('toBlob returned null'));
+      }, 'image/png');
+    };
+
+    img.src = imageSrc;
   });
 }
 
