@@ -7,10 +7,20 @@ name: Post to Buffer on Daily Merge
 on:
   pull_request:
     types: [closed]
+  # Manual fire-from-anywhere: touch data/.fire-buffer and push.
+  # Use when a daily entry was merged via direct push (bypassing the PR
+  # merge event), so the social pipeline still fires.
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-buffer'
 
 jobs:
   post:
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'daily-entry')
+    # Run if EITHER a daily-entry PR was merged OR the sentinel file changed.
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'daily-entry'))
+      || (github.event_name == 'push')
     runs-on: ubuntu-latest
     steps:
       - name: Check out main
