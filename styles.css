@@ -663,6 +663,21 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   .masthead-top { flex-direction: column; gap: 4px; }
   .meta-line--right { text-align: center; }
   .nav { gap: 16px; }
+  .nav-link { font-size: 11px; letter-spacing: 0.14em; }
+}
+
+@media (max-width: 420px) {
+  .nav {
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+    row-gap: 8px;
+  }
+  .nav-link {
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    padding-bottom: 2px;
+  }
 }
 
 @media (max-width: 560px) {

@@ -137,6 +137,12 @@
     <p>For more like this, subscribe to the <a href="https://thiccctionary.com/feed.xml">RSS feed</a> or follow <a href="https://x.com/thiccctionary">@thiccctionary</a>.</p>
 
     </div>
+    <div class="entry-share" style="margin-top: 48px;">
+  <span class="share-label">Spread the thiccc:</span>
+  <a href="https://twitter.com/intent/tweet?text=%F0%9F%93%9A%20The%20Anatomy%20of%20a%20Thiccc%20Vehicle%20%E2%80%94%20a%20Thiccctionary%20essay%0A%0A%23thiccctionary%20%23satire&url=https%3A%2F%2Fthiccctionary.com%2Farticles%2Fanatomy-thiccc-vehicle.html" class="share-btn" target="_blank" rel="noopener">Twitter</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthiccctionary.com%2Farticles%2Fanatomy-thiccc-vehicle.html" class="share-btn" target="_blank" rel="noopener">Facebook</a>
+  <a href="#" class="share-btn" data-share="copy" data-share-url="https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html">Copy link</a>
+</div>
     <!-- More articles navigation -->
     <section class="related-entries" style="margin-top: 48px;" aria-label="More articles">
       <h3 class="related-heading">Read another</h3>
@@ -188,5 +194,20 @@
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary. All entries fictional. All proportions exaggerated for comedic effect.</p>
 </footer>
 
+<script>
+document.querySelectorAll('[data-share="copy"]').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const u = btn.getAttribute('data-share-url') || window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(u).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 1400);
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>

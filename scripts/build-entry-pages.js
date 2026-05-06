@@ -203,7 +203,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     WORD: escapeHtml(entry.word),
     WORD_HTML: escapeHtml(entry.word), // ccc highlighter runs client-side
     WORD_ENC: encodeURIComponent(entry.word),
-    TWEET_TEXT: encodeURIComponent(`Today's Thiccctionary entry: ${entry.word}\n\n"${stripHtml(entry.definitions[0]).slice(0, 140).trim()}${entry.definitions[0].length > 140 ? '…' : ''}"`),
+    TWEET_TEXT: encodeURIComponent(`📖 ${entry.word} — today on @thiccctionary\n\n#wordoftheday #etymology #thiccctionary`),
     PRONUNCIATION: escapeHtml(entry.pronunciation || ''),
     POS: escapeHtml(entry.partOfSpeech || 'n.'),
     DEF_1: entry.definitions[0],
