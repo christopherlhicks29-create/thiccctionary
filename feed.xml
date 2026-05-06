@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 May 2026 20:03:08 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 20:14:47 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Cement Mixer, Industrial</title>
+      <link>https://thiccctionary.com/entries/2026-05-06.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-06.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 GMT</pubDate>
+      <description>A formidable vehicle in the pantheon of construction equipment, characterized by a bulbous, rotating drum designed for the amalgamation of concrete components; esp. when caught in the embrace of the golden hour, its curves invite admiration.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-06.jpg" type="image/jpeg" length="0" />
+      <category>construction</category><category>vehicles</category><category>industry</category>
+    </item>
     <item>
       <title>Watermelon, Moon and Stars</title>
       <link>https://thiccctionary.com/entries/2026-05-05.html</link>
