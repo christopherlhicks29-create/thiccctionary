@@ -414,10 +414,19 @@ async function main() {
 
   const overrideSubject = process.env.SUBJECT_OVERRIDE || fileOverride;
   if (overrideSubject) {
-    // Use the override as the editorial subject AND default the Unsplash query to a
-    // simplified version — drop the comma-qualifier and keep just the head noun phrase
-    // so Unsplash's keyword search returns more matches.
-    const simpleQuery = overrideSubject.split(/[,(]/)[0].trim();
+    // Use the override as the editorial subject AND auto-derive a sensible
+    // Unsplash query. For comma-qualifier patterns ("Wheel, Parmigiano-Reggiano"),
+    // REVERSE the parts → "Parmigiano-Reggiano wheel" — closer to how Unsplash
+    // photos are actually tagged.
+    let simpleQuery;
+    const m = overrideSubject.match(/^([^,(]+),\s*(.+)$/);
+    if (m) {
+      const head = m[1].trim();
+      const qualifier = m[2].trim();
+      simpleQuery = `${qualifier} ${head}`.toLowerCase();
+    } else {
+      simpleQuery = overrideSubject.toLowerCase();
+    }
     subjectInfo = { subject: overrideSubject, unsplashQuery: simpleQuery, category: 'other' };
     console.log(`SUBJECT_OVERRIDE active: subject="${overrideSubject}" query="${simpleQuery}" (source: ${process.env.SUBJECT_OVERRIDE ? 'env' : 'file'})`);
   } else {
