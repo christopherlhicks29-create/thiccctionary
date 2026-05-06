@@ -97,7 +97,7 @@
     <div class="entry-grid">
       <div class="entry-image-wrap">
         <div class="entry-image">
-          <img src="{{IMAGE}}" alt="{{WORD}}" loading="eager" decoding="async" />
+          <img src="{{IMAGE}}" alt="{{WORD}}" loading="eager" decoding="async" data-pin-do="buttonHover" data-pin-url="{{CANONICAL}}" data-pin-media="{{OG_IMAGE}}" data-pin-description="{{PIN_TEXT_PLAIN}}" />
         </div>
         <p class="entry-caption">{{CAPTION}}</p>
         <p class="entry-credit">{{CREDIT_HTML}}</p>
@@ -248,5 +248,6 @@ document.querySelectorAll('[data-share="copy"]').forEach(btn => {
 });
 </script>
 
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 </body>
 </html>
