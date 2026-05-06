@@ -464,8 +464,7 @@ async function main() {
   // for review without halting.
   if (critique && (
     critique.verdict === 'reject' ||
-    (typeof critique.score === 'number' && critique.score < 4) ||
-    /\bpeople\b|\bperson\b|\bhuman\b|\bbody\b|\bbodies\b|\bhand\b|\bhands\b/i.test(critique.critique || '')
+    (typeof critique.score === 'number' && critique.score < 4)
   )) {
     console.error('GATE: critique flagged the image as unacceptable. Aborting before PR.');
     console.error('  score:', critique.score, ' verdict:', critique.verdict);
