@@ -1,0 +1,53 @@
+name: Regenerate Article OG Cards
+
+# When data/articles.json changes (new article added or description tweaked),
+# regenerate articles/og/<slug>.png so social previews stay aligned with the
+# article catalog. Commits any changes back to main.
+#
+# Path filter only fires on articles.json edits — the workflow's own commits
+# touch articles/og/*.png, which is NOT in the path list, so this won't loop.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/articles.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          # Need history so we can commit back
+          fetch-depth: 1
+          # Use the default GITHUB_TOKEN — has contents:write per permissions block
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Pillow
+        run: pip install Pillow
+
+      - name: Regenerate OG cards
+        run: python scripts/build-article-og-images.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add articles/og/
+          if git diff --cached --quiet; then
+            echo "No OG card changes to commit."
+            exit 0
+          fi
+          git commit -m "Regenerate article OG cards (auto, after articles.json change)"
+          git push origin main
