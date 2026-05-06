@@ -147,7 +147,7 @@
  * the full prompt that will be sent to GPT-4o vision when live.
  */
 
-const USE_LIVE_API = false;  // <-- flip to true after approval
+const USE_LIVE_API = true;  // live as of Wave 22 (functions/api/rate.js)
 
 // ---- The system prompt that drives editorial output ---------------------
 const SYSTEM_PROMPT = `You are the editorial apparatus of Thiccctionary, a satirical daily dictionary of objects of unusual girth. Strictly things, never people.
@@ -236,11 +236,11 @@ function renderQuota() {
   }
 }
 
-// ---- API call (stubbed) -------------------------------------------------
+// ---- API call -----------------------------------------------------------
 async function classifyImage(imageData) {
   if (!USE_LIVE_API) {
-    // Stub: cycle through mock responses, occasionally trigger refusal
-    await new Promise(r => setTimeout(r, 900));  // simulate latency
+    // Stub mode (toggle USE_LIVE_API to false to force this path)
+    await new Promise(r => setTimeout(r, 900));
     if (mockIndex === 1 && imageData.simulateRefusal) {
       return { refused: true, reason: 'human subject' };
     }
@@ -248,10 +248,30 @@ async function classifyImage(imageData) {
     mockIndex++;
     return r;
   }
-  // Live mode (TBD): POST to a Cloudflare Worker that proxies OpenAI vision
-  // with the SYSTEM_PROMPT above. Worker handles rate limiting + face detection
-  // pre-check. Returns the same JSON shape.
-  throw new Error('Live API not yet wired');
+
+  // Live mode: POST to /api/rate (Cloudflare Pages Function)
+  const body = imageData.dataUrl
+    ? { imageDataUrl: imageData.dataUrl }
+    : { imageUrl: imageData.url };
+
+  const resp = await fetch('/api/rate', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+
+  let payload = null;
+  try { payload = await resp.json(); } catch (e) {}
+
+  if (!resp.ok) {
+    const msg = (payload && payload.error) || `HTTP ${resp.status}`;
+    if (resp.status === 503) {
+      throw new Error('Classifier not yet configured. ' + msg);
+    }
+    throw new Error(msg);
+  }
+
+  return payload;
 }
 
 // ---- UI wiring ----------------------------------------------------------
