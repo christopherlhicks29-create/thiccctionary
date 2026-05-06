@@ -212,6 +212,18 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     ETYMOLOGY: entry.etymology || '',
     IMAGE: imageUrlForPage(entry),
     OG_IMAGE: imageUrlForOg(entry),
+    OG_IMAGE_ENC: encodeURIComponent(imageUrlForOg(entry)),
+    PIN_TEXT: (() => {
+      const def = stripHtml(entry.definitions[0]);
+      let trimmed = def;
+      if (def.length > 200) {
+        trimmed = def.slice(0, 200);
+        const lastSpace = trimmed.lastIndexOf(' ');
+        if (lastSpace > 100) trimmed = trimmed.slice(0, lastSpace);
+        trimmed += '…';
+      }
+      return encodeURIComponent(`${entry.word} — a Thiccctionary entry. ${trimmed}`);
+    })(),
     CAPTION: escapeHtml(entry.caption || ''),
     CREDIT_HTML: renderCredit(entry),
     TAGS_HTML: renderTags(entry.tags),
