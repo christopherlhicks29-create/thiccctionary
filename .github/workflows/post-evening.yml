@@ -22,6 +22,34 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Post to Facebook (direct, no Buffer attribution)
+
+
+        working-directory: scripts
+
+
+        continue-on-error: true
+
+
+        env:
+
+
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+
+
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+
+
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+
+
+          POST_MODE: evening
+
+
+        run: node post-to-facebook.js
+
+
+
       - name: Post to Buffer (evening)
         working-directory: scripts
         env:
@@ -29,4 +57,5 @@ jobs:
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: evening
+          SKIP_FACEBOOK: 'true'
         run: node post-to-buffer.js

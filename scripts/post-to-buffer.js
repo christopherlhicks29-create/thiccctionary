@@ -203,16 +203,28 @@ function buildText(entry, mode, baseUrl) {
 }
 
 function filterChannelsForMode(channels, mode) {
+  let filtered = channels;
   if (mode === 'afternoon') {
     const skip = new Set(['instagram', 'instagrambusiness']);
-    return channels.filter(c => !skip.has(c.service));
-  }
-  if (mode === 'reels') {
+    filtered = filtered.filter(c => !skip.has(c.service));
+  } else if (mode === 'reels') {
     // Reels only work on FB and IG. Skip Twitter.
     const keep = new Set(['facebook', 'facebookpage', 'instagram', 'instagrambusiness']);
-    return channels.filter(c => keep.has(c.service));
+    filtered = filtered.filter(c => keep.has(c.service));
   }
-  return channels;
+  // SKIP_FACEBOOK=true tells Buffer to skip FB channels — used when the
+  // direct-FB Graph API script is handling FB. Reels mode still goes
+  // through Buffer for FB (no direct-FB Reels support yet).
+  if (process.env.SKIP_FACEBOOK === 'true' && mode !== 'reels') {
+    const fb = new Set(['facebook', 'facebookpage']);
+    filtered = filtered.filter(c => !fb.has(c.service));
+    if (filtered.length === channels.length) {
+      console.log('SKIP_FACEBOOK=true but no FB channels were in the list anyway.');
+    } else {
+      console.log('SKIP_FACEBOOK=true — Buffer will not post to FB; direct-FB script handles it.');
+    }
+  }
+  return filtered;
 }
 
 async function main() {

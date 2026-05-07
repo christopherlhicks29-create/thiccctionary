@@ -37,6 +37,34 @@ jobs:
         # Pages typically deploys in 30-90s after a push to main. Wait a bit so the image URL resolves.
         run: sleep 90
 
+      - name: Post to Facebook (direct, no Buffer attribution)
+
+
+        working-directory: scripts
+
+
+        continue-on-error: true
+
+
+        env:
+
+
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+
+
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+
+
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+
+
+          POST_MODE: morning
+
+
+        run: node post-to-facebook.js
+
+
+
       - name: Post to Buffer (morning, image)
         working-directory: scripts
         env:
@@ -44,6 +72,7 @@ jobs:
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: morning
+          SKIP_FACEBOOK: 'true'
         run: node post-to-buffer.js
 
       - name: Check if today's Reel video exists
