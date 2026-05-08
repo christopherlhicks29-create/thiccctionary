@@ -276,6 +276,8 @@ ANTI-PATTERNS for definitions (these are what AI overuses — DO NOT write these
 - Stacking three vague adjectives ("massive, hefty, and substantial") — pick ONE specific detail instead
 - "exuding [abstract noun]" — almost always filler
 
+NO TIME-ANCHORED FRAMING. The entry must read as a permanent dictionary record, not a daily blog post. Don't write "today's specimen," "this morning's catch," "as featured today," or anything that locks the entry to a specific date or news cycle. Entries must work whether the reader encounters them today or three years from now in a printed book. Write FOR THE CATALOG, not FOR TODAY.
+
 ETYMOLOGIES — lead with REAL, VERIFIABLE etymology (Latin/Greek/Middle English/Old French/Spanish/Nahuatl/named industrialists/dated coinages), then close with a comedic kicker that lands. This is where the personality lives.
 
 CRITICAL — the etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. If you cannot recall the real etymology of the word with confidence, fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke — the entire conceit of Thiccctionary is fake-academic register applied to real linguistic facts. A made-up "Old English 'cynce'" is brand-damaging, not funny.
@@ -325,8 +327,9 @@ Schema:
   "definitions": ["definition 1 (1-2 sentences, dictionary register, voicy)", "optional definition 2 (sharper / colloquial — labeled with <em>colloq.</em> or <em>slang.</em>)"],
   "example": "ONE sentence (optionally + a short tag) using BOTH the headword AND the literal word \"thiccc\" (always three c's). Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y' — pick a scene.",
   "etymology": "Real etymology FIRST (Latin/Greek/Middle English/Spanish/Nahuatl/etc., dated coinages, named industrialists) THEN a comedic kicker. The kicker is what makes the entry sing.",
-  "caption": "Plate N. — A short caption for the image, dictionary-illustration style.",
-  "tags": ["tag1", "tag2", "tag3"]
+  "caption": "Plate N. — A short caption for the image, dictionary-illustration style. (N is a placeholder — leave it as 'Plate N.' literally.)",
+  "tags": ["tag1", "tag2", "tag3"],
+  "category": "ONE OF: Vehicles & Transport | Architecture & Infrastructure | Industrial Machinery | Produce & Botanical | Foods of Substance | Domestic Goods | Engineering Marvels | Musical Instruments — pick the single best fit. This becomes the chapter the entry lives in when the catalog ships as a book."
 }`;
 
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -632,6 +635,20 @@ async function main() {
   }
 
   // Step 6: assemble + save
+  // Validate the model's category against our fixed list — if it returned
+  // something off-list, mark as 'Uncategorized' and let Christopher fix
+  // during PR review.
+  const VALID_CATEGORIES = new Set([
+    'Vehicles & Transport', 'Architecture & Infrastructure',
+    'Industrial Machinery', 'Produce & Botanical',
+    'Foods of Substance', 'Domestic Goods',
+    'Engineering Marvels', 'Musical Instruments'
+  ]);
+  const category = VALID_CATEGORIES.has(entryCopy.category) ? entryCopy.category : 'Uncategorized';
+  if (category === 'Uncategorized' && entryCopy.category) {
+    console.warn(`Model returned off-list category: "${entryCopy.category}". Marked Uncategorized.`);
+  }
+
   const entry = {
     date: today,
     word: entryCopy.word,
@@ -643,6 +660,8 @@ async function main() {
     image: `images/${filename}`,
     caption: entryCopy.caption,
     tags: entryCopy.tags,
+    category: category,                  // chapter assignment for eventual book
+    bookReady: null,                     // null = unreviewed; you flip true/false during curation
     photographer: chosen.photographer,
     photographerUrl: chosen.photographerUrl,
     unsplashUrl: chosen.unsplashUrl,

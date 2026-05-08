@@ -19,7 +19,9 @@
     ],
     "photographer": "Zoshua Colah",
     "photographerUrl": "https://unsplash.com/@zoshuacolah",
-    "unsplashUrl": "https://unsplash.com/photos/a-view-of-a-large-dam-with-a-road-going-through-it-wniqx4imKi8"
+    "unsplashUrl": "https://unsplash.com/photos/a-view-of-a-large-dam-with-a-road-going-through-it-wniqx4imKi8",
+    "category": "Architecture & Infrastructure",
+    "bookReady": null
   },
   {
     "date": "2026-05-06",
@@ -41,7 +43,9 @@
     ],
     "photographer": "David Xeli",
     "photographerUrl": "https://unsplash.com/@dxelihside",
-    "unsplashUrl": "https://unsplash.com/photos/several-stacks-of-cheese-stacked-on-top-of-each-other-CxjyaNjSdzY"
+    "unsplashUrl": "https://unsplash.com/photos/several-stacks-of-cheese-stacked-on-top-of-each-other-CxjyaNjSdzY",
+    "category": "Foods of Substance",
+    "bookReady": null
   },
   {
     "date": "2026-05-05",
@@ -63,7 +67,9 @@
     ],
     "photographer": "Inbal Cohen",
     "photographerUrl": "https://unsplash.com/@coininc",
-    "unsplashUrl": "https://unsplash.com/photos/green-watermelon-fruits-2TYrR2IB72s"
+    "unsplashUrl": "https://unsplash.com/photos/green-watermelon-fruits-2TYrR2IB72s",
+    "category": "Produce & Botanical",
+    "bookReady": null
   },
   {
     "date": "2026-05-04",
@@ -85,7 +91,9 @@
     ],
     "photographer": "John Krach",
     "photographerUrl": "https://unsplash.com/@johnkrach",
-    "unsplashUrl": "https://unsplash.com/photos/a-couch-sitting-in-front-of-a-glass-wall-yHWk9eqvBYE"
+    "unsplashUrl": "https://unsplash.com/photos/a-couch-sitting-in-front-of-a-glass-wall-yHWk9eqvBYE",
+    "category": "Domestic Goods",
+    "bookReady": null
   },
   {
     "date": "2026-05-03",
@@ -107,7 +115,9 @@
     ],
     "photographer": "Giorgio Trovato",
     "photographerUrl": "https://unsplash.com/@giorgiotrovato",
-    "unsplashUrl": "https://unsplash.com/photos/yellow-bananas-fczCr7MdE7U"
+    "unsplashUrl": "https://unsplash.com/photos/yellow-bananas-fczCr7MdE7U",
+    "category": "Produce & Botanical",
+    "bookReady": null
   },
   {
     "date": "2026-05-02",
@@ -129,7 +139,9 @@
     ],
     "photographer": "Zac Gudakov",
     "photographerUrl": "https://unsplash.com/@zacgudakov",
-    "unsplashUrl": "https://unsplash.com/photos/a-kitchen-with-white-cabinets-and-gold-handles-DxK90zIT8I8"
+    "unsplashUrl": "https://unsplash.com/photos/a-kitchen-with-white-cabinets-and-gold-handles-DxK90zIT8I8",
+    "category": "Domestic Goods",
+    "bookReady": null
   },
   {
     "date": "2026-05-01",
@@ -151,7 +163,9 @@
     ],
     "photographer": "Nick Herasimenka",
     "photographerUrl": "https://unsplash.com/@nickhh",
-    "unsplashUrl": "https://unsplash.com/photos/white-and-black-lufthansa-airliner-near-vehicles-DF4V0ec22tk"
+    "unsplashUrl": "https://unsplash.com/photos/white-and-black-lufthansa-airliner-near-vehicles-DF4V0ec22tk",
+    "category": "Vehicles & Transport",
+    "bookReady": null
   },
   {
     "date": "2026-04-30",
@@ -173,7 +187,9 @@
     ],
     "photographer": "Jonathan Cooper",
     "photographerUrl": "https://unsplash.com/@theshuttervision",
-    "unsplashUrl": "https://unsplash.com/photos/black-oval-fruit-on-white-surface-fbTJ8u69hpg"
+    "unsplashUrl": "https://unsplash.com/photos/black-oval-fruit-on-white-surface-fbTJ8u69hpg",
+    "category": "Produce & Botanical",
+    "bookReady": null
   },
   {
     "date": "2026-04-29",
@@ -195,7 +211,9 @@
     ],
     "photographer": "Justin Wolff",
     "photographerUrl": "https://unsplash.com/@justinwolff",
-    "unsplashUrl": "https://unsplash.com/photos/white-pickup-truck-parked-at-dusk-with-sunset-sky-1wyfQK0Dgpk"
+    "unsplashUrl": "https://unsplash.com/photos/white-pickup-truck-parked-at-dusk-with-sunset-sky-1wyfQK0Dgpk",
+    "category": "Vehicles & Transport",
+    "bookReady": null
   },
   {
     "date": "2026-04-28",
@@ -217,7 +235,9 @@
     ],
     "photographer": "Anna Evans",
     "photographerUrl": "https://unsplash.com/@anevans",
-    "unsplashUrl": "https://unsplash.com/photos/a-red-pepper-on-a-plant-7O9UZ9ejUzA"
+    "unsplashUrl": "https://unsplash.com/photos/a-red-pepper-on-a-plant-7O9UZ9ejUzA",
+    "category": "Produce & Botanical",
+    "bookReady": null
   },
   {
     "date": "2026-04-27",
@@ -239,7 +259,9 @@
     ],
     "photographer": "Strange Happenings",
     "photographerUrl": "https://unsplash.com/@strangehappenings",
-    "unsplashUrl": "https://unsplash.com/photos/an-old-rusty-cement-mixer-truck-sits-abandoned-0tYkYoNLBYI"
+    "unsplashUrl": "https://unsplash.com/photos/an-old-rusty-cement-mixer-truck-sits-abandoned-0tYkYoNLBYI",
+    "category": "Industrial Machinery",
+    "bookReady": null
   },
   {
     "date": "2026-04-26",
@@ -261,6 +283,8 @@
     ],
     "photographer": "Annie Lang",
     "photographerUrl": "https://unsplash.com/@anniethingspossible",
-    "unsplashUrl": "https://unsplash.com/photos/a-group-of-pumpkins-in-a-patch-of-grass-WLrgLgfJiIQ"
+    "unsplashUrl": "https://unsplash.com/photos/a-group-of-pumpkins-in-a-patch-of-grass-WLrgLgfJiIQ",
+    "category": "Produce & Botanical",
+    "bookReady": null
   }
 ]
