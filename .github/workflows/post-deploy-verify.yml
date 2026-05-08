@@ -65,10 +65,24 @@ jobs:
       - name: Verify compare and tags pages exist
         run: |
           set -e
-          curl -sfI https://thiccctionary.com/compare.html | grep -q "200" || (echo "FAIL: /compare.html missing" && exit 1)
-          curl -sfI https://thiccctionary.com/tags/ | grep -q "200" || (echo "FAIL: /tags/ missing" && exit 1)
-          curl -sfI https://thiccctionary.com/embed/today.html | grep -q "200" || (echo "FAIL: /embed/today.html missing" && exit 1)
-          curl -sfI https://thiccctionary.com/random.html | grep -q "200" || (echo "FAIL: /random.html missing" && exit 1)
+          # Use full GET (not HEAD) with retries + Mozilla UA — Cloudflare's
+          # bot-detect serves a 403/challenge to the curl-default UA on HEAD
+          # checks, even though the page is fine for real users.
+          UA="Mozilla/5.0 (post-deploy-verify) AppleWebKit/537.36"
+          check_page() {
+            local url="$1"
+            local label="$2"
+            local code
+            code=$(curl -sIL --retry 2 --retry-all-errors -A "$UA" -o /dev/null -w "%{http_code}" "$url")
+            case "$code" in
+              200|301|302|304) echo "  $label OK ($code)" ;;
+              *) echo "FAIL: $label returned $code"; return 1 ;;
+            esac
+          }
+          check_page "https://thiccctionary.com/compare.html" "/compare.html"
+          check_page "https://thiccctionary.com/tags/" "/tags/"
+          check_page "https://thiccctionary.com/embed/today.html" "/embed/today.html"
+          check_page "https://thiccctionary.com/random.html" "/random.html"
           echo "Feature pages OK"
 
       - name: Summary

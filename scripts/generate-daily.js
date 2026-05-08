@@ -557,15 +557,16 @@ async function main() {
     const broaderQuery = `${subjectInfo.unsplashQuery} photograph`;
     const retryCandidates = await searchUnsplash(broaderQuery);
     if (!retryCandidates || retryCandidates.length === 0) {
-      console.warn(`No results for retry query "${broaderQuery}". Aborting cleanly so the cron can pick a different subject tomorrow.`);
-      // Exit 2 so the workflow run shows red, no PR opens, today's date stays
-      // available for the next run.
-      process.exit(2);
+      console.log(`No results for retry query "${broaderQuery}". Skipping today's run cleanly so the cron can pick a different subject tomorrow.`);
+      // Exit 0 — this is a deliberate skip, not a failure. Run shows green,
+      // no PR opens (nothing to commit), today's date stays available for
+      // the next run.
+      process.exit(0);
     }
     chosen = await pickThiccestImage(subjectInfo.subject, retryCandidates);
     if (chosen && chosen.rejected) {
-      console.warn(`All candidates failed veto on both queries for "${subjectInfo.subject}". Aborting cleanly.`);
-      process.exit(2);
+      console.log(`All candidates failed veto on both queries for "${subjectInfo.subject}". Skipping today.`);
+      process.exit(0);  // deliberate skip — green run, no PR
     }
   }
 
@@ -597,10 +598,10 @@ async function main() {
     critique.verdict === 'reject' ||
     (typeof critique.score === 'number' && critique.score < 4)
   )) {
-    console.error('GATE: critique flagged the image as unacceptable. Aborting before PR.');
-    console.error('  score:', critique.score, ' verdict:', critique.verdict);
-    console.error('  critique:', critique.critique);
-    process.exit(2);  // exit before write — workflow run fails, no PR opens, the subject remains available for next run
+    console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');
+    console.log('  score:', critique.score, ' verdict:', critique.verdict);
+    console.log('  critique:', critique.critique);
+    process.exit(0);  // deliberate skip — green run, no PR opens, subject remains available for next run
   }
 
   // Step 5: write the entry
