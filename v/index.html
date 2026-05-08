@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Thiccc Verdict — Thiccctionary</title>
+<meta name="description" content="A reader's verdict from Thiccctionary's editorial classifier. Strictly things, never people." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="canonical" href="https://thiccctionary.com/v/" />
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta property="og:title" content="A Thiccc Verdict — Thiccctionary" />
+<meta property="og:description" content="A reader's verdict from Thiccctionary's editorial classifier." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/v/" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@thiccctionary" />
+<meta name="twitter:image" content="https://thiccctionary.com/og-default.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">An Editorial Verdict</span>
+    <span class="meta-line meta-line--right">From the Apparatus</span>
+  </div>
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+    </a>
+  </h1>
+  <nav class="nav">
+    <a href="../index.html" class="nav-link">Today's Entry</a>
+    <a href="../archive.html" class="nav-link">The Archive</a>
+    <a href="../articles/" class="nav-link">Articles</a>
+    <a href="../random.html" class="nav-link">Random</a>
+    <a href="../compare.html" class="nav-link">Compare</a>
+    <a href="../rate/" class="nav-link">Rate</a>
+    <a href="../api/" class="nav-link">API</a>
+    <a href="../submit.html" class="nav-link">Submit a Thiccc</a>
+  </nav>
+</header>
+
+<main id="main-content" style="max-width: 880px; margin: 3rem auto 4rem; padding: 0 1.5rem;">
+
+  <!-- Loading / no-data state -->
+  <section id="verdict-empty" hidden>
+    <p class="entry-date-stamp" style="display: inline-block;">No verdict in the URL</p>
+    <h2 class="entry-word" style="margin-top: 0.75rem;">Nothing to display.</h2>
+    <p style="font-style: italic; opacity: 0.75;">A verdict link from <a href="../rate/">our classifier</a> would carry the rating data in the URL. This page received an empty or invalid one.</p>
+    <a href="../rate/" class="share-btn" style="display: inline-block; margin-top: 1rem;">Submit your own photograph for rating →</a>
+  </section>
+
+  <!-- Verdict display (filled by JS) -->
+  <section id="verdict-card" hidden>
+    <div id="verdict-result" style="border: 1px solid var(--rule); border-radius: 6px; padding: 2rem; background: rgba(0,0,0,0.02);">
+      <!-- Filled by JS -->
+    </div>
+
+    <!-- Funnel CTA -->
+    <aside style="margin-top: 56px; text-align: center; padding: 32px 24px; border: 1px solid var(--rule); border-radius: 6px; background: rgba(139,31,31,0.03);">
+      <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0;">An editorial apparatus</p>
+      <p style="margin: 0.5rem 0 0; font-size: 1.1rem;"><strong>Have a photograph of your own?</strong></p>
+      <p style="margin: 0.4rem 0 1.2rem; font-style: italic; opacity: 0.85; max-width: 520px; margin-left: auto; margin-right: auto;">Drop it into our classifier and receive a verdict in the same register — rating, commentary, and the closest match in our archive.</p>
+      <a href="../rate/" class="share-btn" style="display: inline-block;">Submit for rating →</a>
+    </aside>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary</p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="../archive.html">Archive</a>
+      <a href="../tags/">Tags</a>
+      <a href="../articles/">Articles</a>
+      <a href="../compare.html">Compare</a>
+      <a href="../rate/">Rate</a>
+      <a href="../api/">API</a>
+      <a href="../embed/">Embed</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="../legal/terms.html">Terms</a>
+      <a href="../legal/privacy.html">Privacy</a>
+      <a href="../press/">Press</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/*
+ * Verdict permalink page.
+ *
+ * Reads ?d=<base64-url-encoded JSON> from the URL, decodes, validates,
+ * renders the verdict card. Stateless — no server storage. Encoded
+ * payload schema (compact for short URLs):
+ *
+ *   {
+ *     r: 8.5,                       // rating 1.0-10.0
+ *     s: "fire hydrant, municipal", // subject
+ *     c: "A solid lower-third...",  // commentary (max ~400 chars)
+ *     t: ["industrial"],            // tags (optional)
+ *     x: { d: "2026-04-27", w: "Concrete Mixer" }  // closest archive match (optional)
+ *   }
+ */
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function decodeVerdict() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const enc = params.get('d');
+    if (!enc) return null;
+    // base64-url decode
+    const padded = enc.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(enc.length / 4) * 4, '=');
+    const json = atob(padded);
+    const obj = JSON.parse(json);
+    // Validate shape
+    if (typeof obj.r !== 'number' || !obj.s || !obj.c) return null;
+    return obj;
+  } catch (e) {
+    return null;
+  }
+}
+
+function renderVerdict(v) {
+  const closestHtml = v.x && v.x.d && v.x.w
+    ? `<p style="margin: 1rem 0 0; opacity: 0.75;">Closest match in our archive: <a href="../entries/${escapeHtml(v.x.d)}.html"><strong>${escapeHtml(v.x.w)}</strong></a></p>`
+    : '';
+
+  const tagsHtml = (v.t && v.t.length > 0)
+    ? `<div class="entry-tags" style="margin-top: 1rem;">${v.t.map(t => `<span class="tag-pill" style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 4px; margin-right: 6px; opacity: 0.7;">${escapeHtml(t)}</span>`).join('')}</div>`
+    : '';
+
+  const shareUrl = window.location.href;
+  const shareText = `I had ${v.s} rated by @thiccctionary. Verdict: ${v.r.toFixed(1)}/10. ${v.c}`;
+
+  document.getElementById('verdict-result').innerHTML = `
+    <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin: 0; text-align: center;">An Editorial Verdict</p>
+    <div style="text-align: center; margin: 1.5rem 0;">
+      <p style="font-family: var(--font-display); font-size: 5rem; line-height: 1; margin: 0; color: var(--oxblood); font-weight: 700;">${v.r.toFixed(1)} <span style="font-size: 2rem; opacity: 0.5;">/ 10</span></p>
+      <p style="margin: 0.5rem 0 0; font-style: italic; font-size: 1.2rem;">Subject: ${escapeHtml(v.s)}</p>
+    </div>
+    <p style="margin: 1.5rem 0 0; font-size: 1.05rem; line-height: 1.7;">${escapeHtml(v.c)}</p>
+    ${closestHtml}
+    ${tagsHtml}
+    <div class="entry-share" style="margin-top: 1.5rem;">
+      <span class="share-label">Spread the verdict:</span>
+      <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}" class="share-btn" target="_blank" rel="noopener">Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}" class="share-btn" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}" class="share-btn" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" class="share-btn" id="copy-link-btn">Copy link</a>
+    </div>
+  `;
+
+  // Wire copy button
+  document.getElementById('copy-link-btn').addEventListener('click', e => {
+    e.preventDefault();
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      const btn = e.target;
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = orig; }, 1400);
+    });
+  });
+
+  // Update OG meta tags so SHARE PREVIEWS show this specific verdict's text
+  // (still uses the generic image — server-side OG card rendering is a v2)
+  const titleText = `${v.r.toFixed(1)}/10 — ${v.s} — Thiccctionary verdict`;
+  document.title = titleText;
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', titleText);
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', v.c.slice(0, 200));
+  const twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle) twTitle.setAttribute('content', titleText);
+  const twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc) twDesc.setAttribute('content', v.c.slice(0, 200));
+}
+
+// Init
+const verdict = decodeVerdict();
+if (verdict) {
+  document.getElementById('verdict-card').hidden = false;
+  renderVerdict(verdict);
+} else {
+  document.getElementById('verdict-empty').hidden = false;
+}
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>

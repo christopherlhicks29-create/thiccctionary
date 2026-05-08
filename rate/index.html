@@ -376,7 +376,8 @@ function renderResult(r, imageData) {
       <span class="share-label">Spread the verdict:</span>
       <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('I had ' + r.subject + ' rated by @thiccctionary. Verdict: ' + r.rating.toFixed(1) + '/10. ' + r.commentary)}&url=${encodeURIComponent('https://thiccctionary.com/rate/')}" class="share-btn" target="_blank" rel="noopener">Twitter</a>
       <a href="#" class="share-btn" id="rate-download-btn">Download card</a>
-      <a href="#" class="share-btn" data-share="copy" data-share-url="https://thiccctionary.com/rate/">Copy link</a>
+      <a href="#" class="share-btn" id="rate-permalink-btn">Copy verdict link</a>
+      <a href="#" class="share-btn" data-share="copy" data-share-url="https://thiccctionary.com/rate/">Copy page link</a>
       <a href="#" class="share-btn share-btn--secondary" onclick="resetRater(); return false;">Rate another</a>
     </div>
   `;
@@ -393,6 +394,40 @@ function renderResult(r, imageData) {
       });
     });
   });
+
+  // Build a verdict permalink (base64-url-encoded JSON in query string).
+  // Stateless — no server storage. The /v/ page decodes + renders.
+  function buildVerdictPermalink(r) {
+    // Compact payload schema: {r,s,c,t,x} matches /v/index.html's decoder
+    const payload = {
+      r: Number(r.rating),
+      s: String(r.subject || ''),
+      c: String(r.commentary || '').slice(0, 600),
+    };
+    if (Array.isArray(r.tags) && r.tags.length > 0) payload.t = r.tags.slice(0, 6);
+    if (r.closest && r.closest.date && r.closest.word) {
+      payload.x = { d: r.closest.date, w: r.closest.word };
+    }
+    const json = JSON.stringify(payload);
+    // base64-url encode (replace + with -, / with _, strip = padding)
+    const b64 = btoa(unescape(encodeURIComponent(json)))
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+    return `https://thiccctionary.com/v/?d=${b64}`;
+  }
+
+  // Wire "Copy verdict link" button
+  const permaBtn = resultCard.querySelector('#rate-permalink-btn');
+  if (permaBtn) {
+    permaBtn.addEventListener('click', e => {
+      e.preventDefault();
+      const url = buildVerdictPermalink(r);
+      navigator.clipboard.writeText(url).then(() => {
+        const orig = permaBtn.textContent;
+        permaBtn.textContent = 'Copied!';
+        setTimeout(() => { permaBtn.textContent = orig; }, 1400);
+      });
+    });
+  }
 
   // Wire download-card button
   const dlBtn = resultCard.querySelector('#rate-download-btn');
