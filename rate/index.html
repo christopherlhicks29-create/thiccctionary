@@ -540,10 +540,11 @@ function renderVerdictCanvas(r, imageSrc) {
     };
 
     const drawImageAndFinish = (img) => {
-      // Image area: 760x420 centered, top ~165
-      const IW = 760, IH = 420;
+      // Image area: 760x540 centered, top ~165
+      // Closer to 4:3 (was 1.81:1) so portrait subjects fit more usefully.
+      const IW = 760, IH = 540;
       const IX = (W - IW) / 2;
-      const IY = 165;
+      const IY = 150;
 
       // CONTAIN, not cover — show the user's full submission with cream
       // letterboxing as needed. Cropping the user's photo is the wrong
@@ -573,26 +574,26 @@ function renderVerdictCanvas(r, imageSrc) {
       ctx.lineWidth = 1;
       ctx.strokeRect(IX, IY, IW, IH);
 
-      // Rating big — centered around y=665
+      // Rating big — repositioned for new layout (image now ends at y=690)
       ctx.fillStyle = OXBLOOD;
-      ctx.font = '700 130px "Fraunces", Georgia, serif';
+      ctx.font = '700 110px "Fraunces", Georgia, serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(r.rating.toFixed(1), W/2 - 90, 700);
-      ctx.font = '500 50px "Fraunces", Georgia, serif';
+      ctx.fillText(r.rating.toFixed(1), W/2 - 80, 760);
+      ctx.font = '500 44px "Fraunces", Georgia, serif';
       ctx.fillStyle = 'rgba(139,31,31,0.55)';
-      ctx.fillText('/ 10', W/2 + 110, 720);
+      ctx.fillText('/ 10', W/2 + 100, 776);
 
       // Subject (italic, smaller)
       ctx.fillStyle = INK;
-      ctx.font = 'italic 28px "Newsreader", Georgia, serif';
+      ctx.font = 'italic 24px "Newsreader", Georgia, serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText('Subject: ' + r.subject, W/2, 770);
+      ctx.fillText('Subject: ' + r.subject, W/2, 815);
 
-      // Commentary, wrapped, max 4 lines
-      wrapText(r.commentary, W/2, 825, W - 200, 36,
-               '24px "Newsreader", Georgia, serif', INK, 'center', 4);
+      // Commentary, wrapped, max 3 lines (less vertical room with bigger image)
+      wrapText(r.commentary, W/2, 860, W - 200, 32,
+               '21px "Newsreader", Georgia, serif', INK, 'center', 3);
 
       // Footer wordmark
       ctx.fillStyle = OXBLOOD;
@@ -629,20 +630,20 @@ function renderVerdictCanvas(r, imageSrc) {
     // Same as drawImageAndFinish but no image draw
     const drawImageAndFinishWithoutImage = () => {
       ctx.fillStyle = OXBLOOD;
-      ctx.font = '700 130px "Fraunces", Georgia, serif';
+      ctx.font = '700 110px "Fraunces", Georgia, serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(r.rating.toFixed(1), W/2 - 90, 700);
-      ctx.font = '500 50px "Fraunces", Georgia, serif';
+      ctx.fillText(r.rating.toFixed(1), W/2 - 80, 760);
+      ctx.font = '500 44px "Fraunces", Georgia, serif';
       ctx.fillStyle = 'rgba(139,31,31,0.55)';
-      ctx.fillText('/ 10', W/2 + 110, 720);
+      ctx.fillText('/ 10', W/2 + 100, 776);
       ctx.fillStyle = INK;
-      ctx.font = 'italic 28px "Newsreader", Georgia, serif';
+      ctx.font = 'italic 24px "Newsreader", Georgia, serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText('Subject: ' + r.subject, W/2, 770);
-      wrapText(r.commentary, W/2, 825, W - 200, 36,
-               '24px "Newsreader", Georgia, serif', INK, 'center', 4);
+      ctx.fillText('Subject: ' + r.subject, W/2, 815);
+      wrapText(r.commentary, W/2, 860, W - 200, 32,
+               '21px "Newsreader", Georgia, serif', INK, 'center', 3);
       ctx.fillStyle = OXBLOOD;
       ctx.font = '600 24px "JetBrains Mono", monospace';
       ctx.textAlign = 'center';
