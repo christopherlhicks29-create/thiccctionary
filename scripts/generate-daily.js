@@ -254,11 +254,27 @@ async function generateEntry(subject, photo) {
 
 VOICE TARGETS — match these patterns:
 
-DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Use dictionary register (esp., colloq., slang.) but slip in voicy flourishes. The second definition (when present) should be sharper/colloquial. Examples that worked:
+THE THREE THINGS THAT MAKE A THICCCTIONARY ENTRY ACTUALLY FUNNY (in priority order):
+
+1. SPECIFICITY beats abstraction. "Florida grew an avocado so thiccc..." > "An avocado was grown that was very thiccc..." Real settings (the suburban Costco parking lot, the county fair weigh-in, the uncle's garage), real brands (Frigidaire, Steinway, F-450, Cadbury), real cultural anchors (Brooklyn townhouse, Costco haul, NHL bench).
+
+2. PUNCHLINE TAGS. Every example sentence MUST end on a beat — a comedic kicker, a sharp tag, a rhythmic closer. NOT "He saw a thiccc X." YES "He saw a thiccc X. The parking lot reorganized around him." or "...The dually rear axle takes up two spaces by birthright." or "...Toast was just the canvas." Without the tag, the example dies on impact.
+
+3. ANTI-CLIMAX in the etymology. The kicker is what makes it sing. "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle' — which, frankly, tracks." The straight academic part sets up the deadpan. End with a beat, not a fact.
+
+DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Strong examples (study these — they all share unexpected SPECIFICITY):
 - "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one parked tail-toward the camera at golden hour."
 - "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection."
 - "The platonic ideal of thicccness: all body, no apologies."
 - "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
+- "A heavy-duty pickup of substantial posterior breadth, distinguished by dual rear wheels per side and an aggressively flared bedside that reads as architectural."
+
+ANTI-PATTERNS for definitions (these are what AI overuses — DO NOT write these):
+- "imposes its presence" / "commands the room" / "monumental in scale" — generic puff
+- "robust girth and imposing presence" — every adjective doing zero work
+- "renowned for its [adjective]" — stock dictionary opener that signals nothing
+- Stacking three vague adjectives ("massive, hefty, and substantial") — pick ONE specific detail instead
+- "exuding [abstract noun]" — almost always filler
 
 ETYMOLOGIES — lead with REAL, VERIFIABLE etymology (Latin/Greek/Middle English/Old French/Spanish/Nahuatl/named industrialists/dated coinages), then close with a comedic kicker that lands. This is where the personality lives.
 
@@ -274,16 +290,26 @@ AVOID:
 - Generic glosses that just translate the parts ("from Latin X meaning Y, combined with Z meaning W")
 - Etymologies without a comedic kicker — the kicker is mandatory.
 
-EXAMPLES — must include "thiccc" (three c's). Should be ONE crisp sentence or a sentence + a sharp tag. Use brand/model/proper-noun specificity, not generic placeholders. Strong examples that worked:
-- "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural."
-- "Florida grew an avocado so thiccc it required two hands and a pre-meal stretch. Toast was just the canvas."
-- "He pulled up in a thiccc F-450 and the parking lot reorganized around him. The dually rear axle takes up two spaces by birthright."
+EXAMPLES — must include "thiccc" (three c's). Format: ONE crisp sentence WITH A PUNCHLINE TAG at the end. The tag is non-negotiable — if the example doesn't have a comedic closer, it failed.
 
-AVOID:
-- Flat constructions ("Replaced my X with this thiccc Y")
-- Real-estate / interior-design copy ("effortlessly enhancing the aesthetic of any living space", "elevating any room")
-- Generic compliments ("such a statement piece", "absolute showstopper")
-- Marketing language. The example is a witness account, not a product description.`;
+Strong examples that worked (notice the tag pattern at the end of each):
+- "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural." [tag = sharp 1-word answer]
+- "Florida grew an avocado so thiccc it required two hands and a pre-meal stretch. Toast was just the canvas." [tag = bone-dry comparison]
+- "He pulled up in a thiccc F-450 and the parking lot reorganized around him. The dually rear axle takes up two spaces by birthright." [tag = bureaucratic deadpan]
+- "She rolled out a thiccc wheel of Parmigiano-Reggiano at the wedding. Three groomsmen had to commit to the lift." [tag = scene-specific punchline]
+
+Note what they all have in common:
+- A SCENE (Florida, parking lot, wedding) — not a vague situation
+- A CONCRETE BEAT at the end — a one-sentence punchline that lands
+- BRAND/MODEL specificity — "747," "F-450," "Parmigiano-Reggiano"
+
+AVOID — these patterns are dead on arrival:
+- Flat constructions: "Replaced my X with this thiccc Y" — no scene, no tag, no joke
+- Real-estate / interior-design copy: "effortlessly enhancing the aesthetic", "elevating any room"
+- Generic compliments: "such a statement piece", "absolute showstopper"
+- Marketing language: "commands attention", "makes a statement"
+- Ending the sentence at the headword without a tag — even one extra clause is required
+- Adverb stacking: "monumentally, imposingly, undeniably thiccc" — one specific image, not three vague ones`;
 
   const userPrompt = `Today's subject: "${subject}"
 
@@ -316,6 +342,73 @@ Schema:
   if (!res.ok) throw new Error(`Entry gen failed: ${res.status} ${await res.text()}`);
   const data = await res.json();
   return JSON.parse(data.choices[0].message.content);
+}
+
+
+// ---------- 5a. Humor critique (post-write QA on the generated entry) ----------
+// Scores the just-written entry's humor 1-10 and gives a one-line verdict.
+// Rejection logic in main(): score < 6 → regenerate once. Still < 6 → ship the
+// PR anyway (Christopher can edit before merging — better to surface a weak entry
+// for review than block the daily pipeline on a subjective measure).
+async function critiqueEntryHumor(entry) {
+  const sysPrompt = `You are a humor reviewer for "Thiccctionary," a satirical daily dictionary of thiccc inanimate objects. Voice = pseudo-academic dictionary register × dry comedy × internet vernacular. Brand promise: jokes about THINGS, never bodies.
+
+Score the just-written entry on humor. Use these criteria:
+
+1. SPECIFICITY — does the example sentence have a real scene (Florida, county fair, NHL bench, suburban Costco) or is it generic ("someone saw a thiccc X")? Specific = higher.
+2. PUNCHLINE TAG — does the example end on a comedic beat? A sharp tag, anti-climax, or rhythmic closer? Without a tag, the example dies. Tagless = strong deduction.
+3. ETYMOLOGY KICKER — does the etymology end on a deadpan beat ("which, frankly, tracks" / "First attested on Thiccctionary.com" / similar)? OR does it just translate the parts? Kicker present = higher.
+4. ANTI-PATTERNS — does the entry use any of these dead phrases? "imposes its presence," "commands the room," "monumental in scale," "robust girth and imposing presence," "renowned for its [adjective]," "exuding [abstract noun]"? If yes — strong deduction.
+5. SURPRISE — is there at least one unexpected, voicy detail (a botanical aside, a parenthetical aside, a Latin-register flip, a comically specific stat)? Generic puff loses points.
+
+Score 1-10:
+  9-10 = Avocado-Domestic / F-450-Dually tier. Definitely funny. Ship.
+  6-8  = solid, dictionary register lands, has a tag and a kicker. Ship.
+  3-5  = tag missing OR multiple anti-pattern phrases OR generic etymology. Regenerate.
+  1-2  = AI-template tells throughout. Reject.
+
+Output JSON only.`;
+
+  const userPrompt = `Headword: ${entry.word}
+Pronunciation: ${entry.pronunciation}
+Definitions: ${(entry.definitions || []).map(d => '- ' + d).join('\n')}
+Example: ${entry.example}
+Etymology: ${entry.etymology}
+
+Evaluate this entry's humor.
+
+{
+  "score": <integer 1-10>,
+  "verdict": "ship" | "regenerate" | "reject",
+  "weakest_part": "definitions" | "example" | "etymology" | "overall",
+  "feedback": "one or two sentences — what's working, what's flat, what would land"
+}`;
+
+  try {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: sysPrompt },
+          { role: 'user', content: userPrompt }
+        ],
+        max_tokens: 300,
+        temperature: 0.3,
+        response_format: { type: 'json_object' }
+      })
+    });
+    if (!res.ok) {
+      console.warn(`Humor critique skipped: ${res.status}`);
+      return { score: null, verdict: 'unknown', feedback: 'critique step failed (non-blocking)' };
+    }
+    const data = await res.json();
+    return JSON.parse(data.choices[0].message.content);
+  } catch (e) {
+    console.warn('Humor critique caught:', e.message);
+    return { score: null, verdict: 'unknown', feedback: `critique unavailable: ${e.message}` };
+  }
 }
 
 // ---------- 5b. Design critique (post-pick QA) ----------
@@ -511,7 +604,31 @@ async function main() {
   }
 
   // Step 5: write the entry
-  const entryCopy = await generateEntry(subjectInfo.subject, chosen);
+  let entryCopy = await generateEntry(subjectInfo.subject, chosen);
+
+  // Step 5a: humor critique. If the entry scores poorly, regenerate ONCE.
+  // After one retry we ship anyway — better to land a weak entry that
+  // Christopher can edit than block the daily pipeline on a subjective call.
+  try {
+    const humorCheck = await critiqueEntryHumor(entryCopy);
+    console.log(`Humor critique: score=${humorCheck.score}/10, verdict=${humorCheck.verdict}, weakest=${humorCheck.weakest_part}`);
+    if (humorCheck.feedback) console.log(`  feedback: ${humorCheck.feedback}`);
+    if (typeof humorCheck.score === 'number' && humorCheck.score < 6 && humorCheck.verdict !== 'ship') {
+      console.log('Humor below threshold. Regenerating once with feedback.');
+      // Pass the critic's feedback through to the regenerator so it knows
+      // what to fix.
+      const retryHint = ` REGEN HINT: previous attempt scored ${humorCheck.score}/10 — weakest part was ${humorCheck.weakest_part}. Feedback: ${humorCheck.feedback}. Push HARDER on specificity, scene, and punchline tag.`;
+      try {
+        entryCopy = await generateEntry(subjectInfo.subject + retryHint, chosen);
+        const retryCheck = await critiqueEntryHumor(entryCopy);
+        console.log(`Humor retry: score=${retryCheck.score}/10, verdict=${retryCheck.verdict}`);
+      } catch (e) {
+        console.warn('Humor regenerate failed (shipping the original):', e.message);
+      }
+    }
+  } catch (e) {
+    console.warn('Humor critique outer catch — shipping without humor check:', e.message);
+  }
 
   // Step 6: assemble + save
   const entry = {
