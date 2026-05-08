@@ -180,14 +180,14 @@ CRITICAL — the photo MUST show the WHOLE subject in frame:
 - REJECT tight crops, detail shots, side panels, single wheels, engine close-ups, or any composition where you can only see PART of the subject
 - If NONE of the candidates show the full subject, pick the one with the most of it visible
 
-HARD VETOES (these are AUTOMATIC rejection — never pick a photo with any of these):
-- ANY person, partial body, head, hand, arm, finger, leg — even in the background
+HARD VETOES (automatic rejection):
+- The PRIMARY SUBJECT of the photo is a person — portrait, fashion shot, body close-up, beauty/glamour. The brand is "we don't make jokes about human bodies," so a photo OF a person is wrong. A photo of a THING (truck, tomato, building, ship) where humans appear incidentally — bystanders, scale-reference, crew on a deck — is FINE as long as the THING is the focus and occupies the bulk of the frame.
 - Watermarks, text overlays, logos, captions
 - Marketing/product renders, illustrations, AI-generated stock — only real photographs
-- The subject occupies less than ~30% of the frame
+- The actual subject occupies less than ~30% of the frame
 - The subject is in deep shadow or silhouette where its girth can't be seen
 
-If MORE THAN HALF of the candidates have any HARD VETO trigger, output {"pick": -1, "reason": "all candidates fail veto"}. The workflow will re-search with a broader query.
+If ALL candidates fail veto (rare — usually one is acceptable), output {"pick": -1, "reason": "all candidates fail veto"}. The workflow will re-search.
 
 Prefer:
 - Rear three-quarter angles, side profiles, or back views that show the FULL subject silhouette and emphasize girth
@@ -452,15 +452,25 @@ async function main() {
   // Step 3: pick the thiccest
   let chosen = await pickThiccestImage(subjectInfo.subject, candidates);
 
-  // If the picker rejected ALL candidates (e.g. all have people in the frame),
-  // re-search with a broader query that biases toward isolated product shots.
+  // If the picker rejected ALL candidates, try one alternative angle. We
+  // intentionally do NOT add "isolated studio no people" — Unsplash treats
+  // those as required keywords and usually returns zero results. Instead,
+  // try a "photograph" suffix which biases toward general photography over
+  // illustrations / renders.
   if (chosen && chosen.rejected) {
-    console.warn('Picker rejected all candidates. Re-searching with isolation bias.');
-    const broaderQuery = `${subjectInfo.unsplashQuery} isolated studio no people`;
+    console.warn('Picker rejected all candidates. Retrying with photography bias.');
+    const broaderQuery = `${subjectInfo.unsplashQuery} photograph`;
     const retryCandidates = await searchUnsplash(broaderQuery);
+    if (!retryCandidates || retryCandidates.length === 0) {
+      console.warn(`No results for retry query "${broaderQuery}". Aborting cleanly so the cron can pick a different subject tomorrow.`);
+      // Exit 2 so the workflow run shows red, no PR opens, today's date stays
+      // available for the next run.
+      process.exit(2);
+    }
     chosen = await pickThiccestImage(subjectInfo.subject, retryCandidates);
     if (chosen && chosen.rejected) {
-      throw new Error(`No acceptable photo found for subject "${subjectInfo.subject}". All candidates failed veto on both queries.`);
+      console.warn(`All candidates failed veto on both queries for "${subjectInfo.subject}". Aborting cleanly.`);
+      process.exit(2);
     }
   }
 
