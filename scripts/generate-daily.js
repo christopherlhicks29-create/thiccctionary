@@ -464,8 +464,10 @@ async function main() {
     }
   }
 
-  // Step 4: download
-  const filename = `${today}.jpg`;
+  // Step 4: download (filename includes slug so reverts/edits don't create
+  // image-URL collisions where an old queued Buffer post pulls a new image)
+  const provisionalSlug = subjectInfo.subject.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+  const filename = `${today}-${provisionalSlug}.jpg`;
   await downloadImage(chosen, filename);
   console.log(`Saved image to images/${filename}`);
 

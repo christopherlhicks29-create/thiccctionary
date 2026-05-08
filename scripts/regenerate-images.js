@@ -165,9 +165,20 @@ async function main() {
 
       const subjectForVision = override || entry.word;
       const chosen = await pickThiccestImage(subjectForVision, candidates);
-      const filename = `${entry.date}.jpg`;
+      // New convention: include slug so old URLs stop resolving on revert.
+      const slug = String(entry.word).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+      const filename = `${entry.date}-${slug}.jpg`;
       await downloadImage(chosen, filename);
       console.log(`  Saved new image: images/${filename}`);
+      // If the entry previously pointed at a date-only filename, remove the
+      // stale file so the repo doesn't accumulate orphans.
+      const previousImage = entry.image && entry.image !== `images/${filename}` ? entry.image.replace(/^\.?\//, '') : null;
+      if (previousImage && previousImage !== `images/${filename}`) {
+        try {
+          await fs.unlink(path.join(ROOT, previousImage));
+          console.log(`  Removed stale image: ${previousImage}`);
+        } catch (e) { /* file already absent — fine */ }
+      }
 
       entry.image = `images/${filename}`;
       entry.photographer = chosen.photographer;
