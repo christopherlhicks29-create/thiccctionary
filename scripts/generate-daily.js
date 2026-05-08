@@ -330,7 +330,9 @@ async function critiqueChosenImage(subject, photo) {
 2. FRAMING — is the subject centered enough that a 4:3 or natural-aspect crop preserves it?
 3. BRAND FIT — does the photo look like a documentary / dictionary plate, or a marketing render? (Documentary good, marketing bad)
 4. CLUTTER — is the subject clearly the focal point, or surrounded by distractions?
-5. PEOPLE/BODIES — anyone visible? (Disqualifies — site is strictly inanimate)
+5. PRIMARY-SUBJECT TEST — what is the photo OF? If the answer is a person (portrait, fashion, beauty, body close-up) — DISQUALIFY, the brand never makes jokes about human bodies. If the answer is the actual subject thing (truck, tomato, instrument, building) and humans appear incidentally as bystanders / scale reference / crew / players holding the instrument — that's FINE. The rule is "no jokes about bodies," not "no humans visible."
+
+For musical instruments specifically: a photo of a tuba being PLAYED by someone is a photo of the tuba (subject = instrument, person is incidental). A photo of a brass-band marching is also of the instruments. Reject only if the COMPOSITION centers a person's face/body.
 
 Score the photo from 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
 
