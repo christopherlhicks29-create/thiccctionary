@@ -21,7 +21,7 @@ jobs:
       - name: Verify homepage hydrates and has key markers
         run: |
           set -e
-          HOME=$(curl -sf https://thiccctionary.com/)
+          HOME=$(curl -sfL --retry 2 --retry-all-errors -A "Mozilla/5.0 (post-deploy-verify) AppleWebKit/537.36" https://thiccctionary.com/)
           echo "$HOME" | grep -q "</html>" || (echo "FAIL: homepage missing closing </html>" && exit 1)
           echo "$HOME" | grep -q "Thi<span" || (echo "FAIL: wordmark missing" && exit 1)
           echo "$HOME" | grep -q "What is this?" || (echo "FAIL: orientation strip missing" && exit 1)
@@ -34,10 +34,18 @@ jobs:
         run: |
           set -e
           # Get the date of the latest entry from entries.json on the live site
-          LATEST=$(curl -sf https://thiccctionary.com/data/entries.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d[0]['date'])")
+          LATEST=$(curl -sfL --retry 2 --retry-all-errors -A "Mozilla/5.0 (post-deploy-verify) AppleWebKit/537.36" https://thiccctionary.com/data/entries.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d[0]['date'])")
           echo "Latest entry: $LATEST"
-          ENTRY=$(curl -sf "https://thiccctionary.com/entries/$LATEST.html")
-          echo "$ENTRY" | grep -q "</html>" || (echo "FAIL: entry page missing </html>" && exit 1)
+          ENTRY=$(curl -sfL --retry 2 --retry-all-errors -A "Mozilla/5.0 (post-deploy-verify) AppleWebKit/537.36" "https://thiccctionary.com/entries/$LATEST.html")
+          if ! echo "$ENTRY" | grep -q "</html>"; then
+            echo "FAIL: entry page missing </html>"
+            echo "--- first 5 lines of response: ---"
+            echo "$ENTRY" | head -5
+            echo "--- last 5 lines of response: ---"
+            echo "$ENTRY" | tail -5
+            echo "--- length: $(echo -n "$ENTRY" | wc -c) bytes ---"
+            exit 1
+          fi
           echo "$ENTRY" | grep -q "entry-subscribe" || (echo "FAIL: entry subscribe block missing" && exit 1)
           echo "$ENTRY" | grep -q "entry-nav" || (echo "FAIL: prev/next nav missing" && exit 1)
           echo "$ENTRY" | grep -q "BreadcrumbList" || (echo "FAIL: BreadcrumbList JSON-LD missing" && exit 1)
@@ -46,7 +54,7 @@ jobs:
       - name: Verify RSS feed has both entries and articles
         run: |
           set -e
-          FEED=$(curl -sf https://thiccctionary.com/feed.xml)
+          FEED=$(curl -sfL --retry 2 --retry-all-errors -A "Mozilla/5.0 (post-deploy-verify) AppleWebKit/537.36" https://thiccctionary.com/feed.xml)
           ITEM_COUNT=$(echo "$FEED" | grep -c "<item>")
           ARTICLE_COUNT=$(echo "$FEED" | grep -c "\\[Article\\]")
           echo "Feed has $ITEM_COUNT items, $ARTICLE_COUNT articles"
