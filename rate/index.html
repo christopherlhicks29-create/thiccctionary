@@ -534,22 +534,31 @@ function renderVerdictCanvas(r, imageSrc) {
       const IW = 760, IH = 420;
       const IX = (W - IW) / 2;
       const IY = 165;
-      // Letterbox / cover the image area
+
+      // CONTAIN, not cover — show the user's full submission with cream
+      // letterboxing as needed. Cropping the user's photo is the wrong
+      // default for a verdict card; they want to see what they submitted.
       const imgRatio = img.naturalWidth / img.naturalHeight;
       const boxRatio = IW / IH;
-      let sx, sy, sw, sh;
+      let dx, dy, dw, dh;
       if (imgRatio > boxRatio) {
-        sh = img.naturalHeight;
-        sw = sh * boxRatio;
-        sx = (img.naturalWidth - sw) / 2;
-        sy = 0;
+        // Image is wider than box — fit width, letterbox top/bottom
+        dw = IW;
+        dh = IW / imgRatio;
+        dx = IX;
+        dy = IY + (IH - dh) / 2;
       } else {
-        sw = img.naturalWidth;
-        sh = sw / boxRatio;
-        sx = 0;
-        sy = (img.naturalHeight - sh) / 2;
+        // Image is taller than box — fit height, letterbox left/right
+        dh = IH;
+        dw = IH * imgRatio;
+        dx = IX + (IW - dw) / 2;
+        dy = IY;
       }
-      ctx.drawImage(img, sx, sy, sw, sh, IX, IY, IW, IH);
+      // Fill the image area with cream first so the letterbox bands match the card
+      ctx.fillStyle = CREAM;
+      ctx.fillRect(IX, IY, IW, IH);
+      // Draw the entire image inside the box (no source-cropping)
+      ctx.drawImage(img, dx, dy, dw, dh);
       ctx.strokeStyle = RULE;
       ctx.lineWidth = 1;
       ctx.strokeRect(IX, IY, IW, IH);
