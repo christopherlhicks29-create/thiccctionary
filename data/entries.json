@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-05-08",
+    "word": "Hoover Dam",
+    "pronunciation": "/HOO-ver dam/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A monumental concrete arch-gravity dam in the Black Canyon of the Colorado River, renowned for its robust girth and imposing presence; esp. noted for its ability to hold back torrents with serene confidence.",
+      "<em>colloq.</em> The OG of thiccc infrastructure, where even the roadways had to step aside and take a bridge."
+    ],
+    "example": "The Hoover Dam stands as a thiccc testament to human ingenuity, its sweeping curves holding back the Colorado River like a boss.",
+    "etymology": "Named after Herbert Hoover, 31st President of the United States, who played a significant role in its inception. It's said that when the engineers saw the final plans, they muttered, 'Now that's a thiccc piece of work.'",
+    "image": "images/2026-05-08-hoover-dam.jpg",
+    "caption": "Plate N. — Original US Route 93 over Hoover Dam, where thicccness created traffic vibes.",
+    "tags": [
+      "infrastructure",
+      "engineering",
+      "dams"
+    ],
+    "photographer": "Zoshua Colah",
+    "photographerUrl": "https://unsplash.com/@zoshuacolah",
+    "unsplashUrl": "https://unsplash.com/photos/a-view-of-a-large-dam-with-a-road-going-through-it-wniqx4imKi8"
+  },
+  {
     "date": "2026-05-06",
     "word": "Wheel, Parmigiano-Reggiano",
     "pronunciation": "par-mih-JAH-noh red-jee-AH-noh",
