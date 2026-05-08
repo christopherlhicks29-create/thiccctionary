@@ -1,0 +1,78 @@
+{
+  "_schema_version": "1",
+  "_description": "Book-only content. Never published to the website. Captured continuously across the project; refined and edited during Phase 4 (Dec 2026 - Mar 2027) for the April 2027 launch.",
+
+  "_item_types": {
+    "foreword": "Christopher's editorial introduction. Personal voice, origin story.",
+    "afterword": "Closing remarks if the book deserves one.",
+    "deepdive": "Long-form essay extending an entry. 4-8 print pages. AI-drafted, Christopher-edited.",
+    "alphabet": "Entry for the A-Z Alphabet of Thiccc section. Hard letters (X, Y, Q, Z) need new subjects.",
+    "commentary": "Editor's note annotating a specific entry. Personal, behind-the-scenes.",
+    "photoessay": "Curated multi-page photo spread with short captions.",
+    "cutcontent": "Section featuring deliberately-weak entries that didn't make the cut, presented with editorial frame.",
+    "glossary": "The brand's invented vocabulary, defined.",
+    "origin_note": "Short note from Christopher about how/why the project started.",
+    "acknowledgment": "Photographer credits, contributors, anyone owed thanks.",
+    "other": "Anything else worth capturing."
+  },
+
+  "_status_tags": {
+    "idea": "Captured but not drafted. Just a seed.",
+    "draft": "Drafted but not finalized. Christopher hasn't reviewed yet.",
+    "ready": "Final. Ready to drop into the book layout pipeline.",
+    "cut": "Captured then later decided not to use."
+  },
+
+  "items": [
+    {
+      "id": "foreword-spine",
+      "type": "foreword",
+      "status": "idea",
+      "title": "Why three c's",
+      "notes": "Christopher to write. ~1500-2000 words. Origin story, why three c's, why this exists. Most important single piece in the book — sets the voice for everything else. Block 30-90 minutes when inspiration strikes; don't overthink it.",
+      "content": "",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "alphabet-of-thiccc",
+      "type": "alphabet",
+      "status": "idea",
+      "title": "An Alphabet of Thiccc",
+      "notes": "A through Z. Some letters map to existing entries (A=Avocado, B=Banana, C=Concrete Mixer, F=Ford F-450, S=Sofa Chesterfield, W=Watermelon). Hard letters need new subjects: X (xenon-tank?), Y (yam? yacht?), Q (quill? quarry?), Z (Zamboni — yes, Zamboni). I can pitch options as catalog grows.",
+      "content": "",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "cut-content-section",
+      "type": "cutcontent",
+      "status": "idea",
+      "title": "Twelve Plates That Almost Didn't Make It",
+      "notes": "Filter all bookReady:false entries; pick 8-12 most amusingly weak. Present with a short editorial frame ('these failed our standards but failed interestingly'). Auto-curated from the catalog.",
+      "content": "",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "glossary-thiccc-terms",
+      "type": "glossary",
+      "status": "idea",
+      "title": "A Glossary of Thiccc Terminology",
+      "notes": "The brand's invented vocabulary defined. 'Thicccness': three senses (girth/density/viscosity). 'Editorial apparatus.' 'Plate' (in the dictionary-illustration sense). 'Rear three-quarter.' 'Brand-coherent thiccc.' Useful book-end content AND brand documentation.",
+      "content": "",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "personal-photos-intro",
+      "type": "photoessay",
+      "status": "idea",
+      "title": "From the Editor's Camera",
+      "notes": "Photo essay of Christopher's own thiccc photos (taken in his daily life). Rights-clean (he owns them) and gives the book a personal touch. Build as he submits photos via images/personal/.",
+      "content": "",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    }
+  ]
+}
