@@ -18,6 +18,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validateEntry } from './banned-words.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -78,6 +79,7 @@ async function audit() {
     badSchema: [],
     missingOg: [],
     sitemapDrift: { inSitemapNotInRepo: [], inRepoNotInSitemap: [] },
+    bannedWordsInEntries: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -141,6 +143,24 @@ async function audit() {
     }
   }
 
+  // 6. Banned-words check on every entry (Wave 45 — continuous QA)
+  try {
+    const entriesPath = path.join(ROOT, 'data', 'entries.json');
+    if (await fileExists(entriesPath)) {
+      const entries = JSON.parse(await fs.readFile(entriesPath, 'utf-8'));
+      for (const e of entries) {
+        const r = validateEntry(e);
+        if (!r.ok) {
+          for (const v of r.violations) {
+            issues.bannedWordsInEntries.push({ date: e.date, word: e.word, field: v.field, term: v.term, kind: v.kind });
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.warn(`Banned-words check failed: ${e.message}`);
+  }
+
   // 5. Sitemap drift
   const sitemapPath = path.join(ROOT, 'sitemap.xml');
   if (await fileExists(sitemapPath)) {
@@ -201,6 +221,9 @@ function formatReport({ issues, stats }) {
     i => `${i.url} (expected file: \`${i.expected}\`)`);
   section(`Sitemap: pages in repo NOT in sitemap (${issues.sitemapDrift.inRepoNotInSitemap.length})`, issues.sitemapDrift.inRepoNotInSitemap,
     i => `\`${i.file}\` — expected URL: ${i.expectedUrl}`);
+
+  section(`Banned-word violations in entries.json (${issues.bannedWordsInEntries.length})`, issues.bannedWordsInEntries,
+    i => `\`${i.date}\` (${i.word}) — [${i.field}] "${i.term}"`);
 
   lines.push('---');
   lines.push('');
