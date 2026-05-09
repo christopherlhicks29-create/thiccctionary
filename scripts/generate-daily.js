@@ -263,7 +263,7 @@ THE THREE THINGS THAT MAKE A THICCCTIONARY ENTRY ACTUALLY FUNNY (in priority ord
 3. ANTI-CLIMAX in the etymology. The kicker is what makes it sing. "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle' — which, frankly, tracks." The straight academic part sets up the deadpan. End with a beat, not a fact.
 
 DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Strong examples (study these — they all share unexpected SPECIFICITY):
-- "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one parked tail-toward the camera at golden hour."
+- "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one observed tail-on, in long-lens profile."
 - "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection."
 - "The platonic ideal of thicccness: all body, no apologies."
 - "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
@@ -277,6 +277,10 @@ ANTI-PATTERNS for definitions (these are what AI overuses — DO NOT write these
 - "exuding [abstract noun]" — almost always filler
 
 NO TIME-ANCHORED FRAMING. The entry must read as a permanent dictionary record, not a daily blog post. Don't write "today's specimen," "this morning's catch," "as featured today," or anything that locks the entry to a specific date or news cycle. Entries must work whether the reader encounters them today or three years from now in a printed book. Write FOR THE CATALOG, not FOR TODAY.
+
+NO BODY-ADJACENT LANGUAGE. The brand exists to redirect AWAY from body language onto objects. Words like "voluptuous," "curves," "runway," "fashion model," "vintage model," "thin skins," "hourglass," "hip-to-waist ratio," "well-endowed" applied to OBJECTS undermine the entire conceit — they smuggle the body framing back in through metaphor. Use OBJECT language: "girth," "rotundity," "depth," "wheelbase," "displacement," "footprint," "bedside flare," "drum diameter," "shell thickness." If you find yourself reaching for a body word, the entry is wrong. Stop and pick an object word.
+
+DEFINITION #2 MUST ESCALATE WITH RESTRAINT. The colloquial/slang second definition should sharpen the joke, not restate definition 1 with different adjectives. Strong def #2: "The platonic ideal of thicccness: all body, no apologies." (one short sentence, lands) or "A truck that does not back into a parking spot so much as occupy it with permanent intent." (one specific behavioral observation). Weak def #2: "Any banana that commands attention with full-bodied presence" — that is just def #1 restated. If def #2 is just def #1 with synonyms, cut it entirely; better to have one strong definition than two parallel ones.
 
 ETYMOLOGIES — lead with REAL, VERIFIABLE etymology (Latin/Greek/Middle English/Old French/Spanish/Nahuatl/named industrialists/dated coinages), then close with a comedic kicker that lands. This is where the personality lives.
 
@@ -317,7 +321,7 @@ AVOID — these patterns are dead on arrival:
 
 The photo we chose: ${photo.description ? `"${photo.description}"` : '(no caption available)'}, by ${photo.photographer} on Unsplash.
 
-Write the dictionary entry. Reference the actual photo loosely (e.g. "esp. when photographed at golden hour" or "the subject's posterior, viewed astern, defies casual description") but don't get specific about details you can't verify.
+Write the dictionary entry. Reference the actual photo loosely (e.g. "esp. one viewed astern, in raking light" or "the subject's posterior, viewed astern, defies casual description") but don't get specific about details you can't verify.
 
 Schema:
 {
