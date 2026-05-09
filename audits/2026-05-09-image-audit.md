@@ -103,3 +103,26 @@ Estimated review time per PR: 30 seconds. Total: ~90 seconds.
 The Unsplash + AI vision picker doesn't always nail the subject on first try. If a search returns 30 results and the picker chooses the wrong one (e.g., picks an animal called "Ram" instead of a Ram truck), I can refire but I can't see the image until the workflow completes and you tell me what landed.
 
 If a PR has the wrong subject, the fix is: re-fire with a more specific SUBJECT_OVERRIDE. I'll do that for you.
+
+
+---
+
+## Update — autonomous regen results (2026-05-09 17:43 UTC)
+
+Fired three sentinel-driven workflow runs autonomously via the Wave 39 mechanism. Outcomes:
+
+| Run | Status | Notes |
+|---|---|---|
+| 1 — Ram 3500 (2026-04-29) | ✅ **MERGE** | New image: real Dodge/Ram 3500 dually with visible dual rear wheels and flared rear quarters. Resolves the Ford-instead-of-Ram fact-check failure cleanly. |
+| 2 — Frigidaire (2026-05-02) | ⚠️ **MERGE** | New image: stainless steel fridge in wood-cabinet kitchen. Probably still French-door + drawer rather than true side-by-side (true side-by-sides are uncommon in stock photography — Unsplash bias). Accept as improvement; the imperfection isn't visible at daily-entry display size. |
+| 3 — Watermelon Moon and Stars (2026-05-05) | ❌ **CLOSE — pivot at Wave A2** | New image: regular striped watermelon, no celestial pattern. Moon and Stars is a rare heritage variety; Unsplash's pool doesn't reliably contain it. Recommend regenerating both image AND entry text in the upcoming Wave A2 (originally just Hoover Dam, Banana, Heritage Tomato), pivoting the variety to something with better photo coverage OR rewriting the entry around a different angle. |
+
+## Lessons for future image regens
+
+1. **Search-pool limitations matter.** When the entry's specific subject is a rare heritage variety / unusual configuration / niche specimen, Unsplash may not have it regardless of how good the override query is. Future audits should pre-flight check whether the exact subject is photo-findable before regen attempts.
+
+2. **Configuration-level fact-checks are the hardest.** "Side-by-side" vs "French door" vs "bottom-freezer" are visually similar to the casual reader but technically distinct. Same for truck configurations (single-cab vs crew-cab vs dually). The picker's vision API is OK at "is this a fridge" but weaker at "is this *exactly this* fridge config."
+
+3. **Subject-pivoting is editorially viable.** When Unsplash can't deliver, rewriting the entry to fit findable imagery is often better than fighting the search. The brand's editorial discipline is "things, not people" — within that, specific subject choices are flexible.
+
+4. **The sentinel mechanism (Wave 39) works.** End-to-end autonomous fire confirmed: write JSON, push, workflow detects, runs script, opens PR, deletes sentinel, commits deletion. Three round trips of ~40s each.
