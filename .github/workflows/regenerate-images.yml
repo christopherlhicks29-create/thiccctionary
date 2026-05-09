@@ -15,6 +15,10 @@ on:
         description: "Optional. Hand-picked Unsplash search query for these dates (use when entry.word returns wrong-subject results, e.g. 'beefsteak tomato' for Heritage Tomato). Leave blank to use the entry's own word."
         type: string
         default: ""
+  push:
+    paths:
+      - 'data/.fire-image-regen.json'
+    branches: [main]
 
 permissions:
   contents: write
@@ -32,13 +36,34 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Read sentinel file (push triggers only)
+        id: sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-image-regen.json ]; then
+            DATES=$(python3 -c "import json; print(json.load(open('data/.fire-image-regen.json')).get('dates',''))")
+            SUBJECT=$(python3 -c "import json; print(json.load(open('data/.fire-image-regen.json')).get('subject_override',''))")
+            echo "dates=${DATES}" >> $GITHUB_OUTPUT
+            echo "subject_override=${SUBJECT}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Delete sentinel file (push triggers only)
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f data/.fire-image-regen.json
+          git add -A
+          git diff --staged --quiet || git commit -m "Consume image-regen sentinel"
+          git push origin main || true
+
       - name: Regenerate images
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-          DATES: ${{ inputs.dates }}
-          SUBJECT_OVERRIDE: ${{ inputs.subject_override }}
+          DATES: ${{ inputs.dates || steps.sentinel.outputs.dates }}
+          SUBJECT_OVERRIDE: ${{ inputs.subject_override || steps.sentinel.outputs.subject_override }}
         run: node regenerate-images.js
 
       - name: Open Pull Request
