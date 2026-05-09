@@ -4,6 +4,7 @@ One-line summary of every shipped change. Newest at top. Anyone (including futur
 
 | Date | Wave | Summary |
 |------|------|---------|
+| 2026-05-09 | 32 | Org schema upgrade + TikTok added everywhere. Adds alternateName, description, slogan, foundingDate, knowsAbout, contactPoint, ImageObject logo, DefinedTerm, DefinedTermSet. TikTok @thethiccctionary added to sameAs and to footers across 34 HTML files + press kit social row. Strengthens entity recognition vs Google's 'Did you mean Dictionary' auto-correct AND demotes the impostor TikTok by declaring our official one. |
 | 2026-05-09 | 31 | Catalog audit — all 12 entries scored on register/humor/image. 4 canonical, 5 keep-with-edits, 3 regenerate (Hoover Dam, Banana, Heritage Tomato). Floor 17/30, mean 22.4, ceiling 29. Audit lives at audits/2026-05-09-catalog-audit.md. |
 | 2026-05-09 | 30 | Press kit gains a "foundational entry on the word" pointer to /thiccc/; FAQ "why three c's" answer rewritten to cite /thiccc/ as canonical with history article as long-form. |
 | 2026-05-09 | 29 | New /thiccc/ foundational entry: dictionary-style headword + IPA + 3 numbered defs (girth, density, viscosity) + etymology + FAQPage schema. Cross-linked from homepage About and history article. Captures direct keyword traffic + Google rich-snippet eligibility. |

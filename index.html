@@ -63,13 +63,47 @@
       "@type": "Organization",
       "@id": "https://thiccctionary.com/#organization",
       "name": "Thiccctionary",
+      "alternateName": ["The Thiccctionary", "Thiccctionary.com"],
       "url": "https://thiccctionary.com/",
-      "logo": "https://thiccctionary.com/og-default.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://thiccctionary.com/og-default.png",
+        "width": 1200,
+        "height": 630
+      },
+      "image": "https://thiccctionary.com/og-default.png",
+      "description": "Thiccctionary is a satirical daily online dictionary that catalogs inanimate objects of unusual girth (cement mixers, wide-body airliners, Chesterfield sofas, heritage tomatoes) in mock-academic register. Strictly things, never people.",
+      "slogan": "Documenting girth, since 2026.",
+      "foundingDate": "2026",
+      "knowsAbout": ["satire", "internet vocabulary", "dictionary", "thiccc", "object photography", "lexicography"],
       "sameAs": [
         "https://www.instagram.com/ogthiccctionary/",
         "https://www.facebook.com/Thiccctionary/",
-        "https://x.com/thiccctionary"
-      ]
+        "https://x.com/thiccctionary",
+        "https://www.tiktok.com/@thethiccctionary",
+        "https://buymeacoffee.com/Thiccctionary"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "admin@thiccctionary.com",
+        "contactType": "editorial"
+      }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://thiccctionary.com/#brand-term",
+      "name": "Thiccctionary",
+      "alternateName": ["The Thiccctionary", "thiccctionary"],
+      "description": "A satirical online dictionary documenting objects of unusual girth in mock-academic register. Three c's are an editorial intensifier; the term is the canonical name of thiccctionary.com.",
+      "url": "https://thiccctionary.com/",
+      "inDefinedTermSet": { "@id": "https://thiccctionary.com/#dictionary" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://thiccctionary.com/#dictionary",
+      "name": "Thiccctionary",
+      "url": "https://thiccctionary.com/",
+      "description": "The dictionary itself \u2014 a corpus of satirical entries documenting inanimate objects of unusual girth."
     }
   ]
 }
