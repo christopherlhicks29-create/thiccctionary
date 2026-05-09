@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary — Produce</title>
+    <link>https://thiccctionary.com/archive.html?tag=produce</link>
+    <atom:link href="https://thiccctionary.com/feed/produce.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "produce".</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 May 2026 18:12:46 GMT</lastBuildDate>
+    <item>
+      <title>Avocado, Domestic</title>
+      <link>https://thiccctionary.com/entries/2026-04-30.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-30.html</guid>
+      <pubDate>Thu, 30 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A pear-shaped fruit (Persea americana) of disproportionate hip-to-waist ratio, often photographed sliced for visual emphasis.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-30.jpg" type="image/jpeg" length="0" />
+      <category>fruit</category><category>produce</category><category>bottom-heavy</category>
+    </item>
+    <item>
+      <title>Heritage Tomato</title>
+      <link>https://thiccctionary.com/entries/2026-04-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-28.html</guid>
+      <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cultivar of tomato known for its voluptuous form and vibrant flavor profile; often revered in culinary circles for its historical lineage and robust appearance.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-28.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>garden</category><category>culinary</category>
+    </item>
+  </channel>
+</rss>
