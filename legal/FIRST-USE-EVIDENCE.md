@@ -19,7 +19,7 @@
 
 - **Domain:** thiccctionary.com
 - **Registrar:** Cloudflare Registrar (transferred to / registered through Cloudflare)
-- **Registration date:** [TODO: pull from Cloudflare dashboard. Likely April 2026.]
+- **Registration date:** April 2026 (approximate, per Christopher 2026-05-09; exact date TBC from registrar receipt). Earliest git commit (canonical first-use timestamp): 2026-05-01T22:10:56-06:00, hash 0f863e9 "Initial Thiccctionary".
 - **Public WHOIS:** ICANN lookup at https://lookup.icann.org/lookups/domain/thiccctionary.com
 
 ### Website launch
