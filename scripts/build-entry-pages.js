@@ -267,6 +267,7 @@ export async function buildSitemap(entries) {
   const base = SITE.replace(/\/$/, '');
   const staticPages = [
     { loc: `${base}/`, priority: '1.0' },
+    { loc: `${base}/thiccc/`, priority: '0.9', lastmod: '2026-05-09' },
     { loc: `${base}/archive.html`, priority: '0.8' },
     { loc: `${base}/articles/`, priority: '0.7' },
     { loc: `${base}/articles/the-five-thicccest-things.html`, priority: '0.7', lastmod: '2026-05-02' },
