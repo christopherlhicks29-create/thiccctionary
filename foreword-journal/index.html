@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Foreword Journal — Thiccctionary (private)</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="canonical" href="https://thiccctionary.com/foreword-journal/" />
+<meta name="theme-color" content="#f5e8c7" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">For the Editor's Eyes</span>
+    <span class="meta-line meta-line--right">Foreword Notes</span>
+  </div>
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+    </a>
+  </h1>
+</header>
+
+<main id="main-content" style="max-width: 720px; margin: 3rem auto 4rem; padding: 0 1.5rem;">
+
+  <section style="margin-bottom: 2rem;">
+    <p class="entry-date-stamp" style="display: inline-block;">For the Editor</p>
+    <h2 class="entry-word" style="margin-top: 0.75rem;">Foreword Journal</h2>
+    <p style="font-style: italic; opacity: 0.75;">A private brain-dump space for foreword notes. Whatever lands here gets stored in your browser's local storage. Doesn't have to be polished. Doesn't have to be coherent. Just dump what's in your head about why this project exists, why three c's, what the joke is, what got you to start.</p>
+    <p style="font-style: italic; opacity: 0.6; font-size: 0.9rem;">All notes stay on this device — nothing is sent to a server. When you want Claude to capture them into <code>print-exclusive.json</code>, hit "Copy all notes" and paste into a chat session.</p>
+  </section>
+
+  <section id="journal-area">
+    <textarea id="note-text" placeholder="Why three c's. Why this exists. The story you'd tell a friend at a bar about why you spent a year on this project. What the joke actually is to you. Drop it raw — Phase 4 you will edit Phase 1 you." style="width: 100%; min-height: 300px; padding: 1rem; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; border: 1px solid var(--rule); border-radius: 4px; background: rgba(0,0,0,0.02); color: inherit; resize: vertical;"></textarea>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; gap: 1rem; flex-wrap: wrap;">
+      <p id="char-count" style="font-family: var(--font-mono); font-size: 11px; opacity: 0.6;">0 chars</p>
+      <button type="button" id="save-btn" class="share-btn">Save note</button>
+    </div>
+
+    <p id="save-status" style="margin-top: 1rem; min-height: 1.2em; font-style: italic;"></p>
+
+    <hr style="margin: 3rem 0; border: 0; border-top: 1px solid var(--rule);" />
+
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <h3 style="margin: 0;">All saved notes</h3>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" id="copy-all-btn" class="share-btn">Copy all notes for Claude</button>
+        <button type="button" id="clear-all-btn" class="share-btn share-btn--secondary">Clear all</button>
+      </div>
+    </div>
+
+    <div id="recent-notes" style="margin-top: 1.5rem; opacity: 0.85;"></div>
+  </section>
+
+</main>
+
+<footer class="footer" style="margin-top: 4rem;">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary</p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div></div><div></div><div></div>
+  </div>
+</footer>
+
+<script>
+const STORAGE_KEY = 'thiccc_foreword_notes';
+const DRAFT_KEY = 'thiccc_foreword_draft';
+
+function loadNotes() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) { return []; }
+}
+
+function saveNotes(notes) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(notes)); }
+  catch (e) { alert('Could not save: storage full or blocked.'); }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function renderNotes() {
+  const notes = loadNotes();
+  const container = document.getElementById('recent-notes');
+  if (notes.length === 0) {
+    container.innerHTML = '<p style="font-style: italic; opacity: 0.6;">No notes yet. Drop one above.</p>';
+    return;
+  }
+  container.innerHTML = notes.slice().reverse().map((n, i) => {
+    const idx = notes.length - 1 - i;
+    return `<div style="margin-bottom: 1.5rem; padding: 1rem; border-left: 3px solid var(--oxblood); background: rgba(0,0,0,0.02);">
+      <div style="display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-bottom: 0.5rem;">
+        <p style="margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; opacity: 0.55;">${escapeHtml(n.created || '?')}</p>
+        <button type="button" data-idx="${idx}" class="delete-note-btn" style="background: none; border: 0; color: var(--oxblood); cursor: pointer; opacity: 0.6; font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.1em;">DELETE</button>
+      </div>
+      <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(n.content)}</p>
+    </div>`;
+  }).join('');
+
+  // Wire delete buttons
+  container.querySelectorAll('.delete-note-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      if (!confirm('Delete this note?')) return;
+      const notes = loadNotes();
+      notes.splice(idx, 1);
+      saveNotes(notes);
+      renderNotes();
+    });
+  });
+}
+
+// Char count + draft autosave
+const textarea = document.getElementById('note-text');
+const charCount = document.getElementById('char-count');
+textarea.addEventListener('input', () => {
+  charCount.textContent = `${textarea.value.length} chars`;
+  try { localStorage.setItem(DRAFT_KEY, textarea.value); } catch (e) {}
+});
+try {
+  const draft = localStorage.getItem(DRAFT_KEY);
+  if (draft) {
+    textarea.value = draft;
+    charCount.textContent = `${draft.length} chars`;
+  }
+} catch (e) {}
+
+document.getElementById('save-btn').addEventListener('click', () => {
+  const text = textarea.value.trim();
+  if (!text) {
+    document.getElementById('save-status').textContent = 'Empty note — nothing to save.';
+    return;
+  }
+  const notes = loadNotes();
+  notes.push({
+    content: text,
+    created: new Date().toISOString().slice(0, 16).replace('T', ' ')
+  });
+  saveNotes(notes);
+  document.getElementById('save-status').textContent = `Saved ✓ (${text.length} chars). Now stored locally on this device.`;
+  textarea.value = '';
+  charCount.textContent = '0 chars';
+  try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+  renderNotes();
+});
+
+document.getElementById('copy-all-btn').addEventListener('click', () => {
+  const notes = loadNotes();
+  if (notes.length === 0) {
+    document.getElementById('save-status').textContent = 'No notes to copy.';
+    return;
+  }
+  // Format for easy paste-into-Claude consumption
+  const formatted = notes.map((n, i) =>
+    `--- Foreword note #${i + 1} (${n.created}) ---\n${n.content}\n`
+  ).join('\n');
+  const message = `Hey Claude, here are my foreword journal notes — please add them all to print-exclusive.json with type=origin_note status=idea, and timestamp from each.\n\n${formatted}`;
+  navigator.clipboard.writeText(message).then(() => {
+    document.getElementById('save-status').textContent = `Copied ${notes.length} notes to clipboard. Paste into a Claude session.`;
+  }).catch(() => {
+    document.getElementById('save-status').textContent = 'Copy failed. Check browser permissions.';
+  });
+});
+
+document.getElementById('clear-all-btn').addEventListener('click', () => {
+  if (!confirm('Delete ALL notes? This can\'t be undone — make sure you copied them to Claude first.')) return;
+  saveNotes([]);
+  renderNotes();
+});
+
+renderNotes();
+</script>
+
+</body>
+</html>

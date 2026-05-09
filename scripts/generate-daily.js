@@ -613,23 +613,24 @@ async function main() {
   // Step 5a: humor critique. If the entry scores poorly, regenerate ONCE.
   // After one retry we ship anyway — better to land a weak entry that
   // Christopher can edit than block the daily pipeline on a subjective call.
+  // Also: capture the FINAL humor score so we can use it for bookReady auto-flagging.
+  let finalHumorScore = null;
   try {
-    const humorCheck = await critiqueEntryHumor(entryCopy);
+    let humorCheck = await critiqueEntryHumor(entryCopy);
     console.log(`Humor critique: score=${humorCheck.score}/10, verdict=${humorCheck.verdict}, weakest=${humorCheck.weakest_part}`);
     if (humorCheck.feedback) console.log(`  feedback: ${humorCheck.feedback}`);
     if (typeof humorCheck.score === 'number' && humorCheck.score < 6 && humorCheck.verdict !== 'ship') {
       console.log('Humor below threshold. Regenerating once with feedback.');
-      // Pass the critic's feedback through to the regenerator so it knows
-      // what to fix.
       const retryHint = ` REGEN HINT: previous attempt scored ${humorCheck.score}/10 — weakest part was ${humorCheck.weakest_part}. Feedback: ${humorCheck.feedback}. Push HARDER on specificity, scene, and punchline tag.`;
       try {
         entryCopy = await generateEntry(subjectInfo.subject + retryHint, chosen);
-        const retryCheck = await critiqueEntryHumor(entryCopy);
-        console.log(`Humor retry: score=${retryCheck.score}/10, verdict=${retryCheck.verdict}`);
+        humorCheck = await critiqueEntryHumor(entryCopy);
+        console.log(`Humor retry: score=${humorCheck.score}/10, verdict=${humorCheck.verdict}`);
       } catch (e) {
         console.warn('Humor regenerate failed (shipping the original):', e.message);
       }
     }
+    if (typeof humorCheck.score === 'number') finalHumorScore = humorCheck.score;
   } catch (e) {
     console.warn('Humor critique outer catch — shipping without humor check:', e.message);
   }
@@ -661,7 +662,15 @@ async function main() {
     caption: entryCopy.caption,
     tags: entryCopy.tags,
     category: category,                  // chapter assignment for eventual book
-    bookReady: null,                     // null = unreviewed; you flip true/false during curation
+    // bookReady auto-flag: humor critic ≥8 AND design critic ≥7 → candidate=true.
+    // Christopher overrides during weekly curation; this is just the AI's
+    // pre-selection so weak entries don't accidentally end up in the book.
+    bookReady: (
+      typeof finalHumorScore === 'number' && finalHumorScore >= 8 &&
+      typeof critique?.score === 'number' && critique.score >= 7
+    ) ? true : null,
+    humorScore: finalHumorScore,
+    photoScore: typeof critique?.score === 'number' ? critique.score : null,
     photographer: chosen.photographer,
     photographerUrl: chosen.photographerUrl,
     unsplashUrl: chosen.unsplashUrl,

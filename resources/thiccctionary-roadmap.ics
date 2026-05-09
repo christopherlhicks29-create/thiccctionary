@@ -1,0 +1,120 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Thiccctionary//Roadmap Reminders//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Thiccctionary — Book Roadmap
+X-WR-CALDESC:Recurring reminders for Phase 1 (catalog hardening) → April 2027 launch.
+X-WR-TIMEZONE:America/Denver
+
+BEGIN:VEVENT
+UID:thiccctionary-weekly-curation-2026
+SUMMARY:Thiccctionary — Weekly curation pass
+DESCRIPTION:Open Claude (Cowork). Say "let's curate this week." Claude lists the 7 most recent entries; for each\, you reply book or web. ~10 minutes total. Marks each entry's bookReady flag for the eventual book.
+DTSTART;TZID=America/Denver:20260510T100000
+DTEND;TZID=America/Denver:20260510T101500
+RRULE:FREQ=WEEKLY;BYDAY=SU
+LOCATION:thiccctionary.com
+URL:https://thiccctionary.com/archive.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Curate the past week's entries
+TRIGGER:-PT0M
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-monthly-status-2026
+SUMMARY:Thiccctionary — Monthly book-status check
+DESCRIPTION:Open Claude. Ask "where are we on the book?" Claude reads the roadmap memory and reports current phase\, catalog size\, next decision-point. ~5 minutes. Recalibrate if drifting.
+DTSTART;TZID=America/Denver:20260601T093000
+DTEND;TZID=America/Denver:20260601T094000
+RRULE:FREQ=MONTHLY;BYMONTHDAY=1
+LOCATION:thiccctionary.com
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Book roadmap status check
+TRIGGER:-PT0M
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-quarterly-recalibration-2026
+SUMMARY:Thiccctionary — Quarterly recalibration
+DESCRIPTION:Open Claude. Major review — should we accelerate\, slow down\, or kill the plan? Look at audience growth\, catalog quality\, time available. ~30 minutes.
+DTSTART;TZID=America/Denver:20260801T100000
+DTEND;TZID=America/Denver:20260801T103000
+RRULE:FREQ=MONTHLY;INTERVAL=3;BYMONTHDAY=1
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Quarterly recalibration
+TRIGGER:-PT0M
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-phase2-decision-2026
+SUMMARY:Thiccctionary — Phase 2 begins (POD partner decision)
+DESCRIPTION:Decide: KDP (Amazon\, low fees) vs IngramSpark (bookstore distribution\, more fees) vs Blurb (premium quality\, expensive POD). Block 2 hours. Claude has the comparison ready.
+DTSTART;TZID=America/Denver:20260706T100000
+DTEND;TZID=America/Denver:20260706T120000
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Choose POD partner
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-phase3-decision-2026
+SUMMARY:Thiccctionary — Phase 3 begins (layout tool decision)
+DESCRIPTION:Decide layout tool. Affinity Publisher (cheap\, professional)\, InDesign (industry standard\, subscription)\, or LaTeX (free\, code-driven). Build the entries.json → PDF pipeline.
+DTSTART;TZID=America/Denver:20261005T100000
+DTEND;TZID=America/Denver:20261005T120000
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Choose layout tool
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-phase4-final-curation-2026
+SUMMARY:Thiccctionary — Phase 4 begins (final curation + foreword)
+DESCRIPTION:Pick the ~250 best entries for Vol. I. Write the foreword (~1500-2000 words). Draft print-exclusive content. ~40-60 hours over 4 months.
+DTSTART;TZID=America/Denver:20261201T100000
+DTEND;TZID=America/Denver:20261201T103000
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Final curation + foreword sprint
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-preorder-launch-2027
+SUMMARY:Thiccctionary — Pre-orders open
+DESCRIPTION:Pre-order page goes live ~6 weeks before fulfillment. Press kit ready. Influencer outreach campaign begins.
+DTSTART;TZID=America/Denver:20270301T100000
+DTEND;TZID=America/Denver:20270301T103000
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Pre-orders open
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:thiccctionary-launch-2027
+SUMMARY:Thiccctionary, Volume I — Launch day (anniversary)
+DESCRIPTION:One-year anniversary of the project. Initial print run shipping. Press / influencer / social campaigns at peak.
+DTSTART;TZID=America/Denver:20270426T090000
+DTEND;TZID=America/Denver:20270426T170000
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Thiccctionary Vol. I launches today
+TRIGGER:-P14D
+END:VALARM
+END:VEVENT
+
+END:VCALENDAR
