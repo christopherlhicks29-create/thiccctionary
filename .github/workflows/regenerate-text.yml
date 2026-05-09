@@ -16,6 +16,10 @@ on:
         description: "Optional. Replace the headword with this string. Only valid when 'dates' contains a single date. Use to upgrade weak headwords (e.g. 'Bulky Refrigerator' -> 'Frigidaire, Side-by-Side')."
         type: string
         default: ""
+  push:
+    paths:
+      - 'data/.fire-text-regen.json'
+    branches: [main]
 
 permissions:
   contents: write
@@ -33,12 +37,33 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Read sentinel file (push triggers only)
+        id: sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-text-regen.json ]; then
+            DATES=$(python3 -c "import json; print(json.load(open('data/.fire-text-regen.json')).get('dates',''))")
+            WORD=$(python3 -c "import json; print(json.load(open('data/.fire-text-regen.json')).get('word_override',''))")
+            echo "dates=${DATES}" >> $GITHUB_OUTPUT
+            echo "word_override=${WORD}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Delete sentinel file (push triggers only)
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f data/.fire-text-regen.json
+          git add -A
+          git diff --staged --quiet || git commit -m "Consume text-regen sentinel"
+          git push origin main || true
+
       - name: Regenerate text
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          DATES: ${{ inputs.dates }}
-          WORD_OVERRIDE: ${{ inputs.word_override }}
+          DATES: ${{ inputs.dates || steps.sentinel.outputs.dates }}
+          WORD_OVERRIDE: ${{ inputs.word_override || steps.sentinel.outputs.word_override }}
         run: node regenerate-text.js
 
       - name: Open Pull Request
