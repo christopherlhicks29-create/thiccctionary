@@ -510,7 +510,25 @@ async function main() {
     if (fileText && fileText.length > 0) fileOverride = fileText;
   } catch (e) { /* file absent — normal */ }
 
-  const overrideSubject = process.env.SUBJECT_OVERRIDE || fileOverride;
+  // Subject queue: data/subject-queue.json holds an editorial backlog. Each
+  // daily run pulls the FIRST queued subject if present (and removes it from
+  // the queue). Lower priority than env override + sentinel file. Lets
+  // Christopher stack subjects in advance ('next: Beluga, Bagger 288, etc.').
+  let queueOverride = null;
+  let queueAfterPull = null;
+  try {
+    const raw = await fs.readFile(path.join(ROOT, 'data', 'subject-queue.json'), 'utf8');
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed.queue) && parsed.queue.length > 0) {
+      const first = parsed.queue[0];
+      // Item may be a string or an object {subject, query?, notes?}
+      queueOverride = typeof first === 'string' ? first : (first?.subject || null);
+      queueAfterPull = { ...parsed, queue: parsed.queue.slice(1) };
+      console.log(`Subject queue: pulling "${queueOverride}" (${parsed.queue.length} item(s) before pull)`);
+    }
+  } catch (e) { /* file absent or malformed — normal, just skip queue */ }
+
+  const overrideSubject = process.env.SUBJECT_OVERRIDE || fileOverride || queueOverride;
   if (overrideSubject) {
     // Use the override as the editorial subject AND auto-derive a sensible
     // Unsplash query. For comma-qualifier patterns ("Wheel, Parmigiano-Reggiano"),
@@ -718,12 +736,25 @@ async function main() {
   console.log(`Sitemap rebuilt with ${entries.length} entries.`);
 
   // Clear the sentinel-file override so the next run uses the auto-picker again.
-  // (The FIRE-daily file is also cleared by the workflow's commit step. We do
-  //  the subject one here so it survives even in dry-run dev contexts.)
   try {
     await fs.unlink(path.join(ROOT, 'data', '.fire-daily-subject'));
     console.log('Cleared data/.fire-daily-subject so the next run auto-picks.');
   } catch (e) { /* file absent — normal */ }
+
+  // Persist the queue minus the pulled item, if we used one. The pull
+  // happened earlier; the write happens here at the END so a script crash
+  // mid-run doesn't accidentally lose the queued subject.
+  if (queueAfterPull) {
+    try {
+      await fs.writeFile(
+        path.join(ROOT, 'data', 'subject-queue.json'),
+        JSON.stringify(queueAfterPull, null, 2) + '\n'
+      );
+      console.log(`Subject queue updated: ${queueAfterPull.queue.length} item(s) remaining.`);
+    } catch (e) {
+      console.warn('Could not update subject-queue.json (non-fatal):', e.message);
+    }
+  }
 }
 
 main().catch(err => {
