@@ -4,6 +4,7 @@ One-line summary of every shipped change. Newest at top. Anyone (including futur
 
 | Date | Wave | Summary |
 |------|------|---------|
+| 2026-05-09 | 33 | Impostor TikTok @thiccctionaryyy identified (9,323 followers, body/thirst content, identical display name 'Thiccctionary'). Created legal/FIRST-USE-EVIDENCE.md compiling brand-history evidence for upcoming USPTO trademark filing. Christopher chose to file in next 30 days using a real trademark attorney ($700-1500 budget). Strongly advised against direct contact with impostor. |
 | 2026-05-09 | 32 | Org schema upgrade + TikTok added everywhere. Adds alternateName, description, slogan, foundingDate, knowsAbout, contactPoint, ImageObject logo, DefinedTerm, DefinedTermSet. TikTok @thethiccctionary added to sameAs and to footers across 34 HTML files + press kit social row. Strengthens entity recognition vs Google's 'Did you mean Dictionary' auto-correct AND demotes the impostor TikTok by declaring our official one. |
 | 2026-05-09 | 31 | Catalog audit — all 12 entries scored on register/humor/image. 4 canonical, 5 keep-with-edits, 3 regenerate (Hoover Dam, Banana, Heritage Tomato). Floor 17/30, mean 22.4, ceiling 29. Audit lives at audits/2026-05-09-catalog-audit.md. |
 | 2026-05-09 | 30 | Press kit gains a "foundational entry on the word" pointer to /thiccc/; FAQ "why three c's" answer rewritten to cite /thiccc/ as canonical with history article as long-form. |
