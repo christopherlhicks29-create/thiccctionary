@@ -29,6 +29,19 @@ Things deferred from prior sessions that should be revisited at the right time. 
 
 ---
 
+
+## iPostal1 setup — finish notary step
+
+**Current state (2026-05-09):** Christopher started iPostal1 signup for the virtual mailbox. Got to the notary requirement (USPS Form 1583 needs notarization to authorize a third party to receive your mail). Paused there.
+
+**Next steps when he comes back:**
+1. Get USPS Form 1583 notarized — local options: bank (often free for customers), UPS Store ($5-15), online notary services like Notarize.com (~$25, instant)
+2. Submit the notarized form to iPostal1
+3. Wait ~1-2 days for activation
+4. Address becomes live for use on USPTO trademark filing
+
+**Trigger to surface this:** When Christopher next mentions trademark, mailbox, or asks "what's blocking trademark."
+
 ## Image-regen for Banana Cavendish
 
 **Current state:** text was cleaned in Wave 43 but image is still generic-bananas-on-yellow stock shot.
