@@ -26,6 +26,7 @@ import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
+import { validateEntry } from './banned-words.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -631,6 +632,25 @@ async function main() {
 
   // Step 5: write the entry
   let entryCopy = await generateEntry(subjectInfo.subject, chosen);
+
+  // Step 5-bw: banned-words filter (Wave 42). Reject and retry up to 3 times if output
+  // contains banned body-language, internet-voice, or filler patterns.
+  // The brand voice depends on these NOT appearing — soft prompt rules aren't enough.
+  for (let bwAttempt = 1; bwAttempt <= 3; bwAttempt++) {
+    const bwCheck = validateEntry(entryCopy);
+    if (bwCheck.ok) {
+      if (bwAttempt > 1) console.log(`Banned-words check passed on attempt ${bwAttempt}.`);
+      break;
+    }
+    if (bwAttempt >= 3) {
+      console.warn(`Banned-words check failed on all 3 attempts — shipping with violations. Christopher should review.`);
+      break;
+    }
+    const violationList = bwCheck.violations.map(v => `"${v.term}" in ${v.field}`).join(', ');
+    console.log(`Banned-words attempt ${bwAttempt}/3 rejected (${violationList}). Retrying...`);
+    const bwHint = ` BANNED-WORDS HINT: previous output contained these forbidden terms: ${violationList}. Replace them with object-language (girth, rotundity, displacement, wheelbase, drum diameter, bedside flare). Reject body-coded metaphors entirely.`;
+    entryCopy = await generateEntry(subjectInfo.subject + bwHint, chosen);
+  }
 
   // Step 5a: humor critique. If the entry scores poorly, regenerate ONCE.
   // After one retry we ship anyway — better to land a weak entry that

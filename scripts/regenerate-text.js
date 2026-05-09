@@ -17,6 +17,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { buildRssFeed } from './build-rss.js';
+import { validateEntry } from './banned-words.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -116,7 +117,29 @@ async function main() {
     console.log(`\n--- ${entry.date}: ${entry.word}${wordOverride ? ` -> ${wordOverride}` : ''} ---`);
     try {
       const photo = { description: entry.caption || '', photographer: entry.photographer || 'unknown' };
-      const fresh = await generateEntry(subject, photo);
+
+      // Wave 42: retry up to 3 times if output contains banned words
+      let fresh = null;
+      const MAX_ATTEMPTS = 3;
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        const candidate = await generateEntry(subject, photo);
+        const check = validateEntry(candidate);
+        if (check.ok) {
+          fresh = candidate;
+          if (attempt > 1) console.log(`  Accepted on attempt ${attempt}.`);
+          break;
+        }
+        console.log(`  Attempt ${attempt}/${MAX_ATTEMPTS} rejected (${check.violations.length} banned terms). Retrying...`);
+        if (attempt < MAX_ATTEMPTS) {
+          await new Promise(r => setTimeout(r, 1500));
+        }
+      }
+      if (!fresh) {
+        console.error(`  FAILED after ${MAX_ATTEMPTS} attempts — all outputs contained banned terms. Keeping original entry text.`);
+        failed++;
+        continue;
+      }
+
       entry.word = fresh.word;
       entry.pronunciation = fresh.pronunciation;
       entry.partOfSpeech = fresh.partOfSpeech;

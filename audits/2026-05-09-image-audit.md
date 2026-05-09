@@ -126,3 +126,39 @@ Fired three sentinel-driven workflow runs autonomously via the Wave 39 mechanism
 3. **Subject-pivoting is editorially viable.** When Unsplash can't deliver, rewriting the entry to fit findable imagery is often better than fighting the search. The brand's editorial discipline is "things, not people" — within that, specific subject choices are flexible.
 
 4. **The sentinel mechanism (Wave 39) works.** End-to-end autonomous fire confirmed: write JSON, push, workflow detects, runs script, opens PR, deletes sentinel, commits deletion. Three round trips of ~40s each.
+
+
+---
+
+## Update — text regeneration result (2026-05-09 ~18:14 UTC)
+
+Fired sentinel-driven text regen for the 4 audit-flagged entries (Hoover Dam, Banana Cavendish, Heritage Tomato, Watermelon). PR opened at `regenerate-text/25608262823`.
+
+### Verdict on the PR: DO NOT MERGE
+
+The regen removed the specific phrases I'd flagged in the original audit, but introduced new violations of the same Wave 35 prompt rules:
+
+| Entry | What changed | Net |
+|---|---|---|
+| Hoover Dam | Removed "OG of thiccc," "like a boss," fake-engineer quote. Added "holding back the haters — and a river" (internet voice). | Lateral |
+| Banana Cavendish | Removed peel pun. Added "fruit whose curves could launch a thousand smoothies" (curves = banned body-language). | Regression |
+| Heritage Tomato | Removed runway/fashion-model. Added "garden diva with curves that inspire sonnets" (diva + curves = banned). | Regression |
+| Watermelon | Adjusted text to fit new image. Added "intergalactic aesthetics and juice-stained shirts" — flat closer, no real-scholarship kicker. | Lateral |
+
+### What this tells us
+
+The Wave 35 prompt update isn't biting hard enough. The model removes the exact phrases we name but reverts to the same pattern with adjacent vocabulary. We banned "voluptuous" and "curves" specifically, and the regen produced "curves" twice anyway.
+
+### The fix — Wave 41 (queued)
+
+Build a post-generation banned-words filter in regenerate-text.js (and generate-daily.js). After the model produces an entry, scan for banned words/phrases. If any are found, retry with explicit feedback, OR reject the output entirely. Banned list:
+
+- Body language: voluptuous, curves, runway, fashion model, vintage model, hourglass, hip-to-waist, well-endowed, thin skins, divas, voluptuosity
+- Internet-voice: like a boss, OG of, haters, slay, queen energy, lowkey, highkey, vibing
+- Filler: stands as a testament, monumentally, undeniably, genuinely
+
+This shifts the burden from prompt-engineering (model might or might not comply) to a hard automated check (model output is rejected if it violates).
+
+### Action for Christopher
+
+When you're back: **CLOSE the regenerate-text/25608262823 PR**. Don't merge it. The current entries on main, while imperfect, are not worse than what this PR would replace them with. We'll re-fire after Wave 41 builds the banned-words filter.
