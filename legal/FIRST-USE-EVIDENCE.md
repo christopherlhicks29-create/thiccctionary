@@ -19,7 +19,13 @@
 
 - **Domain:** thiccctionary.com
 - **Registrar:** Cloudflare Registrar (transferred to / registered through Cloudflare)
-- **Registration date:** April 2026 (approximate, per Christopher 2026-05-09; exact date TBC from registrar receipt). Earliest git commit (canonical first-use timestamp): 2026-05-01T22:10:56-06:00, hash 0f863e9 "Initial Thiccctionary".
+- **Registration date:** **2022-08-28 03:03:05 UTC** (per ICANN lookup, confirmed 2026-05-09). Christopher held the domain for nearly four years before launching the site, demonstrating sustained intent to use the brand.
+- **Registry Domain ID:** 2721371494_DOMAIN_COM-VRSN
+- **Current registry expiration:** 2027-08-28 03:03:05 UTC
+- **Last WHOIS update:** 2026-05-08 05:16:31 UTC
+- **Nameservers:** TATE.NS.CLOUDFLARE.COM, TREASURE.NS.CLOUDFLARE.COM (Cloudflare DNS)
+- **Earliest public commit (site launch):** 2026-05-01T22:10:56-06:00, hash 0f863e9 "Initial Thiccctionary"
+- **Critical implication:** First domain registration (2022-08-28) likely predates the @thiccctionaryyy TikTok account. This establishes Christopher's prior claim to the brand name even before the website went live.
 - **Public WHOIS:** ICANN lookup at https://lookup.icann.org/lookups/domain/thiccctionary.com
 
 ### Website launch
