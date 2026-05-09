@@ -1,7 +1,6 @@
 {
   "_schema_version": "1",
   "_description": "Book-only content. Never published to the website. Captured continuously across the project; refined and edited during Phase 4 (Dec 2026 - Mar 2027) for the April 2027 launch.",
-
   "_item_types": {
     "foreword": "Christopher's editorial introduction. Personal voice, origin story.",
     "afterword": "Closing remarks if the book deserves one.",
@@ -15,14 +14,12 @@
     "acknowledgment": "Photographer credits, contributors, anyone owed thanks.",
     "other": "Anything else worth capturing."
   },
-
   "_status_tags": {
     "idea": "Captured but not drafted. Just a seed.",
     "draft": "Drafted but not finalized. Christopher hasn't reviewed yet.",
     "ready": "Final. Ready to drop into the book layout pipeline.",
     "cut": "Captured then later decided not to use."
   },
-
   "items": [
     {
       "id": "foreword-spine",
@@ -70,6 +67,46 @@
       "status": "idea",
       "title": "From the Editor's Camera",
       "notes": "Photo essay of Christopher's own thiccc photos (taken in his daily life). Rights-clean (he owns them) and gives the book a personal touch. Build as he submits photos via images/personal/.",
+      "content": "",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "origin-url-was-waiting",
+      "type": "origin_note",
+      "status": "idea",
+      "title": "The URL was waiting for me",
+      "notes": "Christopher's exact framing in chat: he had owned thiccctionary.com for years and didn't know what to do with it until now. Pull-quote-able for the foreword. The naming-as-omen frame is good: 'A name like Thiccctionary only survives the gap between idea and execution if the underlying joke is robust enough to carry across years.' Either Christopher writes this directly or it becomes a foreword sidebar.",
+      "content": "Christopher's words (paraphrased): 'I've owned this URL for a long time and didn't know what to do with it.' That's the foreword opening. Most domain registrations die in the gap between 'I had an idea' and 'I actually shipped something.' This one survived.",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "borrowed-credibility-frame",
+      "type": "glossary",
+      "status": "idea",
+      "title": "Borrowed credibility requires intact credibility",
+      "notes": "Useful brand framework that came up while discussing eventual sponsored partnerships. The Editorial Plates vs. Sponsored Plates distinction. Worth glossary-fying because the principle scales: every commercial extension of the brand depends on the editorial brand staying clean. Could also live in commentary tracks for an entry where this comes up.",
+      "content": "Borrowed credibility is the thing brand partners pay for. They borrow yours when their product lands inside your editorial frame. The borrow only works if the credibility was real to begin with. The moment money compromises the editorial — by paying for placement that reads as organic, by softening a verdict, by pulling a hard joke — the credibility deflates and there's nothing left to lend.",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "documenting-girth-since-2026",
+      "type": "glossary",
+      "status": "idea",
+      "title": "Documenting girth, since 2026",
+      "notes": "Site footer tagline that's actually a great one-line brand statement. Could be the spine, the cover-jacket subtitle, or the back-cover description. Already in production use; flagging as official brand language.",
+      "content": "Tagline currently in the website footer. Recommend including verbatim on the book's title page or back cover.",
+      "created": "2026-05-08",
+      "updated": "2026-05-08"
+    },
+    {
+      "id": "deepdive-cement-mixer-mythology",
+      "type": "deepdive",
+      "status": "idea",
+      "title": "A Brief Mythology of the Cement Mixer",
+      "notes": "Surfaced in chat as an example of a print-exclusive deep-dive. Concrete Mixer is the existing 4/27 entry. Deep dive could cover: cement-mixer history (Stephen Stepanian's 1916 patent), the rotating drum's surprising mathematics (slow rotation at 2-6 rpm because faster would set the mix), the cultural status of cement mixers as the platonic vehicle of working-class American labor, the 'concrete bench' philosophical aside (urban concrete that nobody sits on but is somehow important to the streetscape). Brand voice: pseudo-academic, dry, with comedic kicker.",
       "content": "",
       "created": "2026-05-08",
       "updated": "2026-05-08"
