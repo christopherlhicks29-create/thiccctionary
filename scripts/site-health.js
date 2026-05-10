@@ -85,6 +85,7 @@ async function audit() {
     longDescriptions: [],
     multipleH1: [],
     bannedWordsInArticles: [],
+    missingOgImageFiles: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -144,6 +145,18 @@ async function audit() {
       const missing = requiredOg.filter(tag => !content.includes(`property="${tag}"`) && !content.includes(`name="${tag}"`));
       if (missing.length > 0) {
         issues.missingOg.push({ from: rel, missing });
+      }
+
+      // 4a. Verify the og:image file actually exists on disk (Wave 59)
+      const ogImgMatch = content.match(/<meta[^>]*property=("og:image"|'og:image')[^>]*content=("([^"]+)"|'([^']+)')/);
+      if (ogImgMatch) {
+        const ogUrl = ogImgMatch[3] || ogImgMatch[4];
+        if (ogUrl && ogUrl.startsWith('https://thiccctionary.com/')) {
+          const ogLocal = path.join(ROOT, ogUrl.replace('https://thiccctionary.com/', ''));
+          if (!(await fileExists(ogLocal))) {
+            issues.missingOgImageFiles.push({ from: rel, ogImage: ogUrl });
+          }
+        }
       }
     }
 
@@ -297,6 +310,9 @@ function formatReport({ issues, stats }) {
 
   section(`Banned-word violations in articles (${issues.bannedWordsInArticles.length})`, issues.bannedWordsInArticles,
     i => `\`${i.from}\` — "${i.term}"`);
+
+  section(`Missing og:image files (${issues.missingOgImageFiles.length})`, issues.missingOgImageFiles,
+    i => `\`${i.from}\` → ${i.ogImage} (file does not exist on disk)`);
 
   lines.push('---');
   lines.push('');
