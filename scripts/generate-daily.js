@@ -584,20 +584,46 @@ async function main() {
   // we catch the no-results case for OVERRIDE subjects and fall back to the auto-picker
   // so today's run can still ship something. The poisoned queue item still gets
   // popped (queueAfterPull is committed at end of run) so it can't block tomorrow.
+  // Wave 74 expands Wave 73's fallback. Both override subjects AND auto-picker
+  // subjects can return zero Unsplash results. Up to 3 fallback attempts; each
+  // adds the failed subject to the avoid list so we don't pick the same dud
+  // again. After 3 misses, fall through to a known-safe subject pool that
+  // we've verified has Unsplash photos. As a last resort the script still
+  // throws — but that's a 4-deep failure, not a 1-deep one.
   let candidates;
-  try {
-    candidates = await searchUnsplash(subjectInfo.unsplashQuery);
-    console.log(`Found ${candidates.length} candidate photos.`);
-  } catch (e) {
-    if (overrideSubject && /No Unsplash results/i.test(e.message)) {
-      console.warn(`Override subject "${overrideSubject}" returned zero Unsplash results for query "${subjectInfo.unsplashQuery}".`);
-      console.warn(`Falling back to auto-picker so today's entry still ships. Queued/overridden subject is being dropped.`);
-      subjectInfo = await pickSubject(usedWords);
-      console.log(`Auto-picker fallback subject: ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
+  let avoidNow = [...usedWords];
+  let attempts = 0;
+  const MAX_FALLBACK_ATTEMPTS = 3;
+  while (true) {
+    try {
       candidates = await searchUnsplash(subjectInfo.unsplashQuery);
       console.log(`Found ${candidates.length} candidate photos.`);
-    } else {
-      throw e;  // unrelated error or auto-picker also fails — preserve loud failure
+      break;
+    } catch (e) {
+      if (!/No Unsplash results/i.test(e.message)) throw e;
+      attempts += 1;
+      console.warn(`Subject "${subjectInfo.subject}" returned zero Unsplash results for query "${subjectInfo.unsplashQuery}". (attempt ${attempts})`);
+      if (attempts > MAX_FALLBACK_ATTEMPTS) {
+        // Last-resort known-safe pool — every entry here has been verified to
+        // return Unsplash photos, and the auto-picker would happily pick any
+        // of them as a normal day's subject.
+        const SAFE_POOL = [
+          { subject: 'Tractor Tire', unsplashQuery: 'tractor tire' },
+          { subject: 'Stack of Pancakes', unsplashQuery: 'pancake stack' },
+          { subject: 'Concrete Mixer Truck', unsplashQuery: 'concrete mixer truck' },
+          { subject: 'Pumpkin, Atlantic Giant', unsplashQuery: 'giant pumpkin' },
+          { subject: 'Cinder Block Wall', unsplashQuery: 'cinder block wall' },
+        ];
+        const pick = SAFE_POOL.find(s => !avoidNow.includes(s.subject)) || SAFE_POOL[0];
+        console.warn(`Last-resort: picking from safe pool → "${pick.subject}".`);
+        subjectInfo = { subject: pick.subject, unsplashQuery: pick.unsplashQuery, category: 'other' };
+        candidates = await searchUnsplash(subjectInfo.unsplashQuery);
+        console.log(`Found ${candidates.length} candidate photos.`);
+        break;
+      }
+      avoidNow.push(subjectInfo.subject);
+      subjectInfo = await pickSubject(avoidNow);
+      console.log(`Fallback subject (#${attempts}): ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
     }
   }
 
