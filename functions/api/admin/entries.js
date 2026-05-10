@@ -5,7 +5,7 @@
  * GET /api/admin/entries?date=YYYY-MM-DD → full entry data
  */
 
-const REPO = 'christopherlhicks29-create/thiccctihonary';
+const REPO = 'christopherlhicks29-create/thiccctionary';
 
 async function gh(path, opts = {}, env) {
   return fetch(`https://api.github.com${path}`, {
