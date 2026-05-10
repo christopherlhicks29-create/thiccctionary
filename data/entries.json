@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-05-10",
+    "word": "Bagger 288",
+    "pronunciation": "/BAG-er two-ei-tee-ate/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.",
+      "<em>colloq.</em> The ultimate expression of thicccness in terrestrial machinery: unapologetically vast, with a footprint that redefines landscape."
+    ],
+    "example": "The Bagger 288 is a thiccc titan of the open pit, its presence eclipsing entire ridgelines. Even the sun moves around it.",
+    "etymology": "From German <em>Bag-ger</em> (digger), a straightforward descriptor, combined with the model number 288. The number itself remains an enigma — perhaps a private joke among engineers, whispered behind clipboards.",
+    "image": "images/2026-05-10-bagger-288.jpg",
+    "caption": "Plate N. — The Bagger 288, viewed astern, where the enormity of its posterior defies casual description.",
+    "tags": [
+      "machinery",
+      "mining",
+      "engineering"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 8,
+    "photographer": "Marius Niveri",
+    "photographerUrl": "https://unsplash.com/@m4r1vs",
+    "unsplashUrl": "https://unsplash.com/photos/building-with-metal-crane-during-day-sDvdMflfFX0"
+  },
+  {
     "date": "2026-05-09",
     "word": "Spruce, Suburban",
     "pronunciation": "/SPROOS, sub-UR-buhn/",
