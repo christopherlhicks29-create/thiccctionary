@@ -520,6 +520,7 @@ async function main() {
   // the queue). Lower priority than env override + sentinel file. Lets
   // Christopher stack subjects in advance ('next: Beluga, Bagger 288, etc.').
   let queueOverride = null;
+  let queueQueryOverride = null;   // Wave 73: honor explicit `query` field from queue items
   let queueAfterPull = null;
   try {
     const raw = await fs.readFile(path.join(ROOT, 'data', 'subject-queue.json'), 'utf8');
@@ -527,7 +528,12 @@ async function main() {
     if (Array.isArray(parsed.queue) && parsed.queue.length > 0) {
       const first = parsed.queue[0];
       // Item may be a string or an object {subject, query?, notes?}
-      queueOverride = typeof first === 'string' ? first : (first?.subject || null);
+      if (typeof first === 'string') {
+        queueOverride = first;
+      } else if (first && typeof first === 'object') {
+        queueOverride = first.subject || null;
+        queueQueryOverride = first.query || null;   // explicit Unsplash query, if author set one
+      }
       queueAfterPull = { ...parsed, queue: parsed.queue.slice(1) };
       console.log(`Subject queue: pulling "${queueOverride}" (${parsed.queue.length} item(s) before pull)`);
     }
@@ -535,21 +541,27 @@ async function main() {
 
   const overrideSubject = process.env.SUBJECT_OVERRIDE || fileOverride || queueOverride;
   if (overrideSubject) {
-    // Use the override as the editorial subject AND auto-derive a sensible
-    // Unsplash query. For comma-qualifier patterns ("Wheel, Parmigiano-Reggiano"),
-    // REVERSE the parts → "Parmigiano-Reggiano wheel" — closer to how Unsplash
-    // photos are actually tagged.
+    // Use the override as the editorial subject AND derive a sensible Unsplash query.
+    // Priority for the query:
+    //   1. Explicit `query` from queue item (queueQueryOverride) — only if this run uses the queue source
+    //   2. Auto-derived from subject (reverses comma-qualifier: "Wheel, Parmigiano-Reggiano" → "Parmigiano-Reggiano wheel")
     let simpleQuery;
-    const m = overrideSubject.match(/^([^,(]+),\s*(.+)$/);
-    if (m) {
-      const head = m[1].trim();
-      const qualifier = m[2].trim();
-      simpleQuery = `${qualifier} ${head}`.toLowerCase();
+    const usingQueueQuery = !process.env.SUBJECT_OVERRIDE && !fileOverride && queueQueryOverride;
+    if (usingQueueQuery) {
+      simpleQuery = queueQueryOverride.toLowerCase();
     } else {
-      simpleQuery = overrideSubject.toLowerCase();
+      const m = overrideSubject.match(/^([^,(]+),\s*(.+)$/);
+      if (m) {
+        const head = m[1].trim();
+        const qualifier = m[2].trim();
+        simpleQuery = `${qualifier} ${head}`.toLowerCase();
+      } else {
+        simpleQuery = overrideSubject.toLowerCase();
+      }
     }
     subjectInfo = { subject: overrideSubject, unsplashQuery: simpleQuery, category: 'other' };
-    console.log(`SUBJECT_OVERRIDE active: subject="${overrideSubject}" query="${simpleQuery}" (source: ${process.env.SUBJECT_OVERRIDE ? 'env' : 'file'})`);
+    const src = process.env.SUBJECT_OVERRIDE ? 'env' : (fileOverride ? 'file' : 'queue');
+    console.log(`SUBJECT_OVERRIDE active: subject="${overrideSubject}" query="${simpleQuery}" (source: ${src})`);
   } else {
     subjectInfo = await pickSubject(usedWords);
     // Soft-collision check: if the FIRST word of the subject matches any recent
@@ -566,9 +578,28 @@ async function main() {
   }
   console.log(`Subject: ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
 
-  // Step 2: search Unsplash
-  const candidates = await searchUnsplash(subjectInfo.unsplashQuery);
-  console.log(`Found ${candidates.length} candidate photos.`);
+  // Step 2: search Unsplash. Wave 73 resilience: if the override query returns zero
+  // results, the previous behavior was to throw uncaught and fail the workflow red,
+  // poisoning every subsequent cron run until someone manually fixed the queue. Now
+  // we catch the no-results case for OVERRIDE subjects and fall back to the auto-picker
+  // so today's run can still ship something. The poisoned queue item still gets
+  // popped (queueAfterPull is committed at end of run) so it can't block tomorrow.
+  let candidates;
+  try {
+    candidates = await searchUnsplash(subjectInfo.unsplashQuery);
+    console.log(`Found ${candidates.length} candidate photos.`);
+  } catch (e) {
+    if (overrideSubject && /No Unsplash results/i.test(e.message)) {
+      console.warn(`Override subject "${overrideSubject}" returned zero Unsplash results for query "${subjectInfo.unsplashQuery}".`);
+      console.warn(`Falling back to auto-picker so today's entry still ships. Queued/overridden subject is being dropped.`);
+      subjectInfo = await pickSubject(usedWords);
+      console.log(`Auto-picker fallback subject: ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
+      candidates = await searchUnsplash(subjectInfo.unsplashQuery);
+      console.log(`Found ${candidates.length} candidate photos.`);
+    } else {
+      throw e;  // unrelated error or auto-picker also fails — preserve loud failure
+    }
+  }
 
   // Step 3: pick the thiccest
   let chosen = await pickThiccestImage(subjectInfo.subject, candidates);

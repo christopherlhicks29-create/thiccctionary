@@ -111,10 +111,14 @@ Specific overlaps to consolidate:
 
 ---
 
-## Daily cron silent-skip diagnosis
+## Daily cron silent-skip diagnosis — SOLVED 2026-05-10
 
-**Current state (2026-05-10):** Wave 72 added cron-watchdog.yml that fails loudly at 14:30 UTC if today's entry is missing. But we still don't know WHY 05/07 and 05/10 cron runs skipped — could be picker veto, critique gate, or API error. Without inspecting the actual run logs, root cause is opaque.
+**Resolution:** Christopher pulled the workflow run logs and the failure was concrete: `Beluga, Airbus` was sitting at the front of `data/subject-queue.json` with an Unsplash query that returned zero results. The script threw uncaught and failed red every morning. Wave 73 added the `query`-field honoring + zero-result fallback. The watchdog (Wave 72) is still useful as a backstop for unrelated future failures — picker veto and critique gate exit-0 paths still exist and will trigger it.
 
-**When to revisit:** Next time the watchdog fires. Open the corresponding daily.yml run from the Actions tab → click into the failing/skipping run → screenshot the "Generate today's entry" step output → paste here. With logs we can decide whether to soften the picker, soften the critique gate, or bypass them with a fallback subject pool.
+**For future failures:** if the watchdog fires, the recovery path is:
+1. Open https://github.com/christopherlhicks29-create/thiccctionary/actions/workflows/daily.yml
+2. Click into the most recent failed run
+3. Screenshot the "Generate today's entry" step output
+4. Paste it into chat — most failures will be diagnosable from a single error line.
 
-**Suspected root cause:** picker veto getting too aggressive after the prompt got stricter. Subjects are getting rejected and the cron exits 0 silently.
+**Re-queueing the Beluga:** still a viable subject if we get a working Unsplash query. Alternates to test: `airbus beluga xl`, `airbus a300-600st`, `cargo aircraft beluga`. If none return results, Beluga is too rare for Unsplash and should move to the print-exclusive pile or a custom-photo wave.
