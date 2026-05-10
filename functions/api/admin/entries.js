@@ -5,7 +5,7 @@
  * GET /api/admin/entries?date=YYYY-MM-DD → full entry data
  */
 
-const REPO = 'christopherlhicks29-create/thiccctionary';
+const REPO = 'christopherlhicks29-create/thiccctihonary';
 
 async function gh(path, opts = {}, env) {
   return fetch(`https://api.github.com${path}`, {
@@ -27,7 +27,8 @@ export async function onRequestGet({ request, env }) {
     if (!res.ok) throw new Error(`GitHub ${res.status}`);
     const file = await res.json();
     const sha = file.sha;
-    const entries = JSON.parse(atob(file.content.replace(/\n/g, '')));
+    const rawBytes = Uint8Array.from(atob(file.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+    const entries = JSON.parse(new TextDecoder().decode(rawBytes));
 
     const url = new URL(request.url);
     const date = url.searchParams.get('date');
