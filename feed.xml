@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 May 2026 23:20:33 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 00:31:19 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Spruce, Suburban</title>
+      <link>https://thiccctionary.com/entries/2026-05-09.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-09.html</guid>
+      <pubDate>Sat, 09 May 2026 12:00:00 GMT</pubDate>
+      <description>A mature evergreen specimen (genus Picea) cultivated as a residential or municipal landscape feature; characteristically pyramidal, with branches sweeping low to the ground in a dense conical mass.</description>
+      <enclosure url="https://thiccctionary.com/images/personal/2026-05-10-spruce-suburb.jpg" type="image/jpeg" length="0" />
+      <category>botanical</category><category>landscape</category><category>evergreen</category>
+    </item>
     <item>
       <title>Hoover Dam</title>
       <link>https://thiccctionary.com/entries/2026-05-08.html</link>

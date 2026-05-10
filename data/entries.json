@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-05-09",
+    "word": "Spruce, Suburban",
+    "pronunciation": "/SPROOS, sub-UR-buhn/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A mature evergreen specimen (genus <em>Picea</em>) cultivated as a residential or municipal landscape feature; characteristically pyramidal, with branches sweeping low to the ground in a dense conical mass.",
+      "<em>colloq.</em> A tree thiccc enough at the base to obscure the property line behind it, capable of generating its own circumference of mulched ground simply by being."
+    ],
+    "example": "The Spruce, Suburban grew so thiccc the lawn around it became a defined ring — the grass simply ended where the lower branches began, and stayed that way through three mowing seasons.",
+    "etymology": "From <em>spruce</em> (Middle English, derived from \"Pruce,\" an old name for Prussia, where the Norway Spruce was widely sourced for ship masts and timber) + <em>suburban</em> (Latin <em>sub-</em> \"near\" + <em>urbs</em> \"city\"). The suburban specimen, planted ornamentally rather than commercially, has the freedom to expand laterally; its lower branches uncut, its base unencumbered, its volume answerable only to the planting setback.",
+    "image": "images/personal/2026-05-10-spruce-suburb.jpg",
+    "caption": "Plate N. — A Spruce, Suburban photographed in residential profile, from the lawn it has annexed.",
+    "tags": [
+      "botanical",
+      "landscape",
+      "evergreen"
+    ],
+    "photographer": "Christopher L. Hicks",
+    "photographerUrl": "https://thiccctionary.com/",
+    "unsplashUrl": "",
+    "category": "Produce & Botanical",
+    "bookReady": true
+  },
+  {
     "date": "2026-05-08",
     "word": "Hoover Dam",
     "pronunciation": "/HOO-ver dam/",
