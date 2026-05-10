@@ -85,13 +85,23 @@
 
     if (headline) headline.textContent = 'Filed: ' + word + '.';
     if (body) {
-      body.textContent = 'Your submission cleared the editorial filters and was auto-published. It is now part of the catalog.';
+      const status = params.get('status');
+      if (status === 'pending') {
+        body.innerHTML = 'Your submission cleared the automated filters and is queued for editorial review. We\'ll publish it if it fits the catalog. You can track the review status on the submission PR (link will be in your confirmation).';
+      } else {
+        body.textContent = 'Your submission was published.';
+      }
     }
     if (cta) {
-      // Today's entry path
-      const today = new Date().toISOString().slice(0, 10);
-      cta.href = 'entries/' + today + '.html';
-      cta.textContent = 'View your entry →';
+      const status = params.get('status');
+      if (status === 'pending') {
+        cta.href = 'archive.html';
+        cta.textContent = 'Browse the archive →';
+      } else {
+        const today = new Date().toISOString().slice(0, 10);
+        cta.href = 'entries/' + today + '.html';
+        cta.textContent = 'View your entry →';
+      }
     }
   })();
 </script>

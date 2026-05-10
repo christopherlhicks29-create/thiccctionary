@@ -121,41 +121,110 @@ Output schema:
   return JSON.parse(data.choices[0].message.content);
 }
 
-async function commitEntryToRepo(entry, env) {
+async function openSubmissionPR(entry, imageUrl, submitterEmail, whyText, env) {
+  // Wave 78: PR-based submission flow. Replaces commit-direct-to-main.
+  // 1. Create a branch off main
+  // 2. Add the entry to entries.json on that branch
+  // 3. Open a PR labeled "submissions-review" + "daily-entry"
+  // 4. Christopher reviews and merges to publish (post-on-merge fires
+  //    Buffer cross-post + Buttondown newsletter)
   const { GITHUB_PAT, GITHUB_REPO } = env;
   const repo = GITHUB_REPO || 'christopherlhicks29-create/thiccctionary';
+  const headers = {
+    'Authorization': `Bearer ${GITHUB_PAT}`,
+    'User-Agent': 'thiccctionary-submit-fn',
+    'Accept': 'application/vnd.github+json',
+    'Content-Type': 'application/json',
+  };
 
-  // Get current entries.json
-  const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/data/entries.json?ref=main`, {
-    headers: { 'Authorization': `Bearer ${GITHUB_PAT}`, 'User-Agent': 'thiccctionary-submit-fn' },
+  // 1. Get current main SHA
+  const mainRefRes = await fetch(`https://api.github.com/repos/${repo}/git/refs/heads/main`, { headers });
+  if (!mainRefRes.ok) throw new Error(`Couldn't get main ref: ${mainRefRes.status}`);
+  const mainRef = await mainRefRes.json();
+  const mainSha = mainRef.object.sha;
+
+  // 2. Create submission branch
+  const slug = entry.word.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'submission';
+  const branchName = `submissions/${entry.date}-${slug}-${entry.submissionId}`;
+  const createBranchRes = await fetch(`https://api.github.com/repos/${repo}/git/refs`, {
+    method: 'POST', headers,
+    body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha: mainSha }),
   });
+  if (!createBranchRes.ok) {
+    const err = await createBranchRes.text();
+    throw new Error(`Branch creation failed: ${createBranchRes.status} ${err.slice(0,200)}`);
+  }
+
+  // 3. Read entries.json on the new branch
+  const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/data/entries.json?ref=${branchName}`, { headers });
   if (!getRes.ok) throw new Error(`Couldn't read entries.json: ${getRes.status}`);
   const file = await getRes.json();
-  const sha = file.sha;
+  const fileSha = file.sha;
   const decoded = atob(file.content.replace(/\n/g, ''));
   const entries = JSON.parse(decoded);
 
-  // Insert new entry at the front
+  // 4. Insert new entry at the front
   entries.unshift(entry);
   const newContent = JSON.stringify(entries, null, 2);
   const encoded = btoa(unescape(encodeURIComponent(newContent)));
 
-  // Commit
+  // 5. Commit to branch
   const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/data/entries.json`, {
-    method: 'PUT',
-    headers: { 'Authorization': `Bearer ${GITHUB_PAT}`, 'User-Agent': 'thiccctionary-submit-fn', 'Content-Type': 'application/json' },
+    method: 'PUT', headers,
     body: JSON.stringify({
-      message: `User submission: ${entry.word} (auto-published via /api/submit)`,
+      message: `Submission: ${entry.word}`,
       content: encoded,
-      sha,
-      branch: 'main',
+      sha: fileSha,
+      branch: branchName,
     }),
   });
   if (!putRes.ok) {
     const err = await putRes.text();
-    throw new Error(`Commit failed: ${putRes.status} ${err.slice(0,200)}`);
+    throw new Error(`Branch commit failed: ${putRes.status} ${err.slice(0,200)}`);
   }
-  return entries;
+
+  // 6. Open PR
+  const escapedWhy = (whyText || '').replace(/[\r\n]+/g, ' ').slice(0, 500);
+  const prTitle = `\u{1F4E5} Submission: ${entry.word}`;
+  const prBody = [
+    '**New user submission for editorial review.**',
+    '',
+    `**Word:** ${entry.word}`,
+    `**Submitted by:** ${submitterEmail || 'anonymous'}`,
+    `**Why thiccc:** ${escapedWhy}`,
+    '',
+    `**Image:** ${imageUrl}`,
+    '',
+    '---',
+    '',
+    'Review the entry text in `data/entries.json` (top of array). Image preview above.',
+    '',
+    '**To publish:** click "Squash and merge". The site auto-deploys via Cloudflare Pages, and the post-on-merge pipeline cross-posts to FB+IG+X+Buttondown.',
+    '',
+    '**To reject:** close this PR without merging. Branch will be auto-deleted.',
+    '',
+    '**To edit before publishing:** edit `data/entries.json` on this branch directly via the GitHub UI before merging.'
+  ].join('\n');
+
+  const prRes = await fetch(`https://api.github.com/repos/${repo}/pulls`, {
+    method: 'POST', headers,
+    body: JSON.stringify({ title: prTitle, body: prBody, head: branchName, base: 'main' }),
+  });
+  if (!prRes.ok) {
+    const err = await prRes.text();
+    throw new Error(`PR creation failed: ${prRes.status} ${err.slice(0,200)}`);
+  }
+  const pr = await prRes.json();
+
+  // 7. Add labels (best-effort; don't fail the whole submission if labeling fails)
+  try {
+    await fetch(`https://api.github.com/repos/${repo}/issues/${pr.number}/labels`, {
+      method: 'POST', headers,
+      body: JSON.stringify({ labels: ['submissions-review', 'daily-entry'] }),
+    });
+  } catch (e) { /* labels are nice-to-have */ }
+
+  return { prUrl: pr.html_url, prNumber: pr.number, branchName };
 }
 
 export async function onRequestPost(context) {
@@ -248,16 +317,19 @@ export async function onRequestPost(context) {
     submissionId: nonce,
   };
 
-  // 5. Commit to repo
-  try { await commitEntryToRepo(entry, env); }
-  catch (e) { return errResp(`Commit failed: ${e.message}`, 502); }
+  // 5. Open submission PR (Wave 78: was auto-commit to main)
+  let prInfo;
+  try { prInfo = await openSubmissionPR(entry, imageUrl, submitterEmail, why, env); }
+  catch (e) { return errResp(`PR creation failed: ${e.message}`, 502); }
 
   return new Response(JSON.stringify({
     ok: true,
     word: entry.word,
     image: imageUrl,
-    message: 'Submission accepted and queued for next deploy. Live in ~60 seconds.',
-  }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    status: 'pending_review',
+    prUrl: prInfo.prUrl,
+    message: `Thanks! Your "${entry.word}" submission is queued for editorial review. We'll publish it if it fits the catalog.`,
+  }), { status: 202, headers: { 'Content-Type': 'application/json' } });
 }
 
 function errResp(msg, status = 400) {

@@ -48,12 +48,12 @@
 
 <main id="main-content">
   <p style="background: rgba(245,232,199,0.5); border-left: 4px solid var(--oxblood); padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0;">
-  <strong>Send us a thiccc thing.</strong> Submissions clear our editorial filters automatically — your entry is catalogued and live within ~60 seconds, with credit. Quick rules: real objects only, no people, no animals, no generic stock photos. <a href="articles/what-counts-as-thiccc.html">Editorial guide</a> has the full criteria.
+  <strong>Send us a thiccc thing.</strong> Submissions go through editorial review. The automated filters do a first pass for quality and on-brand fit; an editor approves or declines before publication. Quick rules: real objects only, no people, no animals, no generic stock photos. <a href="articles/what-counts-as-thiccc.html">Editorial guide</a> has the full criteria.
 </p>
 <div class="center-page">
     <p class="error-stamp">Submit an Entry</p>
     <h2 class="error-headline" style="font-size: clamp(36px, 6vw, 64px);">Spotted something thiccc?</h2>
-    <p class="error-body">Send it in. The editorial filters approve or decline within a few seconds. Approved submissions are catalogued and live with your credit attached.</p>
+    <p class="error-body">Send it in. The automated filters do a first pass; if your submission clears them an editor reviews it before it goes live. You'll see your name in the credit line if we publish it.</p>
 
     <form class="submit-form" id="submit-form" action="/api/submit" method="POST" enctype="multipart/form-data">
       <label for="word">The thiccc thing</label>
@@ -181,7 +181,15 @@ if ('serviceWorker' in navigator) {
         status.style.color = '#8b1f1f';
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
+      } else if (res.status === 202 && data.status === 'pending_review') {
+        status.innerHTML = '<strong>Submission received.</strong> Queued for editorial review. We\'ll publish if it fits the catalog.';
+        if (data.prUrl) {
+          status.innerHTML += ' <a href="' + data.prUrl + '" target="_blank" rel="noopener">Track review status</a>';
+        }
+        // Optional: redirect to thanks page after a short delay
+        setTimeout(function() { window.location.href = '/thanks.html?word=' + encodeURIComponent(data.word) + '&status=pending'; }, 3000);
       } else if (res.status === 202 && data.error === 'pending_review') {
+        // legacy path — entry text failed banned-words 3x; submission stored for manual review
         status.innerHTML = '<strong>Saved for manual review.</strong> ' + data.reason + ' We\'ll publish if it fits.';
         status.style.color = 'var(--ink-soft)';
       } else {
