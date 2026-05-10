@@ -62,8 +62,18 @@ function renderTags(tags) {
 function renderCredit(entry) {
   if (!entry.photographer) return '';
   const utm = '?utm_source=thiccctionary&utm_medium=referral';
-  const photogUrl = entry.photographerUrl ? entry.photographerUrl + utm : '#';
-  return `Photo by <a href="${escapeHtml(photogUrl)}" target="_blank" rel="noopener">${escapeHtml(entry.photographer)}</a> on <a href="https://unsplash.com/${utm}" target="_blank" rel="noopener">Unsplash</a>`;
+  const isUnsplash = !!(entry.unsplashUrl && entry.unsplashUrl.includes('unsplash.com'));
+  // Unsplash credit format requires linking back to Unsplash with photographer + the source.
+  if (isUnsplash) {
+    const photogUrl = entry.photographerUrl ? entry.photographerUrl + utm : '#';
+    return `Photo by <a href="${escapeHtml(photogUrl)}" target="_blank" rel="noopener">${escapeHtml(entry.photographer)}</a> on <a href="https://unsplash.com/${utm}" target="_blank" rel="noopener">Unsplash</a>`;
+  }
+  // Editor-captured or user-submitted: just show the photographer name (and link if provided),
+  // no Unsplash backlink (would be inaccurate).
+  if (entry.photographerUrl) {
+    return `Photo by <a href="${escapeHtml(entry.photographerUrl)}" target="_blank" rel="noopener">${escapeHtml(entry.photographer)}</a>`;
+  }
+  return `Photo by ${escapeHtml(entry.photographer)}`;
 }
 
 // Normalize tags so related-entry matches catch obvious variants
