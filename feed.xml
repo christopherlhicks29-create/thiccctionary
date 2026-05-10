@@ -6,13 +6,21 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 May 2026 03:43:25 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 14:37:07 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] Foods of Substance: A Thiccc Survey</title>
+      <link>https://thiccctionary.com/articles/foods-of-substance.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/foods-of-substance.html</guid>
+      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
+      <description>From Parmigiano wheels to heritage tomatoes to Atlantic Giant pumpkins — when food&apos;s structural commitment becomes its identity.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>Spruce, Suburban</title>
       <link>https://thiccctionary.com/entries/2026-05-09.html</link>
