@@ -100,14 +100,24 @@ jobs:
         continue-on-error: true
 
       - name: Move MP4 to /videos/<date>.mp4
+        # Wave 75: build-tiktok-video.js writes to <repo-root>/tiktok-output/, NOT
+        # scripts/tiktok-output/ — the prior path was wrong, so the MP4 was always
+        # silently dropped. Now committed correctly into the daily PR.
         run: |
           mkdir -p videos
-          if ls scripts/tiktok-output/*.mp4 1>/dev/null 2>&1; then
-            mv scripts/tiktok-output/*.mp4 "videos/${{ steps.entry.outputs.date }}.mp4"
+          if ls tiktok-output/*.mp4 1>/dev/null 2>&1; then
+            mv tiktok-output/*.mp4 "videos/${{ steps.entry.outputs.date }}.mp4"
             echo "Video committed: videos/${{ steps.entry.outputs.date }}.mp4"
             ls -la "videos/${{ steps.entry.outputs.date }}.mp4"
+          elif ls scripts/tiktok-output/*.mp4 1>/dev/null 2>&1; then
+            mv scripts/tiktok-output/*.mp4 "videos/${{ steps.entry.outputs.date }}.mp4"
+            echo "Video committed (legacy path): videos/${{ steps.entry.outputs.date }}.mp4"
+            ls -la "videos/${{ steps.entry.outputs.date }}.mp4"
           else
-            echo "No MP4 produced — skipping video commit. Reel cross-post will be skipped on merge."
+            echo "::warning title=No MP4 produced::Video step likely failed. Reel cross-post will be skipped on merge."
+            echo "Looked in: tiktok-output/ and scripts/tiktok-output/"
+            ls -la tiktok-output/ 2>/dev/null || echo "  (tiktok-output/ does not exist)"
+            ls -la scripts/tiktok-output/ 2>/dev/null || echo "  (scripts/tiktok-output/ does not exist)"
           fi
         continue-on-error: true
 
