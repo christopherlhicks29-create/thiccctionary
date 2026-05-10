@@ -649,7 +649,9 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
    RESPONSIVE
    ========================================================================== */
 
-/* Mobile hamburger nav (Wave 61) — JS injects the button, CSS handles visibility */
+/* Mobile hamburger nav (Wave 61, refined Wave 62)
+   — JS injects the button; CSS handles visibility via body[data-nav-mobile] flag set by the same JS.
+   — If JS fails, the body flag never gets set and nav stays visible (graceful degradation). */
 .nav-toggle {
   display: none;
   background: none;
@@ -668,9 +670,11 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   outline-offset: 2px;
 }
 
-@media (max-width: 720px) {
-  .nav-toggle { display: block; }
-  .nav {
+@media (max-width: 900px) {
+  /* Show the toggle button at narrow widths */
+  body[data-nav-mobile] .nav-toggle { display: block; }
+  /* Hide nav by default — but only if the JS-set flag is present (graceful degradation) */
+  body[data-nav-mobile] .nav {
     display: none !important;
     flex-direction: column;
     gap: 0;
@@ -678,19 +682,19 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
     margin-top: 8px;
     border-top: 1px solid var(--rule);
   }
-  .nav.nav--open {
+  body[data-nav-mobile] .nav.nav--open {
     display: flex !important;
   }
-  .nav .nav-link {
+  body[data-nav-mobile] .nav .nav-link {
     text-align: center;
     padding: 14px 0;
     border-bottom: 1px solid rgba(0,0,0,0.08);
     border-top: none;
     width: 100%;
-    font-size: 12px;
-    letter-spacing: 0.16em;
+    font-size: 13px;
+    letter-spacing: 0.14em;
   }
-  .nav .nav-link:last-child { border-bottom: none; }
+  body[data-nav-mobile] .nav .nav-link:last-child { border-bottom: none; }
 }
 
 

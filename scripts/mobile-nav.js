@@ -18,6 +18,11 @@
   const nav = document.querySelector('.nav');
   if (!nav) return;
 
+  // Mark body so CSS can apply mobile-nav rules. This is the kill-switch:
+  // if the JS doesn't run, this attribute is never set, and the CSS leaves
+  // the nav visible (graceful degradation to pre-Wave-61 behavior).
+  document.body.setAttribute('data-nav-mobile', '');
+
   const btn = document.createElement('button');
   btn.className = 'nav-toggle';
   btn.type = 'button';
