@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary — Engineering</title>
+    <link>https://thiccctionary.com/archive.html?tag=engineering</link>
+    <atom:link href="https://thiccctionary.com/feed/engineering.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "engineering".</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 May 2026 15:25:11 GMT</lastBuildDate>
+    <item>
+      <title>Bagger 288</title>
+      <link>https://thiccctionary.com/entries/2026-05-10.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-10.html</guid>
+      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
+      <description>A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-10-bagger-288.jpg" type="image/jpeg" length="0" />
+      <category>machinery</category><category>mining</category><category>engineering</category>
+    </item>
+    <item>
+      <title>Hoover Dam</title>
+      <link>https://thiccctionary.com/entries/2026-05-08.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-08.html</guid>
+      <pubDate>Fri, 08 May 2026 12:00:00 GMT</pubDate>
+      <description>A concrete arch-gravity dam spanning the Black Canyon of the Colorado River, completed 1936; 726 feet from foundation to crest, 660 feet of base thickness tapering to 45 feet at the crown.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-08-hoover-dam.jpg" type="image/jpeg" length="0" />
+      <category>infrastructure</category><category>engineering</category><category>dams</category>
+    </item>
+  </channel>
+</rss>
