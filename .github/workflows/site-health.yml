@@ -9,8 +9,35 @@ on:
   push:
     branches: [main]
     paths:
-      - 'scripts/site-health.js'
       # Re-audit when site-health logic changes
+      - 'scripts/site-health.js'
+      # OR when any content/code that the audit covers changes
+      - 'scripts/banned-words.js'
+      - 'data/entries.json'
+      - 'data/articles.json'
+      - 'entries/**'
+      - 'articles/**'
+      - 'index.html'
+      - 'archive.html'
+      - 'submit.html'
+      - 'thanks.html'
+      - 'thiccc/**'
+      - 'press/**'
+      - 'rate/**'
+      - 'legal/**'
+      - 'sitemap.xml'
+      - 'feed.xml'
+      - 'feed/**'
+      - '404.html'
+      - 'tags/**'
+      - 'compare.html'
+      - 'random.html'
+      - 'embed/**'
+      - 'api/**'
+      - 'v/**'
+      - 'foreword-journal/**'
+      - 'prints/**'
+      - '!audits/**'  # Avoid loop: don't re-run when the audit's own report commits
 
 jobs:
   audit:
