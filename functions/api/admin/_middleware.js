@@ -11,7 +11,7 @@
  * Allowed email is hardcoded — single-user admin.
  */
 
-const ALLOWED_EMAIL = 'christopher.l.hicks29@gmail.com';
+const ALLOWED_EMAIL = 'chicks@thiccctionary.com';
 
 export async function onRequest({ request, next }) {
   const url = new URL(request.url);

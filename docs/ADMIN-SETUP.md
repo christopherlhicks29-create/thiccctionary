@@ -41,7 +41,7 @@ Click **Next**.
 - **Policy name:** `Christopher only`
 - **Action:** `Allow`
 - **Configure rules:**
-  - **Include** → **Emails** → enter `christopher.l.hicks29@gmail.com`
+  - **Include** → **Emails** → enter `chicks@thiccctionary.com`
 
 Click **Next** → **Add application**.
 
@@ -49,7 +49,7 @@ Click **Next** → **Add application**.
 
 Open https://thiccctionary.com/admin/ in an incognito window.
 
-You should see Cloudflare's login page asking for your email. Enter `christopher.l.hicks29@gmail.com`. Cloudflare will email you a one-time PIN (or use your linked identity provider if you set one up). Enter the PIN.
+You should see Cloudflare's login page asking for your email. Enter `chicks@thiccctionary.com`. Cloudflare will email you a one-time PIN (or use your linked identity provider if you set one up). Enter the PIN.
 
 After successful auth, you should see the admin dashboard with any open submission PRs.
 
@@ -80,6 +80,6 @@ These are queued for V2 if you find the V1 useful:
 
 **"Cloudflare Access is not configured"** in the admin page → finish the Access setup above.
 
-**"Forbidden — access restricted"** → the email Cloudflare authenticated isn't `christopher.l.hicks29@gmail.com`. Check the policy rule.
+**"Forbidden — access restricted"** → the email Cloudflare authenticated isn't `chicks@thiccctionary.com`. Check the policy rule.
 
 **API errors 502/503** → likely the GITHUB_PAT secret expired or was revoked. Regenerate at https://github.com/settings/tokens and update in Cloudflare Pages → Settings → Environment variables.
