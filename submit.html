@@ -70,8 +70,15 @@
       <label for="why">Why is it thiccc?</label>
       <textarea id="why" name="why" placeholder="Be specific. Where's the girth? Rear three-quarter? Side profile? The drum?" required></textarea>
 
-      <label for="image_url">Photo URL (optional but encouraged)</label>
-      <input type="url" id="image_url" name="image_url" placeholder="https://… (Imgur, Unsplash, your own host)" />
+      <label for="image_file">Photo (optional but encouraged) — max 10 MB</label>
+      <input type="file" id="image_file" accept="image/*" />
+      <p id="image_status" style="margin: 4px 0 12px; font-size: 13px; color: var(--ink-soft);"></p>
+      <input type="hidden" id="image_url" name="image_url" />
+
+      <details style="margin: 4px 0 16px; font-size: 13px;">
+        <summary style="cursor: pointer; color: var(--ink-soft);">Or paste a URL instead</summary>
+        <input type="url" id="image_url_manual" placeholder="https://…" style="margin-top: 6px;" />
+      </details>
 
       <label for="email">Your email (so we can credit you if it's featured)</label>
       <input type="email" id="email" name="email" placeholder="you@example.com" />
@@ -131,6 +138,51 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js').catch(() => {});
   });
 }
+</script>
+<script>
+(function() {
+  const fileInput = document.getElementById('image_file');
+  const status = document.getElementById('image_status');
+  const hiddenUrl = document.getElementById('image_url');
+  const manualUrl = document.getElementById('image_url_manual');
+  const form = document.querySelector('.submit-form');
+
+  if (!fileInput) return;
+
+  fileInput.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) { status.textContent = ''; hiddenUrl.value = ''; return; }
+    if (file.size > 10 * 1024 * 1024) {
+      status.textContent = 'File too large (10 MB max). Pick a smaller image or paste a URL instead.';
+      status.style.color = '#8b1f1f';
+      fileInput.value = '';
+      return;
+    }
+    status.textContent = 'Uploading…';
+    status.style.color = 'var(--ink-soft)';
+    const fd = new FormData();
+    fd.append('image', file);
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      hiddenUrl.value = data.url;
+      status.textContent = '✓ Uploaded';
+      status.style.color = '#1f6e3d';
+    } catch (err) {
+      status.textContent = 'Upload error: ' + err.message + '. Try the URL option below.';
+      status.style.color = '#8b1f1f';
+      hiddenUrl.value = '';
+    }
+  });
+
+  // If user pasted a manual URL, that takes precedence over file upload
+  if (manualUrl) {
+    manualUrl.addEventListener('input', () => {
+      if (manualUrl.value) hiddenUrl.value = manualUrl.value;
+    });
+  }
+})();
 </script>
 </body>
 </html>
