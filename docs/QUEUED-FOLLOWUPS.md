@@ -45,9 +45,9 @@ Specific overlaps to consolidate:
 
 **When to revisit:** an editorial decision Christopher should make. Surface this when catalog crosses 25 entries (currently 13) — tag sprawl gets worse with growth.
 
-## iPostal1 setup — finish notary step
+## iPostal1 setup — notarized 2026-05-10, awaiting upload
 
-**Current state (2026-05-09):** Christopher started iPostal1 signup for the virtual mailbox. Got to the notary requirement (USPS Form 1583 needs notarization to authorize a third party to receive your mail). Paused there.
+**Current state (2026-05-10):** Christopher notarized USPS Form 1583. Next step: log into iPostal1 dashboard, find the Form 1583 upload section, photograph or scan both pages of the notarized form, upload. iPostal1 typically activates within 24 hours of receipt. Once active, the new street address replaces Christopher's home address on USPTO records and any other public-record-bearing filings.
 
 **Next steps when he comes back:**
 1. Get USPS Form 1583 notarized — local options: bank (often free for customers), UPS Store ($5-15), online notary services like Notarize.com (~$25, instant)
