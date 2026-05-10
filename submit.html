@@ -61,9 +61,7 @@
       2. Create a new form, copy your form ID
       3. Replace YOUR_FORMSPREE_ID below with that ID
     -->
-    <form class="submit-form" action="https://formspree.io/f/mrejbrkk" method="POST">
-      <input type="hidden" name="_next" value="https://thiccctionary.com/thanks.html" />
-      <input type="hidden" name="_subject" value="New Thiccctionary submission" />
+    <form class="submit-form" id="submit-form" action="/api/submit" method="POST" enctype="multipart/form-data">
       <label for="word">The thiccc thing</label>
       <input type="text" id="word" name="word" placeholder="e.g. 1973 Cadillac DeVille" required />
 
@@ -72,13 +70,7 @@
 
       <label for="image_file">Photo (optional but encouraged) — max 10 MB</label>
       <input type="file" id="image_file" accept="image/*" />
-      <p id="image_status" style="margin: 4px 0 12px; font-size: 13px; color: var(--ink-soft);"></p>
-      <input type="hidden" id="image_url" name="image_url" />
-
-      <details style="margin: 4px 0 16px; font-size: 13px;">
-        <summary style="cursor: pointer; color: var(--ink-soft);">Or paste a URL instead</summary>
-        <input type="url" id="image_url_manual" placeholder="https://…" style="margin-top: 6px;" />
-      </details>
+      <p id="image_status" style="margin: 4px 0 16px; font-size: 13px; color: var(--ink-soft);"></p>
 
       <label for="email">Your email (so we can credit you if it's featured)</label>
       <input type="email" id="email" name="email" placeholder="you@example.com" />
@@ -141,47 +133,69 @@ if ('serviceWorker' in navigator) {
 </script>
 <script>
 (function() {
+  const form = document.getElementById('submit-form');
   const fileInput = document.getElementById('image_file');
   const status = document.getElementById('image_status');
-  const hiddenUrl = document.getElementById('image_url');
-  const manualUrl = document.getElementById('image_url_manual');
-  const form = document.querySelector('.submit-form');
 
-  if (!fileInput) return;
+  if (!form || !fileInput) return;
 
-  fileInput.addEventListener('change', async (e) => {
+  // Validate file size on selection
+  fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
-    if (!file) { status.textContent = ''; hiddenUrl.value = ''; return; }
+    if (!file) { status.textContent = ''; return; }
     if (file.size > 10 * 1024 * 1024) {
-      status.textContent = 'File too large (10 MB max). Pick a smaller image or paste a URL instead.';
+      status.textContent = 'File too large (10 MB max).';
       status.style.color = '#8b1f1f';
       fileInput.value = '';
       return;
     }
-    status.textContent = 'Uploading…';
+    status.textContent = '✓ Selected: ' + file.name;
     status.style.color = 'var(--ink-soft)';
-    const fd = new FormData();
-    fd.append('image', file);
-    try {
-      const res = await fetch('/api/upload', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Upload failed');
-      hiddenUrl.value = data.url;
-      status.textContent = '✓ Uploaded';
-      status.style.color = '#1f6e3d';
-    } catch (err) {
-      status.textContent = 'Upload error: ' + err.message + '. Try the URL option below.';
-      status.style.color = '#8b1f1f';
-      hiddenUrl.value = '';
-    }
   });
 
-  // If user pasted a manual URL, that takes precedence over file upload
-  if (manualUrl) {
-    manualUrl.addEventListener('input', () => {
-      if (manualUrl.value) hiddenUrl.value = manualUrl.value;
-    });
-  }
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    status.textContent = 'Processing — this may take 20-30 seconds (vision check + entry generation).';
+    status.style.color = 'var(--ink-soft)';
+
+    try {
+      const fd = new FormData();
+      fd.append('image', fileInput.files[0]);
+      fd.append('word', form.elements['word'].value);
+      fd.append('why', form.elements['why'].value);
+      fd.append('email', form.elements['email'].value || '');
+
+      const res = await fetch('/api/submit', { method: 'POST', body: fd });
+      const data = await res.json();
+
+      if (res.status === 200 && data.ok) {
+        // Success — redirect to thanks
+        window.location.href = '/thanks.html?word=' + encodeURIComponent(data.word);
+      } else if (res.status === 422 && data.error === 'rejected') {
+        status.innerHTML = '<strong>Submission declined:</strong> ' + data.reason;
+        status.style.color = '#8b1f1f';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      } else if (res.status === 202 && data.error === 'pending_review') {
+        status.innerHTML = '<strong>Saved for manual review.</strong> ' + data.reason + ' We\'ll publish if it fits.';
+        status.style.color = 'var(--ink-soft)';
+      } else {
+        status.innerHTML = '<strong>Submission error:</strong> ' + (data.error || ('HTTP ' + res.status));
+        status.style.color = '#8b1f1f';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    } catch (err) {
+      status.innerHTML = '<strong>Network error:</strong> ' + err.message;
+      status.style.color = '#8b1f1f';
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  });
 })();
 </script>
 </body>
