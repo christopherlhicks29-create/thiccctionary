@@ -16,7 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for Cloudflare Pages deploy
-        run: sleep 75
+        # Bumped from 75s → 150s after run #162 (commit 57a9a3c) failed
+        # during a burst-push day. CF Pages occasionally takes 90-120s to
+        # deploy under load. 150s gives a comfortable buffer.
+        run: sleep 150
 
       - name: Verify homepage hydrates and has key markers
         run: |
