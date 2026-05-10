@@ -28,10 +28,11 @@ In Zero Trust:
 Fill in:
 - **Application name:** `Thiccctionary Admin`
 - **Session Duration:** `24 hours` (your choice)
-- **Application domain:**
-  - Subdomain: leave blank (or `www`, depending on your setup)
-  - Domain: `thiccctionary.com`
-  - Path: `admin/*`
+- **Application domain:** add TWO domains (click "+ Add domain" after the first):
+  - Domain 1: `thiccctionary.com`, Path: `admin/*`
+  - Domain 2: `thiccctionary.com`, Path: `api/admin/*`
+
+Both paths must be protected. The first covers the HTML page; the second covers the API endpoints the page calls.
 
 Click **Next**.
 
