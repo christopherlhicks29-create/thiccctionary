@@ -90,3 +90,31 @@ Specific overlaps to consolidate:
 **Current state:** Not built. Google Alert set up by Christopher today as a manual backstop.
 
 **When to revisit:** Anytime — fully autonomous build. ~30 min, uses Bing Search API or similar.
+
+---
+
+## Buttondown RSS-to-email — turn the subscribe form into a real newsletter
+
+**Current state (2026-05-10):** Site has Buttondown subscribe form on every page + a valid `feed.xml`. Buttondown supports auto-emailing every new RSS item, but the toggle is OFF in Christopher's account. Site copy was softened from "every morning" to "in your inbox" in Wave 71 — the promise is now truthful but unfulfilled. New subscribers get nothing.
+
+**The fix is a 60-second Christopher action:**
+
+1. Go to https://buttondown.email/settings/integrations
+2. Find the "RSS-to-email" section
+3. Paste `https://thiccctionary.com/feed.xml` as the feed URL
+4. Set frequency to "Send each new item as it appears" (or daily digest)
+5. Save
+
+**Why this matters:** every entry page asks for the email. ~13 hardcoded touchpoints, every social CTA, the press kit — they all funnel to a list that doesn't currently mail anything. Conversion rate doesn't matter when the product behind the form is broken.
+
+**When to revisit:** Christopher's next 1-min Buttondown session. Surface this whenever he opens Buttondown for any reason.
+
+---
+
+## Daily cron silent-skip diagnosis
+
+**Current state (2026-05-10):** Wave 72 added cron-watchdog.yml that fails loudly at 14:30 UTC if today's entry is missing. But we still don't know WHY 05/07 and 05/10 cron runs skipped — could be picker veto, critique gate, or API error. Without inspecting the actual run logs, root cause is opaque.
+
+**When to revisit:** Next time the watchdog fires. Open the corresponding daily.yml run from the Actions tab → click into the failing/skipping run → screenshot the "Generate today's entry" step output → paste here. With logs we can decide whether to soften the picker, soften the critique gate, or bypass them with a fallback subject pool.
+
+**Suspected root cause:** picker veto getting too aggressive after the prompt got stricter. Subjects are getting rejected and the cron exits 0 silently.
