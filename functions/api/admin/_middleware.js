@@ -11,7 +11,15 @@
  * Allowed email is hardcoded — single-user admin.
  */
 
-const ALLOWED_EMAIL = 'chicks@thiccctionary.com';
+const ALLOWED_EMAILS = [
+  'chicks@thiccctionary.com',
+  'admin@thiccctionary.com',
+];
+
+function isAllowed(email) {
+  if (!email) return false;
+  return ALLOWED_EMAILS.some(a => a.toLowerCase() === email.toLowerCase());
+}
 
 export async function onRequest({ request, next }) {
   const url = new URL(request.url);
@@ -20,15 +28,15 @@ export async function onRequest({ request, next }) {
   if (!email) {
     return new Response(JSON.stringify({
       error: 'unauthorized',
-      reason: 'Cloudflare Access is not configured for /admin/. Visit https://dash.cloudflare.com → Zero Trust → Access → Applications → Add → Self-hosted, application name "Thiccctionary Admin", domain "thiccctionary.com", path "/admin/*". Add policy: allow when email is ' + ALLOWED_EMAIL + '.',
+      reason: 'Cloudflare Access is not configured for /admin/. Visit https://dash.cloudflare.com → Zero Trust → Access → Applications → Add → Self-hosted, application name "Thiccctionary Admin", domain "thiccctionary.com", path "/admin/*". Add policy allowing emails: ' + ALLOWED_EMAILS.join(', ') + '.',
       requestedPath: url.pathname,
     }), { status: 401, headers: { 'Content-Type': 'application/json' } });
   }
 
-  if (email.toLowerCase() !== ALLOWED_EMAIL.toLowerCase()) {
+  if (!isAllowed(email)) {
     return new Response(JSON.stringify({
       error: 'forbidden',
-      reason: `Access restricted to ${ALLOWED_EMAIL}. You are authenticated as ${email}.`,
+      reason: `Access restricted to: ${ALLOWED_EMAILS.join(', ')}. You are authenticated as ${email}.`,
     }), { status: 403, headers: { 'Content-Type': 'application/json' } });
   }
 
