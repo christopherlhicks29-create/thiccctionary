@@ -30,6 +30,21 @@ Things deferred from prior sessions that should be revisited at the right time. 
 ---
 
 
+
+## Tag taxonomy consolidation (editorial)
+
+**Current state (2026-05-10):** 35 unique tags across 13 entries. 32 of them are used only once. Tags fail as navigation because most lead to a single entry.
+
+Specific overlaps to consolidate:
+- "fruit" + "produce" + "agriculture" + "heirloom" + "juicy" — botanical group
+- "vehicle" + "truck" + "aircraft" + "aviation" + "heavy-duty" — transport group
+- Tag "thiccc" on one entry is tautological (every entry is thiccc)
+- Casing: "Italian" capitalized while others lowercase
+
+**Recommendation:** consolidate to ~10-15 canonical tags. Each tag needs multiple entries to be useful.
+
+**When to revisit:** an editorial decision Christopher should make. Surface this when catalog crosses 25 entries (currently 13) — tag sprawl gets worse with growth.
+
 ## iPostal1 setup — finish notary step
 
 **Current state (2026-05-09):** Christopher started iPostal1 signup for the virtual mailbox. Got to the notary requirement (USPS Form 1583 needs notarization to authorize a third party to receive your mail). Paused there.
