@@ -1,0 +1,111 @@
+name: Backfill — re-run morning post + newsletter for a specific date
+
+# Use when post-on-merge.yml ran but failed (or picked the wrong entry)
+# and you want to backfill the Buffer image post + Buttondown newsletter
+# for a SPECIFIC daily entry without re-spamming everything.
+#
+# Triggers (Wave 80):
+#   1. workflow_dispatch (manual) — date input required
+#   2. push to data/.fire-backfill — date read from sentinel file
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "YYYY-MM-DD of the entry to backfill posts for."
+        type: string
+        required: true
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-backfill'
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Resolve target date
+        id: target
+        run: |
+          DATE=""
+          if [ -n "${{ inputs.date }}" ]; then
+            DATE="${{ inputs.date }}"
+          elif [ -f data/.fire-backfill ]; then
+            DATE=$(grep -v '^#' data/.fire-backfill | grep -v '^$' | head -n 1 | awk '{print $1}')
+          fi
+          if [ -z "$DATE" ]; then
+            echo "::error::Could not resolve a target date."
+            exit 1
+          fi
+          if ! echo "$DATE" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+            echo "::error::Invalid date format: $DATE"
+            exit 1
+          fi
+          # Verify the entry exists
+          FOUND=$(node -e "const e=require('./data/entries.json'); const f=e.find(x=>x.date==='$DATE'); console.log(f ? f.word : '')")
+          if [ -z "$FOUND" ]; then
+            echo "::error::No entry for $DATE in data/entries.json."
+            exit 1
+          fi
+          echo "Backfilling posts for $DATE — $FOUND"
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
+      - name: Post to Buffer (morning, image)
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          POST_MODE: morning
+          TARGET_DATE: ${{ steps.target.outputs.date }}
+        run: node post-to-buffer.js
+        continue-on-error: true
+
+      - name: Post to Buffer (Reel — FB + IG only) if MP4 exists
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          POST_MODE: reels
+          TARGET_DATE: ${{ steps.target.outputs.date }}
+        run: |
+          if [ -f "../videos/${{ steps.target.outputs.date }}.mp4" ]; then
+            node post-to-buffer.js
+          else
+            echo "No videos/${{ steps.target.outputs.date }}.mp4 — skipping Reel."
+          fi
+        continue-on-error: true
+
+      - name: Send newsletter to Buttondown subscribers
+        working-directory: scripts
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          TARGET_DATE: ${{ steps.target.outputs.date }}
+        run: node send-newsletter.js
+
+      - name: Clear sentinel
+        if: always() && github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-backfill ]; then
+            git config user.name "Thiccctionary Editorial Board"
+            git config user.email "bot@thiccctionary.com"
+            rm -f data/.fire-backfill
+            git add -u data/.fire-backfill
+            git commit -m "Backfill fired for ${{ steps.target.outputs.date }} (sentinel cleared)"
+            git push origin HEAD:main
+          fi

@@ -127,6 +127,19 @@ function buildArticleText(article, baseUrl) {
 }
 
 function pickEntry(entries, mode) {
+  // Wave 80: TARGET_DATE override lets us backfill posts for a specific entry
+  // without touching the entries.json order. Useful when entries[0] is something
+  // we don't want to post (e.g., a submission) but we need to retry the daily
+  // entry's cross-post.
+  const targetDate = (process.env.TARGET_DATE || '').trim();
+  if (targetDate) {
+    const found = entries.find(e => e.date === targetDate);
+    if (found) {
+      console.log(`TARGET_DATE override: posting for ${targetDate} — ${found.word}`);
+      return found;
+    }
+    console.warn(`TARGET_DATE=${targetDate} but no entry with that date. Falling back to default.`);
+  }
   if (mode === 'evening') {
     const candidates = entries.slice(2);
     if (candidates.length === 0) {

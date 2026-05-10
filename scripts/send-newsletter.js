@@ -62,7 +62,20 @@ async function main() {
   const baseUrl = (process.env.SITE_BASE_URL || 'https://thiccctionary.com').replace(/\/$/, '');
 
   const entries = JSON.parse(await fs.readFile(ENTRIES_PATH, 'utf8'));
-  const entry = entries[0]; // latest entry sits at index 0
+  // Wave 80: TARGET_DATE override for backfill
+  const targetDate = (process.env.TARGET_DATE || '').trim();
+  let entry;
+  if (targetDate) {
+    entry = entries.find(e => e.date === targetDate);
+    if (entry) {
+      console.log(`TARGET_DATE override: sending newsletter for ${targetDate} — ${entry.word}`);
+    } else {
+      console.warn(`TARGET_DATE=${targetDate} but no entry with that date. Falling back to entries[0].`);
+      entry = entries[0];
+    }
+  } else {
+    entry = entries[0];
+  }
   if (!entry) {
     console.error('No entries found in data/entries.json');
     process.exit(1);
