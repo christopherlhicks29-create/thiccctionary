@@ -80,6 +80,10 @@ async function audit() {
     missingOg: [],
     sitemapDrift: { inSitemapNotInRepo: [], inRepoNotInSitemap: [] },
     bannedWordsInEntries: [],
+    brokenAnchors: [],
+    longTitles: [],
+    longDescriptions: [],
+    multipleH1: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -140,6 +144,42 @@ async function audit() {
       if (missing.length > 0) {
         issues.missingOg.push({ from: rel, missing });
       }
+    }
+
+    // 4b. Broken same-page anchors — links to #foo where foo isn't an id on this page
+    const ids = new Set();
+    for (const m of content.matchAll(/id=("([^"]+)"|'([^']+)')/g)) ids.add(m[2] || m[3]);
+    for (const m of content.matchAll(/<a[^>]*href=("#([^"]+)"|'#([^']+)')/g)) {
+      const tgt = m[2] || m[3];
+      if (!tgt || tgt === 'top') continue;
+      if (!ids.has(tgt)) {
+        issues.brokenAnchors.push({ from: rel, anchor: tgt });
+      }
+    }
+
+    // 4c. Title length (Google truncates at ~60 chars on desktop)
+    const titleMatch = content.match(/<title>([^<]*)<\/title>/);
+    if (titleMatch && titleMatch[1].length > 70) {
+      issues.longTitles.push({ from: rel, length: titleMatch[1].length, title: titleMatch[1] });
+    }
+
+    // 4d. Meta description length (Google truncates at ~160 chars)
+    const descTagMatch = content.match(/<meta[^>]*name=("description"|'description')[^>]*>/);
+    if (descTagMatch) {
+      const tag = descTagMatch[0];
+      const contentMatch = tag.match(/content=("([^"]*)"|'([^']*)')/);
+      if (contentMatch) {
+        const desc = contentMatch[2] !== undefined ? contentMatch[2] : contentMatch[3];
+        if (desc.length > 170) {
+          issues.longDescriptions.push({ from: rel, length: desc.length });
+        }
+      }
+    }
+
+    // 4e. Multiple <h1> per page (semantically should be exactly one)
+    const h1Count = (content.match(/<h1[\s>]/g) || []).length;
+    if (h1Count > 1) {
+      issues.multipleH1.push({ from: rel, count: h1Count });
     }
   }
 
@@ -224,6 +264,18 @@ function formatReport({ issues, stats }) {
 
   section(`Banned-word violations in entries.json (${issues.bannedWordsInEntries.length})`, issues.bannedWordsInEntries,
     i => `\`${i.date}\` (${i.word}) — [${i.field}] "${i.term}"`);
+
+  section(`Broken same-page anchors (${issues.brokenAnchors.length})`, issues.brokenAnchors,
+    i => `\`${i.from}\` → \`#${i.anchor}\` (no element with this id on the page)`);
+
+  section(`Page titles >70 chars (${issues.longTitles.length})`, issues.longTitles,
+    i => `\`${i.from}\` — ${i.length} chars`);
+
+  section(`Meta descriptions >170 chars (${issues.longDescriptions.length})`, issues.longDescriptions,
+    i => `\`${i.from}\` — ${i.length} chars`);
+
+  section(`Pages with multiple <h1> (${issues.multipleH1.length})`, issues.multipleH1,
+    i => `\`${i.from}\` — ${i.count} h1 tags`);
 
   lines.push('---');
   lines.push('');
