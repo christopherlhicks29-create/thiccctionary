@@ -25,7 +25,9 @@ function stripHtml(s) {
 }
 
 function formatBody(entry, baseUrl) {
-  const imageUrl = `${baseUrl}/${entry.image}`;
+  // Wave 79: entry.image may be absolute (submission R2 URLs) — don't double-prefix.
+  const isAbsoluteImg = /^https?:\/\//i.test(entry.image || '');
+  const imageUrl = isAbsoluteImg ? entry.image : `${baseUrl}/${entry.image}`;
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
   const defs = entry.definitions.map((d, i) => {
     const label = entry.definitions.length > 1 ? `**${i + 1}.** ` : '';

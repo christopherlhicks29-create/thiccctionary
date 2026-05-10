@@ -308,7 +308,11 @@ async function main() {
   console.log(`Selected entry: ${entry.date} -- "${entry.word}"`);
 
   const baseUrl = process.env.SITE_BASE_URL.replace(/\/$/, '');
-  const imageUrl = `${baseUrl}/${entry.image}`;
+  // Wave 79: entry.image may be relative ('images/2026-05-10.jpg') OR an
+  // absolute URL (submission entries store the R2 public URL directly).
+  // Don't double-prefix absolute URLs.
+  const isAbsolute = /^https?:\/\//i.test(entry.image || '');
+  const imageUrl = isAbsolute ? entry.image : `${baseUrl}/${entry.image}`;
   const videoUrl = mode === 'reels' ? `${baseUrl}/videos/${entry.date}.mp4` : null;
   const thumbnailUrl = mode === 'reels' ? imageUrl : null;
 
