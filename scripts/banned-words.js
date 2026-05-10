@@ -69,6 +69,18 @@ export const BANNED_WORDS = [
   'effortlessly enhancing',
   'elevating any',
   'statement piece',
+  // Wave 60: more AI-tells observed in model output during session
+  'in a class of its own',
+  'stands tall',
+  'stands out',
+  'speaks volumes',
+  'leaves no doubt',
+  'an embodiment of',
+  'to be reckoned with',
+  'boasting',
+  'boasts',
+  'all eyes on',
+  'showstopping',
 ];
 
 // Regex patterns that catch broader violations than literal-string match.
