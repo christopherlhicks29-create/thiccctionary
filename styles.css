@@ -649,6 +649,51 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
    RESPONSIVE
    ========================================================================== */
 
+/* Mobile hamburger nav (Wave 61) — JS injects the button, CSS handles visibility */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--oxblood);
+  padding: 12px 24px;
+  margin: 16px auto 0;
+}
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: block; }
+  .nav {
+    display: none !important;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 8px;
+    margin-top: 8px;
+    border-top: 1px solid var(--rule);
+  }
+  .nav.nav--open {
+    display: flex !important;
+  }
+  .nav .nav-link {
+    text-align: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    border-top: none;
+    width: 100%;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+  }
+  .nav .nav-link:last-child { border-bottom: none; }
+}
+
+
 @media (max-width: 900px) {
   main { padding: 0 24px; }
   .masthead { padding: 24px 24px 20px; }
