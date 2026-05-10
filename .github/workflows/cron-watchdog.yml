@@ -1,13 +1,14 @@
-name: Cron watchdog — alert on missing daily entry
+name: Cron watchdog — alert on missing daily entry or Reel
 
 # The daily.yml cron has multiple silent-skip exit paths (picker veto,
-# critique gate, OpenAI errors). When it skips, no PR opens, no email
-# fires, and Christopher discovers the gap days later.
+# critique gate, OpenAI errors). The Reel pipeline can also silently drop
+# the MP4 (Wave 75 path bug). When either happens, no alert fires and the
+# gap is discovered days later.
 #
 # This workflow runs at 14:30 UTC — 90 minutes after daily.yml's 13:00 UTC
-# cron — and FAILS LOUD if today's date is missing from data/entries.json.
-# A failed workflow shows a red badge on the Actions tab and emails
-# Christopher's GitHub-notifications address.
+# cron — and FAILS LOUD if today's date is missing from data/entries.json
+# OR videos/<today>.mp4 doesn't exist. A failed workflow shows a red badge
+# on the Actions tab and emails Christopher's GitHub-notifications address.
 
 on:
   schedule:
@@ -45,8 +46,26 @@ jobs:
             }
             console.log('OK — entry for ' + today + ' present: ' + found.word);
           "; then
-            echo "Watchdog passed."
+            echo "Entry check passed."
           else
-            echo "::error title=Daily cron silent failure::No entry for $TODAY. daily.yml cron likely skipped. See logs above."
+            echo "::error title=Daily cron silent failure (entry missing)::No entry for $TODAY in data/entries.json."
+            exit 1
+          fi
+
+      - name: Verify today's Reel video exists (Wave 83)
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          if [ -f "videos/$TODAY.mp4" ]; then
+            SIZE=$(stat -c%s "videos/$TODAY.mp4")
+            echo "OK — Reel for $TODAY present: videos/$TODAY.mp4 ($SIZE bytes)"
+          else
+            echo "::error title=Reel video missing for today::videos/$TODAY.mp4 not on main."
+            echo ""
+            echo "Likely causes:"
+            echo "  1. daily.yml's video step failed silently (continue-on-error wraps it)"
+            echo "  2. ffmpeg install failed inside the daily run"
+            echo "  3. OpenAI TTS quota or auth failure"
+            echo ""
+            echo "Recovery: touch data/.fire-tiktok-latest and push — fire-build-tiktok.yml will rebuild the MP4 for today's entry and commit it."
             exit 1
           fi
