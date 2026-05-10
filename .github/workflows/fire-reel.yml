@@ -68,6 +68,29 @@ jobs:
           echo "Cross-posting Reel for $DATE"
           echo "date=$DATE" >> $GITHUB_OUTPUT
 
+      - name: Wait for Cloudflare Pages deploy (so videos/<date>.mp4 is reachable)
+        # post-to-buffer.js does a HEAD check on the video URL before posting;
+        # Pages typically deploys in 30-90s after a push to main. Retry HEAD
+        # checks with backoff so we don't fail on a CDN race.
+        env:
+          DATE: ${{ steps.target.outputs.date }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+        run: |
+          URL="${SITE_BASE_URL%/}/videos/${DATE}.mp4"
+          echo "Waiting for ${URL} to be reachable..."
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            CODE=$(curl -sI -o /dev/null -w "%{http_code}" -m 10 "$URL" || echo 000)
+            echo "  attempt $i: HTTP $CODE"
+            if [ "$CODE" = "200" ]; then
+              echo "Reachable. Proceeding to Buffer post."
+              break
+            fi
+            if [ "$i" = "10" ]; then
+              echo "::warning::Video URL never returned 200 after 10 attempts. Buffer post may still succeed if Cloudflare catches up before Buffer schedules the post."
+            fi
+            sleep 15
+          done
+
       - name: Post Reel to Buffer (FB + IG)
         working-directory: scripts
         env:
@@ -79,7 +102,9 @@ jobs:
         run: node post-to-buffer.js
 
       - name: Clear sentinel files
-        if: github.event_name == 'push'
+        # Always clean up sentinels so a failed Buffer post doesn't leave a
+        # stuck sentinel that the next git push tries to re-fire.
+        if: always() && github.event_name == 'push'
         run: |
           git config user.name "Thiccctionary Editorial Board"
           git config user.email "bot@thiccctionary.com"
