@@ -93,21 +93,15 @@ Specific overlaps to consolidate:
 
 ---
 
-## Buttondown RSS-to-email — turn the subscribe form into a real newsletter
+## Buttondown newsletter — already working, just needs verification it sent today
 
-**Current state (2026-05-10):** Site has Buttondown subscribe form on every page + a valid `feed.xml`. Buttondown supports auto-emailing every new RSS item, but the toggle is OFF in Christopher's account. Site copy was softened from "every morning" to "in your inbox" in Wave 71 — the promise is now truthful but unfulfilled. New subscribers get nothing.
+**CORRECTION 2026-05-10 (post-Wave 75):** I previously told Christopher no newsletter pipeline existed. That was wrong. `scripts/send-newsletter.js` POSTs to Buttondown's API to publish + send the day's entry on every PR merge. It runs as the last step of `post-on-merge.yml`. So when Christopher merges a daily PR, subscribers automatically get an email with the entry's word, image, definitions, etymology, and a link.
 
-**The fix is a 60-second Christopher action:**
+**Current state:** the pipeline exists and fires automatically. The Wave 71 copy "Get the next one in your inbox" is now truthful as long as `send-newsletter.js` succeeds. The thing I don't know is whether today's Bagger 288 newsletter actually delivered — that requires Christopher to check his Buttondown dashboard or his own inbox.
 
-1. Go to https://buttondown.email/settings/integrations
-2. Find the "RSS-to-email" section
-3. Paste `https://thiccctionary.com/feed.xml` as the feed URL
-4. Set frequency to "Send each new item as it appears" (or daily digest)
-5. Save
+**What to verify next session:** Did the 2026-05-10 newsletter actually land in Christopher's inbox? If yes, this entire item closes. If no, debug `send-newsletter.js`.
 
-**Why this matters:** every entry page asks for the email. ~13 hardcoded touchpoints, every social CTA, the press kit — they all funnel to a list that doesn't currently mail anything. Conversion rate doesn't matter when the product behind the form is broken.
-
-**When to revisit:** Christopher's next 1-min Buttondown session. Surface this whenever he opens Buttondown for any reason.
+**RSS-to-email is NOT needed** unless we want backfill for entries that didn't go through PR merge (hand-added entries like Spruce, Suburban). For those, only the morning send-newsletter.js step would fire IF post-on-merge.yml caught the push. For direct-to-main commits without a daily-entry PR label, no newsletter sends.
 
 ---
 
