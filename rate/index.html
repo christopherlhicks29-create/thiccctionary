@@ -64,10 +64,10 @@
 
   <!-- Drop zone -->
   <section id="rate-input" aria-label="Submit an image">
-    <label for="rate-file" id="rate-dropzone" style="display: block; border: 2px dashed var(--rule); border-radius: 6px; padding: 3rem 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s;">
-      <p style="margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6;">Step One</p>
-      <p style="margin: 0.5rem 0 0; font-size: 1.25rem;"><strong>Drop a photograph here</strong> — or click to browse.</p>
-      <p style="margin: 0.5rem 0 0; opacity: 0.6; font-size: 0.95rem;">JPEG / PNG / WebP. Up to 8 MB.</p>
+    <label for="rate-file" id="rate-dropzone" style="display: block; border: 2px dashed var(--oxblood); border-radius: 4px; padding: 3rem 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: rgba(245,232,199,0.4);">
+      <p style="margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--oxblood);">The Apparatus, Step One</p>
+      <p style="margin: 0.65rem 0 0; font-size: 1.25rem; font-family: var(--font-display); font-weight: 500;"><strong>Drop a photograph here</strong></p>
+      <p style="margin: 0.35rem 0 0; opacity: 0.65; font-size: 0.95rem; font-style: italic;">or click to browse — JPEG / PNG / WebP, up to 8 MB</p>
     </label>
     <input id="rate-file" type="file" accept="image/jpeg,image/png,image/webp" hidden />
 
@@ -84,7 +84,7 @@
 
   <!-- Result panel -->
   <section id="rate-result" hidden style="margin-top: 3rem;" aria-live="polite">
-    <div id="rate-result-card" style="border: 1px solid var(--rule); border-radius: 6px; padding: 2rem; background: rgba(0,0,0,0.02);">
+    <div id="rate-result-card" style="border: 1px solid var(--rule); border-left: 4px solid var(--oxblood); border-radius: 4px; padding: 2rem; background: rgba(245,232,199,0.3);">
       <!-- Filled by JS -->
     </div>
   </section>
@@ -352,7 +352,7 @@ function checkQuota() {
 async function runClassify(imageData) {
   resultSection.hidden = true;
   refusalSection.hidden = true;
-  resultCard.innerHTML = '<p style="text-align: center; opacity: 0.6; font-style: italic;">The apparatus considers your submission…</p>';
+  resultCard.innerHTML = '<p style="text-align: center; opacity: 0.6; font-style: italic; padding: 2rem 0;">The editorial board reviews your photograph for silhouette, ratio, and character. This takes a moment.</p>';
   resultSection.hidden = false;
 
   try {
@@ -366,7 +366,7 @@ async function runClassify(imageData) {
     }
     renderResult(result, imageData);
   } catch (e) {
-    resultCard.innerHTML = `<p style="color: var(--oxblood);">The apparatus has failed: ${e.message}. Try again.</p>`;
+    resultCard.innerHTML = `<p style="color: var(--oxblood); text-align: center; padding: 1.5rem 0;"><strong>The apparatus has filed an exception.</strong><br><span style="font-style: italic; opacity: 0.85; font-size: 0.95rem;">${e.message}</span><br><span style="opacity: 0.7; font-size: 0.95rem;">Try a different photograph, or come back when conditions are favorable.</span></p>`;
   }
 }
 
