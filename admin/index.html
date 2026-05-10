@@ -159,6 +159,7 @@
 <nav class="tabs">
   <a href="#dashboard" data-tab="dashboard" class="active">Dashboard</a>
   <a href="#submissions" data-tab="submissions">Submissions <span id="sub-badge" class="pill neutral" style="display:none; margin-left:4px;">0</span></a>
+  <a href="#entries" data-tab="entries">Entries</a>
   <a href="#actions" data-tab="actions">Quick-fire</a>
   <a href="#health" data-tab="health">Site health</a>
 </nav>
@@ -240,6 +241,24 @@
     </div>
   </section>
 
+  <!-- ENTRIES -->
+  <section id="entries" class="panel">
+    <div id="entries-list-view">
+      <h1>Entries</h1>
+      <p class="lede">All published entries. Click any row to edit fields, regenerate the image, or regenerate the entry text. Saves commit directly to <code>main</code> (auto-deploys via Cloudflare).</p>
+      <div id="entries-loading" class="empty-state">Loading entries…</div>
+      <div id="entries-error" class="empty-state" style="display:none;"></div>
+      <table id="entries-table" style="display:none; width:100%; border-collapse:collapse; font-size:14px; background:white; border:1px solid var(--rule); border-radius:6px; overflow:hidden;"></table>
+    </div>
+
+    <div id="entry-edit-view" style="display:none;">
+      <p class="lede"><a href="#" id="back-to-entries">← Back to entries</a></p>
+      <div id="entry-edit-loading" class="empty-state">Loading entry…</div>
+      <div id="entry-edit-error" class="empty-state" style="display:none;"></div>
+      <div id="entry-edit-form" style="display:none;"></div>
+    </div>
+  </section>
+
   <!-- SITE HEALTH -->
   <section id="health" class="panel">
     <h1>Site health</h1>
@@ -273,6 +292,7 @@ function activateTab(name) {
   if (name === 'submissions') loadSubmissions();
   if (name === 'dashboard') loadDashboard();
   if (name === 'health') loadHealth();
+  if (name === 'entries') loadEntries();
 }
 $$('nav.tabs a').forEach(a => a.addEventListener('click', e => {
   e.preventDefault();
@@ -497,6 +517,182 @@ async function loadHealth() {
       <table>${rows}</table>
     </div>`;
 }
+
+// Entries — list + edit
+async function loadEntries() {
+  $('#entries-list-view').style.display = '';
+  $('#entry-edit-view').style.display = 'none';
+  $('#entries-loading').style.display = '';
+  $('#entries-error').style.display = 'none';
+  $('#entries-table').style.display = 'none';
+
+  let res;
+  try { res = await fetch('/api/admin/entries'); }
+  catch (e) { $('#entries-loading').style.display = 'none'; $('#entries-error').style.display = ''; $('#entries-error').textContent = 'Network: ' + e.message; return; }
+
+  const data = await res.json().catch(() => ({}));
+  $('#entries-loading').style.display = 'none';
+  if (!res.ok) {
+    $('#entries-error').style.display = '';
+    $('#entries-error').innerHTML = (res.status === 401) ? 'Cloudflare Access not configured.' : 'Error: ' + esc(data.error || res.status);
+    return;
+  }
+
+  const table = $('#entries-table');
+  table.style.display = '';
+  table.innerHTML = `
+    <thead>
+      <tr style="background:rgba(0,0,0,0.04); text-align:left;">
+        <th style="padding:10px 14px;">Date</th>
+        <th style="padding:10px 14px;">Image</th>
+        <th style="padding:10px 14px;">Word</th>
+        <th style="padding:10px 14px;">Category</th>
+        <th style="padding:10px 14px;">Book?</th>
+      </tr>
+    </thead>
+    <tbody></tbody>`;
+  const tbody = table.querySelector('tbody');
+  (data.entries || []).forEach(e => {
+    const imgUrl = /^https?:\/\//.test(e.image || '') ? e.image : 'https://thiccctionary.com/' + (e.image || '');
+    const tr = document.createElement('tr');
+    tr.style.cursor = 'pointer';
+    tr.style.borderTop = '1px solid var(--rule)';
+    tr.innerHTML = `
+      <td style="padding:10px 14px; font-family:ui-monospace,monospace; font-size:13px;">${esc(e.date)}</td>
+      <td style="padding:10px 14px;"><div style="width:48px; height:48px; background:var(--rule); background-image:url('${esc(imgUrl)}'); background-size:cover; background-position:center; border-radius:4px;"></div></td>
+      <td style="padding:10px 14px; font-family:'Fraunces',serif; font-size:16px; font-weight:500;">${esc(e.word)}</td>
+      <td style="padding:10px 14px; color:rgba(26,20,16,0.6); font-size:13px;">${esc(e.category || '—')}</td>
+      <td style="padding:10px 14px;">${e.bookReady === true ? '<span class="pill good">Yes</span>' : (e.bookReady === false ? '<span class="pill bad">No</span>' : '<span class="pill neutral">—</span>')}</td>`;
+    tr.addEventListener('mouseenter', () => tr.style.background = 'rgba(122,31,31,0.04)');
+    tr.addEventListener('mouseleave', () => tr.style.background = '');
+    tr.addEventListener('click', () => loadEntryForEdit(e.date));
+    tbody.appendChild(tr);
+  });
+}
+
+async function loadEntryForEdit(date) {
+  $('#entries-list-view').style.display = 'none';
+  $('#entry-edit-view').style.display = '';
+  $('#entry-edit-loading').style.display = '';
+  $('#entry-edit-error').style.display = 'none';
+  $('#entry-edit-form').style.display = 'none';
+
+  let res;
+  try { res = await fetch('/api/admin/entries?date=' + encodeURIComponent(date)); }
+  catch (e) { $('#entry-edit-loading').style.display = 'none'; $('#entry-edit-error').style.display = ''; $('#entry-edit-error').textContent = 'Network: ' + e.message; return; }
+
+  const data = await res.json().catch(() => ({}));
+  $('#entry-edit-loading').style.display = 'none';
+  if (!res.ok) {
+    $('#entry-edit-error').style.display = '';
+    $('#entry-edit-error').innerHTML = 'Error: ' + esc(data.error || res.status);
+    return;
+  }
+
+  const e = data.entry;
+  const imgUrl = /^https?:\/\//.test(e.image || '') ? e.image : 'https://thiccctionary.com/' + (e.image || '');
+  const tagsStr = (e.tags || []).join(', ');
+  const defsStr = (e.definitions || []).join('\n\n');
+
+  const form = $('#entry-edit-form');
+  form.style.display = '';
+  form.innerHTML = `
+    <h1>${esc(e.word)} <span style="font-family:'Inter',sans-serif; font-size:14px; font-weight:400; color:rgba(26,20,16,0.5);">${esc(e.date)}</span></h1>
+
+    <div style="display:grid; grid-template-columns:240px 1fr; gap:24px; margin-top:18px;">
+      <div>
+        <div style="width:100%; aspect-ratio:1; background:var(--rule); background-image:url('${esc(imgUrl)}'); background-size:cover; background-position:center; border-radius:6px;"></div>
+        <div style="margin-top:12px; font-size:12px; color:rgba(26,20,16,0.6);">Image source: <a href="${esc(imgUrl)}" target="_blank">open</a></div>
+        <button class="action" style="margin-top:14px; width:100%;" data-regen="image" data-date="${esc(e.date)}">⟳ Regenerate image</button>
+        <button class="action" style="margin-top:6px; width:100%;" data-regen="text" data-date="${esc(e.date)}">⟳ Regenerate entry text</button>
+      </div>
+
+      <div>
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin-bottom:4px;">Word</label>
+        <input id="f-word" type="text" value="${esc(e.word)}" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white; font-family:'Fraunces',serif; font-size:18px;" />
+
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin:14px 0 4px;">Pronunciation</label>
+        <input id="f-pron" type="text" value="${esc(e.pronunciation || '')}" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white; font-family:ui-monospace,monospace;" />
+
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin:14px 0 4px;">Definitions (blank line between each)</label>
+        <textarea id="f-defs" rows="6" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white; font-family:inherit; resize:vertical;">${esc(defsStr)}</textarea>
+
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin:14px 0 4px;">Etymology</label>
+        <textarea id="f-etym" rows="4" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white; font-family:inherit; resize:vertical;">${esc(e.etymology || '')}</textarea>
+
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin:14px 0 4px;">Example</label>
+        <textarea id="f-ex" rows="3" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white; font-family:inherit; resize:vertical;">${esc(e.example || '')}</textarea>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;">
+          <div>
+            <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin-bottom:4px;">Category</label>
+            <input id="f-cat" type="text" value="${esc(e.category || '')}" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white;" />
+          </div>
+          <div>
+            <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin-bottom:4px;">Book ready</label>
+            <select id="f-book" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white;">
+              <option value="">— unset —</option>
+              <option value="true" ${e.bookReady === true ? 'selected' : ''}>Yes</option>
+              <option value="false" ${e.bookReady === false ? 'selected' : ''}>No</option>
+            </select>
+          </div>
+        </div>
+
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin:14px 0 4px;">Tags (comma-separated)</label>
+        <input id="f-tags" type="text" value="${esc(tagsStr)}" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white;" />
+
+        <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin:14px 0 4px;">Photographer</label>
+        <input id="f-photog" type="text" value="${esc(e.photographer || '')}" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white;" />
+
+        <div style="margin-top:20px; display:flex; gap:8px;">
+          <button id="save-entry" class="primary" data-date="${esc(e.date)}">Save changes</button>
+          <button class="action" onclick="loadEntries()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  $('#save-entry').addEventListener('click', async (ev) => {
+    const btn = ev.currentTarget;
+    btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Saving…';
+    const updated = {
+      word: $('#f-word').value.trim(),
+      pronunciation: $('#f-pron').value.trim(),
+      definitions: $('#f-defs').value.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean),
+      etymology: $('#f-etym').value.trim(),
+      example: $('#f-ex').value.trim(),
+      category: $('#f-cat').value.trim() || null,
+      bookReady: $('#f-book').value === 'true' ? true : $('#f-book').value === 'false' ? false : null,
+      tags: $('#f-tags').value.split(',').map(s => s.trim()).filter(Boolean),
+      photographer: $('#f-photog').value.trim(),
+    };
+    try {
+      const r = await fetch('/api/admin/entry-save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ date: btn.dataset.date, entry: updated }) });
+      const d = await r.json();
+      if (!r.ok) { showToast(d.error || ('Save failed: ' + r.status), 'error'); btn.disabled = false; btn.textContent = orig; return; }
+      showToast('Saved. Auto-deploy in ~60s.', 'ok');
+      setTimeout(() => loadEntries(), 800);
+    } catch (e) { showToast('Error: ' + e.message, 'error'); btn.disabled = false; btn.textContent = orig; }
+  });
+
+  $$('[data-regen]').forEach(btn => btn.addEventListener('click', async (ev) => {
+    const which = btn.dataset.regen;
+    const d = btn.dataset.date;
+    const trigger = which === 'image' ? 'regen-image' : 'regen-text';
+    const label = which === 'image' ? 'image' : 'entry text';
+    if (!confirm(`Regenerate ${label} for ${d}? This fires a workflow that opens a PR with the new ${label} for your review.`)) return;
+    btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Firing…';
+    try {
+      const r = await fetch('/api/admin/fire-trigger', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ trigger, date: d }) });
+      const dat = await r.json();
+      if (!r.ok) { showToast(dat.error || ('Failed: ' + r.status), 'error'); btn.disabled = false; btn.textContent = orig; return; }
+      showToast(dat.message || `${label} regen fired`, 'ok');
+      setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 3000);
+    } catch (e) { showToast('Error: ' + e.message, 'error'); btn.disabled = false; btn.textContent = orig; }
+  }));
+}
+
+$('#back-to-entries').addEventListener('click', e => { e.preventDefault(); loadEntries(); });
 
 // Quick-fire actions
 $$('button[data-trigger]').forEach(btn => btn.addEventListener('click', async () => {

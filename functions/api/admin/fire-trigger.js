@@ -15,12 +15,14 @@
 const REPO = 'christopherlhicks29-create/thiccctionary';
 
 const TRIGGERS = {
-  'daily':         { path: 'data/.fire-daily',          needsDate: false, label: 'Daily cron (generate today\'s entry)' },
-  'tiktok-latest': { path: 'data/.fire-tiktok-latest',  needsDate: false, label: 'Build Reel video for latest entry' },
-  'tiktok-date':   { path: 'data/.fire-tiktok',         needsDate: true,  label: 'Build Reel video for specific date' },
-  'reel-latest':   { path: 'data/.fire-reel-latest',    needsDate: false, label: 'Cross-post Reel for latest entry' },
-  'reel-date':     { path: 'data/.fire-reel',           needsDate: true,  label: 'Cross-post Reel for specific date' },
-  'backfill':      { path: 'data/.fire-backfill',       needsDate: true,  label: 'Backfill morning post + newsletter for date' },
+  'daily':         { path: 'data/.fire-daily',          needsDate: false, contentMode: 'text', label: 'Daily cron (generate today\'s entry)' },
+  'tiktok-latest': { path: 'data/.fire-tiktok-latest',  needsDate: false, contentMode: 'text', label: 'Build Reel video for latest entry' },
+  'tiktok-date':   { path: 'data/.fire-tiktok',         needsDate: true,  contentMode: 'text', label: 'Build Reel video for specific date' },
+  'reel-latest':   { path: 'data/.fire-reel-latest',    needsDate: false, contentMode: 'text', label: 'Cross-post Reel for latest entry' },
+  'reel-date':     { path: 'data/.fire-reel',           needsDate: true,  contentMode: 'text', label: 'Cross-post Reel for specific date' },
+  'backfill':      { path: 'data/.fire-backfill',       needsDate: true,  contentMode: 'text', label: 'Backfill morning post + newsletter for date' },
+  'regen-image':   { path: 'data/.fire-image-regen.json', needsDate: true, contentMode: 'image-regen-json', label: 'Regenerate image for date' },
+  'regen-text':    { path: 'data/.fire-text-regen.json',  needsDate: true, contentMode: 'text-regen-json',  label: 'Regenerate entry text for date' },
 };
 
 async function gh(path, opts = {}, env) {
@@ -52,12 +54,21 @@ export async function onRequestPost({ request, env }) {
     return new Response(JSON.stringify({ error: `Trigger '${trigger}' requires date in YYYY-MM-DD format` }), { status: 400, headers: { 'Content-Type': 'application/json' } });
   }
 
-  // Build sentinel content
+  // Build sentinel content based on mode
   const ts = new Date().toISOString();
   const who = sourceEmail || 'admin-panel';
-  const content = cfg.needsDate
-    ? `${date}  # Fired via admin panel at ${ts} by ${who}\n`
-    : `${ts} Fired via admin panel by ${who}\n`;
+  let content;
+  if (cfg.contentMode === 'image-regen-json') {
+    const payload = { dates: date, subject_override: (body.subjectOverride || '').trim(), _fired: { at: ts, by: who } };
+    content = JSON.stringify(payload, null, 2);
+  } else if (cfg.contentMode === 'text-regen-json') {
+    const payload = { dates: date, word_override: (body.wordOverride || '').trim(), _fired: { at: ts, by: who } };
+    content = JSON.stringify(payload, null, 2);
+  } else {
+    content = cfg.needsDate
+      ? `${date}  # Fired via admin panel at ${ts} by ${who}\n`
+      : `${ts} Fired via admin panel by ${who}\n`;
+  }
   const encoded = btoa(unescape(encodeURIComponent(content)));
 
   try {
