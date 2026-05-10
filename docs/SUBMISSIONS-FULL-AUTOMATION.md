@@ -68,3 +68,4 @@ Expected: 20-30 second processing, then redirect to `/thanks.html?word=...`. New
 ## Rollback
 
 If something breaks, revert the form's `action` from `/api/submit` back to `https://formspree.io/f/mrejbrkk` in submit.html. The Formspree pipeline still works as a fallback (just doesn't auto-publish).
+
