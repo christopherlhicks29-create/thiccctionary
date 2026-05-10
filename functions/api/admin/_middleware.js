@@ -14,6 +14,7 @@
 const ALLOWED_EMAILS = [
   'chicks@thiccctionary.com',
   'admin@thiccctionary.com',
+    'christopher.l.hicks29@gmail.com',
 ];
 
 function isAllowed(email) {
