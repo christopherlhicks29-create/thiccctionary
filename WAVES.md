@@ -4,6 +4,8 @@ One-line summary of every shipped change. Newest at top. Anyone (including futur
 
 | Date | Wave | Summary |
 |------|------|---------|
+| 2026-05-10 | 54 | Articles banned-words audit + auto-fix. Found 'voluptuous' in history-of-thiccc article (metalinguistic use describing the word's body-descriptor lineage; replaced with 'full' to keep the meaning without the banned word). Found 'organic curves' in five-thicccest-things article applied to mid-century armchair (real editorial drift; replaced with 'organic form'). Site-health.js extended to scan articles for banned words on every audit. |
+| 2026-05-10 | 53 | Stress-test pass on whole site. Fixed thanks.html so it reads ?word= URL param after Wave 52 redirects (was showing generic 'editor will review' even though entry was already auto-published). Verified false positives in JS brace-counter audit (3 files all syntactically valid via node --check). Logged 4 orphan utility pages as deferred. |
 | 2026-05-10 | 48 | Site-health.js expanded with 4 more checks: broken same-page anchors, title length >70, meta description >170, multiple <h1>. Catches future regressions of the kind found in Waves 46-47. |
 | 2026-05-10 | 47 | Aggressive QA pass per Christopher's continuous-QA directive. Auto-fixed 7 broken accessibility skip-links, 6 over-long meta descriptions (174-217 → 134-159 chars), 1 over-long article title (71 → 50 chars). Site-health: ✅ clean across all checks. |
 | 2026-05-10 | 46 | Fixed broken Submit-a-Thiccc links across 13 pages. Christopher reported clicking submit was taking him to homepage subscribe section instead of submit.html. Root cause: many pages used #submit anchor instead of submit.html. |

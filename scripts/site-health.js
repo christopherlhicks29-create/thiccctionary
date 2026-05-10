@@ -84,6 +84,7 @@ async function audit() {
     longTitles: [],
     longDescriptions: [],
     multipleH1: [],
+    bannedWordsInArticles: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -201,6 +202,23 @@ async function audit() {
     console.warn(`Banned-words check failed: ${e.message}`);
   }
 
+  // 6b. Banned-words check on articles (Wave 54 — extends Wave 45)
+  const articleFiles = htmlFiles.filter(f => path.relative(ROOT, f).startsWith('articles/') && !path.relative(ROOT, f).endsWith('index.html'));
+  for (const f of articleFiles) {
+    const rel = path.relative(ROOT, f);
+    const c = await fs.readFile(f, 'utf-8');
+    // Strip <script>, <style>, <head>; just check article body text
+    const stripped = c.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<style[\s\S]*?<\/style>/g,'').replace(/<head[\s\S]*?<\/head>/g,'').replace(/<[^>]+>/g,' ');
+    // Use the validateEntry helper indirectly — wrap article text as if it were an entry
+    const fakeEntry = { definitions: [stripped], example:'', etymology:'', caption:'', word:'' };
+    const r = validateEntry(fakeEntry);
+    if (!r.ok) {
+      for (const v of r.violations) {
+        issues.bannedWordsInArticles.push({ from: rel, term: v.term, kind: v.kind });
+      }
+    }
+  }
+
   // 5. Sitemap drift
   const sitemapPath = path.join(ROOT, 'sitemap.xml');
   if (await fileExists(sitemapPath)) {
@@ -276,6 +294,9 @@ function formatReport({ issues, stats }) {
 
   section(`Pages with multiple <h1> (${issues.multipleH1.length})`, issues.multipleH1,
     i => `\`${i.from}\` — ${i.count} h1 tags`);
+
+  section(`Banned-word violations in articles (${issues.bannedWordsInArticles.length})`, issues.bannedWordsInArticles,
+    i => `\`${i.from}\` — "${i.term}"`);
 
   lines.push('---');
   lines.push('');
