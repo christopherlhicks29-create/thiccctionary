@@ -68,3 +68,4 @@ If it shows an error, check Cloudflare Pages → Functions → Real-time logs wh
 - Only image MIME types accepted (also enforced)
 - Files are public-readable (anyone with the URL can view)
 - No auth on the upload endpoint (anyone can post images) — moderate via Formspree submission review
+
