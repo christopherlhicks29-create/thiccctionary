@@ -1,0 +1,52 @@
+name: Cron watchdog — alert on missing daily entry
+
+# The daily.yml cron has multiple silent-skip exit paths (picker veto,
+# critique gate, OpenAI errors). When it skips, no PR opens, no email
+# fires, and Christopher discovers the gap days later.
+#
+# This workflow runs at 14:30 UTC — 90 minutes after daily.yml's 13:00 UTC
+# cron — and FAILS LOUD if today's date is missing from data/entries.json.
+# A failed workflow shows a red badge on the Actions tab and emails
+# Christopher's GitHub-notifications address.
+
+on:
+  schedule:
+    - cron: '30 14 * * *'   # 14:30 UTC daily — 90 min after daily.yml cron
+  workflow_dispatch:        # manual diagnostic fire
+
+permissions:
+  contents: read
+
+jobs:
+  check-todays-entry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Verify today's entry exists
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          echo "Checking for entry dated $TODAY in data/entries.json..."
+          if node -e "
+            const e = require('./data/entries.json');
+            const today = '$TODAY';
+            const found = e.find(x => x.date === today);
+            if (!found) {
+              console.error('ALERT: No entry for ' + today + '.');
+              console.error('Latest entry on file: ' + (e[0]?.date || 'none') + ' — ' + (e[0]?.word || ''));
+              console.error('');
+              console.error('Likely cause: daily.yml cron silently skipped (picker veto, critique gate, or API error).');
+              console.error('Recovery options:');
+              console.error('  1. Open daily.yml in Actions tab → Run workflow → enable force_regenerate');
+              console.error('  2. Touch data/.fire-daily and push to main to fire the daily-via-push trigger');
+              console.error('  3. Hand-add an entry to entries.json if AI pipeline keeps failing');
+              process.exit(1);
+            }
+            console.log('OK — entry for ' + today + ' present: ' + found.word);
+          "; then
+            echo "Watchdog passed."
+          else
+            echo "::error title=Daily cron silent failure::No entry for $TODAY. daily.yml cron likely skipped. See logs above."
+            exit 1
+          fi
