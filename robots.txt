@@ -4,3 +4,4 @@ Disallow: /random.html
 Disallow: /entries/_template.html
 
 Sitemap: https://thiccctionary.com/sitemap.xml
+Disallow: /admin/

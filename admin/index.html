@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Thiccctionary Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F4ECDC;
+    --ink: #1A1410;
+    --oxblood: #7A1F1F;
+    --oxblood-soft: rgba(122,31,31,0.1);
+    --rule: #d8cfb8;
+    --good: #2d6a4f;
+    --bad: #9b2c2c;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--cream); color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 32px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink); text-decoration: none;
+  }
+  .crumbs { font-size: 13px; color: rgba(26,20,16,0.6); }
+  .crumbs a { color: var(--oxblood); text-decoration: none; }
+  .container { max-width: 920px; margin: 0 auto; padding: 32px; }
+  h1 { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .lede { font-size: 15px; color: rgba(26,20,16,0.7); margin-bottom: 32px; }
+  h2 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; margin: 32px 0 12px; }
+
+  .auth-warning {
+    background: #fff8e1; border-left: 4px solid #d4a017;
+    padding: 16px 20px; margin: 24px 0; border-radius: 4px;
+  }
+  .auth-warning code { background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+
+  .empty-state {
+    border: 1px dashed var(--rule); border-radius: 6px;
+    padding: 32px; text-align: center; color: rgba(26,20,16,0.6);
+  }
+
+  .submission {
+    border: 1px solid var(--rule); border-radius: 6px;
+    margin-bottom: 16px; overflow: hidden; background: white;
+  }
+  .submission-head {
+    padding: 16px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .submission-word {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600;
+  }
+  .submission-meta { font-size: 12px; color: rgba(26,20,16,0.6); }
+  .submission-meta a { color: var(--oxblood); }
+  .submission-body { padding: 20px; display: grid; grid-template-columns: 200px 1fr; gap: 20px; }
+  @media (max-width: 600px) { .submission-body { grid-template-columns: 1fr; } }
+  .submission-image {
+    width: 100%; aspect-ratio: 1; background: var(--rule);
+    background-size: cover; background-position: center;
+    border-radius: 4px;
+  }
+  .submission-text { font-size: 14px; }
+  .submission-text dt { font-weight: 600; color: rgba(26,20,16,0.7); margin-top: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .submission-text dd { margin: 2px 0 0; }
+  .submission-text .definitions { margin-top: 8px; }
+  .submission-text .definitions p { margin: 4px 0; }
+  .submission-actions {
+    padding: 12px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 8px; flex-wrap: wrap; background: rgba(0,0,0,0.02);
+  }
+  button {
+    font-family: inherit; font-size: 14px; font-weight: 500;
+    padding: 8px 16px; border-radius: 4px; cursor: pointer;
+    border: 1px solid transparent; transition: all 0.15s;
+  }
+  button.approve { background: var(--good); color: white; }
+  button.approve:hover { background: #1f4a35; }
+  button.reject { background: white; color: var(--bad); border-color: var(--bad); }
+  button.reject:hover { background: var(--bad); color: white; }
+  button[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    padding: 12px 18px; border-radius: 4px;
+    background: var(--ink); color: var(--cream);
+    font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(100px); transition: transform 0.2s;
+  }
+  .toast.show { transform: translateY(0); }
+  .toast.error { background: var(--bad); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="/" class="wordmark">Thiccctionary</a>
+  <div class="crumbs">Admin · <a href="/admin/">Submissions</a></div>
+</header>
+
+<div class="container">
+  <h1>Submissions awaiting review</h1>
+  <p class="lede">Each submission is a pull request labeled <code>submissions-review</code>. Approving it merges the PR, which auto-deploys the entry and fires the social + newsletter pipeline. Rejecting it closes the PR and deletes the branch (the R2 image will remain orphaned; clean up via the R2 dashboard if needed).</p>
+
+  <div id="auth-warning" style="display:none;" class="auth-warning">
+    <strong>Cloudflare Access not configured.</strong> The admin API requires CF Access to authenticate you.
+    Set it up at <code>dash.cloudflare.com → Zero Trust → Access → Applications</code> — add a self-hosted application
+    with domain <code>thiccctionary.com</code> and path <code>/admin/*</code>, with a policy allowing <code>christopher.l.hicks29@gmail.com</code>.
+    Until then, this page can't list or modify submissions.
+  </div>
+
+  <div id="loading" class="empty-state">Loading submissions…</div>
+  <div id="empty" style="display:none;" class="empty-state">No submissions awaiting review.</div>
+  <div id="error" style="display:none;" class="auth-warning"></div>
+
+  <div id="submissions-list"></div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const $ = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+function escHtml(s) {
+  const t = document.createElement('div'); t.textContent = String(s ?? ''); return t.innerHTML;
+}
+function stripHtml(s) { return String(s || '').replace(/<[^>]+>/g, '').trim(); }
+
+function showToast(msg, isError = false) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.toggle('error', isError);
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+async function loadSubmissions() {
+  $('#loading').style.display = '';
+  $('#empty').style.display = 'none';
+  $('#error').style.display = 'none';
+  $('#auth-warning').style.display = 'none';
+
+  let res;
+  try { res = await fetch('/api/admin/submissions'); }
+  catch (e) {
+    $('#loading').style.display = 'none';
+    $('#error').style.display = '';
+    $('#error').textContent = 'Network error: ' + e.message;
+    return;
+  }
+
+  if (res.status === 401) {
+    $('#loading').style.display = 'none';
+    $('#auth-warning').style.display = '';
+    return;
+  }
+
+  let data;
+  try { data = await res.json(); }
+  catch (e) { data = { error: 'Bad response from API' }; }
+
+  $('#loading').style.display = 'none';
+
+  if (!res.ok) {
+    $('#error').style.display = '';
+    $('#error').textContent = data.error || ('API error: ' + res.status);
+    return;
+  }
+
+  const subs = data.submissions || [];
+  if (subs.length === 0) {
+    $('#empty').style.display = '';
+    return;
+  }
+
+  const list = $('#submissions-list');
+  list.innerHTML = '';
+  subs.forEach(sub => {
+    const e = sub.entry || {};
+    const imgUrl = e.image || '';
+    const card = document.createElement('article');
+    card.className = 'submission';
+    card.dataset.prNumber = sub.number;
+    card.innerHTML = `
+      <div class="submission-head">
+        <span class="submission-word">${escHtml(e.word || sub.title)}</span>
+        <span class="submission-meta">PR #${sub.number} · ${escHtml(new Date(sub.createdAt).toLocaleString())} · <a href="${escHtml(sub.htmlUrl)}" target="_blank" rel="noopener">View on GitHub</a></span>
+      </div>
+      <div class="submission-body">
+        <div class="submission-image" style="background-image:url('${escHtml(imgUrl)}')"></div>
+        <div class="submission-text">
+          <dt>Pronunciation</dt><dd>${escHtml(e.pronunciation || '—')}</dd>
+          <dt>Part of speech</dt><dd>${escHtml(e.partOfSpeech || '—')}</dd>
+          <dt>Definitions</dt>
+          <div class="definitions">${(e.definitions || []).map(d => `<p>${escHtml(stripHtml(d))}</p>`).join('') || '<p>—</p>'}</div>
+          <dt>Etymology</dt><dd>${escHtml(stripHtml(e.etymology || '—'))}</dd>
+          <dt>Example</dt><dd><em>${escHtml(stripHtml(e.example || '—'))}</em></dd>
+          <dt>Submitted by</dt><dd>${escHtml(e.submittedBy || e.photographer || '—')}</dd>
+        </div>
+      </div>
+      <div class="submission-actions">
+        <button class="approve" data-action="approve">Approve & publish</button>
+        <button class="reject" data-action="reject">Reject</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+
+  $$('.submission button').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const card = btn.closest('.submission');
+      const prNumber = parseInt(card.dataset.prNumber, 10);
+      const action = btn.dataset.action;
+      if (action === 'reject' && !confirm(`Reject submission PR #${prNumber}? The branch will be deleted.`)) return;
+      $$('button', card).forEach(b => b.disabled = true);
+      try {
+        const res = await fetch('/api/admin/submission-action', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prNumber, action }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          showToast(data.error || `Failed: ${res.status}`, true);
+          $$('button', card).forEach(b => b.disabled = false);
+          return;
+        }
+        showToast(action === 'approve' ? `Approved PR #${prNumber}` : `Rejected PR #${prNumber}`);
+        card.style.opacity = '0.4';
+        setTimeout(() => { card.remove(); checkEmpty(); }, 600);
+      } catch (e) {
+        showToast('Error: ' + e.message, true);
+        $$('button', card).forEach(b => b.disabled = false);
+      }
+    });
+  });
+}
+
+function checkEmpty() {
+  if ($('#submissions-list').children.length === 0) $('#empty').style.display = '';
+}
+
+loadSubmissions();
+</script>
+
+</body>
+</html>
