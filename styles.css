@@ -649,21 +649,24 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
    RESPONSIVE
    ========================================================================== */
 
-/* Mobile hamburger nav (Wave 61, refined Wave 62)
-   — JS injects the button; CSS handles visibility via body[data-nav-mobile] flag set by the same JS.
-   — If JS fails, the body flag never gets set and nav stays visible (graceful degradation). */
+/* Mobile hamburger nav (Wave 63 — clean rewrite)
+   JS injects <button class="nav-toggle"> before <nav class="nav">. JS sets body[data-nav-mobile]
+   on initial load. CSS shows toggle + collapses nav at <=900px. If JS fails, attribute is never
+   set and nav stays visible (graceful degradation). */
+
 .nav-toggle {
   display: none;
-  background: none;
-  border: 0;
+  background: var(--cream);
+  border: 1.5px solid var(--oxblood);
+  border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
   color: var(--oxblood);
-  padding: 12px 24px;
-  margin: 16px auto 0;
+  padding: 10px 20px;
+  margin: 18px auto 0;
 }
 .nav-toggle:focus-visible {
   outline: 2px solid var(--oxblood);
@@ -671,30 +674,33 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 }
 
 @media (max-width: 900px) {
-  /* Show the toggle button at narrow widths */
-  body[data-nav-mobile] .nav-toggle { display: block; }
-  /* Hide nav by default — but only if the JS-set flag is present (graceful degradation) */
-  body[data-nav-mobile] .nav {
-    display: none !important;
+  /* Mobile mode active. Show the button. */
+  body[data-nav-mobile] .nav-toggle {
+    display: block;
+  }
+  /* Hide the nav by default. Show it when nav--open class is added. */
+  body[data-nav-mobile] header.masthead nav.nav {
+    display: none;
+  }
+  body[data-nav-mobile] header.masthead nav.nav.nav--open {
+    display: flex;
     flex-direction: column;
     gap: 0;
     padding-top: 8px;
-    margin-top: 8px;
+    margin-top: 14px;
     border-top: 1px solid var(--rule);
   }
-  body[data-nav-mobile] .nav.nav--open {
-    display: flex !important;
-  }
-  body[data-nav-mobile] .nav .nav-link {
+  body[data-nav-mobile] header.masthead nav.nav.nav--open .nav-link {
     text-align: center;
     padding: 14px 0;
     border-bottom: 1px solid rgba(0,0,0,0.08);
-    border-top: none;
     width: 100%;
     font-size: 13px;
     letter-spacing: 0.14em;
   }
-  body[data-nav-mobile] .nav .nav-link:last-child { border-bottom: none; }
+  body[data-nav-mobile] header.masthead nav.nav.nav--open .nav-link:last-child {
+    border-bottom: none;
+  }
 }
 
 
