@@ -45,11 +45,11 @@
 <main id="main-content">
   <div class="center-page">
     <p class="error-stamp">Submitted</p>
-    <h2 class="error-headline">Thanks. Filed.</h2>
-    <p class="error-body">An editor will review your submission. If we run with it, you'll see your name in the credit line. If we don't, no hard feelings — most submissions don't make the bar, and that's fine.</p>
+    <h2 class="error-headline" id="thanks-headline">Thanks. Filed.</h2>
+    <p class="error-body" id="thanks-body">An editor will review your submission. If we run with it, you'll see your name in the credit line. If we don't, no hard feelings — most submissions don't make the bar, and that's fine.</p>
 
     <p style="margin-top: 36px;">
-      <a href="index.html" class="btn-primary">← Back to today's entry</a>
+      <a href="index.html" class="btn-primary" id="thanks-cta">← Back to today's entry</a>
     </p>
 
     <p style="margin-top: 24px; font-size: 14px; color: var(--ink-soft); font-style: italic;">
@@ -71,6 +71,29 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // If we arrived from /api/submit with a ?word= param, customize the page
+  // to congratulate the submitter and link directly to their published entry.
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const word = params.get('word');
+    if (!word) return;
+
+    const headline = document.getElementById('thanks-headline');
+    const body = document.getElementById('thanks-body');
+    const cta = document.getElementById('thanks-cta');
+
+    if (headline) headline.textContent = 'Filed: ' + word + '.';
+    if (body) {
+      body.textContent = 'Your submission cleared the editorial filters and was auto-published. It is now part of the catalog.';
+    }
+    if (cta) {
+      // Today's entry path
+      const today = new Date().toISOString().slice(0, 10);
+      cta.href = 'entries/' + today + '.html';
+      cta.textContent = 'View your entry →';
+    }
+  })();
 </script>
 
 <script>
