@@ -74,6 +74,71 @@
 
 ---
 
+
+### The Browser
+- **Outlet:** Daily 5-link curation of weird/specific reads. Run by Caroline Crampton + others. ~30K subscribers. Highly aligned with our format (specific, niche, well-edited).
+- **Contact:** Reply to the newsletter. editors@thebrowser.com (verify at pitch time).
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** "A satirical online dictionary that lives at the same intersection your editors mine — well-edited, niche, specific." Pitch one entry as an example link they could include in a roundup. Cement Mixer entry is the strongest standalone read.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched.
+
+### Read Max by Max Read
+- **Outlet:** Internet culture analysis newsletter. Ex-New York Magazine tech/internet writer. Substack, ~20-30K subscribers.
+- **Contact:** Reply to newsletter; @mxrad on Twitter.
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** Read covers internet language drift and platform incentives. Position Thiccctionary as a small case study in "how a niche internet word generalizes." Same analytical frame as Garbage Day but different writer voice.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched.
+
+### After School by Casey Lewis
+- **Outlet:** Newsletter on Gen Z internet culture. Casey Lewis (former Teen Vogue digital). ~15-25K subscribers.
+- **Contact:** Reply to newsletter; @caseyalewis on Twitter.
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** "Thiccc" is internet vernacular that's been generalized. Casey covers how Gen Z internet language migrates. Pitch as cultural-evolution case study.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched.
+
+### Why is this interesting? (WITI)
+- **Outlet:** Daily newsletter, multi-author. Noah Brier + Colin Nagy + rotating guests. ~30K+ subscribers. Format: each issue is one author's short essay on a specific topic.
+- **Contact:** witi@whyisthisinteresting.us (verify); pitches sometimes accepted.
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** Pitch a guest WITI entry FROM Christopher about Thiccctionary's editorial discipline ("Why is this interesting? — the redirect of harassment language onto refrigerators"). Native format match, byline opportunity.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched.
+
+### Recommendo
+- **Outlet:** Kevin Kelly + Mark Frauenfelder + Claudia Dawson. Six-recommendations-per-week newsletter. ~50K+ subscribers. Curates weird-useful-things.
+- **Contact:** Reply to newsletter; submission form on the site.
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** Submit Thiccctionary as a "thing worth recommending" — fits their format exactly. The classifier (is-it-thiccc.com) might be the better hook than the daily entries themselves; it's an interactive curio of the kind they champion.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched.
+
+### Boing Boing
+- **Outlet:** Long-running weird-internet blog (since 1995). Cory Doctorow, Mark Frauenfelder, Xeni Jardin (rotating contributors). Heavy weird-internet-project coverage history.
+- **Contact:** submit@boingboing.net.
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** Boing Boing's whole brief is "things you wouldn't have known existed." Pitch the project as one of those. Lead with the editorial conceit (objects, never people) and the strict three-c spelling rule.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched.
+
+### McSweeney's Internet Tendency
+- **Outlet:** Long-form humor publication. Lists, satirical essays. Owned by McSweeney's. Editorial bar is high.
+- **Contact:** mcsweeneys.net/submissions (form-based).
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** Submit a guest piece IN the Thiccctionary register, not a pitch about it. "Sample dictionary entries" or "A glossary of objects of unusual girth" submitted as a McSweeney's-shaped list. Different vehicle than press pitch.
+- **Draft:** *not yet drafted*
+- **Status:** Not pitched (different vehicle: guest-piece submission).
+
+### Sensitive Plant / Kyle Chayka adjacent
+- **Outlet:** Kyle Chayka writes for The New Yorker on internet aesthetics; has a personal newsletter Sensitive Plant on filtration/aesthetics.
+- **Contact:** kyle.chayka@gmail.com (verify; he's open to interesting niche projects).
+- **Recent piece to reference:** *fill in at pitch time*
+- **Pitch angle:** Chayka's New Yorker work covers internet aesthetics seriously. Position Thiccctionary as a case in the "internet vocabulary applied to objects" lineage that includes lo-fi, cottagecore, etc. Long-shot but high-payoff.
+- **Draft:** *not yet drafted*
+- **Status:** Defer until at least one Tier 3 mention exists.
+
 ## Tier 2 — established culture publications (pitch ~2-3 months after first Tier 3 mention)
 
 ### The Verge — "Off Topic" / quirky internet coverage
