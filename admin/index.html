@@ -16,7 +16,11 @@
     --oxblood-soft: rgba(122,31,31,0.1);
     --rule: #d8cfb8;
     --good: #2d6a4f;
+    --good-soft: #d4ecdf;
+    --warn: #b07a1a;
+    --warn-soft: #fbf0d4;
     --bad: #9b2c2c;
+    --bad-soft: #fadcdc;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -25,75 +29,112 @@
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.5;
   }
+  a { color: var(--oxblood); }
+  code { background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px; font-size: 13px; font-family: ui-monospace, 'SF Mono', monospace; }
   .masthead {
     border-bottom: 1px solid var(--rule);
-    padding: 24px 32px;
+    padding: 20px 32px;
     display: flex; justify-content: space-between; align-items: baseline;
     flex-wrap: wrap; gap: 12px;
   }
-  .wordmark {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
-    color: var(--ink); text-decoration: none;
-  }
+  .wordmark { font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
   .crumbs { font-size: 13px; color: rgba(26,20,16,0.6); }
-  .crumbs a { color: var(--oxblood); text-decoration: none; }
-  .container { max-width: 920px; margin: 0 auto; padding: 32px; }
-  h1 { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.02em; }
-  .lede { font-size: 15px; color: rgba(26,20,16,0.7); margin-bottom: 32px; }
-  h2 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; margin: 32px 0 12px; }
+  nav.tabs {
+    display: flex; gap: 4px; padding: 0 32px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--cream);
+    overflow-x: auto;
+  }
+  nav.tabs a {
+    padding: 12px 18px; color: rgba(26,20,16,0.6); text-decoration: none;
+    border-bottom: 2px solid transparent; font-size: 14px; font-weight: 500;
+    white-space: nowrap;
+  }
+  nav.tabs a:hover { color: var(--ink); }
+  nav.tabs a.active { color: var(--oxblood); border-bottom-color: var(--oxblood); }
 
-  .auth-warning {
-    background: #fff8e1; border-left: 4px solid #d4a017;
-    padding: 16px 20px; margin: 24px 0; border-radius: 4px;
-  }
-  .auth-warning code { background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+  .container { max-width: 1040px; margin: 0 auto; padding: 32px; }
+  section.panel { display: none; }
+  section.panel.active { display: block; }
 
-  .empty-state {
-    border: 1px dashed var(--rule); border-radius: 6px;
-    padding: 32px; text-align: center; color: rgba(26,20,16,0.6);
-  }
+  h1 { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .lede { font-size: 15px; color: rgba(26,20,16,0.7); margin-bottom: 28px; }
+  h2 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; margin: 28px 0 10px; }
 
-  .submission {
-    border: 1px solid var(--rule); border-radius: 6px;
-    margin-bottom: 16px; overflow: hidden; background: white;
+  /* Dashboard tiles */
+  .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .tile {
+    background: white; border: 1px solid var(--rule); border-radius: 6px;
+    padding: 18px;
   }
-  .submission-head {
-    padding: 16px 20px; border-bottom: 1px solid var(--rule);
-    display: flex; justify-content: space-between; align-items: baseline;
-    flex-wrap: wrap; gap: 8px;
-  }
-  .submission-word {
-    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600;
-  }
+  .tile .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(26,20,16,0.6); margin-bottom: 8px; }
+  .tile .value { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; line-height: 1.3; }
+  .tile .sub { font-size: 12px; color: rgba(26,20,16,0.55); margin-top: 6px; }
+  .tile.ok { border-left: 4px solid var(--good); }
+  .tile.warn { border-left: 4px solid var(--warn); }
+  .tile.bad { border-left: 4px solid var(--bad); }
+  .tile .image-preview { width: 100%; aspect-ratio: 16/9; background: var(--rule); background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 10px; }
+
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.neutral { background: rgba(0,0,0,0.05); color: rgba(26,20,16,0.7); }
+
+  /* Submissions */
+  .empty-state { border: 1px dashed var(--rule); border-radius: 6px; padding: 32px; text-align: center; color: rgba(26,20,16,0.6); }
+  .submission { border: 1px solid var(--rule); border-radius: 6px; margin-bottom: 16px; overflow: hidden; background: white; }
+  .submission-head { padding: 14px 18px; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  .submission-word { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; }
   .submission-meta { font-size: 12px; color: rgba(26,20,16,0.6); }
-  .submission-meta a { color: var(--oxblood); }
-  .submission-body { padding: 20px; display: grid; grid-template-columns: 200px 1fr; gap: 20px; }
+  .submission-body { padding: 18px; display: grid; grid-template-columns: 180px 1fr; gap: 18px; }
   @media (max-width: 600px) { .submission-body { grid-template-columns: 1fr; } }
-  .submission-image {
-    width: 100%; aspect-ratio: 1; background: var(--rule);
-    background-size: cover; background-position: center;
-    border-radius: 4px;
-  }
+  .submission-image { width: 100%; aspect-ratio: 1; background: var(--rule); background-size: cover; background-position: center; border-radius: 4px; }
   .submission-text { font-size: 14px; }
-  .submission-text dt { font-weight: 600; color: rgba(26,20,16,0.7); margin-top: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .submission-text dt { font-weight: 600; color: rgba(26,20,16,0.7); margin-top: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
   .submission-text dd { margin: 2px 0 0; }
-  .submission-text .definitions { margin-top: 8px; }
   .submission-text .definitions p { margin: 4px 0; }
-  .submission-actions {
-    padding: 12px 20px; border-top: 1px solid var(--rule);
-    display: flex; gap: 8px; flex-wrap: wrap; background: rgba(0,0,0,0.02);
-  }
+  .submission-actions { padding: 12px 18px; border-top: 1px solid var(--rule); display: flex; gap: 8px; flex-wrap: wrap; background: rgba(0,0,0,0.02); }
+
+  /* Buttons */
   button {
     font-family: inherit; font-size: 14px; font-weight: 500;
     padding: 8px 16px; border-radius: 4px; cursor: pointer;
     border: 1px solid transparent; transition: all 0.15s;
   }
+  button.primary { background: var(--ink); color: var(--cream); }
+  button.primary:hover { background: #2a1f1a; }
   button.approve { background: var(--good); color: white; }
   button.approve:hover { background: #1f4a35; }
   button.reject { background: white; color: var(--bad); border-color: var(--bad); }
   button.reject:hover { background: var(--bad); color: white; }
+  button.action { background: white; color: var(--ink); border-color: var(--rule); }
+  button.action:hover { background: var(--cream); border-color: var(--oxblood); color: var(--oxblood); }
   button[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+  /* Actions panel */
+  .action-card {
+    background: white; border: 1px solid var(--rule); border-radius: 6px;
+    padding: 18px; margin-bottom: 14px;
+  }
+  .action-card h3 { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600; margin: 0 0 4px; }
+  .action-card .desc { font-size: 13px; color: rgba(26,20,16,0.65); margin-bottom: 12px; }
+  .action-card .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .action-card input[type="date"] {
+    font-family: inherit; font-size: 14px; padding: 7px 10px;
+    border: 1px solid var(--rule); border-radius: 4px;
+    background: var(--cream); color: var(--ink);
+  }
+
+  /* Health panel */
+  .health-summary { background: white; border: 1px solid var(--rule); border-radius: 6px; padding: 22px; }
+  .health-summary .filename { font-size: 12px; color: rgba(26,20,16,0.55); margin-bottom: 4px; font-family: ui-monospace, monospace; }
+  .health-summary .status-line { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 600; margin: 4px 0 8px; }
+  .health-summary .scanned { font-size: 13px; color: rgba(26,20,16,0.65); margin-bottom: 16px; }
+  .health-summary table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .health-summary td { padding: 8px 4px; border-bottom: 1px solid var(--rule); }
+  .health-summary td:last-child { text-align: right; font-weight: 600; }
+  .health-summary tr:last-child td { border-bottom: 0; }
 
   .toast {
     position: fixed; bottom: 24px; right: 24px;
@@ -101,34 +142,113 @@
     background: var(--ink); color: var(--cream);
     font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transform: translateY(100px); transition: transform 0.2s;
+    max-width: 360px;
   }
   .toast.show { transform: translateY(0); }
   .toast.error { background: var(--bad); }
+  .toast.ok { background: var(--good); }
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <a href="/" class="wordmark">Thiccctionary</a>
-  <div class="crumbs">Admin · <a href="/admin/">Submissions</a></div>
+  <div class="crumbs">Admin panel</div>
 </header>
 
+<nav class="tabs">
+  <a href="#dashboard" data-tab="dashboard" class="active">Dashboard</a>
+  <a href="#submissions" data-tab="submissions">Submissions <span id="sub-badge" class="pill neutral" style="display:none; margin-left:4px;">0</span></a>
+  <a href="#actions" data-tab="actions">Quick-fire</a>
+  <a href="#health" data-tab="health">Site health</a>
+</nav>
+
 <div class="container">
-  <h1>Submissions awaiting review</h1>
-  <p class="lede">Each submission is a pull request labeled <code>submissions-review</code>. Approving it merges the PR, which auto-deploys the entry and fires the social + newsletter pipeline. Rejecting it closes the PR and deletes the branch (the R2 image will remain orphaned; clean up via the R2 dashboard if needed).</p>
 
-  <div id="auth-warning" style="display:none;" class="auth-warning">
-    <strong>Cloudflare Access not configured.</strong> The admin API requires CF Access to authenticate you.
-    Set it up at <code>dash.cloudflare.com → Zero Trust → Access → Applications</code> — add a self-hosted application
-    with domain <code>thiccctionary.com</code> and path <code>/admin/*</code>, with a policy allowing <code>christopher.l.hicks29@gmail.com</code>.
-    Until then, this page can't list or modify submissions.
-  </div>
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="panel active">
+    <h1>Dashboard</h1>
+    <p class="lede">At-a-glance status. All data pulled live from GitHub on page load — refresh to update.</p>
 
-  <div id="loading" class="empty-state">Loading submissions…</div>
-  <div id="empty" style="display:none;" class="empty-state">No submissions awaiting review.</div>
-  <div id="error" style="display:none;" class="auth-warning"></div>
+    <div id="dash-loading" class="empty-state">Loading dashboard…</div>
+    <div id="dash-error" class="empty-state" style="display:none;"></div>
+    <div id="dash-content" style="display:none;">
 
-  <div id="submissions-list"></div>
+      <h2>Today</h2>
+      <div class="tile-grid" id="today-tiles"></div>
+
+      <h2>Catalog</h2>
+      <div class="tile-grid" id="catalog-tiles"></div>
+
+      <h2>Pipeline status</h2>
+      <div class="tile-grid" id="pipeline-tiles"></div>
+
+    </div>
+  </section>
+
+  <!-- SUBMISSIONS -->
+  <section id="submissions" class="panel">
+    <h1>Submissions awaiting review</h1>
+    <p class="lede">Each submission is a GitHub PR labeled <code>submissions-review</code>. Approving merges the PR (auto-deploys + fires social + newsletter). Rejecting closes the PR and deletes the branch.</p>
+
+    <div id="sub-loading" class="empty-state">Loading submissions…</div>
+    <div id="sub-empty" style="display:none;" class="empty-state">No submissions awaiting review.</div>
+    <div id="sub-error" style="display:none;" class="empty-state"></div>
+    <div id="sub-list"></div>
+  </section>
+
+  <!-- QUICK-FIRE ACTIONS -->
+  <section id="actions" class="panel">
+    <h1>Quick-fire actions</h1>
+    <p class="lede">Trigger any pipeline workflow without going through the Actions tab. Each click commits a sentinel file to <code>main</code>, which fires the corresponding workflow within ~30 seconds.</p>
+
+    <div class="action-card">
+      <h3>Generate today's daily entry</h3>
+      <p class="desc">Triggers <code>daily.yml</code>. Use if the 13:00 UTC cron didn't fire or you want to retry. Won't duplicate if today's entry already exists (unless you delete it first).</p>
+      <div class="row">
+        <button class="primary" data-trigger="daily" data-confirm="Fire daily.yml for today?">Fire daily cron</button>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <h3>Build Reel video</h3>
+      <p class="desc">Triggers <code>build-tiktok.yml</code> via sentinel. Generates the deadpan-voice 1080×1920 MP4 + commits to <code>videos/&lt;date&gt;.mp4</code>.</p>
+      <div class="row">
+        <button class="action" data-trigger="tiktok-latest" data-confirm="Build Reel for the latest entry?">Build for latest entry</button>
+        <input type="date" id="tiktok-date-input" />
+        <button class="action" data-trigger="tiktok-date" data-date-input="tiktok-date-input" data-confirm="Build Reel for the selected date?">Build for specific date</button>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <h3>Cross-post Reel to FB + IG</h3>
+      <p class="desc">Triggers <code>fire-reel.yml</code>. Queues the Reel video in Buffer for FB Reels + IG Reels. Requires the MP4 to already exist on main.</p>
+      <div class="row">
+        <button class="action" data-trigger="reel-latest" data-confirm="Cross-post Reel for the latest entry?">Cross-post latest</button>
+        <input type="date" id="reel-date-input" />
+        <button class="action" data-trigger="reel-date" data-date-input="reel-date-input" data-confirm="Cross-post Reel for the selected date?">Cross-post specific date</button>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <h3>Backfill morning post + newsletter</h3>
+      <p class="desc">Triggers <code>fire-backfill.yml</code>. Re-runs morning Buffer post + Reel cross-post + Buttondown newsletter for a specific date. Use if post-on-merge failed and you need to ship those posts retroactively.</p>
+      <div class="row">
+        <input type="date" id="backfill-date-input" />
+        <button class="action" data-trigger="backfill" data-date-input="backfill-date-input" data-confirm="Backfill posts + newsletter for the selected date? This will send a real email to subscribers.">Backfill date</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITE HEALTH -->
+  <section id="health" class="panel">
+    <h1>Site health</h1>
+    <p class="lede">Latest audit from <code>scripts/site-health.js</code>. Re-runs automatically on every push to content-bearing paths.</p>
+    <div id="health-loading" class="empty-state">Loading audit…</div>
+    <div id="health-error" class="empty-state" style="display:none;"></div>
+    <div id="health-content" style="display:none;"></div>
+  </section>
+
 </div>
 
 <div id="toast" class="toast"></div>
@@ -136,60 +256,169 @@
 <script>
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
+const esc = s => { const t = document.createElement('div'); t.textContent = String(s ?? ''); return t.innerHTML; };
+const stripHtml = s => String(s || '').replace(/<[^>]+>/g, '').trim();
 
-function escHtml(s) {
-  const t = document.createElement('div'); t.textContent = String(s ?? ''); return t.innerHTML;
-}
-function stripHtml(s) { return String(s || '').replace(/<[^>]+>/g, '').trim(); }
-
-function showToast(msg, isError = false) {
+function showToast(msg, kind = 'ok') {
   const t = $('#toast');
   t.textContent = msg;
-  t.classList.toggle('error', isError);
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+  t.className = 'toast ' + kind + ' show';
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// Tab navigation
+function activateTab(name) {
+  $$('nav.tabs a').forEach(a => a.classList.toggle('active', a.dataset.tab === name));
+  $$('section.panel').forEach(s => s.classList.toggle('active', s.id === name));
+  if (name === 'submissions') loadSubmissions();
+  if (name === 'dashboard') loadDashboard();
+  if (name === 'health') loadHealth();
+}
+$$('nav.tabs a').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  history.replaceState(null, '', '#' + a.dataset.tab);
+  activateTab(a.dataset.tab);
+}));
+window.addEventListener('hashchange', () => activateTab((location.hash || '#dashboard').slice(1)));
+
+function pillFor(conclusion) {
+  if (!conclusion) return '<span class="pill warn">Running / unknown</span>';
+  if (conclusion === 'success') return '<span class="pill good">Success</span>';
+  if (conclusion === 'failure') return '<span class="pill bad">Failed</span>';
+  if (conclusion === 'cancelled') return '<span class="pill neutral">Cancelled</span>';
+  return `<span class="pill neutral">${esc(conclusion)}</span>`;
+}
+
+function timeAgo(iso) {
+  if (!iso) return 'never';
+  const ms = Date.now() - new Date(iso).getTime();
+  const m = Math.floor(ms / 60000);
+  if (m < 1) return 'just now';
+  if (m < 60) return m + ' min ago';
+  const h = Math.floor(m / 60);
+  if (h < 24) return h + ' hr ago';
+  const d = Math.floor(h / 24);
+  return d + ' day' + (d === 1 ? '' : 's') + ' ago';
+}
+
+async function loadDashboard() {
+  $('#dash-loading').style.display = '';
+  $('#dash-error').style.display = 'none';
+  $('#dash-content').style.display = 'none';
+
+  let res;
+  try { res = await fetch('/api/admin/status'); }
+  catch (e) { $('#dash-loading').style.display = 'none'; $('#dash-error').style.display = ''; $('#dash-error').textContent = 'Network error: ' + e.message; return; }
+
+  const data = await res.json().catch(() => ({}));
+  $('#dash-loading').style.display = 'none';
+  if (!res.ok) {
+    $('#dash-error').style.display = '';
+    $('#dash-error').innerHTML = (res.status === 401)
+      ? 'Cloudflare Access not configured for <code>/api/admin/*</code>. See docs/ADMIN-SETUP.md.'
+      : 'Error: ' + esc(data.error || res.status);
+    return;
+  }
+
+  $('#dash-content').style.display = '';
+
+  // Update badge
+  if (data.openSubmissions > 0) {
+    $('#sub-badge').style.display = '';
+    $('#sub-badge').textContent = data.openSubmissions;
+    $('#sub-badge').className = 'pill warn';
+  } else {
+    $('#sub-badge').style.display = 'none';
+  }
+
+  // Today tiles
+  const today = $('#today-tiles');
+  today.innerHTML = '';
+  if (data.todayEntry) {
+    const imgUrl = /^https?:\/\//.test(data.todayEntry.image) ? data.todayEntry.image : 'https://thiccctionary.com/' + data.todayEntry.image;
+    today.innerHTML += `
+      <div class="tile ok" style="grid-column: span 2;">
+        <div class="image-preview" style="background-image:url('${esc(imgUrl)}')"></div>
+        <div class="label">Today's entry</div>
+        <div class="value">${esc(data.todayEntry.word)}</div>
+        <div class="sub">${esc(data.todayEntry.category || '—')} · photo by ${esc(data.todayEntry.photographer || '—')}</div>
+      </div>`;
+  } else {
+    today.innerHTML += `
+      <div class="tile bad" style="grid-column: span 2;">
+        <div class="label">Today's entry</div>
+        <div class="value">Missing for ${esc(data.today)}</div>
+        <div class="sub">Latest on file: ${data.latestEntry ? esc(data.latestEntry.date) + ' — ' + esc(data.latestEntry.word) : 'none'}. Fire the daily cron from Quick-fire.</div>
+      </div>`;
+  }
+  today.innerHTML += `
+    <div class="tile ${data.todayReelExists ? 'ok' : 'warn'}">
+      <div class="label">Today's Reel video</div>
+      <div class="value">${data.todayReelExists ? '✓ Present' : '— Missing'}</div>
+      <div class="sub">${data.todayReelExists ? '<code>videos/' + esc(data.today) + '.mp4</code>' : 'Fire <code>tiktok-latest</code> from Quick-fire to build it.'}</div>
+    </div>`;
+
+  // Catalog tiles
+  const catalog = $('#catalog-tiles');
+  catalog.innerHTML = `
+    <div class="tile">
+      <div class="label">Total entries</div>
+      <div class="value">${data.totalEntries ?? '—'}</div>
+    </div>
+    <div class="tile ${data.openSubmissions > 0 ? 'warn' : ''}">
+      <div class="label">Open submission PRs</div>
+      <div class="value">${data.openSubmissions ?? 0}</div>
+      <div class="sub">${data.openSubmissions > 0 ? '<a href="#submissions">Review now →</a>' : 'Nothing waiting'}</div>
+    </div>
+    <div class="tile ${data.openDailyEntries > 0 ? 'warn' : ''}">
+      <div class="label">Open daily PRs</div>
+      <div class="value">${data.openDailyEntries ?? 0}</div>
+      <div class="sub">${data.openDailyEntries > 0 ? '<a href="https://github.com/christopherlhicks29-create/thiccctionary/pulls" target="_blank">Review on GitHub →</a>' : 'All caught up'}</div>
+    </div>`;
+
+  // Pipeline tiles — workflow runs
+  const pipeline = $('#pipeline-tiles');
+  pipeline.innerHTML = '';
+  const workflows = data.workflows || {};
+  const items = [
+    ['Daily cron', workflows.daily],
+    ['Cron watchdog', workflows.cronWatchdog],
+    ['Post-on-merge', workflows.postOnMerge],
+    ['Site-health audit', workflows.siteHealth],
+    ['Post-deploy verify', workflows.postDeployVerify],
+  ];
+  items.forEach(([label, wf]) => {
+    const tileClass = !wf ? '' : (wf.conclusion === 'success' ? 'ok' : wf.conclusion === 'failure' ? 'bad' : 'warn');
+    pipeline.innerHTML += `
+      <div class="tile ${tileClass}">
+        <div class="label">${esc(label)}</div>
+        <div class="value">${pillFor(wf ? wf.conclusion : null)}</div>
+        <div class="sub">${wf ? timeAgo(wf.createdAt) + ' · <a href="' + esc(wf.htmlUrl) + '" target="_blank">view run</a>' : 'No recent run'}</div>
+      </div>`;
+  });
 }
 
 async function loadSubmissions() {
-  $('#loading').style.display = '';
-  $('#empty').style.display = 'none';
-  $('#error').style.display = 'none';
-  $('#auth-warning').style.display = 'none';
+  $('#sub-loading').style.display = '';
+  $('#sub-empty').style.display = 'none';
+  $('#sub-error').style.display = 'none';
 
   let res;
   try { res = await fetch('/api/admin/submissions'); }
-  catch (e) {
-    $('#loading').style.display = 'none';
-    $('#error').style.display = '';
-    $('#error').textContent = 'Network error: ' + e.message;
-    return;
-  }
+  catch (e) { $('#sub-loading').style.display = 'none'; $('#sub-error').style.display = ''; $('#sub-error').textContent = 'Network: ' + e.message; return; }
 
-  if (res.status === 401) {
-    $('#loading').style.display = 'none';
-    $('#auth-warning').style.display = '';
-    return;
-  }
-
-  let data;
-  try { data = await res.json(); }
-  catch (e) { data = { error: 'Bad response from API' }; }
-
-  $('#loading').style.display = 'none';
-
+  const data = await res.json().catch(() => ({}));
+  $('#sub-loading').style.display = 'none';
   if (!res.ok) {
-    $('#error').style.display = '';
-    $('#error').textContent = data.error || ('API error: ' + res.status);
+    $('#sub-error').style.display = '';
+    $('#sub-error').innerHTML = (res.status === 401) ? 'Cloudflare Access not configured.' : 'Error: ' + esc(data.error || res.status);
     return;
   }
 
   const subs = data.submissions || [];
-  if (subs.length === 0) {
-    $('#empty').style.display = '';
-    return;
-  }
+  if (subs.length === 0) { $('#sub-empty').style.display = ''; $('#sub-list').innerHTML = ''; return; }
 
-  const list = $('#submissions-list');
+  const list = $('#sub-list');
   list.innerHTML = '';
   subs.forEach(sub => {
     const e = sub.entry || {};
@@ -199,64 +428,106 @@ async function loadSubmissions() {
     card.dataset.prNumber = sub.number;
     card.innerHTML = `
       <div class="submission-head">
-        <span class="submission-word">${escHtml(e.word || sub.title)}</span>
-        <span class="submission-meta">PR #${sub.number} · ${escHtml(new Date(sub.createdAt).toLocaleString())} · <a href="${escHtml(sub.htmlUrl)}" target="_blank" rel="noopener">View on GitHub</a></span>
+        <span class="submission-word">${esc(e.word || sub.title)}</span>
+        <span class="submission-meta">PR #${sub.number} · ${esc(new Date(sub.createdAt).toLocaleString())} · <a href="${esc(sub.htmlUrl)}" target="_blank">GitHub</a></span>
       </div>
       <div class="submission-body">
-        <div class="submission-image" style="background-image:url('${escHtml(imgUrl)}')"></div>
+        <div class="submission-image" style="background-image:url('${esc(imgUrl)}')"></div>
         <div class="submission-text">
-          <dt>Pronunciation</dt><dd>${escHtml(e.pronunciation || '—')}</dd>
-          <dt>Part of speech</dt><dd>${escHtml(e.partOfSpeech || '—')}</dd>
+          <dt>Pronunciation</dt><dd>${esc(e.pronunciation || '—')}</dd>
           <dt>Definitions</dt>
-          <div class="definitions">${(e.definitions || []).map(d => `<p>${escHtml(stripHtml(d))}</p>`).join('') || '<p>—</p>'}</div>
-          <dt>Etymology</dt><dd>${escHtml(stripHtml(e.etymology || '—'))}</dd>
-          <dt>Example</dt><dd><em>${escHtml(stripHtml(e.example || '—'))}</em></dd>
-          <dt>Submitted by</dt><dd>${escHtml(e.submittedBy || e.photographer || '—')}</dd>
+          <div class="definitions">${(e.definitions || []).map(d => `<p>${esc(stripHtml(d))}</p>`).join('') || '<p>—</p>'}</div>
+          <dt>Etymology</dt><dd>${esc(stripHtml(e.etymology || '—'))}</dd>
+          <dt>Example</dt><dd><em>${esc(stripHtml(e.example || '—'))}</em></dd>
+          <dt>Submitted by</dt><dd>${esc(e.submittedBy || e.photographer || '—')}</dd>
         </div>
       </div>
       <div class="submission-actions">
-        <button class="approve" data-action="approve">Approve & publish</button>
+        <button class="approve" data-action="approve">Approve &amp; publish</button>
         <button class="reject" data-action="reject">Reject</button>
-      </div>
-    `;
+      </div>`;
     list.appendChild(card);
   });
 
-  $$('.submission button').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const card = btn.closest('.submission');
-      const prNumber = parseInt(card.dataset.prNumber, 10);
-      const action = btn.dataset.action;
-      if (action === 'reject' && !confirm(`Reject submission PR #${prNumber}? The branch will be deleted.`)) return;
-      $$('button', card).forEach(b => b.disabled = true);
-      try {
-        const res = await fetch('/api/admin/submission-action', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prNumber, action }),
-        });
-        const data = await res.json();
-        if (!res.ok) {
-          showToast(data.error || `Failed: ${res.status}`, true);
-          $$('button', card).forEach(b => b.disabled = false);
-          return;
-        }
-        showToast(action === 'approve' ? `Approved PR #${prNumber}` : `Rejected PR #${prNumber}`);
-        card.style.opacity = '0.4';
-        setTimeout(() => { card.remove(); checkEmpty(); }, 600);
-      } catch (e) {
-        showToast('Error: ' + e.message, true);
-        $$('button', card).forEach(b => b.disabled = false);
-      }
-    });
-  });
+  $$('.submission button').forEach(btn => btn.addEventListener('click', async () => {
+    const card = btn.closest('.submission');
+    const prNumber = parseInt(card.dataset.prNumber, 10);
+    const action = btn.dataset.action;
+    if (action === 'reject' && !confirm(`Reject PR #${prNumber}?`)) return;
+    $$('button', card).forEach(b => b.disabled = true);
+    try {
+      const r = await fetch('/api/admin/submission-action', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prNumber, action }) });
+      const d = await r.json();
+      if (!r.ok) { showToast(d.error || ('Failed: ' + r.status), 'error'); $$('button', card).forEach(b => b.disabled = false); return; }
+      showToast(action === 'approve' ? `Approved PR #${prNumber}` : `Rejected PR #${prNumber}`, 'ok');
+      card.style.opacity = '0.4';
+      setTimeout(() => { card.remove(); if ($('#sub-list').children.length === 0) $('#sub-empty').style.display = ''; loadDashboard(); }, 600);
+    } catch (e) { showToast('Error: ' + e.message, 'error'); $$('button', card).forEach(b => b.disabled = false); }
+  }));
 }
 
-function checkEmpty() {
-  if ($('#submissions-list').children.length === 0) $('#empty').style.display = '';
+async function loadHealth() {
+  $('#health-loading').style.display = '';
+  $('#health-error').style.display = 'none';
+  $('#health-content').style.display = 'none';
+
+  let res;
+  try { res = await fetch('/api/admin/site-health'); }
+  catch (e) { $('#health-loading').style.display = 'none'; $('#health-error').style.display = ''; $('#health-error').textContent = 'Network: ' + e.message; return; }
+
+  const data = await res.json().catch(() => ({}));
+  $('#health-loading').style.display = 'none';
+  if (!res.ok) {
+    $('#health-error').style.display = '';
+    $('#health-error').innerHTML = (res.status === 401) ? 'Cloudflare Access not configured.' : 'Error: ' + esc(data.error || res.status);
+    return;
+  }
+
+  const c = $('#health-content');
+  c.style.display = '';
+  const isClean = /clean/i.test(data.status);
+  const rows = (data.sections || []).map(s =>
+    `<tr><td>${esc(s.name)}</td><td>${s.count === 0 ? '<span class="pill good">0</span>' : '<span class="pill bad">' + s.count + '</span>'}</td></tr>`
+  ).join('');
+  c.innerHTML = `
+    <div class="health-summary">
+      <div class="filename">${esc(data.filename)}</div>
+      <div class="status-line">${esc(data.status)}</div>
+      <div class="scanned">${esc(data.scanned || '')}</div>
+      <table>${rows}</table>
+    </div>`;
 }
 
-loadSubmissions();
+// Quick-fire actions
+$$('button[data-trigger]').forEach(btn => btn.addEventListener('click', async () => {
+  const trigger = btn.dataset.trigger;
+  const dateInputId = btn.dataset.dateInput;
+  let date = null;
+  if (dateInputId) {
+    date = $('#' + dateInputId).value;
+    if (!date) { showToast('Pick a date first', 'error'); return; }
+  }
+  const confirmMsg = btn.dataset.confirm;
+  if (confirmMsg && !confirm(confirmMsg + (date ? ' (' + date + ')' : ''))) return;
+
+  btn.disabled = true;
+  const origText = btn.textContent;
+  btn.textContent = 'Firing…';
+  try {
+    const r = await fetch('/api/admin/fire-trigger', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ trigger, date }) });
+    const d = await r.json();
+    if (!r.ok) { showToast(d.error || ('Failed: ' + r.status), 'error'); btn.disabled = false; btn.textContent = origText; return; }
+    showToast(d.message || 'Fired', 'ok');
+    setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 3000);
+  } catch (e) { showToast('Error: ' + e.message, 'error'); btn.disabled = false; btn.textContent = origText; }
+}));
+
+// Pre-fill date inputs with today's date
+const todayStr = new Date().toISOString().slice(0, 10);
+$$('input[type="date"]').forEach(inp => inp.value = todayStr);
+
+// Initial route based on hash
+activateTab((location.hash || '#dashboard').slice(1));
 </script>
 
 </body>
