@@ -79,7 +79,7 @@
       </div>
     </details>
 
-    <p id="rate-quota" style="margin-top: 1rem; text-align: center; opacity: 0.55; font-size: 0.9rem; font-family: var(--font-mono); letter-spacing: 0.05em;">5 of 5 ratings remaining today</p>
+    <p id="rate-quota" style="margin-top: 1rem; text-align: center; opacity: 0.55; font-size: 0.9rem; font-family: var(--font-mono); letter-spacing: 0.05em;">10 of 10 ratings remaining today</p>
   </section>
 
   <!-- Result panel -->
@@ -113,7 +113,7 @@
     <h3 style="margin-top: 0;">About this apparatus</h3>
     <p>The classifier reads the image, weighs it against our editorial standards (silhouette, ratio, character, presence), and returns a rating from 1 to 10 with commentary in the dictionary register.</p>
     <p>It refuses photographs of people. This is not a body-rating tool. The rule is the brand promise.</p>
-    <p>You may rate up to 5 photographs per day at no cost. Subscribers to the Thiccctionary newsletter receive unlimited ratings.</p>
+    <p>You may rate up to 10 photographs per day at no cost. The limit resets at midnight UTC.</p>
   </section>
 
 </main>
@@ -232,7 +232,7 @@ let mockIndex = 0;
 
 // ---- Quota management (localStorage) ------------------------------------
 const QUOTA_KEY = 'thiccc_rate_quota';
-const QUOTA_MAX = 5;
+const QUOTA_MAX = 10;
 function getQuotaState() {
   try {
     const raw = localStorage.getItem(QUOTA_KEY);
@@ -253,7 +253,7 @@ function renderQuota() {
   const remaining = Math.max(0, QUOTA_MAX - s.used);
   const el = document.getElementById('rate-quota');
   if (remaining === 0) {
-    el.innerHTML = '<strong>Daily allotment exhausted.</strong> <a href="../index.html#subscribe">Subscribe</a> for unlimited ratings.';
+    el.innerHTML = '<strong>Daily allotment exhausted.</strong> The limit resets at midnight UTC. Come back tomorrow.';
   } else {
     el.textContent = `${remaining} of ${QUOTA_MAX} ratings remaining today`;
   }
@@ -343,7 +343,7 @@ async function handleUrl(url) {
 function checkQuota() {
   const s = getQuotaState();
   if (s.used >= QUOTA_MAX) {
-    alert('Daily allotment exhausted. Subscribe for unlimited ratings.');
+    alert('Daily allotment exhausted. The limit resets at midnight UTC.');
     return false;
   }
   return true;
