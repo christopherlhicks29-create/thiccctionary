@@ -80,7 +80,7 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   };
 
   if (mode === 'reels' && videoUrl) {
-    input.assets = { video: { url: videoUrl, thumbnailUrl: thumbnailUrl || undefined } };
+    input.assets = { videos: [{ url: videoUrl, thumbnailUrl: thumbnailUrl || undefined }] };
   } else {
     input.assets = { images: [{ url: imageUrl }] };
   }
