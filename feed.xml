@@ -6,13 +6,21 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 May 2026 19:36:51 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 02:43:21 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] The Bagger 288: The Thiccc-est Machine on Earth</title>
+      <link>https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
+      <description>At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>Bagger 288</title>
       <link>https://thiccctionary.com/entries/2026-05-10.html</link>
