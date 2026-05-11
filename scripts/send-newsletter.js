@@ -50,7 +50,7 @@ ${defs}
 
 [Read the full entry on Thiccctionary →](${entryUrl})
 
-Photo by [${entry.photographer}](${entry.photographerUrl || baseUrl}) on Unsplash.
+Photo by [${entry.photographer}](${entry.photographerUrl || baseUrl})${(entry.unsplashUrl && entry.unsplashUrl.includes('unsplash.com')) ? ' on [Unsplash](https://unsplash.com)' : ''}.
 `;
 }
 
