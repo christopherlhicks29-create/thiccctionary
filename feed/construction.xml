@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary — Construction</title>
+    <link>https://thiccctionary.com/archive.html?tag=construction</link>
+    <atom:link href="https://thiccctionary.com/feed/construction.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "construction".</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 May 2026 19:19:22 GMT</lastBuildDate>
+    <item>
+      <title>Cement Mixer, Industrial</title>
+      <link>https://thiccctionary.com/entries/2026-05-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-11.html</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
+      <description>A vehicular colossus of the concrete world, characterized by its ample rotating drum and the undeniable gravitas it brings to any construction site.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-11-cement-mixer-industrial.jpg" type="image/jpeg" length="0" />
+      <category>construction</category><category>heavy machinery</category><category>infrastructure</category>
+    </item>
+    <item>
+      <title>Concrete Mixer</title>
+      <link>https://thiccctionary.com/entries/2026-04-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-27.html</guid>
+      <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+      <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>industrial</category><category>construction</category>
+    </item>
+  </channel>
+</rss>
