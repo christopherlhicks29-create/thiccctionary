@@ -163,79 +163,102 @@ function fitToX(prefix, body, suffix) {
   return prefix + body.slice(0, Math.max(0, room - 1)).trimEnd() + '…' + suffix;
 }
 
-// Observation-voice templates. The existing definition + example fields already
-// carry observational prose — the old templates buried it under dictionary
-// chrome. We let the prose breathe and treat the word as a reveal at the end
-// rather than a header up top. The word "thiccc" stays in (brand voice trumps
-// anti-AI cleanup; it does comic-timing work).
+// Wave 87 — punchline pool. Brand-voice asides that ride along with every
+// post so the CAPTION carries comedy work, not just whatever entry data
+// happens to be funny. Universal-ish (not category-specific). Add to this
+// pool freely; just keep entries deadpan, short, and on-brand.
+const PUNCHLINES = [
+  'We had to add a third c.',
+  'Look at her.',
+  "Don't tell us it isn't a body.",
+  'Some objects request space. This one took it.',
+  "There's haul. And then there's haunch.",
+  'Built for capacity. Engineered with intent.',
+  'Inertia like a personality trait.',
+  'A masterclass in mass.',
+  'This is presence, not pretense.',
+  'It does not blink. It does not need to.',
+  'Volume is doing all the talking.',
+  'File under: structural integrity, emotional weight.',
+  'Some things just are.',
+  'Heavy is a personality.',
+  "We're not saying anything. The shape is.",
+  'A confident occupancy of space.',
+  'Architectural confidence.',
+  "This is what 'presence' is doing in the dictionary.",
+  'The committee finds it in compliance.',
+  "We don't make the rules. The volume does.",
+];
+
+// Deterministic punchline pick. Same (date, mode) always yields the same line
+// so retries/backfills are reproducible, but a single day's morning/afternoon/
+// evening posts pull different lines.
+function pickPunchline(entry, mode) {
+  const seed = (entry.date || '') + ':' + mode;
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = ((h << 5) - h + seed.charCodeAt(i)) | 0;
+  return PUNCHLINES[Math.abs(h) % PUNCHLINES.length];
+}
+
+// Observation-voice templates with punchline pool. Each variant pairs entry
+// data (example/definition) with a brand-voice aside so the caption itself
+// does comedy work regardless of how dry the entry data happens to be.
 function buildText(entry, mode, baseUrl) {
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
   const def0 = stripHtml(entry.definitions[0]);
   const example = stripHtml(entry.example || '').replace(/^"|"$/g, '').trim();
-  const ety = stripHtml(entry.etymology || '');
+  const punch = pickPunchline(entry, mode);
 
   if (mode === 'afternoon') {
-    // Example-led. The sentence is doing the comedy work — let it land, then
-    // tag the word underneath. URL is a footer, not the point.
+    // Example + punchline + word tag.
     const body = example || def0;
-    const prefix = '';
-    const suffix = `\n\nThat's ${entry.word.toLowerCase()}.\n${entryUrl}\n\n#thiccctionary`;
-    return fitToX(prefix, body, suffix);
+    const suffix = `\n\n${punch}\n\nThat's ${entry.word.toLowerCase()}.\n${entryUrl}\n\n#thiccctionary`;
+    return fitToX('', body, suffix);
   }
 
   if (mode === 'evening') {
-    // Archive callback. One observation, dry framing, then the word.
+    // Archive callback. Definition + word + punchline kicker.
     const body = def0;
     const prefix = `From the archives:\n\n`;
-    const suffix = `\n\n— ${entry.word}. Worth a second look.\n${entryUrl}\n\n#thiccctionary`;
+    const suffix = `\n\n— ${entry.word}. ${punch}\n${entryUrl}\n\n#thiccctionary`;
     return fitToX(prefix, body, suffix);
   }
 
   if (mode === 'reels') {
-    // Reels strip links anyway. Pure observation + word reveal + brand tag.
+    // Reels strip links. Example + punchline + word.
     const lead = example || def0;
-    return `${lead}\n\n${entry.word}.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
+    return `${lead}\n\n${punch}\n\n${entry.word}.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
   }
 
-  // morning (default) — rotate 4 observation chassis by day-of-year.
+  // morning — rotate 4 chassis by day-of-year. Each one is a clearly distinct
+  // shape so a follower's feed doesn't read identical day to day.
   const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   const variant = dayOfYear % 4;
 
   if (variant === 0) {
-    // The example, unadorned. The example sentences are already observational —
-    // we just stop dressing them up as dictionary examples.
+    // Example + punchline kicker + word tag.
     const body = example || def0;
-    const prefix = '';
-    const suffix = `\n\nToday's entry: ${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
-    return fitToX(prefix, body, suffix);
-  }
-  if (variant === 1) {
-    // Definition reframed as a statement, then a deadpan beat, then the word.
-    const body = def0;
-    const prefix = '';
-    const suffix = `\n\nA study in form.\n\n${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
-    return fitToX(prefix, body, suffix);
-  }
-  if (variant === 2) {
-    // Etymology-led when available. Plays on the "we should've named this
-    // earlier" running gag without us having to write it every time.
-    if (ety) {
-      const body = ety;
-      const prefix = `${entry.word}.\n\n`;
-      const suffix = `\n\nFile under: things we should have named sooner.\n${baseUrl}\n\n#thiccctionary #etymology`;
-      return fitToX(prefix, body, suffix);
-    }
-    // Fallback: example-led
-    const body = example || def0;
-    const suffix = `\n\n${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
+    const suffix = `\n\n${punch}\n\nToday's entry: ${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
     return fitToX('', body, suffix);
   }
-  // variant 3 — single observation, em-dash to the word reveal.
-  // (Em-dash is on-brand per the comic-timing memo.)
+  if (variant === 1) {
+    // Definition + punchline + word reveal. Definition-led for variety.
+    const body = def0;
+    const suffix = `\n\n${punch}\n\n${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
+    return fitToX('', body, suffix);
+  }
+  if (variant === 2) {
+    // Punchline-led, minimal. Image carries the rest. (Replaces the old
+    // etymology variant, which depended on entry data that landed thiccc
+    // jokes only 28% of the time.)
+    const body = punch;
+    const suffix = `\n\n${entry.word}, today on Thiccctionary.\n${baseUrl}\n\n#thiccctionary`;
+    return fitToX('', body, suffix);
+  }
+  // variant 3 — example + em-dash word + punchline as kicker.
   const body = example || def0;
-  const prefix = '';
-  const suffix = `\n\n— ${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
-  return fitToX(prefix, body, suffix);
+  const suffix = `\n\n— ${entry.word}. ${punch}\n${baseUrl}\n\n#thiccctionary`;
+  return fitToX('', body, suffix);
 }
 
 function filterChannelsForMode(channels, mode) {
@@ -368,27 +391,4 @@ async function main() {
     }
   }
 
-  const allChannels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).map(s => {
-    const idx = s.indexOf(':');
-    if (idx === -1) return { service: null, channelId: s };
-    return { service: s.slice(0, idx).toLowerCase(), channelId: s.slice(idx + 1) };
-  });
-  const channels = filterChannelsForMode(allChannels, mode);
-  if (channels.length === 0) {
-    console.log(`No channels match mode "${mode}".`);
-    return;
-  }
-  if (channels.length < allChannels.length) {
-    console.log(`Mode "${mode}" filters to ${channels.length} of ${allChannels.length} channels.`);
-  }
-
-  const text = buildText(entry, mode, baseUrl);
-  if (mode === 'reels') {
-    console.log(`Posting Reel to ${channels.length} channels with video: ${videoUrl}`);
-  } else {
-    console.log(`Posting to ${channels.length} channels with image: ${imageUrl}`);
-  }
-  console.log(`--- Post text ---\n${text}\n---`);
-
-  const results = await Promise.all(
-    channels.map(({ 
+  const allChannels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).
