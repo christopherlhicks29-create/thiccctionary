@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2026 02:43:21 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 19:19:22 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -14,12 +14,13 @@
       <link>https://thiccctionary.com/</link>
     </image>
     <item>
-      <title>[Article] The Bagger 288: The Thiccc-est Machine on Earth</title>
-      <link>https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</guid>
+      <title>Cement Mixer, Industrial</title>
+      <link>https://thiccctionary.com/entries/2026-05-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-11.html</guid>
       <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
-      <description>At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.</description>
-      <category>article</category>
+      <description>A vehicular colossus of the concrete world, characterized by its ample rotating drum and the undeniable gravitas it brings to any construction site.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-11-cement-mixer-industrial.jpg" type="image/jpeg" length="0" />
+      <category>construction</category><category>heavy machinery</category><category>infrastructure</category>
     </item>
     <item>
       <title>Bagger 288</title>
@@ -29,6 +30,22 @@
       <description>A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-10-bagger-288.jpg" type="image/jpeg" length="0" />
       <category>machinery</category><category>mining</category><category>engineering</category>
+    </item>
+    <item>
+      <title>[Article] The Physics of Thiccc: Why Big Things Stay Big</title>
+      <link>https://thiccctionary.com/articles/physics-of-thiccc.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/physics-of-thiccc.html</guid>
+      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
+      <description>Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] The Bagger 288: The Thiccc-est Machine on Earth</title>
+      <link>https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</guid>
+      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
+      <description>At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.</description>
+      <category>article</category>
     </item>
     <item>
       <title>[Article] Foods of Substance: A Thiccc Survey</title>

@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-05-11",
+    "word": "Cement Mixer, Industrial",
+    "pronunciation": "/si-MENT MIK-ser in-DUS-tree-al/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A vehicular colossus of the concrete world, characterized by its ample rotating drum and the undeniable gravitas it brings to any construction site.",
+      "<em>colloq.</em> A thiccc unit on wheels, that rolls up and pours with all the subtlety of a jackhammer in a library."
+    ],
+    "example": "The green tanker lumbered down Main Street, a thiccc cement mixer on parade. The potholes bowed in its wake.",
+    "etymology": "From Latin 'cementum' meaning 'stone chips,' combined with 'mixer' (Middle English, 'one who mixes'), describing the vehicle's function — and its undeniable swagger.",
+    "image": "images/2026-05-11-cement-mixer-industrial.jpg",
+    "caption": "Plate N. — An industrial cement mixer, its posterior viewed astern, defies casual description.",
+    "tags": [
+      "construction",
+      "heavy machinery",
+      "infrastructure"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Maciej Kaliszewski",
+    "photographerUrl": "https://unsplash.com/@kalisz",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-green-tanker-truck-driving-down-a-street-TO9Bs1bLkTM"
+  },
+  {
     "date": "2026-05-10",
     "word": "Bagger 288",
     "pronunciation": "/BAG-er two-ei-tee-ate/",

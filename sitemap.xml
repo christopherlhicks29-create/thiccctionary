@@ -88,6 +88,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/entries/2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/entries/2026-05-10.html</loc>
     <lastmod>2026-05-10</lastmod>
     <priority>0.6</priority>
@@ -157,14 +162,4 @@
     <lastmod>2026-04-26</lastmod>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</loc>
-            <lastmod>2026-05-10</lastmod>
-    <priority>0.7</priority>
-  </url>
-      <url>
-                <loc>https://thiccctionary.com/articles/physics-of-thiccc.html</loc>
-                <lastmod>2026-05-10</lastmod>
-                <priority>0.7</priority>
-      </url>
 </urlset>
