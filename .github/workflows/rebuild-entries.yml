@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: scripts
-        run: npm ci
+        run: npm install
 
       - name: Rebuild all entry pages
         working-directory: scripts
