@@ -89,6 +89,7 @@ async function main() {
     method: 'POST',
     headers: {
       'Authorization': `Token ${process.env.BUTTONDOWN_API_KEY}`,
+      'X-Buttondown-Live-Dangerously': 'true',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
