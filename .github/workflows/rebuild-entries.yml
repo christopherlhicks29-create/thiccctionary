@@ -48,8 +48,8 @@ jobs:
           git config user.email "bot@thiccctionary.com"
           git add entries/*.html sitemap.xml feed.xml || true
           git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git pull --rebase origin main
           git commit -m "Rebuild all entry pages from entries.json (fix UTF-8 captions)"
+          git pull --rebase origin main
           git push origin HEAD:main
 
       - name: Clear sentinel
