@@ -1,0 +1,69 @@
+name: Rebuild All Entry Pages
+
+# Run node scripts/build-entry-pages.js and commit the rebuilt HTML files.
+# Use when entries.json has been updated (e.g. caption/etymology fixes) and
+# the per-entry HTML files are stale.
+#
+# Triggers:
+#   1. workflow_dispatch (manual)
+#   2. push to data/.fire-rebuild-entries
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-rebuild-entries'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Rebuild all entry pages
+        working-directory: scripts
+        env:
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+        run: node build-entry-pages.js
+
+      - name: Commit rebuilt pages
+        run: |
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          git add entries/*.html sitemap.xml feed.xml || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Rebuild all entry pages from entries.json (fix UTF-8 captions)"
+          git stash --include-untracked || true
+          git fetch origin main
+          git rebase origin/main || git rebase --abort
+          git stash pop || true
+          git push origin HEAD:main
+
+      - name: Clear sentinel
+        if: always() && github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-rebuild-entries ]; then
+            rm -f data/.fire-rebuild-entries
+            git add -u data/.fire-rebuild-entries
+            git commit -m "Clear rebuild-entries sentinel" || true
+            git push origin HEAD:main || true
+          fi

@@ -38,7 +38,8 @@ export async function onRequestPost({ request, env }) {
     const fileRes = await gh(`/repos/${REPO}/contents/data/entries.json?ref=main`, {}, env);
     if (!fileRes.ok) throw new Error(`GitHub read ${fileRes.status}`);
     const file = await fileRes.json();
-    const entries = JSON.parse(atob(file.content.replace(/\n/g, '')));
+    const rawBytes = Uint8Array.from(atob(file.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+  const entries = JSON.parse(new TextDecoder().decode(rawBytes));
     const idx = entries.findIndex(e => e.date === date);
     if (idx === -1) return new Response(JSON.stringify({ error: 'No entry found for that date' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
 

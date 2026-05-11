@@ -98,7 +98,7 @@ jobs:
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: reels
-          REEL_DATE: ${{ steps.target.outputs.date }}
+          TARGET_DATE: ${{ steps.target.outputs.date }}
         run: node post-to-buffer.js
 
       - name: Clear sentinel files
