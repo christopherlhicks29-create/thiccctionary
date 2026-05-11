@@ -2,6 +2,24 @@
 
 Things deferred from prior sessions that should be revisited at the right time. I (Claude) will surface these when the trigger condition matches.
 
+## LLM-per-entry social captions — ceiling-raise
+
+**Current state (as of Wave 87, 2026-05-11):** Captions use a curated 20-line punchline pool that hash-picks a line per (date, mode). Floor is good — every post has caption-level brand voice. Ceiling is capped — same 20 lines cycle, so a follower seeing 60+ posts will see repeats.
+
+**The bigger lift:** teach `generate-daily.js` to also generate 3 per-entry social captions (one per slot) when it creates an entry. Captions live on the entry object as `entry.socialCaptions.{morning, afternoon, evening}`. `post-to-buffer.js` reads them when present; falls back to template + punchline pool when they don't exist (covers old entries that weren't generated with this field).
+
+**Why it matters:** custom captions can reference the SPECIFIC subject ("The Bagger 288 doesn't dig. It commits." vs. generic "Inertia like a personality trait."). Higher comedy density.
+
+**Risks to design around:**
+- Bad LLM days — need a humor-score gate like the one in Wave 21 (regen if score<6)
+- Old entries don't get captions until regenned
+- Admin panel needs a caption editor so Christopher can rewrite when the model fails
+- One more thing the daily pipeline can break on
+
+**Trigger to surface this:** when Christopher signals that the punchline pool is feeling repetitive, OR when `generate-daily.js` is being refactored for another reason, OR after enough new daily entries that we have data on how often punchlines collide visibly.
+
+---
+
 ## Submission upload pipeline — upgrade path
 
 **Current state (as of 2026-05-09):** Submit-a-Thiccc page uses Option A — Cloudinary unsigned-upload widget feeds image URL into the existing Formspree form. Free, simple, works today.
@@ -101,18 +119,4 @@ Specific overlaps to consolidate:
 
 **What to verify next session:** Did the 2026-05-10 newsletter actually land in Christopher's inbox? If yes, this entire item closes. If no, debug `send-newsletter.js`.
 
-**RSS-to-email is NOT needed** unless we want backfill for entries that didn't go through PR merge (hand-added entries like Spruce, Suburban). For those, only the morning send-newsletter.js step would fire IF post-on-merge.yml caught the push. For direct-to-main commits without a daily-entry PR label, no newsletter sends.
-
----
-
-## Daily cron silent-skip diagnosis — SOLVED 2026-05-10
-
-**Resolution:** Christopher pulled the workflow run logs and the failure was concrete: `Beluga, Airbus` was sitting at the front of `data/subject-queue.json` with an Unsplash query that returned zero results. The script threw uncaught and failed red every morning. Wave 73 added the `query`-field honoring + zero-result fallback. The watchdog (Wave 72) is still useful as a backstop for unrelated future failures — picker veto and critique gate exit-0 paths still exist and will trigger it.
-
-**For future failures:** if the watchdog fires, the recovery path is:
-1. Open https://github.com/christopherlhicks29-create/thiccctionary/actions/workflows/daily.yml
-2. Click into the most recent failed run
-3. Screenshot the "Generate today's entry" step output
-4. Paste it into chat — most failures will be diagnosable from a single error line.
-
-**Re-queueing the Beluga:** still a viable subject if we get a working Unsplash query. Alternates to test: `airbus beluga xl`, `airbus a300-600st`, `cargo aircraft beluga`. If none return results, Beluga is too rare for Unsplash and should move to the print-exclusive pile or a custom-photo wave.
+**RSS-to-email is NOT needed** unless we 
