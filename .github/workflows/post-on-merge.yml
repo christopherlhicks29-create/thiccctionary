@@ -33,9 +33,27 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Resolve entry date
+        id: target
+        run: |
+          # For PR merges: extract date from branch name (daily/YYYY-MM-DD)
+          # For push triggers: use today's UTC date
+          DATE=""
+          if [ -n "${{ github.event.pull_request.head.ref }}" ]; then
+            BRANCH="${{ github.event.pull_request.head.ref }}"
+            # Extract YYYY-MM-DD from branch name like "daily/2026-05-10"
+            DATE=$(echo "$BRANCH" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -n 1)
+          fi
+          if [ -z "$DATE" ]; then
+            DATE=$(date -u +%Y-%m-%d)
+          fi
+          echo "Resolved entry date: $DATE"
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
       - name: Wait for Cloudflare Pages deploy
         # Pages typically deploys in 30-90s after a push to main. Wait a bit so the image URL resolves.
         run: sleep 90
+
       - name: Post to Buffer (morning, image)
         working-directory: scripts
         env:
@@ -43,12 +61,13 @@ jobs:
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: morning
+          TARGET_DATE: ${{ steps.target.outputs.date }}
         run: node post-to-buffer.js
 
       - name: Check if today's Reel video exists
         id: reel
         run: |
-          DATE=$(date -u +%Y-%m-%d)
+          DATE=${{ steps.target.outputs.date }}
           if [ -f "videos/$DATE.mp4" ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
             echo "Reel video found at videos/$DATE.mp4 — will cross-post."
@@ -65,6 +84,7 @@ jobs:
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: reels
+          TARGET_DATE: ${{ steps.target.outputs.date }}
         run: node post-to-buffer.js
         continue-on-error: true
 
@@ -73,4 +93,5 @@ jobs:
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          TARGET_DATE: ${{ steps.target.outputs.date }}
         run: node send-newsletter.js
