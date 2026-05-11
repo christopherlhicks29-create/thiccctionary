@@ -1,6 +1,7 @@
 /**
- * One-time introspection helper. Asks Buffer's GraphQL API about the
- * input types we need (CreatePostInput → AssetsInput → ImageInput).
+ * Introspection helper. Asks Buffer's GraphQL API about the
+ * input types we need for posting (especially video/Reel support).
+ * Run via: node introspect-buffer.js
  */
 
 const BUFFER_GRAPHQL = 'https://api.buffer.com/';
@@ -32,7 +33,15 @@ async function introspect(typeName) {
   return res.json();
 }
 
-for (const typeName of ['ImageAssetInput']) {
+// Introspect all relevant types for video/Reel posting
+for (const typeName of [
+  'CreatePostInput',
+  'AssetsInput',
+  'ImageAssetInput',
+  'VideoAssetInput',
+  'VideoInput',
+  'MediaInput',
+]) {
   console.log(`\n=== ${typeName} ===`);
   const json = await introspect(typeName);
   console.log(JSON.stringify(json, null, 2));

@@ -37,7 +37,8 @@ export async function onRequestGet({ env }) {
       return new Response(JSON.stringify({ error: `Couldn't read audit file: ${fileRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
     }
     const file = await fileRes.json();
-    const md = atob(file.content.replace(/\n/g, ''));
+    const mdBytes = Uint8Array.from(atob(file.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+  const md = new TextDecoder().decode(mdBytes);
 
     // Parse summary
     const statusMatch = md.match(/\*\*Status:\*\*\s*(.+)/);

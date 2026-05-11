@@ -50,7 +50,7 @@ ${defs}
 
 [Read the full entry on Thiccctionary →](${entryUrl})
 
-Photo by [${entry.photographer}](${entry.photographerUrl || baseUrl}) on Unsplash.
+Photo by [${entry.photographer}](${entry.photographerUrl || baseUrl})${(entry.unsplashUrl && entry.unsplashUrl.includes('unsplash.com')) ? ' on [Unsplash](https://unsplash.com)' : ''}.
 `;
 }
 
@@ -89,13 +89,14 @@ async function main() {
     method: 'POST',
     headers: {
       'Authorization': `Token ${process.env.BUTTONDOWN_API_KEY}`,
+      'X-Buttondown-Live-Dangerously': 'true',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       subject,
       body,
       email_type: 'public',
-      status: 'sent',
+      status: 'about_to_send',
     }),
   });
 
