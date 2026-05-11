@@ -105,4 +105,5 @@ jobs:
             git add -u data/.fire-tiktok-latest
           fi
           git commit -m "Reel: build video for ${DATE} (sentinel-fired)"
+          git pull --rebase origin main
           git push origin HEAD:main
