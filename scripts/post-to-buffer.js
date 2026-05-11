@@ -80,7 +80,7 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   };
 
   if (mode === 'reels' && videoUrl) {
-    input.assets = { videos: [{ url: videoUrl, thumbnailUrl: thumbnailUrl || undefined }] };
+    input.assets = { video: { url: videoUrl, thumbnailUrl: thumbnailUrl || undefined } };
   } else {
     input.assets = { images: [{ url: imageUrl }] };
   }
@@ -120,9 +120,11 @@ function pickArticle(articles) {
 
 function buildArticleText(article, baseUrl) {
   const articleUrl = `${baseUrl}/articles/${article.slug}.html`;
-  const prefix = `📚 An article from Thiccctionary —\n\n${article.title}\n\n`;
-  const body = article.description || '';
-  const suffix = `\n\nRead → ${articleUrl}\n\n#thiccctionary #satire`;
+  // Description first — that's the hook. Title lands as a tag after the body,
+  // with the URL as a quiet footer. No "Read →" beg.
+  const body = article.description || article.title || '';
+  const prefix = '';
+  const suffix = `\n\n— ${article.title}\n${articleUrl}\n\n#thiccctionary`;
   return fitToX(prefix, body, suffix);
 }
 
@@ -161,58 +163,79 @@ function fitToX(prefix, body, suffix) {
   return prefix + body.slice(0, Math.max(0, room - 1)).trimEnd() + '…' + suffix;
 }
 
+// Observation-voice templates. The existing definition + example fields already
+// carry observational prose — the old templates buried it under dictionary
+// chrome. We let the prose breathe and treat the word as a reveal at the end
+// rather than a header up top. The word "thiccc" stays in (brand voice trumps
+// anti-AI cleanup; it does comic-timing work).
 function buildText(entry, mode, baseUrl) {
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
+  const def0 = stripHtml(entry.definitions[0]);
+  const example = stripHtml(entry.example || '').replace(/^"|"$/g, '').trim();
+  const ety = stripHtml(entry.etymology || '');
+
   if (mode === 'afternoon') {
-    // Example sentence (naturally short, illustrative, satirical) — fits X easily.
-    const prefix = `📝 Use it in a sentence — ${entry.word}\n\n"`;
-    const body = stripHtml(entry.example || entry.definitions[0]);
-    const suffix = `"\n\nFull entry → ${entryUrl}\n\n#thiccctionary #etymology`;
+    // Example-led. The sentence is doing the comedy work — let it land, then
+    // tag the word underneath. URL is a footer, not the point.
+    const body = example || def0;
+    const prefix = '';
+    const suffix = `\n\nThat's ${entry.word.toLowerCase()}.\n${entryUrl}\n\n#thiccctionary`;
     return fitToX(prefix, body, suffix);
   }
+
   if (mode === 'evening') {
-    const prefix = `📚 From the Thiccctionary archives:\n\n${entry.word} — `;
-    const body = stripHtml(entry.definitions[0]);
-    const suffix = `\n\nRe-read the full entry → ${entryUrl}\n\n#thiccctionary #throwback #satire`;
+    // Archive callback. One observation, dry framing, then the word.
+    const body = def0;
+    const prefix = `From the archives:\n\n`;
+    const suffix = `\n\n— ${entry.word}. Worth a second look.\n${entryUrl}\n\n#thiccctionary`;
     return fitToX(prefix, body, suffix);
   }
+
   if (mode === 'reels') {
-    // Short caption suited to Reels. No URL in caption (Reels strip links anyway).
-    return `${entry.word}\n\n${stripHtml(entry.definitions[0])}\n\nFull entry on thiccctionary.com\n\n#wordoftheday #etymology #satire`;
+    // Reels strip links anyway. Pure observation + word reveal + brand tag.
+    const lead = example || def0;
+    return `${lead}\n\n${entry.word}.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
   }
-  // morning (default) — rotate through 4 templates by day-of-year so consecutive
-  // days don't read identically. Each template targets a slightly different hook.
+
+  // morning (default) — rotate 4 observation chassis by day-of-year.
   const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   const variant = dayOfYear % 4;
-  const def0 = stripHtml(entry.definitions[0]);
-  const example = stripHtml(entry.example || '').replace(/^"|"$/g, '');
 
   if (variant === 0) {
-    // Standard: emoji + word + definition + URL + hashtags
-    const prefix = `📖 ${entry.word}\n\n`;
-    const suffix = `\n\nToday's entry → ${baseUrl}\n\n#wordoftheday #etymology #satire`;
-    return fitToX(prefix, def0, suffix);
+    // The example, unadorned. The example sentences are already observational —
+    // we just stop dressing them up as dictionary examples.
+    const body = example || def0;
+    const prefix = '';
+    const suffix = `\n\nToday's entry: ${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
+    return fitToX(prefix, body, suffix);
   }
   if (variant === 1) {
-    // Sentence-first: lead with the example, drop the headword as the reveal
-    const prefix = `Use it in a sentence —\n\n"`;
-    const body = example || def0;
-    const suffix = `"\n\n— ${entry.word}, today on Thiccctionary\n${baseUrl}\n\n#wordoftheday #etymology`;
+    // Definition reframed as a statement, then a deadpan beat, then the word.
+    const body = def0;
+    const prefix = '';
+    const suffix = `\n\nA study in form.\n\n${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
     return fitToX(prefix, body, suffix);
   }
   if (variant === 2) {
-    // Etymology-forward: lead with the etymology hook
-    const ety = stripHtml(entry.etymology || '');
-    const prefix = `📚 ${entry.word}\n\nEtymology: `;
-    const suffix = `\n\nFull entry → ${baseUrl}\n\n#etymology #wordoftheday`;
-    if (ety) return fitToX(prefix, ety, suffix);
-    // fallback to standard
-    return fitToX(`📖 ${entry.word}\n\n`, def0, `\n\nToday's entry → ${baseUrl}\n\n#wordoftheday`);
+    // Etymology-led when available. Plays on the "we should've named this
+    // earlier" running gag without us having to write it every time.
+    if (ety) {
+      const body = ety;
+      const prefix = `${entry.word}.\n\n`;
+      const suffix = `\n\nFile under: things we should have named sooner.\n${baseUrl}\n\n#thiccctionary #etymology`;
+      return fitToX(prefix, body, suffix);
+    }
+    // Fallback: example-led
+    const body = example || def0;
+    const suffix = `\n\n${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
+    return fitToX('', body, suffix);
   }
-  // variant 3 — definitional pause
-  const prefix = `Today: ${entry.word}\n\n`;
-  const suffix = `\n\nthiccctionary.com\n\n#satire #etymology #wordoftheday`;
-  return fitToX(prefix, def0, suffix);
+  // variant 3 — single observation, em-dash to the word reveal.
+  // (Em-dash is on-brand per the comic-timing memo.)
+  const body = example || def0;
+  const prefix = '';
+  const suffix = `\n\n— ${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
+  return fitToX(prefix, body, suffix);
 }
 
 function filterChannelsForMode(channels, mode) {
@@ -368,24 +391,4 @@ async function main() {
   console.log(`--- Post text ---\n${text}\n---`);
 
   const results = await Promise.all(
-    channels.map(({ channelId, service }) =>
-      postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl, token: process.env.BUFFER_ACCESS_TOKEN, service, mode })
-    )
-  );
-
-  let successes = 0;
-  let failures = 0;
-  for (const r of results) {
-    if (r.ok) {
-      successes++;
-      console.log(`OK channel ${r.channelId} (post id: ${r.postId})`);
-    } else {
-      failures++;
-      console.error(`FAIL channel ${r.channelId}: status=${r.status} body=${r.body}`);
-    }
-  }
-  console.log(`\nSummary: ${successes} succeeded, ${failures} failed (out of ${results.length}).`);
-  if (failures > 0) process.exit(1);
-}
-
-main().catch(err => { console.error(err); process.exit(1); });
+    channels.map(({ 

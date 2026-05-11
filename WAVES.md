@@ -4,6 +4,7 @@ One-line summary of every shipped change. Newest at top. Anyone (including futur
 
 | Date | Wave | Summary |
 |------|------|---------|
+| 2026-05-10 | 86 | Social caption Observation-voice rebuild. `scripts/post-to-buffer.js` — rewrote `buildText` and `buildArticleText` to lead with the example/definition as a standalone observation and treat the headword as a reveal at the end (em-dash tag, lowercase "that's X" landing line for afternoon, "Worth a second look" replacing "Re-read the full entry →" for evening). Dropped emoji clutter (no more 📖/📝/📚 headers), trimmed hashtag spam from 3 tags to 1-2 (#thiccctionary + one contextual). Morning still rotates 4 variants by day-of-year. URLs are now footers, not the point of the post. Christopher's call: posts should land the joke standalone, not just billboard the website. Triggered by a brand-voice escalation, executed live after he picked "Observation" voice from a 4-option preview. Mojibake in some entries (Spruce/Suburban em-dash) leaks into captions — tracked separately as data-quality work, not part of this wave. |
 | 2026-05-10 | 85 | Admin V3 — Entries section. New tab between Submissions and Quick-fire. Lists all 14 entries with thumbnail + word + date + category + bookReady badge. Click a row → full edit form (word, pronunciation, definitions, etymology, example, category, tags, bookReady, photographer) with image preview. Three actions per entry: **Save** (commits directly to main, auto-deploys), **Regenerate image** (fires `regenerate-images.yml` for this date — opens PR for review), **Regenerate entry text** (fires `regenerate-text.yml` for this date — opens PR). New endpoints: `/api/admin/entries` (GET list or single), `/api/admin/entry-save` (POST commit). Extended `fire-trigger.js` with `regen-image` and `regen-text` triggers using JSON sentinels. GitHub web UI is no longer needed for catalog work. |
 | 2026-05-10 | 84 | Admin V2 — dashboard, quick-fire actions, site-health summary. Expanded `/admin/` from single-page submission review into a 4-section panel: **Dashboard** (today's entry tile with image preview + Reel-MP4 status + catalog counts + latest workflow run statuses with pass/fail pills), **Submissions** (V1 functionality), **Quick-fire** (one-click buttons that commit sentinel files to fire daily cron, Reel build, Reel cross-post, or backfill for any date — no terminal needed), **Site health** (latest audit summary with per-check pass/fail). New endpoints: `/api/admin/status` aggregates state, `/api/admin/fire-trigger` commits sentinels, `/api/admin/site-health` parses latest audit. CF Access policy already covers `/api/admin/*` so no extra setup needed. |
 | 2026-05-10 | 83 | Watchdog extended to check Reel MP4. Wave 72's watchdog only verified `data/entries.json` had today's date. But today proved the Reel pipeline can fail independently (Wave 75 path bug dropped the MP4 from the daily PR while the entry shipped fine). Extended `cron-watchdog.yml` with a second check: if `videos/<today>.mp4` doesn't exist, fail loud with recovery instructions (fire `data/.fire-tiktok-latest`). Now future-Christopher gets a red badge for EITHER failure class. |
@@ -62,16 +63,4 @@ One-line summary of every shipped change. Newest at top. Anyone (including futur
 | 2026-05-05 | 16 | Wave 24: Pinterest hover-save button on entry images. |
 | 2026-05-05 | 15 | Wave 23: downloadable verdict cards (1080×1080 canvas) + entry-page CTA → /rate/. |
 | 2026-05-04 | 14 | Wave 22: live classifier function (functions/api/rate.js, GPT-4o vision). |
-| 2026-05-04 | 13 | Wave 21: /rate/ page (UI + stubbed mock responses, USE_LIVE_API toggle). |
-| 2026-05-03 | 12 | Wave 20: article-context aside on every article ("Part of Thiccctionary…"). |
-| 2026-05-03 | 11 | Wave 19: LinkedIn + Pinterest share buttons on entries and articles. |
-| 2026-05-03 | 10 | Wave 18: better tweet text + article share buttons + tighter mobile nav at 420/560. |
-| 2026-05-02 | 9  | Wave 17: weekly article-promo Buffer mode (Fri 16:00 UTC), per-article OG cards. |
-| 2026-05-02 | 8  | Wave 16: per-article OG cards (1200×630 unique per article). |
-| earlier | 1-7  | Foundation: site, daily cron, entries, articles, social pipelines, classifier baseline. |
-
-## How this file gets maintained
-
-Every wave I ship in autonomous mode adds a row at the top. One sentence each, plain English, no jargon. If a wave is bigger than one sentence can capture, link to the relevant memory file or commit hash.
-
-Keep it scannable. If this file ever exceeds ~100 rows, archive the older half to WAVES-archive.md.
+| 2026-05-04 | 13 | Wave 21: /rate/ page (UI + stubbed mock responses, USE_LIVE_A
