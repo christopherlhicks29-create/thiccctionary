@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-05-13",
+    "word": "Dumper Truck, Articulated",
+    "pronunciation": "/DUM-per TRUK, ar-TIK-yoo-lay-ted/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A robust vehicle distinguished by its flexible joint, allowing for freedom of movement between the cab and the dump body; esp. one whose posterior, viewed astern, defies casual description.",
+      "<em>colloq.</em> A truck that turns any construction site into a scene of sheer magnificence, with a dump body that seems to be in a perpetual state of readiness."
+    ],
+    "example": "He marveled at the thiccc articulated dumper truck navigating the quarry with poise. The gravel pile never knew what hit it.",
+    "etymology": "From 'dump' (Middle English, 'to throw down') + 'truck' (from Middle English 'trukken', meaning 'to exchange or barter') + 'articulated' (from Latin 'articulare', meaning 'to divide into joints'). The first time someone saw its backside, it was over for the competition.",
+    "image": "images/2026-05-13-dumper-truck-articulated.jpg",
+    "caption": "Plate N. — A thiccc articulated dumper truck demonstrating its posterior prowess on a construction site.",
+    "tags": [
+      "construction",
+      "quarry",
+      "heavy machinery"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Alexander Popovkin",
+    "photographerUrl": "https://unsplash.com/@popovkin",
+    "unsplashUrl": "https://unsplash.com/photos/a-red-semi-truck-driving-down-a-road-yNpNMuGYmWM"
+  },
+  {
     "date": "2026-05-11",
     "word": "Cement Mixer, Industrial",
     "pronunciation": "/si-MENT MIK-ser in-DUS-tree-al/",
