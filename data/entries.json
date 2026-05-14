@@ -23,7 +23,13 @@
     "photoScore": 8,
     "photographer": "ASBA Drums",
     "photographerUrl": "https://unsplash.com/@asbadrums",
-    "unsplashUrl": "https://unsplash.com/photos/a-close-up-of-a-drum-head-on-a-white-background-D-RpKu-xH4w"
+    "unsplashUrl": "https://unsplash.com/photos/a-close-up-of-a-drum-head-on-a-white-background-D-RpKu-xH4w",
+    "socialCaptions": {
+      "morning": "Kettledrum, Industrial.\nA percussion instrument with the silhouette of a bathtub.\nThe sound it makes is not optional.",
+      "afternoon": "Concert-hall version: ~76 cm across.\nIndustrial version: \"if you have to ask, you can't lift it.\"\nKettledrum, Industrial.",
+      "evening": "From the archives — Kettledrum, Industrial.\nThe foot pedal isn't for show.\nNeither is the drum.",
+      "reels": "Tuned with the foot.\nHit with intent.\nKettledrum, Industrial."
+    }
   },
   {
     "date": "2026-05-13",
@@ -49,7 +55,13 @@
     "photoScore": 8,
     "photographer": "Alexander Popovkin",
     "photographerUrl": "https://unsplash.com/@popovkin",
-    "unsplashUrl": "https://unsplash.com/photos/a-red-semi-truck-driving-down-a-road-yNpNMuGYmWM"
+    "unsplashUrl": "https://unsplash.com/photos/a-red-semi-truck-driving-down-a-road-yNpNMuGYmWM",
+    "socialCaptions": {
+      "morning": "Dumper Truck, Articulated.\nThe cab and the bed pivot independently.\nThe ground is what changes shape.",
+      "afternoon": "Six wheels. Three axles. One bend in the middle.\nWalks where roads don't.\nDumper Truck, Articulated.",
+      "evening": "From the archives — Dumper Truck, Articulated.\nThis is what a quarry calls a Tuesday.",
+      "reels": "Pivots at the waist.\nCarries the hill.\nDumper Truck, Articulated."
+    }
   },
   {
     "date": "2026-05-11",
@@ -75,7 +87,13 @@
     "photoScore": 8,
     "photographer": "Maciej Kaliszewski",
     "photographerUrl": "https://unsplash.com/@kalisz",
-    "unsplashUrl": "https://unsplash.com/photos/a-large-green-tanker-truck-driving-down-a-street-TO9Bs1bLkTM"
+    "unsplashUrl": "https://unsplash.com/photos/a-large-green-tanker-truck-driving-down-a-street-TO9Bs1bLkTM",
+    "socialCaptions": {
+      "morning": "Cement Mixer, Industrial.\nThe drum rotates because if it stops, the cargo becomes the cargo's grave.\nIt does not stop.",
+      "afternoon": "Eight to ten cubic yards. Five tons of liquid stone.\nThe slowness is structural, not decorative.\nCement Mixer, Industrial.",
+      "evening": "From the archives — Cement Mixer, Industrial.\nA vehicle whose primary purpose is to keep moving.",
+      "reels": "Drum spins.\nConcrete waits.\nCement Mixer, Industrial."
+    }
   },
   {
     "date": "2026-05-10",
@@ -101,7 +119,13 @@
     "photoScore": 8,
     "photographer": "Marius Niveri",
     "photographerUrl": "https://unsplash.com/@m4r1vs",
-    "unsplashUrl": "https://unsplash.com/photos/building-with-metal-crane-during-day-sDvdMflfFX0"
+    "unsplashUrl": "https://unsplash.com/photos/building-with-metal-crane-during-day-sDvdMflfFX0",
+    "socialCaptions": {
+      "morning": "Bagger 288.\nThirteen thousand five hundred tons. Walks two miles per hour, professionally.\nThe Earth simply moves when asked.",
+      "afternoon": "Conceptually, a wheel.\nPractically, a building that travels.\nBagger 288. Mining.",
+      "evening": "From the archives — Bagger 288.\nNine hundred and fifteen feet of stated intent.\nSome objects don't enter rooms. They've always been there.",
+      "reels": "Bagger 288.\nWalks slowly. Walks anyway.\nThe horizon adjusts."
+    }
   },
   {
     "date": "2026-05-09",
@@ -125,7 +149,13 @@
     "photographerUrl": "https://thiccctionary.com/",
     "unsplashUrl": "",
     "category": "Produce & Botanical",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Spruce, Suburban.\nPlanted as decoration. Currently undefeated.\nThe lawn around it gave up three mowing seasons ago.",
+      "afternoon": "Started as a sapling.\nNow the property line is whatever it decides.\nSpruce, Suburban.",
+      "evening": "From the archives — Spruce, Suburban.\nWhat was a hedge plan in 1994\nis now zoning.",
+      "reels": "It was supposed to be ornamental.\nNow it owns the lot.\nSpruce, Suburban."
+    }
   },
   {
     "date": "2026-05-08",
@@ -149,7 +179,13 @@
     "photographerUrl": "https://unsplash.com/@cedric",
     "unsplashUrl": "https://unsplash.com/photos/white-concrete-dam-during-daytime-Ul-1-YbuyX4",
     "category": "Architecture & Infrastructure",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Hoover Dam.\n660 feet thick at the base.\nThe Colorado was not consulted.",
+      "afternoon": "4.4 million cubic yards of concrete.\nPressed into the canyon for permanent reasons.\nHoover Dam.",
+      "evening": "From the archives — Hoover Dam.\nSome objects request space.\nThis one took it.",
+      "reels": "Built 1931 to 1936.\nDoing the exact same thing today.\nHoover Dam."
+    }
   },
   {
     "date": "2026-05-06",
@@ -173,7 +209,13 @@
     "photographerUrl": "https://unsplash.com/@dxelihside",
     "unsplashUrl": "https://unsplash.com/photos/several-stacks-of-cheese-stacked-on-top-of-each-other-CxjyaNjSdzY",
     "category": "Foods of Substance",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Parmigiano-Reggiano.\nEighty-four pounds. Two-person handling. Dedicated knife.\nAged thirty months and not particularly in a hurry.",
+      "afternoon": "Thirty months of patience compressed into one wheel.\nCuts only with respect.\nParmigiano-Reggiano.",
+      "evening": "From the archives — Parmigiano-Reggiano.\nThe kind of cheese that earns its own paperwork.",
+      "reels": "One wheel. Eighty-four pounds.\nThe committee approved.\nParmigiano-Reggiano."
+    }
   },
   {
     "date": "2026-05-05",
@@ -197,7 +239,13 @@
     "photographerUrl": "https://unsplash.com/@juliamitchell13",
     "unsplashUrl": "https://unsplash.com/photos/a-large-green-watermelon-sitting-on-top-of-a-white-table-oamCImVNkhI",
     "category": "Produce & Botanical",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Watermelon, Moon and Stars.\nA fruit with weather inside it.\nThe rind is the night sky. The rest is volume.",
+      "afternoon": "1920s heirloom.\nBuilt before grocery-store conformity was a thing.\nWatermelon, Moon and Stars.",
+      "evening": "From the archives — Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.",
+      "reels": "Dark rind. Yellow constellations.\nHeirloom from 1926.\nWatermelon, Moon and Stars."
+    }
   },
   {
     "date": "2026-05-04",
@@ -221,7 +269,13 @@
     "photographerUrl": "https://unsplash.com/@johnkrach",
     "unsplashUrl": "https://unsplash.com/photos/a-couch-sitting-in-front-of-a-glass-wall-yHWk9eqvBYE",
     "category": "Domestic Goods",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Sofa, Chesterfield.\nCommissioned by the 4th Earl.\nThe room arranges itself around it; this is not negotiable.",
+      "afternoon": "Deep button-tufted seating since the 1700s.\nCenturies of furniture later, still the shape that wins.\nSofa, Chesterfield.",
+      "evening": "From the archives — Sofa, Chesterfield.\nSome pieces are furniture.\nThis one is occupancy.",
+      "reels": "Three centuries.\nSame silhouette. Same authority.\nSofa, Chesterfield."
+    }
   },
   {
     "date": "2026-05-03",
@@ -245,7 +299,13 @@
     "photographerUrl": "https://unsplash.com/@iantalmacs",
     "unsplashUrl": "https://unsplash.com/photos/a-bunch-of-bananas-sitting-on-top-of-a-table-e49C0XDnZM0",
     "category": "Produce & Botanical",
-    "bookReady": null
+    "bookReady": null,
+    "socialCaptions": {
+      "morning": "Banana, Cavendish.\nNamed for a duke.\nThe fruit doesn't care.",
+      "afternoon": "Grown in greenhouses by the 6th Duke of Devonshire.\nNow on every kitchen counter.\nBanana, Cavendish.",
+      "evening": "From the archives — Banana, Cavendish.\nA nominally domestic fruit\nwith notable structural ambition.",
+      "reels": "Greenhouse origin: 1830s.\nAristocratic provenance.\nBanana, Cavendish."
+    }
   },
   {
     "date": "2026-05-02",
@@ -269,7 +329,13 @@
     "photographerUrl": "https://unsplash.com/@jayphoto",
     "unsplashUrl": "https://unsplash.com/photos/a-beautiful-kitchen-has-wooden-cabinets-and-stainless-steel-m6jPJ5JBDQA",
     "category": "Domestic Goods",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Frigidaire, Side-by-Side.\nTwo doors. One commitment.\nThe pantry can come back tomorrow.",
+      "afternoon": "Introduced commercially by Amana in 1949.\nHas run the kitchen ever since.\nFrigidaire, Side-by-Side.",
+      "evening": "From the archives — Frigidaire, Side-by-Side.\nThere's a fridge.\nThen there's the appliance that decides where the room is.",
+      "reels": "Two doors. Twin chambers.\n1949 to present.\nFrigidaire, Side-by-Side."
+    }
   },
   {
     "date": "2026-05-01",
@@ -293,7 +359,13 @@
     "photographerUrl": "https://unsplash.com/@nickhh",
     "unsplashUrl": "https://unsplash.com/photos/white-and-black-lufthansa-airliner-near-vehicles-DF4V0ec22tk",
     "category": "Vehicles & Transport",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Thiccc Boeing.\nSpecifically: the tail-on view of a 747.\nThe empennage is doing things.",
+      "afternoon": "Aircraft viewed bow-on: aerodynamic, slim.\nSame aircraft, stern: architectural.\nThiccc Boeing.",
+      "evening": "From the archives — Thiccc Boeing.\nSome planes carry passengers.\nThis one carries presence.",
+      "reels": "Tail-on. Long lens.\nThe aft fuselage is the point.\nThiccc Boeing."
+    }
   },
   {
     "date": "2026-04-30",
@@ -317,7 +389,13 @@
     "photographerUrl": "https://unsplash.com/@theshuttervision",
     "unsplashUrl": "https://unsplash.com/photos/black-oval-fruit-on-white-surface-fbTJ8u69hpg",
     "category": "Produce & Botanical",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Avocado, Domestic.\nPear-shaped by design.\nThe mass distribution is the entire personality.",
+      "afternoon": "From Nahuatl āhuacatl — originally meaning 'testicle.'\nFrankly, tracks.\nAvocado, Domestic.",
+      "evening": "From the archives — Avocado, Domestic.\nToast is just the canvas.",
+      "reels": "Pear-shaped. Bottom-heavy.\nA fruit with low center of gravity.\nAvocado, Domestic."
+    }
   },
   {
     "date": "2026-04-29",
@@ -341,7 +419,13 @@
     "photographerUrl": "https://unsplash.com/@djw1999q",
     "unsplashUrl": "https://unsplash.com/photos/orange-dually-pickup-truck-on-a-highway-ug0s5X9FTWw",
     "category": "Vehicles & Transport",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Ram 3500, Dually.\nSix wheels. Four rear.\nParks in two spots by birthright.",
+      "afternoon": "The flared rear quarter is structural, not stylistic.\nThe parking lot reorganizes around it.\nRam 3500, Dually.",
+      "evening": "From the archives — Ram 3500, Dually.\nIt doesn't back into a parking spot.\nIt occupies one with permanent intent.",
+      "reels": "Dual rear wheels.\nArchitectural rear-three-quarter silhouette.\nRam 3500, Dually."
+    }
   },
   {
     "date": "2026-04-28",
@@ -365,7 +449,13 @@
     "photographerUrl": "https://unsplash.com/@anevans",
     "unsplashUrl": "https://unsplash.com/photos/a-red-pepper-on-a-plant-7O9UZ9ejUzA",
     "category": "Produce & Botanical",
-    "bookReady": null
+    "bookReady": null,
+    "socialCaptions": {
+      "morning": "Heritage Tomato.\nA fruit with provenance.\nThe other tomatoes are doing okay; this one is doing more.",
+      "afternoon": "Passed down through generations of seeds.\nEach one bigger than the last.\nHeritage Tomato.",
+      "evening": "From the archives — Heritage Tomato.\nModern tomatoes are calibrated.\nThis one was raised.",
+      "reels": "Heirloom. Multi-pound.\nThe undisputed champion of the patch.\nHeritage Tomato."
+    }
   },
   {
     "date": "2026-04-27",
@@ -389,7 +479,13 @@
     "photographerUrl": "https://unsplash.com/@strangehappenings",
     "unsplashUrl": "https://unsplash.com/photos/an-old-rusty-cement-mixer-truck-sits-abandoned-0tYkYoNLBYI",
     "category": "Industrial Machinery",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Concrete Mixer.\nEight cubic yards of slow rotation.\nThe drum hums when she's full.",
+      "afternoon": "Two functions: mix concrete, occupy lane.\nEqually committed to both.\nConcrete Mixer.",
+      "evening": "From the archives — Concrete Mixer.\nEngine idle.\nDrum rotating.\nSome things just are.",
+      "reels": "Eight cubic yards.\nSlow rotation.\nConcrete Mixer."
+    }
   },
   {
     "date": "2026-04-26",
@@ -413,6 +509,12 @@
     "photographerUrl": "https://unsplash.com/@anniethingspossible",
     "unsplashUrl": "https://unsplash.com/photos/a-group-of-pumpkins-in-a-patch-of-grass-WLrgLgfJiIQ",
     "category": "Produce & Botanical",
-    "bookReady": true
+    "bookReady": true,
+    "socialCaptions": {
+      "morning": "Pumpkin, Atlantic Giant.\nWorld record: 2,749 pounds, Minnesota, 2023.\nThe cultivar's name reads less as boast than as plain description.",
+      "afternoon": "Two volunteers. A cushioned dolly.\nThese are the load-bearing humans.\nPumpkin, Atlantic Giant.",
+      "evening": "From the archives — Pumpkin, Atlantic Giant.\nCultivated since the 1970s.\nDoing what it was bred to do.",
+      "reels": "Bred for size.\nAchieving the brief.\nPumpkin, Atlantic Giant."
+    }
   }
 ]

@@ -62,20 +62,16 @@ jobs:
           DATE=$(date -u +%Y-%m-%d)
           WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
           PHOTOG=$(node -e "const e=require('./data/entries.json'); console.log(e[0].photographer || 'unknown');")
-          # Read critique if it exists (added by generate-daily.js as part of design review)
-          # Read critique safely — never let a bad critique file break the PR step
-          read_crit() {
-            node -e "
-              try {
-                const c = JSON.parse(require('fs').readFileSync('./data/.critique.json','utf8'));
-                console.log($1);
-              } catch (e) { console.log($2); }
-            " 2>/dev/null || echo $2
-          }
+          # Wave 90: parse critique with python3 instead of bash+node-e heredoc.
+          # The prior shell helper was fragile and rendered scores as literal "v"
+          # in PR bodies. Also dumps the raw json to logs for debug.
           if [ -f data/.critique.json ]; then
-            CRIT_SCORE=$(read_crit "c.score ?? '?'" "?")
-            CRIT_VERDICT=$(read_crit "c.verdict || 'unknown'" "unknown")
-            CRIT_TEXT=$(read_crit "(c.critique||'').replace(/[\\n\\r]/g,' ').slice(0,500)" "Critique unavailable")
+            echo "--- raw .critique.json (debug) ---"
+            cat data/.critique.json
+            echo "--- end ---"
+            CRIT_SCORE=$(python3 -c "import json; d=json.load(open('data/.critique.json')); s=d.get('score'); print(s if s is not None else '?')")
+            CRIT_VERDICT=$(python3 -c "import json; d=json.load(open('data/.critique.json')); print(d.get('verdict') or 'unknown')")
+            CRIT_TEXT=$(python3 -c "import json; d=json.load(open('data/.critique.json')); t=d.get('critique') or 'No critique provided.'; print(t.replace(chr(10),' ').replace(chr(13),' ')[:500])")
           else
             CRIT_SCORE='?'
             CRIT_VERDICT='unknown'

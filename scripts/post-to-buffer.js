@@ -203,8 +203,27 @@ function pickPunchline(entry, mode) {
 // Observation-voice templates with punchline pool. Each variant pairs entry
 // data (example/definition) with a brand-voice aside so the caption itself
 // does comedy work regardless of how dry the entry data happens to be.
+//
+// Wave 89: Bespoke caption preferred when `entry.socialCaptions[mode]` is set.
+// Hand-written (or LLM-generated at entry-gen time, see QUEUED-FOLLOWUPS) per
+// entry so the caption references real specifics about THAT subject instead of
+// a universal one-liner. Falls back to template below if absent.
 function buildText(entry, mode, baseUrl) {
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
+
+  // Wave 89: bespoke caption path.
+  const bespoke = entry.socialCaptions && typeof entry.socialCaptions[mode] === 'string'
+    ? entry.socialCaptions[mode].trim()
+    : '';
+  if (bespoke) {
+    if (mode === 'reels') {
+      return `${bespoke}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
+    }
+    const suffix = `\n\n${entryUrl}\n\n#thiccctionary`;
+    return fitToX('', bespoke, suffix);
+  }
+
+  // Fallback path: Wave 86/87 templated captions.
   const def0 = stripHtml(entry.definitions[0]);
   const example = stripHtml(entry.example || '').replace(/^"|"$/g, '').trim();
   const punch = pickPunchline(entry, mode);
@@ -263,7 +282,13 @@ function buildText(entry, mode, baseUrl) {
 
 function filterChannelsForMode(channels, mode) {
   let filtered = channels;
-  if (mode === 'afternoon') {
+  if (mode === 'morning') {
+    // Wave 91: Instagram rejects images outside 4:5 to 1.91:1. Unsplash photos
+    // often fall outside that range. Skip IG for the morning image post;
+    // IG still gets Reels (9:16) via post-on-merge.yml's reels step.
+    const skip = new Set(['instagram', 'instagrambusiness']);
+    filtered = filtered.filter(c => !skip.has(c.service));
+  } else if (mode === 'afternoon') {
     const skip = new Set(['instagram', 'instagrambusiness']);
     filtered = filtered.filter(c => !skip.has(c.service));
   } else if (mode === 'reels') {
@@ -391,4 +416,47 @@ async function main() {
     }
   }
 
-  const allChannels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).
+  const allChannels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).map(s => {
+    const idx = s.indexOf(':');
+    if (idx === -1) return { service: null, channelId: s };
+    return { service: s.slice(0, idx).toLowerCase(), channelId: s.slice(idx + 1) };
+  });
+  const channels = filterChannelsForMode(allChannels, mode);
+  if (channels.length === 0) {
+    console.log(`No channels match mode "${mode}".`);
+    return;
+  }
+  if (channels.length < allChannels.length) {
+    console.log(`Mode "${mode}" filters to ${channels.length} of ${allChannels.length} channels.`);
+  }
+
+  const text = buildText(entry, mode, baseUrl);
+  if (mode === 'reels') {
+    console.log(`Posting Reel to ${channels.length} channels with video: ${videoUrl}`);
+  } else {
+    console.log(`Posting to ${channels.length} channels with image: ${imageUrl}`);
+  }
+  console.log(`--- Post text ---\n${text}\n---`);
+
+  const results = await Promise.all(
+    channels.map(({ channelId, service }) =>
+      postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl, token: process.env.BUFFER_ACCESS_TOKEN, service, mode })
+    )
+  );
+
+  let successes = 0;
+  let failures = 0;
+  for (const r of results) {
+    if (r.ok) {
+      successes++;
+      console.log(`OK channel ${r.channelId} (post id: ${r.postId})`);
+    } else {
+      failures++;
+      console.error(`FAIL channel ${r.channelId}: status=${r.status} body=${r.body}`);
+    }
+  }
+  console.log(`\nSummary: ${successes} succeeded, ${failures} failed (out of ${results.length}).`);
+  if (failures > 0) process.exit(1);
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
