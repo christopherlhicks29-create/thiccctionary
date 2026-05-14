@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-05-14",
+    "word": "Kettledrum, Industrial",
+    "pronunciation": "/KET-ul-drum in-DUS-tree-ul/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A percussion instrument of imposing drum diameter, noted for its resonant shell and industrial-grade stoutness; esp. one observed in profile under stage lighting.",
+      "<em>colloq.</em> An embodiment of acoustic thicccness: all resonance, no apologies."
+    ],
+    "example": "The ASBA kettledrum was so thiccc, the orchestra pit had to negotiate extra legroom. The conductor needed a map.",
+    "etymology": "From Middle Dutch <em>ketel</em>, meaning 'cauldron', and Middle English <em>drom</em>, indicating 'drum'. Once referred to as the 'cauldron drum' — which, frankly, tracks.",
+    "image": "images/2026-05-14-kettledrum-industrial.jpg",
+    "caption": "Plate N. — Close-up of a drum head, showcasing its substantial acoustic potential.",
+    "tags": [
+      "drum diameter",
+      "resonance",
+      "acoustics"
+    ],
+    "category": "Musical Instruments",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 8,
+    "photographer": "ASBA Drums",
+    "photographerUrl": "https://unsplash.com/@asbadrums",
+    "unsplashUrl": "https://unsplash.com/photos/a-close-up-of-a-drum-head-on-a-white-background-D-RpKu-xH4w"
+  },
+  {
     "date": "2026-05-13",
     "word": "Dumper Truck, Articulated",
     "pronunciation": "/DUM-per TRUK, ar-TIK-yoo-lay-ted/",
