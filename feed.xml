@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2026 19:19:22 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 19:25:03 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Dumper Truck, Articulated</title>
+      <link>https://thiccctionary.com/entries/2026-05-13.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-13.html</guid>
+      <pubDate>Wed, 13 May 2026 12:00:00 GMT</pubDate>
+      <description>A robust vehicle distinguished by its flexible joint, allowing for freedom of movement between the cab and the dump body; esp. one whose posterior, viewed astern, defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
+      <category>construction</category><category>quarry</category><category>heavy machinery</category>
+    </item>
     <item>
       <title>Cement Mixer, Industrial</title>
       <link>https://thiccctionary.com/entries/2026-05-11.html</link>
