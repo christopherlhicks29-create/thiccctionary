@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-05-15",
+    "word": "Transformer, Power Generation",
+    "pronunciation": "/tranz-FOR-mer/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A hefty apparatus in an electrical substation, distinguished by its imposing stature and multi-colored coils; esp. one viewed astern, where its girth suggests a surplus of voltage.",
+      "<em>colloq.</em> The heavyweight champion of the electrical world: all power, no chill."
+    ],
+    "example": "The new transformer was so thiccc the substation had to be rezoned. Even the pylons gave it a respectful berth.",
+    "etymology": "From Latin <em>transformare</em>, meaning 'to change in shape or form', + engineering jargon, first attested in the 19th century. Its reputation for girth was an inside job.",
+    "image": "images/2026-05-15-transformer-power-generation.jpg",
+    "caption": "Plate N. — A transformer of impressive proportions, holding court against a backdrop of suburban sprawl.",
+    "tags": [
+      "power",
+      "electricity",
+      "substation"
+    ],
+    "category": "Engineering Marvels",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Arseny Togulev",
+    "photographerUrl": "https://unsplash.com/@tetrakiss",
+    "unsplashUrl": "https://unsplash.com/photos/blue-and-red-robot-outdoor-decor-4YoINz4XvnQ"
+  },
+  {
     "date": "2026-05-14",
     "word": "Kettledrum, Industrial",
     "pronunciation": "/KET-ul-drum in-DUS-tree-ul/",
