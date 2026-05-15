@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 May 2026 20:36:58 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 18:15:16 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Transformer, Power Generation</title>
+      <link>https://thiccctionary.com/entries/2026-05-15.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-15.html</guid>
+      <pubDate>Fri, 15 May 2026 12:00:00 GMT</pubDate>
+      <description>A hefty apparatus in an electrical substation, distinguished by its imposing stature and multi-colored coils; esp. one viewed astern, where its girth suggests a surplus of voltage.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-15-transformer-power-generation.jpg" type="image/jpeg" length="0" />
+      <category>power</category><category>electricity</category><category>substation</category>
+    </item>
     <item>
       <title>Kettledrum, Industrial</title>
       <link>https://thiccctionary.com/entries/2026-05-14.html</link>
