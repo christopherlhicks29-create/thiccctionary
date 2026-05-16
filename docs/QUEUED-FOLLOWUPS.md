@@ -2,21 +2,10 @@
 
 Things deferred from prior sessions that should be revisited at the right time. I (Claude) will surface these when the trigger condition matches.
 
-## LLM-per-entry social captions — ceiling-raise
+## LLM-per-entry social captions — SHIPPED 2026-05-16 (Wave 98)
 
-**Current state (as of Wave 87, 2026-05-11):** Captions use a curated 20-line punchline pool that hash-picks a line per (date, mode). Floor is good — every post has caption-level brand voice. Ceiling is capped — same 20 lines cycle, so a follower seeing 60+ posts will see repeats.
+`generate-daily.js` now calls `generateSocialCaptions(entry)` after the entry is built and stores the result on `entry.socialCaptions.{morning,afternoon,evening,reels}`. Non-blocking — if the LLM step fails for any reason, post-to-buffer.js falls back to the Wave 87 templated captions. Uses gpt-4o with explicit voice exemplars (Bagger, Spruce, Hoover Dam) baked into the system prompt. Every new daily entry from this point forward ships with 4 bespoke entry-specific captions referencing real subject specifics.
 
-**The bigger lift:** teach `generate-daily.js` to also generate 3 per-entry social captions (one per slot) when it creates an entry. Captions live on the entry object as `entry.socialCaptions.{morning, afternoon, evening}`. `post-to-buffer.js` reads them when present; falls back to template + punchline pool when they don't exist (covers old entries that weren't generated with this field).
-
-**Why it matters:** custom captions can reference the SPECIFIC subject ("The Bagger 288 doesn't dig. It commits." vs. generic "Inertia like a personality trait."). Higher comedy density.
-
-**Risks to design around:**
-- Bad LLM days — need a humor-score gate like the one in Wave 21 (regen if score<6)
-- Old entries don't get captions until regenned
-- Admin panel needs a caption editor so Christopher can rewrite when the model fails
-- One more thing the daily pipeline can break on
-
-**Trigger to surface this:** when Christopher signals that the punchline pool is feeling repetitive, OR when `generate-daily.js` is being refactored for another reason, OR after enough new daily entries that we have data on how often punchlines collide visibly.
 
 ---
 

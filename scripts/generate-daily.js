@@ -484,6 +484,90 @@ Evaluate this image and output JSON:
   }
 }
 
+
+// ---------- 5c. Bespoke social captions per entry ----------
+// Generates 4 short, entry-specific captions (morning/afternoon/evening/reels)
+// referencing real specifics of THIS subject. Falls back to template captions
+// in post-to-buffer.js if this step fails (non-blocking).
+async function generateSocialCaptions(entry) {
+  const cleanEtym = (entry.etymology || '').replace(/<[^>]+>/g, '').trim();
+  const def0 = (entry.definitions?.[0] || '').replace(/<[^>]+>/g, '').trim();
+  const ex = (entry.example || '').replace(/<[^>]+>/g, '').trim();
+
+  const sysPrompt = `You write social-media captions for Thiccctionary, a satirical online dictionary of thiccc inanimate objects. Voice: pseudo-academic, deadpan, dry. Mock-academic register applied to absurd subjects. Treat the object as if it has agency.
+
+Rules:
+- 2-4 short lines per caption. Newlines for comic timing.
+- Reference REAL specifics about THE SUBJECT (numbers, dates, sizes, origin facts).
+- Never use "voluptuous, curves, runway, diva, body, hourglass, slay, queen, OG, haters" — these are banned.
+- Em-dashes are fine and encouraged for comic timing.
+- The word "thiccc" (three c's) is the brand word; use sparingly but freely.
+- Each caption must work standalone — image carries some weight but caption must land its own line.
+- DO NOT include URLs or hashtags — those are added by the posting script.
+
+Tone exemplars:
+- "Bagger 288. Thirteen thousand five hundred tons. Walks two miles per hour, professionally. The Earth simply moves when asked."
+- "Spruce, Suburban. Planted as decoration. Currently undefeated. The lawn around it gave up three mowing seasons ago."
+- "Hoover Dam. 660 feet thick at the base. The Colorado was not consulted."
+
+Output JSON only.`;
+
+  const userPrompt = `Subject: ${entry.word}
+First definition: ${def0}
+Example sentence: ${ex}
+Etymology: ${cleanEtym}
+
+Write 4 distinct captions. Each should reference a different specific about this subject. Output JSON:
+{
+  "morning": "...",
+  "afternoon": "...",
+  "evening": "From the archives — ${entry.word}.\\n...",
+  "reels": "..."
+}
+
+Notes:
+- "morning" leads with the headword. Punchy.
+- "afternoon" mid-day energy; ends with the headword as a tag.
+- "evening" archive callback; MUST begin with "From the archives — ${entry.word}."
+- "reels" shortest; no URL (Reels strip links).`;
+
+  try {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: sysPrompt },
+          { role: 'user', content: userPrompt },
+        ],
+        response_format: { type: 'json_object' },
+        temperature: 0.7,
+      }),
+    });
+    if (!res.ok) {
+      console.warn(`Social-captions step skipped: ${res.status}`);
+      return null;
+    }
+    const data = await res.json();
+    const c = JSON.parse(data.choices[0].message.content);
+    if (c && typeof c.morning === 'string' && typeof c.afternoon === 'string' && typeof c.evening === 'string' && typeof c.reels === 'string') {
+      console.log('Generated social captions:');
+      console.log('  morning:', c.morning.split('\n')[0]);
+      console.log('  afternoon:', c.afternoon.split('\n')[0]);
+      console.log('  evening:', c.evening.split('\n')[0]);
+      console.log('  reels:', c.reels.split('\n')[0]);
+      return c;
+    }
+    console.warn('Social-captions output missing required fields; falling back.');
+    return null;
+  } catch (e) {
+    console.warn(`Social-captions step errored: ${e.message}`);
+    return null;
+  }
+}
+
+
 // ---------- main ----------
 async function main() {
   const raw = await fs.readFile(ENTRIES_PATH, 'utf8').catch(() => '[]');
@@ -778,6 +862,16 @@ async function main() {
     photographerUrl: chosen.photographerUrl,
     unsplashUrl: chosen.unsplashUrl,
   };
+
+  // Wave 98: generate bespoke social captions per entry. Non-blocking — if it
+  // fails, post-to-buffer.js falls back to the Wave 87 templated captions.
+  const socialCaptions = await generateSocialCaptions(entry).catch(e => {
+    console.warn('Social-captions outer catch:', e.message);
+    return null;
+  });
+  if (socialCaptions) {
+    entry.socialCaptions = socialCaptions;
+  }
   entries.unshift(entry);
   await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
   console.log(`Saved entry: ${entry.word}`);

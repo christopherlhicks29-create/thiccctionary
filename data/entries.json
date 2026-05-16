@@ -23,7 +23,13 @@
     "photoScore": 8,
     "photographer": "Curioso Photography",
     "photographerUrl": "https://unsplash.com/@curioso",
-    "unsplashUrl": "https://unsplash.com/photos/close-up-photo-of-person-playing-horn-instrument-bxURtAFagpc"
+    "unsplashUrl": "https://unsplash.com/photos/close-up-photo-of-person-playing-horn-instrument-bxURtAFagpc",
+    "socialCaptions": {
+      "morning": "Tuba, Contrabass.\nThe lowest brass register, by mass and intent.\nIf the bass section needed an anchor, the anchor brought tubing.",
+      "afternoon": "Sixteen feet of brass coiled into a held shape.\nA single note is the entire room's posture.\nTuba, Contrabass.",
+      "evening": "From the archives — Tuba, Contrabass.\nNot a horn. A column of air with opinions.",
+      "reels": "Sixteen feet of tubing.\nFolded.\nTuba, Contrabass."
+    }
   },
   {
     "date": "2026-05-15",
@@ -49,7 +55,13 @@
     "photoScore": 8,
     "photographer": "American Public Power Association",
     "photographerUrl": "https://unsplash.com/@publicpowerorg",
-    "unsplashUrl": "https://unsplash.com/photos/white-electric-power-generator-VuR4oHZ3ucc"
+    "unsplashUrl": "https://unsplash.com/photos/white-electric-power-generator-VuR4oHZ3ucc",
+    "socialCaptions": {
+      "morning": "Transformer, Power Generation.\nNot a robot. A pad-mounted steel cube that re-routes a city block's worth of electricity.\nMore inevitable than charismatic.",
+      "afternoon": "Substation duty: step the voltage up; step it down.\nThe drum hum is part of the contract.\nTransformer, Power Generation.",
+      "evening": "From the archives — Transformer, Power Generation.\nWhat you see: a fenced box.\nWhat's inside: the reason the lights work.",
+      "reels": "No transformation arc.\nJust voltage.\nTransformer, Power Generation."
+    }
   },
   {
     "date": "2026-05-14",
