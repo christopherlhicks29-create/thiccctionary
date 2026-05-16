@@ -219,7 +219,10 @@ function buildText(entry, mode, baseUrl) {
     if (mode === 'reels') {
       return `${bespoke}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
     }
-    const suffix = `\n\n${entryUrl}\n\n#thiccctionary`;
+    // Wave 99: submission CTA on non-Reels — drives participation. Reels keep
+    // the existing shape because Reels strip links.
+    const cta = `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html`;
+    const suffix = `${cta}\n\n${entryUrl}\n\n#thiccctionary`;
     return fitToX('', bespoke, suffix);
   }
 

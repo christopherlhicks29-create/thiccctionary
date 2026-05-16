@@ -1,0 +1,83 @@
+name: Build TikTok Bundle (manual-upload prep)
+
+# Generates a TikTok-flavored caption + copies the daily Reel MP4 into
+# tiktok-ready/<date>/ so Christopher can hand-upload via TikTok app.
+# TikTok has no clean API for personal accounts, so this is prep, not auto-post.
+#
+# Triggers:
+#   1. push to main on videos/<date>.mp4 (auto after daily merge)
+#   2. push to data/.fire-tiktok-bundle (manual sentinel with date)
+#   3. workflow_dispatch with date input
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'videos/*.mp4'
+      - 'data/.fire-tiktok-bundle'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "YYYY-MM-DD of the entry"
+        type: string
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Resolve target date
+        id: target
+        run: |
+          DATE=""
+          if [ -n "${{ inputs.date }}" ]; then
+            DATE="${{ inputs.date }}"
+          elif [ -f data/.fire-tiktok-bundle ]; then
+            DATE=$(head -n 1 data/.fire-tiktok-bundle | awk '{print $1}')
+          else
+            # Triggered by videos/*.mp4 push — find the latest MP4
+            DATE=$(ls videos/*.mp4 2>/dev/null | sort | tail -n 1 | xargs basename | sed 's/\.mp4$//')
+          fi
+          if ! echo "$DATE" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+            echo "::error::Invalid or missing date: $DATE"
+            exit 1
+          fi
+          # Skip if bundle already exists (avoid loops from re-run after our own commit)
+          if [ -d "tiktok-ready/$DATE" ]; then
+            echo "Bundle already exists for $DATE; skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
+      - name: Build bundle
+        if: ${{ steps.target.outputs.skip != 'true' }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DATE: ${{ steps.target.outputs.date }}
+        run: node scripts/build-tiktok-bundle.js
+
+      - name: Commit + push bundle
+        if: ${{ steps.target.outputs.skip != 'true' }}
+        run: |
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          git add tiktok-ready/
+          if [ -f data/.fire-tiktok-bundle ]; then
+            rm -f data/.fire-tiktok-bundle
+            git add -u data/.fire-tiktok-bundle
+          fi
+          git commit -m "TikTok bundle for ${{ steps.target.outputs.date }} (manual-upload ready)" || echo "Nothing to commit"
+          git push origin HEAD:main || echo "::warning::Push failed (race)"
