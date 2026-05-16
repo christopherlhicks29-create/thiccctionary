@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-05-16",
+    "word": "Tuba, Contrabass",
+    "pronunciation": "/TOO-buh, CON-tra-bass/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A wind instrument of considerable girth, often described as a brass behemoth with a voluminous bell, especially when viewed astern in raking light.",
+      "<em>colloq.</em> An orchestral fixture that does not simply play low notes, but rather plants them with seismic authority."
+    ],
+    "example": "The band marched on, led by a contrabass tuba so thiccc that its resonance could reroute parades. The streets resounded in submission.",
+    "etymology": "From Italian 'tuba', meaning 'trumpet', and Latin 'contrabassus', meaning 'below the bass'. This instrument's name is a polite understatement.",
+    "image": "images/2026-05-16-tuba-contrabass.jpg",
+    "caption": "Plate N. — The contrabass tuba, in majestic repose, surveys its dominion over the sonic landscape.",
+    "tags": [
+      "brass",
+      "orchestra",
+      "low frequency"
+    ],
+    "category": "Musical Instruments",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Curioso Photography",
+    "photographerUrl": "https://unsplash.com/@curioso",
+    "unsplashUrl": "https://unsplash.com/photos/close-up-photo-of-person-playing-horn-instrument-bxURtAFagpc"
+  },
+  {
     "date": "2026-05-15",
     "word": "Transformer, Power Generation",
     "pronunciation": "/tranz-FOR-mer/",
