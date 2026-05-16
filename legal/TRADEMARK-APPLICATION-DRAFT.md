@@ -26,13 +26,14 @@
 | Owner type | Individual (sole proprietor) |
 | Legal name | Christopher L. Hicks |
 | Citizenship | United States |
-| Mailing address | [TODO: Christopher's mailing address — required public record] |
+| Mailing address | Christopher Hicks, 2955 New Center Point #1023, Colorado Springs, CO 80922, United States |
+| Phone | (760) 686-6686 |
 | Email | christopher.l.hicks29@gmail.com |
 | Phone | [TODO: Christopher's phone — public record] |
 
 > **Note on public record:** USPTO trademark filings are public. The applicant's mailing address and phone become permanently searchable. If you don't want your home address public, you can use a registered agent / virtual mailbox (~$10-30/month) or a P.O. box. For a personal-name applicant this is genuinely worth thinking about.
 
-> **Recommended:** rent a virtual mailbox or P.O. box specifically for trademark/business filings before you file. Stable Mail, iPostal1, Anytime Mailbox all work. ~$10-15/month. Set this up BEFORE filing.
+> **Status (2026-05-16):** ✅ Virtual mailbox is active via iPostal1 (Colorado Springs CO). Form 1583 was notarized + USPS-approved, email validation complete. The address above is what goes on the USPTO filing — Christopher's home address stays off the public record.
 
 ---
 
@@ -165,7 +166,7 @@ Total filing-day time: ~30-45 minutes with me driving.
 
 | Item | When | Effort |
 |---|---|---|
-| Mailing address / decide on virtual mailbox | Before filing day | 5 min decision, 15 min if setting up virtual mailbox |
+| ~~Mailing address / decide on virtual mailbox~~ | ✅ DONE 2026-05-16 — iPostal1 active | — |
 | Phone number to put on public record | Before filing day | None |
 | USPTO.gov account creation | Before or during filing | 10 min |
 | Confirm credit card or pay via ACH | Filing day | None until filing day |

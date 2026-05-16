@@ -52,17 +52,10 @@ Specific overlaps to consolidate:
 
 **When to revisit:** an editorial decision Christopher should make. Surface this when catalog crosses 25 entries (currently 13) — tag sprawl gets worse with growth.
 
-## iPostal1 setup — notarized 2026-05-10, awaiting upload
+## iPostal1 setup — SHIPPED 2026-05-16
 
-**Current state (2026-05-10):** Christopher notarized USPS Form 1583. Next step: log into iPostal1 dashboard, find the Form 1583 upload section, photograph or scan both pages of the notarized form, upload. iPostal1 typically activates within 24 hours of receipt. Once active, the new street address replaces Christopher's home address on USPTO records and any other public-record-bearing filings.
+Christopher's virtual mailbox is live: **2955 New Center Point #1023, Colorado Springs, CO 80922**. USPS Form 1583 approved, email validation complete. This unblocks the trademark filing (`legal/TRADEMARK-APPLICATION-DRAFT.md` now has the real address + phone wired in).
 
-**Next steps when he comes back:**
-1. Get USPS Form 1583 notarized — local options: bank (often free for customers), UPS Store ($5-15), online notary services like Notarize.com (~$25, instant)
-2. Submit the notarized form to iPostal1
-3. Wait ~1-2 days for activation
-4. Address becomes live for use on USPTO trademark filing
-
-**Trigger to surface this:** When Christopher next mentions trademark, mailbox, or asks "what's blocking trademark."
 
 ## Image-regen for Banana Cavendish
 
