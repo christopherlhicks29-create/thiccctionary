@@ -48,6 +48,11 @@ jobs:
         # in a row when yesterday's PR is unmerged at today's run.
         run: git fetch origin "+refs/heads/daily/*:refs/remotes/origin/daily/*" 2>&1 || true
 
+      - name: Refill subject queue (Wave 105)
+        working-directory: scripts
+        run: node refill-subject-queue.js
+        continue-on-error: true
+
       - name: Generate today's entry
         working-directory: scripts
         env:

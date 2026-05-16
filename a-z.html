@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A–Z Index — Thiccctionary</title>
+<meta name="description" content="Alphabetical index of every Thiccctionary entry. Browse the satirical lexicon of objects of unusual girth by letter, like an actual dictionary." />
+<meta property="og:title" content="A–Z Index — Thiccctionary" />
+<meta property="og:description" content="Every entry, alphabetized. The full lexicon by letter." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/a-z.html" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://thiccctionary.com/a-z.html" />
+<link rel="stylesheet" href="styles.css?v=63" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.webmanifest" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://thiccctionary.com/a-z.html",
+  "url": "https://thiccctionary.com/a-z.html",
+  "name": "A–Z Index — Thiccctionary",
+  "description": "Alphabetical index of every Thiccctionary entry.",
+  "isPartOf": { "@id": "https://thiccctionary.com/#website" }
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="masthead">
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <a href="/" class="wordmark-link" aria-label="Thiccctionary — home">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+    </a>
+  </h1>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Today's Entry</a>
+    <a href="archive.html" class="nav-link">The Archive</a>
+    <a href="a-z.html" class="nav-link nav-link--active">A–Z</a>
+    <a href="articles/" class="nav-link">Articles</a>
+    <a href="random.html" class="nav-link">Random</a>
+    <a href="compare.html" class="nav-link">Compare</a>
+    <a href="rate/" class="nav-link">Rate</a>
+    <a href="submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="index.html#about" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <section class="archive-hero">
+    <h2 class="section-title">Index, A to Z</h2>
+    <p>Every entry, alphabetized by headword. <span id="az-counts" style="color: var(--ink-soft);">Loading…</span></p>
+  </section>
+
+  <nav class="az-jumpbar" id="az-jumpbar" aria-label="Jump to letter">
+    <!-- populated by JS -->
+  </nav>
+
+  <div id="az-sections">
+    <p class="az-loading" style="text-align:center; padding:48px; color:var(--ink-soft);">Loading the lexicon…</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Thiccctionary. <a href="legal/privacy.html">Privacy</a> · <a href="legal/terms.html">Terms</a></p>
+</footer>
+
+<style>
+  .az-jumpbar {
+    display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+    margin: 28px auto 32px; max-width: 720px;
+    padding: 14px 12px; background: rgba(245,232,199,0.45);
+    border-radius: 6px; border: 1px solid var(--rule, #d8cfb8);
+  }
+  .az-jumpbar a {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 18px;
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; color: var(--oxblood, #7A1F1F);
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+  .az-jumpbar a:hover {
+    background: var(--oxblood, #7A1F1F); color: var(--cream, #F4ECDC);
+  }
+  .az-jumpbar a.empty {
+    color: rgba(26,20,16,0.25); pointer-events: none;
+  }
+  .az-section {
+    margin: 40px auto 0; max-width: 920px; padding: 0 16px;
+  }
+  .az-letter-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 64px; font-weight: 600; line-height: 1;
+    color: var(--oxblood, #7A1F1F);
+    border-bottom: 2px solid var(--rule, #d8cfb8);
+    padding-bottom: 8px; margin-bottom: 16px;
+    scroll-margin-top: 24px;
+  }
+  .az-entry-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px 24px; padding: 0; list-style: none;
+  }
+  .az-entry-list li a {
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 8px 4px;
+    border-bottom: 1px dotted var(--rule, #d8cfb8);
+    text-decoration: none; color: var(--ink, #1A1410);
+    font-family: 'Fraunces', Georgia, serif;
+    transition: color 0.15s;
+  }
+  .az-entry-list li a:hover { color: var(--oxblood, #7A1F1F); }
+  .az-entry-word { font-weight: 500; font-size: 18px; flex: 1; }
+  .az-entry-date {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px; color: rgba(26,20,16,0.55);
+    font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  @media (max-width: 600px) {
+    .az-letter-heading { font-size: 48px; }
+  }
+</style>
+
+<script>
+(async function() {
+  try {
+    const res = await fetch('data/entries.json');
+    const entries = await res.json();
+    if (!entries.length) {
+      document.getElementById('az-sections').innerHTML =
+        '<p style="text-align:center; padding:48px; color:var(--ink-soft);">No entries yet.</p>';
+      return;
+    }
+
+    // Sort all entries alphabetically by word (case-insensitive)
+    entries.sort((a, b) => a.word.localeCompare(b.word, 'en', { sensitivity: 'base' }));
+
+    // Group by first letter
+    const byLetter = {};
+    for (const e of entries) {
+      const letter = (e.word[0] || '').toUpperCase();
+      if (!/[A-Z]/.test(letter)) continue;
+      if (!byLetter[letter]) byLetter[letter] = [];
+      byLetter[letter].push(e);
+    }
+
+    const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const presentLetters = Object.keys(byLetter).sort();
+
+    // Counts line
+    document.getElementById('az-counts').textContent =
+      `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'} across ${presentLetters.length} of 26 letters.`;
+
+    // Jumpbar — show all 26 letters; gray-out empty ones (but the design choice we picked is to keep them visible)
+    const jumpbar = document.getElementById('az-jumpbar');
+    jumpbar.innerHTML = allLetters.map(L => {
+      if (byLetter[L]) return `<a href="#letter-${L}">${L}</a>`;
+      return `<a class="empty" aria-disabled="true">${L}</a>`;
+    }).join('');
+
+    // Sections
+    const sectionsEl = document.getElementById('az-sections');
+    sectionsEl.innerHTML = presentLetters.map(L => {
+      const items = byLetter[L].map(e => {
+        const dateLabel = new Date(e.date + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        return `<li><a href="entries/${e.date}.html"><span class="az-entry-word">${escHtml(e.word)}</span><span class="az-entry-date">${dateLabel}</span></a></li>`;
+      }).join('');
+      return `
+        <section class="az-section" id="letter-${L}">
+          <h3 class="az-letter-heading">${L}</h3>
+          <ul class="az-entry-list">${items}</ul>
+        </section>
+      `;
+    }).join('');
+  } catch (e) {
+    document.getElementById('az-sections').innerHTML =
+      '<p style="text-align:center; padding:48px; color:var(--ink-soft);">Couldn\'t load the lexicon. <a href="archive.html">Try the archive instead.</a></p>';
+    console.error(e);
+  }
+
+  function escHtml(s) {
+    const t = document.createElement('div'); t.textContent = String(s ?? ''); return t.innerHTML;
+  }
+})();
+</script>
+
+</body>
+</html>
