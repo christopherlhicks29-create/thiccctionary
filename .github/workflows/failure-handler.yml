@@ -1,0 +1,96 @@
+name: Failure handler — auto-retry + escalate
+
+on:
+  workflow_run:
+    workflows:
+      - "Daily Thiccc — Generate Draft PR"
+      - "Regenerate Images (Backfill Old Entries)"
+      - "Regenerate Text (Backfill Old Entries)"
+      - "Post to Buffer on Daily Merge"
+      - "Site health audit"
+      - "Fire Reel cross-post (standalone)"
+      - "Backfill — re-run morning post + newsletter for a specific date"
+      - "Build TikTok Video"
+    types: [completed]
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+jobs:
+  handle:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Inspect failed run
+        id: inspect
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
+          echo "wf_name=${{ github.event.workflow_run.name }}" >> $GITHUB_OUTPUT
+          echo "attempt=${{ github.event.workflow_run.run_attempt }}" >> $GITHUB_OUTPUT
+          echo "head_sha=${{ github.event.workflow_run.head_sha }}" >> $GITHUB_OUTPUT
+          echo "html_url=${{ github.event.workflow_run.html_url }}" >> $GITHUB_OUTPUT
+          echo "Failed: ${{ github.event.workflow_run.name }} attempt ${{ github.event.workflow_run.run_attempt }}"
+
+      - name: First failure — retry failed jobs
+        if: ${{ github.event.workflow_run.run_attempt < 2 }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh run rerun "${{ steps.inspect.outputs.run_id }}" --failed --repo "$GITHUB_REPOSITORY" || echo "::warning::Retry failed, will escalate next time"
+
+      - name: Second failure — open issue
+        if: ${{ github.event.workflow_run.run_attempt >= 2 }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LOG_TAIL=$(gh run view "${{ steps.inspect.outputs.run_id }}" --log-failed --repo "$GITHUB_REPOSITORY" 2>&1 | tail -80 || echo "(could not fetch logs)")
+          BODY_FILE=$(mktemp)
+          {
+            echo "A workflow failed twice in a row. Failure-handler escalating."
+            echo ""
+            echo "**Workflow:** ${{ steps.inspect.outputs.wf_name }}"
+            echo "**Run:** ${{ steps.inspect.outputs.html_url }}"
+            echo "**Head SHA:** \`${{ steps.inspect.outputs.head_sha }}\`"
+            echo "**Attempt:** ${{ steps.inspect.outputs.attempt }}"
+            echo ""
+            echo "### Last 80 lines of failed-job logs"
+            echo ""
+            echo '```'
+            echo "$LOG_TAIL"
+            echo '```'
+          } > "$BODY_FILE"
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "CI failure (auto-escalated): ${{ steps.inspect.outputs.wf_name }}" \
+            --body-file "$BODY_FILE" \
+            --label "ci-failure" || echo "::warning::Issue creation failed"
+
+      - name: Append to failed-runs log
+        run: |
+          mkdir -p audits/failed-runs
+          DATE=$(date -u +%Y-%m-%d)
+          TS=$(date -u +%H:%M:%S)
+          F="audits/failed-runs/${DATE}.md"
+          if [ ! -f "$F" ]; then
+            echo "# Failed runs — ${DATE}" > "$F"
+            echo "" >> "$F"
+            echo "| Time (UTC) | Workflow | Attempt | Run | Status |" >> "$F"
+            echo "|---|---|---|---|---|" >> "$F"
+          fi
+          STATUS="retried"
+          if [ "${{ github.event.workflow_run.run_attempt }}" -ge 2 ]; then
+            STATUS="escalated to issue"
+          fi
+          echo "| ${TS} | ${{ steps.inspect.outputs.wf_name }} | ${{ steps.inspect.outputs.attempt }} | [link](${{ steps.inspect.outputs.html_url }}) | ${STATUS} |" >> "$F"
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          git add "$F"
+          git commit -m "Log failed run: ${{ steps.inspect.outputs.wf_name }} (attempt ${{ steps.inspect.outputs.attempt }})" || echo "Nothing to commit"
+          git push origin HEAD:main || echo "::warning::Push failed (race); next run will log"
