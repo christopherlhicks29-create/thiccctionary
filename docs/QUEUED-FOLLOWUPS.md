@@ -75,15 +75,14 @@ Christopher's virtual mailbox is live: **2955 New Center Point #1023, Colorado S
 
 ---
 
-## Trademark filing-day session
+## Trademark filing — SHIPPED 2026-05-16 (Wave 103)
 
-**Current state:** Application drafted at legal/TRADEMARK-APPLICATION-DRAFT.md. Christopher chose DIY-with-Claude path with $250 USPTO fee. Filing window: next 30 days from 2026-05-09.
+Application **filed**. Serial number **99827994**. Class 041, Section 1(a), $350 paid. Now awaiting USPTO examining attorney review (~3-4 months).
 
-**When to revisit:** When Christopher has 30 min and a payment method ready. Computer-use will drive the form-fill.
+Next watch: an "office action" may arrive within 6 months. If it's a descriptiveness or specimen issue, we respond DIY. If it's substantive (e.g., USPTO argues THICCCTIONARY is "merely descriptive" of a dictionary about thiccc things), we may want an attorney for the response (~$500-1000).
 
-**Pre-flight:** Christopher should set up a virtual mailbox or P.O. box first if he doesn't want his home address public on USPTO records.
+Status tracking: https://tsdr.uspto.gov/#caseNumber=99827994
 
----
 
 ## Brand-mention monitoring workflow
 

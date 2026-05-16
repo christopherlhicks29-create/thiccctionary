@@ -1,6 +1,8 @@
 # Trademark Application Draft — THICCCTIONARY
 
-**Status:** DRAFT — all fields populated for review. Filing path: TEAS Plus, $250 USPTO fee, DIY-with-Claude.
+**Status:** ✅ **FILED 2026-05-16. Serial number 99827994.** $350 USPTO fee paid. Currently awaiting examining attorney review (~3-4 months out).
+
+**Original draft below kept for reference and any future office-action response.**
 **Owner:** Christopher L. Hicks
 **Compiled:** 2026-05-09 by Claude (autonomous PO mode)
 **Version:** 1.0

@@ -108,3 +108,34 @@ This file should be updated whenever a new official social account is added, a n
 **First git commit:** 2026-05-01T22:10:56-06:00 0f863e9 Initial Thiccctionary
 **Most recent commit at file creation:** 2026-05-09T16:06:12+00:00 c889c6a Wave 32: Strengthen brand entity recognition vs Google auto-correct
 **Total commits at file creation:** 179
+
+---
+
+## USPTO Filing record
+
+**Application filed: 2026-05-16.** $350 paid via credit card. Filed under Section 1(a) Use in Commerce.
+
+| Field | Value |
+|---|---|
+| Serial number | **99827994** |
+| Mark | THICCCTIONARY (standard character) |
+| International class | 041 |
+| Applicant | Christopher L. Hicks (individual, US citizen) |
+| Mailing address (public record) | 2955 New Center Point #1023, Colorado Springs CO 80922 (iPostal1) |
+| Filing basis | Section 1(a) — Use in Commerce |
+| First use anywhere | 2026-04-26 |
+| First use in commerce | 2026-04-26 |
+| Specimen | thiccctionary-specimen-2026-05-16.jpeg (homepage screenshot) |
+| Identification of services | Providing online non-downloadable electronic publications in the nature of satirical dictionary entries in the field of objects, vehicles, structures, plants, foods, consumer goods, and other subjects of notable physical proportions |
+| Payment date | 2026-05-16 |
+| Payment method | CARD |
+| Fee | $350 |
+
+**Expected timeline:**
+- ~3-4 months: Examining attorney assigned, first review
+- ~6-9 months: If clean, approval for publication in Official Gazette
+- Publication: 30-day opposition window (this is where @thiccctionaryyy or anyone else could try to oppose)
+- ~10-14 months from filing: Registration certificate issues (around April 2027 — timed with book launch)
+
+**Status tracking:** https://tsdr.uspto.gov/#caseNumber=99827994&caseType=SERIAL_NO&searchType=statusSearch
+
