@@ -101,3 +101,26 @@ Status tracking: https://tsdr.uspto.gov/#caseNumber=99827994
 **What to verify next session:** Did the 2026-05-10 newsletter actually land in Christopher's inbox? If yes, this entire item closes. If no, debug `send-newsletter.js`.
 
 **RSS-to-email is NOT needed** unless we 
+---
+
+## Mobile app — interactive Thiccctionary (queued for design)
+
+**Christopher's note 2026-05-16:** Wants a mobile app "very interactive" — not just a re-skin of the website.
+
+**What this implies trademark-wise:** When the app ships, we'll need a **separate Class 9** trademark filing (`$350`, can use the existing Section 1(a) basis once the app is in actual use). Class 41 (current filing, serial 99827994) only covers the online service. The app is downloadable software, a different USPTO class.
+
+**Interactive ideas worth considering when design starts:**
+- Tap-to-rate ("Is It Thiccc?" classifier built natively)
+- Daily-entry as the launch screen with swipe-archive behind it
+- Augmented reality "scan a thing → is it thiccc?" mode (computer vision via on-device model)
+- Streak/collection mechanic (unlock badges for spotting certain categories)
+- Native share-to-Instagram-Story flow with the entry as overlay
+- Native push notification on daily-entry drop
+- Offline-first reading of the catalog (caches recent entries on first launch)
+
+**Tech stack considerations (not decisions, just options):**
+- React Native + Expo — fastest to ship, single codebase iOS+Android
+- Native Swift + Kotlin — best UX, slowest to ship, double the effort
+- PWA upgrade of existing site — cheapest, weakest "real app" signal
+
+**When to revisit:** Once catalog hits ~50 entries (~mid-2026) AND we have first-mention press coverage. App needs critical mass of content + audience to justify the development effort.
