@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 May 2026 18:15:16 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 16:13:37 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Tuba, Contrabass</title>
+      <link>https://thiccctionary.com/entries/2026-05-16.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-16.html</guid>
+      <pubDate>Sat, 16 May 2026 12:00:00 GMT</pubDate>
+      <description>A wind instrument of considerable girth, often described as a brass behemoth with a voluminous bell, especially when viewed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-16-tuba-contrabass.jpg" type="image/jpeg" length="0" />
+      <category>brass</category><category>orchestra</category><category>low frequency</category>
+    </item>
     <item>
       <title>Transformer, Power Generation</title>
       <link>https://thiccctionary.com/entries/2026-05-15.html</link>
