@@ -183,6 +183,7 @@ CRITICAL — the photo MUST show the WHOLE subject in frame:
 
 HARD VETOES (automatic rejection):
 - The PRIMARY SUBJECT of the photo is a person — portrait, fashion shot, body close-up, beauty/glamour. The brand is "we don't make jokes about human bodies," so a photo OF a person is wrong. A photo of a THING (truck, tomato, building, ship) where humans appear incidentally — bystanders, scale-reference, crew on a deck — is FINE as long as the THING is the focus and occupies the bulk of the frame.
+- The photo is a TOY, SCULPTURE, STATUE, FIGURINE, COSTUME, REPLICA, FAN-ART, ILLUSTRATION, or CARTOON of the subject — we want photographs of the REAL physical thing. A Transformer-the-robot statue is not an electrical transformer. A toy fire truck is not a fire truck. A pumpkin Halloween costume is not a pumpkin. If you see seams, paint chipping, plastic, weld marks where a real subject would be solid, painted-flame decals on metal, action-figure proportions — REJECT. Score below 4 / verdict "reject" applies.
 - Watermarks, text overlays, logos, captions
 - Marketing/product renders, illustrations, AI-generated stock — only real photographs
 - The actual subject occupies less than ~30% of the frame
@@ -433,6 +434,8 @@ async function critiqueChosenImage(subject, photo) {
 4. CLUTTER — is the subject clearly the focal point, or surrounded by distractions?
 5. PRIMARY-SUBJECT TEST — what is the photo OF? If the answer is a person (portrait, fashion, beauty, body close-up) — DISQUALIFY, the brand never makes jokes about human bodies. If the answer is the actual subject thing (truck, tomato, instrument, building) and humans appear incidentally as bystanders / scale reference / crew / players holding the instrument — that's FINE. The rule is "no jokes about bodies," not "no humans visible."
 
+6. REAL VS REPRESENTATION TEST — is this a photo of the ACTUAL subject, or a depiction of it? Things that count as DEPICTION and must be REJECTED (verdict "reject", score < 4): toys, sculptures, statues, figurines, costumes, replicas, fan art, illustrations, cartoons, action figures, model versions, 3D renders. Example: if the subject is "Transformer, Power Generation" (an electrical transformer) and the photo shows a Transformer-the-robot statue, REJECT. If the subject is "Pumpkin, Atlantic Giant" and the photo shows a person in a pumpkin costume, REJECT. If the subject is "Concrete Mixer" and the photo shows a toy concrete mixer, REJECT. Tells to watch for: visible seams, plastic surfaces, action-figure proportions, painted decals where real metal would be, weld marks at joints implying a built sculpture not a real machine, anything that reads as "made by an artist to look like X" rather than "is X."
+
 For musical instruments specifically: a photo of a tuba being PLAYED by someone is a photo of the tuba (subject = instrument, person is incidental). A photo of a brass-band marching is also of the instruments. Reject only if the COMPOSITION centers a person's face/body.
 
 Score the photo from 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
@@ -446,6 +449,7 @@ Evaluate this image and output JSON:
 {
   "score": <1-10>,
   "verdict": "ship" | "needs-review" | "reject",
+  "photoSubject": "one short clause describing what the photo ACTUALLY depicts — be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
   "critique": "one paragraph explaining the score — what's good, what's weak"
 }`;
 
@@ -679,7 +683,7 @@ async function main() {
   // for review without halting.
   if (critique && (
     critique.verdict === 'reject' ||
-    (typeof critique.score === 'number' && critique.score < 4)
+    (typeof critique.score === 'number' && critique.score < 6)
   )) {
     console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');
     console.log('  score:', critique.score, ' verdict:', critique.verdict);

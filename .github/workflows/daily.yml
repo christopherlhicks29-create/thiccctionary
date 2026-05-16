@@ -72,6 +72,7 @@ jobs:
             CRIT_SCORE=$(python3 -c "import json; d=json.load(open('data/.critique.json')); s=d.get('score'); print(s if s is not None else '?')")
             CRIT_VERDICT=$(python3 -c "import json; d=json.load(open('data/.critique.json')); print(d.get('verdict') or 'unknown')")
             CRIT_TEXT=$(python3 -c "import json; d=json.load(open('data/.critique.json')); t=d.get('critique') or 'No critique provided.'; print(t.replace(chr(10),' ').replace(chr(13),' ')[:500])")
+            CRIT_PHOTO_SUBJECT=$(python3 -c "import json; d=json.load(open('data/.critique.json')); print(d.get('photoSubject') or 'not described')")
           else
             CRIT_SCORE='?'
             CRIT_VERDICT='unknown'
@@ -82,6 +83,7 @@ jobs:
           echo "photographer=$PHOTOG" >> $GITHUB_OUTPUT
           echo "crit_score=$CRIT_SCORE" >> $GITHUB_OUTPUT
           echo "crit_verdict=$CRIT_VERDICT" >> $GITHUB_OUTPUT
+          echo "crit_photo_subject=$CRIT_PHOTO_SUBJECT" >> $GITHUB_OUTPUT
           # Multi-line output requires heredoc syntax
           echo "crit_text<<EOF" >> $GITHUB_OUTPUT
           echo "$CRIT_TEXT" >> $GITHUB_OUTPUT
@@ -130,6 +132,8 @@ jobs:
 
             ### 🎨 Design critique (auto)
             **Score:** ${{ steps.entry.outputs.crit_score }}/10 — **Verdict:** `${{ steps.entry.outputs.crit_verdict }}`
+
+            **Photo actually depicts:** ${{ steps.entry.outputs.crit_photo_subject }}
 
             > ${{ steps.entry.outputs.crit_text }}
 
