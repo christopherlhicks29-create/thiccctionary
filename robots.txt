@@ -3,5 +3,7 @@ Allow: /
 Disallow: /random.html
 Disallow: /entries/_template.html
 
+Disallow: /audits/
+Disallow: /tiktok-ready/
 Sitemap: https://thiccctionary.com/sitemap.xml
 Disallow: /admin/
