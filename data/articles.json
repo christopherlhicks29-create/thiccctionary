@@ -1,15 +1,21 @@
 [
-    {
-          "slug": "physics-of-thiccc",
-          "title": "The Physics of Thiccc: Why Big Things Stay Big",
-          "description": "Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.",
-          "date": "2026-05-10"
-    },
+  {
+    "slug": "thicccness-in-sound-and-power",
+    "title": "Sound and Power: The Thiccc Harmony",
+    "description": "Examining the intersection of sound and power, this week's entries highlight the unique forms of thicccness found in industrial kettledrums and power generation transformers.",
+    "date": "2026-05-16"
+  },
+  {
+    "slug": "physics-of-thiccc",
+    "title": "The Physics of Thiccc: Why Big Things Stay Big",
+    "description": "Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.",
+    "date": "2026-05-10"
+  },
   {
     "slug": "bagger-288-thicccest-machine",
     "title": "The Bagger 288: The Thiccc-est Machine on Earth",
     "description": "At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.",
-        "date": "2026-05-10"
+    "date": "2026-05-10"
   },
   {
     "slug": "foods-of-substance",
