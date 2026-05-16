@@ -1,0 +1,143 @@
+name: Auto-resolve PR conflicts (build artifacts)
+
+# When a PR has conflicts that are ONLY in deterministic build-output files
+# (entries/*.html, feed*.xml, sitemap.xml, audits/health-*.md), rebase the PR
+# branch onto main and regenerate those files from data/entries.json. The
+# PR's source-of-truth changes (entries.json, scripts/*, etc.) take precedence;
+# only the artifacts get regenerated.
+#
+# Triggers manually OR on pull_request synchronize. Skips if conflicts touch
+# non-artifact files (those still need human resolution).
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number to auto-resolve"
+        type: number
+        required: true
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    # Only run for PRs from this repo (not forks — those can't be force-pushed)
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.pull_request.head.repo.full_name == github.repository) }}
+    steps:
+      - name: Determine PR number
+        id: pr
+        run: |
+          if [ -n "${{ inputs.pr_number }}" ]; then
+            echo "num=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
+          else
+            echo "num=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Detect conflicts
+        id: detect
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR=${{ steps.pr.outputs.num }}
+          STATE=$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json mergeable,mergeStateStatus -q '.mergeStateStatus')
+          BRANCH=$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json headRefName -q '.headRefName')
+          echo "PR $PR state: $STATE, branch: $BRANCH"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          if [ "$STATE" = "DIRTY" ]; then
+            echo "has_conflict=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_conflict=false" >> $GITHUB_OUTPUT
+            echo "No conflict; nothing to do."
+          fi
+
+      - name: Inspect conflicted files
+        if: ${{ steps.detect.outputs.has_conflict == 'true' }}
+        id: inspect
+        run: |
+          BRANCH='${{ steps.detect.outputs.branch }}'
+          git fetch origin "$BRANCH" main 2>&1 | tail -3
+          git checkout -B "fix-$BRANCH" "origin/$BRANCH"
+
+          # Attempt a merge with main; capture conflicts list, then abort
+          git merge origin/main --no-commit --no-ff 2>&1 || true
+          CONFLICTS=$(git diff --name-only --diff-filter=U | sort -u)
+          echo "Conflicts in files:"
+          echo "$CONFLICTS"
+          echo "$CONFLICTS" > /tmp/conflicts.txt
+          git merge --abort 2>/dev/null || true
+
+          # Check if ALL conflicts are in build-artifact paths
+          NON_ARTIFACT=$(echo "$CONFLICTS" | grep -vE '^(entries/[0-9]{4}-[0-9]{2}-[0-9]{2}\.html|feed\.xml|feed/.*\.xml|sitemap\.xml|audits/health-[0-9]{4}-[0-9]{2}-[0-9]{2}\.md)$' || true)
+          if [ -n "$NON_ARTIFACT" ]; then
+            echo "::warning::Conflicts include non-artifact files — human review required:"
+            echo "$NON_ARTIFACT"
+            echo "safe=false" >> $GITHUB_OUTPUT
+          else
+            echo "All conflicts are in build-artifact files — auto-resolvable."
+            echo "safe=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Rebase + rebuild + force-push
+        if: ${{ steps.detect.outputs.has_conflict == 'true' && steps.inspect.outputs.safe == 'true' }}
+        run: |
+          BRANCH='${{ steps.detect.outputs.branch }}'
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+
+          # Reset to clean state, then rebase
+          git checkout -B "fix-$BRANCH" "origin/$BRANCH"
+          git rebase origin/main -X theirs || true
+
+          # Re-resolve any remaining conflicts by checking out main's version
+          # then rebuilding the artifacts from the merged entries.json
+          while [ -n "$(git diff --name-only --diff-filter=U 2>/dev/null)" ]; do
+            CONFLICTED=$(git diff --name-only --diff-filter=U)
+            echo "Force-resolving conflicts in: $CONFLICTED"
+            for f in $CONFLICTED; do
+              git checkout --theirs "$f" 2>/dev/null || git rm -f "$f"
+              git add "$f"
+            done
+            GIT_EDITOR=true git rebase --continue 2>&1 || break
+          done
+
+          # Now rebuild the artifacts from the (merged) entries.json
+          node scripts/build-entry-pages.js
+          git add -A
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-resolve: rebuild build artifacts from merged entries.json"
+          fi
+
+          # Force-push back to the PR branch
+          git push --force origin "HEAD:$BRANCH"
+
+      - name: Comment on PR (resolved)
+        if: ${{ steps.detect.outputs.has_conflict == 'true' && steps.inspect.outputs.safe == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ steps.pr.outputs.num }} --repo "$GITHUB_REPOSITORY" \
+            --body "🤖 Auto-resolver rebased onto main and regenerated build artifacts. Conflicts cleared. Ready to merge."
+
+      - name: Comment on PR (manual review needed)
+        if: ${{ steps.detect.outputs.has_conflict == 'true' && steps.inspect.outputs.safe == 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ steps.pr.outputs.num }} --repo "$GITHUB_REPOSITORY" \
+            --body "⚠️ Auto-resolver detected conflicts in non-artifact files. Manual review required."
