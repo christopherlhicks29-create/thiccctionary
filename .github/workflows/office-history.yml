@@ -1,0 +1,51 @@
+name: Generate office history bible
+
+# Wave 160: one-shot generator that produces data/office-history.json
+# from the staff bible and existing running bits. Commit the result so
+# downstream generators (office-post, daily-voice-rewrite,
+# article-comments) can read it.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-office-history'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run bible generator
+        working-directory: scripts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node generate-office-history.js 2>&1 | tee /tmp/bible.log
+
+      - name: Commit bible
+        run: |
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          rm -f data/.fire-office-history
+          git add data/office-history.json data/.fire-office-history 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "Wave 160: office history bible generated"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
