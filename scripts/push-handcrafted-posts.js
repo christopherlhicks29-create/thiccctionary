@@ -26,25 +26,25 @@ const CHANNELS = PROFILES.map(p => {
 const POSTS = [
   {
     byline: 'Eli',
-    text: `Counted hydrants on the way in. Eleven in six blocks on Bleecker. The one in front of the deli has been painted three different colors this year. It is currently cream.
+    text: `Eleven fire hydrants on the walk to work this morning. Six blocks. One outside the deli has been repainted three times since January. Currently a confident cream.
 
 Eliza`
   },
   {
     byline: 'Teddy',
-    text: `One submits, for the record, that the Saturn V is a vehicle. Five F-1 engines. 7.5 million pounds of thrust. Whatever 'not technically vehicular' meant in 1969 does not apply now.
+    text: `Re: the ongoing question of whether the Saturn V counts. It does. Five F-1 engines, 7.5 million pounds of thrust, 363 feet of vehicle. Whatever the objection in 1969 was, the Saturn V outlived it.
 
 Theodore`
   },
   {
     byline: 'Bart',
-    text: `Filed objection #50 this morning. The subject was an inflatable raft. Inflatable rafts are not thiccc. They are circumstantially thiccc. The distinction matters.
+    text: `Today's formal objection: inflatable rafts. They are not thiccc. They are temporarily thiccc, which is a separate category. The catalogue, properly understood, distinguishes.
 
 Bartholomew`
   },
   {
     byline: 'Margie',
-    text: `In Sonoma this week. Watched a tractor for ninety minutes. It was, by any reasonable accounting, doing its job. Will assign someone to file something on it eventually.
+    text: `Reporting in from Sonoma. Spent ninety minutes watching a tractor today, by my estimate one of the better tractors of its class. Will assign coverage when I return. Approximately.
 
 Margaret`
   },
@@ -60,7 +60,7 @@ async function gql(query, variables = {}) {
   return { ok: res.ok && !json.errors, status: res.status, data: json.data, errors: json.errors };
 }
 
-async function postOne(channelId, text) {
+async function postOne(channelId, text, service) {
   const mutation = `mutation CreatePost($input: CreatePostInput!) {
     createPost(input: $input) {
       ... on PostActionSuccess { post { id text dueAt } }
@@ -73,6 +73,11 @@ async function postOne(channelId, text) {
     schedulingType: 'automatic',
     mode: 'addToQueue',
   };
+  if (service === 'facebook' || service === 'facebookpage') {
+    input.metadata = { facebook: { type: 'post' } };
+  } else if (service === 'instagram' || service === 'instagrambusiness') {
+    input.metadata = { instagram: { type: 'post', shouldShareToFeed: true } };
+  }
   const r = await gql(mutation, { input });
   if (!r.ok) return { ok: false, error: JSON.stringify(r.errors || r.status).slice(0, 200) };
   const result = r.data?.createPost;
@@ -91,7 +96,7 @@ async function main() {
     let success = 0, failure = 0;
     const errors = [];
     for (const ch of CHANNELS) {
-      const r = await postOne(ch.channelId, draft.text);
+      const r = await postOne(ch.channelId, draft.text, ch.service);
       if (r.ok) { success++; console.log(`  ${ch.service}: ok (${r.postId})`); }
       else { failure++; errors.push({ channelId: ch.channelId, service: ch.service, error: r.error }); console.log(`  ${ch.service}: FAIL ${r.error}`); }
     }
