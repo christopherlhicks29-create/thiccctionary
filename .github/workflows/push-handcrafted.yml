@@ -1,0 +1,39 @@
+name: Push Handcrafted Posts
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-handcrafted'
+
+permissions:
+  contents: write
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { token: '${{ secrets.GITHUB_TOKEN }}' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Push
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+        run: node push-handcrafted-posts.js
+      - name: Cleanup sentinel
+        if: always() && hashFiles('data/.fire-handcrafted') != ''
+        run: rm -f data/.fire-handcrafted
+      - name: Commit queue updates
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Handcrafted push (auto)"
+          git add data/office-post-queue.json data/.fire-handcrafted 2>/dev/null || true
+          if git diff --cached --quiet; then echo "no changes"; else
+            git commit -m "Handcrafted posts pushed to Buffer"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
