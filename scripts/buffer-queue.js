@@ -14,7 +14,7 @@ if (!TOKEN) { console.error('FATAL: BUFFER_ACCESS_TOKEN missing'); process.exit(
 
 const ACTION = (process.env.ACTION || 'list').trim();
 const DRY = process.env.DRY_RUN === '1';
-const BUFFER_GRAPHQL = 'https://graphql.buffer.com/';
+const BUFFER_GRAPHQL = 'https://api.buffer.com/';
 
 const logLines = [];
 function log(...args) {
