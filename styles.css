@@ -1803,3 +1803,36 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 .tag-cloud-rss:hover {
   opacity: 1;
 }
+
+/* ==========================================================================
+   Article body typography (Wave 151)
+   ========================================================================== */
+.article-prose p {
+  margin: 0 0 1.5rem;
+}
+.article-prose p:last-child {
+  margin-bottom: 0;
+}
+.article-prose h3,
+.article-prose h4 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article-prose h3 + p,
+.article-prose h4 + p {
+  margin-top: 0;
+}
+.article-prose blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--oxblood);
+  font-style: italic;
+}
+.article-prose ul,
+.article-prose ol {
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+}
+.article-prose li {
+  margin-bottom: 0.5rem;
+}
