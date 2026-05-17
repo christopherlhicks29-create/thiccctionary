@@ -338,19 +338,39 @@ Schema:
   "category": "ONE OF: Vehicles & Transport | Architecture & Infrastructure | Industrial Machinery | Produce & Botanical | Foods of Substance | Domestic Goods | Engineering Marvels | Musical Instruments, pick the single best fit. This becomes the chapter the entry lives in when the catalog ships as a book."
 }`;
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
-    body: JSON.stringify({
-      model: 'gpt-4o',
-      messages: [{ role: 'system', content: sysPrompt }, { role: 'user', content: userPrompt }],
-      response_format: { type: 'json_object' },
-      temperature: 0.75,
-    }),
-  });
-  if (!res.ok) throw new Error(`Entry gen failed: ${res.status} ${await res.text()}`);
-  const data = await res.json();
-  return JSON.parse(data.choices[0].message.content);
+  // Wave 142b: retry-with-backoff. Earlier runs failed on transient OpenAI errors,
+  // leaving an orphaned image and no entry. Try 3 times with 2s/5s/10s backoff.
+  let lastErr;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
+        body: JSON.stringify({
+          model: 'gpt-4o',
+          messages: [{ role: 'system', content: sysPrompt }, { role: 'user', content: userPrompt }],
+          response_format: { type: 'json_object' },
+          temperature: 0.75,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Entry gen failed: ${res.status} ${body.slice(0, 300)}`);
+      }
+      const data = await res.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (!content) throw new Error('Entry gen returned empty content');
+      return JSON.parse(content);
+    } catch (e) {
+      lastErr = e;
+      console.warn(`[generateEntry] attempt ${attempt}/3 failed: ${e.message.slice(0, 200)}`);
+      if (attempt < 3) {
+        const wait = [2000, 5000, 10000][attempt - 1];
+        await new Promise(r => setTimeout(r, wait));
+      }
+    }
+  }
+  throw lastErr;
 }
 
 
