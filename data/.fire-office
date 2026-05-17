@@ -1,1 +1,9 @@
-2026-05-17
+{
+  "date": "2026-05-17",
+  "byline_override": "eli",
+  "topic_kind": "office",
+  "_fired": {
+    "at": "2026-05-17T02:32:41.720Z",
+    "by": "admin-panel"
+  }
+}
