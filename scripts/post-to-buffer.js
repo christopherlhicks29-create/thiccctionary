@@ -76,14 +76,17 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
     channelId,
     text,
     schedulingType: 'automatic',
-    mode: 'addToQueue',
+    // Office posts push to TOP of queue so admin-fired posts go out near-immediately
+    // instead of waiting for the next scheduled slot. Daily entries still append.
+    mode: mode === 'office' ? 'addToTop' : 'addToQueue',
   };
 
   if (mode === 'reels' && videoUrl) {
     input.assets = { video: { url: videoUrl, thumbnailUrl: thumbnailUrl || undefined } };
-  } else {
+  } else if (imageUrl) {
     input.assets = { images: [{ url: imageUrl }] };
   }
+  // else: text-only post (office mode), no assets attached
 
   const metadata = metadataForService(service, mode);
   if (metadata) input.metadata = metadata;
