@@ -4,7 +4,7 @@
     "Wheel, Parmigiano-Reggiano",
     {
       "subject": "Bagger 288",
-      "notes": "Largest land vehicle on Earth — should rate 9.5+"
+      "notes": "Largest land vehicle on Earth \u2014 should rate 9.5+"
     }
   ],
   "_authoring_notes": [
@@ -12,11 +12,6 @@
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
   "queue": [
-    {
-      "subject": "Drum, Oil 55-Gallon",
-      "query": "55 gallon oil drum rusted",
-      "category": "Industrial Machinery"
-    },
     {
       "subject": "Tractor, John Deere 9R",
       "query": "john deere tractor 9R",
