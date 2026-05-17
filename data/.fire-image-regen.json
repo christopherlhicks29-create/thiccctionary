@@ -1,5 +1,8 @@
 {
-  "dates": "2026-05-13",
+  "dates": "2026-05-17",
   "subject_override": "",
-  "_fired": {"by": "admin-button-test"}
+  "_fired": {
+    "at": "2026-05-17T19:27:31.476Z",
+    "by": "admin-panel"
+  }
 }
