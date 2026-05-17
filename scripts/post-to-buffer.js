@@ -325,7 +325,7 @@ async function main() {
   }
 
   const mode = (process.env.POST_MODE || 'morning').toLowerCase();
-  if (!['morning', 'afternoon', 'evening', 'reels', 'article'].includes(mode)) {
+  if (!['morning', 'afternoon', 'evening', 'reels', 'article', 'office'].includes(mode)) {
     console.error(`Invalid POST_MODE="${mode}".`);
     process.exit(1);
   }
@@ -385,6 +385,58 @@ async function main() {
     if (failures > 0) process.exit(1);
     return;
   }
+
+  // ---- office mode: pull latest queued staff post (Wave 118) ----
+  if (mode === 'office') {
+    const queuePath = path.join(ROOT, 'data', 'office-post-queue.json');
+    let queue;
+    try {
+      queue = JSON.parse(await fs.readFile(queuePath, 'utf8'));
+    } catch (e) {
+      console.log('No office-post-queue.json or unreadable. Skipping.');
+      return;
+    }
+    const next = queue.find(p => p.status === 'queued');
+    if (!next) {
+      console.log('No queued office posts. Skipping.');
+      return;
+    }
+    console.log(`Selected office post: ${next.id} (byline=${next.byline_id}, score=${next.score})`);
+    const text = next.text;
+    console.log(`--- Post text ---\n${text}\n---`);
+
+    const allChannels = process.env.BUFFER_PROFILE_IDS.split(',').map(s => s.trim()).filter(Boolean).map(s => {
+      const idx = s.indexOf(':');
+      if (idx === -1) return { service: null, channelId: s };
+      return { service: s.slice(0, idx).toLowerCase(), channelId: s.slice(idx + 1) };
+    });
+    // Skip Instagram for office mode (text-only post, IG requires media)
+    const channels = allChannels.filter(c => c.service !== 'instagram');
+    if (channels.length === 0) {
+      console.log('No non-Instagram channels configured for office post.');
+      return;
+    }
+
+    const results = await Promise.all(
+      channels.map(({ channelId, service }) =>
+        postToChannel({ channelId, text, imageUrl: null, videoUrl: null, thumbnailUrl: null, token: process.env.BUFFER_ACCESS_TOKEN, service, mode: 'office' })
+      )
+    );
+    let successes = 0, failures = 0;
+    for (const r of results) {
+      if (r.ok) { successes++; console.log(`OK channel ${r.channelId} (post id: ${r.postId})`); }
+      else { failures++; console.error(`FAIL channel ${r.channelId}: ${r.error || 'unknown'}`); }
+    }
+    // Mark as posted regardless (Buffer queue retries handle retries, we don't loop)
+    next.status = 'posted';
+    next.posted_at = new Date().toISOString();
+    next.success_count = successes;
+    next.failure_count = failures;
+    await fs.writeFile(queuePath, JSON.stringify(queue, null, 2) + '\n', 'utf8');
+    console.log(`Office post posted: ${successes} succeeded, ${failures} failed.`);
+    return;
+  }
+
 
   const entries = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'entries.json'), 'utf8'));
   if (entries.length === 0) {

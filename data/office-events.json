@@ -1,0 +1,72 @@
+{
+  "_comment": "Story bible for the Thiccctionary office. Running bits each staff member can reference in social posts. Auto-extended by generate-office-post.js when a post passes the quality gate. New events should be 1-2 sentences, specific, and reusable.",
+  "version": 1,
+  "running_bits": [
+    {
+      "id": "saturn-v-feud",
+      "characters": ["bart", "teddy"],
+      "summary": "Bart maintains the Saturn V is 'not a vehicle' and therefore ineligible for the catalogue. Teddy disagrees, politely, in Latin where possible. The dispute is in its 14th month."
+    },
+    {
+      "id": "margie-monaco",
+      "characters": ["margie"],
+      "summary": "The Editor-in-Chief is, again, in Monaco. She has filed copy from a yacht, a vineyard, and a small claims court there. No copy from the office in six weeks."
+    },
+    {
+      "id": "spider-untraceable",
+      "characters": ["spider"],
+      "summary": "No one in the office has met Spider. The phone number on file is in Macau. The last expense report listed 'a foundry, Sheffield' and 'one (1) ferry, unspecified.'"
+    },
+    {
+      "id": "bart-objections",
+      "characters": ["bart"],
+      "summary": "Bart has filed 47 formal objections since January. Subjects of his most recent objection include: weighted blankets, the trombone (any pitch), and 'the entire premise of submission tag #4413.'"
+    },
+    {
+      "id": "eli-window",
+      "characters": ["eli"],
+      "summary": "Eli sits by the office window. She has been quietly documenting the city's fire hydrant population. The notebook is up to 312 entries."
+    },
+    {
+      "id": "teddy-probation",
+      "characters": ["teddy"],
+      "summary": "Teddy was hired 18 months ago and is, by Bart's accounting, still on probation. Teddy is unaware of this."
+    },
+    {
+      "id": "bertram-founder",
+      "characters": ["margie", "bart"],
+      "summary": "Margie's late uncle Bertram founded the publication. The founding date is either 1962, 1971, or 'shortly after the war,' depending on which masthead Margie is referencing that week."
+    },
+    {
+      "id": "girth-quarterly",
+      "characters": ["bart"],
+      "summary": "Bart is suspected of being the anonymous author of a 1990s newsletter called Girth Quarterly. He will neither confirm nor deny. He keeps a stapled copy in his desk drawer."
+    },
+    {
+      "id": "spider-dispatches",
+      "characters": ["spider"],
+      "summary": "Spider files copy from improbable locations: Hambach lignite mine at dawn, the deck of a supertanker outside Singapore, a foundry in Sheffield, a chai stall in Jaipur."
+    },
+    {
+      "id": "office-coffee",
+      "characters": ["eli", "teddy", "bart"],
+      "summary": "The office coffee machine has been broken since March. Eli has filed three complaints. Bart says 'the previous coffee machine was better' but won't specify which one."
+    },
+    {
+      "id": "junior-cataloguer-naming",
+      "characters": ["bart", "teddy"],
+      "summary": "Bart refers to Teddy as 'the Junior Cataloguer' even when Teddy is in the room. Teddy has stopped pointing this out."
+    },
+    {
+      "id": "margie-vineyard",
+      "characters": ["margie"],
+      "summary": "Margie owns a vineyard in Sonoma. The wine is called 'Whitmore Reserve.' It has been described as 'present.'"
+    },
+    {
+      "id": "spider-brother-in-law",
+      "characters": ["bart", "spider"],
+      "summary": "Bart insists Spider is a pseudonym for his brother-in-law Reginald. He has not produced evidence. Reginald has not returned the office's calls."
+    }
+  ],
+  "auto_extensions": []
+}

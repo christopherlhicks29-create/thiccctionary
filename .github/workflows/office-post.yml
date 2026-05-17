@@ -1,0 +1,118 @@
+name: Office Post — staff social (random ~0.7/day, 7/10 quality gate)
+
+# Wave 118: extra social post bylined by an editorial staff member, on top of
+# the existing 3x/day cadence. Topic is either an office running bit or a
+# recent thiccc subject. Claude writes, gpt-4o rates 0-10. ≥7 publishes, <7
+# silently skips. Cron fires daily at 17:30 UTC with a 70% random gate.
+
+on:
+  schedule:
+    - cron: '30 17 * * *'
+  workflow_dispatch:
+    inputs:
+      byline_override:
+        description: "Force a byline: eli|teddy|bart|margie|spider"
+        type: string
+        required: false
+      topic_kind:
+        description: "Topic kind: office|thiccc|either"
+        type: string
+        required: false
+        default: either
+      dry_run:
+        description: "Dry run (skip Buffer + queue write)"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Random cadence gate (~70%)
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "manual trigger"
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ROLL=$((RANDOM % 100))
+          if [ "$ROLL" -lt 70 ]; then
+            echo "rolled $ROLL < 70, proceeding"
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "rolled $ROLL >= 70, skipping today"
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Node 20
+        if: steps.gate.outputs.proceed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate office post + rate
+        id: gen
+        if: steps.gate.outputs.proceed == 'true'
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BYLINE_OVERRIDE: ${{ inputs.byline_override }}
+          TOPIC_KIND: ${{ inputs.topic_kind }}
+          DRY_RUN: ${{ inputs.dry_run == 'true' && '1' || '' }}
+        run: |
+          set +e
+          node generate-office-post.js 2>&1 | tee /tmp/office.log
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit queue + audit log + bible extension
+        if: steps.gate.outputs.proceed == 'true' && steps.gen.outputs.exit == '0' && inputs.dry_run != 'true'
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Office (auto)"
+          git add data/office-post-queue.json data/office-events.json audits/social-quality.jsonl 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit (likely skipped on quality)"
+          else
+            git commit -m "Wave 118 office post (auto): queue + bible + audit log"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
+
+      - name: Post to Buffer
+        if: steps.gate.outputs.proceed == 'true' && steps.gen.outputs.exit == '0' && inputs.dry_run != 'true'
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: https://thiccctionary.com
+          POST_MODE: office
+        run: |
+          set +e
+          node post-to-buffer.js 2>&1 | tee /tmp/post.log
+          POST_EXIT=${PIPESTATUS[0]}
+          echo "post exit: $POST_EXIT"
+
+      - name: Commit queue status updates
+        if: steps.gate.outputs.proceed == 'true' && steps.gen.outputs.exit == '0' && inputs.dry_run != 'true'
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Office (auto)"
+          git add data/office-post-queue.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "queue unchanged"
+          else
+            git commit -m "Office post posted (status update)"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
