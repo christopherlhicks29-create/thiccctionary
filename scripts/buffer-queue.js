@@ -143,6 +143,49 @@ async function main() {
   log(`action=${ACTION} channels=${channels.length} dry=${DRY}`);
   log(`channels: ${channels.join(', ')}`);
 
+  if (ACTION === 'rest-test') {
+    log('Trying REST API...');
+    const profiles = await restListProfiles();
+    log(`Got ${profiles.length} profiles via REST`);
+    if (profiles.length === 0) { await writeLog(); return; }
+    for (const p of profiles) {
+      log(`  profile id=${p.id} service=${p.service} formatted_username=${p.formatted_username || '?'}`);
+      const pending = await restListPending(p.id);
+      log(`    ${pending.length} pending updates`);
+      pending.slice(0, 5).forEach(u => log(`      ${u.id}: "${(u.text || '').slice(0, 80).replace(/\n/g, ' ')}"`));
+    }
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ profiles, ts: new Date().toISOString() }, null, 2), 'utf8');
+    await writeLog();
+    return;
+  }
+
+  if (ACTION === 'rest-delete-by-match') {
+    const termsRaw = process.env.MATCH_TERMS || '';
+    const terms = termsRaw.split('\n').map(t => t.trim()).filter(Boolean);
+    log(`Match terms: ${JSON.stringify(terms)}`);
+    const profiles = await restListProfiles();
+    let totalMatched = 0, deleted = 0, failed = 0;
+    for (const profile of profiles) {
+      const pending = await restListPending(profile.id);
+      const matched = pending.filter(u => {
+        const t = (u.text || '').toLowerCase();
+        return terms.some(term => t.includes(term.toLowerCase()));
+      });
+      log(`Profile ${profile.formatted_username || profile.service}: ${matched.length} of ${pending.length} match`);
+      for (const u of matched) {
+        totalMatched++;
+        log(`  → ${u.id}: "${(u.text || '').slice(0, 80).replace(/\n/g, ' ')}"`);
+        if (DRY) { log('    (DRY_RUN)'); continue; }
+        const ok = await restDelete(`/updates/${u.id}/destroy.json`);
+        if (ok) deleted++; else failed++;
+      }
+    }
+    log(`\nDone. matched=${totalMatched} deleted=${deleted} failed=${failed}`);
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ matched: totalMatched, deleted, failed }, null, 2), 'utf8');
+    await writeLog();
+    return;
+  }
+
   if (ACTION === 'introspect') {
     const queries = await listAllAvailableQueries();
     const mutations = await listAllAvailableMutations();
@@ -192,6 +235,58 @@ async function main() {
 
   log(`Unknown ACTION: ${ACTION}`);
   process.exit(1);
+}
+
+
+
+// REST API fallback. Buffer's legacy REST API: api.bufferapp.com/1/...
+const REST_BASES = ['https://api.bufferapp.com/1', 'https://api.buffer.com/1'];
+
+async function restGet(pathSuffix) {
+  for (const base of REST_BASES) {
+    const url = `${base}${pathSuffix}${pathSuffix.includes('?') ? '&' : '?'}access_token=${encodeURIComponent(TOKEN)}`;
+    log(`REST GET ${base}${pathSuffix}`);
+    try {
+      const res = await fetch(url);
+      const body = await res.text();
+      if (res.ok) {
+        log(`  ok ${res.status}, ${body.length} bytes`);
+        return { ok: true, base, body, status: res.status };
+      } else {
+        log(`  ${res.status}: ${body.slice(0, 200)}`);
+      }
+    } catch (e) { log(`  error ${base}: ${e.message}`); }
+  }
+  return { ok: false };
+}
+
+async function restDelete(pathSuffix) {
+  for (const base of REST_BASES) {
+    const url = `${base}${pathSuffix}?access_token=${encodeURIComponent(TOKEN)}`;
+    log(`REST DELETE ${base}${pathSuffix}`);
+    try {
+      const res = await fetch(url, { method: 'POST' });  // Buffer DELETE uses POST to /destroy endpoints
+      const body = await res.text();
+      log(`  ${res.status}: ${body.slice(0, 200)}`);
+      if (res.ok) return true;
+    } catch (e) { log(`  error: ${e.message}`); }
+  }
+  return false;
+}
+
+async function restListProfiles() {
+  const r = await restGet('/profiles.json');
+  if (!r.ok) return [];
+  try { return JSON.parse(r.body); } catch (e) { log(`parse profiles failed`); return []; }
+}
+
+async function restListPending(profileId) {
+  const r = await restGet(`/profiles/${profileId}/updates/pending.json`);
+  if (!r.ok) return [];
+  try {
+    const data = JSON.parse(r.body);
+    return data.updates || [];
+  } catch (e) { log(`parse pending failed`); return []; }
 }
 
 main().catch(async err => {
