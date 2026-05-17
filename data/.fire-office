@@ -1,9 +1,9 @@
 {
   "date": "2026-05-17",
-  "byline_override": "eli",
+  "byline_override": "teddy",
   "topic_kind": "thiccc",
   "_fired": {
-    "at": "2026-05-17T04:37:14Z",
-    "by": "verify-tone"
+    "at": "2026-05-17T04:40:27Z",
+    "by": "voice-replacement"
   }
 }
