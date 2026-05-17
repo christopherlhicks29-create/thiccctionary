@@ -72,12 +72,20 @@ Rules:
 - 700-1000 words across 4-6 body sections.
 - Reference at least 2 of the recent entries by name with linkable slug.`;
 
-const HUMOR_GUARDRAILS = `Avoid these AI tells:
-- Three-short-clause strings ("It is heavy. It is wide. It is thiccc.")
-- "Not just X, but Y" used more than once.
-- Aspirational closer ("And so we continue cataloguing..."). End on something concrete or dryly observational.
-- Hedging adjectives ("perhaps", "arguably") more than once.
-- Em-dash overuse — at most one per paragraph.`;
+const HUMOR_GUARDRAILS = `BANNED patterns (these are AI tells; using them is worse than the article being short):
+- "Conclusion" as the last heading. Use a concrete observation title like "What X Teaches Us" or "The Question of Y" instead.
+- ANY closer that uses words like "examinations continue", "we find that", "dwells not just in", "transcends", "explores the intersection of". End on a SPECIFIC observation about a SPECIFIC object.
+- Symphonies, harmonies, orchestrators, intersections, tapestries, dances — these metaphors are all banned.
+- Three-short-clause strings ("It is heavy. It is wide. It is thiccc.").
+- "Not just X, but Y" — use once max.
+- Hedging ("perhaps", "arguably", "in a sense") — once max in the whole article.
+- Em-dash overuse — once per paragraph max.
+
+LINK STYLE: Reference entries inline as markdown links: [Bagger 288](../entries/2026-05-10.html). Do NOT write bare URLs in parentheses.
+
+GOOD closer examples (study these):
+- "The editorial board recommends standing approximately one kilometre away and taking a moment." (Bagger 288)
+- A specific, dry, observational instruction that grounds the abstract argument in a concrete object.`;
 
 function buildSystemPrompt() {
   return `You are the Thiccctionary editorial board, writing a weekly Field Report essay.
@@ -132,17 +140,24 @@ function emFromAsterisks(text) {
   return text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 }
 
-function linkifyEntries(text) {
-  return text.replace(/\/entries\/(\d{4}-\d{2}-\d{2})\.html/g, '<a href="../entries/$1.html">/entries/$1.html</a>');
+function linkifyEntries(text, entryWordByDate = {}) {
+  // First convert markdown links [text](../entries/YYYY-MM-DD.html) → anchor.
+  text = text.replace(/\[([^\]]+)\]\(\.\.\/entries\/(\d{4}-\d{2}-\d{2})\.html\)/g, '<a href="../entries/$2.html">$1</a>');
+  // Bare /entries/YYYY-MM-DD.html → anchor using the entry word as text if available, else date.
+  text = text.replace(/\/entries\/(\d{4}-\d{2}-\d{2})\.html/g, (_, d) => {
+    const word = entryWordByDate[d] || d;
+    return `<a href="../entries/${d}.html">${word}</a>`;
+  });
+  return text;
 }
 
-function renderArticleHtml({ slug, title, kicker, dek, sections, description, related_entry, publishedIso, heroImagePath, heroImageCredit }) {
+function renderArticleHtml({ slug, title, kicker, dek, sections, description, related_entry, publishedIso, heroImagePath, heroImageCredit, entryWordByDate }) {
   const titleHtml = title.replace(/thiccc/gi, m => (m[0] === 'T' ? 'Thi' : 'thi') + '<span class="ccc">ccc</span>');
   const titlePlain = title.replace(/thiccc/gi, 'thiccc');
   const dekHtml = wrapThiccc(emFromAsterisks(dek));
   const sectionsHtml = sections.map(s => {
     const heading = wrapThiccc(s.heading);
-    const paras = s.paragraphs.map(p => `<p>${wrapThiccc(emFromAsterisks(linkifyEntries(p)))}</p>`).join('\n\n');
+    const paras = s.paragraphs.map(p => `<p>${wrapThiccc(emFromAsterisks(linkifyEntries(p, entryWordByDate)))}</p>`).join('\n\n');
     return `<h3 style="font-family: var(--font-display); font-size: 1.4rem; margin: 2rem 0 0.75rem;">${heading}</h3>\n\n${paras}`;
   }).join('\n\n');
   const pretty = humanDate(publishedIso);
@@ -302,10 +317,14 @@ async function main() {
       }
     }
   }
+  const entryWordByDate = {};
+  for (const e of entries) {
+    if (e.date && e.word) entryWordByDate[e.date] = e.word;
+  }
   const html = renderArticleHtml({
     slug: article.slug, title: article.title, kicker: article.kicker, dek: article.dek,
     sections: article.sections, description: article.description, related_entry: article.related_entry,
-    publishedIso: TARGET_DATE, heroImagePath, heroImageCredit,
+    publishedIso: TARGET_DATE, heroImagePath, heroImageCredit, entryWordByDate,
   });
   const outPath = path.join(ARTICLES_DIR, `${article.slug}.html`);
   await fs.writeFile(outPath, html, 'utf8');
