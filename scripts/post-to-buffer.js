@@ -72,13 +72,13 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
     }
   `;
 
+  const isImmediate = mode === 'office';
+  const dueAt = isImmediate ? new Date(Date.now() + 30 * 1000).toISOString() : null;
   const input = {
     channelId,
     text,
-    schedulingType: 'automatic',
-    // All posts use addToQueue — Buffer rejects 'addToTop' as invalid.
-    // Office posts will publish at the next scheduled slot, not immediately.
-    mode: 'addToQueue',
+    schedulingType: isImmediate ? 'custom' : 'automatic',
+    ...(isImmediate ? { dueAt } : { mode: 'addToQueue' }),
   };
 
   if (mode === 'reels' && videoUrl) {
