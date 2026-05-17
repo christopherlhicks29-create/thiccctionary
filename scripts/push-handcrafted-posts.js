@@ -4,6 +4,10 @@
  */
 
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, '..');
 
 const TOKEN = process.env.BUFFER_ACCESS_TOKEN;
 const PROFILES = (process.env.BUFFER_PROFILE_IDS || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -78,7 +82,7 @@ async function postOne(channelId, text) {
 
 async function main() {
   // Load + extend the office-post-queue
-  const queuePath = 'data/office-post-queue.json';
+  const queuePath = path.join(ROOT, 'data', 'office-post-queue.json');
   let queue = [];
   try { queue = JSON.parse(await fs.readFile(queuePath, 'utf8')); } catch (e) { queue = []; }
 
