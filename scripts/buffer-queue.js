@@ -244,10 +244,17 @@ const REST_BASES = ['https://api.bufferapp.com/1', 'https://api.buffer.com/1'];
 
 async function restGet(pathSuffix) {
   for (const base of REST_BASES) {
-    const url = `${base}${pathSuffix}${pathSuffix.includes('?') ? '&' : '?'}access_token=${encodeURIComponent(TOKEN)}`;
+    // Try with Bearer token header (modern) AND with access_token query param (legacy)
+    const url = `${base}${pathSuffix}`;
     log(`REST GET ${base}${pathSuffix}`);
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${TOKEN}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
       const body = await res.text();
       if (res.ok) {
         log(`  ok ${res.status}, ${body.length} bytes`);
