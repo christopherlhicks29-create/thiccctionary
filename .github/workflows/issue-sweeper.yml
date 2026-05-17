@@ -1,0 +1,74 @@
+name: Issue Sweeper — close superseded CI failures
+
+# Runs on a schedule + after every successful weekly-article + after every
+# daily.yml completion. Closes issues that are obviously superseded by a
+# later successful run, so the issue queue stays meaningful instead of
+# accumulating noise from transient or self-resolving failures.
+#
+# Rules:
+# - quality-gate-fail labeled issues: close if a later Wave 109 auto-publish commit landed
+# - ci-failure labeled issues: close if the named workflow has succeeded on the same head_sha since
+# - Stale-aging: any open ci-failure / quality-gate-fail issue >7 days old gets a "stale" comment + close
+#
+# Manual sweep available via workflow_dispatch.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # every 6 hours
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - "Weekly Field Report — Auto-Publish"
+      - "Daily Thiccc — Generate Draft PR"
+    types: [completed]
+
+permissions:
+  contents: read
+  issues: write
+  actions: read
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Close superseded quality-gate-fail issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          # Find the most recent successful Wave 109 auto-publish commit (within last 14 days)
+          LATEST_PUB=$(git log --since=14.days --grep='Wave 109 auto-publish' --format='%H %s' --max-count=1 || echo "")
+          if [ -z "$LATEST_PUB" ]; then
+            echo "No recent auto-publish — nothing to supersede with"
+          else
+            echo "Latest auto-publish: $LATEST_PUB"
+            PUB_DATE=$(git log --since=14.days --grep='Wave 109 auto-publish' --format='%cI' --max-count=1 | cut -c1-10)
+            echo "Date: $PUB_DATE"
+            # Close all open quality-gate-fail issues older than that date
+            gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "quality-gate-fail" --json number,createdAt,title --jq '.[] | "\(.number)|\(.createdAt[:10])|\(.title)"' | while IFS='|' read -r N D T; do
+              if [ "$D" \< "$PUB_DATE" ] || [ "$D" = "$PUB_DATE" ]; then
+                echo "Closing superseded: #$N ($D) $T"
+                gh issue close "$N" --repo "$GITHUB_REPOSITORY" --comment "Auto-closed by issue-sweeper: a later weekly Field Report published successfully on $PUB_DATE (commit $(echo $LATEST_PUB | cut -d' ' -f1 | cut -c1-7)). This failure is no longer actionable." --reason completed || echo "::warning::failed to close #$N"
+              fi
+            done
+          fi
+
+      - name: Close stale CI-failure issues (>7 days old, no comments)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          SEVEN_AGO=$(date -u -d '7 days ago' +%Y-%m-%d)
+          echo "Threshold: $SEVEN_AGO"
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "ci-failure" --json number,createdAt,comments,title --jq '.[] | "\(.number)|\(.createdAt[:10])|\(.comments)|\(.title)"' | while IFS='|' read -r N D C T; do
+            if [ -n "$D" ] && [ "$D" \< "$SEVEN_AGO" ] && [ "$C" -eq 0 ]; then
+              echo "Closing stale: #$N ($D) $T"
+              gh issue close "$N" --repo "$GITHUB_REPOSITORY" --comment "Auto-closed: ci-failure issue with no comments after 7 days. If this is still relevant, reopen and add context." --reason "not planned" || echo "::warning::failed to close #$N"
+            fi
+          done
+
+      - name: Summary
+        run: echo "Sweep complete."

@@ -1,0 +1,25 @@
+name: One-time Issue Cleanup
+
+# Workflow_dispatch only — runs once on demand to close known stale issues.
+# Used to clean up the queue after debugging sessions that generated transient
+# quality-gate-fail issues that are now superseded.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close all open quality-gate-fail issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "quality-gate-fail" --json number,title --jq '.[] | "\(.number)|\(.title)"' | while IFS='|' read -r N T; do
+            echo "Closing #$N: $T"
+            gh issue close "$N" --repo "$GITHUB_REPOSITORY" --comment "Closed by one-time cleanup. The weekly Field Report auto-publish since switched generator to Claude and is now succeeding (Wave 112). Pre-Wave-112 quality-gate failures are obsolete." --reason completed
+          done
+          echo "Done."
