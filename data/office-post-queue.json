@@ -1,5 +1,109 @@
 [
   {
+    "id": "office-handcraft-1779032674197-margie",
+    "created": "2026-05-17T15:44:34.197Z",
+    "byline_id": "margie",
+    "byline_display": "Margie",
+    "topic_kind": "office",
+    "text": "In Sonoma this week. Watched a tractor for ninety minutes. It was, by any reasonable accounting, doing its job. Will assign someone to file something on it eventually.\n\nMargaret",
+    "score": 9,
+    "status": "failed",
+    "success_count": 0,
+    "failure_count": 2,
+    "posted_at": "2026-05-17T15:44:34.197Z",
+    "errors": [
+      {
+        "channelId": "69f62c965c4c051afa032c91",
+        "service": "twitter",
+        "error": "Invalid post: Whoops, it looks like you've posted that one recently. Unfortunately, we're not able to post the same thing again so soon!"
+      },
+      {
+        "channelId": "69f62da25c4c051afa03305a",
+        "service": "facebook",
+        "error": "Invalid post: Facebook posts require a type (post, story, or reel)."
+      }
+    ],
+    "handcrafted": true
+  },
+  {
+    "id": "office-handcraft-1779032672947-bart",
+    "created": "2026-05-17T15:44:32.947Z",
+    "byline_id": "bart",
+    "byline_display": "Bart",
+    "topic_kind": "office",
+    "text": "Filed objection #50 this morning. The subject was an inflatable raft. Inflatable rafts are not thiccc. They are circumstantially thiccc. The distinction matters.\n\nBartholomew",
+    "score": 9,
+    "status": "failed",
+    "success_count": 0,
+    "failure_count": 2,
+    "posted_at": "2026-05-17T15:44:32.947Z",
+    "errors": [
+      {
+        "channelId": "69f62c965c4c051afa032c91",
+        "service": "twitter",
+        "error": "Invalid post: Whoops, it looks like you've posted that one recently. Unfortunately, we're not able to post the same thing again so soon!"
+      },
+      {
+        "channelId": "69f62da25c4c051afa03305a",
+        "service": "facebook",
+        "error": "Invalid post: Facebook posts require a type (post, story, or reel)."
+      }
+    ],
+    "handcrafted": true
+  },
+  {
+    "id": "office-handcraft-1779032671942-teddy",
+    "created": "2026-05-17T15:44:31.942Z",
+    "byline_id": "teddy",
+    "byline_display": "Teddy",
+    "topic_kind": "office",
+    "text": "One submits, for the record, that the Saturn V is a vehicle. Five F-1 engines. 7.5 million pounds of thrust. Whatever 'not technically vehicular' meant in 1969 does not apply now.\n\nTheodore",
+    "score": 9,
+    "status": "failed",
+    "success_count": 0,
+    "failure_count": 2,
+    "posted_at": "2026-05-17T15:44:31.942Z",
+    "errors": [
+      {
+        "channelId": "69f62c965c4c051afa032c91",
+        "service": "twitter",
+        "error": "Invalid post: Whoops, it looks like you've posted that one recently. Unfortunately, we're not able to post the same thing again so soon!"
+      },
+      {
+        "channelId": "69f62da25c4c051afa03305a",
+        "service": "facebook",
+        "error": "Invalid post: Facebook posts require a type (post, story, or reel)."
+      }
+    ],
+    "handcrafted": true
+  },
+  {
+    "id": "office-handcraft-1779032670919-eli",
+    "created": "2026-05-17T15:44:30.919Z",
+    "byline_id": "eli",
+    "byline_display": "Eli",
+    "topic_kind": "office",
+    "text": "Counted hydrants on the way in. Eleven in six blocks on Bleecker. The one in front of the deli has been painted three different colors this year. It is currently cream.\n\nEliza",
+    "score": 9,
+    "status": "failed",
+    "success_count": 0,
+    "failure_count": 2,
+    "posted_at": "2026-05-17T15:44:30.919Z",
+    "errors": [
+      {
+        "channelId": "69f62c965c4c051afa032c91",
+        "service": "twitter",
+        "error": "Invalid post: Whoops, it looks like you've posted that one recently. Unfortunately, we're not able to post the same thing again so soon!"
+      },
+      {
+        "channelId": "69f62da25c4c051afa03305a",
+        "service": "facebook",
+        "error": "Invalid post: Facebook posts require a type (post, story, or reel)."
+      }
+    ],
+    "handcrafted": true
+  },
+  {
     "id": "office-1779031521972",
     "created": "2026-05-17T15:25:21.972Z",
     "byline_id": "teddy",
