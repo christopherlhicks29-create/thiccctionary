@@ -1,9 +1,9 @@
 {
   "date": "2026-05-17",
-  "byline_override": "bart",
+  "byline_override": "spider",
   "topic_kind": "office",
   "_fired": {
-    "at": "2026-05-17T04:26:56Z",
-    "by": "verify-immediate"
+    "at": "2026-05-17T04:28:24Z",
+    "by": "verify3"
   }
 }
