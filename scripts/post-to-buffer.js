@@ -72,13 +72,11 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
     }
   `;
 
-  const isImmediate = mode === 'office';
-  const dueAt = isImmediate ? new Date(Date.now() + 30 * 1000).toISOString() : null;
   const input = {
     channelId,
     text,
-    schedulingType: isImmediate ? 'manual' : 'automatic',
-    ...(isImmediate ? { dueAt } : { mode: 'addToQueue' }),
+    schedulingType: 'automatic',
+    mode: 'addToQueue',
   };
 
   if (mode === 'reels' && videoUrl) {
