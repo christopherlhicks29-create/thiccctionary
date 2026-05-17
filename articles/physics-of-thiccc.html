@@ -166,5 +166,6 @@
 </footer>
 
 <script defer src="/scripts/mobile-nav.js?v=63"></script>
+<script>if ("serviceWorker" in navigator) { window.addEventListener("load", () => { navigator.serviceWorker.register("/service-worker.js").catch(() => {}); }); }</script>
 </body>
 </html>
