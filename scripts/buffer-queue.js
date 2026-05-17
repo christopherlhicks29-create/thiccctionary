@@ -162,7 +162,7 @@ async function legacy_tryListShapes_unused(channelIds) {
 
 async function tryDeleteShapes(postId) {
   // Verified shape: deletePost(input: DeletePostInput!) where DeletePostInput.id is PostId
-  const q = `mutation M($input: DeletePostInput!) { deletePost(input: $input) { __typename ... on PostActionSuccess { post { id } } ... on MutationError { message } } }`;
+  const q = `mutation M($input: DeletePostInput!) { deletePost(input: $input) { __typename } }`;
   const r = await gql(q, { input: { id: postId } });
   if (r.ok) {
     const dp = r.data?.deletePost;
