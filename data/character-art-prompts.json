@@ -14,37 +14,49 @@
       "id": "eli-portrait",
       "description": "Eli portrait, neutral pose for masthead.",
       "output_path": "images/staff/eli-portrait.png",
-      "scene_prompt": "Portrait of Eliza 'Eli' Hartwell, Staff Writer at Thiccctionary, a woman in her early 30s with dark hair tied back loosely, intelligent observational eyes, slight knowing smile. She wears a wool cardigan over a button-up. She is holding a small notebook open in one hand, mid-thought. Background: a window with city architecture visible behind her. Composition: shoulders-up portrait, three-quarter angle, soft natural light."
+      "scene_prompt": "Portrait of Eliza 'Eli' Hartwell, Staff Writer at Thiccctionary, a woman in her early 30s with dark hair tied back loosely, intelligent observational eyes, slight knowing smile. She wears a wool cardigan over a button-up. She is holding a small notebook open in one hand, mid-thought. Background: a window with city architecture visible behind her. Composition: shoulders-up portrait, three-quarter angle, soft natural light.",
+      "generated_at": "2026-05-17T13:45:37.227Z",
+      "file_size": 2386694
     },
     {
       "id": "bart-portrait",
       "description": "Bart Pruss portrait for masthead.",
       "output_path": "images/staff/bart-portrait.png",
-      "scene_prompt": "Portrait of Bartholomew 'Bart' Pruss, Senior Cataloguer at Thiccctionary, a man in his mid-50s with thinning hair, wire-rimmed glasses, an immaculately trimmed beard. He wears a tweed jacket over a vest and tie. His expression is severe and lightly disdainful. He holds a stack of formal-looking memoranda. Background: shelves of leather-bound reference volumes. Composition: shoulders-up portrait, slight downward angle as if he is judging the viewer, three-quarter angle."
+      "scene_prompt": "Portrait of Bartholomew 'Bart' Pruss, Senior Cataloguer at Thiccctionary, a man in his mid-50s with thinning hair, wire-rimmed glasses, an immaculately trimmed beard. He wears a tweed jacket over a vest and tie. His expression is severe and lightly disdainful. He holds a stack of formal-looking memoranda. Background: shelves of leather-bound reference volumes. Composition: shoulders-up portrait, slight downward angle as if he is judging the viewer, three-quarter angle.",
+      "generated_at": "2026-05-17T13:46:15.546Z",
+      "file_size": 2870168
     },
     {
       "id": "teddy-portrait",
       "description": "Teddy Vance portrait for masthead.",
       "output_path": "images/staff/teddy-portrait.png",
-      "scene_prompt": "Portrait of Theodore 'Teddy' Vance, Junior Cataloguer at Thiccctionary, a man in his late 20s with neatly combed hair, an earnest open face, wearing a crisp shirt and sweater vest. He holds an engineering manual or technical reference book, with a small bookmark sticking out. His expression is sincere and slightly hopeful. Background: a wall with a NASA Saturn V cross-section poster pinned up. Composition: shoulders-up portrait, three-quarter angle, warm light."
+      "scene_prompt": "Portrait of Theodore 'Teddy' Vance, Junior Cataloguer at Thiccctionary, a man in his late 20s with neatly combed hair, an earnest open face, wearing a crisp shirt and sweater vest. He holds an engineering manual or technical reference book, with a small bookmark sticking out. His expression is sincere and slightly hopeful. Background: a wall with a NASA Saturn V cross-section poster pinned up. Composition: shoulders-up portrait, three-quarter angle, warm light.",
+      "generated_at": "2026-05-17T13:46:50.552Z",
+      "file_size": 2289333
     },
     {
       "id": "margie-portrait",
       "description": "Margie Whitmore-Hessian portrait for masthead.",
       "output_path": "images/staff/margie-portrait.png",
-      "scene_prompt": "Portrait of Margaret 'Margie' Whitmore-Hessian, Editor-in-Chief of Thiccctionary, a woman in her mid-60s with silver hair styled in a soft chignon, an expensive blouse, large pearl earrings, an expression of confident vagueness. She holds a glass of wine and gestures vaguely with the other hand mid-anecdote. Background: a sunny terrace overlooking a vineyard, slightly blurred. Composition: shoulders-up portrait, slight upward angle, golden hour light."
+      "scene_prompt": "Portrait of Margaret 'Margie' Whitmore-Hessian, Editor-in-Chief of Thiccctionary, a woman in her mid-60s with silver hair styled in a soft chignon, an expensive blouse, large pearl earrings, an expression of confident vagueness. She holds a glass of wine and gestures vaguely with the other hand mid-anecdote. Background: a sunny terrace overlooking a vineyard, slightly blurred. Composition: shoulders-up portrait, slight upward angle, golden hour light.",
+      "generated_at": "2026-05-17T13:47:28.456Z",
+      "file_size": 2318776
     },
     {
       "id": "hugh-portrait",
       "description": "Hugh Drumm portrait for masthead.",
       "output_path": "images/staff/hugh-portrait.png",
-      "scene_prompt": "Portrait of Hugh Drumm, Voice Editor at Thiccctionary, a man of indeterminate age between 40 and 60 with a perfectly neutral expression. Pale skin, very deliberately combed hair, monochrome shirt buttoned to the top, no tie. He holds a small tin of throat lozenges. He looks directly at the viewer with no apparent emotion. Background: an empty acoustic recording booth, slightly visible foam paneling. Composition: shoulders-up portrait, dead-center symmetrical framing, flat lighting."
+      "scene_prompt": "Portrait of Hugh Drumm, Voice Editor at Thiccctionary, a man of indeterminate age between 40 and 60 with a perfectly neutral expression. Pale skin, very deliberately combed hair, monochrome shirt buttoned to the top, no tie. He holds a small tin of throat lozenges. He looks directly at the viewer with no apparent emotion. Background: an empty acoustic recording booth, slightly visible foam paneling. Composition: shoulders-up portrait, dead-center symmetrical framing, flat lighting.",
+      "generated_at": "2026-05-17T13:48:02.462Z",
+      "file_size": 2352506
     },
     {
       "id": "spider-portrait",
       "description": "Spider Hennessy portrait — but a SILHOUETTE, since no one has met them.",
       "output_path": "images/staff/spider-portrait.png",
-      "scene_prompt": "Silhouette portrait of 'Spider' Hennessy, the Thiccctionary Field Correspondent whom no one in the office has met. The figure is in heavy shadow against a backlit window, wearing what appears to be a wide-brimmed hat and a long coat. Only the outline is visible. In the foreground on a desk: a postcard from Macau and an open expense report with 'one (1) ferry, unspecified' written on it. Composition: shoulders-up backlit silhouette, dramatic chiaroscuro, mysterious atmosphere."
+      "scene_prompt": "Silhouette portrait of 'Spider' Hennessy, the Thiccctionary Field Correspondent whom no one in the office has met. The figure is in heavy shadow against a backlit window, wearing what appears to be a wide-brimmed hat and a long coat. Only the outline is visible. In the foreground on a desk: a postcard from Macau and an open expense report with 'one (1) ferry, unspecified' written on it. Composition: shoulders-up backlit silhouette, dramatic chiaroscuro, mysterious atmosphere.",
+      "generated_at": "2026-05-17T13:48:38.014Z",
+      "file_size": 1796924
     }
   ]
 }
