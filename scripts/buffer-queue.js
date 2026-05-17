@@ -161,17 +161,16 @@ async function legacy_tryListShapes_unused(channelIds) {
 }
 
 async function tryDeleteShapes(postId) {
-  const mutations = [
-    { name: 'deletePost', query: `mutation M($id: ID!) { deletePost(input: { id: $id }) { __typename } }`, vars: { id: postId } },
-    { name: 'discardPost', query: `mutation M($id: ID!) { discardPost(input: { id: $id }) { __typename } }`, vars: { id: postId } },
-    { name: 'removePost', query: `mutation M($id: PostId!) { removePost(input: { postId: $id }) { __typename } }`, vars: { id: postId } },
-  ];
-  for (const m of mutations) {
-    log(`  trying delete shape: ${m.name}`);
-    const r = await gql(m.query, m.vars);
-    if (r.ok) { log(`    → success via ${m.name}`); return true; }
-    log(`    → ${JSON.stringify(r.errors || r.status).slice(0, 200)}`);
+  // Verified shape: deletePost(input: DeletePostInput!) where DeletePostInput.id is PostId
+  const q = `mutation M($input: DeletePostInput!) { deletePost(input: $input) { __typename ... on PostActionSuccess { post { id } } ... on MutationError { message } } }`;
+  const r = await gql(q, { input: { id: postId } });
+  if (r.ok) {
+    const dp = r.data?.deletePost;
+    if (dp?.message) { log(`    deletePost returned error: ${dp.message}`); return false; }
+    log(`    → success`);
+    return true;
   }
+  log(`    → ${JSON.stringify(r.errors || r.status).slice(0, 200)}`);
   return false;
 }
 
