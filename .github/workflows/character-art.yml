@@ -24,6 +24,9 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
 
+      - name: Install Pillow
+        run: pip install Pillow --break-system-packages || pip install Pillow
+
       - name: Resolve scene
         id: resolve
         run: |
@@ -34,10 +37,11 @@ jobs:
             echo "scene=$SCENE" >> $GITHUB_OUTPUT
           fi
 
-      - name: Generate art
+      - name: Generate art (gpt-image-1 + Claude vision QA + caption overlay)
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SCENE_ID: ${{ steps.resolve.outputs.scene }}
         run: node generate-character-art.js
 
