@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Reginald has not returned the calls. He has not returned the postcard. He has not, to my knowledge, returned from Jaipur. The catalogue, properly understood, does not employ pseudonyms. I have filed a note.\n\nBartholomew",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-17T13:40:58.438Z",
+    "success_count": 2,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1778992881665",
