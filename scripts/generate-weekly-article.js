@@ -98,6 +98,36 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   return JSON.parse(data.choices[0].message.content);
 }
 
+async function buildCorpusMemory(byline, allArticles, articlesDir) {
+  // Pull the last 3 articles by THIS byline + the last 2 by OTHER bylines.
+  // Read each article HTML and extract title + dek + closing paragraph as voice anchor.
+  const byThis = allArticles.filter(a => a.byline_id === byline.id).slice(0, 3);
+  const byOthers = allArticles.filter(a => a.byline_id && a.byline_id !== byline.id).slice(0, 2);
+  const summarize = async (a) => {
+    try {
+      const html = await fs.readFile(path.join(articlesDir, a.slug + '.html'), 'utf8');
+      const dekMatch = html.match(/<p style="font-style: italic[^"]*">(.*?)<\/p>/);
+      const dek = (dekMatch?.[1] || '').replace(/<[^>]+>/g, '').slice(0, 250);
+      // Last <p> in article-prose
+      const proseMatch = html.match(/<div class="article-prose"[^>]*>([\s\S]*?)<\/div>/);
+      let closing = '';
+      if (proseMatch) {
+        const paras = [...proseMatch[1].matchAll(/<p>(.*?)<\/p>/gs)];
+        if (paras.length) {
+          closing = paras[paras.length - 1][1].replace(/<[^>]+>/g, '').slice(0, 250);
+        }
+      }
+      return { title: a.title, date: a.date, dek, closing, byline_id: a.byline_id };
+    } catch (e) {
+      return { title: a.title, date: a.date, dek: a.description || '', closing: '', byline_id: a.byline_id };
+    }
+  };
+  return {
+    byThis: await Promise.all(byThis.map(summarize)),
+    byOthers: await Promise.all(byOthers.map(summarize)),
+  };
+}
+
 function pickStaffMember(staffData) {
   // Allow override via env (BYLINE_OVERRIDE=eli, etc.)
   const override = (process.env.BYLINE_OVERRIDE || '').trim().toLowerCase();
@@ -114,8 +144,18 @@ function pickStaffMember(staffData) {
   return staffData.staff[0];
 }
 
-function buildStaffVoicePrompt(staff, allStaff) {
+function buildStaffVoicePrompt(staff, allStaff, corpus) {
   const others = allStaff.staff.filter(x => x.id !== staff.id).map(x => `${x.name} (${x.title})`).join('; ');
+  const byThisBlock = corpus.byThis.length
+    ? `YOUR OWN RECENT PIECES (you wrote these — maintain continuity, callback to them when appropriate, evolve from them where it fits):\n${corpus.byThis.map(a => `  • "${a.title}" (${a.date})\n    Dek: ${a.dek}\n    Closed with: ${a.closing}`).join('\n')}\n\n`
+    : `YOUR OWN RECENT PIECES: none yet. This is your debut Field Report. Establish your voice clearly.\n\n`;
+  const byOthersBlock = corpus.byOthers.length
+    ? `RECENT PIECES BY YOUR COLLEAGUES (you may reference, dispute, or footnote these. The Office-style intra-staff dynamic is exactly the kind of life we want in the publication):\n${corpus.byOthers.map(a => {
+        const colleague = allStaff.staff.find(x => x.id === a.byline_id);
+        const colleagueName = colleague ? `${colleague.name} (${colleague.title})` : a.byline_id;
+        return `  • ${colleagueName} wrote "${a.title}" (${a.date})\n    Their angle: ${a.dek}`;
+      }).join('\n')}\n\n`
+    : '';
   return `BYLINE FOR THIS PIECE: ${staff.name}, ${staff.title}.
 
 VOICE FOR THIS BYLINE:
@@ -135,7 +175,9 @@ ${others}
 
 CRITICAL: Do not break character. This is ${staff.name} writing a Field Report. Not "the editorial board" generically. The byline is a person with a personality, opinions, obsessions, and quiet grievances against their colleagues. The reader should be able to tell who wrote a piece WITHOUT seeing the byline.
 
-The piece should feel like a workplace exists behind it. The Office, applied to thiccc taxonomy.`;
+The piece should feel like a workplace exists behind it. The Office, applied to thiccc taxonomy.
+
+${byThisBlock}${byOthersBlock}If a callback to one of your own past pieces fits naturally, use it — but don't force it. If a colleague's recent piece is dispute-worthy, dispute it in a footnote or aside. Your character should feel like it's developing across the corpus, not resetting each week.`;
 }
 
 const VOICE_NOTES = `You are writing as the editorial board of Thiccctionary, a satirical print-magazine-style publication that catalogs objects of unusual girth. The voice is closer to a 1962 architecture review than to a 2024 listicle. Treat the subject matter with mock gravity — the joke is the tone.
@@ -524,7 +566,9 @@ async function main() {
   }
   console.log(`[weekly] ${recent.length} recent entries: ${recent.map(e => e.word).join(', ')}`);
   const pastTitles = articles.map(a => a.title);
-  const fullSystem = buildSystemPrompt() + '\n\n---\n\n' + buildStaffVoicePrompt(byline, staffData);
+  const corpus = await buildCorpusMemory(byline, articles, ARTICLES_DIR);
+  console.log(`[weekly] corpus memory: ${corpus.byThis.length} prior pieces by ${byline.id}, ${corpus.byOthers.length} by colleagues`);
+  const fullSystem = buildSystemPrompt() + '\n\n---\n\n' + buildStaffVoicePrompt(byline, staffData, corpus);
   console.log('[weekly] calling Claude (draft 1)…');
   let article = await callClaude(
     fullSystem,
@@ -606,6 +650,7 @@ async function main() {
     title: article.title.replace(/thi<span[^>]*>ccc<\/span>/gi, 'thiccc'),
     description: article.description,
     date: TARGET_DATE,
+    byline_id: byline.id,
   });
   await fs.writeFile(ARTICLES_PATH, JSON.stringify(articles, null, 2) + '\n', 'utf8');
   console.log(`[weekly] updated data/articles.json`);

@@ -1,8 +1,10 @@
-name: Weekly Field Report — Auto-Publish
+name: Field Report, Auto-Publish (3x/week random)
 
+# Cadence: 3x/week random. Cron fires daily at 14:00 UTC, but the script
+# exits early ~57% of the time so the effective output averages 3 per week.
 on:
   schedule:
-    - cron: '0 14 * * SUN'
+    - cron: '0 14 * * *'
   workflow_dispatch:
     inputs:
       theme_override:
@@ -49,8 +51,28 @@ jobs:
           fi
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
+      - name: Random cadence gate (3x/week average)
+        id: gate
+        run: |
+          # Skip ~57% of runs to average 3/week. Manual workflow_dispatch always runs.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "push" ]; then
+            echo "manual trigger, skipping random gate"
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ROLL=$((RANDOM % 100))
+          THRESHOLD=43
+          if [ "$ROLL" -lt "$THRESHOLD" ]; then
+            echo "rolled $ROLL < $THRESHOLD, proceeding"
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "rolled $ROLL >= $THRESHOLD, skipping (no article today)"
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate Field Report (4-pass quality gate, >=8/10 required)
         id: gen
+        if: steps.gate.outputs.proceed == 'true'
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
