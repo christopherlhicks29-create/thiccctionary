@@ -1,15 +1,21 @@
 [
-    {
-          "slug": "physics-of-thiccc",
-          "title": "The Physics of Thiccc: Why Big Things Stay Big",
-          "description": "Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.",
-          "date": "2026-05-10"
-    },
+  {
+    "slug": "the-case-for-functional-girth",
+    "title": "Girth in Service of Purpose: The Thiccc Thing That Works",
+    "description": "The Thiccctionary editorial board argues that the highest order of thicccness is not decorative but load-bearing — girth as the engine of purpose itself.",
+    "date": "2026-05-16"
+  },
+  {
+    "slug": "physics-of-thiccc",
+    "title": "The Physics of Thiccc: Why Big Things Stay Big",
+    "description": "Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.",
+    "date": "2026-05-10"
+  },
   {
     "slug": "bagger-288-thicccest-machine",
     "title": "The Bagger 288: The Thiccc-est Machine on Earth",
     "description": "At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.",
-        "date": "2026-05-10"
+    "date": "2026-05-10"
   },
   {
     "slug": "foods-of-substance",
