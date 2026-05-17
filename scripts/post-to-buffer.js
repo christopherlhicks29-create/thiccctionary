@@ -176,7 +176,7 @@ You are writing a SHORT social media post about today's catalogue entry. Hard ru
 - Voice is DRY in attitude, SHORT in rhythm.
 - No em-dashes (commas, periods, colons, parens)
 - No banned phrases: embodies, transcends, intersection, tapestry, symphony, captures the essence, stands as a testament, "not just X, but Y"
-- ACCESSIBILITY: write so a first-time reader gets the joke without prior context. Inside-jokes are flavor only.
+- ACCESSIBILITY (STRICT): Apply the STRIP-NAMES TEST. Mentally replace every fictional staff name (Bertram, Phillipa, Reginald, Eli, Bart, Teddy, Margie, Hugh, Spider, etc.) with 'someone'. If the joke now makes no sense, REWRITE so the observation lands without those names.
 - Make it FUNNY about the SUBJECT, not about the office.
 - End with your first name "${byline.display}" on its own line.
 - Output the post text only. No commentary, no quotes around it.`;
