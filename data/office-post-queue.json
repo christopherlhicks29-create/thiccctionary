@@ -7,7 +7,22 @@
     "topic_kind": "office",
     "text": "Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That was 1997. The catalogue, properly understood, has not improved on this. The author remains unknown. The stapler marks are consistent with a Swingline 747.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "failed",
+    "posted_at": "2026-05-17T04:27:12.651Z",
+    "success_count": 0,
+    "failure_count": 2,
+    "errors": [
+      {
+        "channelId": "69f62c965c4c051afa032c91",
+        "status": 400,
+        "body": "{\"errors\":[{\"message\":\"Variable \\\"$input\\\" got invalid value \\\"custom\\\" at \\\"input.schedulingType\\\"; Value \\\"custom\\\" does not exist in \\\"SchedulingType\\\" enum.\",\"locations\":[{\"line\":2,\"column\":25}],\"extensions\":{\"code\":\"BAD_USER_INPUT\"}},{\"message\":\"Variable \\\"$input\\\" got invalid value { channelId: \\\"69f62c965c4c051afa032c91\\\", text: \\\"Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That was 1997. The catalogue, properly understood, has not improve"
+      },
+      {
+        "channelId": "69f62da25c4c051afa03305a",
+        "status": 400,
+        "body": "{\"errors\":[{\"message\":\"Variable \\\"$input\\\" got invalid value \\\"custom\\\" at \\\"input.schedulingType\\\"; Value \\\"custom\\\" does not exist in \\\"SchedulingType\\\" enum.\",\"locations\":[{\"line\":2,\"column\":25}],\"extensions\":{\"code\":\"BAD_USER_INPUT\"}},{\"message\":\"Variable \\\"$input\\\" got invalid value { channelId: \\\"69f62da25c4c051afa03305a\\\", text: \\\"Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That was 1997. The catalogue, properly understood, has not improve"
+      }
+    ]
   },
   {
     "id": "office-1778991781364",
