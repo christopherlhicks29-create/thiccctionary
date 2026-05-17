@@ -25,6 +25,8 @@ jobs:
         working-directory: scripts
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: evening

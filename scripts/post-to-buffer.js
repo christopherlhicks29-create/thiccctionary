@@ -131,6 +131,76 @@ function buildArticleText(article, baseUrl) {
   return fitToX(prefix, body, suffix);
 }
 
+// Wave 117: weighted byline picker for social posts. ~20% unsigned brand voice.
+function pickSocialByline() {
+  const dist = [
+    { id: 'eli', display: 'Eli', weight: 35 },
+    { id: 'teddy', display: 'Teddy', weight: 25 },
+    { id: 'bart', display: 'Bart', weight: 15 },
+    { id: 'margie', display: 'Margie', weight: 3 },
+    { id: 'spider', display: 'Spider', weight: 2 },
+    { id: null, display: null, weight: 20 },
+  ];
+  const total = dist.reduce((a, x) => a + x.weight, 0);
+  let r = Math.random() * total;
+  for (const d of dist) { r -= d.weight; if (r <= 0) return d; }
+  return dist[dist.length - 1];
+}
+
+// Wave 127: rewrite caption in a byline's voice via Claude. Returns null on failure.
+async function rewriteInBylineVoice(entry, byline, mode, baseUrl) {
+  const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+  if (!ANTHROPIC_API_KEY || !byline?.id || !byline?.display) return null;
+  let staffData;
+  try {
+    const staffRaw = await fs.readFile(path.join(ROOT, 'data', 'editorial-staff.json'), 'utf8');
+    staffData = JSON.parse(staffRaw);
+  } catch (e) { return null; }
+  const member = staffData.staff.find(x => x.id === byline.id);
+  if (!member) return null;
+
+  const def = stripHtml(entry.definitions?.[0] || entry.definition || '').slice(0, 250);
+  const example = stripHtml(entry.example || '').replace(/^"|"$/g, '').trim().slice(0, 200);
+  const MAX_BODY = 200;
+
+  const system = `You are ${member.name}, ${member.title} at Thiccctionary.
+
+VOICE: ${member.voice}
+
+OBSESSIONS: ${(member.obsessions || []).join('; ')}
+TICS: ${(member.tics || []).join('; ')}
+
+You are writing a SHORT social media post about today's catalogue entry. Hard rules:
+- Less than or equal to ${MAX_BODY} characters total INCLUDING your signature on the final line
+- Voice is dry editorial-satire, NOT modern internet voice
+- No em-dashes (commas, periods, colons, parens)
+- No banned phrases: embodies, transcends, intersection, tapestry, symphony, captures the essence, stands as a testament
+- Make it FUNNY in your specific voice. Land a dry observation.
+- End with your first name "${byline.display}" on its own line.
+- Output the post text only. No commentary, no quotes around it.`;
+
+  const user = `Today's entry:
+Subject: ${entry.word}
+Definition: ${def}
+${example ? 'Example: ' + example : ''}
+
+Write a ${mode} post in YOUR voice. Sign with your first name on the final line.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 500, system, messages: [{ role: 'user', content: user }], temperature: 0.8 }),
+    });
+    if (!res.ok) { console.error('[byline-rewrite] Claude', res.status); return null; }
+    const data = await res.json();
+    let text = (data.content?.[0]?.text || '').trim().replace(/^["']+|["']+$/g, '');
+    if (!text || text.length > MAX_BODY + 10) { console.error('[byline-rewrite] bad length', text.length); return null; }
+    text = text.replace(/ — /g, ', ').replace(/ —/g, ',').replace(/— /g, '').replace(/—/g, ', ');
+    return text;
+  } catch (e) { console.error('[byline-rewrite] error', e.message); return null; }
+}
+
 function pickEntry(entries, mode) {
   // Wave 80: TARGET_DATE override lets us backfill posts for a specific entry
   // without touching the entries.json order. Useful when entries[0] is something
@@ -211,8 +281,23 @@ function pickPunchline(entry, mode) {
 // Hand-written (or LLM-generated at entry-gen time, see QUEUED-FOLLOWUPS) per
 // entry so the caption references real specifics about THAT subject instead of
 // a universal one-liner. Falls back to template below if absent.
-function buildText(entry, mode, baseUrl) {
+async function buildText(entry, mode, baseUrl) {
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
+  // Wave 117: pick byline. Reels are always Hugh. Non-reels weighted random with ~20% unsigned.
+  const byline = mode === 'reels' ? { id: 'hugh', display: 'Hugh' } : pickSocialByline();
+  const sig = byline.display ? `\n\n${byline.display}` : '';
+
+  // Wave 127: if byline is signed and mode is a daily post, try Claude voice-rewrite first.
+  if (byline.id && byline.id !== 'hugh' && ['morning', 'afternoon', 'evening'].includes(mode)) {
+    const rewrite = await rewriteInBylineVoice(entry, byline, mode, baseUrl);
+    if (rewrite) {
+      console.log(`[buildText] voice-rewrote in ${byline.display}'s voice`);
+      const cta = `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html`;
+      const suffix = `${cta}\n\n${entryUrl}\n\n#thiccctionary`;
+      return fitToX('', rewrite, suffix);
+    }
+    console.log('[buildText] voice-rewrite failed, falling back to template + signature');
+  }
 
   // Wave 89: bespoke caption path.
   const bespoke = entry.socialCaptions && typeof entry.socialCaptions[mode] === 'string'
@@ -220,13 +305,11 @@ function buildText(entry, mode, baseUrl) {
     : '';
   if (bespoke) {
     if (mode === 'reels') {
-      return `${bespoke}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
+      return `${bespoke}${sig}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
     }
-    // Wave 99: submission CTA on non-Reels, drives participation. Reels keep
-    // the existing shape because Reels strip links.
     const cta = `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html`;
     const suffix = `${cta}\n\n${entryUrl}\n\n#thiccctionary`;
-    return fitToX('', bespoke, suffix);
+    return fitToX('', bespoke + sig, suffix);
   }
 
   // Fallback path: Wave 86/87 templated captions.
@@ -250,9 +333,8 @@ function buildText(entry, mode, baseUrl) {
   }
 
   if (mode === 'reels') {
-    // Reels strip links. Example + punchline + word.
     const lead = example || def0;
-    return `${lead}\n\n${punch}\n\n${entry.word}.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
+    return `${lead}\n\n${punch}\n\n${entry.word}.${sig}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
   }
 
   // morning, rotate 4 chassis by day-of-year. Each one is a clearly distinct
@@ -488,7 +570,7 @@ async function main() {
     console.log(`Mode "${mode}" filters to ${channels.length} of ${allChannels.length} channels.`);
   }
 
-  const text = buildText(entry, mode, baseUrl);
+  const text = await buildText(entry, mode, baseUrl);
   if (mode === 'reels') {
     console.log(`Posting Reel to ${channels.length} channels with video: ${videoUrl}`);
   } else {
