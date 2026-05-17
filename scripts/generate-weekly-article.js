@@ -52,7 +52,7 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${OPENAI_API_KEY}` },
-    body: JSON.stringify({ model, messages, response_format: { type: 'json_object' }, temperature: 0.85 }),
+    body: JSON.stringify({ model, messages, response_format: { type: 'json_object' }, temperature: 0.55 }),
   });
   if (!res.ok) { const text = await res.text(); throw new Error(`OpenAI ${res.status}: ${text}`); }
   const data = await res.json();
@@ -317,6 +317,46 @@ ${relatedBlock}
 }
 
 
+
+const BANNED_PHRASES = [
+  /\bembod(y|ies|ied|ying)\b/i,
+  /\bencaps(u|o)l(a|i)t(e|es|ed|ing)\b/i,
+  /\bintersect(ion|s|ing)?\b/i,
+  /\btranscend(s|ed|ing|ence)?\b/i,
+  /\btapestr(y|ies)\b/i,
+  /\b(symphony|harmon(y|ies)|orchestrat(or|ing|ed))\b/i,
+  /\b(weaves|woven|threads through)\b/i,
+  /\bdance(s|d|ing)?\b/i,
+  /\bchoreograph(y|ed|ing)\b/i,
+  /\b(captures|captures the essence)\b/i,
+  /\b(stands as a testament|serves as a reminder|speaks to)\b/i,
+  /\b(dwells|resides|makes its home)\b/i,
+  /\bresonating force\b/i,
+  /\bquiet power\b/i,
+  /\binvites engagement\b/i,
+  /\bsonic signature\b/i,
+  /\bauditory realm\b/i,
+  /\bauditory reflection\b/i,
+  /\bdemand(s|ing)? recognition\b/i,
+];
+
+function preFilterDraft(article) {
+  const text = [
+    article.title || '',
+    article.dek || '',
+    ...(article.sections || []).flatMap(sec => [sec.heading, ...(sec.paragraphs || [])]),
+  ].join('\n');
+  const hits = [];
+  for (const re of BANNED_PHRASES) {
+    const m = text.match(re);
+    if (m) hits.push(m[0]);
+  }
+  // Also: bare /entries/ URLs (not inside markdown link or anchor tag)
+  const bareUrl = text.match(/(?<!\]\()\.\.\/entries\/\d{4}-\d{2}-\d{2}\.html(?!\))/);
+  if (bareUrl) hits.push('bare entry URL: ' + bareUrl[0]);
+  return hits;
+}
+
 async function critiqueDraft(article) {
   const fullText = [
     article.title || '',
@@ -398,8 +438,24 @@ async function main() {
     { role: 'user', content: buildUserPrompt(recent, pastTitles) },
   ]);
 
-  // Self-critique loop: evaluate against banned patterns, rewrite if it fails.
+  // Self-critique loop: regex pre-filter first (cheap, deterministic), then critic.
   for (let attempt = 1; attempt <= 4; attempt++) {
+    const banHits = preFilterDraft(article);
+    if (banHits.length > 0) {
+      console.log(`[weekly] pre-filter pass ${attempt} hit banned phrases: ${banHits.join(', ')}`);
+      if (attempt === 4) {
+        console.error('[weekly] FAILED pre-filter after 4 attempts — exiting non-zero');
+        process.exit(1);
+      }
+      console.log(`[weekly] rewriting (pre-filter fail, draft ${attempt + 1})…`);
+      article = await callOpenAI([
+        { role: 'system', content: buildSystemPrompt() },
+        { role: 'user', content: buildUserPrompt(recent, pastTitles) },
+        { role: 'assistant', content: JSON.stringify(article) },
+        { role: 'user', content: `Your last draft used these BANNED phrases verbatim — strip them and any related phrasing, then return a complete new JSON article:\n${banHits.map(p => '  - "' + p + '"').join('\n')}` },
+      ]);
+      continue;
+    }
     const critique = await critiqueDraft(article);
     console.log(`[weekly] critique pass ${attempt} verdict: ${critique.verdict} (score ${critique.score}/10)`);
     if (critique.verdict === 'pass') break;
