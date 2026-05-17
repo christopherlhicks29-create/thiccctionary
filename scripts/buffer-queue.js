@@ -210,14 +210,20 @@ async function main() {
     }
 
     // Also introspect the PostsInput type if it exists
-    const inputTypes = ['PostsInput', 'PostsFilter', 'PostFilter', 'GetPostsInput'];
+    const inputTypes = ['PostsInput', 'PostsFiltersInput', 'PostsFilter', 'DeletePostInput', 'PostsResults', 'Post', 'OrganizationId', 'Account'];
     const typeInfos = {};
     for (const t of inputTypes) {
       const r = await gql(`{ __type(name: "${t}") { name inputFields { name type { name kind ofType { name kind } } } } }`);
       if (r.ok && r.data.__type) { typeInfos[t] = r.data.__type; log(`Input type ${t}: ` + JSON.stringify(r.data.__type)); }
     }
 
-    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ queries, mutations, queryDetails, deleteDetails, typeInfos }, null, 2), 'utf8');
+    // Try to get account info (which should contain orgId)
+    const acctR = await gql('{ account { id name organizations { id name } } }');
+    let account = null;
+    if (acctR.ok) { account = acctR.data.account; log('account: ' + JSON.stringify(account).slice(0, 300)); }
+    else { log('account query failed: ' + JSON.stringify(acctR.errors || acctR.status).slice(0, 200)); }
+
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ queries, mutations, queryDetails, deleteDetails, typeInfos, account }, null, 2), 'utf8');
     await writeLog();
     return;
   }
