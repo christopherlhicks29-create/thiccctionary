@@ -1,7 +1,0 @@
-{
-  "action": "delete-by-match",
-  "match_terms": [
-    "Reginald has not returned"
-  ],
-  "_t": 1779032240.8538802
-}
