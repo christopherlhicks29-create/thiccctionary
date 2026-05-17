@@ -61,13 +61,13 @@ jobs:
           DRY_RUN: ${{ (inputs.dry_run == 'true' && '1') || steps.sentinel.outputs.dry }}
         run: node buffer-queue.js
 
-      - name: Save list output as artifact
+      - name: Save output as artifact
         if: always()
         run: |
-          if [ -f /tmp/buffer-queue.json ]; then
-            mkdir -p audits/buffer-queue
-            cp /tmp/buffer-queue.json audits/buffer-queue/$(date -u +%Y-%m-%d-%H%M%S).json
-          fi
+          mkdir -p audits/buffer-queue
+          TS=$(date -u +%Y-%m-%d-%H%M%S)
+          [ -f /tmp/buffer-queue.json ] && cp /tmp/buffer-queue.json audits/buffer-queue/$TS.json || true
+          [ -f /tmp/buffer-queue.log ] && cp /tmp/buffer-queue.log audits/buffer-queue/$TS.log || true
 
       - name: Cleanup sentinel
         if: always() && hashFiles('data/.fire-buffer-queue.json') != ''

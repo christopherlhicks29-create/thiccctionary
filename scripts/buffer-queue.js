@@ -1,31 +1,27 @@
 /**
- * Buffer queue manager.
+ * Buffer queue manager — uses GraphQL to list/delete posts. v2.
  *
- * Modes (env: ACTION):
- *   list         — list scheduled posts across channels, returns JSON
- *   delete-by-match — delete posts whose text contains any string in MATCH_TERMS (newline-separated)
- *   delete-id    — delete a single post by id (POST_ID)
- *
- * Env:
- *   BUFFER_ACCESS_TOKEN — required
- *   BUFFER_PROFILE_IDS — channel ids, comma separated (same format as post-to-buffer)
- *   ACTION             — list | delete-by-match | delete-id
- *   MATCH_TERMS        — newline-separated case-insensitive substrings to match for delete-by-match
- *   POST_ID            — for delete-id mode
- *   DRY_RUN            — '1' to skip the actual delete call
+ * Always writes /tmp/buffer-queue.log with full activity for debugging.
  */
+
+import fs from 'node:fs/promises';
 
 const TOKEN = process.env.BUFFER_ACCESS_TOKEN;
 const PROFILES = (process.env.BUFFER_PROFILE_IDS || '').split(',').map(s => s.trim()).filter(Boolean);
 if (!TOKEN) { console.error('FATAL: BUFFER_ACCESS_TOKEN missing'); process.exit(1); }
-if (PROFILES.length === 0) { console.error('FATAL: BUFFER_PROFILE_IDS empty'); process.exit(1); }
 
 const ACTION = (process.env.ACTION || 'list').trim();
 const DRY = process.env.DRY_RUN === '1';
 const BUFFER_GRAPHQL = 'https://graphql.buffer.com/';
 
+const logLines = [];
+function log(...args) {
+  const line = args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' ');
+  console.log(line);
+  logLines.push(line);
+}
+
 function channelIdsFromProfiles() {
-  // BUFFER_PROFILE_IDS is "service:channelId,service:channelId" — strip the service prefix
   return PROFILES.map(p => {
     const i = p.indexOf(':');
     return i >= 0 ? p.slice(i + 1) : p;
@@ -39,115 +35,156 @@ async function gql(query, variables = {}) {
     body: JSON.stringify({ query, variables }),
   });
   const json = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`Buffer ${res.status}: ${JSON.stringify(json).slice(0, 400)}`);
-  if (json.errors) throw new Error(`GraphQL errors: ${JSON.stringify(json.errors).slice(0, 400)}`);
-  return json.data;
+  return { ok: res.ok && !json.errors, status: res.status, data: json.data, errors: json.errors };
 }
 
-async function listPostsForChannel(channelId) {
-  // Try a known Buffer query — get scheduled posts for a channel
-  const query = `
-    query GetPosts($channelId: ChannelId!) {
-      posts(input: { channelIds: [$channelId], status: queue }) {
-        edges {
-          node {
-            id
-            text
-            dueAt
-            status
-            channel { id name service }
-          }
-        }
-      }
+async function introspectQueryField(fieldName) {
+  // Get the schema info for a top-level Query field
+  const q = `{ __schema { queryType { fields { name args { name type { name kind ofType { name kind } } } type { name kind ofType { name kind } } } } } }`;
+  const r = await gql(q);
+  if (!r.ok) { log('introspect failed:', JSON.stringify(r.errors || r.status).slice(0, 200)); return null; }
+  const field = r.data.__schema.queryType.fields.find(f => f.name === fieldName);
+  return field;
+}
+
+async function listAllAvailableQueries() {
+  const q = `{ __schema { queryType { fields { name } } } }`;
+  const r = await gql(q);
+  if (!r.ok) { log('list queries failed'); return []; }
+  return r.data.__schema.queryType.fields.map(f => f.name);
+}
+
+async function listAllAvailableMutations() {
+  const q = `{ __schema { mutationType { fields { name } } } }`;
+  const r = await gql(q);
+  if (!r.ok) return [];
+  return r.data.__schema.mutationType.fields.map(f => f.name);
+}
+
+async function tryListShapes(channelIds) {
+  // Try multiple query shapes until one works
+  const shapes = [
+    // Shape 1: posts(input: {channelIds, status})
+    {
+      name: 'posts-input',
+      query: `query Q($cids: [ChannelId!]!) { posts(input: { channelIds: $cids, status: queue }) { edges { node { id text dueAt } } } }`,
+      vars: { cids: channelIds },
+      extract: d => (d?.posts?.edges || []).map(e => e.node),
+    },
+    // Shape 2: scheduledPosts(channelIds:[ID])
+    {
+      name: 'scheduledPosts',
+      query: `query Q($cids: [String!]!) { scheduledPosts(channelIds: $cids) { id text dueAt } }`,
+      vars: { cids: channelIds },
+      extract: d => d?.scheduledPosts || [],
+    },
+    // Shape 3: findPosts (channelIds, statuses)
+    {
+      name: 'findPosts',
+      query: `query Q($cids: [String!]!) { findPosts(channelIds: $cids, statuses: [queue]) { id text dueAt } }`,
+      vars: { cids: channelIds },
+      extract: d => d?.findPosts || [],
+    },
+    // Shape 4: simplified posts(channelIds)
+    {
+      name: 'posts-simple',
+      query: `query Q($cids: [String!]!) { posts(channelIds: $cids) { id text dueAt status } }`,
+      vars: { cids: channelIds },
+      extract: d => d?.posts || [],
+    },
+  ];
+
+  for (const shape of shapes) {
+    log(`Trying query shape: ${shape.name}`);
+    const r = await gql(shape.query, shape.vars);
+    if (r.ok) {
+      const posts = shape.extract(r.data);
+      log(`  → success, ${posts.length} posts`);
+      return { shape: shape.name, posts };
+    } else {
+      log(`  → ${JSON.stringify(r.errors || r.status).slice(0, 200)}`);
     }
-  `;
-  try {
-    const data = await gql(query, { channelId });
-    return (data?.posts?.edges || []).map(e => e.node);
-  } catch (e) {
-    // Buffer's schema sometimes differs — try alternative shape
-    console.error(`[buffer-queue] list for ${channelId} failed: ${e.message.slice(0, 200)}`);
-    return [];
   }
+  return { shape: null, posts: [] };
 }
 
-async function deletePost(postId) {
-  const mutation = `
-    mutation DeletePost($postId: PostId!) {
-      deletePost(input: { id: $postId }) {
-        ... on PostActionSuccess { post { id } }
-        ... on MutationError { message }
-      }
-    }
-  `;
-  const data = await gql(mutation, { postId });
-  return data?.deletePost;
+async function tryDeleteShapes(postId) {
+  const mutations = [
+    { name: 'deletePost', query: `mutation M($id: ID!) { deletePost(input: { id: $id }) { __typename } }`, vars: { id: postId } },
+    { name: 'discardPost', query: `mutation M($id: ID!) { discardPost(input: { id: $id }) { __typename } }`, vars: { id: postId } },
+    { name: 'removePost', query: `mutation M($id: PostId!) { removePost(input: { postId: $id }) { __typename } }`, vars: { id: postId } },
+  ];
+  for (const m of mutations) {
+    log(`  trying delete shape: ${m.name}`);
+    const r = await gql(m.query, m.vars);
+    if (r.ok) { log(`    → success via ${m.name}`); return true; }
+    log(`    → ${JSON.stringify(r.errors || r.status).slice(0, 200)}`);
+  }
+  return false;
+}
+
+async function writeLog() {
+  await fs.writeFile('/tmp/buffer-queue.log', logLines.join('\n') + '\n', 'utf8');
 }
 
 async function main() {
   const channels = channelIdsFromProfiles();
-  console.log(`[buffer-queue] action=${ACTION} channels=${channels.length} dry=${DRY}`);
+  log(`action=${ACTION} channels=${channels.length} dry=${DRY}`);
+  log(`channels: ${channels.join(', ')}`);
+
+  if (ACTION === 'introspect') {
+    const queries = await listAllAvailableQueries();
+    const mutations = await listAllAvailableMutations();
+    log(`Available queries (${queries.length}):`); queries.forEach(q => log('  ' + q));
+    log(`Available mutations (${mutations.length}):`); mutations.forEach(m => log('  ' + m));
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ queries, mutations }, null, 2), 'utf8');
+    await writeLog();
+    return;
+  }
+
+  const { shape, posts } = await tryListShapes(channels);
+  if (!shape) {
+    log('NO QUERY SHAPE WORKED. Buffer GraphQL schema may have changed.');
+    await writeLog();
+    process.exit(1);
+  }
 
   if (ACTION === 'list') {
-    const all = [];
-    for (const ch of channels) {
-      const posts = await listPostsForChannel(ch);
-      all.push(...posts);
-    }
-    console.log(`\nFound ${all.length} scheduled posts:`);
-    for (const p of all) {
-      const text = (p.text || '').slice(0, 120).replace(/\n/g, ' ');
-      console.log(`  id=${p.id} ch=${p.channel?.service}:${p.channel?.id?.slice(0,6)}... due=${p.dueAt || '?'} text="${text}"`);
-    }
-    // Write to stdout-readable file for the workflow to pick up
-    const fs = await import('node:fs/promises');
-    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify(all, null, 2), 'utf8');
+    log(`\n${posts.length} posts found:`);
+    posts.forEach(p => log(`  id=${p.id} text="${(p.text||'').slice(0,80).replace(/\n/g,' ')}"`));
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify(posts, null, 2), 'utf8');
+    await writeLog();
     return;
   }
 
   if (ACTION === 'delete-by-match') {
     const termsRaw = process.env.MATCH_TERMS || '';
     const terms = termsRaw.split('\n').map(t => t.trim()).filter(Boolean);
-    if (terms.length === 0) { console.error('FATAL: MATCH_TERMS empty'); process.exit(1); }
-    console.log(`Match terms (${terms.length}):`);
-    terms.forEach(t => console.log(`  "${t}"`));
-
-    const all = [];
-    for (const ch of channels) {
-      const posts = await listPostsForChannel(ch);
-      all.push(...posts);
-    }
-    const targets = all.filter(p => {
+    log(`\nMatch terms (${terms.length}): ${JSON.stringify(terms)}`);
+    const targets = posts.filter(p => {
       const t = (p.text || '').toLowerCase();
       return terms.some(term => t.includes(term.toLowerCase()));
     });
-    console.log(`\nMatched ${targets.length} posts to delete:`);
+    log(`\nMatched ${targets.length} of ${posts.length}:`);
     let success = 0, fail = 0;
     for (const p of targets) {
-      const preview = (p.text || '').slice(0, 80).replace(/\n/g, ' ');
-      console.log(`  → ${p.id}: "${preview}…"`);
-      if (DRY) { console.log('    (DRY_RUN, skipped)'); continue; }
-      try {
-        const r = await deletePost(p.id);
-        if (r?.post?.id) { success++; console.log('    deleted'); }
-        else { fail++; console.log(`    failed: ${JSON.stringify(r).slice(0,200)}`); }
-      } catch (e) { fail++; console.error(`    error: ${e.message.slice(0,200)}`); }
+      log(`  → ${p.id}: "${(p.text||'').slice(0,80).replace(/\n/g,' ')}"`);
+      if (DRY) { log('    (DRY_RUN)'); continue; }
+      const ok = await tryDeleteShapes(p.id);
+      if (ok) success++; else fail++;
     }
-    console.log(`\nDone. ${success} deleted, ${fail} failed.`);
+    log(`\nDone. deleted=${success} failed=${fail}`);
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ matched: targets.length, deleted: success, failed: fail }, null, 2), 'utf8');
+    await writeLog();
     return;
   }
 
-  if (ACTION === 'delete-id') {
-    const id = process.env.POST_ID;
-    if (!id) { console.error('FATAL: POST_ID required'); process.exit(1); }
-    if (DRY) { console.log(`DRY_RUN: would delete ${id}`); return; }
-    const r = await deletePost(id);
-    console.log(JSON.stringify(r, null, 2));
-    return;
-  }
-
-  console.error(`Unknown ACTION: ${ACTION}`);
+  log(`Unknown ACTION: ${ACTION}`);
   process.exit(1);
 }
 
-main().catch(err => { console.error('[buffer-queue] FATAL:', err.message); process.exit(1); });
+main().catch(async err => {
+  log('FATAL:', err.message);
+  try { await writeLog(); } catch (e) {}
+  process.exit(1);
+});
