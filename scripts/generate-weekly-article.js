@@ -349,9 +349,20 @@ FAIL THE DRAFT if any of these are present:
 - Modern internet voice creeping in
 - Title that's abstract and generic ("Sound and Power", "The Thiccc Harmony")
 
+ALLOWED PATTERNS (do NOT flag these — they are the canonical voice anchors):
+- "The editorial board recommends" / "the editorial board notes" — this IS the voice (see Bagger 288)
+- Mock-academic phrasings like "in the most literal sense", "by dry mass", "structural commitment"
+- Specific dry instructions to the reader as closers (e.g. "Stand approximately one kilometre away")
+- Italicized words for emphasis (rendered as *word* in source)
+- Em-dashes used sparingly for timing
+- "Field report" / "editorial" framings
+- Citing concrete numbers from real engineering facts
+
 PASS only if the draft has the dry, mock-academic register of the Bagger 288 sample and contains zero banned patterns.
 
-Be a tough editor. Reject easily. The cost of a bad article publishing is high; the cost of one extra rewrite is low.`;
+Be a tough editor, but be ACCURATE. Quote the exact offending phrase when flagging an issue. If you claim a metaphor is present, quote the sentence containing it. Do not hallucinate failures — every issue must cite a verbatim string from the draft.
+
+The cost of a bad article publishing is high. The cost of one extra rewrite is low. But the cost of falsely failing a good draft and shipping nothing is also high — be precise.`;
 
   const userMsg = `DRAFT TO REVIEW:\n\n${fullText}\n\nReturn JSON only.`;
 
