@@ -7,7 +7,10 @@
     "topic_kind": "office",
     "text": "Machine down since March. Bart mourns a predecessor he cannot name or date. This writer has filed three complaints, none acknowledged. The weather outside is fine, actually. Only in here is it March forever.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-17T02:32:58.980Z",
+    "success_count": 0,
+    "failure_count": 2
   },
   {
     "id": "office-1778982368431",
