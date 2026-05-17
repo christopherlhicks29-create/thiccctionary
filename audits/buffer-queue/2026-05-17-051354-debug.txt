@@ -1,0 +1,40 @@
+Run timestamp: 2026-05-17-051354
+ACTION env: rest-test
+BUFFER_ACCESS_TOKEN set: yes
+BUFFER_PROFILE_IDS set: yes
+
+=== ls /tmp ===
+total 68
+drwxrwxrwt 14 root   root   12288 May 17 05:13 .
+drwxr-xr-x 23 root   root    4096 May 17 05:10 ..
+drwxrwxrwt  2 root   root    4096 May 17 05:10 .ICE-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:10 .X11-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:10 .XIM-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:10 .font-unix
+-rw-r--r--  1 runner runner   465 May 17 05:13 buffer-queue.log
+prwx------  1 runner runner     0 May 17 05:13 clr-debug-pipe-2118-21012-in
+prwx------  1 runner runner     0 May 17 05:13 clr-debug-pipe-2118-21012-out
+prwx------  1 runner runner     0 May 17 05:13 clr-debug-pipe-2133-21124-in
+prwx------  1 runner runner     0 May 17 05:13 clr-debug-pipe-2133-21124-out
+srw-------  1 runner runner     0 May 17 05:13 dotnet-diagnostic-2118-21012-socket
+srw-------  1 runner runner     0 May 17 05:13 dotnet-diagnostic-2133-21124-socket
+drwx------  2 root   root    4096 May 17 05:10 snap-private-tmp
+drwx------  3 root   root    4096 May 17 05:10 systemd-private-5f60f2c5ba2248e185a586bff17f254a-ModemManager.service-bNx4CT
+drwx------  3 root   root    4096 May 17 05:10 systemd-private-5f60f2c5ba2248e185a586bff17f254a-chrony.service-8Qc8Jt
+drwx------  3 root   root    4096 May 17 05:10 systemd-private-5f60f2c5ba2248e185a586bff17f254a-haveged.service-6rRYAu
+drwx------  3 root   root    4096 May 17 05:10 systemd-private-5f60f2c5ba2248e185a586bff17f254a-polkit.service-DaTqnP
+drwx------  3 root   root    4096 May 17 05:10 systemd-private-5f60f2c5ba2248e185a586bff17f254a-systemd-logind.service-5mcxzN
+
+=== /tmp/buffer-queue.log ===
+[buffer-queue] script started at 2026-05-17T05:13:53.858Z
+action=rest-test channels=3 dry=false
+channels: 69f62c965c4c051afa032c91, 69f62da25c4c051afa03305a, 69f62e0e5c4c051afa033677
+Trying REST API...
+REST GET https://api.bufferapp.com/1/profiles.json
+  401: {"error":"OIDC tokens are not accepted for direct API access","code":401}
+REST GET https://api.buffer.com/1/profiles.json
+  400: {"errors":[{"message":"Unsupported Content-Type"}]}
+Got 0 profiles via REST
+
+=== /tmp/buffer-queue.json ===
+MISSING
