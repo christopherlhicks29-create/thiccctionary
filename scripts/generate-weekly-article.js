@@ -635,8 +635,8 @@ async function main() {
   for (const e of entries) {
     if (e.date && e.word) entryWordByDate[e.date] = e.word;
   }
-  // Override kicker to include byline + title
-  const dynamicKicker = `${byline.name} · ${byline.title} · Field Report`;
+  // Override kicker to include byline (linked to masthead) + title
+  const dynamicKicker = `<a href="/about/masthead/#${byline.id}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor;">${byline.name}</a> · ${byline.title} · Field Report`;
   const html = renderArticleHtml({
     slug: article.slug, title: article.title, kicker: dynamicKicker, dek: article.dek,
     sections: article.sections, description: article.description, related_entry: article.related_entry,
