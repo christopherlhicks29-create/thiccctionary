@@ -76,9 +76,9 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
     channelId,
     text,
     schedulingType: 'automatic',
-    // Office posts push to TOP of queue so admin-fired posts go out near-immediately
-    // instead of waiting for the next scheduled slot. Daily entries still append.
-    mode: mode === 'office' ? 'addToTop' : 'addToQueue',
+    // All posts use addToQueue — Buffer rejects 'addToTop' as invalid.
+    // Office posts will publish at the next scheduled slot, not immediately.
+    mode: 'addToQueue',
   };
 
   if (mode === 'reels' && videoUrl) {
@@ -512,11 +512,11 @@ async function main() {
       if (r.ok) { successes++; console.log(`OK channel ${r.channelId} (post id: ${r.postId})`); }
       else { failures++; console.error(`FAIL channel ${r.channelId}: ${r.error || 'unknown'}`); }
     }
-    // Mark as posted regardless (Buffer queue retries handle retries, we don't loop)
-    next.status = 'posted';
+    next.status = failures > 0 && successes === 0 ? 'failed' : 'posted';
     next.posted_at = new Date().toISOString();
     next.success_count = successes;
     next.failure_count = failures;
+    next.errors = results.filter(r => !r.ok).map(r => ({ channelId: r.channelId, status: r.status, body: (r.body || '').slice(0, 500) }));
     await fs.writeFile(queuePath, JSON.stringify(queue, null, 2) + '\n', 'utf8');
     console.log(`Office post posted: ${successes} succeeded, ${failures} failed.`);
     return;
