@@ -7,7 +7,11 @@
     "topic_kind": "thiccc",
     "text": "Parmigiano-Reggiano wheel: 84 lbs, 18 months minimum, legally regulated curvature. The catalogue, properly understood, does not accept food. And yet here we are. I have filed the objection. It will be ignored.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-17T04:41:23.880Z",
+    "success_count": 2,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1778992842727",
