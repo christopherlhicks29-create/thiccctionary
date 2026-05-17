@@ -1,0 +1,65 @@
+Run timestamp: 2026-05-17-052450
+ACTION env: delete-by-match
+BUFFER_ACCESS_TOKEN set: yes
+BUFFER_PROFILE_IDS set: yes
+
+=== ls /tmp ===
+total 76
+drwxrwxrwt 15 root   root   12288 May 17 05:24 .
+drwxr-xr-x 23 root   root    4096 May 17 05:24 ..
+drwxrwxrwt  2 root   root    4096 May 17 05:24 .ICE-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:24 .X11-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:24 .XIM-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:24 .font-unix
+-rw-r--r--  1 runner runner    49 May 17 05:24 buffer-queue.json
+-rw-r--r--  1 runner runner  3321 May 17 05:24 buffer-queue.log
+prwx------  1 runner runner     0 May 17 05:24 clr-debug-pipe-2122-2441-in
+prwx------  1 runner runner     0 May 17 05:24 clr-debug-pipe-2122-2441-out
+prwx------  1 runner runner     0 May 17 05:24 clr-debug-pipe-2138-2620-in
+prwx------  1 runner runner     0 May 17 05:24 clr-debug-pipe-2138-2620-out
+srw-------  1 runner runner     0 May 17 05:24 dotnet-diagnostic-2122-2441-socket
+srw-------  1 runner runner     0 May 17 05:24 dotnet-diagnostic-2138-2620-socket
+drwx------  2 root   root    4096 May 17 05:24 snap-private-tmp
+drwx------  3 root   root    4096 May 17 05:24 systemd-private-d7cde12fea924f8c808faf22294b6833-ModemManager.service-UnNpDX
+drwx------  3 root   root    4096 May 17 05:24 systemd-private-d7cde12fea924f8c808faf22294b6833-chrony.service-UlmJBf
+drwx------  3 root   root    4096 May 17 05:24 systemd-private-d7cde12fea924f8c808faf22294b6833-haveged.service-5ZgnxX
+drwx------  3 root   root    4096 May 17 05:24 systemd-private-d7cde12fea924f8c808faf22294b6833-polkit.service-O84qYZ
+
+=== /tmp/buffer-queue.log ===
+[buffer-queue] script started at 2026-05-17T05:24:48.612Z
+action=delete-by-match channels=3 dry=false
+channels: 69f62c965c4c051afa032c91, 69f62da25c4c051afa03305a, 69f62e0e5c4c051afa033677
+org=69f62c0922c194e784dc8306
+Trying status: ["scheduled"]
+  → found 27 posts
+
+Match terms (3): ["Phillipa Reuss-Fontaine","Timpani entry approved","The band marched on"]
+
+Matched 9 of 27:
+  → 6a0942a6e79a2768ec7f440b: "Phillipa Reuss-Fontaine says Monaco is not for everyone. I agree: it is for thos"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a0942a60557e54b570005ff: "Phillipa Reuss-Fontaine says Monaco is not for everyone. I agree: it is for thos"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a0941180557e54b57fff751: "Timpani entry approved. This writer notes the shell diameter exceeds the catalog"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a08ba54e79a2768ec7ab4ac: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a08ba546e6b4cbb3bfc8009: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a08ad98e79a2768ec7a3f06: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a08ad98e79a2768ec7a3f01: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a08ad976e6b4cbb3bfc0ace: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+  → 6a08ad976e6b4cbb3bfc0abd: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → [{"message":"Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".","locations":[{"line":1,"column":79}],"extensions":{"code":"GRAPHQL_VAL
+
+Done. deleted=0 failed=9
+
+=== /tmp/buffer-queue.json ===
+{
+  "matched": 9,
+  "deleted": 0,
+  "failed": 9
+}

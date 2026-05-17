@@ -1,9 +1,0 @@
-{
-  "action": "delete-by-match",
-  "match_terms": [
-    "Phillipa Reuss-Fontaine",
-    "Timpani entry approved",
-    "The band marched on"
-  ],
-  "_t": 1778995476.9999986
-}
