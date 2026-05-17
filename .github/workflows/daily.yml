@@ -62,6 +62,24 @@ jobs:
           FORCE_REGENERATE: ${{ inputs.force_regenerate || 'false' }}
         run: node generate-daily.js
 
+      - name: Capture failure trace
+        if: always() && failure()
+        run: |
+          mkdir -p audits/daily-failures
+          if [ -f /tmp/daily-error.log ]; then
+            cp /tmp/daily-error.log audits/daily-failures/$(date -u +%Y-%m-%d-%H%M%S).log
+          fi
+          # Also show in the workflow log
+          echo "=== /tmp/daily-error.log ==="
+          cat /tmp/daily-error.log 2>/dev/null || echo "(no error log)"
+          # Commit if any failure log was captured
+          if [ -d audits/daily-failures ] && [ "$(ls -A audits/daily-failures 2>/dev/null)" ]; then
+            git config user.email "actions@github.com"
+            git config user.name "Daily debug (auto)"
+            git add audits/daily-failures/
+            git diff --cached --quiet || (git commit -m "Daily failure trace" && git pull --rebase origin main && git push origin main || true)
+          fi
+
       - name: Verify entry actually changed
         run: |
           # If generate-daily.js failed silently, entries.json[0].date won't match today.

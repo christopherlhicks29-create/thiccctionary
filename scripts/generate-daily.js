@@ -28,6 +28,27 @@ import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { validateEntry } from './banned-words.js';
 
+// Wave 142c: write any uncaught exception to disk so we can debug failed runs without
+// trawling GitHub Actions log archives.
+process.on('uncaughtException', async (err) => {
+  console.error('UNCAUGHT:', err.stack || err.message);
+  try {
+    const fsSync = await import('node:fs');
+    const trace = `Uncaught at ${new Date().toISOString()}\n${err.stack || err.message}\n`;
+    fsSync.writeFileSync('/tmp/daily-error.log', trace);
+  } catch (_) { /* ignore */ }
+  process.exit(1);
+});
+process.on('unhandledRejection', async (err) => {
+  console.error('UNHANDLED REJECTION:', err && (err.stack || err.message || err));
+  try {
+    const fsSync = await import('node:fs');
+    const trace = `Unhandled rejection at ${new Date().toISOString()}\n${err && (err.stack || err.message) || String(err)}\n`;
+    fsSync.writeFileSync('/tmp/daily-error.log', trace);
+  } catch (_) { /* ignore */ }
+  process.exit(1);
+});
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
