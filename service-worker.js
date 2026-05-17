@@ -15,7 +15,7 @@
  * entry page is worse than waiting on the network).
  */
 
-const VERSION = 'v3-2026-05-17';
+const VERSION = 'v4-2026-05-17';
 const SHELL_CACHE = `thiccctionary-shell-${VERSION}`;
 const RUNTIME_CACHE = `thiccctionary-runtime-${VERSION}`;
 const OFFLINE_URL = '/404.html';
