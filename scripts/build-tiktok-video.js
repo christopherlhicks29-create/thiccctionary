@@ -58,7 +58,7 @@ async function generateVoiceover(text, outPath) {
       model: 'gpt-4o-mini-tts',
       voice: 'onyx',
       input: text,
-      instructions: 'Read in a calm, deadpan tone, like a dictionary narrator on a documentary. Pause briefly after each sentence. Slightly slower than conversational pace. Dry, dignified delivery — never excited or salesy. Critical: end every sentence with a falling, declarative cadence — never let the final sentence rise as if continuing.',
+      instructions: 'Read in a calm, deadpan tone, like a dictionary narrator on a documentary. Pause briefly after each sentence. Slightly slower than conversational pace. Dry, dignified delivery, never excited or salesy. Critical: end every sentence with a falling, declarative cadence, never let the final sentence rise as if continuing.',
       response_format: 'mp3',
     }),
   });
@@ -98,7 +98,7 @@ async function main() {
   }
 
   // Closing line ends with "thiccctionary dot com" so the TTS gets a falling
-  // cadence — bare "Thiccctionary" was being read with rising intonation.
+  // cadence, bare "Thiccctionary" was being read with rising intonation.
   const cleanEtymology = entry.etymology.replace(/<[^>]+>/g, '').trim();
   const script = `${entry.word}. The thiccc one. ${cleanEtymology}`;
   console.log(`Script (${script.length} chars):\n${script}\n`);
@@ -117,7 +117,7 @@ async function main() {
   const FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf';
   const FONT_ITALIC = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf';
 
-  // Combine headword + (n.) into one drawtext — single-call avoids overlap bugs
+  // Combine headword + (n.) into one drawtext, single-call avoids overlap bugs
   const headwordLine = escFFText(`${entry.word} (n.)`);
   const filterParts = [
     `[0:v]scale=1080:-1:force_original_aspect_ratio=decrease,pad=1080:1920:0:(1920-ih)/2:color=${CREAM}[bg]`,

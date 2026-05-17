@@ -44,7 +44,7 @@ function humanDate(iso) {
 }
 
 function imageUrlForOg(entry) {
-  // entry.image is "images/foo.jpg" — normalize to absolute URL
+  // entry.image is "images/foo.jpg", normalize to absolute URL
   const path = entry.image.replace(/^\.?\//, '');
   return `${SITE.replace(/\/$/, '')}/${path}`;
 }
@@ -121,7 +121,7 @@ function findRelatedEntries(entry, allEntries, limit = 3) {
       .filter(x => x.shared > 0)
       .sort((a, b) => b.shared - a.shared || Math.random() - 0.5);
     if (scored.length >= limit) return scored.slice(0, limit).map(x => x.entry);
-    // Fewer than `limit` tag-matches — top them up with random other entries.
+    // Fewer than `limit` tag-matches, top them up with random other entries.
     const taken = new Set(scored.map(x => x.entry.date));
     const fillers = others
       .filter(e => !taken.has(e.date))
@@ -129,7 +129,7 @@ function findRelatedEntries(entry, allEntries, limit = 3) {
       .slice(0, limit - scored.length);
     return [...scored.map(x => x.entry), ...fillers];
   }
-  // No tags on the source entry — pick random recent.
+  // No tags on the source entry, pick random recent.
   return others.sort(() => Math.random() - 0.5).slice(0, limit);
 }
 
@@ -188,7 +188,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
         "@type": "Article",
         "@id": canonical + "#article",
         "url": canonical,
-        "headline": entry.word + " — Thiccctionary",
+        "headline": entry.word + ", Thiccctionary",
         "name": entry.word,
         "description": description,
         "image": imageUrlForOg(entry),
@@ -213,7 +213,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     WORD: escapeHtml(entry.word),
     WORD_HTML: escapeHtml(entry.word), // ccc highlighter runs client-side
     WORD_ENC: encodeURIComponent(entry.word),
-    TWEET_TEXT: encodeURIComponent(`📖 ${entry.word} — today on @thiccctionary\n\n#wordoftheday #etymology #thiccctionary`),
+    TWEET_TEXT: encodeURIComponent(`📖 ${entry.word}, today on @thiccctionary\n\n#wordoftheday #etymology #thiccctionary`),
     PRONUNCIATION: escapeHtml(entry.pronunciation || ''),
     POS: escapeHtml(entry.partOfSpeech || 'n.'),
     DEF_1: entry.definitions[0],
@@ -232,7 +232,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
         if (lastSpace > 100) trimmed = trimmed.slice(0, lastSpace);
         trimmed += '…';
       }
-      return encodeURIComponent(`${entry.word} — a Thiccctionary entry. ${trimmed}`);
+      return encodeURIComponent(`${entry.word}, a Thiccctionary entry. ${trimmed}`);
     })(),
     PIN_TEXT_PLAIN: (() => {
       // Same description, but as escaped plain text (for HTML attribute, NOT URL-encoded)
@@ -244,7 +244,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
         if (lastSpace > 100) trimmed = trimmed.slice(0, lastSpace);
         trimmed += '…';
       }
-      return escapeHtml(`${entry.word} — a Thiccctionary entry. ${trimmed}`);
+      return escapeHtml(`${entry.word}, a Thiccctionary entry. ${trimmed}`);
     })(),
     CAPTION: escapeHtml(entry.caption || ''),
     CREDIT_HTML: renderCredit(entry),

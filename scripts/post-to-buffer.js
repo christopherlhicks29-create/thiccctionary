@@ -1,15 +1,15 @@
 /**
  * Posts to Buffer for IG / FB / Twitter. Supports four post modes:
  *
- *   POST_MODE=morning   — today's entry, definitions[0] focus, ALL platforms (default)
- *   POST_MODE=afternoon — today's entry, etymology focus, SKIPS Instagram
+ *   POST_MODE=morning , today's entry, definitions[0] focus, ALL platforms (default)
+ *   POST_MODE=afternoon, today's entry, etymology focus, SKIPS Instagram
  *                         (avoids same-image-twice flagging on IG)
- *   POST_MODE=evening   — random archive entry (not from last 2 days), throwback,
+ *   POST_MODE=evening , random archive entry (not from last 2 days), throwback,
  *                         ALL platforms (different image, safe for IG)
- *   POST_MODE=reels     — today's entry, vertical video (Reel) to FB + IG,
+ *   POST_MODE=reels   , today's entry, vertical video (Reel) to FB + IG,
  *                         SKIPS Twitter (no Reels concept). Requires
  *                         videos/<date>.mp4 to exist on the live site.
- *   POST_MODE=article   — long-form article promotion, rotates through
+ *   POST_MODE=article , long-form article promotion, rotates through
  *                         data/articles.json by ISO week. Uses the
  *                         per-article OG card as the image. ALL platforms.
  *
@@ -120,11 +120,11 @@ function pickArticle(articles) {
 
 function buildArticleText(article, baseUrl) {
   const articleUrl = `${baseUrl}/articles/${article.slug}.html`;
-  // Description first — that's the hook. Title lands as a tag after the body,
+  // Description first, that's the hook. Title lands as a tag after the body,
   // with the URL as a quiet footer. No "Read →" beg.
   const body = article.description || article.title || '';
   const prefix = '';
-  const suffix = `\n\n— ${article.title}\n${articleUrl}\n\n#thiccctionary`;
+  const suffix = `\n\n${article.title}\n${articleUrl}\n\n#thiccctionary`;
   return fitToX(prefix, body, suffix);
 }
 
@@ -137,7 +137,7 @@ function pickEntry(entries, mode) {
   if (targetDate) {
     const found = entries.find(e => e.date === targetDate);
     if (found) {
-      console.log(`TARGET_DATE override: posting for ${targetDate} — ${found.word}`);
+      console.log(`TARGET_DATE override: posting for ${targetDate}, ${found.word}`);
       return found;
     }
     console.warn(`TARGET_DATE=${targetDate} but no entry with that date. Falling back to default.`);
@@ -163,7 +163,7 @@ function fitToX(prefix, body, suffix) {
   return prefix + body.slice(0, Math.max(0, room - 1)).trimEnd() + '…' + suffix;
 }
 
-// Wave 87 — punchline pool. Brand-voice asides that ride along with every
+// Wave 87, punchline pool. Brand-voice asides that ride along with every
 // post so the CAPTION carries comedy work, not just whatever entry data
 // happens to be funny. Universal-ish (not category-specific). Add to this
 // pool freely; just keep entries deadpan, short, and on-brand.
@@ -219,7 +219,7 @@ function buildText(entry, mode, baseUrl) {
     if (mode === 'reels') {
       return `${bespoke}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
     }
-    // Wave 99: submission CTA on non-Reels — drives participation. Reels keep
+    // Wave 99: submission CTA on non-Reels, drives participation. Reels keep
     // the existing shape because Reels strip links.
     const cta = `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html`;
     const suffix = `${cta}\n\n${entryUrl}\n\n#thiccctionary`;
@@ -242,7 +242,7 @@ function buildText(entry, mode, baseUrl) {
     // Archive callback. Definition + word + punchline kicker.
     const body = def0;
     const prefix = `From the archives:\n\n`;
-    const suffix = `\n\n— ${entry.word}. ${punch}\n${entryUrl}\n\n#thiccctionary`;
+    const suffix = `\n\n${entry.word}. ${punch}${sig}\n${entryUrl}\n\n#thiccctionary`;
     return fitToX(prefix, body, suffix);
   }
 
@@ -252,7 +252,7 @@ function buildText(entry, mode, baseUrl) {
     return `${lead}\n\n${punch}\n\n${entry.word}.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
   }
 
-  // morning — rotate 4 chassis by day-of-year. Each one is a clearly distinct
+  // morning, rotate 4 chassis by day-of-year. Each one is a clearly distinct
   // shape so a follower's feed doesn't read identical day to day.
   const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   const variant = dayOfYear % 4;
@@ -277,9 +277,9 @@ function buildText(entry, mode, baseUrl) {
     const suffix = `\n\n${entry.word}, today on Thiccctionary.\n${baseUrl}\n\n#thiccctionary`;
     return fitToX('', body, suffix);
   }
-  // variant 3 — example + em-dash word + punchline as kicker.
+  // variant 3, example + em-dash word + punchline as kicker.
   const body = example || def0;
-  const suffix = `\n\n— ${entry.word}. ${punch}\n${baseUrl}\n\n#thiccctionary`;
+  const suffix = `\n\n${entry.word}. ${punch}\n${baseUrl}\n\n#thiccctionary`;
   return fitToX('', body, suffix);
 }
 
@@ -299,7 +299,7 @@ function filterChannelsForMode(channels, mode) {
     const keep = new Set(['facebook', 'facebookpage', 'instagram', 'instagrambusiness']);
     filtered = filtered.filter(c => keep.has(c.service));
   }
-  // SKIP_FACEBOOK=true tells Buffer to skip FB channels — used when the
+  // SKIP_FACEBOOK=true tells Buffer to skip FB channels, used when the
   // direct-FB Graph API script is handling FB. Reels mode still goes
   // through Buffer for FB (no direct-FB Reels support yet).
   if (process.env.SKIP_FACEBOOK === 'true' && mode !== 'reels') {
@@ -308,7 +308,7 @@ function filterChannelsForMode(channels, mode) {
     if (filtered.length === channels.length) {
       console.log('SKIP_FACEBOOK=true but no FB channels were in the list anyway.');
     } else {
-      console.log('SKIP_FACEBOOK=true — Buffer will not post to FB; direct-FB script handles it.');
+      console.log('SKIP_FACEBOOK=true, Buffer will not post to FB; direct-FB script handles it.');
     }
   }
   return filtered;

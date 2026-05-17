@@ -4,7 +4,7 @@
  * Reads the latest entry from data/entries.json, formats it as a markdown
  * email, and POSTs to Buttondown's API to publish + send.
  *
- * Triggered by .github/workflows/post-on-merge.yml — runs after the daily
+ * Triggered by .github/workflows/post-on-merge.yml, runs after the daily
  * PR is merged, after the Buffer social post, after Cloudflare Pages deploys.
  *
  * Required env vars:
@@ -25,7 +25,7 @@ function stripHtml(s) {
 }
 
 function formatBody(entry, baseUrl) {
-  // Wave 79: entry.image may be absolute (submission R2 URLs) — don't double-prefix.
+  // Wave 79: entry.image may be absolute (submission R2 URLs), don't double-prefix.
   const isAbsoluteImg = /^https?:\/\//i.test(entry.image || '');
   const imageUrl = isAbsoluteImg ? entry.image : `${baseUrl}/${entry.image}`;
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
@@ -68,7 +68,7 @@ async function main() {
   if (targetDate) {
     entry = entries.find(e => e.date === targetDate);
     if (entry) {
-      console.log(`TARGET_DATE override: sending newsletter for ${targetDate} — ${entry.word}`);
+      console.log(`TARGET_DATE override: sending newsletter for ${targetDate}, ${entry.word}`);
     } else {
       console.warn(`TARGET_DATE=${targetDate} but no entry with that date. Falling back to entries[0].`);
       entry = entries[0];
@@ -80,7 +80,7 @@ async function main() {
     console.error('No entries found in data/entries.json');
     process.exit(1);
   }
-  console.log(`Sending newsletter for: ${entry.date} — ${entry.word}`);
+  console.log(`Sending newsletter for: ${entry.date}, ${entry.word}`);
 
   const subject = `Word of the day: ${entry.word}`;
   const body = formatBody(entry, baseUrl);

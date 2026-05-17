@@ -1,5 +1,5 @@
 /**
- * Site health audit — runs in CI weekly via .github/workflows/site-health.yml.
+ * Site health audit, runs in CI weekly via .github/workflows/site-health.yml.
  *
  * Checks the entire repo for:
  *   - Broken internal links (relative or absolute thiccctionary.com URLs that don't resolve)
@@ -56,7 +56,7 @@ function urlToLocalPath(href, fromFile) {
   } else if (href.startsWith('/')) {
     p = href;
   } else {
-    // relative — resolve against fromFile's directory
+    // relative, resolve against fromFile's directory
     const fromDir = path.dirname(fromFile);
     p = path.relative(ROOT, path.resolve(fromDir, href));
     if (p.startsWith('..')) return null; // escapes repo
@@ -160,7 +160,7 @@ async function audit() {
       }
     }
 
-    // 4b. Broken same-page anchors — links to #foo where foo isn't an id on this page
+    // 4b. Broken same-page anchors, links to #foo where foo isn't an id on this page
     const ids = new Set();
     for (const m of content.matchAll(/id=("([^"]+)"|'([^']+)')/g)) ids.add(m[2] || m[3]);
     for (const m of content.matchAll(/<a[^>]*href=("#([^"]+)"|'#([^']+)')/g)) {
@@ -197,7 +197,7 @@ async function audit() {
     }
   }
 
-  // 6. Banned-words check on every entry (Wave 45 — continuous QA)
+  // 6. Banned-words check on every entry (Wave 45, continuous QA)
   try {
     const entriesPath = path.join(ROOT, 'data', 'entries.json');
     if (await fileExists(entriesPath)) {
@@ -215,14 +215,14 @@ async function audit() {
     console.warn(`Banned-words check failed: ${e.message}`);
   }
 
-  // 6b. Banned-words check on articles (Wave 54 — extends Wave 45)
+  // 6b. Banned-words check on articles (Wave 54, extends Wave 45)
   const articleFiles = htmlFiles.filter(f => path.relative(ROOT, f).startsWith('articles/') && !path.relative(ROOT, f).endsWith('index.html'));
   for (const f of articleFiles) {
     const rel = path.relative(ROOT, f);
     const c = await fs.readFile(f, 'utf-8');
     // Strip <script>, <style>, <head>; just check article body text
     const stripped = c.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<style[\s\S]*?<\/style>/g,'').replace(/<head[\s\S]*?<\/head>/g,'').replace(/<[^>]+>/g,' ');
-    // Use the validateEntry helper indirectly — wrap article text as if it were an entry
+    // Use the validateEntry helper indirectly, wrap article text as if it were an entry
     const fakeEntry = { definitions: [stripped], example:'', etymology:'', caption:'', word:'' };
     const r = validateEntry(fakeEntry);
     if (!r.ok) {
@@ -262,7 +262,7 @@ function formatReport({ issues, stats }) {
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
                       + issues.sitemapDrift.inRepoNotInSitemap.length;
-  lines.push(`# Site Health Audit — ${dateStr}`);
+  lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
   lines.push('');
@@ -283,33 +283,33 @@ function formatReport({ issues, stats }) {
   section(`Broken internal links (${issues.brokenLinks.length})`, issues.brokenLinks,
     i => `\`${i.from}\` → \`${i.href}\` (expected: \`${i.expected}\`)`);
   section(`Images without alt text (${issues.missingAlt.length})`, issues.missingAlt,
-    i => `\`${i.from}\` — img src=\`${i.src}\``);
+    i => `\`${i.from}\`, img src=\`${i.src}\``);
   section(`Invalid JSON-LD schema (${issues.badSchema.length})`, issues.badSchema,
-    i => `\`${i.from}\` — ${i.error}`);
+    i => `\`${i.from}\`, ${i.error}`);
   section(`Entry/article pages missing OG tags (${issues.missingOg.length})`, issues.missingOg,
-    i => `\`${i.from}\` — missing: ${i.missing.join(', ')}`);
+    i => `\`${i.from}\`, missing: ${i.missing.join(', ')}`);
   section(`Sitemap: URLs that don't resolve (${issues.sitemapDrift.inSitemapNotInRepo.length})`, issues.sitemapDrift.inSitemapNotInRepo,
     i => `${i.url} (expected file: \`${i.expected}\`)`);
   section(`Sitemap: pages in repo NOT in sitemap (${issues.sitemapDrift.inRepoNotInSitemap.length})`, issues.sitemapDrift.inRepoNotInSitemap,
-    i => `\`${i.file}\` — expected URL: ${i.expectedUrl}`);
+    i => `\`${i.file}\`, expected URL: ${i.expectedUrl}`);
 
   section(`Banned-word violations in entries.json (${issues.bannedWordsInEntries.length})`, issues.bannedWordsInEntries,
-    i => `\`${i.date}\` (${i.word}) — [${i.field}] "${i.term}"`);
+    i => `\`${i.date}\` (${i.word}), [${i.field}] "${i.term}"`);
 
   section(`Broken same-page anchors (${issues.brokenAnchors.length})`, issues.brokenAnchors,
     i => `\`${i.from}\` → \`#${i.anchor}\` (no element with this id on the page)`);
 
   section(`Page titles >70 chars (${issues.longTitles.length})`, issues.longTitles,
-    i => `\`${i.from}\` — ${i.length} chars`);
+    i => `\`${i.from}\`, ${i.length} chars`);
 
   section(`Meta descriptions >170 chars (${issues.longDescriptions.length})`, issues.longDescriptions,
-    i => `\`${i.from}\` — ${i.length} chars`);
+    i => `\`${i.from}\`, ${i.length} chars`);
 
   section(`Pages with multiple <h1> (${issues.multipleH1.length})`, issues.multipleH1,
-    i => `\`${i.from}\` — ${i.count} h1 tags`);
+    i => `\`${i.from}\`, ${i.count} h1 tags`);
 
   section(`Banned-word violations in articles (${issues.bannedWordsInArticles.length})`, issues.bannedWordsInArticles,
-    i => `\`${i.from}\` — "${i.term}"`);
+    i => `\`${i.from}\`, "${i.term}"`);
 
   section(`Missing og:image files (${issues.missingOgImageFiles.length})`, issues.missingOgImageFiles,
     i => `\`${i.from}\` → ${i.ogImage} (file does not exist on disk)`);

@@ -7,7 +7,7 @@
  * avoid re-picking subjects we've already used or have queued elsewhere.
  *
  * Pool items have shape: { subject, query, category, notes? }
- * Queue items are the same shape — generate-daily.js (Wave 73) honors `query` and
+ * Queue items are the same shape, generate-daily.js (Wave 73) honors `query` and
  * falls back to auto-deriving from subject if absent.
  */
 

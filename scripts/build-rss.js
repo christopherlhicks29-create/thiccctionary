@@ -134,7 +134,7 @@ async function buildTagFeeds(entries) {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Thiccctionary — ${escapeXml(tagLabel)}</title>
+    <title>Thiccctionary, ${escapeXml(tagLabel)}</title>
     <link>${SITE}/archive.html?tag=${encodeURIComponent(tag)}</link>
     <atom:link href="${SITE}/feed/${tag}.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "${escapeXml(tag)}".</description>

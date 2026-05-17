@@ -87,12 +87,12 @@ export const BANNED_WORDS = [
 export const BANNED_PATTERNS = [
   // "fresh off the X runway" pattern
   { regex: /fresh off the .*\brunway\b/i, why: 'runway-as-metaphor' },
-  // "could launch a thousand X" — Helen of Troy reference applied to objects (corny)
+  // "could launch a thousand X", Helen of Troy reference applied to objects (corny)
   { regex: /could launch a thousand /i, why: 'launch-a-thousand cliche' },
-  // "X commands the room/Y" — generic commanding-puff
+  // "X commands the room/Y", generic commanding-puff
   { regex: /commands the (room|space|spotlight)/i, why: 'commands-the-room cliche' },
   // "a [adjective] [adjective] of [noun]" stacked-adjective patterns
-  // (commented out — too false-positive prone)
+  // (commented out, too false-positive prone)
 ];
 
 /**

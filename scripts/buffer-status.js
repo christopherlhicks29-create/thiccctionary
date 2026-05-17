@@ -71,7 +71,7 @@ async function main() {
   console.log('=== ALL CHANNELS ON ACCOUNT ===');
   for (const ch of channels) {
     const flag = ch.isDisconnected ? '⚠ DISCONNECTED' : '✓ connected';
-    console.log(`  [${flag}] ${ch.service.padEnd(20)} ${ch.id} — ${ch.name}`);
+    console.log(`  [${flag}] ${ch.service.padEnd(20)} ${ch.id}, ${ch.name}`);
   }
 
   console.log('\n=== CONFIGURED-CHANNEL HEALTH ===');
@@ -79,13 +79,13 @@ async function main() {
   for (const c of configured) {
     const found = channels.find(x => x.id === c.channelId);
     if (!found) {
-      console.log(`  ✗ ${c.service}:${c.channelId} — NOT FOUND on this Buffer account (wrong ID or wrong account)`);
+      console.log(`  ✗ ${c.service}:${c.channelId}, NOT FOUND on this Buffer account (wrong ID or wrong account)`);
       problems++;
     } else if (found.isDisconnected) {
-      console.log(`  ⚠ ${c.service}:${c.channelId} — DISCONNECTED. Re-authorize at https://publish.buffer.com/channels`);
+      console.log(`  ⚠ ${c.service}:${c.channelId}, DISCONNECTED. Re-authorize at https://publish.buffer.com/channels`);
       problems++;
     } else {
-      console.log(`  ✓ ${c.service}:${c.channelId} — connected (${found.name})`);
+      console.log(`  ✓ ${c.service}:${c.channelId}, connected (${found.name})`);
     }
   }
 

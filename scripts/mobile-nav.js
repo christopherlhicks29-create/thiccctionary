@@ -1,5 +1,5 @@
 /**
- * Mobile hamburger nav — Wave 61.
+ * Mobile hamburger nav, Wave 61.
  *
  * Adds a toggle button before the .nav element on narrow viewports.
  * Pure DOM injection so no HTML edits across 30+ pages were needed.

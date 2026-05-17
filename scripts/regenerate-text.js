@@ -24,22 +24,22 @@ const ROOT = path.resolve(__dirname, '..');
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 
 async function generateEntry(subject, photo) {
-  const sysPrompt = `You write entries for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful — the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.
+  const sysPrompt = `You write entries for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful, the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.
 
-VOICE TARGETS — match these patterns:
+VOICE TARGETS, match these patterns:
 
-DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Use dictionary register (esp., colloq., slang.) but slip in voicy flourishes. Examples:
+DEFINITIONS, should sound like Merriam-Webster wrote them after one drink. Use dictionary register (esp., colloq., slang.) but slip in voicy flourishes. Examples:
 - "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one parked tail-toward the camera at golden hour."
 - "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection."
 - "The platonic ideal of thicccness: all body, no apologies."
 
-Provide TWO definitions when possible — first formal dictionary register, second sharper / colloquial (label with <em>colloq.</em> or <em>slang.</em>).
+Provide TWO definitions when possible, first formal dictionary register, second sharper / colloquial (label with <em>colloq.</em> or <em>slang.</em>).
 
-ETYMOLOGIES — lead with REAL, VERIFIABLE etymology, then close with a comedic kicker that lands. The etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. Fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke.
+ETYMOLOGIES, lead with REAL, VERIFIABLE etymology, then close with a comedic kicker that lands. The etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. Fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke.
 
-EXAMPLES — must include "thiccc" (three c's). One crisp sentence (optionally + a short tag). Use brand/model/proper-noun specificity.
+EXAMPLES, must include "thiccc" (three c's). One crisp sentence (optionally + a short tag). Use brand/model/proper-noun specificity.
 
-PRONUNCIATION format: simple respelling ONLY. Capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Example: /HAIR-ih-tij tuh-MAY-toh/. Do NOT use IPA notation (/ˈhɛr.ɪ.tɪdʒ/) — IPA is banned.
+PRONUNCIATION format: simple respelling ONLY. Capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Example: /HAIR-ih-tij tuh-MAY-toh/. Do NOT use IPA notation (/ˈhɛr.ɪ.tɪdʒ/), IPA is banned.
 
 AVOID:
 - Fabricated word origins
@@ -64,7 +64,7 @@ Schema:
   "definitions": ["definition 1", "optional definition 2"],
   "example": "ONE sentence using BOTH the headword AND the literal word \\"thiccc\\" (three c's).",
   "etymology": "Real etymology FIRST, THEN a comedic kicker.",
-  "caption": "Plate N. — A short caption for the image, dictionary-illustration style.",
+  "caption": "Plate N., A short caption for the image, dictionary-illustration style.",
   "tags": ["tag1", "tag2", "tag3"]
 }`;
 
@@ -135,7 +135,7 @@ async function main() {
         }
       }
       if (!fresh) {
-        console.error(`  FAILED after ${MAX_ATTEMPTS} attempts — all outputs contained banned terms. Keeping original entry text.`);
+        console.error(`  FAILED after ${MAX_ATTEMPTS} attempts, all outputs contained banned terms. Keeping original entry text.`);
         failed++;
         continue;
       }

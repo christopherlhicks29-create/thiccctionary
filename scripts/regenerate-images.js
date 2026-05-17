@@ -52,8 +52,8 @@ async function pickThiccestImage(subject, candidates) {
 
   const sysPrompt = `You evaluate photos for "Thiccctionary," a satirical site about THICK objects. Your goal: pick the photo where the subject's overall girth and silhouette are most obvious to someone seeing it for the first time.
 
-CRITICAL — the photo MUST show the WHOLE subject in frame:
-- The full silhouette must be visible — head to tail, end to end
+CRITICAL, the photo MUST show the WHOLE subject in frame:
+- The full silhouette must be visible, head to tail, end to end
 - A reader should be able to see the subject's overall shape at a glance
 - REJECT tight crops, detail shots, side panels, single wheels, engine close-ups, or any composition where you can only see PART of the subject
 - If NONE of the candidates show the full subject, pick the one with the most of it visible
@@ -177,7 +177,7 @@ async function main() {
         try {
           await fs.unlink(path.join(ROOT, previousImage));
           console.log(`  Removed stale image: ${previousImage}`);
-        } catch (e) { /* file already absent — fine */ }
+        } catch (e) { /* file already absent, fine */ }
       }
 
       entry.image = `images/${filename}`;

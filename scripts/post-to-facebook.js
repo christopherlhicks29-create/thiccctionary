@@ -1,32 +1,32 @@
 /**
- * Direct Facebook Page posting via Graph API — replaces Buffer for FB
+ * Direct Facebook Page posting via Graph API, replaces Buffer for FB
  * specifically. Removes the "Published by Buffer" attribution; Meta will
  * attribute posts to the registered Facebook App name (so register the app
  * as "Thiccctionary" in Meta dev console).
  *
- * Buffer continues to handle IG and X — only FB gets the direct treatment.
+ * Buffer continues to handle IG and X, only FB gets the direct treatment.
  *
  * Required env vars:
- *   FB_PAGE_ACCESS_TOKEN   — long-lived Page Access Token (NOT a User token).
+ *   FB_PAGE_ACCESS_TOKEN , long-lived Page Access Token (NOT a User token).
  *                            From Meta Developer Console → Tools → Graph API
  *                            Explorer → request token with
  *                            pages_manage_posts + pages_read_engagement, then
  *                            exchange for a long-lived token.
- *   FB_PAGE_ID             — numeric Page ID (visible in About → Page ID, or
+ *   FB_PAGE_ID           , numeric Page ID (visible in About → Page ID, or
  *                            graph.facebook.com/me/accounts after auth)
- *   SITE_BASE_URL          — e.g. https://thiccctionary.com
- *   POST_MODE              — Optional. morning | afternoon | evening | article.
+ *   SITE_BASE_URL        , e.g. https://thiccctionary.com
+ *   POST_MODE            , Optional. morning | afternoon | evening | article.
  *                            Default: morning.
  *
  * The script REUSES post-to-buffer.js's text-builder logic so the FB post
- * matches what Buffer would have sent for that mode — same hashtags,
+ * matches what Buffer would have sent for that mode, same hashtags,
  * same hook templates, same X-character cap.
  *
  * Exit codes:
- *   0 — success
- *   0 — secrets missing (logs and exits cleanly so the workflow can chain
+ *   0, success
+ *   0, secrets missing (logs and exits cleanly so the workflow can chain
  *       to Buffer-with-FB-included as a fallback during the setup window)
- *   1 — Graph API call failed
+ *   1, Graph API call failed
  */
 
 import fs from 'node:fs/promises';
@@ -62,18 +62,18 @@ function pickEntry(entries, mode) {
 function buildText(entry, mode, baseUrl) {
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
   if (mode === 'afternoon') {
-    const prefix = `📝 Use it in a sentence — ${entry.word}\n\n"`;
+    const prefix = `📝 Use it in a sentence, ${entry.word}\n\n"`;
     const body = stripHtml(entry.example || entry.definitions[0]);
     const suffix = `"\n\nFull entry → ${entryUrl}\n\n#thiccctionary #etymology`;
     return fitToX(prefix, body, suffix);
   }
   if (mode === 'evening') {
-    const prefix = `📚 From the Thiccctionary archives:\n\n${entry.word} — `;
+    const prefix = `📚 From the Thiccctionary archives:\n\n${entry.word}, `;
     const body = stripHtml(entry.definitions[0]);
     const suffix = `\n\nRe-read the full entry → ${entryUrl}\n\n#thiccctionary #throwback #satire`;
     return fitToX(prefix, body, suffix);
   }
-  // morning (default) — same 4-variant rotation as post-to-buffer.js
+  // morning (default), same 4-variant rotation as post-to-buffer.js
   const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   const variant = dayOfYear % 4;
   const def0 = stripHtml(entry.definitions[0]);
@@ -85,9 +85,9 @@ function buildText(entry, mode, baseUrl) {
     return fitToX(prefix, def0, suffix);
   }
   if (variant === 1) {
-    const prefix = `Use it in a sentence —\n\n"`;
+    const prefix = `Use it in a sentence,\n\n"`;
     const body = example || def0;
-    const suffix = `"\n\n— ${entry.word}, today on Thiccctionary\n${baseUrl}\n\n#wordoftheday #etymology`;
+    const suffix = `"\n\n${entry.word}, today on Thiccctionary\n${baseUrl}\n\n#wordoftheday #etymology`;
     return fitToX(prefix, body, suffix);
   }
   if (variant === 2) {
@@ -106,7 +106,7 @@ function buildText(entry, mode, baseUrl) {
 
 function buildArticleText(article, baseUrl) {
   const articleUrl = `${baseUrl}/articles/${article.slug}.html`;
-  const prefix = `📚 An article from Thiccctionary —\n\n${article.title}\n\n`;
+  const prefix = `📚 An article from Thiccctionary,\n\n${article.title}\n\n`;
   const body = article.description || '';
   const suffix = `\n\nRead → ${articleUrl}\n\n#thiccctionary #satire`;
   return fitToX(prefix, body, suffix);
@@ -142,7 +142,7 @@ async function main() {
   if (!token || !pageId) {
     console.log('FB direct posting not configured (missing FB_PAGE_ACCESS_TOKEN or FB_PAGE_ID).');
     console.log('Skipping. The Buffer FB channel will still post (fallback).');
-    process.exit(0);  // exit clean — workflow continues, Buffer still fires
+    process.exit(0);  // exit clean, workflow continues, Buffer still fires
   }
 
   if (!process.env.SITE_BASE_URL) {
@@ -171,7 +171,7 @@ async function main() {
     const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
     const weekOfYear = Math.ceil((dayOfYear + 1) / 7);
     const article = articles[weekOfYear % articles.length];
-    console.log(`Selected article: ${article.slug} — "${article.title}"`);
+    console.log(`Selected article: ${article.slug}, "${article.title}"`);
     imageUrl = `${baseUrl}/articles/og/${article.slug}.png`;
     text = buildArticleText(article, baseUrl);
   } else {
@@ -181,7 +181,7 @@ async function main() {
       return;
     }
     const entry = pickEntry(entries, mode);
-    console.log(`Selected entry: ${entry.date} — "${entry.word}"`);
+    console.log(`Selected entry: ${entry.date}, "${entry.word}"`);
     imageUrl = `${baseUrl}/${String(entry.image).replace(/^\.?\//, '')}`;
     text = buildText(entry, mode, baseUrl);
   }
@@ -192,9 +192,9 @@ async function main() {
 
   const result = await postPhoto({ pageId, token, imageUrl, caption: text });
   if (result.ok) {
-    console.log(`OK — FB post id: ${result.postId}`);
+    console.log(`OK, FB post id: ${result.postId}`);
   } else {
-    console.error(`FAIL — status=${result.status} error=${JSON.stringify(result.error).slice(0, 500)}`);
+    console.error(`FAIL, status=${result.status} error=${JSON.stringify(result.error).slice(0, 500)}`);
     process.exit(1);
   }
 }

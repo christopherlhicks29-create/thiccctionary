@@ -29,11 +29,11 @@ async function generateTikTokCaption(entry) {
   const def0 = stripHtml(entry.definitions?.[0] || '');
   const ex = stripHtml(entry.example || '');
 
-  const sysPrompt = `You write TikTok captions for Thiccctionary — a satirical daily dictionary of thiccc inanimate objects. TikTok's culture is different from the Thiccctionary brand voice we use on FB/IG/X: it expects a HOOK in the first line, energetic absurdity, and a payoff. Pseudo-academic register only as a punchline contrast, not as the whole thing.
+  const sysPrompt = `You write TikTok captions for Thiccctionary, a satirical daily dictionary of thiccc inanimate objects. TikTok's culture is different from the Thiccctionary brand voice we use on FB/IG/X: it expects a HOOK in the first line, energetic absurdity, and a payoff. Pseudo-academic register only as a punchline contrast, not as the whole thing.
 
 Output JSON with exactly these fields:
 {
-  "hook": "first line — 5-10 words, scroll-stopping. Should make someone curious enough to watch the video. NEVER use 'today's entry' or anything corporate. Examples: 'POV: you're explaining girth to your engineer dad', 'no bc tell me why an electrical transformer is gendered', 'the dictionary said WHAT about a refrigerator'",
+  "hook": "first line, 5-10 words, scroll-stopping. Should make someone curious enough to watch the video. NEVER use 'today's entry' or anything corporate. Examples: 'POV: you're explaining girth to your engineer dad', 'no bc tell me why an electrical transformer is gendered', 'the dictionary said WHAT about a refrigerator'",
   "body": "2-3 short lines. Where the actual joke lands. Can use the dictionary voice here as the contrast/punchline.",
   "hashtags": "5-7 hashtags. Mix: 1-2 brand (#thiccctionary #thiccc), 2-3 platform-relevant (#fyp #foryou #didyouknow), 2 topical to the subject (e.g., #infrastructure #engineering for a dam)"
 }
@@ -117,7 +117,7 @@ async function main() {
   console.log(`Wrote caption → ${path.relative(ROOT, captionPath)}`);
 
   // README
-  const readme = `# TikTok bundle — ${date} — ${entry.word}
+  const readme = `# TikTok bundle, ${date}, ${entry.word}
 
 ## How to post
 
@@ -126,7 +126,7 @@ async function main() {
 3. Paste the contents of \`caption.txt\` as the description.
 4. Post.
 
-The caption is TikTok-flavored (hook + body + hashtags) — different from the FB/IG voice. Don't paste the FB caption here; TikTok culture wants the hook style.
+The caption is TikTok-flavored (hook + body + hashtags), different from the FB/IG voice. Don't paste the FB caption here; TikTok culture wants the hook style.
 
 ## Caption preview
 

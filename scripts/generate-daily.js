@@ -9,7 +9,7 @@
  *   5. AI writes a satirical dictionary entry referencing that specific photo
  *   6. Append entry to data/entries.json with photographer attribution
  *
- * The cron workflow then opens a Pull Request — you review on your phone
+ * The cron workflow then opens a Pull Request, you review on your phone
  * (GitHub mobile renders the image preview), tap merge, and a second
  * workflow posts to Buffer + Cloudflare Pages auto-deploys.
  *
@@ -42,7 +42,7 @@ function pendingPrWords() {
   try {
     const { execSync } = require('node:child_process');
     // Note: workflow MUST fetch daily/* refs before running this script.
-    // See .github/workflows/daily.yml — git fetch step.
+    // See .github/workflows/daily.yml, git fetch step.
     const branches = execSync(
       "git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/daily/*'",
       { encoding: 'utf8' }
@@ -58,19 +58,19 @@ function pendingPrWords() {
         if (Array.isArray(arr) && arr.length > 0 && arr[0].word) {
           words.push(arr[0].word);
         }
-      } catch (e) { /* branch missing entries.json — skip */ }
+      } catch (e) { /* branch missing entries.json, skip */ }
     }
     return words;
   } catch (e) {
-    // git not available, or no daily/* refs locally — degrade gracefully
+    // git not available, or no daily/* refs locally, degrade gracefully
     return [];
   }
 }
 
 async function pickSubject(usedWords) {
-  const sysPrompt = `You suggest subjects for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS (never people, never bodies, never animals). Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods. The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
+  const sysPrompt = `You suggest subjects for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS (never people, never bodies, never animals). Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods. The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
 
-SCROLL-STOPPING BIAS — this is critical. The reader is scrolling past on social. A clean photo of a regular sofa won't stop them. A real photo of a 2,500-lb championship pumpkin, a Saturn V booster on a transport crawler, a Brutalist concrete bunker, a 40-foot-tall industrial tuba, a sousaphone, a giant hay bale, a Cadbury Creme Egg the size of a microwave, or a comically thicc submarine WILL. The subject's REAL form should be inherently striking — visually absurd in its own right, with no Photoshop or AI needed.
+SCROLL-STOPPING BIAS, this is critical. The reader is scrolling past on social. A clean photo of a regular sofa won't stop them. A real photo of a 2,500-lb championship pumpkin, a Saturn V booster on a transport crawler, a Brutalist concrete bunker, a 40-foot-tall industrial tuba, a sousaphone, a giant hay bale, a Cadbury Creme Egg the size of a microwave, or a comically thicc submarine WILL. The subject's REAL form should be inherently striking, visually absurd in its own right, with no Photoshop or AI needed.
 
 Bias your picks toward subjects that are absurdly thicc IN REALITY. Brands and models help (Saturn V, Sousaphone, Champion Prize Pumpkin, Boeing 747, Chesterfield Sofa). Strong absurd-real subjects that would land:
 - Giant gourds and championship-cultivar fruit/veg (record-setting pumpkins, watermelons, rutabagas)
@@ -82,32 +82,32 @@ Bias your picks toward subjects that are absurdly thicc IN REALITY. Brands and m
 
 Avoid mundane subjects whose photos can't carry on their own (regular chair, regular fridge, regular sedan). If the subject's real-world photo wouldn't make someone stop scrolling, pick a more extreme/specific variant. "Sofa" is weak; "Chesterfield, Tufted Leather" is better; "Sectional, U-Shaped Pit" is better still.
 
-HEADWORD STYLE — this is the most important part. The headword should feel like a real dictionary entry, with VOICE and SPECIFICITY. Three patterns work; rotate through them:
+HEADWORD STYLE, this is the most important part. The headword should feel like a real dictionary entry, with VOICE and SPECIFICITY. Three patterns work; rotate through them:
 
-1. COMMA-QUALIFIER ("Avocado, Domestic" / "Refrigerator, Side-by-Side" / "Cadillac, c. 1959") — dictionary-cataloguing register. Strong default.
-2. ALLITERATIVE-DESCRIPTOR ("Concrete Cathedral" / "Bulbous Bouy" / "Pendulous Pumpkin") — only if the alliteration is genuinely good.
-3. PROPER-NOUN-FORWARD ("Thiccc Boeing" / "Frigidaire Imperial" / "Steinway, Concert Grand") — when the brand IS the punchline.
+1. COMMA-QUALIFIER ("Avocado, Domestic" / "Refrigerator, Side-by-Side" / "Cadillac, c. 1959"), dictionary-cataloguing register. Strong default.
+2. ALLITERATIVE-DESCRIPTOR ("Concrete Cathedral" / "Bulbous Bouy" / "Pendulous Pumpkin"), only if the alliteration is genuinely good.
+3. PROPER-NOUN-FORWARD ("Thiccc Boeing" / "Frigidaire Imperial" / "Steinway, Concert Grand"), when the brand IS the punchline.
 
-AVOID weak generic-adjective + noun patterns. The full ban list of qualifiers that you MAY NOT use as the lead adjective: Big, Bulky, Large, Round, Heavy, Chunky, Hefty, Plump, Plush, Thick, Wide, Fat, Stout, Sturdy, Massive, Huge, Dense, Solid. If your headword starts with any of these, START OVER. They are filler — they tell the reader nothing the eye doesn't already see. Instead, push for: specific cultivar/model/era ("Heritage Tomato", "Ford F-450", "Mid-Century Armchair"); branded specificity ("Frigidaire Imperial", "Steinway, Concert Grand"); botanical or mechanical register ("Concrete Mixer", "Avocado, Domestic"); or proper-noun-forward construction where the brand IS the punchline ("Thiccc Boeing").
+AVOID weak generic-adjective + noun patterns. The full ban list of qualifiers that you MAY NOT use as the lead adjective: Big, Bulky, Large, Round, Heavy, Chunky, Hefty, Plump, Plush, Thick, Wide, Fat, Stout, Sturdy, Massive, Huge, Dense, Solid. If your headword starts with any of these, START OVER. They are filler, they tell the reader nothing the eye doesn't already see. Instead, push for: specific cultivar/model/era ("Heritage Tomato", "Ford F-450", "Mid-Century Armchair"); branded specificity ("Frigidaire Imperial", "Steinway, Concert Grand"); botanical or mechanical register ("Concrete Mixer", "Avocado, Domestic"); or proper-noun-forward construction where the brand IS the punchline ("Thiccc Boeing").
 
 Output strict JSON only.`;
 
   const userPrompt = `Suggest today's subject. Avoid recently used: ${usedWords.join(', ') || '(none)'}.
 
 Reference for the bar (these were strong picks):
-- "Avocado, Domestic"  (comma-qualifier — botanical register)
-- "Thiccc Boeing"  (proper-noun-forward — brand carries the joke)
+- "Avocado, Domestic"  (comma-qualifier, botanical register)
+- "Thiccc Boeing"  (proper-noun-forward, brand carries the joke)
 - "Ford F-450"  (model number specificity)
 - "Heritage Tomato"  (cultivar-language qualifier)
 - "Mid-Century Armchair"  (period-detail qualifier)
 
 Reference for scroll-stopping absurd-real picks (favor these heavily):
-- "Pumpkin, Atlantic Giant"  (championship cultivar — real specimens exceed 2,500 lbs)
+- "Pumpkin, Atlantic Giant"  (championship cultivar, real specimens exceed 2,500 lbs)
 - "Sousaphone, Marching"  (instrument whose real form is inherently absurd)
-- "Saturn V, First Stage"  (largest rocket booster ever flown — real photos are jaw-dropping)
+- "Saturn V, First Stage"  (largest rocket booster ever flown, real photos are jaw-dropping)
 - "Bagger 288"  (actual largest land vehicle on Earth)
-- "Wheel, Parmigiano-Reggiano"  (88-lb cheese wheel — visually preposterous in real photos)
-- "Submarine, Typhoon-Class"  (largest submarine ever built — actual proportions read as cartoon)
+- "Wheel, Parmigiano-Reggiano"  (88-lb cheese wheel, visually preposterous in real photos)
+- "Submarine, Typhoon-Class"  (largest submarine ever built, actual proportions read as cartoon)
 
 Reference for what to AVOID (these were weak):
 - "Bulky Refrigerator"  ← generic adjective. Better: "Frigidaire, Side-by-Side" or "Refrigerator, Mid-Century Apartment"
@@ -116,7 +116,7 @@ Reference for what to AVOID (these were weak):
 
 Schema:
 {
-  "subject": "the noun phrase being defined — must follow one of the three style patterns above",
+  "subject": "the noun phrase being defined, must follow one of the three style patterns above",
   "unsplashQuery": "a 1-3 word search query for Unsplash that will return relevant photos (e.g. 'concrete mixer' or 'heirloom tomato'). Use the literal object name, not the qualifier.",
   "category": "one of: aircraft, vehicle, fruit, vegetable, furniture, building, appliance, tool, machinery, instrument, other"
 }`;
@@ -155,8 +155,8 @@ async function searchUnsplash(query) {
   return data.results.map(r => ({
     id: r.id,
     description: r.description || r.alt_description || '',
-    thumbUrl: r.urls.small,    // ~400px — used for vision evaluation (cheap)
-    fullUrl: r.urls.regular,   // ~1080px — used for the actual entry
+    thumbUrl: r.urls.small,    // ~400px, used for vision evaluation (cheap)
+    fullUrl: r.urls.regular,   // ~1080px, used for the actual entry
     photographer: r.user.name,
     photographerUrl: r.user.links.html,
     unsplashUrl: r.links.html,
@@ -175,21 +175,21 @@ async function pickThiccestImage(subject, candidates) {
 
   const sysPrompt = `You evaluate photos for "Thiccctionary," a satirical site about THICK objects. Your goal: pick the photo where the subject's overall girth and silhouette are most obvious to someone seeing it for the first time.
 
-CRITICAL — the photo MUST show the WHOLE subject in frame:
-- The full silhouette must be visible — head to tail, end to end
+CRITICAL, the photo MUST show the WHOLE subject in frame:
+- The full silhouette must be visible, head to tail, end to end
 - A reader should be able to see the subject's overall shape at a glance
 - REJECT tight crops, detail shots, side panels, single wheels, engine close-ups, or any composition where you can only see PART of the subject
 - If NONE of the candidates show the full subject, pick the one with the most of it visible
 
 HARD VETOES (automatic rejection):
-- The PRIMARY SUBJECT of the photo is a person — portrait, fashion shot, body close-up, beauty/glamour. The brand is "we don't make jokes about human bodies," so a photo OF a person is wrong. A photo of a THING (truck, tomato, building, ship) where humans appear incidentally — bystanders, scale-reference, crew on a deck — is FINE as long as the THING is the focus and occupies the bulk of the frame.
-- The photo is a TOY, SCULPTURE, STATUE, FIGURINE, COSTUME, REPLICA, FAN-ART, ILLUSTRATION, or CARTOON of the subject — we want photographs of the REAL physical thing. A Transformer-the-robot statue is not an electrical transformer. A toy fire truck is not a fire truck. A pumpkin Halloween costume is not a pumpkin. If you see seams, paint chipping, plastic, weld marks where a real subject would be solid, painted-flame decals on metal, action-figure proportions — REJECT. Score below 4 / verdict "reject" applies.
+- The PRIMARY SUBJECT of the photo is a person, portrait, fashion shot, body close-up, beauty/glamour. The brand is "we don't make jokes about human bodies," so a photo OF a person is wrong. A photo of a THING (truck, tomato, building, ship) where humans appear incidentally, bystanders, scale-reference, crew on a deck, is FINE as long as the THING is the focus and occupies the bulk of the frame.
+- The photo is a TOY, SCULPTURE, STATUE, FIGURINE, COSTUME, REPLICA, FAN-ART, ILLUSTRATION, or CARTOON of the subject, we want photographs of the REAL physical thing. A Transformer-the-robot statue is not an electrical transformer. A toy fire truck is not a fire truck. A pumpkin Halloween costume is not a pumpkin. If you see seams, paint chipping, plastic, weld marks where a real subject would be solid, painted-flame decals on metal, action-figure proportions, REJECT. Score below 4 / verdict "reject" applies.
 - Watermarks, text overlays, logos, captions
-- Marketing/product renders, illustrations, AI-generated stock — only real photographs
+- Marketing/product renders, illustrations, AI-generated stock, only real photographs
 - The actual subject occupies less than ~30% of the frame
 - The subject is in deep shadow or silhouette where its girth can't be seen
 
-If ALL candidates fail veto (rare — usually one is acceptable), output {"pick": -1, "reason": "all candidates fail veto"}. The workflow will re-search.
+If ALL candidates fail veto (rare, usually one is acceptable), output {"pick": -1, "reason": "all candidates fail veto"}. The workflow will re-search.
 
 Prefer:
 - Rear three-quarter angles, side profiles, or back views that show the FULL subject silhouette and emphasize girth
@@ -224,7 +224,7 @@ Output JSON only:
   const data = await res.json();
   const result = JSON.parse(data.choices[0].message.content);
 
-  // Handle the explicit veto signal — pick == -1 means all candidates failed
+  // Handle the explicit veto signal, pick == -1 means all candidates failed
   // veto. Surface this so the caller can re-search with a broader query.
   if (typeof result.pick === 'number' && result.pick === -1) {
     console.warn(`Vision rejected all ${subset.length} candidates: ${result.reason || 'no reason'}`);
@@ -252,53 +252,53 @@ async function downloadImage(photo, filename) {
 
 // ---------- 5. Generate the satirical entry ----------
 async function generateEntry(subject, photo) {
-  const sysPrompt = `You write entries for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful — the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.
+  const sysPrompt = `You write entries for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful, the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.
 
-VOICE TARGETS — match these patterns:
+VOICE TARGETS, match these patterns:
 
 THE THREE THINGS THAT MAKE A THICCCTIONARY ENTRY ACTUALLY FUNNY (in priority order):
 
 1. SPECIFICITY beats abstraction. "Florida grew an avocado so thiccc..." > "An avocado was grown that was very thiccc..." Real settings (the suburban Costco parking lot, the county fair weigh-in, the uncle's garage), real brands (Frigidaire, Steinway, F-450, Cadbury), real cultural anchors (Brooklyn townhouse, Costco haul, NHL bench).
 
-2. PUNCHLINE TAGS. Every example sentence MUST end on a beat — a comedic kicker, a sharp tag, a rhythmic closer. NOT "He saw a thiccc X." YES "He saw a thiccc X. The parking lot reorganized around him." or "...The dually rear axle takes up two spaces by birthright." or "...Toast was just the canvas." Without the tag, the example dies on impact.
+2. PUNCHLINE TAGS. Every example sentence MUST end on a beat, a comedic kicker, a sharp tag, a rhythmic closer. NOT "He saw a thiccc X." YES "He saw a thiccc X. The parking lot reorganized around him." or "...The dually rear axle takes up two spaces by birthright." or "...Toast was just the canvas." Without the tag, the example dies on impact.
 
-3. ANTI-CLIMAX in the etymology. The kicker is what makes it sing. "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle' — which, frankly, tracks." The straight academic part sets up the deadpan. End with a beat, not a fact.
+3. ANTI-CLIMAX in the etymology. The kicker is what makes it sing. "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle', which, frankly, tracks." The straight academic part sets up the deadpan. End with a beat, not a fact.
 
-DEFINITIONS — should sound like Merriam-Webster wrote them after one drink. Strong examples (study these — they all share unexpected SPECIFICITY):
+DEFINITIONS, should sound like Merriam-Webster wrote them after one drink. Strong examples (study these, they all share unexpected SPECIFICITY):
 - "A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one observed tail-on, in long-lens profile."
 - "An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection."
 - "The platonic ideal of thicccness: all body, no apologies."
 - "Any specimen exceeding 400g and exhibiting what botanists term 'a generous undercarriage'."
 - "A heavy-duty pickup of substantial posterior breadth, distinguished by dual rear wheels per side and an aggressively flared bedside that reads as architectural."
 
-ANTI-PATTERNS for definitions (these are what AI overuses — DO NOT write these):
-- "imposes its presence" / "commands the room" / "monumental in scale" — generic puff
-- "robust girth and imposing presence" — every adjective doing zero work
-- "renowned for its [adjective]" — stock dictionary opener that signals nothing
-- Stacking three vague adjectives ("massive, hefty, and substantial") — pick ONE specific detail instead
-- "exuding [abstract noun]" — almost always filler
+ANTI-PATTERNS for definitions (these are what AI overuses, DO NOT write these):
+- "imposes its presence" / "commands the room" / "monumental in scale", generic puff
+- "robust girth and imposing presence", every adjective doing zero work
+- "renowned for its [adjective]", stock dictionary opener that signals nothing
+- Stacking three vague adjectives ("massive, hefty, and substantial"), pick ONE specific detail instead
+- "exuding [abstract noun]", almost always filler
 
 NO TIME-ANCHORED FRAMING. The entry must read as a permanent dictionary record, not a daily blog post. Don't write "today's specimen," "this morning's catch," "as featured today," or anything that locks the entry to a specific date or news cycle. Entries must work whether the reader encounters them today or three years from now in a printed book. Write FOR THE CATALOG, not FOR TODAY.
 
-NO BODY-ADJACENT LANGUAGE. The brand exists to redirect AWAY from body language onto objects. Words like "voluptuous," "curves," "runway," "fashion model," "vintage model," "thin skins," "hourglass," "hip-to-waist ratio," "well-endowed" applied to OBJECTS undermine the entire conceit — they smuggle the body framing back in through metaphor. Use OBJECT language: "girth," "rotundity," "depth," "wheelbase," "displacement," "footprint," "bedside flare," "drum diameter," "shell thickness." If you find yourself reaching for a body word, the entry is wrong. Stop and pick an object word.
+NO BODY-ADJACENT LANGUAGE. The brand exists to redirect AWAY from body language onto objects. Words like "voluptuous," "curves," "runway," "fashion model," "vintage model," "thin skins," "hourglass," "hip-to-waist ratio," "well-endowed" applied to OBJECTS undermine the entire conceit, they smuggle the body framing back in through metaphor. Use OBJECT language: "girth," "rotundity," "depth," "wheelbase," "displacement," "footprint," "bedside flare," "drum diameter," "shell thickness." If you find yourself reaching for a body word, the entry is wrong. Stop and pick an object word.
 
-DEFINITION #2 MUST ESCALATE WITH RESTRAINT. The colloquial/slang second definition should sharpen the joke, not restate definition 1 with different adjectives. Strong def #2: "The platonic ideal of thicccness: all body, no apologies." (one short sentence, lands) or "A truck that does not back into a parking spot so much as occupy it with permanent intent." (one specific behavioral observation). Weak def #2: "Any banana that commands attention with full-bodied presence" — that is just def #1 restated. If def #2 is just def #1 with synonyms, cut it entirely; better to have one strong definition than two parallel ones.
+DEFINITION #2 MUST ESCALATE WITH RESTRAINT. The colloquial/slang second definition should sharpen the joke, not restate definition 1 with different adjectives. Strong def #2: "The platonic ideal of thicccness: all body, no apologies." (one short sentence, lands) or "A truck that does not back into a parking spot so much as occupy it with permanent intent." (one specific behavioral observation). Weak def #2: "Any banana that commands attention with full-bodied presence", that is just def #1 restated. If def #2 is just def #1 with synonyms, cut it entirely; better to have one strong definition than two parallel ones.
 
-ETYMOLOGIES — lead with REAL, VERIFIABLE etymology (Latin/Greek/Middle English/Old French/Spanish/Nahuatl/named industrialists/dated coinages), then close with a comedic kicker that lands. This is where the personality lives.
+ETYMOLOGIES, lead with REAL, VERIFIABLE etymology (Latin/Greek/Middle English/Old French/Spanish/Nahuatl/named industrialists/dated coinages), then close with a comedic kicker that lands. This is where the personality lives.
 
-CRITICAL — the etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. If you cannot recall the real etymology of the word with confidence, fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke — the entire conceit of Thiccctionary is fake-academic register applied to real linguistic facts. A made-up "Old English 'cynce'" is brand-damaging, not funny.
+CRITICAL, the etymology MUST be REAL. Do NOT invent fictional Old English / Old French / Proto-Germanic / Sanskrit forms. Do NOT make up word origins. If you cannot recall the real etymology of the word with confidence, fall back to: (a) etymology of a related/component word you DO know, (b) the named inventor or company, (c) a dated first-attestation in print. Fabricated etymologies destroy the joke, the entire conceit of Thiccctionary is fake-academic register applied to real linguistic facts. A made-up "Old English 'cynce'" is brand-damaging, not funny.
 
 Examples that worked:
-- "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle' — which, frankly, tracks."
+- "From Spanish aguacate, from Nahuatl āhuacatl, originally meaning 'testicle', which, frankly, tracks."
 - "From thiccc (internet vernacular, c. 2015, 'voluptuous; full-bodied,' with an extra c for emphasis) + Boeing Company (Seattle-based aircraft manufacturer, est. 1916). First attested on Thiccctionary.com, May 2026."
 - "From Henry Ford (industrialist) + the model code for the heaviest-duty pickup in the lineup. The numerical suffix correlates positively with girth."
 
 AVOID:
-- Fabricated word origins ("from Old English 'cynce'" — there is no such word)
+- Fabricated word origins ("from Old English 'cynce'", there is no such word)
 - Generic glosses that just translate the parts ("from Latin X meaning Y, combined with Z meaning W")
-- Etymologies without a comedic kicker — the kicker is mandatory.
+- Etymologies without a comedic kicker, the kicker is mandatory.
 
-EXAMPLES — must include "thiccc" (three c's). Format: ONE crisp sentence WITH A PUNCHLINE TAG at the end. The tag is non-negotiable — if the example doesn't have a comedic closer, it failed.
+EXAMPLES, must include "thiccc" (three c's). Format: ONE crisp sentence WITH A PUNCHLINE TAG at the end. The tag is non-negotiable, if the example doesn't have a comedic closer, it failed.
 
 Strong examples that worked (notice the tag pattern at the end of each):
 - "That 747 is straight-up a thiccc Boeing. The empennage on her? Architectural." [tag = sharp 1-word answer]
@@ -307,17 +307,17 @@ Strong examples that worked (notice the tag pattern at the end of each):
 - "She rolled out a thiccc wheel of Parmigiano-Reggiano at the wedding. Three groomsmen had to commit to the lift." [tag = scene-specific punchline]
 
 Note what they all have in common:
-- A SCENE (Florida, parking lot, wedding) — not a vague situation
-- A CONCRETE BEAT at the end — a one-sentence punchline that lands
-- BRAND/MODEL specificity — "747," "F-450," "Parmigiano-Reggiano"
+- A SCENE (Florida, parking lot, wedding), not a vague situation
+- A CONCRETE BEAT at the end, a one-sentence punchline that lands
+- BRAND/MODEL specificity, "747," "F-450," "Parmigiano-Reggiano"
 
-AVOID — these patterns are dead on arrival:
-- Flat constructions: "Replaced my X with this thiccc Y" — no scene, no tag, no joke
+AVOID, these patterns are dead on arrival:
+- Flat constructions: "Replaced my X with this thiccc Y", no scene, no tag, no joke
 - Real-estate / interior-design copy: "effortlessly enhancing the aesthetic", "elevating any room"
 - Generic compliments: "such a statement piece", "absolute showstopper"
 - Marketing language: "commands attention", "makes a statement"
-- Ending the sentence at the headword without a tag — even one extra clause is required
-- Adverb stacking: "monumentally, imposingly, undeniably thiccc" — one specific image, not three vague ones`;
+- Ending the sentence at the headword without a tag, even one extra clause is required
+- Adverb stacking: "monumentally, imposingly, undeniably thiccc", one specific image, not three vague ones`;
 
   const userPrompt = `Today's subject: "${subject}"
 
@@ -328,14 +328,14 @@ Write the dictionary entry. Reference the actual photo loosely (e.g. "esp. one v
 Schema:
 {
   "word": "${subject}",
-  "pronunciation": "/sim-pul re-SPEL-ing/",  // simple respelling — capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Do NOT use IPA.
+  "pronunciation": "/sim-pul re-SPEL-ing/",  // simple respelling, capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Do NOT use IPA.
   "partOfSpeech": "n.",
-  "definitions": ["definition 1 (1-2 sentences, dictionary register, voicy)", "optional definition 2 (sharper / colloquial — labeled with <em>colloq.</em> or <em>slang.</em>)"],
-  "example": "ONE sentence (optionally + a short tag) using BOTH the headword AND the literal word \"thiccc\" (always three c's). Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y' — pick a scene.",
+  "definitions": ["definition 1 (1-2 sentences, dictionary register, voicy)", "optional definition 2 (sharper / colloquial, labeled with <em>colloq.</em> or <em>slang.</em>)"],
+  "example": "ONE sentence (optionally + a short tag) using BOTH the headword AND the literal word \"thiccc\" (always three c's). Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y', pick a scene.",
   "etymology": "Real etymology FIRST (Latin/Greek/Middle English/Spanish/Nahuatl/etc., dated coinages, named industrialists) THEN a comedic kicker. The kicker is what makes the entry sing.",
-  "caption": "Plate N. — A short caption for the image, dictionary-illustration style. (N is a placeholder — leave it as 'Plate N.' literally.)",
+  "caption": "Plate N., A short caption for the image, dictionary-illustration style. (N is a placeholder, leave it as 'Plate N.' literally.)",
   "tags": ["tag1", "tag2", "tag3"],
-  "category": "ONE OF: Vehicles & Transport | Architecture & Infrastructure | Industrial Machinery | Produce & Botanical | Foods of Substance | Domestic Goods | Engineering Marvels | Musical Instruments — pick the single best fit. This becomes the chapter the entry lives in when the catalog ships as a book."
+  "category": "ONE OF: Vehicles & Transport | Architecture & Infrastructure | Industrial Machinery | Produce & Botanical | Foods of Substance | Domestic Goods | Engineering Marvels | Musical Instruments, pick the single best fit. This becomes the chapter the entry lives in when the catalog ships as a book."
 }`;
 
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -357,18 +357,18 @@ Schema:
 // ---------- 5a. Humor critique (post-write QA on the generated entry) ----------
 // Scores the just-written entry's humor 1-10 and gives a one-line verdict.
 // Rejection logic in main(): score < 6 → regenerate once. Still < 6 → ship the
-// PR anyway (Christopher can edit before merging — better to surface a weak entry
+// PR anyway (Christopher can edit before merging, better to surface a weak entry
 // for review than block the daily pipeline on a subjective measure).
 async function critiqueEntryHumor(entry) {
   const sysPrompt = `You are a humor reviewer for "Thiccctionary," a satirical daily dictionary of thiccc inanimate objects. Voice = pseudo-academic dictionary register × dry comedy × internet vernacular. Brand promise: jokes about THINGS, never bodies.
 
 Score the just-written entry on humor. Use these criteria:
 
-1. SPECIFICITY — does the example sentence have a real scene (Florida, county fair, NHL bench, suburban Costco) or is it generic ("someone saw a thiccc X")? Specific = higher.
-2. PUNCHLINE TAG — does the example end on a comedic beat? A sharp tag, anti-climax, or rhythmic closer? Without a tag, the example dies. Tagless = strong deduction.
-3. ETYMOLOGY KICKER — does the etymology end on a deadpan beat ("which, frankly, tracks" / "First attested on Thiccctionary.com" / similar)? OR does it just translate the parts? Kicker present = higher.
-4. ANTI-PATTERNS — does the entry use any of these dead phrases? "imposes its presence," "commands the room," "monumental in scale," "robust girth and imposing presence," "renowned for its [adjective]," "exuding [abstract noun]"? If yes — strong deduction.
-5. SURPRISE — is there at least one unexpected, voicy detail (a botanical aside, a parenthetical aside, a Latin-register flip, a comically specific stat)? Generic puff loses points.
+1. SPECIFICITY, does the example sentence have a real scene (Florida, county fair, NHL bench, suburban Costco) or is it generic ("someone saw a thiccc X")? Specific = higher.
+2. PUNCHLINE TAG, does the example end on a comedic beat? A sharp tag, anti-climax, or rhythmic closer? Without a tag, the example dies. Tagless = strong deduction.
+3. ETYMOLOGY KICKER, does the etymology end on a deadpan beat ("which, frankly, tracks" / "First attested on Thiccctionary.com" / similar)? OR does it just translate the parts? Kicker present = higher.
+4. ANTI-PATTERNS, does the entry use any of these dead phrases? "imposes its presence," "commands the room," "monumental in scale," "robust girth and imposing presence," "renowned for its [adjective]," "exuding [abstract noun]"? If yes, strong deduction.
+5. SURPRISE, is there at least one unexpected, voicy detail (a botanical aside, a parenthetical aside, a Latin-register flip, a comically specific stat)? Generic puff loses points.
 
 Score 1-10:
   9-10 = Avocado-Domestic / F-450-Dually tier. Definitely funny. Ship.
@@ -390,7 +390,7 @@ Evaluate this entry's humor.
   "score": <integer 1-10>,
   "verdict": "ship" | "regenerate" | "reject",
   "weakest_part": "definitions" | "example" | "etymology" | "overall",
-  "feedback": "one or two sentences — what's working, what's flat, what would land"
+  "feedback": "one or two sentences, what's working, what's flat, what would land"
 }`;
 
   try {
@@ -428,13 +428,13 @@ Evaluate this entry's humor.
 async function critiqueChosenImage(subject, photo) {
   const sysPrompt = `You are a design reviewer for "Thiccctionary," a satirical daily dictionary of thiccc inanimate objects. You evaluate the chosen photo for a daily entry against these criteria:
 
-1. SILHOUETTE COMPLETENESS — is the WHOLE subject visible? (rear-three-quarter, side-profile, full-frame views work; tight crops fail)
-2. FRAMING — is the subject centered enough that a 4:3 or natural-aspect crop preserves it?
-3. BRAND FIT — does the photo look like a documentary / dictionary plate, or a marketing render? (Documentary good, marketing bad)
-4. CLUTTER — is the subject clearly the focal point, or surrounded by distractions?
-5. PRIMARY-SUBJECT TEST — what is the photo OF? If the answer is a person (portrait, fashion, beauty, body close-up) — DISQUALIFY, the brand never makes jokes about human bodies. If the answer is the actual subject thing (truck, tomato, instrument, building) and humans appear incidentally as bystanders / scale reference / crew / players holding the instrument — that's FINE. The rule is "no jokes about bodies," not "no humans visible."
+1. SILHOUETTE COMPLETENESS, is the WHOLE subject visible? (rear-three-quarter, side-profile, full-frame views work; tight crops fail)
+2. FRAMING, is the subject centered enough that a 4:3 or natural-aspect crop preserves it?
+3. BRAND FIT, does the photo look like a documentary / dictionary plate, or a marketing render? (Documentary good, marketing bad)
+4. CLUTTER, is the subject clearly the focal point, or surrounded by distractions?
+5. PRIMARY-SUBJECT TEST, what is the photo OF? If the answer is a person (portrait, fashion, beauty, body close-up), DISQUALIFY, the brand never makes jokes about human bodies. If the answer is the actual subject thing (truck, tomato, instrument, building) and humans appear incidentally as bystanders / scale reference / crew / players holding the instrument, that's FINE. The rule is "no jokes about bodies," not "no humans visible."
 
-6. REAL VS REPRESENTATION TEST — is this a photo of the ACTUAL subject, or a depiction of it? Things that count as DEPICTION and must be REJECTED (verdict "reject", score < 4): toys, sculptures, statues, figurines, costumes, replicas, fan art, illustrations, cartoons, action figures, model versions, 3D renders. Example: if the subject is "Transformer, Power Generation" (an electrical transformer) and the photo shows a Transformer-the-robot statue, REJECT. If the subject is "Pumpkin, Atlantic Giant" and the photo shows a person in a pumpkin costume, REJECT. If the subject is "Concrete Mixer" and the photo shows a toy concrete mixer, REJECT. Tells to watch for: visible seams, plastic surfaces, action-figure proportions, painted decals where real metal would be, weld marks at joints implying a built sculpture not a real machine, anything that reads as "made by an artist to look like X" rather than "is X."
+6. REAL VS REPRESENTATION TEST, is this a photo of the ACTUAL subject, or a depiction of it? Things that count as DEPICTION and must be REJECTED (verdict "reject", score < 4): toys, sculptures, statues, figurines, costumes, replicas, fan art, illustrations, cartoons, action figures, model versions, 3D renders. Example: if the subject is "Transformer, Power Generation" (an electrical transformer) and the photo shows a Transformer-the-robot statue, REJECT. If the subject is "Pumpkin, Atlantic Giant" and the photo shows a person in a pumpkin costume, REJECT. If the subject is "Concrete Mixer" and the photo shows a toy concrete mixer, REJECT. Tells to watch for: visible seams, plastic surfaces, action-figure proportions, painted decals where real metal would be, weld marks at joints implying a built sculpture not a real machine, anything that reads as "made by an artist to look like X" rather than "is X."
 
 For musical instruments specifically: a photo of a tuba being PLAYED by someone is a photo of the tuba (subject = instrument, person is incidental). A photo of a brass-band marching is also of the instruments. Reject only if the COMPOSITION centers a person's face/body.
 
@@ -449,8 +449,8 @@ Evaluate this image and output JSON:
 {
   "score": <1-10>,
   "verdict": "ship" | "needs-review" | "reject",
-  "photoSubject": "one short clause describing what the photo ACTUALLY depicts — be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
-  "critique": "one paragraph explaining the score — what's good, what's weak"
+  "photoSubject": "one short clause describing what the photo ACTUALLY depicts, be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
+  "critique": "one paragraph explaining the score, what's good, what's weak"
 }`;
 
   try {
@@ -499,11 +499,11 @@ async function generateSocialCaptions(entry) {
 Rules:
 - 2-4 short lines per caption. Newlines for comic timing.
 - Reference REAL specifics about THE SUBJECT (numbers, dates, sizes, origin facts).
-- Never use "voluptuous, curves, runway, diva, body, hourglass, slay, queen, OG, haters" — these are banned.
+- Never use "voluptuous, curves, runway, diva, body, hourglass, slay, queen, OG, haters", these are banned.
 - Em-dashes are fine and encouraged for comic timing.
 - The word "thiccc" (three c's) is the brand word; use sparingly but freely.
-- Each caption must work standalone — image carries some weight but caption must land its own line.
-- DO NOT include URLs or hashtags — those are added by the posting script.
+- Each caption must work standalone, image carries some weight but caption must land its own line.
+- DO NOT include URLs or hashtags, those are added by the posting script.
 
 Tone exemplars:
 - "Bagger 288. Thirteen thousand five hundred tons. Walks two miles per hour, professionally. The Earth simply moves when asked."
@@ -521,14 +521,14 @@ Write 4 distinct captions. Each should reference a different specific about this
 {
   "morning": "...",
   "afternoon": "...",
-  "evening": "From the archives — ${entry.word}.\\n...",
+  "evening": "From the archives, ${entry.word}.\\n...",
   "reels": "..."
 }
 
 Notes:
 - "morning" leads with the headword. Punchy.
 - "afternoon" mid-day energy; ends with the headword as a tag.
-- "evening" archive callback; MUST begin with "From the archives — ${entry.word}."
+- "evening" archive callback; MUST begin with "From the archives, ${entry.word}."
 - "reels" shortest; no URL (Reels strip links).`;
 
   try {
@@ -578,7 +578,7 @@ async function main() {
   const existingIdx = entries.findIndex(e => e.date === today);
   if (existingIdx !== -1) {
     if (force) {
-      console.log(`Entry for ${today} already exists. FORCE_REGENERATE=true — removing it and regenerating.`);
+      console.log(`Entry for ${today} already exists. FORCE_REGENERATE=true, removing it and regenerating.`);
       entries.splice(existingIdx, 1);
     } else {
       console.log(`Entry for ${today} already exists. Exiting. (Set FORCE_REGENERATE=true to override.)`);
@@ -601,7 +601,7 @@ async function main() {
   try {
     const fileText = (await fs.readFile(path.join(ROOT, 'data', '.fire-daily-subject'), 'utf8')).trim();
     if (fileText && fileText.length > 0) fileOverride = fileText;
-  } catch (e) { /* file absent — normal */ }
+  } catch (e) { /* file absent, normal */ }
 
   // Subject queue: data/subject-queue.json holds an editorial backlog. Each
   // daily run pulls the FIRST queued subject if present (and removes it from
@@ -625,13 +625,13 @@ async function main() {
       queueAfterPull = { ...parsed, queue: parsed.queue.slice(1) };
       console.log(`Subject queue: pulling "${queueOverride}" (${parsed.queue.length} item(s) before pull)`);
     }
-  } catch (e) { /* file absent or malformed — normal, just skip queue */ }
+  } catch (e) { /* file absent or malformed, normal, just skip queue */ }
 
   const overrideSubject = process.env.SUBJECT_OVERRIDE || fileOverride || queueOverride;
   if (overrideSubject) {
     // Use the override as the editorial subject AND derive a sensible Unsplash query.
     // Priority for the query:
-    //   1. Explicit `query` from queue item (queueQueryOverride) — only if this run uses the queue source
+    //   1. Explicit `query` from queue item (queueQueryOverride), only if this run uses the queue source
     //   2. Auto-derived from subject (reverses comma-qualifier: "Wheel, Parmigiano-Reggiano" → "Parmigiano-Reggiano wheel")
     let simpleQuery;
     const usingQueueQuery = !process.env.SUBJECT_OVERRIDE && !fileOverride && queueQueryOverride;
@@ -677,7 +677,7 @@ async function main() {
   // adds the failed subject to the avoid list so we don't pick the same dud
   // again. After 3 misses, fall through to a known-safe subject pool that
   // we've verified has Unsplash photos. As a last resort the script still
-  // throws — but that's a 4-deep failure, not a 1-deep one.
+  // throws, but that's a 4-deep failure, not a 1-deep one.
   let candidates;
   let avoidNow = [...usedWords];
   let attempts = 0;
@@ -692,7 +692,7 @@ async function main() {
       attempts += 1;
       console.warn(`Subject "${subjectInfo.subject}" returned zero Unsplash results for query "${subjectInfo.unsplashQuery}". (attempt ${attempts})`);
       if (attempts > MAX_FALLBACK_ATTEMPTS) {
-        // Last-resort known-safe pool — every entry here has been verified to
+        // Last-resort known-safe pool, every entry here has been verified to
         // return Unsplash photos, and the auto-picker would happily pick any
         // of them as a normal day's subject.
         const SAFE_POOL = [
@@ -719,7 +719,7 @@ async function main() {
   let chosen = await pickThiccestImage(subjectInfo.subject, candidates);
 
   // If the picker rejected ALL candidates, try one alternative angle. We
-  // intentionally do NOT add "isolated studio no people" — Unsplash treats
+  // intentionally do NOT add "isolated studio no people", Unsplash treats
   // those as required keywords and usually returns zero results. Instead,
   // try a "photograph" suffix which biases toward general photography over
   // illustrations / renders.
@@ -729,7 +729,7 @@ async function main() {
     const retryCandidates = await searchUnsplash(broaderQuery);
     if (!retryCandidates || retryCandidates.length === 0) {
       console.log(`No results for retry query "${broaderQuery}". Skipping today's run cleanly so the cron can pick a different subject tomorrow.`);
-      // Exit 0 — this is a deliberate skip, not a failure. Run shows green,
+      // Exit 0, this is a deliberate skip, not a failure. Run shows green,
       // no PR opens (nothing to commit), today's date stays available for
       // the next run.
       process.exit(0);
@@ -737,7 +737,7 @@ async function main() {
     chosen = await pickThiccestImage(subjectInfo.subject, retryCandidates);
     if (chosen && chosen.rejected) {
       console.log(`All candidates failed veto on both queries for "${subjectInfo.subject}". Skipping today.`);
-      process.exit(0);  // deliberate skip — green run, no PR
+      process.exit(0);  // deliberate skip, green run, no PR
     }
   }
 
@@ -772,7 +772,7 @@ async function main() {
     console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');
     console.log('  score:', critique.score, ' verdict:', critique.verdict);
     console.log('  critique:', critique.critique);
-    process.exit(0);  // deliberate skip — green run, no PR opens, subject remains available for next run
+    process.exit(0);  // deliberate skip, green run, no PR opens, subject remains available for next run
   }
 
   // Step 5: write the entry
@@ -780,7 +780,7 @@ async function main() {
 
   // Step 5-bw: banned-words filter (Wave 42). Reject and retry up to 3 times if output
   // contains banned body-language, internet-voice, or filler patterns.
-  // The brand voice depends on these NOT appearing — soft prompt rules aren't enough.
+  // The brand voice depends on these NOT appearing, soft prompt rules aren't enough.
   for (let bwAttempt = 1; bwAttempt <= 3; bwAttempt++) {
     const bwCheck = validateEntry(entryCopy);
     if (bwCheck.ok) {
@@ -788,7 +788,7 @@ async function main() {
       break;
     }
     if (bwAttempt >= 3) {
-      console.warn(`Banned-words check failed on all 3 attempts — shipping with violations. Christopher should review.`);
+      console.warn(`Banned-words check failed on all 3 attempts, shipping with violations. Christopher should review.`);
       break;
     }
     const violationList = bwCheck.violations.map(v => `"${v.term}" in ${v.field}`).join(', ');
@@ -798,7 +798,7 @@ async function main() {
   }
 
   // Step 5a: humor critique. If the entry scores poorly, regenerate ONCE.
-  // After one retry we ship anyway — better to land a weak entry that
+  // After one retry we ship anyway, better to land a weak entry that
   // Christopher can edit than block the daily pipeline on a subjective call.
   // Also: capture the FINAL humor score so we can use it for bookReady auto-flagging.
   let finalHumorScore = null;
@@ -808,7 +808,7 @@ async function main() {
     if (humorCheck.feedback) console.log(`  feedback: ${humorCheck.feedback}`);
     if (typeof humorCheck.score === 'number' && humorCheck.score < 6 && humorCheck.verdict !== 'ship') {
       console.log('Humor below threshold. Regenerating once with feedback.');
-      const retryHint = ` REGEN HINT: previous attempt scored ${humorCheck.score}/10 — weakest part was ${humorCheck.weakest_part}. Feedback: ${humorCheck.feedback}. Push HARDER on specificity, scene, and punchline tag.`;
+      const retryHint = ` REGEN HINT: previous attempt scored ${humorCheck.score}/10, weakest part was ${humorCheck.weakest_part}. Feedback: ${humorCheck.feedback}. Push HARDER on specificity, scene, and punchline tag.`;
       try {
         entryCopy = await generateEntry(subjectInfo.subject + retryHint, chosen);
         humorCheck = await critiqueEntryHumor(entryCopy);
@@ -819,11 +819,11 @@ async function main() {
     }
     if (typeof humorCheck.score === 'number') finalHumorScore = humorCheck.score;
   } catch (e) {
-    console.warn('Humor critique outer catch — shipping without humor check:', e.message);
+    console.warn('Humor critique outer catch, shipping without humor check:', e.message);
   }
 
   // Step 6: assemble + save
-  // Validate the model's category against our fixed list — if it returned
+  // Validate the model's category against our fixed list, if it returned
   // something off-list, mark as 'Uncategorized' and let Christopher fix
   // during PR review.
   const VALID_CATEGORIES = new Set([
@@ -863,7 +863,7 @@ async function main() {
     unsplashUrl: chosen.unsplashUrl,
   };
 
-  // Wave 98: generate bespoke social captions per entry. Non-blocking — if it
+  // Wave 98: generate bespoke social captions per entry. Non-blocking, if it
   // fails, post-to-buffer.js falls back to the Wave 87 templated captions.
   const socialCaptions = await generateSocialCaptions(entry).catch(e => {
     console.warn('Social-captions outer catch:', e.message);
@@ -877,7 +877,7 @@ async function main() {
   console.log(`Saved entry: ${entry.word}`);
 
   // Write critique to a side-channel file so the GH Actions workflow can pick it up
-  // for the PR body. Not committed to entries.json — it's purely review metadata.
+  // for the PR body. Not committed to entries.json, it's purely review metadata.
   try {
     await fs.writeFile(path.join(ROOT, 'data', '.critique.json'), JSON.stringify(critique, null, 2));
   } catch (e) {
@@ -886,7 +886,7 @@ async function main() {
 
   // Step 7: build the per-entry HTML page and refresh the sitemap
   // entries.json is sorted newest-first so the new entry is at index 0; "next" in
-  // chronological terms is entries[i-1] (newer) — there is none for today, so null.
+  // chronological terms is entries[i-1] (newer), there is none for today, so null.
   // "prev" is entries[i+1] (older).
   const prev = entries.length > 1 ? entries[1] : null;
   const next = null;
@@ -908,7 +908,7 @@ async function main() {
   try {
     articles = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'articles.json'), 'utf8'));
   } catch (e) {
-    console.warn('articles.json not loaded — RSS will not include articles:', e.message);
+    console.warn('articles.json not loaded, RSS will not include articles:', e.message);
   }
   await buildRssFeed(entries, articles);
   console.log(`RSS feed rebuilt with ${entries.length} entries + ${articles.length} articles.`);
@@ -918,7 +918,7 @@ async function main() {
   try {
     await fs.unlink(path.join(ROOT, 'data', '.fire-daily-subject'));
     console.log('Cleared data/.fire-daily-subject so the next run auto-picks.');
-  } catch (e) { /* file absent — normal */ }
+  } catch (e) { /* file absent, normal */ }
 
   // Persist the queue minus the pulled item, if we used one. The pull
   // happened earlier; the write happens here at the END so a script crash
