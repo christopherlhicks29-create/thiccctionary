@@ -189,9 +189,35 @@ async function main() {
   if (ACTION === 'introspect') {
     const queries = await listAllAvailableQueries();
     const mutations = await listAllAvailableMutations();
-    log(`Available queries (${queries.length}):`); queries.forEach(q => log('  ' + q));
-    log(`Available mutations (${mutations.length}):`); mutations.forEach(m => log('  ' + m));
-    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ queries, mutations }, null, 2), 'utf8');
+    log(`Queries (${queries.length}): ${queries.join(', ')}`);
+    log(`Mutations (${mutations.length}): ${mutations.join(', ')}`);
+
+    // Detailed introspection of posts query + deletePost mutation
+    const detailQ = `{ __type(name: "Query") { fields(includeDeprecated: false) { name args { name type { name kind ofType { name kind ofType { name kind } } } } type { name kind ofType { name kind } } } } }`;
+    const detailR = await gql(detailQ);
+    let queryDetails = null;
+    if (detailR.ok) {
+      queryDetails = detailR.data.__type.fields.find(f => f.name === 'posts');
+      log('posts query details: ' + JSON.stringify(queryDetails));
+    }
+
+    const detailMQ = `{ __type(name: "Mutation") { fields { name args { name type { name kind ofType { name kind ofType { name kind } } } } } } }`;
+    const detailM = await gql(detailMQ);
+    let deleteDetails = null;
+    if (detailM.ok) {
+      deleteDetails = detailM.data.__type.fields.find(f => f.name === 'deletePost');
+      log('deletePost mutation details: ' + JSON.stringify(deleteDetails));
+    }
+
+    // Also introspect the PostsInput type if it exists
+    const inputTypes = ['PostsInput', 'PostsFilter', 'PostFilter', 'GetPostsInput'];
+    const typeInfos = {};
+    for (const t of inputTypes) {
+      const r = await gql(`{ __type(name: "${t}") { name inputFields { name type { name kind ofType { name kind } } } } }`);
+      if (r.ok && r.data.__type) { typeInfos[t] = r.data.__type; log(`Input type ${t}: ` + JSON.stringify(r.data.__type)); }
+    }
+
+    await fs.writeFile('/tmp/buffer-queue.json', JSON.stringify({ queries, mutations, queryDetails, deleteDetails, typeInfos }, null, 2), 'utf8');
     await writeLog();
     return;
   }
