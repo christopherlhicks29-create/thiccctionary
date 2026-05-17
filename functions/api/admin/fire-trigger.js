@@ -26,6 +26,7 @@ const TRIGGERS = {
   'office-post':   { path: 'data/.fire-office',           needsDate: false, contentMode: 'office-json',     label: 'Fire an employee social post (FB + X)' },
   'buffer-list':   { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-list-json',   label: 'List Buffer scheduled posts' },
   'buffer-purge':  { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-purge-json',  label: 'Delete Buffer posts matching phrase(s)' },
+  'retry-posts':   { path: 'data/.fire-retry-posts',         needsDate: false, contentMode: 'text',                label: 'Retry failed office social posts' },
   // Wave 152: direct workflow_dispatch triggers. Used by the admin auto-fix
   // loop to re-run failed pipelines without writing a sentinel file. Keyed
   // by workflow filename (under .github/workflows/).

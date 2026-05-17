@@ -299,6 +299,10 @@ The band marched on"></textarea>
   <section id="social" class="panel">
     <h2>Employee social posts</h2>
     <p class="lede">All staff-bylined posts from <code>data/office-post-queue.json</code>. Status = posted means Buffer accepted the post into its queue; the actual FB/X publish happens at the next Buffer scheduled slot (use <a href="https://publish.buffer.com/queue" target="_blank" rel="noopener">Buffer dashboard</a> to share-now if needed).</p>
+    <div id="social-actions" style="margin-bottom: 1.5rem;">
+      <button type="button" id="retry-failed-btn" class="btn btn-secondary" style="font-size: 0.9rem;">Retry failed posts</button>
+      <span id="retry-failed-status" style="margin-left: 12px; font-size: 13px; color: var(--ink-soft);"></span>
+    </div>
     <div id="social-loading" class="empty-state">Loading posts…</div>
     <div id="social-error" class="empty-state" style="display:none;"></div>
     <div id="social-list" style="display:none;"></div>
@@ -974,6 +978,34 @@ async function loadSocialPosts() {
       errors +
     '</article>';
   }).join('');
+
+  // Wire up the retry button (idempotent - replaces handler on each refresh)
+  const retryBtn = $('#retry-failed-btn');
+  const retryStatus = $('#retry-failed-status');
+  if (retryBtn) {
+    retryBtn.onclick = async () => {
+      retryBtn.disabled = true;
+      retryStatus.textContent = 'Firing retry pass...';
+      try {
+        const res = await fetch('/api/admin/fire-trigger', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ trigger: 'retry-posts', sourceEmail: 'social-tab' }),
+        });
+        const j = await res.json();
+        if (res.ok) {
+          retryStatus.textContent = 'Fired - workflow will run within ~30s. Re-checking in 90s.';
+          setTimeout(() => { loadSocialPosts(); retryBtn.disabled = false; retryStatus.textContent = ''; }, 90_000);
+        } else {
+          retryStatus.textContent = 'Failed: ' + (j.error || res.status);
+          retryBtn.disabled = false;
+        }
+      } catch (e) {
+        retryStatus.textContent = 'Network error: ' + e.message;
+        retryBtn.disabled = false;
+      }
+    };
+  }
 }
 
 // Wire to tab activation: load when "social" tab becomes active
