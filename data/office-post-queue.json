@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1779025256192",
+    "created": "2026-05-17T13:40:56.192Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "office",
+    "text": "Reginald has not returned the calls. He has not returned the postcard. He has not, to my knowledge, returned from Jaipur. The catalogue, properly understood, does not employ pseudonyms. I have filed a note.\n\nBartholomew",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1778992881665",
     "created": "2026-05-17T04:41:21.665Z",
     "byline_id": "bart",
