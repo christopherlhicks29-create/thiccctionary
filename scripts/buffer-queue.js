@@ -72,10 +72,51 @@ async function listAllAvailableMutations() {
   return r.data.__schema.mutationType.fields.map(f => f.name);
 }
 
+async function getOrganizationId() {
+  const r = await gql('{ account { organizations { id } } }');
+  if (!r.ok) return null;
+  return r.data?.account?.organizations?.[0]?.id || null;
+}
+
+async function listPosts(channelIds, statuses) {
+  const orgId = await getOrganizationId();
+  if (!orgId) { log('could not get organizationId'); return []; }
+  log(`org=${orgId}`);
+
+  // Try with various status enum values
+  const statusVariants = statuses ? [statuses] : [['scheduled'], ['queue'], ['draft', 'scheduled'], ['queued']];
+  for (const statusVal of statusVariants) {
+    const q = `query Q($input: PostsInput!) {
+      posts(input: $input, first: 100) {
+        edges { node { id text dueAt status channelId } }
+      }
+    }`;
+    const vars = {
+      input: {
+        organizationId: orgId,
+        filter: { channelIds, status: statusVal },
+      },
+    };
+    log(`Trying status: ${JSON.stringify(statusVal)}`);
+    const r = await gql(q, vars);
+    if (r.ok) {
+      const posts = (r.data?.posts?.edges || []).map(e => e.node);
+      log(`  → found ${posts.length} posts`);
+      return posts;
+    }
+    log(`  → ${JSON.stringify(r.errors || r.status).slice(0, 250)}`);
+  }
+  return [];
+}
+
 async function tryListShapes(channelIds) {
-  // Try multiple query shapes until one works
+  // Use the schema-verified working shape
+  const posts = await listPosts(channelIds);
+  return { shape: 'verified', posts };
+}
+
+async function legacy_tryListShapes_unused(channelIds) {
   const shapes = [
-    // Shape 1: posts(input: {channelIds, status})
     {
       name: 'posts-input',
       query: `query Q($cids: [ChannelId!]!) { posts(input: { channelIds: $cids, status: queue }) { edges { node { id text dueAt } } } }`,
