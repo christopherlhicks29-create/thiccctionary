@@ -41,6 +41,19 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Parse sentinel (if push-triggered with payload)
+        id: sentinel
+        run: |
+          if [ -f data/.fire-office ]; then
+            CONTENT=$(cat data/.fire-office)
+            # Try JSON first; fall back to plain date
+            BYLINE=$(echo "$CONTENT" | python3 -c "import sys, json; d=json.load(sys.stdin); print(d.get('byline_override',''))" 2>/dev/null || echo "")
+            TOPIC=$(echo "$CONTENT" | python3 -c "import sys, json; d=json.load(sys.stdin); print(d.get('topic_kind','either'))" 2>/dev/null || echo "either")
+            if [ -n "$BYLINE" ]; then echo "byline=$BYLINE" >> "$GITHUB_OUTPUT"; fi
+            echo "topic=$TOPIC" >> "$GITHUB_OUTPUT"
+            echo "Parsed sentinel: byline=$BYLINE topic=$TOPIC"
+          fi
+
       - name: Random cadence gate (~70%)
         id: gate
         run: |
@@ -71,8 +84,8 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          BYLINE_OVERRIDE: ${{ inputs.byline_override }}
-          TOPIC_KIND: ${{ inputs.topic_kind }}
+          BYLINE_OVERRIDE: ${{ inputs.byline_override || steps.sentinel.outputs.byline }}
+          TOPIC_KIND: ${{ inputs.topic_kind || steps.sentinel.outputs.topic }}
           DRY_RUN: ${{ inputs.dry_run == 'true' && '1' || '' }}
         run: |
           set +e

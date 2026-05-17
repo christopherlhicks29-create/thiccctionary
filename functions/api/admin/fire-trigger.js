@@ -23,6 +23,7 @@ const TRIGGERS = {
   'backfill':      { path: 'data/.fire-backfill',       needsDate: true,  contentMode: 'text', label: 'Backfill morning post + newsletter for date' },
   'regen-image':   { path: 'data/.fire-image-regen.json', needsDate: true, contentMode: 'image-regen-json', label: 'Regenerate image for date' },
   'regen-text':    { path: 'data/.fire-text-regen.json',  needsDate: true, contentMode: 'text-regen-json',  label: 'Regenerate entry text for date' },
+  'office-post':   { path: 'data/.fire-office',           needsDate: false, contentMode: 'office-json',     label: 'Fire an employee social post (FB + X)' },
 };
 
 async function gh(path, opts = {}, env) {
@@ -63,6 +64,15 @@ export async function onRequestPost({ request, env }) {
     content = JSON.stringify(payload, null, 2);
   } else if (cfg.contentMode === 'text-regen-json') {
     const payload = { dates: date, word_override: (body.wordOverride || '').trim(), _fired: { at: ts, by: who } };
+    content = JSON.stringify(payload, null, 2);
+  } else if (cfg.contentMode === 'office-json') {
+    const today = new Date().toISOString().slice(0, 10);
+    const payload = {
+      date: today,
+      byline_override: (body.bylineOverride || '').trim(),
+      topic_kind: (body.topicKind || 'either').trim(),
+      _fired: { at: ts, by: who },
+    };
     content = JSON.stringify(payload, null, 2);
   } else {
     content = cfg.needsDate

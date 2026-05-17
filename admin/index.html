@@ -239,6 +239,33 @@
         <button class="action" data-trigger="backfill" data-date-input="backfill-date-input" data-confirm="Backfill posts + newsletter for the selected date? This will send a real email to subscribers.">Backfill date</button>
       </div>
     </div>
+
+    <div class="action-card">
+      <h3>Fire an employee social post</h3>
+      <p class="desc">Triggers <code>office-post.yml</code>. Generates a Claude-written, gpt-4o-rated (>=7/10) ~280-char post bylined by a staff member and posts to FB + X via Buffer (Instagram skipped, text-only). Random byline by default, or pick one. Topic kind defaults to "either".</p>
+      <div class="row">
+        <label>Byline:
+          <select id="office-byline-input">
+            <option value="">random</option>
+            <option value="eli">Eli (Staff Writer)</option>
+            <option value="teddy">Teddy (Junior Cataloguer)</option>
+            <option value="bart">Bart (Senior Cataloguer)</option>
+            <option value="margie">Margie (Editor-in-Chief)</option>
+            <option value="hugh">Hugh (Voice Editor)</option>
+            <option value="spider">Spider (Field Correspondent)</option>
+          </select>
+        </label>
+        <label>Topic:
+          <select id="office-topic-input">
+            <option value="either">either</option>
+            <option value="office">office (running bit)</option>
+            <option value="thiccc">thiccc (recent entry)</option>
+            <option value="reply">reply (react to colleague)</option>
+          </select>
+        </label>
+        <button class="primary" id="office-fire-btn" data-confirm="Fire an employee office post to FB + X right now?">Fire office post</button>
+      </div>
+    </div>
   </section>
 
   <!-- ENTRIES -->
@@ -717,6 +744,30 @@ $$('button[data-trigger]').forEach(btn => btn.addEventListener('click', async ()
     setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 3000);
   } catch (e) { showToast('Error: ' + e.message, 'error'); btn.disabled = false; btn.textContent = origText; }
 }));
+
+// Office-post handler: bespoke because it sends byline_override + topic_kind
+const officeBtn = document.getElementById('office-fire-btn');
+if (officeBtn) {
+  officeBtn.addEventListener('click', async () => {
+    const byline = document.getElementById('office-byline-input').value;
+    const topic = document.getElementById('office-topic-input').value;
+    if (!confirm(officeBtn.dataset.confirm + (byline ? ' [byline: ' + byline + ']' : ''))) return;
+    officeBtn.disabled = true;
+    const orig = officeBtn.textContent;
+    officeBtn.textContent = 'Firing…';
+    try {
+      const r = await fetch('/api/admin/fire-trigger', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trigger: 'office-post', bylineOverride: byline, topicKind: topic }),
+      });
+      const d = await r.json();
+      if (!r.ok) { showToast(d.error || ('Failed: ' + r.status), 'error'); return; }
+      showToast(d.message || 'Fired. Watch GitHub Actions for the run.', 'ok');
+    } catch (e) { showToast('Error: ' + e.message, 'error'); }
+    finally { setTimeout(() => { officeBtn.disabled = false; officeBtn.textContent = orig; }, 3000); }
+  });
+}
 
 // Pre-fill date inputs with today's date
 const todayStr = new Date().toISOString().slice(0, 10);
