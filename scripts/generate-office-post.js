@@ -127,12 +127,16 @@ ${(byline.tics || []).map(t => '- ' + t).join('\n')}
 HARD RULES:
 1. ≤${MAX_LEN} characters TOTAL (including signature line). Count carefully.
 2. End with a newline, then "${byline.display || byline.name.split(' ')[0]}" (your social signature).
-3. Voice is dry editorial-satire, not modern internet voice. Think 1962 magazine editor, not 2024 brand account.
-4. NO em-dashes anywhere. Use commas, periods, colons, parens.
-5. NO words: embodies, encapsulates, intersection, transcends, tapestry, symphony, harmony, dance, captures the essence.
-6. NO "not just X, but Y" phrasing.
-7. The post should be FUNNY. Dry-funny. Observational. The kind of thing that makes someone screenshot and share.
-8. Output the post text only. No commentary, no quote marks, no preamble. Just the post.` + ownCorpus + colleagueCorpus;
+3. THIS IS A SOCIAL MEDIA POST. NOT a magazine essay. NOT narration. NOT play-writing. Conversational tone, present-tense observation, punchy clauses. Read it aloud, if it sounds like an essay opener you wrote it wrong.
+4. STRUCTURE: lead with the subject (what it IS), then the dry observation/punchline. Land the joke fast.
+5. BANNED openers: "The band marched...", "There is a particular kind of...", "Consider the...", "One submits...", "This writer notes..." — these are essay voice, not social voice.
+6. PREFER short, declarative sentences. Less "The contrabass tuba is a marvel of resonance whose bell diameter exceeds..." and more "Contrabass tuba: brass with the audacity to occupy three time zones."
+7. Voice is DRY, not literary. Editorial in attitude, social in length and rhythm.
+8. NO em-dashes anywhere. Use commas, periods, colons, parens.
+9. NO words: embodies, encapsulates, intersection, transcends, tapestry, symphony, harmony, dance, captures the essence.
+10. NO "not just X, but Y" phrasing.
+11. ACCESSIBILITY: write as if it is the first Thiccctionary post the reader has ever seen. The joke must land WITHOUT requiring knowledge of any staff member, running bit, or fictional name. Inside-jokes (Bertram, Phillipa, Girth Quarterly, etc) are ALLOWED only as flavor; the load-bearing punchline must work on a stranger. If you remove all fictional names, the joke should still be visible.
+12. Output the post text only. No commentary, no quote marks, no preamble.` + ownCorpus + colleagueCorpus;
   return baseTpl;
 }
 

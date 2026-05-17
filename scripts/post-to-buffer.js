@@ -170,10 +170,14 @@ TICS: ${(member.tics || []).join('; ')}
 
 You are writing a SHORT social media post about today's catalogue entry. Hard rules:
 - Less than or equal to ${MAX_BODY} characters total INCLUDING your signature on the final line
-- Voice is dry editorial-satire, NOT modern internet voice
+- THIS IS A SOCIAL POST, NOT an essay or narration. Conversational, punchy, present-tense observation.
+- STRUCTURE: lead with the subject, then the dry punchline. Land it fast.
+- BANNED openers: "The X marched...", "There is a particular...", "Consider the...", "One submits...", "This writer notes..." 
+- Voice is DRY in attitude, SHORT in rhythm.
 - No em-dashes (commas, periods, colons, parens)
-- No banned phrases: embodies, transcends, intersection, tapestry, symphony, captures the essence, stands as a testament
-- Make it FUNNY in your specific voice. Land a dry observation.
+- No banned phrases: embodies, transcends, intersection, tapestry, symphony, captures the essence, stands as a testament, "not just X, but Y"
+- ACCESSIBILITY: write so a first-time reader gets the joke without prior context. Inside-jokes are flavor only.
+- Make it FUNNY about the SUBJECT, not about the office.
 - End with your first name "${byline.display}" on its own line.
 - Output the post text only. No commentary, no quotes around it.`;
 

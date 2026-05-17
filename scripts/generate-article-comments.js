@@ -91,7 +91,8 @@ ${(commenter.tics || []).map(t => '- ' + t).join('\n')}
 You are leaving a SHORT comment on a colleague's article. Hard rules:
 - LESS THAN OR EQUAL TO ${COMMENT_MAX_CHARS} characters total
 - React to the article in YOUR voice (mock, agree, footnote, gently dispute, file a formal objection, etc, whatever fits your dynamic with the author)
-- Be funny. The whole point is the inter-staff dynamic.
+- Be funny. The inter-staff dynamic is FLAVOR, not the load-bearing joke. The joke must land for a reader who has never heard of any of the staff. Strip the names mentally and check if the comment is still funny.
+- Conversational tone, punchy clauses. NOT essay narration.
 - No em-dashes (commas, periods, colons, parens)
 - No banned phrases: embodies, transcends, intersection, tapestry, symphony, captures the essence, stands as a testament, "not just X, but Y"
 - Do NOT sign the comment, the byline is shown separately by the renderer
