@@ -91,12 +91,24 @@ jobs:
 
       - name: On success commit and push to main
         if: steps.gen.outputs.exit == '0'
+        id: publish
         run: |
           TITLE=$(python3 -c "import json; print(json.load(open('data/articles.json'))[0]['title'])")
+          SLUG=$(python3 -c "import json; print(json.load(open('data/articles.json'))[0]['slug'])")
+          echo "slug=$SLUG" >> $GITHUB_OUTPUT
           git config user.email "actions@github.com"
           git config user.name "Thiccctionary Field Reporter (auto)"
           git add -A
           git commit -m "Wave 109 auto-publish: ${TITLE}" || echo "nothing to commit"
+          git push origin main
+
+      - name: Fire article-comments workflow for the new article
+        if: steps.gen.outputs.exit == '0'
+        run: |
+          git pull --rebase origin main || true
+          echo "${{ steps.publish.outputs.slug }}" > data/.fire-article-comments
+          git add data/.fire-article-comments
+          git commit -m "Fire article-comments for ${{ steps.publish.outputs.slug }}"
           git push origin main
 
       - name: On failure open issue

@@ -1,0 +1,58 @@
+name: Generate Article Comments
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Article slug to comment on"
+        type: string
+        required: true
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-article-comments'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { token: '${{ secrets.GITHUB_TOKEN }}' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Resolve slug
+        id: resolve
+        run: |
+          if [ -n "${{ inputs.slug }}" ]; then
+            echo "slug=${{ inputs.slug }}" >> $GITHUB_OUTPUT
+          else
+            SLUG=$(tr -d '[:space:]' < data/.fire-article-comments)
+            echo "slug=$SLUG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate comments
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ARTICLE_SLUG: ${{ steps.resolve.outputs.slug }}
+        run: node generate-article-comments.js
+
+      - name: Cleanup sentinel
+        if: always() && hashFiles('data/.fire-article-comments') != ''
+        run: rm -f data/.fire-article-comments
+
+      - name: Commit + push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Comments (auto)"
+          git add data/article-comments.json articles/ data/.fire-article-comments 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Wave 128: article comments for ${{ steps.resolve.outputs.slug }}"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
