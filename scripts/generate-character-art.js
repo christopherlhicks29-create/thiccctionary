@@ -27,6 +27,7 @@ if (!OPENAI_API_KEY) { console.error('FATAL: OPENAI_API_KEY missing'); process.e
 
 const SCENE_ID = (process.env.SCENE_ID || '').trim();
 if (!SCENE_ID) { console.error('FATAL: SCENE_ID required'); process.exit(1); }
+const SCENE_IDS = SCENE_ID.split(',').map(s => s.trim()).filter(Boolean);
 
 const BASE_STYLE = "Editorial cartoon in the style of vintage New Yorker single-panel cartoons. Black ink line work with selective muted color, warm cream paper background (#f5e8c7), small spot oxblood (#8b1f1f) accents only where called for. Dry, observational character expressions. Mid-century print-magazine aesthetic. 1:1 square.";
 
@@ -57,33 +58,39 @@ async function generateImage(prompt) {
 async function main() {
   const bibleRaw = await fs.readFile(path.join(ROOT, 'data', 'character-art-prompts.json'), 'utf8');
   const bible = JSON.parse(bibleRaw);
-  const scene = bible.scenes.find(s => s.id === SCENE_ID);
-  if (!scene) {
-    console.error(`Scene "${SCENE_ID}" not found in bible. Available: ${bible.scenes.map(s => s.id).join(', ')}`);
-    process.exit(1);
+  let successes = 0, failures = 0;
+  for (const sceneId of SCENE_IDS) {
+    const scene = bible.scenes.find(s => s.id === sceneId);
+    if (!scene) {
+      console.error(`Scene "${sceneId}" not found in bible. Skipping.`);
+      failures++;
+      continue;
+    }
+    console.log(`\n[char-art] generating scene: ${scene.id}`);
+    console.log(`[char-art] ${scene.description}`);
+    try {
+      const fullPrompt = `${scene.scene_prompt}\n\nSTYLE: ${BASE_STYLE}`;
+      const buf = await generateImage(fullPrompt);
+      if (process.env.DRY_RUN === '1') {
+        console.log('[char-art] DRY_RUN=1, not writing image');
+        successes++;
+        continue;
+      }
+      const outPath = path.join(ROOT, scene.output_path);
+      await fs.mkdir(path.dirname(outPath), { recursive: true });
+      await fs.writeFile(outPath, buf);
+      console.log(`[char-art] wrote ${outPath} (${buf.length} bytes)`);
+      scene.generated_at = new Date().toISOString();
+      scene.file_size = buf.length;
+      successes++;
+    } catch (e) {
+      console.error(`[char-art] error for ${sceneId}: ${e.message}`);
+      failures++;
+    }
   }
-  console.log(`[char-art] generating scene: ${scene.id}`);
-  console.log(`[char-art] description: ${scene.description}`);
-
-  const fullPrompt = `${scene.scene_prompt}\n\nSTYLE: ${BASE_STYLE}`;
-  console.log(`[char-art] calling gpt-image-1…`);
-  const buf = await generateImage(fullPrompt);
-
-  if (process.env.DRY_RUN === '1') {
-    console.log('[char-art] DRY_RUN=1, not writing image');
-    return;
-  }
-
-  const outPath = path.join(ROOT, scene.output_path);
-  await fs.mkdir(path.dirname(outPath), { recursive: true });
-  await fs.writeFile(outPath, buf);
-  console.log(`[char-art] wrote ${outPath} (${buf.length} bytes)`);
-
-  // Update bible to mark scene as generated
-  scene.generated_at = new Date().toISOString();
-  scene.file_size = buf.length;
+  // Write bible updates after all scenes attempted
   await fs.writeFile(path.join(ROOT, 'data', 'character-art-prompts.json'), JSON.stringify(bible, null, 2) + '\n', 'utf8');
-  console.log('[char-art] bible updated');
+  console.log(`\n[char-art] done. successes=${successes} failures=${failures}`);
 }
 
 main().catch(err => { console.error('[char-art] FATAL:', err.message); process.exit(1); });
