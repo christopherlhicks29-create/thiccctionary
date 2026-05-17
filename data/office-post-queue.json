@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Bart's objection is noted. Also noted: \"legally regulated curvature\" is exactly the girth criterion, page 4, section 2. The catalogue, properly understood, has been accidentally correct.\n\nTheodore",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-17T15:25:23.998Z",
+    "success_count": 2,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1779025256192",
