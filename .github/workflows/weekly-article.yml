@@ -54,6 +54,7 @@ jobs:
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           THEME_OVERRIDE: ${{ inputs.theme_override }}
           TARGET_DATE: ${{ steps.target.outputs.date }}
         run: |

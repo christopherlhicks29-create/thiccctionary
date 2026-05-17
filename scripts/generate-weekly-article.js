@@ -18,8 +18,13 @@ const ARTICLES_PATH = path.join(ROOT, 'data', 'articles.json');
 const ARTICLES_DIR = path.join(ROOT, 'articles');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 if (!OPENAI_API_KEY) {
   console.error('FATAL: OPENAI_API_KEY not set');
+  process.exit(1);
+}
+if (!ANTHROPIC_API_KEY) {
+  console.error('FATAL: ANTHROPIC_API_KEY not set — generator now uses Claude for voice mimicry');
   process.exit(1);
 }
 
@@ -46,6 +51,39 @@ function slugify(str) {
 function pickRecentEntries(entries, targetIso, days = 7) {
   const cutoff = isoDateDaysAgo(targetIso, days);
   return entries.filter(e => e.date && e.date >= cutoff && e.date <= targetIso).sort((a, b) => b.date.localeCompare(a.date));
+}
+
+async function callClaude(systemPrompt, messages, model = 'claude-sonnet-4-6') {
+  // Anthropic Messages API. Returns JSON parsed from Claude's response.
+  // Claude is dramatically better at voice mimicry than gpt-4o, so we use it
+  // for the generator path. The critic stays on gpt-4o (cheap binary judgment).
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model,
+      max_tokens: 4096,
+      system: systemPrompt,
+      messages: messages.map(m => ({ role: m.role === 'system' ? 'user' : m.role, content: m.content })),
+      temperature: 0.7,
+    }),
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Anthropic ${res.status}: ${text}`);
+  }
+  const data = await res.json();
+  let content = data.content?.[0]?.text || '';
+  // Strip markdown code fences if Claude added them
+  content = content.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+  // Find the JSON object (Claude sometimes adds preamble)
+  const m = content.match(/\{[\s\S]*\}/);
+  if (!m) throw new Error('Claude returned no JSON object: ' + content.slice(0, 500));
+  return JSON.parse(m[0]);
 }
 
 async function callOpenAI(messages, model = 'gpt-4o') {
@@ -432,11 +470,11 @@ async function main() {
   }
   console.log(`[weekly] ${recent.length} recent entries: ${recent.map(e => e.word).join(', ')}`);
   const pastTitles = articles.map(a => a.title);
-  console.log('[weekly] calling OpenAI (draft 1)…');
-  let article = await callOpenAI([
-    { role: 'system', content: buildSystemPrompt() },
-    { role: 'user', content: buildUserPrompt(recent, pastTitles) },
-  ]);
+  console.log('[weekly] calling Claude (draft 1)…');
+  let article = await callClaude(
+    buildSystemPrompt(),
+    [{ role: 'user', content: buildUserPrompt(recent, pastTitles) }]
+  );
 
   // Self-critique loop: regex pre-filter first (cheap, deterministic), then critic.
   for (let attempt = 1; attempt <= 4; attempt++) {
@@ -448,8 +486,7 @@ async function main() {
         process.exit(1);
       }
       console.log(`[weekly] rewriting (pre-filter fail, draft ${attempt + 1})…`);
-      article = await callOpenAI([
-        { role: 'system', content: buildSystemPrompt() },
+      article = await callClaude(buildSystemPrompt(), [
         { role: 'user', content: buildUserPrompt(recent, pastTitles) },
         { role: 'assistant', content: JSON.stringify(article) },
         { role: 'user', content: `Your last draft used these BANNED phrases verbatim — strip them and any related phrasing, then return a complete new JSON article:\n${banHits.map(p => '  - "' + p + '"').join('\n')}` },
@@ -465,9 +502,8 @@ async function main() {
       console.error(JSON.stringify(critique, null, 2));
       process.exit(1);
     }
-    console.log(`[weekly] rewriting (draft ${attempt + 1})…`);
-    article = await callOpenAI([
-      { role: 'system', content: buildSystemPrompt() },
+    console.log(`[weekly] rewriting via Claude (draft ${attempt + 1})…`);
+    article = await callClaude(buildSystemPrompt(), [
       { role: 'user', content: buildUserPrompt(recent, pastTitles) },
       { role: 'assistant', content: JSON.stringify(article) },
       { role: 'user', content: `Your last draft failed the editorial review. Fix these issues and return a complete new JSON article with ALL banned patterns removed:\n\n${critique.issues.map(i => '- ' + i).join('\n')}\n\nReturn the corrected JSON only.` },
