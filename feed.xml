@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 May 2026 16:35:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 18:53:15 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -32,14 +32,6 @@
       <category>brass</category><category>orchestra</category><category>low frequency</category>
     </item>
     <item>
-      <title>[Article] Girth in Service of Purpose: The Thiccc Thing That Works</title>
-      <link>https://thiccctionary.com/articles/the-case-for-functional-girth.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/the-case-for-functional-girth.html</guid>
-      <pubDate>Sat, 16 May 2026 12:00:00 GMT</pubDate>
-      <description>The Thiccctionary editorial board argues that the highest order of thicccness is not decorative but load-bearing, girth as the engine of purpose itself.</description>
-      <category>article</category>
-    </item>
-    <item>
       <title>Transformer, Power Generation</title>
       <link>https://thiccctionary.com/entries/2026-05-15.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-15.html</guid>
@@ -62,9 +54,9 @@
       <link>https://thiccctionary.com/entries/2026-05-13.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-13.html</guid>
       <pubDate>Wed, 13 May 2026 12:00:00 GMT</pubDate>
-      <description>A robust vehicle distinguished by its flexible joint, allowing for freedom of movement between the cab and the dump body; esp. one whose posterior, viewed astern, defies casual description.</description>
+      <description>A robust off-road vehicle equipped with a hinged joint between the cab and the dump box, allowing for enhanced maneuverability on uneven terrain.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>quarry</category><category>heavy machinery</category>
+      <category>construction</category><category>heavy machinery</category><category>engineering</category>
     </item>
     <item>
       <title>Cement Mixer, Industrial</title>
@@ -83,30 +75,6 @@
       <description>A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-10-bagger-288.jpg" type="image/jpeg" length="0" />
       <category>machinery</category><category>mining</category><category>engineering</category>
-    </item>
-    <item>
-      <title>[Article] The Physics of Thiccc: Why Big Things Stay Big</title>
-      <link>https://thiccctionary.com/articles/physics-of-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/physics-of-thiccc.html</guid>
-      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
-      <description>Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] The Bagger 288: The Thiccc-est Machine on Earth</title>
-      <link>https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/bagger-288-thicccest-machine.html</guid>
-      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
-      <description>At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] Foods of Substance: A Thiccc Survey</title>
-      <link>https://thiccctionary.com/articles/foods-of-substance.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/foods-of-substance.html</guid>
-      <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
-      <description>From Parmigiano wheels to heritage tomatoes to Atlantic Giant pumpkins, when food&apos;s structural commitment becomes its identity.</description>
-      <category>article</category>
     </item>
     <item>
       <title>Spruce, Suburban</title>
@@ -145,22 +113,6 @@
       <category>fruit</category><category>thiccc</category><category>celestial</category>
     </item>
     <item>
-      <title>[Article] The Anatomy of a Thiccc Vehicle</title>
-      <link>https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/anatomy-thiccc-vehicle.html</guid>
-      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
-      <description>Five parts worth knowing: wheelbase, aft, dually, cargo bay, kin. A field guide to the parts of a thiccc vehicle.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] Concrete: A Material Study</title>
-      <link>https://thiccctionary.com/articles/concrete-material-study.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/concrete-material-study.html</guid>
-      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
-      <description>The material behind cement mixers, Brutalism, and Hoover Dam. Why concrete forces thicccness on everything it builds.</description>
-      <category>article</category>
-    </item>
-    <item>
       <title>Sofa, Chesterfield</title>
       <link>https://thiccctionary.com/entries/2026-05-04.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-04.html</guid>
@@ -168,30 +120,6 @@
       <description>A capacious upholstered seating apparatus characterized by its deep button-tufting and rolled arms; esp. one whose presence becomes a room&apos;s anchor furniture by physical fact.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-04.jpg" type="image/jpeg" length="0" />
       <category>furniture</category><category>upholstery</category><category>opulence</category>
-    </item>
-    <item>
-      <title>[Article] Thiccc Things You Walk Past Every Day</title>
-      <link>https://thiccctionary.com/articles/everyday-sidewalk-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/everyday-sidewalk-thiccc.html</guid>
-      <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
-      <description>Fire hydrants, mailboxes, bollards, dumpsters, HVAC, the unsung architecture of a sidewalk.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] A Taxonomy of Thiccc Architecture</title>
-      <link>https://thiccctionary.com/articles/taxonomy-thiccc-architecture.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/taxonomy-thiccc-architecture.html</guid>
-      <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
-      <description>Defense, ideology, and mass housing. Three programs, one silhouette. Castle walls, Brutalism, Khrushchyovka.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] The Inherent Thicccness of Industrial Scale</title>
-      <link>https://thiccctionary.com/articles/industrial-scale-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/industrial-scale-thiccc.html</guid>
-      <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
-      <description>Why physics insists on the silhouette. Bagger 288, Saturn V, supertankers, Hoover Dam.</description>
-      <category>article</category>
     </item>
     <item>
       <title>Banana, Cavendish</title>
@@ -203,22 +131,6 @@
       <category>fruit</category><category>banana</category><category>cavendish</category>
     </item>
     <item>
-      <title>[Article] Why Cement Trucks Are the Thiccc-est Industrial Vehicle</title>
-      <link>https://thiccctionary.com/articles/cement-trucks-original-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/cement-trucks-original-thiccc.html</guid>
-      <pubDate>Sun, 03 May 2026 12:00:00 GMT</pubDate>
-      <description>An argument, with engineering. The mixer is not in competition. It is the standard.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] How to Spot a Thiccc Thing in the Wild: A Field Guide</title>
-      <link>https://thiccctionary.com/articles/field-guide-spotting-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/field-guide-spotting-thiccc.html</guid>
-      <pubDate>Sun, 03 May 2026 12:00:00 GMT</pubDate>
-      <description>Three tests. No instruments required. Silhouette, ratio, character.</description>
-      <category>article</category>
-    </item>
-    <item>
       <title>Frigidaire, Side-by-Side</title>
       <link>https://thiccctionary.com/entries/2026-05-02.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-02.html</guid>
@@ -226,30 +138,6 @@
       <description>A domestic paragon of capacious elegance, featuring dual chilled chambers that stand in ostentatious parallel, prepared to preserve victuals with all the subtlety of a colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-02-frigidaire-side-by-side.jpg" type="image/jpeg" length="0" />
       <category>appliance</category><category>kitchen</category><category>refrigeration</category>
-    </item>
-    <item>
-      <title>[Article] The Five Thiccc-est Things We&amp;rsquo;ve Catalogued (So Far)</title>
-      <link>https://thiccctionary.com/articles/the-five-thicccest-things.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/the-five-thicccest-things.html</guid>
-      <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
-      <description>A working ranking. Heritage tomatoes to wide-body airliners. A hierarchy of girth.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] What Counts as Thiccc? An Editorial Guide</title>
-      <link>https://thiccctionary.com/articles/what-counts-as-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/what-counts-as-thiccc.html</guid>
-      <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
-      <description>The standing reference for what we&amp;rsquo;ll catalog and what we won&amp;rsquo;t. Includes the submission test.</description>
-      <category>article</category>
-    </item>
-    <item>
-      <title>[Article] A Brief History of Thiccc, the Word</title>
-      <link>https://thiccctionary.com/articles/history-of-thiccc.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/articles/history-of-thiccc.html</guid>
-      <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
-      <description>From early-2000s message boards to mainstream dictionaries. With sources.</description>
-      <category>article</category>
     </item>
     <item>
       <title>Thiccc Boeing</title>
