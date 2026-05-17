@@ -15,6 +15,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 const ARTICLES_PATH = path.join(ROOT, 'data', 'articles.json');
+const STAFF_PATH = path.join(ROOT, 'data', 'editorial-staff.json');
 const ARTICLES_DIR = path.join(ROOT, 'articles');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -95,6 +96,46 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   if (!res.ok) { const text = await res.text(); throw new Error(`OpenAI ${res.status}: ${text}`); }
   const data = await res.json();
   return JSON.parse(data.choices[0].message.content);
+}
+
+function pickStaffMember(staffData) {
+  // Allow override via env (BYLINE_OVERRIDE=eli, etc.)
+  const override = (process.env.BYLINE_OVERRIDE || '').trim().toLowerCase();
+  if (override) {
+    const m = staffData.staff.find(x => x.id === override);
+    if (m) return m;
+  }
+  const total = staffData.staff.reduce((a, x) => a + (x.weight || 0), 0);
+  let r = Math.random() * total;
+  for (const m of staffData.staff) {
+    r -= (m.weight || 0);
+    if (r <= 0) return m;
+  }
+  return staffData.staff[0];
+}
+
+function buildStaffVoicePrompt(staff, allStaff) {
+  const others = allStaff.staff.filter(x => x.id !== staff.id).map(x => `${x.name} (${x.title})`).join('; ');
+  return `BYLINE FOR THIS PIECE: ${staff.name}, ${staff.title}.
+
+VOICE FOR THIS BYLINE:
+${staff.voice}
+
+THIS WRITER'S OBSESSIONS (lean into 1-2 of these as the angle):
+${(staff.obsessions || []).map(o => '- ' + o).join('\n')}
+
+DRAMA / WORKPLACE HOOKS (use AT LEAST ONE as a sidelong aside or footnote in the piece — these are what make the publication funny):
+${(staff.drama_hooks || []).map(h => '- ' + h).join('\n')}
+
+WRITING TICS TO LEAN INTO:
+${(staff.tics || []).map(t => '- ' + t).join('\n')}
+
+OTHER STAFF (you may reference them by full name OR by title, e.g., "the Senior Cataloguer", as workplace dynamics permit):
+${others}
+
+CRITICAL: Do not break character. This is ${staff.name} writing a Field Report. Not "the editorial board" generically. The byline is a person with a personality, opinions, obsessions, and quiet grievances against their colleagues. The reader should be able to tell who wrote a piece WITHOUT seeing the byline.
+
+The piece should feel like a workplace exists behind it. The Office, applied to thiccc taxonomy.`;
 }
 
 const VOICE_NOTES = `You are writing as the editorial board of Thiccctionary, a satirical print-magazine-style publication that catalogs objects of unusual girth. The voice is closer to a 1962 architecture review than to a 2024 listicle. Treat the subject matter with mock gravity — the joke is the tone.
@@ -473,6 +514,9 @@ async function main() {
   console.log(`[weekly] target date: ${TARGET_DATE}`);
   const entries = JSON.parse(await fs.readFile(ENTRIES_PATH, 'utf8'));
   const articles = JSON.parse(await fs.readFile(ARTICLES_PATH, 'utf8'));
+  const staffData = JSON.parse(await fs.readFile(STAFF_PATH, 'utf8'));
+  const byline = pickStaffMember(staffData);
+  console.log(`[weekly] byline: ${byline.name} (${byline.title})`);
   const recent = pickRecentEntries(entries, TARGET_DATE, 7);
   if (recent.length < 3) {
     console.error(`FATAL: only ${recent.length} entries in past 7 days — need at least 3`);
@@ -480,9 +524,10 @@ async function main() {
   }
   console.log(`[weekly] ${recent.length} recent entries: ${recent.map(e => e.word).join(', ')}`);
   const pastTitles = articles.map(a => a.title);
+  const fullSystem = buildSystemPrompt() + '\n\n---\n\n' + buildStaffVoicePrompt(byline, staffData);
   console.log('[weekly] calling Claude (draft 1)…');
   let article = await callClaude(
-    buildSystemPrompt(),
+    fullSystem,
     [{ role: 'user', content: buildUserPrompt(recent, pastTitles) }]
   );
 
@@ -496,7 +541,7 @@ async function main() {
         process.exit(1);
       }
       console.log(`[weekly] rewriting (pre-filter fail, draft ${attempt + 1})…`);
-      article = await callClaude(buildSystemPrompt(), [
+      article = await callClaude(fullSystem, [
         { role: 'user', content: buildUserPrompt(recent, pastTitles) },
         { role: 'assistant', content: JSON.stringify(article) },
         { role: 'user', content: `Your last draft used these BANNED phrases verbatim — strip them and any related phrasing, then return a complete new JSON article:\n${banHits.map(p => '  - "' + p + '"').join('\n')}` },
@@ -513,7 +558,7 @@ async function main() {
       process.exit(1);
     }
     console.log(`[weekly] rewriting via Claude (draft ${attempt + 1})…`);
-    article = await callClaude(buildSystemPrompt(), [
+    article = await callClaude(fullSystem, [
       { role: 'user', content: buildUserPrompt(recent, pastTitles) },
       { role: 'assistant', content: JSON.stringify(article) },
       { role: 'user', content: `Your last draft failed the editorial review. Fix these issues and return a complete new JSON article with ALL banned patterns removed:\n\n${critique.issues.map(i => '- ' + i).join('\n')}\n\nReturn the corrected JSON only.` },
@@ -546,8 +591,10 @@ async function main() {
   for (const e of entries) {
     if (e.date && e.word) entryWordByDate[e.date] = e.word;
   }
+  // Override kicker to include byline + title
+  const dynamicKicker = `${byline.name} · ${byline.title} · Field Report`;
   const html = renderArticleHtml({
-    slug: article.slug, title: article.title, kicker: article.kicker, dek: article.dek,
+    slug: article.slug, title: article.title, kicker: dynamicKicker, dek: article.dek,
     sections: article.sections, description: article.description, related_entry: article.related_entry,
     publishedIso: TARGET_DATE, heroImagePath, heroImageCredit, entryWordByDate,
   });

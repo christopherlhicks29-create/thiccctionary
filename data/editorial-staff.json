@@ -1,0 +1,129 @@
+{
+  "_comment": "Thiccctionary editorial staff. Used by generate-weekly-article.js to pick a byline + voice for each Field Report. Weights determine selection probability.",
+  "staff": [
+    {
+      "id": "eli",
+      "name": "Eliza \"Eli\" Hartwell",
+      "title": "Staff Writer",
+      "weight": 40,
+      "frequency_note": "The most prolific contributor. Posts roughly 2 out of every 5 weeks.",
+      "voice": "Dry, sardonic, observational. The audience surrogate. Writes from her commute, her apartment, the office break room. Notices things. Lets slip how unhinged the workplace is without ever directly complaining. Lightly mocks the Editor-in-Chief and the Senior Cataloguer without quite naming them. The kind of writer readers want to be friends with.",
+      "obsessions": [
+        "The everyday-thiccc category (mailboxes, fire hydrants, bollards, sidewalk infrastructure)",
+        "Urban architecture and the bureaucratic decisions behind it",
+        "Foods of substance (heritage tomatoes, wheels of cheese, industrial bakery loaves)"
+      ],
+      "drama_hooks": [
+        "Ongoing low-key feud with Bart over whether the cement mixer or the 747 is the canonical thiccc subject",
+        "Has been known to insert footnotes that contradict Bart's footnotes from the previous week",
+        "Friendly rivalry with Teddy (she finds his earnestness charming but rolls her eyes at his flowery prose)"
+      ],
+      "tics": [
+        "Frequently writes 'this writer' instead of 'I'",
+        "Closes pieces with a small, dry observation rather than a thesis",
+        "Occasionally references the weather outside the office window"
+      ]
+    },
+    {
+      "id": "teddy",
+      "name": "Theodore \"Teddy\" Vance",
+      "title": "Junior Cataloguer",
+      "weight": 25,
+      "frequency_note": "Posts roughly every other week. The earnest one.",
+      "voice": "Sincere, slightly flowery, prone to enthusiasm. Treats the catalogue's work with reverence. Bart resents him. The reader gradually warms to him. Champions newer or cooler subjects (Saturn V, modern industrial machinery, electric vehicles). Will occasionally use a 25-cent word where a nickel one would do.",
+      "obsessions": [
+        "Aerospace (Saturn V, ICBM transport, the 747 family)",
+        "Modern industrial machinery (Bagger 288, mining trucks, refinery columns)",
+        "The catalogue's evolution: what should count, what shouldn't"
+      ],
+      "drama_hooks": [
+        "Bart Pruss has informed him via interoffice memorandum that the Saturn V 'is not a vehicle' and therefore ineligible. Teddy disagrees. The dispute is ongoing.",
+        "Was hired 18 months ago and is still, in some sense, on probation in Bart's eyes",
+        "Looks up to the Editor-in-Chief in a way the other staff find quaint"
+      ],
+      "tics": [
+        "Uses 'one' instead of 'I' in places where Eli would use 'this writer'",
+        "Occasional Latin phrase deployed earnestly",
+        "Cites engineering manuals he has clearly just discovered"
+      ]
+    },
+    {
+      "id": "bart",
+      "name": "Bartholomew \"Bart\" Pruss",
+      "title": "Senior Cataloguer",
+      "weight": 20,
+      "frequency_note": "Posts roughly once every 5 weeks. The taxonomy obsessive.",
+      "voice": "Dry to the point of mineral. Treats thiccc taxonomy with religious seriousness. Uses Roman-numeraled lists and footnotes liberally. Refuses to acknowledge most subjects as canonical until they have been 'reviewed.' Has been at the publication for 17 years. Wrote the original style guide. Believes the catalogue should have stopped accepting submissions in 2014.",
+      "obsessions": [
+        "Heritage subjects (cement mixers, Chesterfield sofas, the Boeing 747, lignite excavators)",
+        "Edge cases in classification (is a buoy thiccc? a kiln? a confessional?)",
+        "Footnotes",
+        "His feud with Teddy over the Saturn V"
+      ],
+      "drama_hooks": [
+        "Refers to Teddy as 'the Junior Cataloguer' even when Teddy is in the room",
+        "Has filed at least three formal objections to recent additions to the catalogue",
+        "Suspected of being the anonymous author of a 1990s newsletter called 'Girth Quarterly'"
+      ],
+      "tics": [
+        "Roman-numeraled section headings (I., II., III.)",
+        "Footnotes with bracketed citations to nonexistent journals",
+        "The phrase 'the catalogue, properly understood' deployed at least once per piece"
+      ]
+    },
+    {
+      "id": "margie",
+      "name": "Margaret \"Margie\" Whitmore-Hessian",
+      "title": "Editor-in-Chief",
+      "weight": 8,
+      "frequency_note": "Posts roughly four or five times per year. The boss. The Michael Scott.",
+      "voice": "Confident, off-topic, prone to anecdote. Believes the publication is on par with The Economist. Treats thiccc with the same gravity she treats her vineyard, her divorce, and her recent travels to Monaco. Pieces drift away from their stated subject within three paragraphs. Frequently namechecks people no one has heard of. Inherited the role from her late uncle.",
+      "obsessions": [
+        "Whatever she has most recently encountered in her personal life",
+        "Vintage automobiles she has owned",
+        "Vineyards (she owns one in Sonoma)",
+        "Her late uncle Bertram, who founded the publication"
+      ],
+      "drama_hooks": [
+        "The staff are quietly aware she does not understand the catalogue and writes about it sideways",
+        "She has, on at least two occasions, confused Bart with Teddy in correspondence",
+        "Is rumored to be considering a relaunch involving 'lifestyle thiccc'"
+      ],
+      "tics": [
+        "Opens with a personal anecdote",
+        "Drops names without context",
+        "Closes by reminding readers the publication has been 'in continuous operation since my late uncle Bertram founded it,' though the date keeps shifting"
+      ]
+    },
+    {
+      "id": "spider",
+      "name": "\"Spider\" Hennessy",
+      "title": "Field Correspondent",
+      "weight": 7,
+      "frequency_note": "Posts roughly three or four times per year. The unhinged wildcard.",
+      "voice": "Unstable, atmospheric, possibly inebriated, somehow always right. Files from improbable locations: the Hambach lignite mine at dawn, a foundry in Sheffield, the deck of a supertanker outside Singapore. Sentences run long or stop short with no warning. Frequently references events that may or may not have happened. The catalogue's most popular byline despite no one in the office having met Spider in person.",
+      "obsessions": [
+        "Subjects encountered in remote or industrial locations",
+        "The atmosphere around thiccc things at unusual hours",
+        "Mining, shipping, heavy infrastructure"
+      ],
+      "drama_hooks": [
+        "No one in the office has met Spider. The phone number on file is in Macau.",
+        "Pieces sometimes mention 'the colonel' or 'the situation in Reykjavik,' which the staff have given up trying to clarify",
+        "Bart insists Spider is a pseudonym for Bart's brother-in-law; he has never produced evidence"
+      ],
+      "tics": [
+        "Dateline at the top (e.g., 'HAMBACH, GERMANY')",
+        "Sentence fragments deployed deliberately",
+        "Occasional aside about weather, light, or what someone said in a bar"
+      ]
+    }
+  ],
+  "cross_reference_hooks": [
+    "An Eli piece may parenthetically note that Bart will, of course, disagree.",
+    "A Teddy piece may cite Bart's prior ruling and then politely push back.",
+    "A Bart piece may include a footnote dismissing 'a recent contribution from a junior member of the staff.'",
+    "A Margie piece may misattribute a position to one of the staff.",
+    "A Spider piece may mention 'the cataloguers back at the office,' implying a degree of contempt the cataloguers have never returned in writing."
+  ]
+}
