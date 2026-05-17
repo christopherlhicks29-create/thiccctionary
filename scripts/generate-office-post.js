@@ -58,16 +58,23 @@ function pickByline(staff) {
   return weightedPick(weighted);
 }
 
-function pickTopic(byline, events, entries) {
-  // Topic kinds: office (running bit), thiccc (recent entry observation)
+function pickTopic(byline, events, entries, recentPosts) {
   const kind = (process.env.TOPIC_KIND || 'either').toLowerCase();
+  if (kind === 'reply' || (kind === 'either' && Math.random() < 0.3)) {
+    const cutoff = new Date(Date.now() - 14 * 86400000).toISOString();
+    const eligible = (recentPosts || []).filter(p => p.byline_id && p.byline_id !== byline.id && p.created >= cutoff && p.text);
+    if (eligible.length > 0) {
+      const target = eligible[Math.floor(Math.random() * eligible.length)];
+      console.log('[office] reply target: ' + target.byline_id + ' from ' + target.created.slice(0,10));
+      return { kind: 'reply', target };
+    }
+  }
   const eligibleBits = events.running_bits.filter(b => !b.characters || b.characters.includes(byline.id));
   const useOffice = kind === 'office' || (kind === 'either' && Math.random() < 0.6);
   if (useOffice && eligibleBits.length > 0) {
     const bit = eligibleBits[Math.floor(Math.random() * eligibleBits.length)];
     return { kind: 'office', bit };
   }
-  // thiccc-thing topic: pick from last 14 entries
   const recent = entries.slice(0, 14);
   const entry = recent[Math.floor(Math.random() * recent.length)];
   return { kind: 'thiccc', entry };
@@ -95,8 +102,14 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   return JSON.parse(data.choices[0].message.content);
 }
 
-function buildSystemPrompt(byline) {
-  return `You are ${byline.name}, ${byline.title} at Thiccctionary (a satirical online dictionary of objects of unusual girth).
+function buildSystemPrompt(byline, corpus) {
+  const ownCorpus = (corpus && corpus.own && corpus.own.length)
+    ? '\n\nYOUR RECENT SOCIAL POSTS (you wrote these, maintain continuity, evolve from them):\n' + corpus.own.map(p => '- "' + p.text.slice(0, 200) + '" (' + (p.created || '').slice(0,10) + ')').join('\n')
+    : '';
+  const colleagueCorpus = (corpus && corpus.colleagues && corpus.colleagues.length)
+    ? '\n\nRECENT POSTS BY COLLEAGUES (you may reference, mock, or footnote these):\n' + corpus.colleagues.map(p => '- ' + p.byline_id + ': "' + p.text.slice(0, 200) + '"').join('\n')
+    : '';
+  const baseTpl = `You are ${byline.name}, ${byline.title} at Thiccctionary (a satirical online dictionary of objects of unusual girth).
 
 You are writing a short social media post (≤${MAX_LEN} characters total, including the signature). Voice anchors:
 
@@ -119,10 +132,27 @@ HARD RULES:
 5. NO words: embodies, encapsulates, intersection, transcends, tapestry, symphony, harmony, dance, captures the essence.
 6. NO "not just X, but Y" phrasing.
 7. The post should be FUNNY. Dry-funny. Observational. The kind of thing that makes someone screenshot and share.
-8. Output the post text only. No commentary, no quote marks, no preamble. Just the post.`;
+8. Output the post text only. No commentary, no quote marks, no preamble. Just the post.` + ownCorpus + colleagueCorpus;
+  return baseTpl;
 }
 
-function buildUserPrompt(topic, byline) {
+function buildUserPrompt(topic, byline, allStaff) {
+  if (topic.kind === 'reply') {
+    const targetStaff = allStaff.staff.find(function(x){return x.id === topic.target.byline_id;});
+    const targetName = targetStaff ? targetStaff.name : topic.target.byline_id;
+    const targetTitle = targetStaff ? targetStaff.title : 'colleague';
+    return 'Write a social post REACTING to a colleague\'s recent post.\n\n' +
+      'YOUR COLLEAGUE: ' + targetName + ' (' + targetTitle + ')\n' +
+      'THEIR POST (from ' + topic.target.created.slice(0,10) + '):\n' +
+      '~~~\n' + topic.target.text + '\n~~~\n\n' +
+      'Your reply should:\n' +
+      '- Stay in YOUR character (not theirs)\n' +
+      '- Reference their post specifically: quote a phrase, take a position, push back, agree mockingly, footnote them, whatever fits your dynamic\n' +
+      '- Acknowledge it is a response (e.g. "Re: the Junior Cataloguer\'s recent post...", "Eli\'s comment is, as usual, missing the point.")\n' +
+      '- Less than or equal to ' + MAX_LEN + ' chars TOTAL with signature\n' +
+      '- Be funny. The whole point is the dynamic between you.\n\n' +
+      'End with your signature.';
+  }
   if (topic.kind === 'office') {
     return `Write a social post about this office event/running bit:
 
@@ -194,7 +224,7 @@ async function extendEvents(events, post, byline, topic) {
     id: `auto-${Date.now()}`,
     date: new Date().toISOString().slice(0, 10),
     byline_id: byline.id,
-    summary: `${byline.name.split(' ')[0]} posted about ${topic.kind === 'office' ? topic.bit.id : topic.entry?.word}: "${post.slice(0, 100)}…"`,
+    summary: byline.name.split(' ')[0] + ' posted about ' + (topic.kind === 'office' ? topic.bit.id : topic.kind === 'reply' ? ('reply to ' + topic.target.byline_id) : topic.entry?.word) + ': "' + post.slice(0, 100) + '..."',
   };
   events.auto_extensions = events.auto_extensions || [];
   events.auto_extensions.unshift(newEntry);
@@ -207,8 +237,13 @@ async function main() {
   const events = JSON.parse(await fs.readFile(EVENTS_PATH, 'utf8'));
   const entries = JSON.parse(await fs.readFile(ENTRIES_PATH, 'utf8'));
 
+  let recentPosts = [];
+  try {
+    const raw = await fs.readFile(QUEUE_PATH, 'utf8');
+    recentPosts = JSON.parse(raw).slice(0, 30);
+  } catch (e) { /* queue not present yet */ }
   const byline = pickByline(staff);
-  const topic = pickTopic(byline, events, entries);
+  const topic = pickTopic(byline, events, entries, recentPosts);
   console.log(`[office] byline=${byline.id} topic=${topic.kind}`);
 
   let bestDraft = null;
@@ -217,8 +252,12 @@ async function main() {
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     console.log(`[office] attempt ${attempt}/${MAX_ATTEMPTS}…`);
-    const sys = buildSystemPrompt(byline);
-    const user = buildUserPrompt(topic, byline);
+    const corpus = {
+      own: recentPosts.filter(p => p.byline_id === byline.id).slice(0, 5),
+      colleagues: recentPosts.filter(p => p.byline_id && p.byline_id !== byline.id).slice(0, 4),
+    };
+    const sys = buildSystemPrompt(byline, corpus);
+    const user = buildUserPrompt(topic, byline, staff);
     let draft = await callClaude(sys, user);
     // Trim quoted wrapping if Claude added it
     draft = draft.replace(/^["'`]+|["'`]+$/g, '').trim();
@@ -247,7 +286,7 @@ async function main() {
     ts: new Date().toISOString(),
     byline: byline.id,
     topic_kind: topic.kind,
-    topic_id: topic.kind === 'office' ? topic.bit.id : topic.entry?.date,
+    topic_id: topic.kind === 'office' ? topic.bit.id : topic.kind === 'reply' ? ('reply-to-' + topic.target.byline_id) : topic.entry?.date,
     best_score: bestScore,
     passed,
     draft: bestDraft,

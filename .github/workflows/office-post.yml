@@ -9,6 +9,10 @@ on:
   schedule:
     - cron: '30 17 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-office'
     inputs:
       byline_override:
         description: "Force a byline: eli|teddy|bart|margie|spider"
@@ -40,7 +44,7 @@ jobs:
       - name: Random cadence gate (~70%)
         id: gate
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "push" ]; then
             echo "manual trigger"
             echo "proceed=true" >> "$GITHUB_OUTPUT"
             exit 0

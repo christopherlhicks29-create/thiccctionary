@@ -98,6 +98,17 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   return JSON.parse(data.choices[0].message.content);
 }
 
+async function loadSocialCorpusForByline(byline) {
+  // Pull recent social posts by this byline from the office queue, so the article
+  // generator knows what this character has been saying publicly.
+  try {
+    const queue = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'office-post-queue.json'), 'utf8'));
+    return queue.filter(p => p.byline_id === byline.id && p.text).slice(0, 4);
+  } catch (e) {
+    return [];
+  }
+}
+
 async function buildCorpusMemory(byline, allArticles, articlesDir) {
   // Pull the last 3 articles by THIS byline + the last 2 by OTHER bylines.
   // Read each article HTML and extract title + dek + closing paragraph as voice anchor.
@@ -122,9 +133,11 @@ async function buildCorpusMemory(byline, allArticles, articlesDir) {
       return { title: a.title, date: a.date, dek: a.description || '', closing: '', byline_id: a.byline_id };
     }
   };
+  const socialByThis = await loadSocialCorpusForByline(byline);
   return {
     byThis: await Promise.all(byThis.map(summarize)),
     byOthers: await Promise.all(byOthers.map(summarize)),
+    socialByThis,
   };
 }
 
@@ -146,6 +159,9 @@ function pickStaffMember(staffData) {
 
 function buildStaffVoicePrompt(staff, allStaff, corpus) {
   const others = allStaff.staff.filter(x => x.id !== staff.id).map(x => `${x.name} (${x.title})`).join('; ');
+  const socialBlock = (corpus.socialByThis && corpus.socialByThis.length)
+    ? 'YOUR RECENT SOCIAL POSTS (the voice you have been showing publicly. Stay consistent or evolve from it):\n' + corpus.socialByThis.map(p => '  • "' + p.text.slice(0, 180) + '" (' + (p.created || '').slice(0,10) + ')').join('\n') + '\n\n'
+    : '';
   const byThisBlock = corpus.byThis.length
     ? `YOUR OWN RECENT PIECES (you wrote these, maintain continuity, callback to them when appropriate, evolve from them where it fits):\n${corpus.byThis.map(a => `  • "${a.title}" (${a.date})\n    Dek: ${a.dek}\n    Closed with: ${a.closing}`).join('\n')}\n\n`
     : `YOUR OWN RECENT PIECES: none yet. This is your debut Field Report. Establish your voice clearly.\n\n`;
@@ -177,7 +193,7 @@ CRITICAL: Do not break character. This is ${staff.name} writing a Field Report. 
 
 The piece should feel like a workplace exists behind it. The Office, applied to thiccc taxonomy.
 
-${byThisBlock}${byOthersBlock}If a callback to one of your own past pieces fits naturally, use it, but don't force it. If a colleague's recent piece is dispute-worthy, dispute it in a footnote or aside. Your character should feel like it's developing across the corpus, not resetting each week.`;
+${socialBlock}${byThisBlock}${byOthersBlock}If a callback to one of your own past pieces fits naturally, use it, but don't force it. If a colleague's recent piece is dispute-worthy, dispute it in a footnote or aside. Your character should feel like it's developing across the corpus, not resetting each week.`;
 }
 
 const VOICE_NOTES = `You are writing as the editorial board of Thiccctionary, a satirical print-magazine-style publication that catalogs objects of unusual girth. The voice is closer to a 1962 architecture review than to a 2024 listicle. Treat the subject matter with mock gravity, the joke is the tone.
