@@ -141,12 +141,39 @@ async function buildCorpusMemory(byline, allArticles, articlesDir) {
   };
 }
 
+function readAndPopRolloutQueue() {
+  const fs = require('node:fs');
+  const queuePath = path.join(ROOT, 'data', 'rollout-queue.json');
+  let data;
+  try { data = JSON.parse(fs.readFileSync(queuePath, 'utf8')); }
+  catch (e) { return null; }
+  if (!data || !Array.isArray(data.queue) || data.queue.length === 0) return null;
+  const next = data.queue.shift();
+  // Write back the depleted queue
+  fs.writeFileSync(queuePath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+  return next;
+}
+
 function pickStaffMember(staffData) {
   // Allow override via env (BYLINE_OVERRIDE=eli, etc.)
   const override = (process.env.BYLINE_OVERRIDE || '').trim().toLowerCase();
   if (override) {
     const m = staffData.staff.find(x => x.id === override);
     if (m) return m;
+  }
+  // Wave 121: rollout queue takes precedence over weighted random until empty.
+  // Each pop also strips the entry from data/rollout-queue.json so subsequent runs advance.
+  const queued = readAndPopRolloutQueue();
+  if (queued && queued.byline) {
+    const m = staffData.staff.find(x => x.id === queued.byline);
+    if (m) {
+      console.log(`[weekly] using rollout-queue byline: ${queued.byline} (phase ${queued.phase || '?'})`);
+      if (queued.theme_hint) {
+        console.log(`[weekly] queued theme hint: ${queued.theme_hint}`);
+        process.env.THEME_OVERRIDE = (process.env.THEME_OVERRIDE || '') + (process.env.THEME_OVERRIDE ? ' | ' : '') + queued.theme_hint;
+      }
+      return m;
+    }
   }
   const total = staffData.staff.reduce((a, x) => a + (x.weight || 0), 0);
   let r = Math.random() * total;

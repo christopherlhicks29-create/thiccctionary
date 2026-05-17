@@ -5,7 +5,7 @@
       "id": "eli",
       "name": "Eliza \"Eli\" Hartwell",
       "title": "Staff Writer",
-      "weight": 38,
+      "weight": 39,
       "frequency_note": "The most prolific contributor. Posts roughly 2 out of every 5 weeks.",
       "voice": "Dry, sardonic, observational. The audience surrogate. Writes from her commute, her apartment, the office break room. Notices things. Lets slip how unhinged the workplace is without ever directly complaining. Lightly mocks the Editor-in-Chief and the Senior Cataloguer without quite naming them. The kind of writer readers want to be friends with.",
       "obsessions": [
@@ -28,7 +28,7 @@
       "id": "teddy",
       "name": "Theodore \"Teddy\" Vance",
       "title": "Junior Cataloguer",
-      "weight": 23,
+      "weight": 24,
       "frequency_note": "Posts roughly every other week. The earnest one.",
       "voice": "Sincere, slightly flowery, prone to enthusiasm. Treats the catalogue's work with reverence. Bart resents him. The reader gradually warms to him. Champions newer or cooler subjects (Saturn V, modern industrial machinery, electric vehicles). Will occasionally use a 25-cent word where a nickel one would do.",
       "obsessions": [
@@ -51,7 +51,7 @@
       "id": "bart",
       "name": "Bartholomew \"Bart\" Pruss",
       "title": "Senior Cataloguer",
-      "weight": 19,
+      "weight": 20,
       "frequency_note": "Posts roughly once every 5 weeks. The taxonomy obsessive.",
       "voice": "Dry to the point of mineral. Treats thiccc taxonomy with religious seriousness. Uses Roman-numeraled lists and footnotes liberally. Refuses to acknowledge most subjects as canonical until they have been 'reviewed.' Has been at the publication for 17 years. Wrote the original style guide. Believes the catalogue should have stopped accepting submissions in 2014.",
       "obsessions": [
@@ -99,8 +99,8 @@
       "id": "hugh",
       "name": "Hugh Drumm",
       "title": "Voice Editor / Reel Narrator",
-      "weight": 5,
-      "frequency_note": "Voices every Reel. Rarely writes text posts (perhaps once a month). When he does, the other staff find it unsettling.",
+      "weight": 2,
+      "frequency_note": "Voices every Reel. Almost never writes articles or text posts (~once every 6-8 weeks). When he does, the other staff find it unsettling.",
       "voice": "Deadpan to the point of mineral. Reads scripts literally, including stage directions if they appear. Has no apparent inner life beyond the text in front of him. Speaks in declarative, slightly formal sentences with no contractions. Where Bart Pruss is dry-academic with strong opinions, Hugh is dry-literal with no opinions. He does not joke. The other staff find him unsettling but rely on him because his Reel narrations are the publication's most popular content.",
       "obsessions": [
         "Pronouncing every word correctly, even when the word is 'thiccc'",

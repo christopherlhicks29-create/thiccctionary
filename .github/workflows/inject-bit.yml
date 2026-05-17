@@ -1,0 +1,55 @@
+name: Inject Running Bit (bi-weekly office life)
+
+# Wave 121: every other Wednesday at 18:00 UTC, Claude invents a small new
+# office-life development for a random staff member and appends it to
+# data/office-events.json#running_bits. Keeps the corpus growing without
+# manual input.
+
+on:
+  schedule:
+    - cron: '0 18 1,15 * *'  # 1st and 15th of each month at 18:00 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-inject-bit'
+
+permissions:
+  contents: write
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate new bit
+        working-directory: scripts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node inject-running-bit.js
+
+      - name: Clean up sentinel
+        if: always() && hashFiles('data/.fire-inject-bit') != ''
+        run: rm -f data/.fire-inject-bit
+
+      - name: Commit and push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Office (auto)"
+          git add data/office-events.json data/.fire-inject-bit 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "Wave 121 bit-injector: new running bit added"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
