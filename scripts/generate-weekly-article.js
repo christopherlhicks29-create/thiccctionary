@@ -217,13 +217,17 @@ function emFromAsterisks(text) {
 }
 
 function linkifyEntries(text, entryWordByDate = {}) {
-  // First convert markdown links [text](../entries/YYYY-MM-DD.html) → anchor.
-  text = text.replace(/\[([^\]]+)\]\(\.\.\/entries\/(\d{4}-\d{2}-\d{2})\.html\)/g, '<a href="../entries/$2.html">$1</a>');
-  // Bare /entries/YYYY-MM-DD.html → anchor using the entry word as text if available, else date.
-  text = text.replace(/\/entries\/(\d{4}-\d{2}-\d{2})\.html/g, (_, d) => {
+  // Step 1: replace markdown links [text](../entries/YYYY-MM-DD.html) → anchor with a SENTINEL host
+  // so step 2's bare-URL regex won't re-match the URL we just placed inside an href.
+  const SENT = '__ENTRY_DONE__';
+  text = text.replace(/\[([^\]]+)\]\(\.\.\/entries\/(\d{4}-\d{2}-\d{2})\.html\)/g, (_, label, d) => `<a href="${SENT}${d}.html">${label}</a>`);
+  // Step 2: convert remaining bare /entries/YYYY-MM-DD.html mentions to anchors.
+  text = text.replace(/\.\.\/entries\/(\d{4}-\d{2}-\d{2})\.html/g, (_, d) => {
     const word = entryWordByDate[d] || d;
     return `<a href="../entries/${d}.html">${word}</a>`;
   });
+  // Step 3: restore the sentinel back to the real URL.
+  text = text.split(SENT).join('../entries/');
   return text;
 }
 
