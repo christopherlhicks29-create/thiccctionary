@@ -1,9 +1,9 @@
 {
   "date": "2026-05-17",
-  "byline_override": "margie",
+  "byline_override": "bart",
   "topic_kind": "office",
   "_fired": {
-    "at": "2026-05-17T04:22:41Z",
-    "by": "post-upgrade-test"
+    "at": "2026-05-17T04:26:56Z",
+    "by": "verify-immediate"
   }
 }
