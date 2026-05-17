@@ -67,6 +67,7 @@ jobs:
         run: node regenerate-images.js
 
       - name: Open Pull Request
+        id: open_pr
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Regenerate images for older entries (tuned prompt)"
@@ -84,3 +85,12 @@ jobs:
             - Or merge as-is and re-run the workflow with a different override for specific dates
 
             **To merge:** Squash and merge as usual.
+
+      - name: Auto-merge when fired from admin (push event)
+        if: success() && github.event_name == 'push' && steps.open_pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR=${{ steps.open_pr.outputs.pull-request-number }}
+          echo "Auto-merging admin-fired PR #$PR..."
+          gh pr merge "$PR" --squash --auto --delete-branch --repo "$GITHUB_REPOSITORY" || gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY" || echo "::warning::auto-merge failed"
