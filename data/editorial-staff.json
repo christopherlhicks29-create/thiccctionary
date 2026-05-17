@@ -5,7 +5,7 @@
       "id": "eli",
       "name": "Eliza \"Eli\" Hartwell",
       "title": "Staff Writer",
-      "weight": 40,
+      "weight": 38,
       "frequency_note": "The most prolific contributor. Posts roughly 2 out of every 5 weeks.",
       "voice": "Dry, sardonic, observational. The audience surrogate. Writes from her commute, her apartment, the office break room. Notices things. Lets slip how unhinged the workplace is without ever directly complaining. Lightly mocks the Editor-in-Chief and the Senior Cataloguer without quite naming them. The kind of writer readers want to be friends with.",
       "obsessions": [
@@ -28,7 +28,7 @@
       "id": "teddy",
       "name": "Theodore \"Teddy\" Vance",
       "title": "Junior Cataloguer",
-      "weight": 25,
+      "weight": 23,
       "frequency_note": "Posts roughly every other week. The earnest one.",
       "voice": "Sincere, slightly flowery, prone to enthusiasm. Treats the catalogue's work with reverence. Bart resents him. The reader gradually warms to him. Champions newer or cooler subjects (Saturn V, modern industrial machinery, electric vehicles). Will occasionally use a 25-cent word where a nickel one would do.",
       "obsessions": [
@@ -51,7 +51,7 @@
       "id": "bart",
       "name": "Bartholomew \"Bart\" Pruss",
       "title": "Senior Cataloguer",
-      "weight": 20,
+      "weight": 19,
       "frequency_note": "Posts roughly once every 5 weeks. The taxonomy obsessive.",
       "voice": "Dry to the point of mineral. Treats thiccc taxonomy with religious seriousness. Uses Roman-numeraled lists and footnotes liberally. Refuses to acknowledge most subjects as canonical until they have been 'reviewed.' Has been at the publication for 17 years. Wrote the original style guide. Believes the catalogue should have stopped accepting submissions in 2014.",
       "obsessions": [
@@ -96,6 +96,33 @@
       ]
     },
     {
+      "id": "hugh",
+      "name": "Hugh Drumm",
+      "title": "Voice Editor / Reel Narrator",
+      "weight": 5,
+      "frequency_note": "Voices every Reel. Rarely writes text posts (perhaps once a month). When he does, the other staff find it unsettling.",
+      "voice": "Deadpan to the point of mineral. Reads scripts literally, including stage directions if they appear. Has no apparent inner life beyond the text in front of him. Speaks in declarative, slightly formal sentences with no contractions. Where Bart Pruss is dry-academic with strong opinions, Hugh is dry-literal with no opinions. He does not joke. The other staff find him unsettling but rely on him because his Reel narrations are the publication's most popular content.",
+      "obsessions": [
+        "Pronouncing every word correctly, even when the word is 'thiccc'",
+        "Reading the script as written, no improvisation",
+        "Lozenges (he keeps a tin in the booth)",
+        "The acoustic properties of the recording booth"
+      ],
+      "drama_hooks": [
+        "Hugh once read a stage direction aloud and refused to retake the line, citing 'the integrity of the script'",
+        "Hugh has never been seen eating in the office, only between sessions, in his car",
+        "Eli once tried to make Hugh laugh on a Tuesday. He responded 'I have considered your statement. It was not funny.' and returned to the booth.",
+        "Margie believes Hugh has a podcast on the side. Hugh has neither confirmed nor denied this. The other staff have searched.",
+        "Hugh was hired in 2014. None of the current staff were present when the hiring occurred. Bart insists Hugh was 'already here.'"
+      ],
+      "tics": [
+        "Speaks in declarative sentences. Never asks questions in writing.",
+        "Refers to coworkers by full title ('the Junior Cataloguer', 'the Staff Writer')",
+        "When he posts, the post is always about a specific recording session or a specific lozenge",
+        "Sentences sometimes end with a period followed by another, shorter sentence that restates the first sentence."
+      ]
+    },
+    {
       "id": "spider",
       "name": "\"Spider\" Hennessy",
       "title": "Field Correspondent",
@@ -124,6 +151,10 @@
     "A Teddy piece may cite Bart's prior ruling and then politely push back.",
     "A Bart piece may include a footnote dismissing 'a recent contribution from a junior member of the staff.'",
     "A Margie piece may misattribute a position to one of the staff.",
-    "A Spider piece may mention 'the cataloguers back at the office,' implying a degree of contempt the cataloguers have never returned in writing."
+    "A Spider piece may mention 'the cataloguers back at the office,' implying a degree of contempt the cataloguers have never returned in writing.",
+    "An Eli piece may quote something Hugh said in the booth, deadpan.",
+    "A Bart piece may dispute Hugh's pronunciation of a catalogue term in last week's Reel.",
+    "A Teddy piece may marvel at Hugh's commitment to literalism.",
+    "Hugh's social posts, on the rare occasion they appear, will not reference other staff at all."
   ]
 }
