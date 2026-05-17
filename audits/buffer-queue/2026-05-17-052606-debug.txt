@@ -1,0 +1,65 @@
+Run timestamp: 2026-05-17-052606
+ACTION env: delete-by-match
+BUFFER_ACCESS_TOKEN set: yes
+BUFFER_PROFILE_IDS set: yes
+
+=== ls /tmp ===
+total 72
+drwxrwxrwt 14 root   root   12288 May 17 05:26 .
+drwxr-xr-x 23 root   root    4096 May 17 05:16 ..
+drwxrwxrwt  2 root   root    4096 May 17 05:16 .ICE-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:16 .X11-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:16 .XIM-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:16 .font-unix
+-rw-r--r--  1 runner runner    49 May 17 05:26 buffer-queue.json
+-rw-r--r--  1 runner runner  1584 May 17 05:26 buffer-queue.log
+prwx------  1 runner runner     0 May 17 05:26 clr-debug-pipe-2166-56326-in
+prwx------  1 runner runner     0 May 17 05:26 clr-debug-pipe-2166-56326-out
+prwx------  1 runner runner     0 May 17 05:26 clr-debug-pipe-2181-56442-in
+prwx------  1 runner runner     0 May 17 05:26 clr-debug-pipe-2181-56442-out
+srw-------  1 runner runner     0 May 17 05:26 dotnet-diagnostic-2166-56326-socket
+srw-------  1 runner runner     0 May 17 05:26 dotnet-diagnostic-2181-56442-socket
+drwx------  2 root   root    4096 May 17 05:16 snap-private-tmp
+drwx------  3 root   root    4096 May 17 05:16 systemd-private-f467228a6484448fa8614581d6d62bbd-ModemManager.service-Ga65Nk
+drwx------  3 root   root    4096 May 17 05:16 systemd-private-f467228a6484448fa8614581d6d62bbd-chrony.service-w2Q1Tm
+drwx------  3 root   root    4096 May 17 05:16 systemd-private-f467228a6484448fa8614581d6d62bbd-haveged.service-opZuWs
+drwx------  3 root   root    4096 May 17 05:16 systemd-private-f467228a6484448fa8614581d6d62bbd-polkit.service-OdvVpu
+
+=== /tmp/buffer-queue.log ===
+[buffer-queue] script started at 2026-05-17T05:26:04.544Z
+action=delete-by-match channels=3 dry=false
+channels: 69f62c965c4c051afa032c91, 69f62da25c4c051afa03305a, 69f62e0e5c4c051afa033677
+org=69f62c0922c194e784dc8306
+Trying status: ["scheduled"]
+  → found 27 posts
+
+Match terms (3): ["Phillipa Reuss-Fontaine","Timpani entry approved","The band marched on"]
+
+Matched 9 of 27:
+  → 6a0942a6e79a2768ec7f440b: "Phillipa Reuss-Fontaine says Monaco is not for everyone. I agree: it is for thos"
+    → success
+  → 6a0942a60557e54b570005ff: "Phillipa Reuss-Fontaine says Monaco is not for everyone. I agree: it is for thos"
+    → success
+  → 6a0941180557e54b57fff751: "Timpani entry approved. This writer notes the shell diameter exceeds the catalog"
+    → success
+  → 6a08ba54e79a2768ec7ab4ac: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → success
+  → 6a08ba546e6b4cbb3bfc8009: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → success
+  → 6a08ad98e79a2768ec7a3f06: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → success
+  → 6a08ad98e79a2768ec7a3f01: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → success
+  → 6a08ad976e6b4cbb3bfc0ace: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → success
+  → 6a08ad976e6b4cbb3bfc0abd: "The band marched on, led by a contrabass tuba so thiccc that its resonance could"
+    → success
+
+Done. deleted=9 failed=0
+
+=== /tmp/buffer-queue.json ===
+{
+  "matched": 9,
+  "deleted": 9,
+  "failed": 0
+}
