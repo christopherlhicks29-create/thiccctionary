@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Submit a Thiccc — Thiccctionary</title>
-<meta name="description" content="Spotted a thiccc thing in the wild? Submit it to the Thiccctionary editorial desk. We catalog objects of unusual girth — never people." />
+<title>Submit a Thiccc, Thiccctionary</title>
+<meta name="description" content="Spotted a thiccc thing in the wild? Submit it to the Thiccctionary editorial desk. We catalog objects of unusual girth, never people." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="https://thiccctionary.com/submit.html" />
-<meta property="og:title" content="Submit a Thiccc — Thiccctionary" />
-<meta property="og:description" content="Spotted a thiccc thing in the wild? Submit it to the Thiccctionary editorial desk. We catalog objects of unusual girth — never people." />
+<meta property="og:title" content="Submit a Thiccc, Thiccctionary" />
+<meta property="og:description" content="Spotted a thiccc thing in the wild? Submit it to the Thiccctionary editorial desk. We catalog objects of unusual girth, never people." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thiccctionary.com/submit.html" />
 <meta property="og:image" content="https://thiccctionary.com/og-default.png" />
@@ -28,7 +28,7 @@
 <header class="masthead">
   <div class="masthead-top"><span class="meta-line">Reader Submissions</span><span class="meta-line meta-line--right">Best Get Featured</span></div>
   <h1 class="wordmark" aria-label="Thiccctionary">
-    <a href="/" class="wordmark-link" aria-label="Thiccctionary — home">
+    <a href="/" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
@@ -49,7 +49,7 @@
 
 <main id="main-content">
   <p style="background: rgba(245,232,199,0.5); border-left: 4px solid var(--oxblood); padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0;">
-  <strong>The catalog grows by submission.</strong> If you've spotted a thiccc thing in the wild — a parked truck, a heritage tomato at the farmer's market, the rear three-quarter of a 747 — send it. Featured entries get a credit line with your name (or anonymous if you prefer). The criteria are simple: real objects only, no people, no animals, no stock-photo renders. <a href="articles/what-counts-as-thiccc.html">Full editorial guide here</a>.
+  <strong>The catalog grows by submission.</strong> If you've spotted a thiccc thing in the wild, a parked truck, a heritage tomato at the farmer's market, the rear three-quarter of a 747, send it. Featured entries get a credit line with your name (or anonymous if you prefer). The criteria are simple: real objects only, no people, no animals, no stock-photo renders. <a href="articles/what-counts-as-thiccc.html">Full editorial guide here</a>.
 </p>
 <div class="center-page">
     <p class="error-stamp">Submit a Thiccc</p>
@@ -63,7 +63,7 @@
       <label for="why">Why is it thiccc?</label>
       <textarea id="why" name="why" placeholder="Be specific. Where's the girth? Rear three-quarter? Side profile? The drum?" required></textarea>
 
-      <label for="image_file">Photo (optional but encouraged) — max 10 MB</label>
+      <label for="image_file">Photo (optional but encouraged), max 10 MB</label>
       <input type="file" id="image_file" accept="image/*" />
       <p id="image_status" style="margin: 4px 0 16px; font-size: 13px; color: var(--ink-soft);"></p>
 
@@ -72,7 +72,7 @@
 
       <p style="margin-top: 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55;">
         By submitting, you grant Thiccctionary a perpetual, royalty-free license to publish, edit, and
-        republish your photograph and submission text — on the website, in social posts, and in any future
+        republish your photograph and submission text, on the website, in social posts, and in any future
         print edition. You retain ownership of your photo. Full terms at
         <a href="legal/terms.html" style="color: var(--oxblood); border-bottom: 1px solid var(--oxblood);">our terms page</a>.
         Strictly things, never people.
@@ -81,7 +81,7 @@
     </form>
 
     <p style="margin-top: 28px; font-size: 14px; color: var(--ink-soft); font-style: italic;">
-      Our editorial filter automatically declines photos whose primary subject is a person or an animal — with a friendly explanation, not silence. The catalog is for objects, vehicles, plants, foods, and structures. Things, never people.
+      Our editorial filter automatically declines photos whose primary subject is a person or an animal, with a friendly explanation, not silence. The catalog is for objects, vehicles, plants, foods, and structures. Things, never people.
     </p>
   </div>
 </main>
@@ -161,7 +161,7 @@ if ('serviceWorker' in navigator) {
     const originalLabel = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
-    status.textContent = 'Processing — this may take 20-30 seconds (vision check + entry generation).';
+    status.textContent = 'Processing, this may take 20-30 seconds (vision check + entry generation).';
     status.style.color = 'var(--ink-soft)';
 
     try {
@@ -175,7 +175,7 @@ if ('serviceWorker' in navigator) {
       const data = await res.json();
 
       if (res.status === 200 && data.ok) {
-        // Success — redirect to thanks
+        // Success, redirect to thanks
         window.location.href = '/thanks.html?word=' + encodeURIComponent(data.word);
       } else if (res.status === 422 && data.error === 'rejected') {
         status.innerHTML = '<strong>Submission declined:</strong> ' + data.reason;
@@ -190,7 +190,7 @@ if ('serviceWorker' in navigator) {
         // Optional: redirect to thanks page after a short delay
         setTimeout(function() { window.location.href = '/thanks.html?word=' + encodeURIComponent(data.word) + '&status=pending'; }, 3000);
       } else if (res.status === 202 && data.error === 'pending_review') {
-        // legacy path — entry text failed banned-words 3x; submission stored for manual review
+        // legacy path, entry text failed banned-words 3x; submission stored for manual review
         status.innerHTML = '<strong>Saved for manual review.</strong> ' + data.reason + ' We\'ll publish if it fits.';
         status.style.color = 'var(--ink-soft)';
       } else {

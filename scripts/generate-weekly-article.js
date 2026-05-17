@@ -124,7 +124,8 @@ HARD RULES:
 3. Every number you cite must be verifiable from the entries provided or be a well-established public fact. If you can't source it, don't write it.
 4. Reference at least 2 recent entries by name. Format: [Entry Word](../entries/YYYY-MM-DD.html). Never write the bare URL in prose.
 5. 700-1000 words across 4-6 sections. No section labeled "Conclusion".
-6. The piece should make a CLAIM — argue something specific about a category, a property, a tension. Not "explore" or "examine" — claim.`;
+6. NEVER use em-dashes (—, U+2014). Use commas, periods, colons, or parens instead. This is a hard ban; one em-dash fails the draft.
+7. The piece should make a CLAIM — argue something specific about a category, a property, a tension. Not "explore" or "examine" — claim.`;
 
 const HUMOR_GUARDRAILS = `These patterns are AI tells. Producing them means failure — better to be short than to use them:
 
@@ -150,6 +151,9 @@ BANNED METAPHORS — all of these are AI-feature-writer clichés:
 - Stands as a testament to / serves as a reminder that
 - Dwells / resides / makes its home
 - Forces of nature / quiet power
+
+BANNED PUNCTUATION:
+- Em-dashes (—) — zero tolerance. Replace with comma, period, colon, or parens.
 
 BANNED PHRASES:
 - "Not just X, but Y" (use ONCE max in entire article)
@@ -376,6 +380,8 @@ const BANNED_PHRASES = [
   /\bresonating force\b/i,
   /\bquiet power\b/i,
   /\binvites engagement\b/i,
+  /\u2014/, // EM-DASH — Christopher banned 2026-05-17, no exceptions
+  /\b—\b/,
   /\bsonic signature\b/i,
   /\bauditory realm\b/i,
   /\bauditory reflection\b/i,

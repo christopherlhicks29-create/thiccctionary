@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A–Z Index — Thiccctionary</title>
+<title>A–Z Index, Thiccctionary</title>
 <meta name="description" content="Alphabetical index of every Thiccctionary entry. Browse the satirical lexicon of objects of unusual girth by letter, like an actual dictionary." />
-<meta property="og:title" content="A–Z Index — Thiccctionary" />
+<meta property="og:title" content="A–Z Index, Thiccctionary" />
 <meta property="og:description" content="Every entry, alphabetized. The full lexicon by letter." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thiccctionary.com/a-z.html" />
@@ -21,7 +21,7 @@
   "@type": "CollectionPage",
   "@id": "https://thiccctionary.com/a-z.html",
   "url": "https://thiccctionary.com/a-z.html",
-  "name": "A–Z Index — Thiccctionary",
+  "name": "A–Z Index, Thiccctionary",
   "description": "Alphabetical index of every Thiccctionary entry.",
   "isPartOf": { "@id": "https://thiccctionary.com/#website" }
 }
@@ -33,7 +33,7 @@
 
 <header class="masthead">
   <h1 class="wordmark" aria-label="Thiccctionary">
-    <a href="/" class="wordmark-link" aria-label="Thiccctionary — home">
+    <a href="/" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
@@ -158,7 +158,7 @@
     document.getElementById('az-counts').textContent =
       `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'} across ${presentLetters.length} of 26 letters.`;
 
-    // Jumpbar — show all 26 letters; gray-out empty ones (but the design choice we picked is to keep them visible)
+    // Jumpbar, show all 26 letters; gray-out empty ones (but the design choice we picked is to keep them visible)
     const jumpbar = document.getElementById('az-jumpbar');
     jumpbar.innerHTML = allLetters.map(L => {
       if (byLetter[L]) return `<a href="#letter-${L}">${L}</a>`;
