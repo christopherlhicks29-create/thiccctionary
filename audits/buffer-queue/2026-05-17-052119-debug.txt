@@ -1,0 +1,249 @@
+Run timestamp: 2026-05-17-052119
+ACTION env: introspect
+BUFFER_ACCESS_TOKEN set: yes
+BUFFER_PROFILE_IDS set: yes
+
+=== ls /tmp ===
+total 72
+drwxrwxrwt 14 root   root   12288 May 17 05:21 .
+drwxr-xr-x 23 root   root    4096 May 17 05:15 ..
+drwxrwxrwt  2 root   root    4096 May 17 05:14 .ICE-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:14 .X11-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:14 .XIM-unix
+drwxrwxrwt  2 root   root    4096 May 17 05:14 .font-unix
+-rw-r--r--  1 runner runner  4069 May 17 05:21 buffer-queue.json
+-rw-r--r--  1 runner runner  2358 May 17 05:21 buffer-queue.log
+prwx------  1 runner runner     0 May 17 05:21 clr-debug-pipe-2109-38740-in
+prwx------  1 runner runner     0 May 17 05:21 clr-debug-pipe-2109-38740-out
+prwx------  1 runner runner     0 May 17 05:21 clr-debug-pipe-2124-38884-in
+prwx------  1 runner runner     0 May 17 05:21 clr-debug-pipe-2124-38884-out
+srw-------  1 runner runner     0 May 17 05:21 dotnet-diagnostic-2109-38740-socket
+srw-------  1 runner runner     0 May 17 05:21 dotnet-diagnostic-2124-38884-socket
+drwx------  2 root   root    4096 May 17 05:14 snap-private-tmp
+drwx------  3 root   root    4096 May 17 05:14 systemd-private-72c68eadfd1941dc882b7fbb8e83e9a6-ModemManager.service-2BgTnY
+drwx------  3 root   root    4096 May 17 05:14 systemd-private-72c68eadfd1941dc882b7fbb8e83e9a6-chrony.service-dGLyf4
+drwx------  3 root   root    4096 May 17 05:14 systemd-private-72c68eadfd1941dc882b7fbb8e83e9a6-haveged.service-f6MYg4
+drwx------  3 root   root    4096 May 17 05:14 systemd-private-72c68eadfd1941dc882b7fbb8e83e9a6-polkit.service-sZmOkT
+
+=== /tmp/buffer-queue.log ===
+[buffer-queue] script started at 2026-05-17T05:21:18.677Z
+action=introspect channels=3 dry=false
+channels: 69f62c965c4c051afa032c91, 69f62da25c4c051afa03305a, 69f62e0e5c4c051afa033677
+Queries (6): account, dailyPostingLimits, channel, channels, posts, post
+Mutations (4): deletePost, createPost, editPost, createIdea
+posts query details: {"name":"posts","args":[{"name":"input","type":{"name":null,"kind":"NON_NULL","ofType":{"name":"PostsInput","kind":"INPUT_OBJECT","ofType":null}}},{"name":"first","type":{"name":"Int","kind":"SCALAR","ofType":null}},{"name":"after","type":{"name":"String","kind":"SCALAR","ofType":null}}],"type":{"name":null,"kind":"NON_NULL","ofType":{"name":"PostsResults","kind":"OBJECT"}}}
+deletePost mutation details: {"name":"deletePost","args":[{"name":"input","type":{"name":null,"kind":"NON_NULL","ofType":{"name":"DeletePostInput","kind":"INPUT_OBJECT","ofType":null}}}]}
+Input type PostsInput: {"name":"PostsInput","inputFields":[{"name":"organizationId","type":{"name":null,"kind":"NON_NULL","ofType":{"name":"OrganizationId","kind":"SCALAR"}}},{"name":"filter","type":{"name":"PostsFiltersInput","kind":"INPUT_OBJECT","ofType":null}},{"name":"sort","type":{"name":null,"kind":"LIST","ofType":{"name":null,"kind":"NON_NULL"}}}]}
+Input type PostsFiltersInput: {"name":"PostsFiltersInput","inputFields":[{"name":"channelIds","type":{"name":null,"kind":"LIST","ofType":{"name":null,"kind":"NON_NULL"}}},{"name":"status","type":{"name":null,"kind":"LIST","ofType":{"name":null,"kind":"NON_NULL"}}},{"name":"tags","type":{"name":"TagComparator","kind":"INPUT_OBJECT","ofType":null}},{"name":"dueAt","type":{"name":"DateTimeComparator","kind":"INPUT_OBJECT","ofType":null}},{"name":"createdAt","type":{"name":"DateTimeComparator","kind":"INPUT_OBJECT","ofType":null}}]}
+Input type DeletePostInput: {"name":"DeletePostInput","inputFields":[{"name":"id","type":{"name":null,"kind":"NON_NULL","ofType":{"name":"PostId","kind":"SCALAR"}}}]}
+Input type PostsResults: {"name":"PostsResults","inputFields":null}
+Input type Post: {"name":"Post","inputFields":null}
+Input type OrganizationId: {"name":"OrganizationId","inputFields":null}
+Input type Account: {"name":"Account","inputFields":null}
+account: {"id":"69f62c0922c194e784dc8304","name":"Thiccctionary","organizations":[{"id":"69f62c0922c194e784dc8306","name":"My Organization"}]}
+
+=== /tmp/buffer-queue.json ===
+{
+  "queries": [
+    "account",
+    "dailyPostingLimits",
+    "channel",
+    "channels",
+    "posts",
+    "post"
+  ],
+  "mutations": [
+    "deletePost",
+    "createPost",
+    "editPost",
+    "createIdea"
+  ],
+  "queryDetails": {
+    "name": "posts",
+    "args": [
+      {
+        "name": "input",
+        "type": {
+          "name": null,
+          "kind": "NON_NULL",
+          "ofType": {
+            "name": "PostsInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        }
+      },
+      {
+        "name": "first",
+        "type": {
+          "name": "Int",
+          "kind": "SCALAR",
+          "ofType": null
+        }
+      },
+      {
+        "name": "after",
+        "type": {
+          "name": "String",
+          "kind": "SCALAR",
+          "ofType": null
+        }
+      }
+    ],
+    "type": {
+      "name": null,
+      "kind": "NON_NULL",
+      "ofType": {
+        "name": "PostsResults",
+        "kind": "OBJECT"
+      }
+    }
+  },
+  "deleteDetails": {
+    "name": "deletePost",
+    "args": [
+      {
+        "name": "input",
+        "type": {
+          "name": null,
+          "kind": "NON_NULL",
+          "ofType": {
+            "name": "DeletePostInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        }
+      }
+    ]
+  },
+  "typeInfos": {
+    "PostsInput": {
+      "name": "PostsInput",
+      "inputFields": [
+        {
+          "name": "organizationId",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "OrganizationId",
+              "kind": "SCALAR"
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "type": {
+            "name": "PostsFiltersInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "sort",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL"
+            }
+          }
+        }
+      ]
+    },
+    "PostsFiltersInput": {
+      "name": "PostsFiltersInput",
+      "inputFields": [
+        {
+          "name": "channelIds",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL"
+            }
+          }
+        },
+        {
+          "name": "tags",
+          "type": {
+            "name": "TagComparator",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "dueAt",
+          "type": {
+            "name": "DateTimeComparator",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "createdAt",
+          "type": {
+            "name": "DateTimeComparator",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        }
+      ]
+    },
+    "DeletePostInput": {
+      "name": "DeletePostInput",
+      "inputFields": [
+        {
+          "name": "id",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "PostId",
+              "kind": "SCALAR"
+            }
+          }
+        }
+      ]
+    },
+    "PostsResults": {
+      "name": "PostsResults",
+      "inputFields": null
+    },
+    "Post": {
+      "name": "Post",
+      "inputFields": null
+    },
+    "OrganizationId": {
+      "name": "OrganizationId",
+      "inputFields": null
+    },
+    "Account": {
+      "name": "Account",
+      "inputFields": null
+    }
+  },
+  "account": {
+    "id": "69f62c0922c194e784dc8304",
+    "name": "Thiccctionary",
+    "organizations": [
+      {
+        "id": "69f62c0922c194e784dc8306",
+        "name": "My Organization"
+      }
+    ]
+  }
+}

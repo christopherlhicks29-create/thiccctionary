@@ -1,0 +1,204 @@
+{
+  "queries": [
+    "account",
+    "dailyPostingLimits",
+    "channel",
+    "channels",
+    "posts",
+    "post"
+  ],
+  "mutations": [
+    "deletePost",
+    "createPost",
+    "editPost",
+    "createIdea"
+  ],
+  "queryDetails": {
+    "name": "posts",
+    "args": [
+      {
+        "name": "input",
+        "type": {
+          "name": null,
+          "kind": "NON_NULL",
+          "ofType": {
+            "name": "PostsInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        }
+      },
+      {
+        "name": "first",
+        "type": {
+          "name": "Int",
+          "kind": "SCALAR",
+          "ofType": null
+        }
+      },
+      {
+        "name": "after",
+        "type": {
+          "name": "String",
+          "kind": "SCALAR",
+          "ofType": null
+        }
+      }
+    ],
+    "type": {
+      "name": null,
+      "kind": "NON_NULL",
+      "ofType": {
+        "name": "PostsResults",
+        "kind": "OBJECT"
+      }
+    }
+  },
+  "deleteDetails": {
+    "name": "deletePost",
+    "args": [
+      {
+        "name": "input",
+        "type": {
+          "name": null,
+          "kind": "NON_NULL",
+          "ofType": {
+            "name": "DeletePostInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        }
+      }
+    ]
+  },
+  "typeInfos": {
+    "PostsInput": {
+      "name": "PostsInput",
+      "inputFields": [
+        {
+          "name": "organizationId",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "OrganizationId",
+              "kind": "SCALAR"
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "type": {
+            "name": "PostsFiltersInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "sort",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL"
+            }
+          }
+        }
+      ]
+    },
+    "PostsFiltersInput": {
+      "name": "PostsFiltersInput",
+      "inputFields": [
+        {
+          "name": "channelIds",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL"
+            }
+          }
+        },
+        {
+          "name": "tags",
+          "type": {
+            "name": "TagComparator",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "dueAt",
+          "type": {
+            "name": "DateTimeComparator",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "createdAt",
+          "type": {
+            "name": "DateTimeComparator",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        }
+      ]
+    },
+    "DeletePostInput": {
+      "name": "DeletePostInput",
+      "inputFields": [
+        {
+          "name": "id",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "PostId",
+              "kind": "SCALAR"
+            }
+          }
+        }
+      ]
+    },
+    "PostsResults": {
+      "name": "PostsResults",
+      "inputFields": null
+    },
+    "Post": {
+      "name": "Post",
+      "inputFields": null
+    },
+    "OrganizationId": {
+      "name": "OrganizationId",
+      "inputFields": null
+    },
+    "Account": {
+      "name": "Account",
+      "inputFields": null
+    }
+  },
+  "account": {
+    "id": "69f62c0922c194e784dc8304",
+    "name": "Thiccctionary",
+    "organizations": [
+      {
+        "id": "69f62c0922c194e784dc8306",
+        "name": "My Organization"
+      }
+    ]
+  }
+}
