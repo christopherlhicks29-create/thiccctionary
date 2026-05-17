@@ -28,6 +28,22 @@ jobs:
           echo "$HOME" | grep -q "</html>" || (echo "FAIL: homepage missing closing </html>" && exit 1)
           echo "$HOME" | grep -q "Thi<span" || (echo "FAIL: wordmark missing" && exit 1)
           echo "$HOME" | grep -q "What is this?" || (echo "FAIL: orientation strip missing" && exit 1)
+          # Wave 110 guard: detect stray HTML fragments that escape from broken
+          # span-wrapping or stale renders. These show up as visible text like
+          # "ccc</span>span>", a bare "p>" on its own, etc.
+          STRAY=$(echo "$HOME" | grep -oE '</(span|p|a|h[1-6]|strong|em)>(span|p|a|strong)>' | head -5 || true)
+          if [ -n "$STRAY" ]; then
+            echo "FAIL: stray HTML fragments visible on homepage:"
+            echo "$STRAY"
+            exit 1
+          fi
+          # Also check for bare ">word>" patterns (where word would render literally)
+          BARE=$(echo "$HOME" | grep -oE '>[a-z]+>' | grep -vE '^>(td|tr|th|li|ol|ul|br|hr|img|input|link|meta|option|select|tbody|thead|nav|main|html|body|head|title|aside|article|section|header|footer|figure|figcaption|small|sub|sup|abbr|cite|code|kbd|q|s|u|i|b|del|ins|mark|wbr|time|var|samp|button|form|label|legend|fieldset|datalist|output|progress|meter|details|summary|dialog|video|audio|source|track|svg|path|rect|circle|line|polyline|polygon|text|tspan|defs|use|g|symbol|template|slot|noscript|style|script|colgroup|col|caption|address|blockquote|dd|dl|dt|figcaption|figure|menu|hgroup|picture|portal|search|map|area|object|param|embed|iframe|canvas|ruby|rb|rt|rp|bdo|bdi|data|dfn|pre)>' | head -5 || true)
+          if [ -n "$BARE" ]; then
+            echo "FAIL: bare angle-bracket-wrapped words visible on homepage (likely stray HTML):"
+            echo "$BARE"
+            exit 1
+          fi
           echo "$HOME" | grep -q "ARTICLES:HOMEPAGE:START" || (echo "FAIL: editorial-desk sentinel missing" && exit 1)
           echo "$HOME" | grep -q "inline-signup" || (echo "FAIL: inline signup missing" && exit 1)
           echo "$HOME" | grep -q "fetch.*entries.json" || (echo "FAIL: hydration script missing" && exit 1)
