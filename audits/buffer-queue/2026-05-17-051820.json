@@ -1,0 +1,16 @@
+{
+  "queries": [
+    "account",
+    "dailyPostingLimits",
+    "channel",
+    "channels",
+    "posts",
+    "post"
+  ],
+  "mutations": [
+    "deletePost",
+    "createPost",
+    "editPost",
+    "createIdea"
+  ]
+}
