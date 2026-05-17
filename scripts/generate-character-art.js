@@ -29,7 +29,7 @@ const SCENE_ID = (process.env.SCENE_ID || '').trim();
 if (!SCENE_ID) { console.error('FATAL: SCENE_ID required'); process.exit(1); }
 const SCENE_IDS = SCENE_ID.split(',').map(s => s.trim()).filter(Boolean);
 
-const BASE_STYLE = "Editorial cartoon in the style of vintage New Yorker single-panel cartoons. Black ink line work with selective muted color, warm cream paper background (#f5e8c7), small spot oxblood (#8b1f1f) accents only where called for. Dry, observational character expressions. Mid-century print-magazine aesthetic. 1:1 square.";
+const BASE_STYLE = "Editorial cartoon in the style of vintage New Yorker single-panel cartoons. Black ink line work with selective muted color, warm cream paper background (#f5e8c7), small spot oxblood (#8b1f1f) accents only where called for. Dry, observational character expressions. Mid-century print-magazine aesthetic. 1:1 square. CRITICAL: do NOT render any caption text, label text, or text underneath the image. Any text on visible props inside the scene (signs, labels, etc) should be limited to 1-3 words maximum and spelled correctly. Default to NO TEXT.";
 
 async function generateImage(prompt) {
   const res = await fetch('https://api.openai.com/v1/images/generations', {
