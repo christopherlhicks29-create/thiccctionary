@@ -100,6 +100,7 @@ jobs:
         run: rm -f data/.fire-buffer-queue.json
 
       - name: Commit + push artifacts
+        if: always()
         run: |
           git config user.email "actions@github.com"
           git config user.name "Thiccctionary Buffer (auto)"
