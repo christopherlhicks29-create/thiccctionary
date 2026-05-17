@@ -26,6 +26,14 @@ const TRIGGERS = {
   'office-post':   { path: 'data/.fire-office',           needsDate: false, contentMode: 'office-json',     label: 'Fire an employee social post (FB + X)' },
   'buffer-list':   { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-list-json',   label: 'List Buffer scheduled posts' },
   'buffer-purge':  { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-purge-json',  label: 'Delete Buffer posts matching phrase(s)' },
+  // Wave 152: direct workflow_dispatch triggers. Used by the admin auto-fix
+  // loop to re-run failed pipelines without writing a sentinel file. Keyed
+  // by workflow filename (under .github/workflows/).
+  'site-health':         { mode: 'workflow-dispatch', workflow: 'site-health.yml',         label: 'Run site health audit' },
+  'cron-watchdog':       { mode: 'workflow-dispatch', workflow: 'cron-watchdog.yml',       label: 'Run cron watchdog check' },
+  'post-deploy-verify':  { mode: 'workflow-dispatch', workflow: 'post-deploy-verify.yml',  label: 'Re-verify the live site' },
+  'post-on-merge':       { mode: 'workflow-dispatch', workflow: 'post-on-merge.yml',       label: 'Re-run post-to-Buffer on latest daily' },
+  'daily-dispatch':      { mode: 'workflow-dispatch', workflow: 'daily.yml',               label: 'Re-run daily entry generator' },
 };
 
 async function gh(path, opts = {}, env) {
@@ -53,6 +61,46 @@ export async function onRequestPost({ request, env }) {
   if (!cfg) {
     return new Response(JSON.stringify({ error: `Unknown trigger: ${trigger}. Valid: ${Object.keys(TRIGGERS).join(', ')}` }), { status: 400, headers: { 'Content-Type': 'application/json' } });
   }
+
+  // Wave 152: workflow_dispatch path - re-run a workflow directly via
+  // GitHub Actions API instead of writing a sentinel file. Used by the
+  // admin auto-fix loop to re-trigger pipelines that don't have a
+  // sentinel-driven entry point (post-deploy-verify, site-health, etc.)
+  if (cfg.mode === 'workflow-dispatch') {
+    try {
+      const ts = new Date().toISOString();
+      const who = sourceEmail || 'admin-panel-autofix';
+      const dispatchRes = await gh(`/repos/${REPO}/actions/workflows/${cfg.workflow}/dispatches`, {
+        method: 'POST',
+        body: JSON.stringify({
+          ref: 'main',
+          inputs: { reason: `admin auto-fix at ${ts} by ${who}` },
+        }),
+      }, env);
+      if (!dispatchRes.ok) {
+        // Try again without inputs (some workflows have no `inputs:` block at all
+        // and the API rejects unknown input keys with 422)
+        const dispatchRes2 = await gh(`/repos/${REPO}/actions/workflows/${cfg.workflow}/dispatches`, {
+          method: 'POST',
+          body: JSON.stringify({ ref: 'main' }),
+        }, env);
+        if (!dispatchRes2.ok) {
+          const err = await dispatchRes2.text();
+          return new Response(JSON.stringify({ error: `Workflow dispatch failed: ${dispatchRes2.status} ${err.slice(0, 300)}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+        }
+      }
+      return new Response(JSON.stringify({
+        ok: true,
+        trigger,
+        label: cfg.label,
+        workflow: cfg.workflow,
+        message: `Workflow dispatched. Will appear in Actions tab within ~10s.`,
+      }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    }
+  }
+
   if (cfg.needsDate && !/^\d{4}-\d{2}-\d{2}$/.test(date || '')) {
     return new Response(JSON.stringify({ error: `Trigger '${trigger}' requires date in YYYY-MM-DD format` }), { status: 400, headers: { 'Content-Type': 'application/json' } });
   }
