@@ -1,9 +1,6 @@
 {
   "date": "2026-05-17",
   "byline_override": "bart",
-  "topic_kind": "thiccc",
-  "_fired": {
-    "at": "2026-05-17T04:41:04Z",
-    "by": "voice-replacement"
-  }
+  "topic_kind": "office",
+  "_t": 1779025231.3171349
 }
