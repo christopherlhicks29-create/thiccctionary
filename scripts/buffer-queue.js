@@ -5,6 +5,8 @@
  */
 
 import fs from 'node:fs/promises';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 const TOKEN = process.env.BUFFER_ACCESS_TOKEN;
 const PROFILES = (process.env.BUFFER_PROFILE_IDS || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -20,6 +22,15 @@ function log(...args) {
   console.log(line);
   logLines.push(line);
 }
+// Always write log on exit
+process.on('exit', () => {
+  try {
+    const fsSync = require('node:fs');
+    fsSync.writeFileSync('/tmp/buffer-queue.log', logLines.join('\n') + '\n');
+  } catch (e) { /* ignore */ }
+});
+// Startup marker so we know the script even started
+log('[buffer-queue] script started at', new Date().toISOString());
 
 function channelIdsFromProfiles() {
   return PROFILES.map(p => {
