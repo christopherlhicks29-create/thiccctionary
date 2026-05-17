@@ -59,33 +59,71 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   return JSON.parse(data.choices[0].message.content);
 }
 
-const VOICE_NOTES = `Field Report voice — anchored on existing articles:
+const VOICE_NOTES = `You are writing as the editorial board of Thiccctionary, a satirical print-magazine-style publication that catalogs objects of unusual girth. The voice is closer to a 1962 architecture review than to a 2024 listicle. Treat the subject matter with mock gravity — the joke is the tone.
 
-1. Bagger 288: opens with declarative grounding. Uses concrete numbers as character beats. Refers to the Thiccctionary editorial board in third person. Closes with a small dry instruction.
+VOICE ANCHORS — study these excerpts from the existing articles. Match their cadence, sentence rhythm, and register. Do not mimic — internalize.
 
-2. Physics of Thiccc: argues from physical law (square-cube). Treats "thiccc" as a technical category requiring structural commitment, not just size. Uses em-dashes for timing. Light irony, never winking.
+From "The Bagger 288: The Thiccc-est Machine on Earth":
 
-Rules:
-- Never break the fourth wall ("as an AI" or "as a satire" is forbidden).
-- Never use modern internet voice ("absolutely massive", "literally a unit", "chonky boi"). The voice is closer to a 1962 architecture review than a meme caption.
-- Concrete numbers carry weight. Don't fabricate figures — only cite things from the entries provided or well-established public facts.
-- 700-1000 words across 4-6 body sections.
-- Reference at least 2 of the recent entries by name with linkable slug.`;
+  > There is a particular kind of machine that does not merely perform a function but embodies one. The Bagger 288 digs. This is its purpose. Everything about its form — the sprawling crawler tracks, the 18.5-metre bucket wheel turning at the speed of deliberate inevitability, the counterweight booms stretching backward like the tail of some geological herbivore — exists solely in service of digging. And it digs at a scale that requires new vocabulary.
 
-const HUMOR_GUARDRAILS = `BANNED patterns (these are AI tells; using them is worse than the article being short):
-- "Conclusion" as the last heading. Use a concrete observation title like "What X Teaches Us" or "The Question of Y" instead.
-- ANY closer that uses words like "examinations continue", "we find that", "dwells not just in", "transcends", "explores the intersection of". End on a SPECIFIC observation about a SPECIFIC object.
-- Symphonies, harmonies, orchestrators, intersections, tapestries, dances — these metaphors are all banned.
-- Three-short-clause strings ("It is heavy. It is wide. It is thiccc.").
-- "Not just X, but Y" — use once max.
-- Hedging ("perhaps", "arguably", "in a sense") — once max in the whole article.
-- Em-dash overuse — once per paragraph max.
+  > The machine removes 240,000 tonnes of overburden per day. To understand what this means, consider that a standard dump truck carries around 30 tonnes. The Bagger 288 would require 8,000 of them, working around the clock, to match a single day's output. The machine does not work in shifts. It works.
 
-LINK STYLE: Reference entries inline as markdown links: [Bagger 288](../entries/2026-05-10.html). Do NOT write bare URLs in parentheses.
+  > Forty-eight years is a long time to hold a title. Most records of this kind have a natural half-life measured in decades, because the pressure to exceed the previous superlative is, in most industries, irresistible. The Bagger 288's record has endured because the engineering problem it was built to solve — extracting lignite at scale — has not produced sufficient demand for a larger machine. It is, in the most literal sense, enough.
 
-GOOD closer examples (study these):
-- "The editorial board recommends standing approximately one kilometre away and taking a moment." (Bagger 288)
-- A specific, dry, observational instruction that grounds the abstract argument in a concrete object.`;
+  > The editorial board recommends standing approximately one kilometre away and taking a moment.
+
+Patterns to notice:
+- Concrete numbers as character beats (240,000 tonnes, 18.5-metre, 8,000 trucks). Never round numbers, never invent them.
+- Mock-academic vocabulary used straight-faced: "structural commitment", "the grammar of scale", "by dry mass", "in the most literal sense".
+- Short declarative sentences placed strategically against longer architectural ones. "It works." "This is sufficient."
+- The editorial board referred to in third person, dryly, occasionally.
+- Specificity over abstraction. Always.
+
+HARD RULES:
+1. Never break the fourth wall. No "as an AI", no "as a satire", no "this article".
+2. Never use modern internet voice. "Absolutely massive", "chonky boi", "literally a unit", "main character energy" are forbidden.
+3. Every number you cite must be verifiable from the entries provided or be a well-established public fact. If you can't source it, don't write it.
+4. Reference at least 2 recent entries by name. Format: [Entry Word](../entries/YYYY-MM-DD.html). Never write the bare URL in prose.
+5. 700-1000 words across 4-6 sections. No section labeled "Conclusion".
+6. The piece should make a CLAIM — argue something specific about a category, a property, a tension. Not "explore" or "examine" — claim.`;
+
+const HUMOR_GUARDRAILS = `These patterns are AI tells. Producing them means failure — better to be short than to use them:
+
+BANNED HEADINGS:
+- "Conclusion", "Final Thoughts", "Wrapping Up", "In Summary", "Reflections" — all forbidden.
+- Headings that are abstract nouns alone ("Resonance", "Harmony", "Power"). Headings must be specific or pose a question.
+- GOOD: "The Grammar of Scale", "On Being the Largest", "The Question of Movement", "What the Bagger 288 Teaches Us"
+
+BANNED CLOSERS:
+- "And so we continue cataloguing..."
+- "As our examinations continue..."
+- "Thicccness dwells not just in X but in Y..."
+- "Transcends mere physicality..."
+- Anything that summarizes the article you just wrote.
+
+GOOD CLOSER: an absurdly specific, concrete, dry observation or instruction. The Bagger 288 article closes with: "The editorial board recommends standing approximately one kilometre away and taking a moment." That's the target.
+
+BANNED METAPHORS — all of these are AI-feature-writer clichés:
+- Symphony / harmony / orchestrator / conductor / movement (in the music sense)
+- Tapestry / intersection / lattice / weaves through / threads together
+- Dance / ballet / choreographed
+- Embodies / encapsulates / captures the essence of
+- Stands as a testament to / serves as a reminder that
+- Dwells / resides / makes its home
+- Forces of nature / quiet power
+
+BANNED PHRASES:
+- "Not just X, but Y" (use ONCE max in entire article)
+- "It is X. It is Y. It is Z." (three-clause rhythm — feels generated)
+- "Perhaps", "arguably", "in a sense", "in essence" — use ONCE max total
+- "Captures" any abstract noun (captures the essence, captures the imagination, captures the weight)
+
+LINK STYLE: Reference recent entries with markdown links: [Bagger 288](../entries/2026-05-10.html). Never write a bare /entries/... URL. Anchor text is the entry's word, not the date.
+
+CADENCE: Vary sentence length. Long-long-long is monotonous. Short-short-short is mechanical. Mix.
+
+THE TEST: Read your draft aloud in the voice of a 1962 magazine editor. If it sounds like a 2024 blogger, rewrite.`;
 
 function buildSystemPrompt() {
   return `You are the Thiccctionary editorial board, writing a weekly Field Report essay.
@@ -278,6 +316,60 @@ ${relatedBlock}
 `;
 }
 
+
+async function critiqueDraft(article) {
+  const fullText = [
+    article.title || '',
+    article.dek || '',
+    ...(article.sections || []).flatMap(sec => [sec.heading, ...(sec.paragraphs || [])]),
+  ].join('\n\n');
+
+  const systemMsg = `You are the senior editor reviewing a Field Report draft for Thiccctionary. You hold the bar high. Anything B-minus gets rejected.
+
+Score the draft against these explicit failure modes. Return JSON:
+{
+  "verdict": "pass" or "fail",
+  "score": 0-10 (only 8+ is "pass"),
+  "issues": ["specific issue 1", "specific issue 2", ...]
+}
+
+FAIL THE DRAFT if any of these are present:
+- Heading labeled "Conclusion", "Final Thoughts", "In Summary", "Reflections", or any synonym
+- Heading that is a single abstract noun ("Resonance", "Harmony", "Power")
+- Closer that summarizes or uses "we continue", "dwells", "transcends", "as our examinations"
+- Any banned metaphor: symphony, harmony, orchestrator, tapestry, intersection, dance, embodies, encapsulates, captures the essence
+- "Stands as a testament", "serves as a reminder", "speaks to"
+- "Not just X, but Y" used more than once
+- Three-short-clause rhythm in any paragraph
+- "Perhaps" / "arguably" / "in a sense" used more than once total
+- Bare /entries/... URL in prose (must be markdown link with entry word as anchor)
+- Section count outside 4-6
+- Word count outside 700-1000
+- Any fabricated-sounding number (very round, oddly specific without source feel)
+- Modern internet voice creeping in
+- Title that's abstract and generic ("Sound and Power", "The Thiccc Harmony")
+
+PASS only if the draft has the dry, mock-academic register of the Bagger 288 sample and contains zero banned patterns.
+
+Be a tough editor. Reject easily. The cost of a bad article publishing is high; the cost of one extra rewrite is low.`;
+
+  const userMsg = `DRAFT TO REVIEW:\n\n${fullText}\n\nReturn JSON only.`;
+
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${OPENAI_API_KEY}` },
+    body: JSON.stringify({
+      model: 'gpt-4o',
+      messages: [{ role: 'system', content: systemMsg }, { role: 'user', content: userMsg }],
+      response_format: { type: 'json_object' },
+      temperature: 0.3,
+    }),
+  });
+  if (!res.ok) throw new Error(`critique OpenAI ${res.status}: ${await res.text()}`);
+  const data = await res.json();
+  return JSON.parse(data.choices[0].message.content);
+}
+
 async function main() {
   console.log(`[weekly] target date: ${TARGET_DATE}`);
   const entries = JSON.parse(await fs.readFile(ENTRIES_PATH, 'utf8'));
@@ -289,11 +381,31 @@ async function main() {
   }
   console.log(`[weekly] ${recent.length} recent entries: ${recent.map(e => e.word).join(', ')}`);
   const pastTitles = articles.map(a => a.title);
-  console.log('[weekly] calling OpenAI…');
-  const article = await callOpenAI([
+  console.log('[weekly] calling OpenAI (draft 1)…');
+  let article = await callOpenAI([
     { role: 'system', content: buildSystemPrompt() },
     { role: 'user', content: buildUserPrompt(recent, pastTitles) },
   ]);
+
+  // Self-critique loop: evaluate against banned patterns, rewrite if it fails.
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const critique = await critiqueDraft(article);
+    console.log(`[weekly] critique pass ${attempt} verdict: ${critique.verdict} (score ${critique.score}/10)`);
+    if (critique.verdict === 'pass') break;
+    console.log(`[weekly] issues: ${critique.issues.join(' | ')}`);
+    if (attempt === 2) {
+      console.error('[weekly] FAILED quality bar after 2 attempts — exiting non-zero');
+      console.error(JSON.stringify(critique, null, 2));
+      process.exit(1);
+    }
+    console.log(`[weekly] rewriting (draft ${attempt + 1})…`);
+    article = await callOpenAI([
+      { role: 'system', content: buildSystemPrompt() },
+      { role: 'user', content: buildUserPrompt(recent, pastTitles) },
+      { role: 'assistant', content: JSON.stringify(article) },
+      { role: 'user', content: `Your last draft failed the editorial review. Fix these issues and return a complete new JSON article with ALL banned patterns removed:\n\n${critique.issues.map(i => '- ' + i).join('\n')}\n\nReturn the corrected JSON only.` },
+    ]);
+  }
   for (const field of ['slug', 'title', 'kicker', 'dek', 'description', 'sections']) {
     if (!article[field]) throw new Error(`OpenAI response missing field: ${field}`);
   }
