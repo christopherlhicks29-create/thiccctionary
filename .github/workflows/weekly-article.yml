@@ -1,8 +1,4 @@
-name: Weekly Field Report — Generate Draft PR
-
-# Generates a 700-1000 word Field Report essay every Sunday at 14:00 UTC,
-# threading recent daily entries into a single piece. Opens a PR for review
-# before publishing — articles are higher-stakes than daily entries, no auto-merge.
+name: Weekly Field Report — Auto-Publish
 
 on:
   schedule:
@@ -14,7 +10,7 @@ on:
         type: string
         required: false
       target_date:
-        description: "Override target date (YYYY-MM-DD), defaults to today UTC"
+        description: "Override target date (YYYY-MM-DD)"
         type: string
         required: false
   push:
@@ -24,7 +20,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  issues: write
 
 jobs:
   generate:
@@ -32,6 +28,8 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node 20
         uses: actions/setup-node@v4
@@ -51,57 +49,60 @@ jobs:
           fi
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
-      - name: Generate this week's Field Report
+      - name: Generate Field Report (4-pass quality gate, >=8/10 required)
+        id: gen
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           THEME_OVERRIDE: ${{ inputs.theme_override }}
           TARGET_DATE: ${{ steps.target.outputs.date }}
-        run: node generate-weekly-article.js
-
-      - name: Read generated article metadata
-        id: meta
         run: |
-          SLUG=$(python3 -c "import json; print(json.load(open('data/articles.json'))[0]['slug'])")
-          TITLE=$(python3 -c "import json; print(json.load(open('data/articles.json'))[0]['title'])")
-          DESC=$(python3 -c "import json; print(json.load(open('data/articles.json'))[0]['description'])")
-          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
-          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
-          { echo "desc<<DESCEOF"; echo "$DESC"; echo "DESCEOF"; } >> "$GITHUB_OUTPUT"
+          set +e
+          node generate-weekly-article.js 2>&1 | tee /tmp/gen.log
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          set -e
 
       - name: Clean up sentinel
-        if: hashFiles('data/.fire-weekly') != ''
+        if: always() && hashFiles('data/.fire-weekly') != ''
         run: rm -f data/.fire-weekly
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+      - name: On success commit and push to main
+        if: steps.gen.outputs.exit == '0'
+        run: |
+          TITLE=$(python3 -c "import json; print(json.load(open('data/articles.json'))[0]['title'])")
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Field Reporter (auto)"
+          git add -A
+          git commit -m "Wave 109 auto-publish: ${TITLE}" || echo "nothing to commit"
+          git push origin main
+
+      - name: On failure open issue
+        if: steps.gen.outputs.exit != '0'
+        uses: actions/github-script@v7
+        env:
+          TARGET_DATE: ${{ steps.target.outputs.date }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: weekly/${{ steps.target.outputs.date }}
-          commit-message: "Weekly Field Report: ${{ steps.meta.outputs.title }}"
-          title: "📰 Field Report — ${{ steps.meta.outputs.title }}"
-          body: |
-            **Slug:** `${{ steps.meta.outputs.slug }}`
-            **Date:** ${{ steps.target.outputs.date }}
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('/tmp/gen.log', 'utf8').slice(-3000);
+            const date = process.env.TARGET_DATE;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Weekly Field Report: quality gate failed for ' + date,
+              body: 'The Field Report generator burned through 4 critique passes without clearing the >=8/10 quality bar. No article published this week.\n\n**Date:** ' + date + '\n\n**Last 3KB of run log:**\n\n<pre>' + log.replace(/</g, '&lt;') + '</pre>\n\nRe-fire manually after inspecting prompt/critique, or wait for next Sunday.',
+              labels: ['weekly-field-report', 'quality-gate-fail']
+            });
 
-            **Description:**
-            > ${{ steps.meta.outputs.desc }}
-
-            ---
-
-            ## Review checklist
-            - [ ] Tone matches Field Report voice (Bagger 288 / Physics of Thiccc anchors)
-            - [ ] No fabricated numbers — every figure verifiable
-            - [ ] Recent entries linked correctly
-            - [ ] Headline & dek land
-            - [ ] No "as an AI" / fourth-wall breaks
-            - [ ] Related-entry sidebar points to the right entry
-
-            Merge to publish. Close without merging to discard.
-
-            🤖 Generated by `.github/workflows/weekly-article.yml`
-          delete-branch: true
-          add-paths: |
-            articles/**
-            data/articles.json
-            index.html
+      - name: Commit sentinel removal if needed
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "tree clean"
+          else
+            git config user.email "actions@github.com"
+            git config user.name "Thiccctionary Field Reporter (auto)"
+            git add -A
+            git commit -m "Clean up .fire-weekly sentinel" || true
+            git push origin main || true
+          fi

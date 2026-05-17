@@ -388,12 +388,12 @@ async function main() {
   ]);
 
   // Self-critique loop: evaluate against banned patterns, rewrite if it fails.
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  for (let attempt = 1; attempt <= 4; attempt++) {
     const critique = await critiqueDraft(article);
     console.log(`[weekly] critique pass ${attempt} verdict: ${critique.verdict} (score ${critique.score}/10)`);
     if (critique.verdict === 'pass') break;
     console.log(`[weekly] issues: ${critique.issues.join(' | ')}`);
-    if (attempt === 2) {
+    if (attempt === 4) {
       console.error('[weekly] FAILED quality bar after 2 attempts — exiting non-zero');
       console.error(JSON.stringify(critique, null, 2));
       process.exit(1);
