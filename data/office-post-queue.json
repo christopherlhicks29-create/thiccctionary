@@ -7,7 +7,17 @@
     "topic_kind": "thiccc",
     "text": "Timpani entry approved. This writer notes the shell diameter exceeds the cataloguer's usual comfort zone, which tells you something. Under stage lighting, the bowl reads less \"percussion\" and more \"municipal infrastructure.\" The conductor needed a map. Relatable.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-17T04:16:24.463Z",
+    "success_count": 1,
+    "failure_count": 1,
+    "errors": [
+      {
+        "channelId": "69f62da25c4c051afa03305a",
+        "status": 200,
+        "body": "Scheduled posts limit reached. You have 10 scheduled posts out of 10 allowed."
+      }
+    ]
   },
   {
     "id": "office-1778991079252",
