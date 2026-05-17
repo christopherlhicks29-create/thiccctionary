@@ -135,7 +135,9 @@ HARD RULES:
 8. NO em-dashes anywhere. Use commas, periods, colons, parens.
 9. NO words: embodies, encapsulates, intersection, transcends, tapestry, symphony, harmony, dance, captures the essence.
 10. NO "not just X, but Y" phrasing.
-11. ACCESSIBILITY: write as if it is the first Thiccctionary post the reader has ever seen. The joke must land WITHOUT requiring knowledge of any staff member, running bit, or fictional name. Inside-jokes (Bertram, Phillipa, Girth Quarterly, etc) are ALLOWED only as flavor; the load-bearing punchline must work on a stranger. If you remove all fictional names, the joke should still be visible.
+11. THIS POST MUST SOUND LIKE A PERSON, NOT A CATALOG CARD. Banned structure: 'Subject: X. Observation. Punchline.' That is brand-voice catalog with a name stapled on. Office posts should sound like an employee venting, observing, complaining, or reacting from their desk. Lead with what HAPPENED or what they NOTICED, not with a subject label.
+12. Examples of GOOD openers: 'The coffee machine broke again.' / 'Another postcard arrived this morning.' / 'I have submitted three formal objections this week.' / 'Hugh read a stage direction aloud today and refused to retake the line.' NOT: 'Contrabass tuba: 18 feet of tubing.'
+13. ACCESSIBILITY: write as if it is the first Thiccctionary post the reader has ever seen. The joke must land WITHOUT requiring knowledge of any staff member, running bit, or fictional name. Inside-jokes (Bertram, Phillipa, Girth Quarterly, etc) are ALLOWED only as flavor; the load-bearing punchline must work on a stranger. If you remove all fictional names, the joke should still be visible.
 12. Output the post text only. No commentary, no quote marks, no preamble.` + ownCorpus + colleagueCorpus;
   return baseTpl;
 }
