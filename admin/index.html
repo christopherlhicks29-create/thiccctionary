@@ -162,6 +162,7 @@
   <a href="#submissions" data-tab="submissions">Submissions <span id="sub-badge" class="pill neutral" style="display:none; margin-left:4px;">0</span></a>
   <a href="#entries" data-tab="entries">Entries</a>
   <a href="#actions" data-tab="actions">Quick-fire</a>
+  <a href="#social" data-tab="social">Social posts</a>
   <a href="#health" data-tab="health">Site health</a>
 </nav>
 
@@ -285,6 +286,15 @@ The band marched on"></textarea>
         <button class="primary" id="office-fire-btn" data-confirm="Fire an employee office post to FB + X right now?">Fire office post</button>
       </div>
     </div>
+  </section>
+
+  <!-- SOCIAL POSTS -->
+  <section id="social" class="panel">
+    <h2>Employee social posts</h2>
+    <p class="lede">All staff-bylined posts from <code>data/office-post-queue.json</code>. Status = posted means Buffer accepted the post into its queue; the actual FB/X publish happens at the next Buffer scheduled slot (use <a href="https://publish.buffer.com/queue" target="_blank" rel="noopener">Buffer dashboard</a> to share-now if needed).</p>
+    <div id="social-loading" class="empty-state">Loading posts…</div>
+    <div id="social-error" class="empty-state" style="display:none;"></div>
+    <div id="social-list" style="display:none;"></div>
   </section>
 
   <!-- ENTRIES -->
@@ -822,6 +832,55 @@ if (officeBtn) {
 // Pre-fill date inputs with today's date
 const todayStr = new Date().toISOString().slice(0, 10);
 $$('input[type="date"]').forEach(inp => inp.value = todayStr);
+
+async function loadSocialPosts() {
+  const loading = $('#social-loading'), errEl = $('#social-error'), list = $('#social-list');
+  loading.style.display = ''; errEl.style.display = 'none'; list.style.display = 'none';
+  let res;
+  try { res = await fetch('/api/admin/office-posts'); }
+  catch (e) { loading.style.display = 'none'; errEl.style.display = ''; errEl.textContent = 'Network: ' + e.message; return; }
+  const data = await res.json().catch(() => ({}));
+  loading.style.display = 'none';
+  if (!res.ok) {
+    errEl.style.display = ''; errEl.innerHTML = 'Error: ' + esc(data.error || res.status);
+    return;
+  }
+  const posts = data.posts || [];
+  if (posts.length === 0) {
+    list.style.display = ''; list.innerHTML = '<p class="empty-state">No posts yet.</p>';
+    return;
+  }
+  const bufferLink = 'https://publish.buffer.com/queue';
+  list.style.display = '';
+  list.innerHTML = posts.map(p => {
+    const statusColor = p.status === 'posted' ? 'var(--good)' : (p.status === 'failed' ? 'var(--oxblood)' : 'var(--ink-soft)');
+    const sf = (p.success_count !== undefined) ? p.success_count + '/' + (p.success_count + p.failure_count) + ' channels' : 'pending';
+    const created = p.created ? new Date(p.created).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }) : '?';
+    const errors = (p.errors && p.errors.length) ? '<div style="margin-top: 8px; padding: 8px; background: var(--oxblood-soft); border-radius: 4px; font-size: 12px;"><strong>Errors:</strong><br>' + p.errors.map(e => '<code>' + esc(JSON.stringify(e).slice(0, 250)) + '</code>').join('<br>') + '</div>' : '';
+    return '<article style="margin: 0 0 1.5rem; padding: 1rem 1.25rem; border: 1px solid var(--rule); border-radius: 6px; background: white;">' +
+      '<header style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem;">' +
+        '<span><strong>' + esc(p.byline_display || p.byline_id || 'unsigned') + '</strong> · ' + esc(p.topic_kind || '?') + ' · score ' + (p.score || '?') + '/10</span>' +
+        '<span style="color: ' + statusColor + ';">' + esc(p.status) + ' · ' + esc(sf) + '</span>' +
+      '</header>' +
+      '<div style="white-space: pre-wrap; font-size: 0.95rem; line-height: 1.55; margin-bottom: 0.5rem;">' + esc(p.text) + '</div>' +
+      '<footer style="font-family: var(--font-mono); font-size: 11px; opacity: 0.55; display: flex; justify-content: space-between;">' +
+        '<span>' + esc(created) + '</span>' +
+        '<a href="' + bufferLink + '" target="_blank" rel="noopener" style="color: var(--oxblood); text-decoration: none; border-bottom: 1px solid currentColor;">view in Buffer →</a>' +
+      '</footer>' +
+      errors +
+    '</article>';
+  }).join('');
+}
+
+// Wire to tab activation: load when "social" tab becomes active
+const _origActivate = typeof activateTab === 'function' ? activateTab : null;
+if (_origActivate) {
+  window.activateTab = function(name) {
+    _origActivate(name);
+    if (name === 'social') loadSocialPosts();
+  };
+}
+if ((location.hash || '').slice(1) === 'social') loadSocialPosts();
 
 // Initial route based on hash
 activateTab((location.hash || '#dashboard').slice(1));
