@@ -37,6 +37,7 @@ const TRIGGERS = {
   'post-deploy-verify':  { mode: 'workflow-dispatch', workflow: 'post-deploy-verify.yml',  label: 'Re-verify the live site' },
   'post-on-merge':       { mode: 'workflow-dispatch', workflow: 'post-on-merge.yml',       label: 'Re-run post-to-Buffer on latest daily' },
   'daily-dispatch':      { mode: 'workflow-dispatch', workflow: 'daily.yml',               label: 'Re-run daily entry generator' },
+  'office-history-dispatch': { mode: 'workflow-dispatch', workflow: 'office-history.yml',     label: 'Generate office history bible (direct dispatch)' },
 };
 
 async function gh(path, opts = {}, env) {
