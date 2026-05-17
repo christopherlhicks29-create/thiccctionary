@@ -45,7 +45,7 @@ REJECT (score < 7) if ANY of these are true:
 - Any text, words, letters, or readable labels visible ANYWHERE in the image (the bible explicitly forbids rendered text)
 - Anatomical errors (extra fingers, distorted features, etc)
 - Off-style (not editorial-cartoon / New Yorker single-panel feel)
-- Props in description are not visually identifiable (e.g., the prop is supposed to be 'open tin of lozenges' but it looks like a featureless block)
+- Props in description are not visually identifiable. Examples: an 'open tin of lozenges' must look like SMALL MEDICINAL LOZENGES (mint-sized, pastel, soft round), not cookies/chocolates/coins. A 'notebook of fire hydrant sketches' must show recognizable hydrant shapes. A 'Saturn V diagram' must show a recognizable rocket silhouette. If a reasonable viewer can't identify the prop from the image alone, REJECT.
 - Style is gritty, photographic, or modern-digital rather than ink-line editorial cartoon
 - Composition unbalanced or amateur
 
