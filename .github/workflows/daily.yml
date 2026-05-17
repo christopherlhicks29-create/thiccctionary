@@ -54,12 +54,26 @@ jobs:
         continue-on-error: true
 
       - name: Generate today's entry
+        id: gen
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           FORCE_REGENERATE: ${{ inputs.force_regenerate || 'false' }}
         run: node generate-daily.js
+
+      - name: Verify entry actually changed
+        run: |
+          # If generate-daily.js failed silently, entries.json[0].date won't match today.
+          # Bail out before opening a stale PR.
+          TODAY=$(date -u +%Y-%m-%d)
+          NEW_DATE=$(node -e "const e=require('./data/entries.json'); console.log(e[0].date);")
+          NEW_WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
+          if [ "$NEW_DATE" != "$TODAY" ]; then
+            echo "::error::entries.json[0].date is $NEW_DATE, not today ($TODAY). Entry generation failed silently. Aborting."
+            exit 1
+          fi
+          echo "Verified: today's entry is $NEW_WORD ($NEW_DATE)"
 
       - name: Read entry metadata + design critique
         id: entry
@@ -125,6 +139,8 @@ jobs:
         continue-on-error: true
 
       - name: Open Pull Request
+        id: open_pr
+        if: success()
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Daily entry: ${{ steps.entry.outputs.date }} — ${{ steps.entry.outputs.word }}"
@@ -155,3 +171,13 @@ jobs:
             **To regenerate:** close this PR, then re-run "Daily Thiccc — Generate Draft PR" from the Actions tab.
           labels: |
             daily-entry
+
+      - name: Auto-merge when fired from admin (push event)
+        if: success() && github.event_name == 'push' && steps.open_pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR=${{ steps.open_pr.outputs.pull-request-number }}
+          echo "Auto-merging admin-fired PR #$PR..."
+          gh pr merge "$PR" --squash --auto --delete-branch --repo "$GITHUB_REPOSITORY" || gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY" || echo "::warning::auto-merge failed"
+
