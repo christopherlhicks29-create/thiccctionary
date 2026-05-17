@@ -107,6 +107,46 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   return { ok: true, channelId, postId: result?.post?.id };
 }
 
+// Wave 159: in-process retry wrapper. TRANSIENT errors (rate limit, 5xx,
+// network) get retried up to 2 times with exponential backoff. SCHEMA and
+// TERMINAL errors are NOT retried inline (retrying with the same code
+// would produce the same failure; the hourly cron sweep handles those
+// after a code fix lands).
+function classifyForInProcess(result) {
+  if (result.ok) return 'OK';
+  const blob = (result.body || '').toString().toLowerCase();
+  if (blob.includes('schedulingtype') || blob.includes('does not exist in')) return 'SCHEMA';
+  if (blob.includes('rate limit') || result.status === 429) return 'TRANSIENT';
+  if (typeof result.status === 'number' && result.status >= 500) return 'TRANSIENT';
+  if (blob.includes('network') || blob.includes('timeout') || blob.includes('econnreset') || blob.includes('fetch failed')) return 'TRANSIENT';
+  if (blob.includes('channel not found') || blob.includes('account suspended') || blob.includes('unauthorized') || blob.includes('whoops')) return 'TERMINAL';
+  return 'UNKNOWN';
+}
+
+async function postToChannelWithRetry(args) {
+  const MAX_ATTEMPTS = 3;
+  const BACKOFFS = [0, 2000, 5000];
+  let last = null;
+  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+    if (BACKOFFS[attempt] > 0) await new Promise(r => setTimeout(r, BACKOFFS[attempt]));
+    const r = await postToChannel(args);
+    if (r.ok) {
+      if (attempt > 0) console.log(`  recovered on attempt ${attempt + 1} for channel ${r.channelId}`);
+      return r;
+    }
+    last = r;
+    const klass = classifyForInProcess(r);
+    if (klass === 'SCHEMA' || klass === 'TERMINAL') {
+      console.warn(`  channel ${r.channelId}: ${klass} error, not retrying inline`);
+      return r;
+    }
+    if (attempt < MAX_ATTEMPTS - 1) {
+      console.warn(`  channel ${r.channelId}: ${klass} on attempt ${attempt + 1}, retrying in ${BACKOFFS[attempt + 1]}ms`);
+    }
+  }
+  return last;
+}
+
 function pickArticle(articles) {
   // Rotate by ISO week so consecutive weekly cron runs land on different
   // articles. Articles list is small (~10), so weekOfYear mod len cycles
@@ -506,7 +546,7 @@ async function main() {
 
     const results = await Promise.all(
       channels.map(({ channelId, service }) =>
-        postToChannel({ channelId, text, imageUrl: null, videoUrl: null, thumbnailUrl: null, token: process.env.BUFFER_ACCESS_TOKEN, service, mode: 'office' })
+        postToChannelWithRetry({ channelId, text, imageUrl: null, videoUrl: null, thumbnailUrl: null, token: process.env.BUFFER_ACCESS_TOKEN, service, mode: 'office' })
       )
     );
     let successes = 0, failures = 0;
