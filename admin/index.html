@@ -169,7 +169,7 @@
   <!-- DASHBOARD -->
   <section id="dashboard" class="panel active">
     <h2>Dashboard</h2>
-    <p class="lede">At-a-glance status. All data pulled live from GitHub on page load — refresh to update.</p>
+    <p class="lede">At-a-glance status. All data pulled live from GitHub on page load, refresh to update.</p>
 
     <div id="dash-loading" class="empty-state">Loading dashboard…</div>
     <div id="dash-error" class="empty-state" style="display:none;"></div>
@@ -361,20 +361,20 @@ async function loadDashboard() {
         <div class="image-preview" style="background-image:url('${esc(imgUrl)}')"></div>
         <div class="label">Today's entry</div>
         <div class="value">${esc(data.todayEntry.word)}</div>
-        <div class="sub">${esc(data.todayEntry.category || '—')} · photo by ${esc(data.todayEntry.photographer || '—')}</div>
+        <div class="sub">${esc(data.todayEntry.category || ', ')} · photo by ${esc(data.todayEntry.photographer || ', ')}</div>
       </div>`;
   } else {
     today.innerHTML += `
       <div class="tile bad" style="grid-column: span 2;">
         <div class="label">Today's entry</div>
         <div class="value">Missing for ${esc(data.today)}</div>
-        <div class="sub">Latest on file: ${data.latestEntry ? esc(data.latestEntry.date) + ' — ' + esc(data.latestEntry.word) : 'none'}. Fire the daily cron from Quick-fire.</div>
+        <div class="sub">Latest on file: ${data.latestEntry ? esc(data.latestEntry.date) + ', ' + esc(data.latestEntry.word) : 'none'}. Fire the daily cron from Quick-fire.</div>
       </div>`;
   }
   today.innerHTML += `
     <div class="tile ${data.todayReelExists ? 'ok' : 'warn'}">
       <div class="label">Today's Reel video</div>
-      <div class="value">${data.todayReelExists ? '✓ Present' : '— Missing'}</div>
+      <div class="value">${data.todayReelExists ? '✓ Present' : 'Missing'}</div>
       <div class="sub">${data.todayReelExists ? '<code>videos/' + esc(data.today) + '.mp4</code>' : 'Fire <code>tiktok-latest</code> from Quick-fire to build it.'}</div>
     </div>`;
 
@@ -383,7 +383,7 @@ async function loadDashboard() {
   catalog.innerHTML = `
     <div class="tile">
       <div class="label">Total entries</div>
-      <div class="value">${data.totalEntries ?? '—'}</div>
+      <div class="value">${data.totalEntries ?? ', '}</div>
     </div>
     <div class="tile ${data.openSubmissions > 0 ? 'warn' : ''}">
       <div class="label">Open submission PRs</div>
@@ -396,7 +396,7 @@ async function loadDashboard() {
       <div class="sub">${data.openDailyEntries > 0 ? '<a href="https://github.com/christopherlhicks29-create/thiccctionary/pulls" target="_blank">Review on GitHub →</a>' : 'All caught up'}</div>
     </div>`;
 
-  // Pipeline tiles — workflow runs
+  // Pipeline tiles, workflow runs
   const pipeline = $('#pipeline-tiles');
   pipeline.innerHTML = '';
   const workflows = data.workflows || {};
@@ -454,12 +454,12 @@ async function loadSubmissions() {
       <div class="submission-body">
         <div class="submission-image" style="background-image:url('${esc(imgUrl)}')"></div>
         <div class="submission-text">
-          <dt>Pronunciation</dt><dd>${esc(e.pronunciation || '—')}</dd>
+          <dt>Pronunciation</dt><dd>${esc(e.pronunciation || ', ')}</dd>
           <dt>Definitions</dt>
-          <div class="definitions">${(e.definitions || []).map(d => `<p>${esc(stripHtml(d))}</p>`).join('') || '<p>—</p>'}</div>
-          <dt>Etymology</dt><dd>${esc(stripHtml(e.etymology || '—'))}</dd>
-          <dt>Example</dt><dd><em>${esc(stripHtml(e.example || '—'))}</em></dd>
-          <dt>Submitted by</dt><dd>${esc(e.submittedBy || e.photographer || '—')}</dd>
+          <div class="definitions">${(e.definitions || []).map(d => `<p>${esc(stripHtml(d))}</p>`).join('') || '<p>, </p>'}</div>
+          <dt>Etymology</dt><dd>${esc(stripHtml(e.etymology || ', '))}</dd>
+          <dt>Example</dt><dd><em>${esc(stripHtml(e.example || ', '))}</em></dd>
+          <dt>Submitted by</dt><dd>${esc(e.submittedBy || e.photographer || ', ')}</dd>
         </div>
       </div>
       <div class="submission-actions">
@@ -518,7 +518,7 @@ async function loadHealth() {
     </div>`;
 }
 
-// Entries — list + edit
+// Entries, list + edit
 async function loadEntries() {
   $('#entries-list-view').style.display = '';
   $('#entry-edit-view').style.display = 'none';
@@ -561,8 +561,8 @@ async function loadEntries() {
       <td style="padding:10px 14px; font-family:ui-monospace,monospace; font-size:13px;">${esc(e.date)}</td>
       <td style="padding:10px 14px;"><div style="width:48px; height:48px; background:var(--rule); background-image:url('${esc(imgUrl)}'); background-size:cover; background-position:center; border-radius:4px;"></div></td>
       <td style="padding:10px 14px; font-family:'Fraunces',serif; font-size:16px; font-weight:500;">${esc(e.word)}</td>
-      <td style="padding:10px 14px; color:rgba(26,20,16,0.6); font-size:13px;">${esc(e.category || '—')}</td>
-      <td style="padding:10px 14px;">${e.bookReady === true ? '<span class="pill good">Yes</span>' : (e.bookReady === false ? '<span class="pill bad">No</span>' : '<span class="pill neutral">—</span>')}</td>`;
+      <td style="padding:10px 14px; color:rgba(26,20,16,0.6); font-size:13px;">${esc(e.category || ', ')}</td>
+      <td style="padding:10px 14px;">${e.bookReady === true ? '<span class="pill good">Yes</span>' : (e.bookReady === false ? '<span class="pill bad">No</span>' : '<span class="pill neutral">, </span>')}</td>`;
     tr.addEventListener('mouseenter', () => tr.style.background = 'rgba(122,31,31,0.04)');
     tr.addEventListener('mouseleave', () => tr.style.background = '');
     tr.addEventListener('click', () => loadEntryForEdit(e.date));
@@ -631,7 +631,7 @@ async function loadEntryForEdit(date) {
           <div>
             <label style="display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(26,20,16,0.6); margin-bottom:4px;">Book ready</label>
             <select id="f-book" style="width:100%; padding:8px 12px; border:1px solid var(--rule); border-radius:4px; background:white;">
-              <option value="">— unset —</option>
+              <option value="">unset,</option>
               <option value="true" ${e.bookReady === true ? 'selected' : ''}>Yes</option>
               <option value="false" ${e.bookReady === false ? 'selected' : ''}>No</option>
             </select>

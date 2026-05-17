@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Is It Thiccc? — Rate any image · Thiccctionary</title>
+<title>Is It Thiccc?, Rate any image · Thiccctionary</title>
 <meta name="description" content="Drop in a photo, get a thiccc rating with editorial commentary in the dictionary register. Strictly things, never people." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f5e8c7" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Thiccctionary" />
-<meta property="og:title" content="Is It Thiccc? — Rate any image" />
+<meta property="og:title" content="Is It Thiccc?, Rate any image" />
 <meta property="og:description" content="Drop in any photo and get a thiccc rating with editorial commentary. Strictly things, never people." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thiccctionary.com/rate/" />
@@ -37,7 +37,7 @@
     <span class="meta-line meta-line--right">For Editorial Rating</span>
   </div>
   <h1 class="wordmark" aria-label="Thiccctionary">
-    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
@@ -68,7 +68,7 @@
     <label for="rate-file" id="rate-dropzone" style="display: block; border: 2px dashed var(--oxblood); border-radius: 4px; padding: 3rem 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: rgba(245,232,199,0.4);">
       <p style="margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--oxblood);">The Apparatus, Step One</p>
       <p style="margin: 0.65rem 0 0; font-size: 1.25rem; font-family: var(--font-display); font-weight: 500;"><strong>Drop a photograph here</strong></p>
-      <p style="margin: 0.35rem 0 0; opacity: 0.65; font-size: 0.95rem; font-style: italic;">or click to browse — JPEG / PNG / WebP, up to 8 MB</p>
+      <p style="margin: 0.35rem 0 0; opacity: 0.65; font-size: 0.95rem; font-style: italic;">or click to browse, JPEG / PNG / WebP, up to 8 MB</p>
     </label>
     <input id="rate-file" type="file" accept="image/jpeg,image/png,image/webp" hidden />
 
@@ -153,7 +153,7 @@
 
 <script>
 /*
- * Is It Thiccc? — classifier UI
+ * Is It Thiccc?, classifier UI
  *
  * STUB MODE: API call returns mock data so the UI flow can be verified
  * end-to-end without spending OpenAI tokens. Toggle USE_LIVE_API once
@@ -168,19 +168,19 @@ const SYSTEM_PROMPT = `You are the editorial apparatus of Thiccctionary, a satir
 
 Your job: rate one photograph for thicccness on a 1.0 to 10.0 scale, with one decimal, and write commentary in the dictionary register.
 
-WHAT 'THICCC' MEANS — three legitimate senses, pick the one most salient for THIS photograph:
+WHAT 'THICCC' MEANS, three legitimate senses, pick the one most salient for THIS photograph:
 
-1. GIRTH / SILHOUETTE — the default. Things with visible volume, curve, mass: cement mixers, F-450 dually, side-by-side fridges, championship pumpkins.
+1. GIRTH / SILHOUETTE, the default. Things with visible volume, curve, mass: cement mixers, F-450 dually, side-by-side fridges, championship pumpkins.
 
-2. DENSITY / MATERIAL — solid, packed, structurally substantial: poured concrete, brutalist bunkers, a wheel of Parmigiano-Reggiano, dense bread loaves, billet steel.
+2. DENSITY / MATERIAL, solid, packed, structurally substantial: poured concrete, brutalist bunkers, a wheel of Parmigiano-Reggiano, dense bread loaves, billet steel.
 
-3. VISCOSITY / SUBSTANCE — the contents, not the container. If the SUBJECT is famously viscous (honey, molasses, motor oil, thickened liquids, magma, peanut butter, latex paint), rate the SUBSTANCE, not the bottle holding it. A standard bottle of Thick-It thickened water gets a real rating because the liquid inside IS scientifically thicc — that's the entire product. Don't mark down the rating because the BOTTLE is normal-shaped; the bottle is just the delivery mechanism for the joke.
+3. VISCOSITY / SUBSTANCE, the contents, not the container. If the SUBJECT is famously viscous (honey, molasses, motor oil, thickened liquids, magma, peanut butter, latex paint), rate the SUBSTANCE, not the bottle holding it. A standard bottle of Thick-It thickened water gets a real rating because the liquid inside IS scientifically thicc, that's the entire product. Don't mark down the rating because the BOTTLE is normal-shaped; the bottle is just the delivery mechanism for the joke.
 
-When the subject is in a viscous category, your commentary should call out the substance directly: "A polysaccharide-thickened beverage of considered viscosity — moves like a glacier." For shape-thicc subjects, talk silhouette. For density-thicc subjects, talk mass. Pick the right axis for the photo, then commit.
+When the subject is in a viscous category, your commentary should call out the substance directly: "A polysaccharide-thickened beverage of considered viscosity, moves like a glacier." For shape-thicc subjects, talk silhouette. For density-thicc subjects, talk mass. Pick the right axis for the photo, then commit.
 
 VOICE:
 - Pseudo-academic, dry, faintly Victorian. Like a 1924 trade journal.
-- Em-dashes are welcome — they do comic timing work.
+- Em-dashes are welcome, they do comic timing work.
 - No promotional language. No "groundbreaking" or "stunning". This is criticism, not marketing.
 - Write 2-3 sentences of commentary. Specific. Reference the silhouette, the ratio, the character.
 
@@ -193,7 +193,7 @@ OUTPUT FORMAT (strict JSON, no surrounding text):
 {
   "subject": "fire hydrant, municipal",
   "rating": 8.5,
-  "commentary": "A solid lower-third stance with a tapered bonnet — the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
+  "commentary": "A solid lower-third stance with a tapered bonnet, the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
   "tags": ["industrial", "municipal", "iron"]
 }
 
@@ -209,21 +209,21 @@ const MOCK_RESPONSES = [
   {
     subject: "fire hydrant, municipal",
     rating: 8.5,
-    commentary: "A solid lower-third stance with a tapered bonnet — the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
+    commentary: "A solid lower-third stance with a tapered bonnet, the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
     tags: ["industrial", "municipal", "iron"],
     closest: { word: "Concrete Mixer", date: "2026-04-27" }
   },
   {
     subject: "kitchen stand mixer, retro",
     rating: 7.8,
-    commentary: "A dignified industrial silhouette miniaturized for the domestic counter — the head-and-bowl ratio is correct, the chrome announces itself without theatre. Loses half a point for the bowl, which strains for height it doesn't quite earn.",
+    commentary: "A dignified industrial silhouette miniaturized for the domestic counter, the head-and-bowl ratio is correct, the chrome announces itself without theatre. Loses half a point for the bowl, which strains for height it doesn't quite earn.",
     tags: ["domestic", "appliance", "kitchen"],
     closest: { word: "Frigidaire, Side-by-Side", date: "2026-05-02" }
   },
   {
     subject: "watermelon, transit",
     rating: 6.9,
-    commentary: "Substantial without commitment. The oblong profile reads as transitional — neither the disciplined sphere of a true thiccc gourd nor the considered length of a heritage cylinder. A working-class fruit that knows its station.",
+    commentary: "Substantial without commitment. The oblong profile reads as transitional, neither the disciplined sphere of a true thiccc gourd nor the considered length of a heritage cylinder. A working-class fruit that knows its station.",
     tags: ["produce", "summer"],
     closest: { word: "Pumpkin, Atlantic Giant", date: "2026-04-26" }
   }
@@ -408,7 +408,7 @@ function renderResult(r, imageData) {
   });
 
   // Build a verdict permalink (base64-url-encoded JSON in query string).
-  // Stateless — no server storage. The /v/ page decodes + renders.
+  // Stateless, no server storage. The /v/ page decodes + renders.
   function buildVerdictPermalink(r) {
     // Compact payload schema: {r,s,c,t,x} matches /v/index.html's decoder
     const payload = {
@@ -548,20 +548,20 @@ function renderVerdictCanvas(r, imageSrc) {
       const IX = (W - IW) / 2;
       const IY = 150;
 
-      // CONTAIN, not cover — show the user's full submission with cream
+      // CONTAIN, not cover, show the user's full submission with cream
       // letterboxing as needed. Cropping the user's photo is the wrong
       // default for a verdict card; they want to see what they submitted.
       const imgRatio = img.naturalWidth / img.naturalHeight;
       const boxRatio = IW / IH;
       let dx, dy, dw, dh;
       if (imgRatio > boxRatio) {
-        // Image is wider than box — fit width, letterbox top/bottom
+        // Image is wider than box, fit width, letterbox top/bottom
         dw = IW;
         dh = IW / imgRatio;
         dx = IX;
         dy = IY + (IH - dh) / 2;
       } else {
-        // Image is taller than box — fit height, letterbox left/right
+        // Image is taller than box, fit height, letterbox left/right
         dh = IH;
         dw = IH * imgRatio;
         dx = IX + (IW - dw) / 2;
@@ -576,7 +576,7 @@ function renderVerdictCanvas(r, imageSrc) {
       ctx.lineWidth = 1;
       ctx.strokeRect(IX, IY, IW, IH);
 
-      // Rating big — repositioned for new layout (image now ends at y=690)
+      // Rating big, repositioned for new layout (image now ends at y=690)
       ctx.fillStyle = OXBLOOD;
       ctx.font = '700 110px "Fraunces", Georgia, serif';
       ctx.textAlign = 'center';
@@ -624,7 +624,7 @@ function renderVerdictCanvas(r, imageSrc) {
       ctx.font = 'italic 22px "Newsreader", Georgia, serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('(Image not embeddable — CORS)', W/2, 165 + 210);
+      ctx.fillText('(Image not embeddable, CORS)', W/2, 165 + 210);
       // Continue with the rest using a stub image-finish path
       drawImageAndFinishWithoutImage();
     };

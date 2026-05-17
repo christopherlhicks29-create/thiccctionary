@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Foreword Journal — Thiccctionary (private)</title>
+<title>Foreword Journal, Thiccctionary (private)</title>
 <meta name="robots" content="noindex,nofollow" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="canonical" href="https://thiccctionary.com/foreword-journal/" />
@@ -21,7 +21,7 @@
     <span class="meta-line meta-line--right">Foreword Notes</span>
   </div>
   <h1 class="wordmark" aria-label="Thiccctionary">
-    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
@@ -34,11 +34,11 @@
     <p class="entry-date-stamp" style="display: inline-block;">For the Editor</p>
     <h2 class="entry-word" style="margin-top: 0.75rem;">Foreword Journal</h2>
     <p style="font-style: italic; opacity: 0.75;">A private brain-dump space for foreword notes. Whatever lands here gets stored in your browser's local storage. Doesn't have to be polished. Doesn't have to be coherent. Just dump what's in your head about why this project exists, why three c's, what the joke is, what got you to start.</p>
-    <p style="font-style: italic; opacity: 0.6; font-size: 0.9rem;">All notes stay on this device — nothing is sent to a server. When you want Claude to capture them into <code>print-exclusive.json</code>, hit "Copy all notes" and paste into a chat session.</p>
+    <p style="font-style: italic; opacity: 0.6; font-size: 0.9rem;">All notes stay on this device, nothing is sent to a server. When you want Claude to capture them into <code>print-exclusive.json</code>, hit "Copy all notes" and paste into a chat session.</p>
   </section>
 
   <section id="journal-area">
-    <textarea id="note-text" placeholder="Why three c's. Why this exists. The story you'd tell a friend at a bar about why you spent a year on this project. What the joke actually is to you. Drop it raw — Phase 4 you will edit Phase 1 you." style="width: 100%; min-height: 300px; padding: 1rem; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; border: 1px solid var(--rule); border-radius: 4px; background: rgba(0,0,0,0.02); color: inherit; resize: vertical;"></textarea>
+    <textarea id="note-text" placeholder="Why three c's. Why this exists. The story you'd tell a friend at a bar about why you spent a year on this project. What the joke actually is to you. Drop it raw, Phase 4 you will edit Phase 1 you." style="width: 100%; min-height: 300px; padding: 1rem; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; border: 1px solid var(--rule); border-radius: 4px; background: rgba(0,0,0,0.02); color: inherit; resize: vertical;"></textarea>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; gap: 1rem; flex-wrap: wrap;">
       <p id="char-count" style="font-family: var(--font-mono); font-size: 11px; opacity: 0.6;">0 chars</p>
@@ -141,7 +141,7 @@ try {
 document.getElementById('save-btn').addEventListener('click', () => {
   const text = textarea.value.trim();
   if (!text) {
-    document.getElementById('save-status').textContent = 'Empty note — nothing to save.';
+    document.getElementById('save-status').textContent = 'Empty note, nothing to save.';
     return;
   }
   const notes = loadNotes();
@@ -167,7 +167,7 @@ document.getElementById('copy-all-btn').addEventListener('click', () => {
   const formatted = notes.map((n, i) =>
     `--- Foreword note #${i + 1} (${n.created}) ---\n${n.content}\n`
   ).join('\n');
-  const message = `Hey Claude, here are my foreword journal notes — please add them all to print-exclusive.json with type=origin_note status=idea, and timestamp from each.\n\n${formatted}`;
+  const message = `Hey Claude, here are my foreword journal notes, please add them all to print-exclusive.json with type=origin_note status=idea, and timestamp from each.\n\n${formatted}`;
   navigator.clipboard.writeText(message).then(() => {
     document.getElementById('save-status').textContent = `Copied ${notes.length} notes to clipboard. Paste into a Claude session.`;
   }).catch(() => {
@@ -176,7 +176,7 @@ document.getElementById('copy-all-btn').addEventListener('click', () => {
 });
 
 document.getElementById('clear-all-btn').addEventListener('click', () => {
-  if (!confirm('Delete ALL notes? This can\'t be undone — make sure you copied them to Claude first.')) return;
+  if (!confirm('Delete ALL notes? This can\'t be undone, make sure you copied them to Claude first.')) return;
   saveNotes([]);
   renderNotes();
 });

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>A Thiccc Verdict — Thiccctionary</title>
+<title>A Thiccc Verdict, Thiccctionary</title>
 <meta name="description" content="A reader's verdict from Thiccctionary's editorial classifier. Strictly things, never people." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f5e8c7" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Thiccctionary" />
-<meta property="og:title" content="A Thiccc Verdict — Thiccctionary" />
+<meta property="og:title" content="A Thiccc Verdict, Thiccctionary" />
 <meta property="og:description" content="A reader's verdict from Thiccctionary's editorial classifier." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thiccctionary.com/v/" />
@@ -36,7 +36,7 @@
     <span class="meta-line meta-line--right">From the Apparatus</span>
   </div>
   <h1 class="wordmark" aria-label="Thiccctionary">
-    <a href="../" class="wordmark-link" aria-label="Thiccctionary — home">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
@@ -74,7 +74,7 @@
     <aside style="margin-top: 56px; text-align: center; padding: 32px 24px; border: 1px solid var(--rule); border-radius: 6px; background: rgba(139,31,31,0.03);">
       <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0;">An editorial apparatus</p>
       <p style="margin: 0.5rem 0 0; font-size: 1.1rem;"><strong>Have a photograph of your own?</strong></p>
-      <p style="margin: 0.4rem 0 1.2rem; font-style: italic; opacity: 0.85; max-width: 520px; margin-left: auto; margin-right: auto;">Drop it into our classifier and receive a verdict in the same register — rating, commentary, and the closest match in our archive.</p>
+      <p style="margin: 0.4rem 0 1.2rem; font-style: italic; opacity: 0.85; max-width: 520px; margin-left: auto; margin-right: auto;">Drop it into our classifier and receive a verdict in the same register, rating, commentary, and the closest match in our archive.</p>
       <a href="../rate/" class="share-btn" style="display: inline-block;">Submit for rating →</a>
     </aside>
   </section>
@@ -118,7 +118,7 @@
  * Verdict permalink page.
  *
  * Reads ?d=<base64-url-encoded JSON> from the URL, decodes, validates,
- * renders the verdict card. Stateless — no server storage. Encoded
+ * renders the verdict card. Stateless, no server storage. Encoded
  * payload schema (compact for short URLs):
  *
  *   {
@@ -193,8 +193,8 @@ function renderVerdict(v) {
   });
 
   // Update OG meta tags so SHARE PREVIEWS show this specific verdict's text
-  // (still uses the generic image — server-side OG card rendering is a v2)
-  const titleText = `${v.r.toFixed(1)}/10 — ${v.s} — Thiccctionary verdict`;
+  // (still uses the generic image, server-side OG card rendering is a v2)
+  const titleText = `${v.r.toFixed(1)}/10, ${v.s}, Thiccctionary verdict`;
   document.title = titleText;
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', titleText);
