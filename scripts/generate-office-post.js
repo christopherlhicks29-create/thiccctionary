@@ -126,7 +126,7 @@ ${(byline.tics || []).map(t => '- ' + t).join('\n')}
 
 HARD RULES:
 1. ≤${MAX_LEN} characters TOTAL (including signature line). Count carefully.
-2. End with a newline, then ", ${byline.display || byline.name.split(' ')[0]}" (your social signature).
+2. End with a newline, then "${byline.display || byline.name.split(' ')[0]}" (your social signature).
 3. Voice is dry editorial-satire, not modern internet voice. Think 1962 magazine editor, not 2024 brand account.
 4. NO em-dashes anywhere. Use commas, periods, colons, parens.
 5. NO words: embodies, encapsulates, intersection, transcends, tapestry, symphony, harmony, dance, captures the essence.
