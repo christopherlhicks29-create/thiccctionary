@@ -24,6 +24,8 @@ const TRIGGERS = {
   'regen-image':   { path: 'data/.fire-image-regen.json', needsDate: true, contentMode: 'image-regen-json', label: 'Regenerate image for date' },
   'regen-text':    { path: 'data/.fire-text-regen.json',  needsDate: true, contentMode: 'text-regen-json',  label: 'Regenerate entry text for date' },
   'office-post':   { path: 'data/.fire-office',           needsDate: false, contentMode: 'office-json',     label: 'Fire an employee social post (FB + X)' },
+  'buffer-list':   { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-list-json',   label: 'List Buffer scheduled posts' },
+  'buffer-purge':  { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-purge-json',  label: 'Delete Buffer posts matching phrase(s)' },
 };
 
 async function gh(path, opts = {}, env) {
@@ -73,6 +75,13 @@ export async function onRequestPost({ request, env }) {
       topic_kind: (body.topicKind || 'either').trim(),
       _fired: { at: ts, by: who },
     };
+    content = JSON.stringify(payload, null, 2);
+  } else if (cfg.contentMode === 'buffer-list-json') {
+    const payload = { action: 'list', _t: Date.now(), _fired: { at: ts, by: who } };
+    content = JSON.stringify(payload, null, 2);
+  } else if (cfg.contentMode === 'buffer-purge-json') {
+    const terms = (body.matchTerms || '').split('\n').map(t => t.trim()).filter(Boolean);
+    const payload = { action: 'delete-by-match', match_terms: terms, dry_run: !!body.dryRun, _t: Date.now(), _fired: { at: ts, by: who } };
     content = JSON.stringify(payload, null, 2);
   } else {
     content = cfg.needsDate

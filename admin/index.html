@@ -241,6 +241,24 @@
     </div>
 
     <div class="action-card">
+      <h3>Buffer queue</h3>
+      <p class="desc">Manage the Buffer scheduled-post queue directly via API. <strong>List</strong> dumps the queue contents to <code>audits/buffer-queue/</code>. <strong>Purge</strong> deletes posts whose text contains any of the match phrases (newline-separated, case-insensitive).</p>
+      <div class="row" style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-start;">
+        <button class="action" id="buffer-list-btn">List queue</button>
+      </div>
+      <div style="margin-top: 0.75rem;">
+        <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Match phrases (one per line, case-insensitive):</label>
+        <textarea id="buffer-match-input" rows="3" style="width: 100%; padding: 0.5rem; font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--rule); border-radius: 4px;" placeholder="Phillipa Reuss-Fontaine
+Timpani entry approved
+The band marched on"></textarea>
+        <div style="margin-top: 0.5rem;">
+          <button class="action" id="buffer-purge-dry-btn">Dry-run purge (show matches)</button>
+          <button class="primary" id="buffer-purge-btn" data-confirm="Delete all Buffer posts matching the phrases above? This cannot be undone.">Purge matches</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-card">
       <h3>Fire an employee social post</h3>
       <p class="desc">Triggers <code>office-post.yml</code>. Generates a Claude-written, gpt-4o-rated (>=7/10) ~280-char post bylined by a staff member and posts to FB + X via Buffer (Instagram skipped, text-only). Random byline by default, or pick one. Topic kind defaults to "either".</p>
       <div class="row">
@@ -743,6 +761,37 @@ $$('button[data-trigger]').forEach(btn => btn.addEventListener('click', async ()
     showToast(d.message || 'Fired', 'ok');
     setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 3000);
   } catch (e) { showToast('Error: ' + e.message, 'error'); btn.disabled = false; btn.textContent = origText; }
+}));
+
+// Buffer queue handlers
+function setupBufferButton(btnId, trigger, getExtras) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    const extras = getExtras ? getExtras() : {};
+    if (btn.dataset.confirm && !confirm(btn.dataset.confirm)) return;
+    btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Firing…';
+    try {
+      const r = await fetch('/api/admin/fire-trigger', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trigger, ...extras }),
+      });
+      const d = await r.json();
+      if (!r.ok) { showToast(d.error || ('Failed: ' + r.status), 'error'); return; }
+      showToast(d.message || 'Fired. Check audits/buffer-queue/ for results.', 'ok');
+    } catch (e) { showToast('Error: ' + e.message, 'error'); }
+    finally { setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 3000); }
+  });
+}
+setupBufferButton('buffer-list-btn', 'buffer-list');
+setupBufferButton('buffer-purge-dry-btn', 'buffer-purge', () => ({
+  matchTerms: document.getElementById('buffer-match-input').value,
+  dryRun: true,
+}));
+setupBufferButton('buffer-purge-btn', 'buffer-purge', () => ({
+  matchTerms: document.getElementById('buffer-match-input').value,
+  dryRun: false,
 }));
 
 // Office-post handler: bespoke because it sends byline_override + topic_kind
