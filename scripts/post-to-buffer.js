@@ -77,7 +77,7 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   const input = {
     channelId,
     text,
-    schedulingType: isImmediate ? 'custom' : 'automatic',
+    schedulingType: isImmediate ? 'manual' : 'automatic',
     ...(isImmediate ? { dueAt } : { mode: 'addToQueue' }),
   };
 
