@@ -1,0 +1,57 @@
+name: Generate Character Art
+
+on:
+  workflow_dispatch:
+    inputs:
+      scene_id:
+        description: "Scene ID from data/character-art-prompts.json"
+        type: string
+        required: true
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-character-art'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { token: '${{ secrets.GITHUB_TOKEN }}' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Resolve scene
+        id: resolve
+        run: |
+          if [ -n "${{ inputs.scene_id }}" ]; then
+            echo "scene=${{ inputs.scene_id }}" >> $GITHUB_OUTPUT
+          else
+            SCENE=$(tr -d '[:space:]' < data/.fire-character-art)
+            echo "scene=$SCENE" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate art
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SCENE_ID: ${{ steps.resolve.outputs.scene }}
+        run: node generate-character-art.js
+
+      - name: Cleanup sentinel
+        if: always() && hashFiles('data/.fire-character-art') != ''
+        run: rm -f data/.fire-character-art
+
+      - name: Commit
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Art (auto)"
+          git add images/staff/ data/character-art-prompts.json data/.fire-character-art 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Wave 126: character art for ${{ steps.resolve.outputs.scene }}"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
