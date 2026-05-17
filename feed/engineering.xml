@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Thiccctionary — Engineering</title>
+    <title>Thiccctionary, Engineering</title>
     <link>https://thiccctionary.com/archive.html?tag=engineering</link>
     <atom:link href="https://thiccctionary.com/feed/engineering.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "engineering".</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 May 2026 23:31:19 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 16:35:00 GMT</lastBuildDate>
     <item>
       <title>Bagger 288</title>
       <link>https://thiccctionary.com/entries/2026-05-10.html</link>

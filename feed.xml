@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 May 2026 23:31:19 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 16:35:00 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Grand Piano, Concert</title>
+      <link>https://thiccctionary.com/entries/2026-05-17.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-17.html</guid>
+      <pubDate>Sun, 17 May 2026 12:00:00 GMT</pubDate>
+      <description>A musical instrument of stately dimensions and commanding soundboard presence, designed for symphonic performance halls.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-17-grand-piano-concert.jpg" type="image/jpeg" length="0" />
+      <category>musical instrument</category><category>soundboard</category><category>performance</category>
+    </item>
     <item>
       <title>Tuba, Contrabass</title>
       <link>https://thiccctionary.com/entries/2026-05-16.html</link>
@@ -21,6 +30,14 @@
       <description>A wind instrument of considerable girth, often described as a brass behemoth with a voluminous bell, especially when viewed astern in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-16-tuba-contrabass.jpg" type="image/jpeg" length="0" />
       <category>brass</category><category>orchestra</category><category>low frequency</category>
+    </item>
+    <item>
+      <title>[Article] Girth in Service of Purpose: The Thiccc Thing That Works</title>
+      <link>https://thiccctionary.com/articles/the-case-for-functional-girth.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/the-case-for-functional-girth.html</guid>
+      <pubDate>Sat, 16 May 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccctionary editorial board argues that the highest order of thicccness is not decorative but load-bearing, girth as the engine of purpose itself.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Transformer, Power Generation</title>
@@ -88,7 +105,7 @@
       <link>https://thiccctionary.com/articles/foods-of-substance.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/articles/foods-of-substance.html</guid>
       <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
-      <description>From Parmigiano wheels to heritage tomatoes to Atlantic Giant pumpkins — when food&apos;s structural commitment becomes its identity.</description>
+      <description>From Parmigiano wheels to heritage tomatoes to Atlantic Giant pumpkins, when food&apos;s structural commitment becomes its identity.</description>
       <category>article</category>
     </item>
     <item>
@@ -157,7 +174,7 @@
       <link>https://thiccctionary.com/articles/everyday-sidewalk-thiccc.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/articles/everyday-sidewalk-thiccc.html</guid>
       <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
-      <description>Fire hydrants, mailboxes, bollards, dumpsters, HVAC — the unsung architecture of a sidewalk.</description>
+      <description>Fire hydrants, mailboxes, bollards, dumpsters, HVAC, the unsung architecture of a sidewalk.</description>
       <category>article</category>
     </item>
     <item>
