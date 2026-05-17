@@ -1,0 +1,85 @@
+name: Buffer Queue Manager
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "list | delete-by-match | delete-id"
+        type: string
+        default: list
+      match_terms:
+        description: "Newline-separated substrings to match (for delete-by-match)"
+        type: string
+        required: false
+      post_id:
+        description: "Buffer post id (for delete-id)"
+        type: string
+        required: false
+      dry_run:
+        description: "Dry run (don't actually delete)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-buffer-queue.json'
+
+permissions:
+  contents: write
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { token: '${{ secrets.GITHUB_TOKEN }}' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Parse sentinel (if push-triggered)
+        id: sentinel
+        run: |
+          if [ -f data/.fire-buffer-queue.json ]; then
+            ACTION=$(python3 -c "import json; print(json.load(open('data/.fire-buffer-queue.json')).get('action','list'))")
+            TERMS=$(python3 -c "import json; print('\\n'.join(json.load(open('data/.fire-buffer-queue.json')).get('match_terms',[])))")
+            POST_ID=$(python3 -c "import json; print(json.load(open('data/.fire-buffer-queue.json')).get('post_id',''))")
+            DRY=$(python3 -c "import json; print('1' if json.load(open('data/.fire-buffer-queue.json')).get('dry_run') else '')")
+            echo "action=$ACTION" >> $GITHUB_OUTPUT
+            echo "post_id=$POST_ID" >> $GITHUB_OUTPUT
+            echo "dry=$DRY" >> $GITHUB_OUTPUT
+            { echo "match_terms<<TERMS_EOF"; echo "$TERMS"; echo "TERMS_EOF"; } >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Buffer queue manager
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          ACTION: ${{ inputs.action || steps.sentinel.outputs.action }}
+          MATCH_TERMS: ${{ inputs.match_terms || steps.sentinel.outputs.match_terms }}
+          POST_ID: ${{ inputs.post_id || steps.sentinel.outputs.post_id }}
+          DRY_RUN: ${{ (inputs.dry_run == 'true' && '1') || steps.sentinel.outputs.dry }}
+        run: node buffer-queue.js
+
+      - name: Save list output as artifact
+        if: always()
+        run: |
+          if [ -f /tmp/buffer-queue.json ]; then
+            mkdir -p audits/buffer-queue
+            cp /tmp/buffer-queue.json audits/buffer-queue/$(date -u +%Y-%m-%d-%H%M%S).json
+          fi
+
+      - name: Cleanup sentinel
+        if: always() && hashFiles('data/.fire-buffer-queue.json') != ''
+        run: rm -f data/.fire-buffer-queue.json
+
+      - name: Commit + push artifacts
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Buffer (auto)"
+          git add audits/buffer-queue/ data/.fire-buffer-queue.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Wave 131: buffer queue ${{ inputs.action || steps.sentinel.outputs.action }} run"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
