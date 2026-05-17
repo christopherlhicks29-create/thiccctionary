@@ -1,0 +1,80 @@
+name: Batch entries (catalog burst)
+
+# Wave 158: burst-create multiple entries in one run. Triggered by
+# data/.fire-batch-entries.json sentinel from the admin panel. Backfills
+# the archive backwards from the oldest existing entry, so it doesn't
+# collide with the daily cron going forward.
+#
+# Quality gate: each subject runs the full generate-daily pipeline
+# (image picker veto + critique >= 6). Bailed subjects logged but don't
+# stop the batch.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-batch-entries.json'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  burst:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sanity-check sentinel
+        run: |
+          if [ ! -f data/.fire-batch-entries.json ]; then
+            echo "::error::No sentinel file - nothing to burst"
+            exit 1
+          fi
+          cat data/.fire-batch-entries.json
+
+      - name: Run burst script
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node burst-entries.js
+
+      - name: Open Pull Request
+        id: open_pr
+        if: success()
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Catalog burst: backfill entries"
+          branch: burst-entries/${{ github.run_id }}
+          delete-branch: true
+          title: "📦 Catalog burst: ${{ github.run_id }}"
+          body: |
+            **What this PR does:** adds backfilled archive entries created by the
+            admin batch-create button. Each entry passed the standard quality gate
+            (image picker veto + critique >= 6/10) or it would not be here.
+
+            **To merge:** auto-merges when fired from admin panel. Manually
+            triggered runs (workflow_dispatch) leave this open for review.
+
+      - name: Auto-merge when fired from admin (push event)
+        if: success() && github.event_name == 'push' && steps.open_pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR=${{ steps.open_pr.outputs.pull-request-number }}
+          echo "Auto-merging admin-fired PR #$PR..."
+          gh pr merge "$PR" --squash --auto --delete-branch --repo "$GITHUB_REPOSITORY" || gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY" || echo "::warning::auto-merge failed"

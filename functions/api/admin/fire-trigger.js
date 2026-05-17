@@ -27,6 +27,7 @@ const TRIGGERS = {
   'buffer-list':   { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-list-json',   label: 'List Buffer scheduled posts' },
   'buffer-purge':  { path: 'data/.fire-buffer-queue.json', needsDate: false, contentMode: 'buffer-purge-json',  label: 'Delete Buffer posts matching phrase(s)' },
   'retry-posts':   { path: 'data/.fire-retry-posts',         needsDate: false, contentMode: 'text',                label: 'Retry failed office social posts' },
+  'batch-entries': { path: 'data/.fire-batch-entries.json',  needsDate: false, contentMode: 'batch-json',          label: 'Burst-create multiple archive entries' },
   // Wave 152: direct workflow_dispatch triggers. Used by the admin auto-fix
   // loop to re-run failed pipelines without writing a sentinel file. Keyed
   // by workflow filename (under .github/workflows/).
@@ -131,6 +132,10 @@ export async function onRequestPost({ request, env }) {
   } else if (cfg.contentMode === 'buffer-purge-json') {
     const terms = (body.matchTerms || '').split('\n').map(t => t.trim()).filter(Boolean);
     const payload = { action: 'delete-by-match', match_terms: terms, dry_run: !!body.dryRun, _t: Date.now(), _fired: { at: ts, by: who } };
+    content = JSON.stringify(payload, null, 2);
+  } else if (cfg.contentMode === 'batch-json') {
+    const subjects = (body.subjects || []).map(s => String(s).trim()).filter(Boolean);
+    const payload = { subjects, _fired: { at: ts, by: who } };
     content = JSON.stringify(payload, null, 2);
   } else {
     content = cfg.needsDate

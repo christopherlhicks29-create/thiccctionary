@@ -640,7 +640,7 @@ async function bailGracefully({ reason, subject, queueAfterPull }) {
   }
   // 2. Log the dead subject so we can spot patterns
   try {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = process.env.TARGET_DATE || new Date().toISOString().slice(0, 10);
     const logDir = path.join(ROOT, 'audits', 'dead-subjects');
     await fs.mkdir(logDir, { recursive: true });
     const logPath = path.join(logDir, `${today}.md`);
@@ -661,7 +661,7 @@ async function bailGracefully({ reason, subject, queueAfterPull }) {
 async function main() {
   const raw = await fs.readFile(ENTRIES_PATH, 'utf8').catch(() => '[]');
   const entries = JSON.parse(raw);
-  const today = new Date().toISOString().slice(0, 10);
+  const today = process.env.TARGET_DATE || new Date().toISOString().slice(0, 10);
 
   const force = process.env.FORCE_REGENERATE === 'true';
   const existingIdx = entries.findIndex(e => e.date === today);
