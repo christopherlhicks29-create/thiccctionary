@@ -6,6 +6,10 @@ name: One-time Issue Cleanup
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-issue-cleanup'
 
 permissions:
   issues: write
