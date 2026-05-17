@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-17",
+    "word": "Grand Piano, Concert",
+    "pronunciation": "/grand pee-A-no, KON-sert/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A musical instrument of stately dimensions and commanding soundboard presence, designed for symphonic performance halls.",
+      "<em>slang.</em> A piano of such immensity that its soundboard essentially occupies its own zip code."
+    ],
+    "example": "On the beach stood a thiccc Steinway grand piano, as if the shore had manifested a concert of its own volition.",
+    "etymology": "From Italian <em>pianoforte</em>, literally 'soft-loud', which ironically understates the instrument's substantial soundboard breadth.",
+    "image": "images/2026-05-17-grand-piano-concert.jpg",
+    "caption": "Plate N. A Steinway grand piano, contemplating the sea breeze.",
+    "tags": [
+      "musical instrument",
+      "soundboard",
+      "performance"
+    ],
+    "category": "Musical Instruments",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Misha Kolodkin",
+    "photographerUrl": "https://unsplash.com/@kolodkinmv",
+    "unsplashUrl": "https://unsplash.com/photos/a-red-piano-sitting-on-top-of-a-wooden-platform-NyfHyWF3WMo",
+    "socialCaptions": {
+      "morning": "Grand Piano, Concert—88 keys.\nSeven and a half feet of polished mahogany diplomacy.\nThe only peace treaty recognized by sound waves.",
+      "afternoon": "In 1880, Steinway patented the modern grand piano action.\nA mechanical ambassador for humanity's emotional range.\nThiccc.",
+      "evening": "From the archives, Grand Piano, Concert.\n1826: Érard crafts the double escapement action.\nThe piano began its weightlifting career.",
+      "reels": "1,200 pounds of harmony.\nMoves gracefully—when on wheels."
+    }
+  },
+  {
     "date": "2026-05-16",
     "word": "Tuba, Contrabass",
     "pronunciation": "/TOO-buh, CON-tra-bass/",
