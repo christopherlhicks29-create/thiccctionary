@@ -986,7 +986,13 @@ async function main() {
   if (socialCaptions) {
     entry.socialCaptions = socialCaptions;
   }
-  entries.unshift(entry);
+  // Wave 167: insert at the correct date-descending position rather than
+  // blind unshift. The burst-fill tool (Wave 165) writes past-dated entries
+  // and blind-unshifting put them at index 0, pushing today out of position
+  // and breaking the homepage + previous/next nav + the next daily cron.
+  let insertAt = entries.findIndex(e => e.date < entry.date);
+  if (insertAt === -1) insertAt = entries.length;
+  entries.splice(insertAt, 0, entry);
   await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
   console.log(`Saved entry: ${entry.word}`);
 

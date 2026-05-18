@@ -162,6 +162,26 @@ for (const f of allFiles) {
   }
 }
 
+// Rule 5c: data/entries.json must be sorted descending by date.
+// Catches the Wave 165 burst-fill bug where backfilled entries got
+// unshifted onto index 0 ahead of today's entry, breaking the homepage
+// + prev/next nav + the next daily cron's collision detection.
+for (const f of allFiles) {
+  if (f !== 'data/entries.json') continue;
+  if (!fs.existsSync(f)) continue;
+  try {
+    const data = JSON.parse(fs.readFileSync(f, 'utf8'));
+    if (!Array.isArray(data)) continue;
+    const dates = data.map(e => e.date).filter(Boolean);
+    for (let i = 0; i < dates.length - 1; i++) {
+      if (dates[i] < dates[i + 1]) {
+        fail(f, 'entries-order', `entries.json must be sorted desc by date. Index ${i} (${dates[i]}) < index ${i + 1} (${dates[i + 1]}). Run sort before commit.`);
+        break;
+      }
+    }
+  } catch (e) { /* json-parse rule handles this */ }
+}
+
 // Rule 6: workflow + sentinel co-creation guard
 const workflowFiles = newFiles.filter(f => f.startsWith('.github/workflows/') && f.endsWith('.yml'));
 const sentinelFiles = newFiles.filter(f => f.startsWith('data/.fire-'));
