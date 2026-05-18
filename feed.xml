@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2026 01:53:48 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 22:10:51 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Kettlebell, Competition</title>
+      <link>https://thiccctionary.com/entries/2026-05-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-18.html</guid>
+      <pubDate>Mon, 18 May 2026 12:00:00 GMT</pubDate>
+      <description>A spherical weight of iron or steel, characterized by a single-looped handle, used in competitive sports for its standardized mass and satisfyingly stout profile.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-18-kettlebell-competition.jpg" type="image/jpeg" length="0" />
+      <category>fitness</category><category>weightlifting</category><category>sports</category>
+    </item>
     <item>
       <title>Grand Piano, Concert</title>
       <link>https://thiccctionary.com/entries/2026-05-17.html</link>

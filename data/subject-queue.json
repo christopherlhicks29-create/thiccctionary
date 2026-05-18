@@ -11,5 +11,26 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Loaf, Meatloaf",
+      "query": "meatloaf homemade plate",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Boulder, El Capitan",
+      "query": "el capitan yosemite granite face",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Tire, Mining Truck",
+      "query": "haul truck mining tire",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Engine, V8 Crate",
+      "query": "V8 engine block crate",
+      "category": "Industrial Machinery"
+    }
+  ]
 }
