@@ -9,10 +9,6 @@ name: Generate office history bible
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'data/.fire-office-history'
 
 permissions:
   contents: write

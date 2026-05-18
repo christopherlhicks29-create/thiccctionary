@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-18T00:30:00Z",
+  "generator": "hand-authored",
+  "tone": "cozy-mean",
+  "anchor_pair": "eli-bart",
+  "_doc": "Internal use only. Feeds office-post, daily voice-rewrite, and article-comments generators with relationship continuity. Posts should infer dynamics from this; readers should never see it.",
+  "relationships": [
+    {
+      "pair": ["eli", "bart"],
+      "one_line": "Restless writer vs immovable cataloguer. The brand's central feud. Tuesday lunches neither admits they need.",
+      "current_state": "Bart's objections to Eli's last three pieces remain unresolved. He has not skipped a Tuesday."
+    },
+    {
+      "pair": ["eli", "teddy"],
+      "one_line": "Eli mocks Teddy's earnestness, then revises her edits more lightly than she revises Bart's. Teddy reads this as mentorship.",
+      "current_state": "Teddy is forwarding Eli his rejected catalogue additions before showing Bart. Bart has not asked why."
+    },
+    {
+      "pair": ["bart", "teddy"],
+      "one_line": "Bart is technically Teddy's supervisor. Teddy is technically still on probation, 19 months in.",
+      "current_state": "The Saturn V Memo (objection #47, see eligibility, vehicles, narrow construction of) sits on Teddy's desk, unanswered."
+    },
+    {
+      "pair": ["eli", "margie"],
+      "one_line": "Margie is the Editor-in-Chief and Eli's only ally against Bart, except Margie is rarely in the building.",
+      "current_state": "Margie's last in-office appearance: a Tuesday in January, for 40 minutes, between a ferry and a flight."
+    },
+    {
+      "pair": ["bart", "margie"],
+      "one_line": "Bart suspects Margie has not done work in 14 months. He has filed nothing about this. He keeps a list.",
+      "current_state": "List currently has 23 entries."
+    },
+    {
+      "pair": ["teddy", "margie"],
+      "one_line": "Teddy has met Margie twice. He drafted her a Latin email in March and was very pleased when she replied 'okay'.",
+      "current_state": "He keeps a screenshot of the 'okay' on his phone."
+    },
+    {
+      "pair": ["eli", "hugh"],
+      "one_line": "Hugh sits in his car in the parking lot most days. Eli is the only staffer who has actually been inside his car.",
+      "current_state": "She has not described the interior to anyone."
+    },
+    {
+      "pair": ["bart", "spider"],
+      "one_line": "Bart has never met Spider. Bart has, separately, never written a memo about Spider, which is itself a tell.",
+      "current_state": "Spider's expense reports are processed by Bart without comment. This is the only file Bart processes without comment."
+    },
+    {
+      "pair": ["teddy", "spider"],
+      "one_line": "Teddy believes Spider is several people. He has a chart.",
+      "current_state": "The chart is in his locker, behind the umbrella."
+    },
+    {
+      "pair": ["hugh", "everyone"],
+      "one_line": "Hugh has met everyone exactly once. He has opinions. He shares them in the Reels."
+    }
+  ],
+  "events": [
+    {
+      "date": "2025-11-04",
+      "participants": ["bart", "teddy"],
+      "summary": "Bart files objection #34: the Saturn V is a launch vehicle, not a vehicle. Therefore ineligible.",
+      "what_it_revealed": "Bart's narrow construction of 'vehicle' establishes the season's central dispute.",
+      "tags": ["saturn-v-feud", "objection", "bart-narrow-construction"]
+    },
+    {
+      "date": "2025-11-12",
+      "participants": ["eli", "bart"],
+      "summary": "First documented Tuesday lunch. Eli pays. Bart says nothing about it; he keeps the receipt.",
+      "what_it_revealed": "The Tuesday ritual begins. Bart's silence is louder than his objections.",
+      "tags": ["tuesday-lunch", "ritual-established"]
+    },
+    {
+      "date": "2025-11-21",
+      "participants": ["teddy"],
+      "summary": "Teddy submits a 400-word footnote on a Bagger 288 entry. Bart strikes 380 words. The remaining 20 are: 'A walking dragline excavator. Built in 1978. See also: gravity.'",
+      "what_it_revealed": "Bart edits by subtraction. The 'see also: gravity' line is Bart's, not Teddy's. Teddy did not notice.",
+      "tags": ["editing-by-subtraction", "footnote-massacre"]
+    },
+    {
+      "date": "2025-12-01",
+      "participants": ["margie"],
+      "summary": "Margie files her December column from a yacht near Antibes. The column is about a fire hydrant in Reno she has never seen.",
+      "what_it_revealed": "Margie's geographic distance from her subjects is the joke. The column is excellent.",
+      "tags": ["margie-monaco", "distance-as-method"]
+    },
+    {
+      "date": "2025-12-08",
+      "participants": ["eli", "bart"],
+      "summary": "Eli publishes 'The Bollard at 47th and Lex.' Bart files three separate objections to the use of 'monolith' in paragraph 4.",
+      "what_it_revealed": "Bart's objections are now line-level, not categorical. Eli has won a category, lost a sentence.",
+      "tags": ["objection", "the-bollard-incident", "monolith-dispute"]
+    },
+    {
+      "date": "2025-12-19",
+      "participants": ["spider"],
+      "summary": "Spider submits a 4,000-word piece on a foundry in Sheffield, then a 200-word follow-up correcting a single date. No one is sure if Spider has been to Sheffield.",
+      "what_it_revealed": "Spider's beats are unfalsifiable. The corrections are part of the bit.",
+      "tags": ["spider-untraceable", "sheffield"]
+    },
+    {
+      "date": "2026-01-06",
+      "participants": ["bart"],
+      "summary": "Bart returns from the holiday with a new label-maker. He labels his stapler, his second stapler, and the door of his office.",
+      "what_it_revealed": "Bart's holiday was administrative. The second stapler is for the unforeseen.",
+      "tags": ["bart-stapler", "label-maker", "preparedness"]
+    },
+    {
+      "date": "2026-01-15",
+      "participants": ["eli", "margie"],
+      "summary": "Margie passes through the office between flights. She tells Eli, by the kettle, 'keep doing whatever you're doing to Bart, it shows in the copy.'",
+      "what_it_revealed": "Margie reads everything. Bart does not know this.",
+      "tags": ["margie-monaco", "alliance-confirmed", "kettle"]
+    },
+    {
+      "date": "2026-01-22",
+      "participants": ["teddy", "eli"],
+      "summary": "Teddy quietly emails Eli his draft on the Bucyrus-Erie 1850-B before submitting to Bart. Eli changes 'magnificent' to 'large' and sends it back.",
+      "what_it_revealed": "The forward-to-Eli ritual begins. Bart will eventually notice.",
+      "tags": ["teddy-mentorship", "magnificent-to-large"]
+    },
+    {
+      "date": "2026-02-02",
+      "participants": ["bart", "teddy"],
+      "summary": "Bart files objection #47 on the Saturn V. 47 pages. Hand-numbered.",
+      "what_it_revealed": "The dispute is now substrate. Teddy frames the cover page.",
+      "tags": ["saturn-v-feud", "objection-47", "hand-numbered"]
+    },
+    {
+      "date": "2026-02-11",
+      "participants": ["hugh"],
+      "summary": "Hugh records the first deadpan voiceover from his car. The audio includes, faintly, a passing ice cream truck. Hugh keeps the take.",
+      "what_it_revealed": "Hugh's car is the studio. The ice cream truck is a feature.",
+      "tags": ["hugh-car-studio", "ice-cream-truck"]
+    },
+    {
+      "date": "2026-02-19",
+      "participants": ["eli", "bart"],
+      "summary": "Eli publishes a piece on the Cement Mixer, Standard, in which she calls it 'the catalogue's true patron saint.' Bart skips Tuesday lunch.",
+      "what_it_revealed": "First skipped Tuesday. Bart is not above the bit; he is the bit.",
+      "tags": ["cement-mixer-patron-saint", "tuesday-skipped", "first-strike"]
+    },
+    {
+      "date": "2026-02-26",
+      "participants": ["eli", "bart"],
+      "summary": "Tuesday lunch resumes. Eli does not mention the cement mixer. Bart orders the same sandwich.",
+      "what_it_revealed": "The strike ends without comment. The ritual is stronger than the dispute.",
+      "tags": ["tuesday-lunch", "ritual-restored"]
+    },
+    {
+      "date": "2026-03-05",
+      "participants": ["margie"],
+      "summary": "Margie files from a small claims court in Monaco. The piece is about a contested wheel of cheese. It runs 1,800 words.",
+      "what_it_revealed": "The court was, technically, work-adjacent. Bart adds it to his list.",
+      "tags": ["margie-monaco", "wheel-of-cheese", "barts-list"]
+    },
+    {
+      "date": "2026-03-14",
+      "participants": ["spider"],
+      "summary": "Spider files expenses: 'one (1) ferry, unspecified.' Bart approves without comment.",
+      "what_it_revealed": "Bart's silence on Spider is now the most reliable thing in the office.",
+      "tags": ["spider-untraceable", "ferry-unspecified"]
+    },
+    {
+      "date": "2026-03-19",
+      "participants": ["teddy", "eli", "bart"],
+      "summary": "Bart finds the forwarded-draft ritual. He says nothing. He files objection #51, which is one sentence: 'I have noticed.'",
+      "what_it_revealed": "Bart's most devastating memo is the shortest. The forward-to-Eli continues anyway.",
+      "tags": ["i-have-noticed", "objection-51", "ritual-acknowledged"]
+    },
+    {
+      "date": "2026-04-01",
+      "participants": ["teddy"],
+      "summary": "Teddy stages an April Fools' prank by submitting a piece on the Empire State Building. Bart files an objection that does not mention the date. The objection is real.",
+      "what_it_revealed": "Bart does not engage with April Fools. The objection stands as catalogue precedent.",
+      "tags": ["april-fools-failed", "buildings-eligibility"]
+    },
+    {
+      "date": "2026-04-08",
+      "participants": ["hugh", "eli"],
+      "summary": "Eli, on a coffee run, sits in Hugh's car for 11 minutes. The conversation is not recorded.",
+      "what_it_revealed": "The car interior remains a sealed chamber. The 11 minutes are referenced by Eli once, in passing, in a Reel script edit.",
+      "tags": ["hughs-car", "the-11-minutes"]
+    },
+    {
+      "date": "2026-04-15",
+      "participants": ["bart"],
+      "summary": "Bart files his 50th objection of the year. The catalogue staff sends him a printed certificate. Bart files objection #51 on the certificate's margin width.",
+      "what_it_revealed": "Even the celebration is a target. Bart's consistency is the brand.",
+      "tags": ["50th-objection", "certificate", "margin-width"]
+    },
+    {
+      "date": "2026-04-22",
+      "participants": ["margie", "teddy"],
+      "summary": "Teddy emails Margie a draft on the An-225. She replies, from a vineyard, with the single word 'beautiful.' Teddy frames the email.",
+      "what_it_revealed": "Margie's praise is rationed and devastating. Teddy is not above being praised.",
+      "tags": ["margie-monaco", "frame-the-email", "an-225"]
+    },
+    {
+      "date": "2026-05-01",
+      "participants": ["eli", "bart"],
+      "summary": "Tuesday lunch shifts venues. The new place has a chalkboard. Bart corrects the day's special.",
+      "what_it_revealed": "Bart's corrections now extend to local restaurants. The chalkboard is the catalogue's frontier.",
+      "tags": ["tuesday-lunch", "chalkboard-correction"]
+    },
+    {
+      "date": "2026-05-08",
+      "participants": ["bart", "teddy"],
+      "summary": "Teddy refiles the Saturn V case, now structured as a brief, with citations. Bart returns it with the marginalia 'see objection #34.'",
+      "what_it_revealed": "Bart's preferred unit of argument is the citation to himself.",
+      "tags": ["saturn-v-feud", "objection-34-callback", "see-objection"]
+    },
+    {
+      "date": "2026-05-13",
+      "participants": ["eli"],
+      "summary": "Eli publishes 'Girth in Service of Purpose.' The piece argues functional girth is the catalogue's highest category. Bart files no objection. The silence is louder than any.",
+      "what_it_revealed": "Bart's tactical retreat. Eli has won a category. The Saturn V remains pending.",
+      "tags": ["functional-girth", "tactical-retreat", "category-won"]
+    },
+    {
+      "date": "2026-05-16",
+      "participants": ["bart", "teddy"],
+      "summary": "Teddy publishes a comment on Eli's functional-girth piece. He sides with Eli. He addresses Bart by name in the comment. Bart reads it. Bart still has not filed.",
+      "what_it_revealed": "Public siding is new. Bart's continued silence is now the office's quietest crisis.",
+      "tags": ["public-siding", "the-comment", "barts-silence"]
+    },
+    {
+      "date": "2026-05-17",
+      "participants": ["eli", "bart"],
+      "summary": "Tuesday lunch happens on schedule. Neither mentions the comment. Bart orders a different sandwich.",
+      "what_it_revealed": "The first menu deviation in 27 weeks. Something is shifting.",
+      "tags": ["tuesday-lunch", "menu-deviation", "shift"]
+    }
+  ],
+  "active_tensions": [
+    {
+      "id": "saturn-v-eligibility",
+      "summary": "Teddy and Bart's 19-month dispute over whether the Saturn V is a vehicle. Now in its 47th objection.",
+      "since": "2025-10-15",
+      "involves": ["bart", "teddy"]
+    },
+    {
+      "id": "forwarded-draft-ritual",
+      "summary": "Teddy forwards drafts to Eli before submitting to Bart. Bart has acknowledged this with objection #51 ('I have noticed.'). The ritual continues.",
+      "since": "2026-01-22",
+      "involves": ["eli", "teddy", "bart"]
+    },
+    {
+      "id": "margies-23-entry-list",
+      "summary": "Bart maintains a list of evidence that Margie has not done work in 14 months. He has filed nothing about it. The list has 23 entries.",
+      "since": "2025-11-01",
+      "involves": ["bart", "margie"]
+    },
+    {
+      "id": "barts-silence-on-spider",
+      "summary": "Bart processes Spider's expenses without comment. This is the only file he processes without comment. No one has commented on the absence of his comment.",
+      "since": "2025-11-01",
+      "involves": ["bart", "spider"]
+    },
+    {
+      "id": "menu-deviation",
+      "summary": "On the most recent Tuesday lunch, Bart ordered a different sandwich for the first time in 27 weeks. Eli noticed. Neither spoke of it.",
+      "since": "2026-05-17",
+      "involves": ["eli", "bart"]
+    },
+    {
+      "id": "barts-tactical-silence-on-functional-girth",
+      "summary": "Bart has not filed against Eli's functional-girth piece. The silence is itself a category of objection.",
+      "since": "2026-05-13",
+      "involves": ["eli", "bart"]
+    }
+  ]
+}
