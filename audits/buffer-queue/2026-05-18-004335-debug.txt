@@ -1,0 +1,352 @@
+Run timestamp: 2026-05-18-004335
+ACTION env: list
+BUFFER_ACCESS_TOKEN set: yes
+BUFFER_PROFILE_IDS set: yes
+
+=== ls /tmp ===
+total 88
+drwxrwxrwt 14 root   root   12288 May 18 00:43 .
+drwxr-xr-x 23 root   root    4096 May 18 00:37 ..
+drwxrwxrwt  2 root   root    4096 May 18 00:37 .ICE-unix
+drwxrwxrwt  2 root   root    4096 May 18 00:37 .X11-unix
+drwxrwxrwt  2 root   root    4096 May 18 00:37 .XIM-unix
+drwxrwxrwt  2 root   root    4096 May 18 00:37 .font-unix
+-rw-r--r--  1 runner runner 13927 May 18 00:43 buffer-queue.json
+-rw-r--r--  1 runner runner  4878 May 18 00:43 buffer-queue.log
+prwx------  1 runner runner     0 May 18 00:43 clr-debug-pipe-2237-38581-in
+prwx------  1 runner runner     0 May 18 00:43 clr-debug-pipe-2237-38581-out
+prwx------  1 runner runner     0 May 18 00:43 clr-debug-pipe-2252-38702-in
+prwx------  1 runner runner     0 May 18 00:43 clr-debug-pipe-2252-38702-out
+srw-------  1 runner runner     0 May 18 00:43 dotnet-diagnostic-2237-38581-socket
+srw-------  1 runner runner     0 May 18 00:43 dotnet-diagnostic-2252-38702-socket
+drwx------  2 root   root    4096 May 18 00:37 snap-private-tmp
+drwx------  3 root   root    4096 May 18 00:37 systemd-private-70787d3e6d214b61b7f65af98175a243-ModemManager.service-hjuZ9e
+drwx------  3 root   root    4096 May 18 00:37 systemd-private-70787d3e6d214b61b7f65af98175a243-chrony.service-jx6SI9
+drwx------  3 root   root    4096 May 18 00:37 systemd-private-70787d3e6d214b61b7f65af98175a243-haveged.service-XBzbPN
+drwx------  3 root   root    4096 May 18 00:37 systemd-private-70787d3e6d214b61b7f65af98175a243-polkit.service-riXTei
+
+=== /tmp/buffer-queue.log ===
+[buffer-queue] script started at 2026-05-18T00:43:34.555Z
+action=list channels=3 dry=false
+channels: 69f62c965c4c051afa032c91, 69f62da25c4c051afa03305a, 69f62e0e5c4c051afa033677
+org=69f62c0922c194e784dc8306
+Trying status: ["scheduled"]
+  → found 39 posts
+
+39 posts found:
+  id=6a0a248ac0f96224ff40f5b2 text="Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Ti"
+  id=6a0a248ac0f96224ff40f5ab text="Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Ti"
+  id=6a0a248ac0f96224ff40f567 text="JAIPUR, INDIA  The chai is good. The light is wrong for photography but correct "
+  id=6a0a248ac0f96224ff40f561 text="JAIPUR, INDIA  The chai is good. The light is wrong for photography but correct "
+  id=6a0a0e99c0f96224ff3ff56f text="No transformation arc. Just voltage. Transformer, Power Generation.  Hugh  Full "
+  id=6a0a0e99c0f96224ff3ff564 text="No transformation arc. Just voltage. Transformer, Power Generation.  Hugh  Full "
+  id=6a0a0e80d893125e86ac4f0b text="No transformation arc. Just voltage. Transformer, Power Generation.  Hugh  Full "
+  id=6a0a0e80c0f96224ff3ff4dc text="No transformation arc. Just voltage. Transformer, Power Generation.  Hugh  Full "
+  id=6a09e351c0f96224ff3de5df text="Reporting in from Sonoma. Spent ninety minutes watching a tractor today, by my e"
+  id=6a09e351b30d707b9aaf345a text="Reporting in from Sonoma. Spent ninety minutes watching a tractor today, by my e"
+  id=6a09e350b30d707b9aaf342d text="Today's formal objection: inflatable rafts. They are not thiccc. They are tempor"
+  id=6a09e350b30d707b9aaf3408 text="Today's formal objection: inflatable rafts. They are not thiccc. They are tempor"
+  id=6a09e34fb30d707b9aaf33e3 text="Re: the ongoing question of whether the Saturn V counts. It does. Five F-1 engin"
+  id=6a09e34ec0f96224ff3de578 text="Re: the ongoing question of whether the Saturn V counts. It does. Five F-1 engin"
+  id=6a09e34dc0f96224ff3de553 text="Eleven fire hydrants on the walk to work this morning. Six blocks. One outside t"
+  id=6a09e34db30d707b9aaf33be text="Eleven fire hydrants on the walk to work this morning. Six blocks. One outside t"
+  id=6a09e1c3b30d707b9aaf1f71 text="In Sonoma this week. Watched a tractor for ninety minutes. It was, by any reason"
+  id=6a09e1c2b30d707b9aaf1f1d text="Filed objection #50 this morning. The subject was an inflatable raft. Inflatable"
+  id=6a09e1c0c0f96224ff3dd0e0 text="One submits, for the record, that the Saturn V is a vehicle. Five F-1 engines. 7"
+  id=6a09e1bfb30d707b9aaf1edd text="Counted hydrants on the way in. Eleven in six blocks on Bleecker. The one in fro"
+  id=6a09de428f418d36956821a1 text="Sixteen feet of tubing. Folded. Tuba, Contrabass.  Hugh  Full entry on thiccctio"
+  id=6a09de428f418d369568219c text="Sixteen feet of tubing. Folded. Tuba, Contrabass.  Hugh  Full entry on thiccctio"
+  id=6a09dde38f418d3695681f69 text="Bart's objection is noted. Also noted: "legally regulated curvature" is exactly "
+  id=6a09dde38f418d3695681f4a text="Bart's objection is noted. Also noted: "legally regulated curvature" is exactly "
+  id=6a098902c82e2b03e8249be8 text="From the archives, Hoover Dam. Some objects request space. This one took it.  Sp"
+  id=6a0989020557e54b5702d0cb text="From the archives, Hoover Dam. Some objects request space. This one took it.  Sp"
+  id=6a0946f3e79a2768ec7f608a text="Parmigiano-Reggiano wheel: 84 lbs, 18 months minimum, legally regulated curvatur"
+  id=6a0946cbe79a2768ec7f5f17 text="Side-by-side fridge: two full-length doors, standing at attention, taking up wal"
+  id=6a09461be79a2768ec7f5b48 text="Contrabass tuba: bell diameter wider than most doorways this writer has used tod"
+  id=6a092e1de79a2768ec7e9963 text="Sixteen feet of tubing. Folded. Tuba, Contrabass.  Full entry on thiccctionary.c"
+  id=6a08b071e79a2768ec7a4cd4 text="The new transformer was so thiccc the substation had to be rezoned. Even the pyl"
+  id=6a08b0716e6b4cbb3bfc1a16 text="The new transformer was so thiccc the substation had to be rezoned. Even the pyl"
+  id=6a08b041e79a2768ec7a4b28 text="Tuned with the foot. Hit with intent. Kettledrum, Industrial.  Full entry on thi"
+  id=6a08b0416e6b4cbb3bfc1800 text="Tuned with the foot. Hit with intent. Kettledrum, Industrial.  Full entry on thi"
+  id=6a08b00a6e6b4cbb3bfc164c text="Pivots at the waist. Carries the hill. Dumper Truck, Articulated.  Full entry on"
+  id=6a08b00a6e6b4cbb3bfc1644 text="Pivots at the waist. Carries the hill. Dumper Truck, Articulated.  Full entry on"
+  id=6a08afd7e79a2768ec7a4727 text="Drum spins. Concrete waits. Cement Mixer, Industrial.  Full entry on thiccctiona"
+  id=6a08afd76e6b4cbb3bfc138a text="Drum spins. Concrete waits. Cement Mixer, Industrial.  Full entry on thiccctiona"
+  id=6a08354fea38df1e1b9538f8 text="From the archives — Watermelon, Moon and Stars. Yellow spots, green night, twent"
+
+=== /tmp/buffer-queue.json ===
+[
+  {
+    "id": "6a0a248ac0f96224ff40f5b2",
+    "text": "Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That was 1997. The catalogue, properly understood, has not improved on this. The author remains unknown. The stapler marks are consistent with a Swingline 747.\n\nBartholomew",
+    "dueAt": "2026-05-20T16:28:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a0a248ac0f96224ff40f5ab",
+    "text": "Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That was 1997. The catalogue, properly understood, has not improved on this. The author remains unknown. The stapler marks are consistent with a Swingline 747.\n\nBartholomew",
+    "dueAt": "2026-05-26T14:59:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a0a248ac0f96224ff40f567",
+    "text": "JAIPUR, INDIA\n\nThe chai is good. The light is wrong for photography but correct for thinking. Someone here recognized the Thiccctionary masthead and asked if I knew Bart. I said no. This is technically true.\n\n\"Spider",
+    "dueAt": "2026-05-20T15:18:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a0a248ac0f96224ff40f561",
+    "text": "JAIPUR, INDIA\n\nThe chai is good. The light is wrong for photography but correct for thinking. Someone here recognized the Thiccctionary masthead and asked if I knew Bart. I said no. This is technically true.\n\n\"Spider",
+    "dueAt": "2026-05-26T13:44:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a0a0e99c0f96224ff3ff56f",
+    "text": "No transformation arc.\nJust voltage.\nTransformer, Power Generation.\n\nHugh\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-26T02:39:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a0a0e99c0f96224ff3ff564",
+    "text": "No transformation arc.\nJust voltage.\nTransformer, Power Generation.\n\nHugh\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-21T15:40:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a0a0e80d893125e86ac4f0b",
+    "text": "No transformation arc.\nJust voltage.\nTransformer, Power Generation.\n\nHugh\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-25T12:02:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a0a0e80c0f96224ff3ff4dc",
+    "text": "No transformation arc.\nJust voltage.\nTransformer, Power Generation.\n\nHugh\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-21T14:55:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a09e351c0f96224ff3de5df",
+    "text": "Reporting in from Sonoma. Spent ninety minutes watching a tractor today, by my estimate one of the better tractors of its class. Will assign coverage when I return. Approximately.\n\nMargaret",
+    "dueAt": "2026-05-24T16:43:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a09e351b30d707b9aaf345a",
+    "text": "Reporting in from Sonoma. Spent ninety minutes watching a tractor today, by my estimate one of the better tractors of its class. Will assign coverage when I return. Approximately.\n\nMargaret",
+    "dueAt": "2026-05-20T14:33:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e350b30d707b9aaf342d",
+    "text": "Today's formal objection: inflatable rafts. They are not thiccc. They are temporarily thiccc, which is a separate category. The catalogue, properly understood, distinguishes.\n\nBartholomew",
+    "dueAt": "2026-05-24T15:00:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a09e350b30d707b9aaf3408",
+    "text": "Today's formal objection: inflatable rafts. They are not thiccc. They are temporarily thiccc, which is a separate category. The catalogue, properly understood, distinguishes.\n\nBartholomew",
+    "dueAt": "2026-05-19T17:09:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e34fb30d707b9aaf33e3",
+    "text": "Re: the ongoing question of whether the Saturn V counts. It does. Five F-1 engines, 7.5 million pounds of thrust, 363 feet of vehicle. Whatever the objection in 1969 was, the Saturn V outlived it.\n\nTheodore",
+    "dueAt": "2026-05-24T04:52:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a09e34ec0f96224ff3de578",
+    "text": "Re: the ongoing question of whether the Saturn V counts. It does. Five F-1 engines, 7.5 million pounds of thrust, 363 feet of vehicle. Whatever the objection in 1969 was, the Saturn V outlived it.\n\nTheodore",
+    "dueAt": "2026-05-19T16:06:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e34dc0f96224ff3de553",
+    "text": "Eleven fire hydrants on the walk to work this morning. Six blocks. One outside the deli has been repainted three times since January. Currently a confident cream.\n\nEliza",
+    "dueAt": "2026-05-23T12:24:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a09e34db30d707b9aaf33be",
+    "text": "Eleven fire hydrants on the walk to work this morning. Six blocks. One outside the deli has been repainted three times since January. Currently a confident cream.\n\nEliza",
+    "dueAt": "2026-05-19T15:53:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e1c3b30d707b9aaf1f71",
+    "text": "In Sonoma this week. Watched a tractor for ninety minutes. It was, by any reasonable accounting, doing its job. Will assign someone to file something on it eventually.\n\nMargaret",
+    "dueAt": "2026-05-19T14:09:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e1c2b30d707b9aaf1f1d",
+    "text": "Filed objection #50 this morning. The subject was an inflatable raft. Inflatable rafts are not thiccc. They are circumstantially thiccc. The distinction matters.\n\nBartholomew",
+    "dueAt": "2026-05-18T17:22:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e1c0c0f96224ff3dd0e0",
+    "text": "One submits, for the record, that the Saturn V is a vehicle. Five F-1 engines. 7.5 million pounds of thrust. Whatever 'not technically vehicular' meant in 1969 does not apply now.\n\nTheodore",
+    "dueAt": "2026-05-18T16:37:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09e1bfb30d707b9aaf1edd",
+    "text": "Counted hydrants on the way in. Eleven in six blocks on Bleecker. The one in front of the deli has been painted three different colors this year. It is currently cream.\n\nEliza",
+    "dueAt": "2026-05-18T15:24:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09de428f418d36956821a1",
+    "text": "Sixteen feet of tubing.\nFolded.\nTuba, Contrabass.\n\nHugh\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-22T15:43:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a09de428f418d369568219c",
+    "text": "Sixteen feet of tubing.\nFolded.\nTuba, Contrabass.\n\nHugh\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-21T00:08:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a09dde38f418d3695681f69",
+    "text": "Bart's objection is noted. Also noted: \"legally regulated curvature\" is exactly the girth criterion, page 4, section 2. The catalogue, properly understood, has been accidentally correct.\n\nTheodore",
+    "dueAt": "2026-05-18T14:40:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62c965c4c051afa032c91"
+  },
+  {
+    "id": "6a09dde38f418d3695681f4a",
+    "text": "Bart's objection is noted. Also noted: \"legally regulated curvature\" is exactly the girth criterion, page 4, section 2. The catalogue, properly understood, has been accidentally correct.\n\nTheodore",
+    "dueAt": "2026-05-22T14:58:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a098902c82e2b03e8249be8",
+    "text": "From the archives, Hoover Dam.\nSome objects request space.\nThis one took it.\n\nSpotted a thiccc thing? → https://thiccctionary.com/submit.html\n\nhttps://thiccctionary.com/entries/2026-05-08.html\n\n#thiccctionary",
+    "dueAt": "2026-05-20T19:27:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a0989020557e54b5702d0cb",
+    "text": "From the archives, Hoover Dam.\nSome objects request space.\nThis one took it.\n\nSpotted a thiccc thing? → https://thiccctionary.com/submit.html\n\nhttps://thiccctionary.com/entries/2026-05-08.html\n\n#thiccctionary",
+    "dueAt": "2026-05-21T15:18:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a0946f3e79a2768ec7f608a",
+    "text": "Parmigiano-Reggiano wheel: 84 lbs, 18 months minimum, legally regulated curvature. The catalogue, properly understood, does not accept food. And yet here we are. I have filed the objection. It will be ignored.\n\nBartholomew",
+    "dueAt": "2026-05-21T14:33:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a0946cbe79a2768ec7f5f17",
+    "text": "Side-by-side fridge: two full-length doors, standing at attention, taking up wall space with the confidence of load-bearing infrastructure. One opens the freezer by accident at least twice weekly. Per the Frigidaire spec sheet, this is not a mistake. It is symmetry.\n\nTheodore",
+    "dueAt": "2026-05-20T15:51:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a09461be79a2768ec7f5b48",
+    "text": "Contrabass tuba: bell diameter wider than most doorways this writer has used today. It doesn't lead a parade. It IS the parade. Everything else is just keeping up.\n\nEliza",
+    "dueAt": "2026-05-20T14:35:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a092e1de79a2768ec7e9963",
+    "text": "Sixteen feet of tubing.\nFolded.\nTuba, Contrabass.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-20T01:28:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a08b071e79a2768ec7a4cd4",
+    "text": "The new transformer was so thiccc the substation had to be rezoned. Even the pylons gave it a respectful berth.\n\nWe had to add a third c.\n\nTransformer, Power Generation.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-19T14:59:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a08b0716e6b4cbb3bfc1a16",
+    "text": "The new transformer was so thiccc the substation had to be rezoned. Even the pylons gave it a respectful berth.\n\nWe had to add a third c.\n\nTransformer, Power Generation.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-19T23:59:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a08b041e79a2768ec7a4b28",
+    "text": "Tuned with the foot.\nHit with intent.\nKettledrum, Industrial.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-19T02:12:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a08b0416e6b4cbb3bfc1800",
+    "text": "Tuned with the foot.\nHit with intent.\nKettledrum, Industrial.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-19T13:44:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a08b00a6e6b4cbb3bfc164c",
+    "text": "Pivots at the waist.\nCarries the hill.\nDumper Truck, Articulated.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-19T01:31:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a08b00a6e6b4cbb3bfc1644",
+    "text": "Pivots at the waist.\nCarries the hill.\nDumper Truck, Articulated.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-19T02:39:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a08afd7e79a2768ec7a4727",
+    "text": "Drum spins.\nConcrete waits.\nCement Mixer, Industrial.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-18T03:18:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  },
+  {
+    "id": "6a08afd76e6b4cbb3bfc138a",
+    "text": "Drum spins.\nConcrete waits.\nCement Mixer, Industrial.\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday",
+    "dueAt": "2026-05-18T12:02:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62da25c4c051afa03305a"
+  },
+  {
+    "id": "6a08354fea38df1e1b9538f8",
+    "text": "From the archives — Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
+    "dueAt": "2026-05-18T02:03:00.000Z",
+    "status": "scheduled",
+    "channelId": "69f62e0e5c4c051afa033677"
+  }
+]
