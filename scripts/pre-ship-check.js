@@ -74,13 +74,26 @@ for (const f of allFiles) {
   if (!/\.(html|js|md|mjs|yml|yaml|css|json)$/.test(f)) continue;
   if (f.endsWith('pre-ship-check.js')) continue; // self-reference; this file defines the rule
   if (!fs.existsSync(f)) continue;
-  const content = fs.readFileSync(f, 'utf8');
-  if (!content.includes('—')) continue;
-  const lines = content.split('\n');
-  for (let i = 0; i < lines.length; i++) {
-    if (!lines[i].includes('—')) continue;
-    const allowed = EMDASH_ALLOW.some(r => r.test(lines[i]));
-    if (!allowed) fail(f, 'em-dash', `line ${i + 1}: ${lines[i].slice(0, 100)}`);
+  // Only scan LINES I'm adding/modifying, not the whole file. WAVES.md and
+  // similar historical logs have pre-Wave-114 em-dashes that are frozen
+  // and should not retroactively flag.
+  const diffOutput = (() => {
+    try {
+      const arg = mode === 'working' ? `HEAD -- ${f}` : `--cached -- ${f}`;
+      return execSync(`git diff --unified=0 ${arg}`, { encoding: 'utf8' });
+    } catch (e) { return ''; }
+  })();
+  // For brand-new files, scan the entire content; for modifications, only the + lines.
+  const isNew = newFiles.includes(f);
+  const linesToCheck = isNew
+    ? fs.readFileSync(f, 'utf8').split('\n').map((line, i) => ({ line, lineNo: i + 1 }))
+    : diffOutput.split('\n')
+        .filter(l => l.startsWith('+') && !l.startsWith('+++'))
+        .map(l => ({ line: l.slice(1), lineNo: null }));
+  for (const { line, lineNo } of linesToCheck) {
+    if (!line.includes('—')) continue;
+    const allowed = EMDASH_ALLOW.some(r => r.test(line));
+    if (!allowed) fail(f, 'em-dash', `${lineNo ? 'line ' + lineNo + ': ' : ''}${line.slice(0, 100)}`);
   }
 }
 
