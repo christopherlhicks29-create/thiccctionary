@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Agriculture</title>
+    <link>https://thiccctionary.com/archive.html?tag=agriculture</link>
+    <atom:link href="https://thiccctionary.com/feed/agriculture.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "agriculture".</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 May 2026 19:14:41 GMT</lastBuildDate>
+    <item>
+      <title>Cabbage, Savoy</title>
+      <link>https://thiccctionary.com/entries/2026-05-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-18.html</guid>
+      <pubDate>Mon, 18 May 2026 12:00:00 GMT</pubDate>
+      <description>A botanical heavyweight of the brassica family, renowned for its deeply crinkled leaves and substantial presence in the garden; esp. one whose verdant layers suggest a rotational symmetry best admired in morning light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-18-cabbage-savoy.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>botanical</category><category>agriculture</category>
+    </item>
+    <item>
+      <title>Heritage Tomato</title>
+      <link>https://thiccctionary.com/entries/2026-04-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-28.html</guid>
+      <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cultivar of tomato, often grown from seeds passed down through generations, characterized by its robust flavor and generous proportions.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-28.jpg" type="image/jpeg" length="0" />
+      <category>agriculture</category><category>heirloom</category><category>juicy</category>
+    </item>
+  </channel>
+</rss>
