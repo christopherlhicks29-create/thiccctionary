@@ -8,8 +8,8 @@ name: Fire Reel cross-post (standalone)
 #
 # Triggers (Wave 76):
 #   1. workflow_dispatch (manual) with date input
-#   2. push to data/.fire-reel — date read from sentinel file
-#   3. push to data/.fire-reel-latest — uses latest entry on main
+#   2. push to data/.fire-reel, date read from sentinel file
+#   3. push to data/.fire-reel-latest, uses latest entry on main
 
 on:
   workflow_dispatch:

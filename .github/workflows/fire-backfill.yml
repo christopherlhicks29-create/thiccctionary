@@ -1,12 +1,12 @@
-name: Backfill — re-run morning post + newsletter for a specific date
+name: Backfill, re-run morning post + newsletter for a specific date
 
 # Use when post-on-merge.yml ran but failed (or picked the wrong entry)
 # and you want to backfill the Buffer image post + Buttondown newsletter
 # for a SPECIFIC daily entry without re-spamming everything.
 #
 # Triggers (Wave 80):
-#   1. workflow_dispatch (manual) — date input required
-#   2. push to data/.fire-backfill — date read from sentinel file
+#   1. workflow_dispatch (manual), date input required
+#   2. push to data/.fire-backfill, date read from sentinel file
 
 on:
   workflow_dispatch:
@@ -60,7 +60,7 @@ jobs:
             echo "::error::No entry for $DATE in data/entries.json."
             exit 1
           fi
-          echo "Backfilling posts for $DATE — $FOUND"
+          echo "Backfilling posts for $DATE, $FOUND"
           echo "date=$DATE" >> $GITHUB_OUTPUT
 
       - name: Post to Buffer (morning, image)
@@ -76,7 +76,7 @@ jobs:
         run: node post-to-buffer.js
         continue-on-error: true
 
-      - name: Post to Buffer (Reel — FB + IG only) if MP4 exists
+      - name: Post to Buffer (Reel, FB + IG only) if MP4 exists
         working-directory: scripts
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
@@ -90,7 +90,7 @@ jobs:
           if [ -f "../videos/${{ steps.target.outputs.date }}.mp4" ]; then
             node post-to-buffer.js
           else
-            echo "No videos/${{ steps.target.outputs.date }}.mp4 — skipping Reel."
+            echo "No videos/${{ steps.target.outputs.date }}.mp4, skipping Reel."
           fi
         continue-on-error: true
 

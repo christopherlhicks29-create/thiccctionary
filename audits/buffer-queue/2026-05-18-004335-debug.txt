@@ -72,7 +72,7 @@ Trying status: ["scheduled"]
   id=6a08b00a6e6b4cbb3bfc1644 text="Pivots at the waist. Carries the hill. Dumper Truck, Articulated.  Full entry on"
   id=6a08afd7e79a2768ec7a4727 text="Drum spins. Concrete waits. Cement Mixer, Industrial.  Full entry on thiccctiona"
   id=6a08afd76e6b4cbb3bfc138a text="Drum spins. Concrete waits. Cement Mixer, Industrial.  Full entry on thiccctiona"
-  id=6a08354fea38df1e1b9538f8 text="From the archives — Watermelon, Moon and Stars. Yellow spots, green night, twent"
+  id=6a08354fea38df1e1b9538f8 text="From the archives, Watermelon, Moon and Stars. Yellow spots, green night, twent"
 
 === /tmp/buffer-queue.json ===
 [
@@ -344,7 +344,7 @@ Trying status: ["scheduled"]
   },
   {
     "id": "6a08354fea38df1e1b9538f8",
-    "text": "From the archives — Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
+    "text": "From the archives, Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
     "dueAt": "2026-05-18T02:03:00.000Z",
     "status": "scheduled",
     "channelId": "69f62e0e5c4c051afa033677"

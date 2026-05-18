@@ -1,6 +1,6 @@
 name: One-time Issue Cleanup
 
-# Workflow_dispatch only — runs once on demand to close known stale issues.
+# Workflow_dispatch only, runs once on demand to close known stale issues.
 # Used to clean up the queue after debugging sessions that generated transient
 # quality-gate-fail issues that are now superseded.
 

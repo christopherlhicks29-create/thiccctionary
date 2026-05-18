@@ -1,15 +1,15 @@
-name: Failure handler — auto-retry + escalate
+name: Failure handler, auto-retry + escalate
 
 on:
   workflow_run:
     workflows:
-      - "Daily Thiccc — Generate Draft PR"
+      - "Daily Thiccc, Generate Draft PR"
       - "Regenerate Images (Backfill Old Entries)"
       - "Regenerate Text (Backfill Old Entries)"
       - "Post to Buffer on Daily Merge"
       - "Site health audit"
       - "Fire Reel cross-post (standalone)"
-      - "Backfill — re-run morning post + newsletter for a specific date"
+      - "Backfill, re-run morning post + newsletter for a specific date"
       - "Build TikTok Video"
     types: [completed]
 
@@ -38,14 +38,14 @@ jobs:
           echo "html_url=${{ github.event.workflow_run.html_url }}" >> $GITHUB_OUTPUT
           echo "Failed: ${{ github.event.workflow_run.name }} attempt ${{ github.event.workflow_run.run_attempt }}"
 
-      - name: First failure — retry failed jobs
+      - name: First failure, retry failed jobs
         if: ${{ github.event.workflow_run.run_attempt < 2 }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh run rerun "${{ steps.inspect.outputs.run_id }}" --failed --repo "$GITHUB_REPOSITORY" || echo "::warning::Retry failed, will escalate next time"
 
-      - name: Second failure — open issue
+      - name: Second failure, open issue
         if: ${{ github.event.workflow_run.run_attempt >= 2 }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -79,7 +79,7 @@ jobs:
           TS=$(date -u +%H:%M:%S)
           F="audits/failed-runs/${DATE}.md"
           if [ ! -f "$F" ]; then
-            echo "# Failed runs — ${DATE}" > "$F"
+            echo "# Failed runs, ${DATE}" > "$F"
             echo "" >> "$F"
             echo "| Time (UTC) | Workflow | Attempt | Run | Status |" >> "$F"
             echo "|---|---|---|---|---|" >> "$F"

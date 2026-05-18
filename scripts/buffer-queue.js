@@ -1,5 +1,5 @@
 /**
- * Buffer queue manager — uses GraphQL to list/delete posts. v2.
+ * Buffer queue manager, uses GraphQL to list/delete posts. v2.
  *
  * Always writes /tmp/buffer-queue.log with full activity for debugging.
  */

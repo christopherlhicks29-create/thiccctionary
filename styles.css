@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Thiccctionary — Stylesheet
+   Thiccctionary, Stylesheet
    Aesthetic: editorial dictionary × retro magazine
    Palette: aged cream, oxblood, ink, mustard accent
    ========================================================================== */
@@ -178,7 +178,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 
 .entry-image {
   width: 100%;
-  /* Removed forced 1:1 aspect-ratio — was cropping landscape photos by 25-40%.
+  /* Removed forced 1:1 aspect-ratio, was cropping landscape photos by 25-40%.
      Natural ratio preserves the photographer's framing. Hard limits prevent
      extremely tall portraits from breaking the layout. */
   background: var(--cream-deep);
@@ -649,7 +649,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
    RESPONSIVE
    ========================================================================== */
 
-/* Mobile hamburger nav (Wave 63 — clean rewrite)
+/* Mobile hamburger nav (Wave 63, clean rewrite)
    JS injects <button class="nav-toggle"> before <nav class="nav">. JS sets body[data-nav-mobile]
    on initial load. CSS shows toggle + collapses nav at <=900px. If JS fails, attribute is never
    set and nav stays visible (graceful degradation). */
@@ -1464,7 +1464,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   padding: 6px 10px;
   border-radius: 3px;
   transition: background 0.15s, color 0.15s;
-  /* Vertically centered now — looks intentional next to the message instead of floating top-right */
+  /* Vertically centered now, looks intentional next to the message instead of floating top-right */
 }
 .orientation-dismiss:hover {
   background: var(--cream);
@@ -1709,7 +1709,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   color: var(--ink);
   font-weight: 600;
 }
-.vote-card--winner .vote-card-cta::after { content: ' — your pick'; }
+.vote-card--winner .vote-card-cta::after { content: ', your pick'; }
 .vote-card--loser {
   opacity: 0.55;
 }

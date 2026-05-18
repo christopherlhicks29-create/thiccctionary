@@ -81,7 +81,7 @@ jobs:
           commit-message: "Regenerate image for ${{ steps.queue.outputs.dates }} (queued via push)"
           branch: regen-on-push/${{ github.run_id }}
           delete-branch: true
-          title: "🖼️ Image regen — ${{ steps.queue.outputs.dates }}${{ steps.queue.outputs.override && format(' [{0}]', steps.queue.outputs.override) || '' }}"
+          title: "🖼️ Image regen, ${{ steps.queue.outputs.dates }}${{ steps.queue.outputs.override && format(' [{0}]', steps.queue.outputs.override) || '' }}"
           body: |
             **Triggered by:** push to `data/regen-queue.json` (autonomous queue)
 

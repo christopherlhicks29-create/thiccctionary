@@ -4,15 +4,15 @@
  * Uses OpenAI gpt-image-1 to produce editorial-cartoon-style staff illustrations.
  *
  * Reads:
- *   data/character-art-prompts.json — bible of scenes/portraits per character
+ *   data/character-art-prompts.json, bible of scenes/portraits per character
  *
  * Writes:
  *   images/staff/<id>-<scene>.png  (or whichever output_path the scene specifies)
  *
  * Env:
- *   OPENAI_API_KEY  — required
- *   SCENE_ID        — required, scene id from the bible to render
- *   DRY_RUN         — '1' to skip writing the image
+ *   OPENAI_API_KEY , required
+ *   SCENE_ID       , required, scene id from the bible to render
+ *   DRY_RUN        , '1' to skip writing the image
  */
 
 import fs from 'node:fs/promises';
@@ -77,7 +77,7 @@ PUBLISH (score >= 7) if: clean editorial cartoon style, props are visually unamb
 
 function overlayCaption(inputPath, outputPath, caption) {
   if (!caption) {
-    // No caption — just copy file
+    // No caption, just copy file
     execFileSync('cp', [inputPath, outputPath]);
     return;
   }

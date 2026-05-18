@@ -63,7 +63,7 @@
     },
     {
       "id": "spider-portrait",
-      "description": "Spider Hennessy portrait — but a SILHOUETTE, since no one has met them.",
+      "description": "Spider Hennessy portrait, but a SILHOUETTE, since no one has met them.",
       "output_path": "images/staff/spider-portrait.png",
       "scene_prompt": "Silhouette portrait of \"Spider\" Hennessy, the Field Correspondent for a satirical magazine whom no one in the office has met. The figure is in heavy shadow against a backlit window, wearing a wide-brimmed hat and a long coat. Only the outline is visible. In the foreground on a desk: a small postcard showing a stylized Macau skyline (recognizable as a city with distinctive Asian harbor architecture), and a sheet of paper next to it that is clearly an expense report form by its formal columnar layout. Composition: shoulders-up backlit silhouette, dramatic chiaroscuro, mysterious atmosphere. The postcard + expense form should be visually clear by shape and layout alone. IMPORTANT: do NOT render ANY text, labels, captions, or words ANYWHERE in the image. The postcard is recognizable by the skyline silhouette, the expense form by its columnar grid layout.",
       "generated_at": "2026-05-17T14:42:10.042Z",

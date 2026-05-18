@@ -73,14 +73,14 @@ jobs:
           commit-message: "Regenerate entry text for older entries"
           branch: regenerate-text/${{ github.run_id }}
           delete-branch: true
-          title: "✏️ Regenerated text — ${{ inputs.dates }}${{ inputs.word_override && format(' [word: {0}]', inputs.word_override) || '' }}"
+          title: "✏️ Regenerated text, ${{ inputs.dates }}${{ inputs.word_override && format(' [word: {0}]', inputs.word_override) || '' }}"
           body: |
             **What this PR does:** re-runs the satirical entry-text generation on existing entries. Image, photographer, and date are preserved; definitions, etymology, example, pronunciation, caption, and tags are all replaced.
 
             **Dates processed:** `${{ inputs.dates }}`
             **Word override:** `${{ inputs.word_override }}` *(empty = keep original headword)*
 
-            Review the **Files changed** tab — read the new copy on each entry. If a regenerated entry still looks weak, you can:
+            Review the **Files changed** tab, read the new copy on each entry. If a regenerated entry still looks weak, you can:
             - Close this PR (no changes go to main)
             - Or merge as-is and re-run the workflow on the same date for another shot
 

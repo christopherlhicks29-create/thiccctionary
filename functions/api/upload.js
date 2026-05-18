@@ -1,4 +1,4 @@
-// POST /api/upload — accepts multipart image, stores in R2, returns public URL
+// POST /api/upload, accepts multipart image, stores in R2, returns public URL
 // Requires Cloudflare Pages binding: SUBMISSIONS_BUCKET → R2 bucket (public access enabled)
 
 export async function onRequestPost(context) {
@@ -50,7 +50,7 @@ export async function onRequestPost(context) {
     return new Response(JSON.stringify({ error: 'Storage failed: ' + e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 
-  // Return the public URL — assumes the R2 bucket has a public custom domain
+  // Return the public URL, assumes the R2 bucket has a public custom domain
   // configured. If not, falls back to the r2.dev path which works only if
   // public access is enabled on the bucket.
   const publicBase = env.SUBMISSIONS_PUBLIC_URL || 'https://thiccctionary-submissions.pages.dev';

@@ -4,9 +4,9 @@ name: Build TikTok Video
 # overlay + OpenAI TTS deadpan voiceover (onyx voice).
 #
 # Three triggers (Wave 75):
-#   1. workflow_dispatch (manual) — date input required, MP4 uploaded as artifact only
-#   2. push to data/.fire-tiktok — date read from sentinel file, MP4 committed to videos/<date>.mp4
-#   3. push to data/.fire-tiktok-latest — uses latest entry on main, MP4 committed
+#   1. workflow_dispatch (manual), date input required, MP4 uploaded as artifact only
+#   2. push to data/.fire-tiktok, date read from sentinel file, MP4 committed to videos/<date>.mp4
+#   3. push to data/.fire-tiktok-latest, uses latest entry on main, MP4 committed
 #
 # The sentinel triggers exist so the agent can dispatch this workflow without
 # needing api.github.com access (sandbox proxy blocks the API).

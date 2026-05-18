@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Thiccctionary — rate any image",
+  "name": "Thiccctionary, rate any image",
   "short_name": "Thiccctionary",
   "version": "0.1.0",
   "description": "Right-click any image on the web and receive a thicccness verdict in the dictionary register.",

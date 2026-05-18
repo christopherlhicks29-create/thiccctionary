@@ -43,7 +43,7 @@ export async function onRequestPost({ request, env }) {
     const idx = entries.findIndex(e => e.date === date);
     if (idx === -1) return new Response(JSON.stringify({ error: 'No entry found for that date' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
 
-    // Preserve date — never let UI change it
+    // Preserve date, never let UI change it
     entries[idx] = { ...entries[idx], ...entry, date };
 
     const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(entries, null, 2))));

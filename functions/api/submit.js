@@ -1,5 +1,5 @@
 /**
- * POST /api/submit — full user-submission pipeline.
+ * POST /api/submit, full user-submission pipeline.
  *
  * Accepts: multipart/form-data with fields:
  *   - image (File): the photo
@@ -81,7 +81,7 @@ async function visionCheckImage(imageUrl, openaiKey) {
 }
 
 async function generateEntry(subject, why, photoUrl, openaiKey, retryHint = '') {
-  const sysPrompt = `You write entries for "Thiccctionary" — a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. NEVER reference humans, anatomy, or body parts. Light HTML (<em>) allowed. Output strict JSON only.
+  const sysPrompt = `You write entries for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. NEVER reference humans, anatomy, or body parts. Light HTML (<em>) allowed. Output strict JSON only.
 
 NO TIME-ANCHORED FRAMING. Entry must read as permanent dictionary record.
 
@@ -99,7 +99,7 @@ Output schema:
   "definitions": ["definition 1 (1-2 sentences, dictionary register)", "<em>colloq.</em> sharper escalation"],
   "example": "ONE sentence using both the headword AND the word \"thiccc\" (three c's). Specific scene + punchline tag.",
   "etymology": "Real etymology FIRST (Latin/Greek/named industrialists/dated coinages) THEN comedic kicker.",
-  "caption": "Plate N. — short caption.",
+  "caption": "Plate N., short caption.",
   "tags": ["tag1","tag2","tag3"],
   "category": "one of: Vehicles & Transport, Architecture & Infrastructure, Industrial Machinery, Produce & Botanical, Foods of Substance, Domestic Goods, Engineering Marvels, Musical Instruments"
 }${retryHint}`;
@@ -266,7 +266,7 @@ export async function onRequestPost(context) {
   });
   const imageUrl = `${env.SUBMISSIONS_PUBLIC_URL}/${key}`;
 
-  // 2. Vision check — reject persons/animals
+  // 2. Vision check, reject persons/animals
   let visionResult;
   try { visionResult = await visionCheckImage(imageUrl, env.OPENAI_API_KEY); }
   catch (e) { return errResp(`Vision check failed: ${e.message}`, 502); }

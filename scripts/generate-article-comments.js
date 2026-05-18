@@ -10,10 +10,10 @@
  *   - data/article-comments.json (appends comments for this slug)
  *
  * Env:
- *   ARTICLE_SLUG     — required, slug of the article to comment on
- *   ANTHROPIC_API_KEY — required
- *   OPENAI_API_KEY    — required (for the rater)
- *   MAX_COMMENTS      — optional, default 3
+ *   ARTICLE_SLUG    , required, slug of the article to comment on
+ *   ANTHROPIC_API_KEY, required
+ *   OPENAI_API_KEY   , required (for the rater)
+ *   MAX_COMMENTS     , optional, default 3
  */
 
 import fs from 'node:fs/promises';

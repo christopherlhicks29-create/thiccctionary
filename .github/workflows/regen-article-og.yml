@@ -4,7 +4,7 @@ name: Regenerate Article OG Cards
 # regenerate articles/og/<slug>.png so social previews stay aligned with the
 # article catalog. Commits any changes back to main.
 #
-# Path filter only fires on articles.json edits — the workflow's own commits
+# Path filter only fires on articles.json edits, the workflow's own commits
 # touch articles/og/*.png, which is NOT in the path list, so this won't loop.
 
 on:
@@ -26,7 +26,7 @@ jobs:
         with:
           # Need history so we can commit back
           fetch-depth: 1
-          # Use the default GITHUB_TOKEN — has contents:write per permissions block
+          # Use the default GITHUB_TOKEN, has contents:write per permissions block
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python 3.11

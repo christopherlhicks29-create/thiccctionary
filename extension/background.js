@@ -1,12 +1,12 @@
 /*
- * Thiccctionary browser extension — service worker (MV3)
+ * Thiccctionary browser extension, service worker (MV3)
  *
  * Two surfaces:
  *  1) Right-click any image → "Rate with Thiccctionary" → opens
  *     /rate/?u=<image url> in a new tab; the rate page auto-rates.
  *  2) Click extension icon → opens /rate/.
  *
- * No popup — the rate page IS the UI. This keeps the extension a
+ * No popup, the rate page IS the UI. This keeps the extension a
  * thin shim and means every UI improvement to /rate/ ships to
  * extension users automatically.
  */

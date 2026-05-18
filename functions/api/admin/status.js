@@ -24,7 +24,7 @@ export async function onRequestGet({ env }) {
   const out = { today };
 
   try {
-    // 1. Today's entry — read entries.json from main
+    // 1. Today's entry, read entries.json from main
     const entriesRes = await gh(`/repos/${REPO}/contents/data/entries.json?ref=main`, {}, env);
     if (entriesRes.ok) {
       const file = await entriesRes.json();
@@ -42,7 +42,7 @@ export async function onRequestGet({ env }) {
       out.latestEntry = entries[0] ? { word: entries[0].word, date: entries[0].date } : null;
     }
 
-    // 2. Reel for today — check if videos/<today>.mp4 exists
+    // 2. Reel for today, check if videos/<today>.mp4 exists
     const reelRes = await gh(`/repos/${REPO}/contents/videos/${today}.mp4?ref=main`, {}, env);
     out.todayReelExists = reelRes.ok;
 
@@ -54,7 +54,7 @@ export async function onRequestGet({ env }) {
       out.openDailyEntries = prs.filter(pr => (pr.labels || []).some(l => l.name === 'daily-entry') && !((pr.labels || []).some(l => l.name === 'submissions-review'))).length;
     }
 
-    // 4. Recent workflow runs — latest of each key workflow
+    // 4. Recent workflow runs, latest of each key workflow
     const runsRes = await gh(`/repos/${REPO}/actions/runs?per_page=100`, {}, env);
     if (runsRes.ok) {
       const runs = (await runsRes.json()).workflow_runs || [];
@@ -67,8 +67,8 @@ export async function onRequestGet({ env }) {
         headSha: (r.head_sha || '').slice(0, 7),
       } : null;
       out.workflows = {
-        daily: summarize(latestOf('Daily Thiccc — Generate Draft PR')),
-        cronWatchdog: summarize(latestOf('Cron watchdog — alert on missing daily entry or Reel') || latestOf('Cron watchdog — alert on missing daily entry')),
+        daily: summarize(latestOf('Daily Thiccc, Generate Draft PR')),
+        cronWatchdog: summarize(latestOf('Cron watchdog, alert on missing daily entry or Reel') || latestOf('Cron watchdog, alert on missing daily entry')),
         postOnMerge: summarize(latestOf('Post to Buffer on Daily Merge')),
         siteHealth: summarize(latestOf('Site health audit')),
         postDeployVerify: summarize(latestOf('Post-Deploy Verify')),

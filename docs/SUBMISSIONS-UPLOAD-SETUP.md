@@ -1,4 +1,4 @@
-# Submissions Upload Setup — Cloudflare R2
+# Submissions Upload Setup, Cloudflare R2
 
 The `/api/upload` Pages Function accepts file uploads from the Submit a Thiccc form and stores them in Cloudflare R2. This document covers the one-time Cloudflare setup needed to activate it.
 
@@ -67,5 +67,5 @@ If it shows an error, check Cloudflare Pages → Functions → Real-time logs wh
 - 10 MB per upload (enforced by the function)
 - Only image MIME types accepted (also enforced)
 - Files are public-readable (anyone with the URL can view)
-- No auth on the upload endpoint (anyone can post images) — moderate via Formspree submission review
+- No auth on the upload endpoint (anyone can post images), moderate via Formspree submission review
 

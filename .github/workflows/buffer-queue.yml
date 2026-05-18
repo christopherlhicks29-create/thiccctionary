@@ -61,7 +61,7 @@ jobs:
           DRY_RUN: ${{ (inputs.dry_run == 'true' && '1') || steps.sentinel.outputs.dry }}
         run: node buffer-queue.js
 
-      - name: Debug — list /tmp + force write a marker
+      - name: Debug, list /tmp + force write a marker
         if: always()
         run: |
           echo "=== ls /tmp/ ==="

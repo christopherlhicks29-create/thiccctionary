@@ -1,4 +1,4 @@
-# Pitch — Today In Tabs (Rusty Foster)
+# Pitch, Today In Tabs (Rusty Foster)
 
 **Status:** Draft. Not sent.
 **Outlet:** Today In Tabs
@@ -14,9 +14,9 @@
 
 Hi Rusty,
 
-I'm the editor of Thiccctionary.com — a daily satirical dictionary that catalogs inanimate objects of unusual girth (cement mixers, wide-body airliners, championship tomatoes, Chesterfield sofas) in mock-academic register. Each morning a new entry ships with a photograph, IPA pronunciation, two satirical definitions, an etymology, and a Plate caption.
+I'm the editor of Thiccctionary.com, a daily satirical dictionary that catalogs inanimate objects of unusual girth (cement mixers, wide-body airliners, championship tomatoes, Chesterfield sofas) in mock-academic register. Each morning a new entry ships with a photograph, IPA pronunciation, two satirical definitions, an etymology, and a Plate caption.
 
-The premise is small but specific: redirect a category of internet language often used to harass women onto things that cannot be harassed. There's a strict editorial rule — no people, ever, in any entry — and the joke depends on it holding.
+The premise is small but specific: redirect a category of internet language often used to harass women onto things that cannot be harassed. There's a strict editorial rule, no people, ever, in any entry, and the joke depends on it holding.
 
 I thought of Today In Tabs because [TODO: reference a specific recent piece]. The redirect-of-thirst-language framing felt like it might fit your beat.
 
@@ -26,7 +26,7 @@ Two recent entries to give you a sense:
 
 The foundational entry on the word itself: thiccctionary.com/thiccc/
 
-Happy to send more entries, answer questions, or hop on a 10-minute call if useful. No pressure either way — just thought it might be your kind of thing.
+Happy to send more entries, answer questions, or hop on a 10-minute call if useful. No pressure either way, just thought it might be your kind of thing.
 
 Best,
 Christopher

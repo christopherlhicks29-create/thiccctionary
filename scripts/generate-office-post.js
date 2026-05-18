@@ -50,7 +50,7 @@ function weightedPick(items, weightKey = 'weight') {
 
 function pickByline(staff) {
   // Social weight distribution: same as social-byline picker in post-to-buffer.js
-  // Eli 35, Teddy 25, Bart 20, Margie 12, Spider 8 (no "unsigned" here — these
+  // Eli 35, Teddy 25, Bart 20, Margie 12, Spider 8 (no "unsigned" here, these
   // are explicitly character posts).
   const dist = { eli: 35, teddy: 25, bart: 20, margie: 12, spider: 8 };
   const ov = (process.env.BYLINE_OVERRIDE || '').trim().toLowerCase();
@@ -130,7 +130,7 @@ ${bibleContext ? bibleContext + '\n\n' : ''}HARD RULES:
 2. End with a newline, then "${byline.display || byline.name.split(' ')[0]}" (your social signature).
 3. THIS IS A SOCIAL MEDIA POST. NOT a magazine essay. NOT narration. NOT play-writing. Conversational tone, present-tense observation, punchy clauses. Read it aloud, if it sounds like an essay opener you wrote it wrong.
 4. STRUCTURE: lead with the subject (what it IS), then the dry observation/punchline. Land the joke fast.
-5. BANNED openers: "The band marched...", "There is a particular kind of...", "Consider the...", "One submits...", "This writer notes..." — these are essay voice, not social voice.
+5. BANNED openers: "The band marched...", "There is a particular kind of...", "Consider the...", "One submits...", "This writer notes...", these are essay voice, not social voice.
 6. PREFER short, declarative sentences. Less "The contrabass tuba is a marvel of resonance whose bell diameter exceeds..." and more "Contrabass tuba: brass with the audacity to occupy three time zones."
 7. Voice is DRY, not literary. Editorial in attitude, social in length and rhythm.
 8. NO em-dashes anywhere. Use commas, periods, colons, parens.

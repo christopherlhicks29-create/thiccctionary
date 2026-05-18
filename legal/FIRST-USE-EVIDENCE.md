@@ -1,4 +1,4 @@
-# First-Use Evidence — Thiccctionary
+# First-Use Evidence, Thiccctionary
 
 **Purpose:** Document evidence of Thiccctionary's first commercial use of the brand name "Thiccctionary." For use in USPTO trademark filing and any future opposition or enforcement action.
 
@@ -31,13 +31,13 @@
 ### Website launch
 
 - **First public availability:** April 2026 (exact date from initial commit / Cloudflare Pages deploy log)
-- **First entry published:** 2026-04-26 (Pumpkin, Atlantic Giant — see entries/2026-04-26.html)
+- **First entry published:** 2026-04-26 (Pumpkin, Atlantic Giant, see entries/2026-04-26.html)
 - **Initial daily-cron deployment:** April 2026
 
 ### Git repository history
 
 - **Repository:** christopherlhicks29-create/thiccctionary on GitHub
-- **First commit:** [pull from `git log --reverse | head -5` — earliest commit is canonical first-use timestamp]
+- **First commit:** [pull from `git log --reverse | head -5`, earliest commit is canonical first-use timestamp]
 - **Authored by:** Christopher L. Hicks
 - **All commits:** publicly verifiable in repo history once made public
 
@@ -78,24 +78,24 @@ The site declares itself as the "Thiccctionary" Organization in its homepage JSO
 
 The display name "Thiccctionary" used by @thiccctionaryyy is identical to the brand name used by thiccctionary.com. The classes of goods/services differ:
 
-- **thiccctionary.com:** A satirical online dictionary — Class 41 (Education / publishing) and/or Class 16 (Printed publications) when book launches in 2027
-- **@thiccctionaryyy:** Personal social media content — much narrower or no goods/services class
+- **thiccctionary.com:** A satirical online dictionary, Class 41 (Education / publishing) and/or Class 16 (Printed publications) when book launches in 2027
+- **@thiccctionaryyy:** Personal social media content, much narrower or no goods/services class
 
 The class differential means coexistence is possible under trademark law, but the identical-display-name presents brand-confusion risk that the trademark application should explicitly address.
 
 ## Action items for trademark filing
 
-1. **Confirm domain registration date** — pull from Cloudflare account
+1. **Confirm domain registration date**, pull from Cloudflare account
 2. **Pull first-commit date** from git log
-3. **Identify proper Nice classification** for the trademark filing — at minimum Class 41 (Education and entertainment services). For book: Class 16 (Printed publications).
-4. **Document first commercial use** — earliest date of public-facing access to thiccctionary.com
+3. **Identify proper Nice classification** for the trademark filing, at minimum Class 41 (Education and entertainment services). For book: Class 16 (Printed publications).
+4. **Document first commercial use**, earliest date of public-facing access to thiccctionary.com
 5. **Compile screenshots:**
    - Homepage as it exists today
    - At least one daily entry showing dictionary structure
    - The /thiccc/ foundational entry
    - The /press/ kit
    - The Organization schema (view source)
-6. **Schedule consultation with trademark attorney** — recommend $700-1500 budget for filing + strategic guidance on the @thiccctionaryyy conflict.
+6. **Schedule consultation with trademark attorney**, recommend $700-1500 budget for filing + strategic guidance on the @thiccctionaryyy conflict.
 
 ## Why this file exists
 
@@ -122,7 +122,7 @@ This file should be updated whenever a new official social account is added, a n
 | International class | 041 |
 | Applicant | Christopher L. Hicks (individual, US citizen) |
 | Mailing address (public record) | 2955 New Center Point #1023, Colorado Springs CO 80922 (iPostal1) |
-| Filing basis | Section 1(a) — Use in Commerce |
+| Filing basis | Section 1(a), Use in Commerce |
 | First use anywhere | 2026-04-26 |
 | First use in commerce | 2026-04-26 |
 | Specimen | thiccctionary-specimen-2026-05-16.jpeg (homepage screenshot) |
@@ -135,7 +135,7 @@ This file should be updated whenever a new official social account is added, a n
 - ~3-4 months: Examining attorney assigned, first review
 - ~6-9 months: If clean, approval for publication in Official Gazette
 - Publication: 30-day opposition window (this is where @thiccctionaryyy or anyone else could try to oppose)
-- ~10-14 months from filing: Registration certificate issues (around April 2027 — timed with book launch)
+- ~10-14 months from filing: Registration certificate issues (around April 2027, timed with book launch)
 
 **Status tracking:** https://tsdr.uspto.gov/#caseNumber=99827994&caseType=SERIAL_NO&searchType=statusSearch
 

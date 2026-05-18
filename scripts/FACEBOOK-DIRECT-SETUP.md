@@ -4,7 +4,7 @@ The social workflows now post to Facebook via Meta's Graph API directly,
 which removes the "Published by Buffer" attribution. Buffer continues
 to handle Instagram and X/Twitter.
 
-While the Facebook secrets are not yet set, **nothing breaks** —
+While the Facebook secrets are not yet set, **nothing breaks** , 
 `scripts/post-to-facebook.js` exits 0 silently when secrets are missing,
 and Buffer's FB channel still fires as a fallback (because
 `SKIP_FACEBOOK` is also gated). Once you complete the steps below and
@@ -42,20 +42,20 @@ automatically.
    https://graph.facebook.com/v21.0/me/accounts?access_token=<long_lived_user_token>
    ```
    The response lists your Pages. Find the Thiccctionary Page entry.
-   Copy its `access_token` field — that's the **never-expiring Page
-   Access Token** we'll use. Also note the `id` field — that's the Page ID.
+   Copy its `access_token` field, that's the **never-expiring Page
+   Access Token** we'll use. Also note the `id` field, that's the Page ID.
 
 ### 3. Add the secrets to GitHub
 
 Repo → Settings → Secrets and variables → Actions → New repository secret.
 Add two:
 
-- **`FB_PAGE_ACCESS_TOKEN`** — the never-expiring Page token from step 2.7
-- **`FB_PAGE_ID`** — the Page ID from the same response
+- **`FB_PAGE_ACCESS_TOKEN`**, the never-expiring Page token from step 2.7
+- **`FB_PAGE_ID`**, the Page ID from the same response
 
 ### 4. Verify
 
-Trigger a manual fire — push any small change to `data/.fire-buffer` —
+Trigger a manual fire, push any small change to `data/.fire-buffer` , 
 and watch the workflow run in the Actions tab. The new
 "Post to Facebook (direct, no Buffer attribution)" step will run before
 Buffer; if your secrets are correct, it succeeds and the FB post shows
@@ -77,5 +77,5 @@ Two reversal paths:
 
 Meta attributes posts to the **registered app name**. Since we registered
 the app as "Thiccctionary," Facebook will show "Published by Thiccctionary"
-underneath the page name on direct-API posts — owned, on-brand, no
+underneath the page name on direct-API posts, owned, on-brand, no
 third-party tool name.

@@ -73,14 +73,14 @@ jobs:
           commit-message: "Regenerate images for older entries (tuned prompt)"
           branch: regenerate-images/${{ github.run_id }}
           delete-branch: true
-          title: "🖼️ Regenerated images — ${{ inputs.dates }}${{ inputs.subject_override && format(' [query: {0}]', inputs.subject_override) || '' }}"
+          title: "🖼️ Regenerated images, ${{ inputs.dates }}${{ inputs.subject_override && format(' [query: {0}]', inputs.subject_override) || '' }}"
           body: |
             **What this PR does:** swaps the images on existing entries for fresh picks using the tuned vision prompt.
 
             **Dates processed:** `${{ inputs.dates }}`
             **Subject override:** `${{ inputs.subject_override }}` *(empty = use entry word)*
 
-            Review the **Files changed** tab — open each new image and confirm it's better than what was there. If any pick looks weak, you can:
+            Review the **Files changed** tab, open each new image and confirm it's better than what was there. If any pick looks weak, you can:
             - Close this PR (no changes go to main)
             - Or merge as-is and re-run the workflow with a different override for specific dates
 

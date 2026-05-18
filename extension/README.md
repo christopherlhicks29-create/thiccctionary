@@ -31,8 +31,8 @@ No popup, no separate UI. The extension is a minimal Chrome Web Store presence; 
 
 ## Files
 
-- `manifest.json` — MV3 manifest, declares context menu + icons + service worker
-- `background.js` — service worker, handles context menu + icon clicks
-- `icons/` — 16/32/48/128 PNG icons in the brand cream + oxblood "T"
+- `manifest.json`, MV3 manifest, declares context menu + icons + service worker
+- `background.js`, service worker, handles context menu + icon clicks
+- `icons/`, 16/32/48/128 PNG icons in the brand cream + oxblood "T"
 
 No content scripts, no popup, no host permissions beyond what Chrome implicitly grants for opening tabs.

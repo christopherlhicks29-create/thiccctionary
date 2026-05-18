@@ -1,4 +1,4 @@
-name: Issue Sweeper — close superseded CI failures
+name: Issue Sweeper, close superseded CI failures
 
 # Runs on a schedule + after every successful weekly-article + after every
 # daily.yml completion. Closes issues that are obviously superseded by a
@@ -18,8 +18,8 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - "Weekly Field Report — Auto-Publish"
-      - "Daily Thiccc — Generate Draft PR"
+      - "Weekly Field Report, Auto-Publish"
+      - "Daily Thiccc, Generate Draft PR"
     types: [completed]
 
 permissions:
@@ -42,7 +42,7 @@ jobs:
           # Find the most recent successful Wave 109 auto-publish commit (within last 14 days)
           LATEST_PUB=$(git log --since=14.days --grep='Wave 109 auto-publish' --format='%H %s' --max-count=1 || echo "")
           if [ -z "$LATEST_PUB" ]; then
-            echo "No recent auto-publish — nothing to supersede with"
+            echo "No recent auto-publish, nothing to supersede with"
           else
             echo "Latest auto-publish: $LATEST_PUB"
             PUB_DATE=$(git log --since=14.days --grep='Wave 109 auto-publish' --format='%cI' --max-count=1 | cut -c1-10)

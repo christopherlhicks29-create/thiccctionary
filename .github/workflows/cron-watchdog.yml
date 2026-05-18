@@ -1,18 +1,18 @@
-name: Cron watchdog — alert on missing daily entry or Reel
+name: Cron watchdog, alert on missing daily entry or Reel
 
 # The daily.yml cron has multiple silent-skip exit paths (picker veto,
 # critique gate, OpenAI errors). The Reel pipeline can also silently drop
 # the MP4 (Wave 75 path bug). When either happens, no alert fires and the
 # gap is discovered days later.
 #
-# This workflow runs at 14:30 UTC — 90 minutes after daily.yml's 13:00 UTC
-# cron — and FAILS LOUD if today's date is missing from data/entries.json
+# This workflow runs at 14:30 UTC, 90 minutes after daily.yml's 13:00 UTC
+# cron, and FAILS LOUD if today's date is missing from data/entries.json
 # OR videos/<today>.mp4 doesn't exist. A failed workflow shows a red badge
 # on the Actions tab and emails Christopher's GitHub-notifications address.
 
 on:
   schedule:
-    - cron: '30 14 * * *'   # 14:30 UTC daily — 90 min after daily.yml cron
+    - cron: '30 14 * * *'   # 14:30 UTC daily, 90 min after daily.yml cron
   workflow_dispatch:        # manual diagnostic fire
 
 permissions:
@@ -35,7 +35,7 @@ jobs:
             const found = e.find(x => x.date === today);
             if (!found) {
               console.error('ALERT: No entry for ' + today + '.');
-              console.error('Latest entry on file: ' + (e[0]?.date || 'none') + ' — ' + (e[0]?.word || ''));
+              console.error('Latest entry on file: ' + (e[0]?.date || 'none') + ', ' + (e[0]?.word || ''));
               console.error('');
               console.error('Likely cause: daily.yml cron silently skipped (picker veto, critique gate, or API error).');
               console.error('Recovery options:');
@@ -44,7 +44,7 @@ jobs:
               console.error('  3. Hand-add an entry to entries.json if AI pipeline keeps failing');
               process.exit(1);
             }
-            console.log('OK — entry for ' + today + ' present: ' + found.word);
+            console.log('OK, entry for ' + today + ' present: ' + found.word);
           "; then
             echo "Entry check passed."
           else
@@ -57,7 +57,7 @@ jobs:
           TODAY=$(date -u +%Y-%m-%d)
           if [ -f "videos/$TODAY.mp4" ]; then
             SIZE=$(stat -c%s "videos/$TODAY.mp4")
-            echo "OK — Reel for $TODAY present: videos/$TODAY.mp4 ($SIZE bytes)"
+            echo "OK, Reel for $TODAY present: videos/$TODAY.mp4 ($SIZE bytes)"
           else
             echo "::error title=Reel video missing for today::videos/$TODAY.mp4 not on main."
             echo ""
@@ -66,6 +66,6 @@ jobs:
             echo "  2. ffmpeg install failed inside the daily run"
             echo "  3. OpenAI TTS quota or auth failure"
             echo ""
-            echo "Recovery: touch data/.fire-tiktok-latest and push — fire-build-tiktok.yml will rebuild the MP4 for today's entry and commit it."
+            echo "Recovery: touch data/.fire-tiktok-latest and push, fire-build-tiktok.yml will rebuild the MP4 for today's entry and commit it."
             exit 1
           fi

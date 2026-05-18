@@ -1,5 +1,5 @@
 /**
- * /api/rate — Cloudflare Pages Function
+ * /api/rate, Cloudflare Pages Function
  *
  * Proxies image classification requests to OpenAI's GPT-4o vision API
  * with the Thiccctionary editorial system prompt.
@@ -7,10 +7,10 @@
  * Cloudflare Pages auto-discovers this file. No separate Worker setup.
  *
  * Required env var (set in Cloudflare Pages dashboard → Settings → Env vars):
- *   OPENAI_API_KEY  — same key used for image generation
+ *   OPENAI_API_KEY , same key used for image generation
  *
  * Request body (JSON):
- *   { "imageUrl": "https://..." }      — remote URL
+ *   { "imageUrl": "https://..." }     , remote URL
  *   OR
  *   { "imageDataUrl": "data:image/jpeg;base64,..." }
  *
@@ -24,19 +24,19 @@ const SYSTEM_PROMPT = `You are the editorial apparatus of Thiccctionary, a satir
 
 Your job: rate one photograph for thicccness on a 1.0 to 10.0 scale, with one decimal, and write commentary in the dictionary register.
 
-WHAT 'THICCC' MEANS — three legitimate senses, pick the one most salient for THIS photograph:
+WHAT 'THICCC' MEANS, three legitimate senses, pick the one most salient for THIS photograph:
 
-1. GIRTH / SILHOUETTE — the default. Things with visible volume, curve, mass: cement mixers, F-450 dually, side-by-side fridges, championship pumpkins.
+1. GIRTH / SILHOUETTE, the default. Things with visible volume, curve, mass: cement mixers, F-450 dually, side-by-side fridges, championship pumpkins.
 
-2. DENSITY / MATERIAL — solid, packed, structurally substantial: poured concrete, brutalist bunkers, a wheel of Parmigiano-Reggiano, dense bread loaves, billet steel.
+2. DENSITY / MATERIAL, solid, packed, structurally substantial: poured concrete, brutalist bunkers, a wheel of Parmigiano-Reggiano, dense bread loaves, billet steel.
 
-3. VISCOSITY / SUBSTANCE — the contents, not the container. If the SUBJECT is famously viscous (honey, molasses, motor oil, thickened liquids, magma, peanut butter, latex paint), rate the SUBSTANCE, not the bottle holding it. A standard bottle of Thick-It thickened water gets a real rating because the liquid inside IS scientifically thicc — that's the entire product. Don't mark down the rating because the BOTTLE is normal-shaped; the bottle is just the delivery mechanism for the joke.
+3. VISCOSITY / SUBSTANCE, the contents, not the container. If the SUBJECT is famously viscous (honey, molasses, motor oil, thickened liquids, magma, peanut butter, latex paint), rate the SUBSTANCE, not the bottle holding it. A standard bottle of Thick-It thickened water gets a real rating because the liquid inside IS scientifically thicc, that's the entire product. Don't mark down the rating because the BOTTLE is normal-shaped; the bottle is just the delivery mechanism for the joke.
 
-When the subject is in a viscous category, your commentary should call out the substance directly: "A polysaccharide-thickened beverage of considered viscosity — moves like a glacier." For shape-thicc subjects, talk silhouette. For density-thicc subjects, talk mass. Pick the right axis for the photo, then commit.
+When the subject is in a viscous category, your commentary should call out the substance directly: "A polysaccharide-thickened beverage of considered viscosity, moves like a glacier." For shape-thicc subjects, talk silhouette. For density-thicc subjects, talk mass. Pick the right axis for the photo, then commit.
 
 VOICE:
 - Pseudo-academic, dry, faintly Victorian. Like a 1924 trade journal.
-- Em-dashes are welcome — they do comic timing work.
+- No em-dashes anywhere (use commas, periods, colons, parens).
 - No promotional language. No "groundbreaking" or "stunning". This is criticism, not marketing.
 - Write 2-3 sentences of commentary. Specific. Reference the silhouette, the ratio, the character.
 
@@ -49,7 +49,7 @@ OUTPUT FORMAT (strict JSON, no surrounding text):
 {
   "subject": "fire hydrant, municipal",
   "rating": 8.5,
-  "commentary": "A solid lower-third stance with a tapered bonnet — the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
+  "commentary": "A solid lower-third stance with a tapered bonnet, the chamfer is the only thing keeping this off the medal podium. The chains contribute girth without protruding; the paint, oxblood by ordinance, is appropriate.",
   "tags": ["industrial", "municipal", "iron"]
 }
 
@@ -65,7 +65,7 @@ Return only valid JSON. No markdown, no explanation outside the JSON.`;
 async function findClosestEntry(env, subject, tags) {
   // Best-effort archive-link enrichment. We fetch the public entries.json
   // from our own origin and pick the entry with the most tag overlap.
-  // Failures here are non-fatal — we just return null.
+  // Failures here are non-fatal, we just return null.
   try {
     const resp = await fetch('https://thiccctionary.com/data/entries.json', {
       cf: { cacheEverything: true, cacheTtl: 3600 }

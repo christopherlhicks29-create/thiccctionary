@@ -34,7 +34,7 @@ async function main() {
   const staff = JSON.parse(await fs.readFile(STAFF_PATH, 'utf8'));
   const events = JSON.parse(await fs.readFile(EVENTS_PATH, 'utf8'));
 
-  // Pick a random staff member (uniform — every character deserves bit growth)
+  // Pick a random staff member (uniform, every character deserves bit growth)
   const member = staff.staff[Math.floor(Math.random() * staff.staff.length)];
 
   // Pull this character's existing bits so Claude knows what NOT to repeat
@@ -68,7 +68,7 @@ Invent ONE new running bit. Something small that happened or is happening to the
     console.error('Claude returned an empty or tiny bit; aborting');
     process.exit(1);
   }
-  if (bit.includes('—')) {
+  if (bit.includes(', ')) {
     console.error('Claude included an em-dash despite the ban; aborting');
     process.exit(1);
   }

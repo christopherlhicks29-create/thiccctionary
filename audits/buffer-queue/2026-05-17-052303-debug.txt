@@ -58,8 +58,8 @@ Trying status: ["scheduled"]
   id=6a08ad98e79a2768ec7a3f01 text="The band marched on, led by a contrabass tuba so thiccc that its resonance could"
   id=6a08ad976e6b4cbb3bfc0ace text="The band marched on, led by a contrabass tuba so thiccc that its resonance could"
   id=6a08ad976e6b4cbb3bfc0abd text="The band marched on, led by a contrabass tuba so thiccc that its resonance could"
-  id=6a08354fea38df1e1b953904 text="From the archives — Watermelon, Moon and Stars. Yellow spots, green night, twent"
-  id=6a08354fea38df1e1b9538f8 text="From the archives — Watermelon, Moon and Stars. Yellow spots, green night, twent"
+  id=6a08354fea38df1e1b953904 text="From the archives, Watermelon, Moon and Stars. Yellow spots, green night, twent"
+  id=6a08354fea38df1e1b9538f8 text="From the archives, Watermelon, Moon and Stars. Yellow spots, green night, twent"
   id=6a0783ceb7c26bd36e02413b text="Why physics insists on the silhouette. Bagger 288, Saturn V, supertankers, Hoove"
 
 === /tmp/buffer-queue.json ===
@@ -234,21 +234,21 @@ Trying status: ["scheduled"]
   },
   {
     "id": "6a08354fea38df1e1b953904",
-    "text": "From the archives — Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
+    "text": "From the archives, Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
     "dueAt": "2026-05-17T16:43:00.000Z",
     "status": "scheduled",
     "channelId": "69f62da25c4c051afa03305a"
   },
   {
     "id": "6a08354fea38df1e1b9538f8",
-    "text": "From the archives — Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
+    "text": "From the archives, Watermelon, Moon and Stars.\nYellow spots, green night, twenty pounds of intent.\n\nhttps://thiccctionary.com/entries/2026-05-05.html\n\n#thiccctionary",
     "dueAt": "2026-05-18T02:03:00.000Z",
     "status": "scheduled",
     "channelId": "69f62e0e5c4c051afa033677"
   },
   {
     "id": "6a0783ceb7c26bd36e02413b",
-    "text": "Why physics insists on the silhouette. Bagger 288, Saturn V, supertankers, Hoover Dam.\n\n— The Inherent Thicccness of Industrial Scale\nhttps://thiccctionary.com/articles/industrial-scale-thiccc.html\n\n#thiccctionary",
+    "text": "Why physics insists on the silhouette. Bagger 288, Saturn V, supertankers, Hoover Dam.\n\n,  The Inherent Thicccness of Industrial Scale\nhttps://thiccctionary.com/articles/industrial-scale-thiccc.html\n\n#thiccctionary",
     "dueAt": "2026-05-17T15:00:00.000Z",
     "status": "scheduled",
     "channelId": "69f62da25c4c051afa03305a"

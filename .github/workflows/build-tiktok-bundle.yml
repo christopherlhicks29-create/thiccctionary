@@ -46,7 +46,7 @@ jobs:
           elif [ -f data/.fire-tiktok-bundle ]; then
             DATE=$(head -n 1 data/.fire-tiktok-bundle | awk '{print $1}')
           else
-            # Triggered by videos/*.mp4 push — find the latest MP4
+            # Triggered by videos/*.mp4 push, find the latest MP4
             DATE=$(ls videos/*.mp4 2>/dev/null | sort | tail -n 1 | xargs basename | sed 's/\.mp4$//')
           fi
           if ! echo "$DATE" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then

@@ -73,13 +73,13 @@ jobs:
           DATE=${{ steps.target.outputs.date }}
           if [ -f "videos/$DATE.mp4" ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
-            echo "Reel video found at videos/$DATE.mp4 — will cross-post."
+            echo "Reel video found at videos/$DATE.mp4, will cross-post."
           else
             echo "exists=false" >> $GITHUB_OUTPUT
             echo "No Reel video for $DATE. Skipping Reel cross-post."
           fi
 
-      - name: Post to Buffer (Reel — FB + IG only)
+      - name: Post to Buffer (Reel, FB + IG only)
         if: steps.reel.outputs.exists == 'true'
         working-directory: scripts
         env:

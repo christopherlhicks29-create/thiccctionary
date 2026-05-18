@@ -1,4 +1,4 @@
-# Admin Panel Setup — Cloudflare Access
+# Admin Panel Setup, Cloudflare Access
 
 The admin panel at `https://thiccctionary.com/admin/` is functional but **inert until Cloudflare Access is configured**. Without Access, every API call returns 401 with setup instructions.
 
@@ -6,7 +6,7 @@ This is one-time, ~15 minutes.
 
 ## Why this matters
 
-- Without auth, the admin endpoints would be publicly accessible — anyone could approve/reject submission PRs
+- Without auth, the admin endpoints would be publicly accessible, anyone could approve/reject submission PRs
 - Cloudflare Access is free for up to 50 users on the Free plan
 - It uses your existing Cloudflare account (no new vendor)
 
@@ -53,7 +53,7 @@ You should see Cloudflare's login page asking for your email. Enter `chicks@thic
 
 After successful auth, you should see the admin dashboard with any open submission PRs.
 
-### 5. Optional — link your Google account
+### 5. Optional, link your Google account
 
 Instead of one-time PINs by email, you can link a Google identity provider:
 - Zero Trust → **Settings** → **Authentication** → **Login methods** → add **Google**
@@ -65,8 +65,8 @@ This means visiting `/admin/` will redirect you to Google sign-in, and after sig
 ## What the admin can do (V1)
 
 - **List open submission PRs** with image preview, definitions, etymology
-- **Approve & publish** — merges the PR, which auto-deploys the entry and fires the social + newsletter pipeline
-- **Reject** — closes the PR and deletes the branch (R2 image stays orphaned; clean up via R2 dashboard if you want)
+- **Approve & publish**, merges the PR, which auto-deploys the entry and fires the social + newsletter pipeline
+- **Reject**, closes the PR and deletes the branch (R2 image stays orphaned; clean up via R2 dashboard if you want)
 
 ## What the admin DOES NOT do yet
 
@@ -80,6 +80,6 @@ These are queued for V2 if you find the V1 useful:
 
 **"Cloudflare Access is not configured"** in the admin page → finish the Access setup above.
 
-**"Forbidden — access restricted"** → the email Cloudflare authenticated isn't `chicks@thiccctionary.com`. Check the policy rule.
+**"Forbidden, access restricted"** → the email Cloudflare authenticated isn't `chicks@thiccctionary.com`. Check the policy rule.
 
 **API errors 502/503** → likely the GITHUB_PAT secret expired or was revoked. Regenerate at https://github.com/settings/tokens and update in Cloudflare Pages → Settings → Environment variables.

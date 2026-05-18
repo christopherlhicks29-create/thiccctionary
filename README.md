@@ -60,9 +60,9 @@ The site is plain static HTML/CSS/JS. No build framework. The "build" is just `n
 
 ---
 
-## Going live — full launch checklist
+## Going live, full launch checklist
 
-### Phase 1 — Get the prototype on the internet (~ 1 hour)
+### Phase 1, Get the prototype on the internet (~ 1 hour)
 
 **1. Push this folder to GitHub**
 
@@ -93,11 +93,11 @@ git push -u origin main
 - Add `thiccctionary.com` and `www.thiccctionary.com`
 - Cloudflare provides DNS records (or recommends nameserver switch)
 - In Squarespace: Domains → thiccctionary.com → DNS settings → apply Cloudflare's records
-- Wait 10-60 minutes; visit thiccctionary.com — live.
+- Wait 10-60 minutes; visit thiccctionary.com, live.
 
 You can cancel Squarespace at this point. Keep the domain registration; transfer it to Cloudflare later for $9/yr if you want.
 
-### Phase 2 — Wire up the daily automation (~ 30 minutes)
+### Phase 2, Wire up the daily automation (~ 30 minutes)
 
 **1. Get an Unsplash API key (free)**
 
@@ -121,13 +121,13 @@ Settings → Secrets and variables → Actions:
 
 **4. Test it**
 
-Actions tab → "Daily Thiccc — Generate Draft PR" → Run workflow. ~1-2 min later a PR appears titled `📖 [Subject] — YYYY-MM-DD`. Open it, review the image and copy in **Files changed**. If you like it, click **Squash and merge**. Site deploys in ~60s.
+Actions tab → "Daily Thiccc, Generate Draft PR" → Run workflow. ~1-2 min later a PR appears titled `📖 [Subject], YYYY-MM-DD`. Open it, review the image and copy in **Files changed**. If you like it, click **Squash and merge**. Site deploys in ~60s.
 
 If you hate it, close the PR. Re-run the workflow to try again.
 
 The cron then runs daily at 13:00 UTC. To change the time edit `.github/workflows/daily.yml` (use https://crontab.guru for cron syntax).
 
-### Phase 3 — Social media (~ 1 hour)
+### Phase 3, Social media (~ 1 hour)
 
 **1. Create the social accounts**
 
@@ -148,20 +148,20 @@ https://buffer.com/developers/api/oauth → create application → grab access t
 **4. Add to GitHub secrets**
 
 - `BUFFER_ACCESS_TOKEN` (secret)
-- `BUFFER_PROFILE_IDS` (secret) — comma-separated, e.g. `5e1a...,5e2b...,5e3c...`
+- `BUFFER_PROFILE_IDS` (secret), comma-separated, e.g. `5e1a...,5e2b...,5e3c...`
 
 **5. Test**
 
 Run the workflow → merge the PR → wait ~90s → check Buffer's queue. Post should appear with image and copy.
 
-### Phase 4 — Reader submissions (~ 5 minutes)
+### Phase 4, Reader submissions (~ 5 minutes)
 
 1. Sign up at https://formspree.io (free tier: 50 submissions/mo)
 2. Create a new form, copy your form ID
 3. In `submit.html`, replace `YOUR_FORMSPREE_ID` (line ~37) with that ID
 4. Commit and push. The submit form now emails you on every submission.
 
-### Phase 5 — Newsletter (when ready)
+### Phase 5, Newsletter (when ready)
 
 The footer signup currently shows an alert. To wire up a real newsletter:
 
@@ -169,7 +169,7 @@ The footer signup currently shows an alert. To wire up a real newsletter:
 2. Buttondown → Settings → Embed code → copy the form's action URL
 3. In `index.html`, replace the form's `onsubmit` with `action="https://buttondown.email/api/emails/embed-subscribe/YOUR_USERNAME" method="post" target="popupwindow"`
 
-### Phase 6 — Advertising (after 100+ daily visits)
+### Phase 6, Advertising (after 100+ daily visits)
 
 Don't bother before then. AdSense earns ~$0.50–$3 per 1,000 visits. For a niche satire site, **merch via Printful + Shopify** ($0 upfront) often outperforms ads.
 
@@ -215,7 +215,7 @@ SUBJECT_OVERRIDE="Vintage Cadillac DeVille" node generate-daily.js
 
 1. **Subject pick.** GPT-4o-mini gets the 30 most recent entry words and is told to suggest something not on it. Returns: subject (display name), unsplashQuery, category.
 2. **Unsplash search.** API returns up to 30 squarish photos, content-filter set high.
-3. **Vision evaluation.** First 12 candidates sent to GPT-4o-mini in a single multimodal call (low-detail thumbnails — pennies). Picks the chunkiest. Avoids photos with people, watermarks, or product-render aesthetics.
+3. **Vision evaluation.** First 12 candidates sent to GPT-4o-mini in a single multimodal call (low-detail thumbnails, pennies). Picks the chunkiest. Avoids photos with people, watermarks, or product-render aesthetics.
 4. **Entry generation.** Subject + chosen photo's caption + photographer go to GPT-4o-mini, which writes the dictionary entry. The model never references humans or anatomy in output (system prompt enforces this).
 5. **Save.** Image downloads to `images/YYYY-MM-DD.jpg`. Entry appended to `data/entries.json`. Per-entry HTML page rendered to `entries/YYYY-MM-DD.html`. Sitemap rebuilt. Unsplash's `download_location` ping fires (their guidelines require this).
 
@@ -225,9 +225,9 @@ SUBJECT_OVERRIDE="Vintage Cadillac DeVille" node generate-daily.js
 
 - **Unsplash subject availability.** If GPT picks an obscure subject, Unsplash may return zero photos and the script errors. The next day's run will retry with a fresh subject. If it happens repeatedly, narrow the categories in `pickSubject()`.
 - **Vision picker quality.** Some days the AI picks a boring photo. Re-run from the Actions tab to regenerate.
-- **Meta moderation.** Even satire about chunky planes can get auto-flagged. Keep captions object-focused. No body-related hashtags. If posts get removed, don't appeal — move on.
+- **Meta moderation.** Even satire about chunky planes can get auto-flagged. Keep captions object-focused. No body-related hashtags. If posts get removed, don't appeal, move on.
 - **Unsplash attribution.** Photographer credit shows on every entry page (Unsplash license requirement). Don't remove it.
-- **Burnout.** Plan a Phase 7 — themed weeks ("Heavy Equipment Week"), tournaments ("Thiccc of the Year"), guest editors — before the format goes stale at the 6-month mark.
+- **Burnout.** Plan a Phase 7, themed weeks ("Heavy Equipment Week"), tournaments ("Thiccc of the Year"), guest editors, before the format goes stale at the 6-month mark.
 - **Seed entries use SVG placeholders.** The 6 entries seeded with `images/sample-N.svg` are placeholders. The OG share cards for those will look like brand graphics, not photos. After the daily generator runs for ~6 days, all visible entries will have real Unsplash photos. If you want to force-replace the seeds sooner, run `SUBJECT_OVERRIDE="..." node generate-daily.js` six times after Phase 2 setup.
 
 ---
@@ -237,7 +237,7 @@ SUBJECT_OVERRIDE="Vintage Cadillac DeVille" node generate-daily.js
 - Per-entry social copy variation (currently same caption all 3 platforms)
 - Themed-week tagging (just a `tags` array right now)
 - Newsletter integration (placeholder form)
-- Per-entry custom OG image generation (entry uses its photo as OG image — works but not ideal at very small thumbnail sizes)
-- Comments / engagement (intentional — adds moderation burden)
+- Per-entry custom OG image generation (entry uses its photo as OG image, works but not ideal at very small thumbnail sizes)
+- Comments / engagement (intentional, adds moderation burden)
 
-— Ship something. The first version doesn't have to be the right version.
+,  Ship something. The first version doesn't have to be the right version.

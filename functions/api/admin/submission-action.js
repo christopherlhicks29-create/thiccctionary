@@ -59,7 +59,7 @@ export async function onRequestPost({ request, env }) {
     if (!closeRes.ok) {
       return new Response(JSON.stringify({ error: `Close failed: ${closeRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
     }
-    // Delete branch (best-effort — don't fail if already gone)
+    // Delete branch (best-effort, don't fail if already gone)
     await gh(`/repos/${REPO}/git/refs/heads/${branch}`, { method: 'DELETE' }, env).catch(() => {});
     return new Response(JSON.stringify({ ok: true, action: 'rejected' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
   } catch (e) {

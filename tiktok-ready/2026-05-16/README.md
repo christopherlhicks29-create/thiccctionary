@@ -1,4 +1,4 @@
-# TikTok bundle — 2026-05-16 — Tuba, Contrabass
+# TikTok bundle, 2026-05-16, Tuba, Contrabass
 
 ## How to post
 
@@ -7,7 +7,7 @@
 3. Paste the contents of `caption.txt` as the description.
 4. Post.
 
-The caption is TikTok-flavored (hook + body + hashtags) — different from the FB/IG voice. Don't paste the FB caption here; TikTok culture wants the hook style.
+The caption is TikTok-flavored (hook + body + hashtags), different from the FB/IG voice. Don't paste the FB caption here; TikTok culture wants the hook style.
 
 ## Caption preview
 

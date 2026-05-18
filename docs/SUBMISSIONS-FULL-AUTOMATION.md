@@ -1,4 +1,4 @@
-# Submissions Full Automation — Setup
+# Submissions Full Automation, Setup
 
 The `/api/submit` Pages Function (Wave 52) replaces Formspree. User submissions now flow end-to-end:
 
@@ -50,14 +50,14 @@ Expected: 20-30 second processing, then redirect to `/thanks.html?word=...`. New
 
 ## What gets rejected automatically
 
-- Photos where vision API determines primary subject is a person or animal — friendly message tells the submitter to try an object
-- Photos where the model can't produce clean entry text after 3 attempts — saved for manual review (you'll need to check the R2 bucket for orphan submissions periodically; can add a dashboard later)
+- Photos where vision API determines primary subject is a person or animal, friendly message tells the submitter to try an object
+- Photos where the model can't produce clean entry text after 3 attempts, saved for manual review (you'll need to check the R2 bucket for orphan submissions periodically; can add a dashboard later)
 
 ## Limits
 
 - 10 MB image max
 - ~$0.02-0.05 per submission in OpenAI costs (vision check + entry generation)
-- No rate limit on the endpoint yet — may need IP-based throttling if abused
+- No rate limit on the endpoint yet, may need IP-based throttling if abused
 
 ## Costs of running this
 

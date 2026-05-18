@@ -2,7 +2,7 @@ name: Post-Deploy Verify
 
 # Runs after each push to main. Waits for Cloudflare Pages to redeploy,
 # then curls the live site and checks for markers that prove key features
-# are still working. Fails loudly if something is broken — earlier in the
+# are still working. Fails loudly if something is broken, earlier in the
 # session (commit 12c97405) a silent file truncation pushed broken HTML
 # and nobody noticed until Christopher pulled up the live page. This
 # guards that class of bug.
@@ -85,7 +85,7 @@ jobs:
       - name: Verify compare and tags pages exist
         run: |
           set -e
-          # Use full GET (not HEAD) with retries + Mozilla UA — Cloudflare's
+          # Use full GET (not HEAD) with retries + Mozilla UA, Cloudflare's
           # bot-detect serves a 403/challenge to the curl-default UA on HEAD
           # checks, even though the page is fine for real users.
           UA="Mozilla/5.0 (post-deploy-verify) AppleWebKit/537.36"

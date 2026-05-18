@@ -3,7 +3,7 @@ name: Post Article (Long-form Promo)
 # Promotes one long-form article from data/articles.json to all 3 platforms,
 # rotating through the catalog by ISO week (~10-week cycle for 10 articles).
 # Uses the per-article OG card as the image. This is the only social pipeline
-# that points back to the /articles/ section — daily entry posts already cover
+# that points back to the /articles/ section, daily entry posts already cover
 # the dictionary side.
 #
 # Runs every Friday at 16:00 UTC = ~10am Mountain / 12pm Eastern. Picks Friday

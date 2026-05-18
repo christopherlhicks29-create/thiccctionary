@@ -1,7 +1,7 @@
-name: Post Afternoon (Manual Only — Disabled by Default)
+name: Post Afternoon (Manual Only, Disabled by Default)
 
 # Reserved workflow for future afternoon posting.
-# CURRENTLY DISABLED — only runs when manually triggered via Actions tab.
+# CURRENTLY DISABLED, only runs when manually triggered via Actions tab.
 # To re-enable scheduled afternoon posts, uncomment the schedule block below.
 # Christopher decided to run 2x/day (morning + evening) to avoid same-image reuse.
 

@@ -2,7 +2,7 @@
   "_comment": "Phase 1-4 byline rollout queue. The article generator pops the next entry from here BEFORE falling back to weighted random selection. Once empty, normal weighted distribution resumes. Each entry has an optional 'theme_hint' to guide the angle.",
   "version": 1,
   "queue": [
-    { "byline": "eli",    "phase": "1", "theme_hint": "establish her everyday-thiccc voice — fire hydrants, sidewalk infrastructure, or a food-of-substance observation" },
+    { "byline": "eli",    "phase": "1", "theme_hint": "establish her everyday-thiccc voice, fire hydrants, sidewalk infrastructure, or a food-of-substance observation" },
     { "byline": "teddy",  "phase": "1", "theme_hint": "champion a modern industrial subject earnestly; use one Latin phrase" },
     { "byline": "bart",   "phase": "1", "theme_hint": "treat a heritage subject (cement mixer, Chesterfield, 747) with religious seriousness; include at least one footnote" },
     { "byline": "eli",    "phase": "1", "theme_hint": "everyday-thiccc again, different angle; a small dry observation in the closer" },
@@ -13,7 +13,7 @@
     { "byline": "bart",   "phase": "3", "theme_hint": "another classification piece; ignore the Margie situation entirely (in character)" },
     { "byline": "bart",   "phase": "4", "theme_hint": "ESCALATE THE SATURN V FEUD. File formal objection #48. Argue from first principles that the Saturn V is not a vehicle. Heavy on roman numerals." },
     { "byline": "teddy",  "phase": "4", "theme_hint": "RESPOND TO BART. Politely. In Latin where possible. Cite engineering manuals. Don't break composure." },
-    { "byline": "eli",    "phase": "4", "theme_hint": "reference 'the ongoing dispute' without naming the Saturn V or the cataloguers. Audience knows. Eli's voice — observational, a small smile in the prose." }
+    { "byline": "eli",    "phase": "4", "theme_hint": "reference 'the ongoing dispute' without naming the Saturn V or the cataloguers. Audience knows. Eli's voice, observational, a small smile in the prose." }
   ],
   "free_rotation_starts_at": "phase 5",
   "phase_5_plus_notes": "After queue empties, fall back to weighted random selection. Phase 5 (Hugh) and Phase 6 (Spider) will arrive via natural weighted rotation; their weights (2% and 7%) will hit them eventually."

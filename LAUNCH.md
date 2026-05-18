@@ -1,16 +1,16 @@
-# 🚀 LAUNCH.md — Step-by-Step Go-Live Guide
+# 🚀 LAUNCH.md, Step-by-Step Go-Live Guide
 
 This is the do-this-now checklist. Work top to bottom. Every step has a link, what to type/paste, and how to verify it worked. Total time: ~2 hours active, plus 30-60 min DNS wait.
 
-If you get stuck on any step, paste the error back to Claude — I can debug.
+If you get stuck on any step, paste the error back to Claude, I can debug.
 
 ---
 
-## Phase 0 — Prerequisites (5 min)
+## Phase 0, Prerequisites (5 min)
 
 You need:
-- [ ] A GitHub account (free) — sign up at https://github.com if you don't have one
-- [ ] A computer with `git` installed — check by running `git --version` in a terminal. If missing: https://git-scm.com/downloads
+- [ ] A GitHub account (free), sign up at https://github.com if you don't have one
+- [ ] A computer with `git` installed, check by running `git --version` in a terminal. If missing: https://git-scm.com/downloads
 - [ ] A credit/debit card for OpenAI ($5 minimum) and Buffer ($6/mo). Other services here have free tiers.
 - [ ] About 2 hours of focused time
 
@@ -18,9 +18,9 @@ Open this file in your editor and check items off as you go.
 
 ---
 
-## Phase 1 — Generate the OG share image (3 min)
+## Phase 1, Generate the OG share image (3 min)
 
-The OG image is what shows up when someone shares a Thiccctionary link on Twitter, Facebook, LinkedIn, iMessage, etc. We need a real PNG — SVG doesn't work in social scrapers.
+The OG image is what shows up when someone shares a Thiccctionary link on Twitter, Facebook, LinkedIn, iMessage, etc. We need a real PNG, SVG doesn't work in social scrapers.
 
 - [ ] Double-click `og-image-generator.html` in this folder. It opens in your browser.
 - [ ] Click **"Download og-default.png"**. Save it directly into this folder (`D:\Thiccctionary.com\Thiccctionary.com\`).
@@ -28,7 +28,7 @@ The OG image is what shows up when someone shares a Thiccctionary link on Twitte
 
 ---
 
-## Phase 2 — Push the project to GitHub (15 min)
+## Phase 2, Push the project to GitHub (15 min)
 
 - [ ] Go to https://github.com/new
 - [ ] Repository name: `thiccctionary`
@@ -49,13 +49,13 @@ git remote add origin https://github.com/YOUR_USERNAME/thiccctionary.git
 git push -u origin main
 ```
 
-When git prompts you to authenticate, use a personal access token (GitHub no longer accepts passwords). Generate one at https://github.com/settings/tokens — give it `repo` and `workflow` scopes.
+When git prompts you to authenticate, use a personal access token (GitHub no longer accepts passwords). Generate one at https://github.com/settings/tokens, give it `repo` and `workflow` scopes.
 
-- [ ] Verify: visit `https://github.com/YOUR_USERNAME/thiccctionary` — you see all your files.
+- [ ] Verify: visit `https://github.com/YOUR_USERNAME/thiccctionary`, you see all your files.
 
 ---
 
-## Phase 3 — Deploy to Cloudflare Pages (15 min)
+## Phase 3, Deploy to Cloudflare Pages (15 min)
 
 - [ ] Go to https://dash.cloudflare.com/sign-up if you don't have an account, otherwise sign in
 - [ ] In the left sidebar: **Workers & Pages** → **Create application** → **Pages** tab → **Connect to Git**
@@ -67,29 +67,29 @@ When git prompts you to authenticate, use a personal access token (GitHub no lon
   - Build output directory: `/`
 - [ ] Click **Save and Deploy**
 - [ ] Wait ~30 seconds. You'll get a URL like `thiccctionary-abc.pages.dev`
-- [ ] Click that URL — you should see the Thiccctionary homepage
+- [ ] Click that URL, you should see the Thiccctionary homepage
 
 If it loads, the static site is live on Cloudflare's CDN. Now we point your domain at it.
 
 ---
 
-## Phase 4 — Point thiccctionary.com at Cloudflare (10 min + DNS wait)
+## Phase 4, Point thiccctionary.com at Cloudflare (10 min + DNS wait)
 
 - [ ] In Cloudflare Pages, open your project → **Custom domains** tab → **Set up a custom domain**
 - [ ] Enter `thiccctionary.com` → click **Continue**
 - [ ] Cloudflare shows you DNS records to add (a CNAME or A record)
 - [ ] Open Squarespace in another tab → **Domains** → click `thiccctionary.com` → **DNS settings**
-- [ ] Add the records Cloudflare gave you. (If Squarespace allows nameserver change, that's even cleaner — Cloudflare provides two nameservers; replace Squarespace's nameservers with those.)
+- [ ] Add the records Cloudflare gave you. (If Squarespace allows nameserver change, that's even cleaner, Cloudflare provides two nameservers; replace Squarespace's nameservers with those.)
 - [ ] Repeat for `www.thiccctionary.com` (add the same record with the `www` prefix)
 - [ ] Save in Squarespace
 - [ ] Wait 10-60 minutes for DNS to propagate. You can check status with https://dnschecker.org/?type=A&query=thiccctionary.com
-- [ ] Verify: visit `https://thiccctionary.com` — homepage loads with the lock icon (HTTPS auto-provisioned by Cloudflare)
+- [ ] Verify: visit `https://thiccctionary.com`, homepage loads with the lock icon (HTTPS auto-provisioned by Cloudflare)
 
-You can now cancel the Squarespace subscription. **Keep the domain registration** — don't let it expire. Optionally transfer it to Cloudflare for $9/yr.
+You can now cancel the Squarespace subscription. **Keep the domain registration**, don't let it expire. Optionally transfer it to Cloudflare for $9/yr.
 
 ---
 
-## Phase 5 — Wire up the daily AI generator (20 min)
+## Phase 5, Wire up the daily AI generator (20 min)
 
 ### 5a. Get an OpenAI API key
 
@@ -103,7 +103,7 @@ You can now cancel the Squarespace subscription. **Keep the domain registration*
 - [ ] Go to https://unsplash.com/developers
 - [ ] **Register as a developer** (free)
 - [ ] **New Application** → accept terms → name it "Thiccctionary"
-- [ ] Copy your **Access Key**. (Ignore the Secret Key — we don't need it.)
+- [ ] Copy your **Access Key**. (Ignore the Secret Key, we don't need it.)
 
 ### 5c. Add the secrets to GitHub
 
@@ -116,13 +116,13 @@ You can now cancel the Squarespace subscription. **Keep the domain registration*
 
 ### 5d. Run the daily workflow manually as a test
 
-- [ ] In your repo: **Actions** tab → **"Daily Thiccc — Generate Draft PR"** in the left sidebar
+- [ ] In your repo: **Actions** tab → **"Daily Thiccc, Generate Draft PR"** in the left sidebar
 - [ ] Click **Run workflow** → confirm
 - [ ] Wait ~2 minutes. Watch the workflow run; it should turn green
-- [ ] You'll see a new **Pull Request** appear: `📖 [Subject Name] — YYYY-MM-DD`
-- [ ] Open it, click **Files changed** — you'll see the new image and the JSON entry
+- [ ] You'll see a new **Pull Request** appear: `📖 [Subject Name], YYYY-MM-DD`
+- [ ] Open it, click **Files changed**, you'll see the new image and the JSON entry
 - [ ] If you like it, click **Squash and merge**. Cloudflare Pages auto-deploys in ~60 seconds.
-- [ ] Visit thiccctionary.com — your AI-generated entry is now today's featured entry
+- [ ] Visit thiccctionary.com, your AI-generated entry is now today's featured entry
 
 If the workflow fails, click into the failed step to see logs. Common fixes:
 - "Insufficient quota" → add more $ to OpenAI billing
@@ -131,11 +131,11 @@ If the workflow fails, click into the failed step to see logs. Common fixes:
 
 ---
 
-## Phase 6 — Reader submissions via Formspree (10 min)
+## Phase 6, Reader submissions via Formspree (10 min)
 
 - [ ] Go to https://formspree.io and sign up (free tier: 50 submissions/mo)
 - [ ] Click **+ New Form** → name it "Thiccctionary Submissions" → set the email it should forward to (your email)
-- [ ] Copy the form's endpoint URL — looks like `https://formspree.io/f/abc123xyz`. The ID is the `abc123xyz` part.
+- [ ] Copy the form's endpoint URL, looks like `https://formspree.io/f/abc123xyz`. The ID is the `abc123xyz` part.
 - [ ] Open `submit.html` in your editor. Find the line:
    ```html
    <form class="submit-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
@@ -152,13 +152,13 @@ If the workflow fails, click into the failed step to see logs. Common fixes:
 
 ---
 
-## Phase 7 — Newsletter via Buttondown (10 min)
+## Phase 7, Newsletter via Buttondown (10 min)
 
 - [ ] Go to https://buttondown.com and sign up (free tier: 100 subscribers)
 - [ ] Settings → Embed → copy the form's HTML
 - [ ] In `index.html`, find the existing newsletter form (search for `signup-form`):
    ```html
-   <form class="signup-form" onsubmit="event.preventDefault(); alert('Email signup not yet wired — see README for setup.');">
+   <form class="signup-form" onsubmit="event.preventDefault(); alert('Email signup not yet wired, see README for setup.');">
    ```
 - [ ] Replace with:
    ```html
@@ -166,18 +166,18 @@ If the workflow fails, click into the failed step to see logs. Common fixes:
    ```
    (Replace `YOUR_BUTTONDOWN_USERNAME` with your actual Buttondown username, twice.)
 - [ ] Commit, push.
-- [ ] Verify: enter a test email on the homepage. A new tab opens to confirm subscription. Check your Buttondown dashboard — subscriber appears.
+- [ ] Verify: enter a test email on the homepage. A new tab opens to confirm subscription. Check your Buttondown dashboard, subscriber appears.
 
 ---
 
-## Phase 8 — Social media accounts (45 min)
+## Phase 8, Social media accounts (45 min)
 
 This is the longest phase because of Instagram's Business Account requirement.
 
 ### 8a. Create the accounts
 
 - [ ] **Instagram:** create `@thiccctionary` as a personal account first, then convert it to a Business account in Settings → Account → Switch to Professional Account → Business
-- [ ] **Facebook Page:** create one called "Thiccctionary" — https://www.facebook.com/pages/create
+- [ ] **Facebook Page:** create one called "Thiccctionary", https://www.facebook.com/pages/create
 - [ ] In Instagram settings, **link your IG to that Facebook Page** (Settings → Accounts Center → Linked accounts)
 - [ ] **Twitter/X:** create `@thiccctionary` at https://x.com
 
@@ -186,15 +186,15 @@ For all three, set the bio to something like "A satirical daily dictionary of ob
 ### 8b. Buffer
 
 - [ ] Go to https://buffer.com → sign up
-- [ ] Pick the **Essentials** plan ($6/mo) — required for auto-publish on Instagram
+- [ ] Pick the **Essentials** plan ($6/mo), required for auto-publish on Instagram
 - [ ] **Connect channels:** add IG, FB Page, Twitter inside Buffer. Each opens an OAuth flow on the respective platform.
-- [ ] For each connected channel, click into its Buffer profile. The URL will contain the profile ID — looks like `buffer.com/app/profile/5e1abc.../updates`. Copy the `5e1abc...` part for each of the three.
+- [ ] For each connected channel, click into its Buffer profile. The URL will contain the profile ID, looks like `buffer.com/app/profile/5e1abc.../updates`. Copy the `5e1abc...` part for each of the three.
 
 ### 8c. Buffer access token
 
 - [ ] Go to https://buffer.com/developers/api/oauth
 - [ ] Create an application (any name/URL works)
-- [ ] Click **Create Access Token** for that application — copy it
+- [ ] Click **Create Access Token** for that application, copy it
 
 ### 8d. Add Buffer secrets to GitHub
 
@@ -208,26 +208,26 @@ For all three, set the bio to something like "A satirical daily dictionary of ob
 
 - [ ] Run the daily workflow manually again (Phase 5d)
 - [ ] Merge the resulting PR
-- [ ] Wait ~90 seconds — the `post-on-merge.yml` workflow runs (visible in Actions tab)
+- [ ] Wait ~90 seconds, the `post-on-merge.yml` workflow runs (visible in Actions tab)
 - [ ] Open Buffer's queue → your post should be there with image + caption + link
 - [ ] Buffer's default behavior is to add posts to your queue. To publish immediately, configure each profile's posting schedule in Buffer (Profile → Settings → Posting Schedule)
 
 ---
 
-## Phase 9 — Verification (15 min)
+## Phase 9, Verification (15 min)
 
 After everything's wired up, click through this checklist on a fresh browser tab:
 
-- [ ] `https://thiccctionary.com` — homepage loads, shows today's entry
+- [ ] `https://thiccctionary.com`, homepage loads, shows today's entry
 - [ ] Click the headword → goes to `entries/YYYY-MM-DD.html` page
 - [ ] Click "The Archive" → `archive.html` shows all entries; search box filters
 - [ ] Type a partial word in archive search → results filter
 - [ ] Click "Submit a Thiccc" → submit page loads, form submits successfully
 - [ ] Visit `thiccctionary.com/random.html` → redirects to a random entry
-- [ ] Visit `thiccctionary.com/something-not-real` → shows the branded 404 (this requires Cloudflare Pages to use 404.html as the 404 — check your Pages project Settings → Build & deployments → "Custom 404" if it doesn't auto-detect)
+- [ ] Visit `thiccctionary.com/something-not-real` → shows the branded 404 (this requires Cloudflare Pages to use 404.html as the 404, check your Pages project Settings → Build & deployments → "Custom 404" if it doesn't auto-detect)
 - [ ] On a phone: site is responsive
-- [ ] Share a link in iMessage / Slack / Twitter — the OG image preview shows
-- [ ] Wait until tomorrow 13:00 UTC — daily PR should auto-open without you doing anything
+- [ ] Share a link in iMessage / Slack / Twitter, the OG image preview shows
+- [ ] Wait until tomorrow 13:00 UTC, daily PR should auto-open without you doing anything
 
 ---
 
@@ -248,7 +248,7 @@ You get a GitHub notification on your phone. You tap, review, merge. Cloudflare 
 
 **What you do manually:**
 
-- Reply to comments / DMs on social. Don't automate this — it gets accounts flagged.
+- Reply to comments / DMs on social. Don't automate this, it gets accounts flagged.
 - Once a week, scan the archive for entries that flopped or are too obscure. Just delete them via a quick PR.
 - Once a month, eyeball the AI's picks for quality drift. Tweak the system prompt in `scripts/generate-daily.js` if needed.
 

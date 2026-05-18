@@ -1,7 +1,7 @@
 /**
  * Admin: list entries OR get one entry by date.
  *
- * GET /api/admin/entries           → list all (metadata only — no etymology for speed)
+ * GET /api/admin/entries           → list all (metadata only, no etymology for speed)
  * GET /api/admin/entries?date=YYYY-MM-DD → full entry data
  */
 

@@ -17,7 +17,7 @@ The ceiling for a niche meme/satire dictionary, realistically: **$1k-3k/mo profi
 
 ---
 
-## Phase 1 — Months 1-3: Build the audience (Revenue: $0)
+## Phase 1, Months 1-3: Build the audience (Revenue: $0)
 
 **Goal:** Get to 1,000 Instagram followers, 500 Twitter followers, 200 newsletter subscribers.
 
@@ -30,7 +30,7 @@ The ceiling for a niche meme/satire dictionary, realistically: **$1k-3k/mo profi
 - Reply to every single comment for the first 200. Manually. From your phone.
 - Use trending hashtags adjacent to your niche: `#everydayobjects`, `#wordoftheday`, `#dictionary`, `#satire`. Avoid `#thicc` (algorithmic minefield).
 - Cross-post to Reddit on relevant subs sparingly: r/wordavalanche, r/showerthoughts, r/funny. **DO NOT spam.** One post per sub per week max. Reddit hates marketers.
-- Engage with adjacent accounts (other satire dictionaries, niche meme pages) — comment thoughtfully on their posts. Some will follow back.
+- Engage with adjacent accounts (other satire dictionaries, niche meme pages), comment thoughtfully on their posts. Some will follow back.
 
 **What success looks like by month 3:**
 - 1,000+ IG followers
@@ -38,11 +38,11 @@ The ceiling for a niche meme/satire dictionary, realistically: **$1k-3k/mo profi
 - 200+ newsletter subscribers
 - 100+ daily visits to the site
 
-If you DON'T hit these by month 3, the format isn't catching. Either pivot the satirical angle, change posting cadence, or accept this is a passion project not a business. Don't throw money at ads to fix lack of audience — that just delays the lesson.
+If you DON'T hit these by month 3, the format isn't catching. Either pivot the satirical angle, change posting cadence, or accept this is a passion project not a business. Don't throw money at ads to fix lack of audience, that just delays the lesson.
 
 ---
 
-## Phase 2 — Months 3-6: Test merch demand
+## Phase 2, Months 3-6: Test merch demand
 
 **Trigger to start:** You hit 1,000+ followers on at least one platform AND you've gotten unprompted "lol I want this on a shirt" comments.
 
@@ -72,21 +72,21 @@ If the first product sells out, do a second. If it doesn't, you've learned the a
 
 ### What NOT to do at this phase
 
-- Don't add Google AdSense yet — you don't have the traffic; conversion is awful below ~5,000 daily pageviews.
-- Don't take sponsorships under $200 — they distract from brand-building.
+- Don't add Google AdSense yet, you don't have the traffic; conversion is awful below ~5,000 daily pageviews.
+- Don't take sponsorships under $200, they distract from brand-building.
 - Don't pay for follower growth services. They're scams or get you banned.
 
 ---
 
-## Phase 3 — Months 6-12: Display ads + expanded merch
+## Phase 3, Months 6-12: Display ads + expanded merch
 
-**Trigger:** 5,000+ daily pageviews on the site (NOT just social impressions — actual site visits).
+**Trigger:** 5,000+ daily pageviews on the site (NOT just social impressions, actual site visits).
 
 **Revenue ceiling at this phase:** $200-1,500/mo.
 
 ### Display ads
 
-**Apply for Mediavine** — not AdSense.
+**Apply for Mediavine**, not AdSense.
 
 - AdSense: low CPMs, $0.50-3 per 1,000 visits
 - Mediavine: requires 50,000 monthly sessions to qualify, but pays $15-50 RPM (per 1,000 visits) for content sites
@@ -102,8 +102,8 @@ That's the dream scenario. Realistic for a niche satire site: maybe 30-50% of th
 
 Once you have one proven product, add:
 - 2-3 more shirts featuring different popular entries
-- Stickers (cheap, ~$3 each, $1 cost — 70% margin, low buyer friction)
-- A printed "physical Thiccctionary" book (POD via IngramSpark or BookVault) — collect 100 entries, sell at $24.99
+- Stickers (cheap, ~$3 each, $1 cost, 70% margin, low buyer friction)
+- A printed "physical Thiccctionary" book (POD via IngramSpark or BookVault), collect 100 entries, sell at $24.99
 
 **Realistic merch numbers at this stage:**
 - $300-800/mo from a 5-SKU shop with consistent traffic
@@ -115,7 +115,7 @@ Once you have one proven product, add:
 
 ---
 
-## Phase 4 — Year 2+: Sponsorships, premium tier, brand collabs
+## Phase 4, Year 2+: Sponsorships, premium tier, brand collabs
 
 **Trigger:** 10,000+ daily site visits AND/OR 50,000+ Instagram followers AND/OR a viral moment that produces measurable spike (TV mention, big creator share, etc.).
 
@@ -133,7 +133,7 @@ The sweet spot for a niche satire account is **brand-aligned product placements*
 - 50K: $400-1,000 per post
 - 100K: $1,000-2,500
 
-Use a platform like Aspire (https://www.aspire.io/) or Mavrck to find brand deals. Or wait for inbound — at 50K followers brands will DM you.
+Use a platform like Aspire (https://www.aspire.io/) or Mavrck to find brand deals. Or wait for inbound, at 50K followers brands will DM you.
 
 **Cap sponsorships at 1 per week.** More than that and audience trust degrades fast. Your followers are there for satire, not ads cosplaying as satire.
 
@@ -151,7 +151,7 @@ Once you have a real audience, partner with adjacent satire accounts on co-brand
 
 ---
 
-## Specific cost ceiling — when to add what
+## Specific cost ceiling, when to add what
 
 | Trigger | Spend | Tool/action | Expected return |
 |---|---|---|---|
@@ -174,7 +174,7 @@ Once you have a real audience, partner with adjacent satire accounts on co-brand
 
 2. **Burnout risk.** A daily satire account is a 6-month attention span for the creator. If you stop posting for 14 days, you lose 30-50% of momentum. Mitigation: queue 2 weeks of entries in advance once the model is humming.
 
-3. **Stale joke risk.** "Thicc" was internet-current in 2018-2022. By 2027 the slang may have aged. Mitigation: evolve the format — themed weeks, audience submissions, guest editors, a podcast version.
+3. **Stale joke risk.** "Thicc" was internet-current in 2018-2022. By 2027 the slang may have aged. Mitigation: evolve the format, themed weeks, audience submissions, guest editors, a podcast version.
 
 4. **Lawsuit risk (low but non-zero).** Featuring real branded products (Ford F-450, Boeing 747) is fine under nominative use. Featuring named people would not be. Stay strict: zero people, zero animals, only inanimate objects and abstract concepts.
 
@@ -185,10 +185,10 @@ Once you have a real audience, partner with adjacent satire accounts on co-brand
 ## What NOT to spend money on (resist)
 
 - **Paid Instagram growth services.** They're bots. Your engagement rate craters and the algorithm de-ranks you.
-- **Sponsored "shoutout" packages.** Pure scam — pay $200 for a shoutout from a 100k follower account that gets you 12 followers.
+- **Sponsored "shoutout" packages.** Pure scam, pay $200 for a shoutout from a 100k follower account that gets you 12 followers.
 - **Custom illustration commissions.** Tempting but $400-2000 per illustration with no proven ROI. The AI vision picker is good enough until you're profitable.
 - **A custom mobile app.** Web is enough. iOS apps for niche content sites die every year for a reason.
-- **Paid audience research.** You don't have a budget for this. Read your DMs and comments instead — that's free user research.
+- **Paid audience research.** You don't have a budget for this. Read your DMs and comments instead, that's free user research.
 
 ---
 
@@ -202,7 +202,7 @@ Once you have a real audience, partner with adjacent satire accounts on co-brand
 **Realistic upside case (30% probability):**
 - Year 1: $1,500-4,000
 - Year 2: $8,000-25,000
-- Year 3+: $20,000-60,000/year — could quit your day job if you wanted
+- Year 3+: $20,000-60,000/year, could quit your day job if you wanted
 
 **Breakout case (15% probability):**
 - Viral moment (TV mention, celebrity share) creates audience inflection
@@ -210,7 +210,7 @@ Once you have a real audience, partner with adjacent satire accounts on co-brand
 - Year 2: $40,000-150,000
 - Year 3+: full-time business, possibly an acquisition target
 
-**Failure case (5% probability — but it does happen):**
+**Failure case (5% probability, but it does happen):**
 - You burn out by month 4, posts get sparse, audience never coalesces
 - Total revenue: $0-100
 - Lesson: passion project, not business
@@ -231,6 +231,6 @@ After you finish the launch (Phase 8 in LAUNCH.md):
 
 4. **Don't check earnings.** They'll be $0 for 3 months and you'll get demoralized. Check them once a quarter.
 
-5. **Pre-batch a "viral moment kit."** When something hits — a celebrity shares, a TV writer references — you have ~48 hours to capture the audience before they leave. Pre-write: a pinned tweet driving to newsletter, a "best of" page on the site, a quick limited-edition merch drop. Have it ready so you don't have to think during the spike.
+5. **Pre-batch a "viral moment kit."** When something hits, a celebrity shares, a TV writer references, you have ~48 hours to capture the audience before they leave. Pre-write: a pinned tweet driving to newsletter, a "best of" page on the site, a quick limited-edition merch drop. Have it ready so you don't have to think during the spike.
 
 The site is a content engine. The monetization sits on top of audience. Build the audience first; everything else follows.

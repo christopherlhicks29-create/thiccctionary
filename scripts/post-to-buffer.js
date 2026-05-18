@@ -218,7 +218,7 @@ You are writing a SHORT social media post about today's catalogue entry. Hard ru
 - Voice is DRY in attitude, SHORT in rhythm.
 - No em-dashes (commas, periods, colons, parens)
 - No banned phrases: embodies, transcends, intersection, tapestry, symphony, captures the essence, stands as a testament, "not just X, but Y"
-- ACCESSIBILITY: names are FINE for attribution and continuity (build cast recognition over time). The SITUATION must parse for strangers — they need to understand WHAT happened even if they don't yet know WHO the person is. Reject only if the post requires insider knowledge of running bits to even parse the event.
+- ACCESSIBILITY: names are FINE for attribution and continuity (build cast recognition over time). The SITUATION must parse for strangers, they need to understand WHAT happened even if they don't yet know WHO the person is. Reject only if the post requires insider knowledge of running bits to even parse the event.
 - Make it FUNNY about the SUBJECT, not about the office.
 - End with your first name "${byline.display}" on its own line.
 - Output the post text only. No commentary, no quotes around it.

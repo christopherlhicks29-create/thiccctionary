@@ -2,9 +2,9 @@
   "_description": "Curated pool of physical-object nouns vetted as potential Thiccctionary subjects. Each has a verified-likely-Unsplash-friendly query. The refill-subject-queue.js script pulls from this when data/subject-queue.json runs low. Add freely; the only rules: physical objects/structures/plants/foods/vehicles, no people, no abstract concepts, must have plausible Unsplash photos.",
   "_format": {
     "subject": "headword as it should appear in the entry (use comma-qualifier like 'Truck, Garbage' for taxonomic feel)",
-    "query": "Unsplash search query — should be specific enough that results show the actual object",
+    "query": "Unsplash search query, should be specific enough that results show the actual object",
     "category": "Industrial Machinery | Vehicles & Transport | Architecture & Infrastructure | Domestic Goods | Foods of Substance | Produce & Botanical | Musical Instruments | Sports & Recreation | Other",
-    "notes": "optional — anything notable for the entry copy"
+    "notes": "optional, anything notable for the entry copy"
   },
   "pool": [
     { "subject": "Garbage Truck, Front-Loader", "query": "front loader garbage truck", "category": "Vehicles & Transport" },
