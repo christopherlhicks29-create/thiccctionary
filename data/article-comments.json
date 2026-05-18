@@ -1,5 +1,24 @@
 {
   "_comment": "Auto-generated in-character comments on Field Report articles. Keyed by article slug. Each comment is by another staff member (not the article author), in their voice, max 220 chars, capped 3 per article.",
   "version": 1,
-  "comments": {}
+  "comments": {
+    "the-case-for-functional-girth": [
+      {
+        "byline_id": "bart",
+        "byline_name": "Bartholomew \"Bart\" Pruss",
+        "byline_title": "Senior Cataloguer",
+        "text": "Structurally sound. \"Decorative girth\" vs \"functional girth\" is a distinction the catalogue, properly understood, has needed since volume one. I remain skeptical of the specific entries, pending review.",
+        "score": 6,
+        "created": "2026-05-18T00:12:37.413Z"
+      },
+      {
+        "byline_id": "margie",
+        "byline_name": "Margaret \"Margie\" Whitmore-Hessian",
+        "byline_title": "Editor-in-Chief",
+        "text": "Bertram made this exact point to Philippe Marchand at the '94 Geneva salon, standing next to a Bugatti EB110. Nobody listened. Eli, darling, you've essentially reinvented him. I'm not upset.",
+        "score": 8,
+        "created": "2026-05-18T00:12:45.696Z"
+      }
+    ]
+  }
 }
