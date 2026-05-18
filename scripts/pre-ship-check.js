@@ -142,6 +142,26 @@ for (const f of allFiles) {
   }
 }
 
+// Rule 5b: entry/article pages must have exactly 1 of certain unique elements.
+// Catches the regen-images-appends-not-replaces bug (Wave 164: duplicate
+// Pinterest link in entries/2026-05-13.html).
+const UNIQUE_PER_ENTRY = [
+  { pattern: /class="entry-caption"/g, label: 'entry-caption' },
+  { pattern: /class="entry-credit"/g, label: 'entry-credit' },
+  { pattern: /pinterest\.com\/pin\/create/g, label: 'pinterest share link' },
+];
+for (const f of allFiles) {
+  if (!/^entries\/\d{4}-\d{2}-\d{2}\.html$/.test(f)) continue;
+  if (!fs.existsSync(f)) continue;
+  const content = fs.readFileSync(f, 'utf8');
+  for (const { pattern, label } of UNIQUE_PER_ENTRY) {
+    const matches = content.match(pattern) || [];
+    if (matches.length > 1) {
+      fail(f, 'duplicate-entry-element', `found ${matches.length} ${label} elements (expected 1). regen-images bug or stale template render.`);
+    }
+  }
+}
+
 // Rule 6: workflow + sentinel co-creation guard
 const workflowFiles = newFiles.filter(f => f.startsWith('.github/workflows/') && f.endsWith('.yml'));
 const sentinelFiles = newFiles.filter(f => f.startsWith('data/.fire-'));
