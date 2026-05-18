@@ -98,7 +98,12 @@ export async function contextFor(bylineId, otherBylineId = null) {
   return [
     'OFFICE BIBLE CONTEXT (internal continuity - never quote verbatim, infer from):',
     ...out,
-    'IMPORTANT: a stranger reading this post should be able to parse what happened from the surrounding sentence alone. The bible gives YOU continuity; the reader gets just enough to follow.',
+    'USAGE RULES (CRITICAL):',
+    '- Pull at MOST ONE specific anchored detail from the bible. Just one.',
+    '- The bible gives YOU continuity; the reader gets a punchline.',
+    '- DO NOT try to weave multiple bible threads into one post. Pick one OR pick none.',
+    '- If a punchier post can be made WITHOUT any bible reference, write that instead. The bible is a fallback for continuity, not a checklist.',
+    '- Stranger-legibility test: a first-time reader should parse the post from the surrounding sentence alone.',
   ].join('\n');
 }
 
