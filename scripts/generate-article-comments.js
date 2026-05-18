@@ -20,6 +20,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { contextFor as bibleContextFor } from './lib/office-bible.js';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
@@ -75,7 +77,7 @@ function extractArticleContext(html) {
   };
 }
 
-async function generateComment(commenter, author, article, alreadyMade) {
+async function generateComment(commenter, author, article, alreadyMade, bibleContext = '') {
   const system = `You are ${commenter.name}, ${commenter.title} at Thiccctionary.
 
 VOICE: ${commenter.voice}
@@ -87,6 +89,7 @@ ${(commenter.drama_hooks || []).map(h => '- ' + h).join('\n')}
 
 WRITING TICS:
 ${(commenter.tics || []).map(t => '- ' + t).join('\n')}
+${bibleContext ? '\n' + bibleContext + '\n' : ''}
 
 You are leaving a SHORT comment on a colleague's article. Hard rules:
 - LESS THAN OR EQUAL TO ${COMMENT_MAX_CHARS} characters total
@@ -190,7 +193,8 @@ async function main() {
   for (const commenter of commenters) {
     let bestText = null, bestScore = 0, bestReasons = [];
     for (let attempt = 1; attempt <= 2; attempt++) {
-      const text = await generateComment(commenter, author, article, [...existing, ...finalComments]);
+      const bibleContext = await bibleContextFor(commenter.id, author.id);
+      const text = await generateComment(commenter, author, article, [...existing, ...finalComments], bibleContext);
       const rating = await rateComment(text, commenter, author);
       // Wave 161: anchor pair gets a lower quality bar. A short pointed
       // objection from Bart ("I am filing an objection.") naturally scores

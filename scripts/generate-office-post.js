@@ -19,6 +19,7 @@
  */
 
 import fs from 'node:fs/promises';
+import { contextFor as bibleContextFor } from './lib/office-bible.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -102,7 +103,7 @@ async function callOpenAI(messages, model = 'gpt-4o') {
   return JSON.parse(data.choices[0].message.content);
 }
 
-function buildSystemPrompt(byline, corpus) {
+function buildSystemPrompt(byline, corpus, bibleContext = '') {
   const ownCorpus = (corpus && corpus.own && corpus.own.length)
     ? '\n\nYOUR RECENT SOCIAL POSTS (you wrote these, maintain continuity, evolve from them):\n' + corpus.own.map(p => '- "' + p.text.slice(0, 200) + '" (' + (p.created || '').slice(0,10) + ')').join('\n')
     : '';
@@ -124,7 +125,7 @@ ${(byline.drama_hooks || []).map(h => '- ' + h).join('\n')}
 WRITING TICS:
 ${(byline.tics || []).map(t => '- ' + t).join('\n')}
 
-HARD RULES:
+${bibleContext ? bibleContext + '\n\n' : ''}HARD RULES:
 1. ≤${MAX_LEN} characters TOTAL (including signature line). Count carefully.
 2. End with a newline, then "${byline.display || byline.name.split(' ')[0]}" (your social signature).
 3. THIS IS A SOCIAL MEDIA POST. NOT a magazine essay. NOT narration. NOT play-writing. Conversational tone, present-tense observation, punchy clauses. Read it aloud, if it sounds like an essay opener you wrote it wrong.
@@ -262,7 +263,8 @@ async function main() {
       own: recentPosts.filter(p => p.byline_id === byline.id).slice(0, 5),
       colleagues: recentPosts.filter(p => p.byline_id && p.byline_id !== byline.id).slice(0, 4),
     };
-    const sys = buildSystemPrompt(byline, corpus);
+    const bibleContext = await bibleContextFor(byline.id, topic.kind === 'reply' ? topic.target?.byline_id : null);
+    const sys = buildSystemPrompt(byline, corpus, bibleContext);
     const user = buildUserPrompt(topic, byline, staff);
     let draft = await callClaude(sys, user);
     // Trim quoted wrapping if Claude added it

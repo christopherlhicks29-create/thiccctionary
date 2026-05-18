@@ -38,6 +38,8 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
+import { contextFor as bibleContextFor } from './lib/office-bible.js';
+
 const BUFFER_GRAPHQL = 'https://api.buffer.com/';
 
 const stripHtml = s => (s || '').replace(/<[^>]+>/g, '');
@@ -219,7 +221,9 @@ You are writing a SHORT social media post about today's catalogue entry. Hard ru
 - ACCESSIBILITY: names are FINE for attribution and continuity (build cast recognition over time). The SITUATION must parse for strangers — they need to understand WHAT happened even if they don't yet know WHO the person is. Reject only if the post requires insider knowledge of running bits to even parse the event.
 - Make it FUNNY about the SUBJECT, not about the office.
 - End with your first name "${byline.display}" on its own line.
-- Output the post text only. No commentary, no quotes around it.`;
+- Output the post text only. No commentary, no quotes around it.
+
+${await bibleContextFor(byline.id)}`;
 
   const user = `Today's entry:
 Subject: ${entry.word}
