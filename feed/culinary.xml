@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Culinary</title>
+    <link>https://thiccctionary.com/archive.html?tag=culinary</link>
+    <atom:link href="https://thiccctionary.com/feed/culinary.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "culinary".</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 May 2026 01:53:48 GMT</lastBuildDate>
+    <item>
+      <title>Wheel, Parmigiano-Reggiano</title>
+      <link>https://thiccctionary.com/entries/2026-05-06.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-06.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 GMT</pubDate>
+      <description>A cylindrical mass of aged cheese, notable for its robust curvature and dense, granular interior; often showcased in markets and delicatessens worldwide.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-06.jpg" type="image/jpeg" length="0" />
+      <category>cheese</category><category>Italian</category><category>culinary</category>
+    </item>
+    <item>
+      <title>Squash, Banana</title>
+      <link>https://thiccctionary.com/entries/2026-04-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-21.html</guid>
+      <pubDate>Tue, 21 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A member of the Cucurbitaceae family, characterized by an elongated shape and a robust girth, particularly when viewed in profile against contrasting backgrounds. Often found lounging in suburban kitchen fruit bowls, it demands a second glance.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-21-squash-banana.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>botanical</category><category>culinary</category>
+    </item>
+  </channel>
+</rss>

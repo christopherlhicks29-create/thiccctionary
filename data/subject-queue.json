@@ -11,21 +11,5 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": [
-    {
-      "subject": "Drum, Bass Marching",
-      "query": "bass drum marching band",
-      "category": "Musical Instruments"
-    },
-    {
-      "subject": "Pillow, Down European",
-      "query": "european down pillow plush",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Steam Locomotive, Big Boy",
-      "query": "big boy locomotive 4014",
-      "category": "Vehicles & Transport"
-    }
-  ]
+  "queue": []
 }
