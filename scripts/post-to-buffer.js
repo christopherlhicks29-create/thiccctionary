@@ -405,7 +405,7 @@ async function buildText(entry, mode, baseUrl) {
     // etymology variant, which depended on entry data that landed thiccc
     // jokes only 28% of the time.)
     const body = punch;
-    const suffix = `\n\n${entry.word}, today on Thiccctionary.\n${baseUrl}\n\n#thiccctionary`;
+    const suffix = `\n\n${entry.word}, today on Thiccctionary\u2122.\n${baseUrl}\n\n#thiccctionary`;
     return fitToX('', body, suffix);
   }
   // variant 3, example + em-dash word + punchline as kicker.
