@@ -152,6 +152,47 @@ ${items}
   </section>`;
 }
 
+// Wave 166: Sources / editorial citations footer. Deadpan absurdist
+// academic register. Pulls photographer attribution + a plausible
+// internal cross-reference + an editorial-board citation that lands as
+// a joke on a first-time reader without requiring any inside knowledge.
+function renderSources(entry, allEntries = null) {
+  const items = [];
+
+  // 1. Photo source. Real photographer + Unsplash link, reformatted as a citation.
+  if (entry.photographer) {
+    const url = entry.photographerUrl || 'https://unsplash.com/';
+    const photoUrl = entry.unsplashUrl || url;
+    const safeName = String(entry.photographer).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    items.push(`Photograph by <a href="${url}" target="_blank" rel="noopener">${safeName}</a>, via <a href="${photoUrl}" target="_blank" rel="noopener">Unsplash</a>. Catalogued under plate N.`);
+  }
+
+  // 2. A-Z cross-reference - real internal link to the alphabetical archive.
+  const firstLetter = String(entry.word || '').charAt(0).toUpperCase();
+  if (/[A-Z]/.test(firstLetter)) {
+    items.push(`Cross-reference: <a href="../a-z.html#${firstLetter}">Thiccctionary A-Z, ${firstLetter}</a>.`);
+  }
+
+  // 3. Category lineage. Real internal link if the entry has a category.
+  if (entry.category) {
+    items.push(`Catalogued under: <em>${String(entry.category).replace(/&/g, '&amp;').replace(/</g, '&lt;')}</em>. See related entries below.`);
+  }
+
+  // 4. Editorial review line. Deadpan joke that lands without needing
+  // to know who the Senior Cataloguer is - "pending objection" reads as
+  // standard academic-dictionary footnote language.
+  items.push(`Editorial review: pending objection from the Senior Cataloguer's office.`);
+
+  if (items.length === 0) return '';
+
+  return `  <section class="entry-sources" aria-label="Sources and editorial notes" style="margin: 56px 0 0; padding: 28px 24px; border-top: 1px solid var(--rule); font-size: 14px; line-height: 1.6;">
+    <h3 style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0 0 1rem; font-weight: 600;">Sources</h3>
+    <ol style="margin: 0; padding-left: 1.5rem; color: var(--ink-soft);">
+${items.map(i => `      <li style="margin-bottom: 0.5rem;">${i}</li>`).join('\n')}
+    </ol>
+  </section>`;
+}
+
 export async function buildEntryPage(entry, prev = null, next = null, allEntries = null) {
   const template = await fs.readFile(TEMPLATE_PATH, 'utf8');
   const canonical = `${SITE.replace(/\/$/, '')}/entries/${entry.date}.html`;
@@ -260,6 +301,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     NEXT_NAV: next
       ? `<a class="entry-nav-link entry-nav-link--next" href="${next.date}.html"><span class="entry-nav-direction">Next entry →</span><span class="entry-nav-word">${escapeHtml(next.word)}</span></a>`
       : `<span class="entry-nav-link entry-nav-link--placeholder"></span>`,
+    SOURCES_HTML: renderSources(entry, allEntries),
     RELATED_ENTRIES: renderRelated(allEntries ? findRelatedEntries(entry, allEntries, 3) : []),
   };
 
