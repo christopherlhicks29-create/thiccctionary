@@ -73,6 +73,7 @@ const EMDASH_ALLOW = [
 for (const f of allFiles) {
   if (!/\.(html|js|md|mjs|yml|yaml|css|json)$/.test(f)) continue;
   if (f.endsWith('pre-ship-check.js')) continue; // self-reference; this file defines the rule
+  if (f.startsWith('audits/')) continue; // audit reports legitimately quote em-dash content they flag
   if (!fs.existsSync(f)) continue;
   // Only scan LINES I'm adding/modifying, not the whole file. WAVES.md and
   // similar historical logs have pre-Wave-114 em-dashes that are frozen
