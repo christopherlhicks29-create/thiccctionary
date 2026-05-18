@@ -55,7 +55,7 @@ export async function onRequestGet({ env }) {
     }
 
     // 4. Recent workflow runs — latest of each key workflow
-    const runsRes = await gh(`/repos/${REPO}/actions/runs?per_page=30`, {}, env);
+    const runsRes = await gh(`/repos/${REPO}/actions/runs?per_page=100`, {}, env);
     if (runsRes.ok) {
       const runs = (await runsRes.json()).workflow_runs || [];
       const latestOf = name => runs.find(r => r.name === name);

@@ -140,14 +140,15 @@ async function main() {
         continue;
       }
 
+      // Wave 147: only write text fields. Image fields (caption, tags, image,
+      // photographer) are owned by regenerate-images.js. Touching them here
+      // causes merge conflicts when both pipelines run for the same date.
       entry.word = fresh.word;
       entry.pronunciation = fresh.pronunciation;
       entry.partOfSpeech = fresh.partOfSpeech;
       entry.definitions = fresh.definitions;
       entry.example = fresh.example;
       entry.etymology = fresh.etymology;
-      entry.caption = fresh.caption;
-      entry.tags = fresh.tags;
       console.log(`  New headword: ${fresh.word}`);
       console.log(`  New example:  ${fresh.example}`);
       succeeded++;

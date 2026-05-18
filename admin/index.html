@@ -183,7 +183,14 @@
       <h2>Catalog</h2>
       <div class="tile-grid" id="catalog-tiles"></div>
 
-      <h2>Pipeline status</h2>
+      <h2 style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;">
+        <span>Pipeline status</span>
+        <label style="font-size: 13px; font-weight: 400; color: var(--ink-soft); cursor: pointer; user-select: none; white-space: nowrap;">
+          <input type="checkbox" id="autofix-toggle" style="margin-right: 6px; vertical-align: middle;" />
+          <span style="vertical-align: middle;">Auto-fix red pipelines</span>
+        </label>
+      </h2>
+      <div id="autofix-banner" style="display:none; padding: 0.75rem 1rem; margin-bottom: 1rem; border: 1px solid var(--rule); background: rgba(245,232,199,0.25); font-size: 13px; line-height: 1.5;"></div>
       <div class="tile-grid" id="pipeline-tiles"></div>
 
     </div>
@@ -210,6 +217,23 @@
       <p class="desc">Triggers <code>daily.yml</code>. Use if the 13:00 UTC cron didn't fire or you want to retry. Won't duplicate if today's entry already exists (unless you delete it first).</p>
       <div class="row">
         <button class="primary" data-trigger="daily" data-confirm="Fire daily.yml for today?">Fire daily cron</button>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <h3>Burst-create archive entries</h3>
+      <p class="desc">Paste a list of subjects (one per line). Each runs the full daily pipeline with quality gate (image veto + critique ≥ 6/10) and back-fills the archive going backwards from the oldest existing entry. Max 25 subjects per burst. Auto-merges when successful.</p>
+      <p class="desc" style="font-size: 12px; opacity: 0.7;">Subject format: <code>Word, Qualifier</code> like <code>Anvil, Peter Wright</code> or <code>Watermelon, Carolina Cross</code>. A bare word works too.</p>
+      <div style="margin-top: 0.75rem;">
+        <textarea id="burst-subjects-input" rows="8" style="width: 100%; padding: 0.5rem; font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--rule); border-radius: 4px;" placeholder="Anvil, Peter Wright
+Watermelon, Carolina Cross
+Tugboat
+Cement Block, 8-inch
+Steam Locomotive, Big Boy"></textarea>
+      </div>
+      <div class="row" style="margin-top: 0.5rem;">
+        <button class="action" id="burst-fire-btn">Fire burst</button>
+        <span id="burst-status" style="margin-left: 12px; font-size: 13px; color: var(--ink-soft);"></span>
       </div>
     </div>
 
@@ -292,6 +316,10 @@ The band marched on"></textarea>
   <section id="social" class="panel">
     <h2>Employee social posts</h2>
     <p class="lede">All staff-bylined posts from <code>data/office-post-queue.json</code>. Status = posted means Buffer accepted the post into its queue; the actual FB/X publish happens at the next Buffer scheduled slot (use <a href="https://publish.buffer.com/queue" target="_blank" rel="noopener">Buffer dashboard</a> to share-now if needed).</p>
+    <div id="social-actions" style="margin-bottom: 1.5rem;">
+      <button type="button" id="retry-failed-btn" class="btn btn-secondary" style="font-size: 0.9rem;">Retry failed posts</button>
+      <span id="retry-failed-status" style="margin-left: 12px; font-size: 13px; color: var(--ink-soft);"></span>
+    </div>
     <div id="social-loading" class="empty-state">Loading posts…</div>
     <div id="social-error" class="empty-state" style="display:none;"></div>
     <div id="social-list" style="display:none;"></div>
@@ -456,22 +484,119 @@ async function loadDashboard() {
   const pipeline = $('#pipeline-tiles');
   pipeline.innerHTML = '';
   const workflows = data.workflows || {};
+  // Wave 152: each pipeline has an associated fix trigger key. When the
+  // tile is non-green we expose a "Fix now" link AND - if the auto-fix
+  // toggle is on - automatically fire the fix once per session per pipeline
+  // (capped at 3 retries).
   const items = [
-    ['Daily cron', workflows.daily],
-    ['Cron watchdog', workflows.cronWatchdog],
-    ['Post-on-merge', workflows.postOnMerge],
-    ['Site-health audit', workflows.siteHealth],
-    ['Post-deploy verify', workflows.postDeployVerify],
+    ['Daily cron',          workflows.daily,            'daily-dispatch'],
+    ['Cron watchdog',       workflows.cronWatchdog,     'cron-watchdog'],
+    ['Post-on-merge',       workflows.postOnMerge,      'post-on-merge'],
+    ['Site-health audit',   workflows.siteHealth,       'site-health'],
+    ['Post-deploy verify',  workflows.postDeployVerify, 'post-deploy-verify'],
   ];
-  items.forEach(([label, wf]) => {
+  items.forEach(([label, wf, fixTrigger]) => {
     const tileClass = !wf ? '' : (wf.conclusion === 'success' ? 'ok' : wf.conclusion === 'failure' ? 'bad' : 'warn');
+    const isRed = !wf || wf.conclusion === 'failure' || (wf.status && wf.status !== 'completed');
+    const retries = parseInt(sessionStorage.getItem('autofix:' + fixTrigger + ':retries') || '0', 10);
+    const subRunLink = wf ? timeAgo(wf.createdAt) + ' &middot; <a href="' + esc(wf.htmlUrl) + '" target="_blank">view run</a>' : 'No recent run';
+    const fixLink = isRed
+      ? ' &middot; <a href="#" data-fix="' + esc(fixTrigger) + '" data-label="' + esc(label) + '" class="autofix-link" style="color: var(--oxblood);">Fix now' + (retries > 0 ? ' (retried ' + retries + 'x)' : '') + '</a>'
+      : '';
     pipeline.innerHTML += `
-      <div class="tile ${tileClass}">
+      <div class="tile ${tileClass}" data-trigger="${esc(fixTrigger)}" data-red="${isRed ? '1' : '0'}">
         <div class="label">${esc(label)}</div>
         <div class="value">${pillFor(wf ? wf.conclusion : null)}</div>
-        <div class="sub">${wf ? timeAgo(wf.createdAt) + ' · <a href="' + esc(wf.htmlUrl) + '" target="_blank">view run</a>' : 'No recent run'}</div>
+        <div class="sub">${subRunLink}${fixLink}</div>
       </div>`;
   });
+
+  // Wire up Fix-now links
+  pipeline.querySelectorAll('.autofix-link').forEach(a => {
+    a.addEventListener('click', async (ev) => {
+      ev.preventDefault();
+      const trigger = a.dataset.fix;
+      const lbl = a.dataset.label;
+      a.textContent = 'Firing…';
+      a.style.pointerEvents = 'none';
+      try {
+        const res = await fetch('/api/admin/fire-trigger', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ trigger, sourceEmail: 'autofix' }),
+        });
+        const j = await res.json();
+        if (res.ok) {
+          a.textContent = 'Fired - re-checking in 60s…';
+          setTimeout(() => loadStatus(), 60_000);
+        } else {
+          a.textContent = 'Fire failed: ' + (j.error || res.status);
+          a.style.pointerEvents = 'auto';
+        }
+      } catch (e) {
+        a.textContent = 'Network error';
+        a.style.pointerEvents = 'auto';
+      }
+    });
+  });
+
+  // Auto-fix loop: if the toggle is on, fire the fix for each red tile
+  // (max 3 retries per pipeline per session) and re-poll after 90s.
+  await runAutofixLoop(items);
+}
+
+async function runAutofixLoop(items) {
+  const banner = $('#autofix-banner');
+  const toggle = $('#autofix-toggle');
+  if (!toggle || !toggle.checked) {
+    banner.style.display = 'none';
+    return;
+  }
+  const MAX_RETRIES = 3;
+  const reds = items.filter(([, wf]) => !wf || wf.conclusion === 'failure' || (wf.status && wf.status !== 'completed'));
+  if (reds.length === 0) {
+    banner.style.display = 'block';
+    banner.innerHTML = 'Auto-fix on. All pipelines green. Re-checking in 90s.';
+    if (!window.__autofixTimer) {
+      window.__autofixTimer = setTimeout(() => { window.__autofixTimer = null; loadStatus(); }, 90_000);
+    }
+    return;
+  }
+  const fired = [];
+  const skipped = [];
+  for (const [label, wf, trigger] of reds) {
+    const key = 'autofix:' + trigger + ':retries';
+    const tries = parseInt(sessionStorage.getItem(key) || '0', 10);
+    if (tries >= MAX_RETRIES) {
+      skipped.push(`<strong>${esc(label)}</strong> (${tries} tries already - giving up, please check the logs)`);
+      continue;
+    }
+    sessionStorage.setItem(key, String(tries + 1));
+    try {
+      const res = await fetch('/api/admin/fire-trigger', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trigger, sourceEmail: 'autofix-loop' }),
+      });
+      if (res.ok) {
+        fired.push(`<strong>${esc(label)}</strong> (attempt ${tries + 1}/${MAX_RETRIES})`);
+      } else {
+        const j = await res.json().catch(() => ({}));
+        skipped.push(`<strong>${esc(label)}</strong> - fire failed: ${esc(j.error || res.status)}`);
+      }
+    } catch (e) {
+      skipped.push(`<strong>${esc(label)}</strong> - network error`);
+    }
+  }
+  banner.style.display = 'block';
+  let html = '<strong>Auto-fix on.</strong> ';
+  if (fired.length > 0) html += 'Fired: ' + fired.join(', ') + '. Re-checking in 90s.';
+  if (skipped.length > 0) html += '<br>Skipped: ' + skipped.join('; ');
+  if (fired.length === 0 && skipped.length > 0) html += '<br><em>Toggle off and re-enable to reset retry counters.</em>';
+  banner.innerHTML = html;
+  if (fired.length > 0 && !window.__autofixTimer) {
+    window.__autofixTimer = setTimeout(() => { window.__autofixTimer = null; loadStatus(); }, 90_000);
+  }
 }
 
 async function loadSubmissions() {
@@ -750,6 +875,39 @@ async function loadEntryForEdit(date) {
 
 $('#back-to-entries').addEventListener('click', e => { e.preventDefault(); loadEntries(); });
 
+// Burst-create handler (Wave 158)
+const burstBtn = $('#burst-fire-btn');
+const burstInput = $('#burst-subjects-input');
+const burstStatus = $('#burst-status');
+if (burstBtn) {
+  burstBtn.addEventListener('click', async () => {
+    const subjects = burstInput.value.split('\n').map(s => s.trim()).filter(Boolean);
+    if (subjects.length === 0) { burstStatus.textContent = 'Add at least one subject.'; return; }
+    if (subjects.length > 25) { burstStatus.textContent = 'Max 25 per burst. You have ' + subjects.length + '.'; return; }
+    if (!confirm('Fire burst-create for ' + subjects.length + ' subjects? This runs the full pipeline per subject (image search + LLM text + critique) and can take 5-15 minutes total. Auto-merges on success.')) return;
+    burstBtn.disabled = true;
+    burstStatus.textContent = 'Firing burst for ' + subjects.length + ' subjects...';
+    try {
+      const res = await fetch('/api/admin/fire-trigger', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trigger: 'batch-entries', subjects, sourceEmail: 'admin-burst' }),
+      });
+      const j = await res.json();
+      if (res.ok) {
+        burstStatus.textContent = 'Fired. Workflow will run for ~' + (subjects.length * 2) + ' min. Check Actions tab for progress. Subjects will appear in archive after auto-merge.';
+        burstInput.value = '';
+      } else {
+        burstStatus.textContent = 'Failed: ' + (j.error || res.status);
+      }
+    } catch (e) {
+      burstStatus.textContent = 'Network: ' + e.message;
+    } finally {
+      burstBtn.disabled = false;
+    }
+  });
+}
+
 // Quick-fire actions
 $$('button[data-trigger]').forEach(btn => btn.addEventListener('click', async () => {
   const trigger = btn.dataset.trigger;
@@ -870,6 +1028,34 @@ async function loadSocialPosts() {
       errors +
     '</article>';
   }).join('');
+
+  // Wire up the retry button (idempotent - replaces handler on each refresh)
+  const retryBtn = $('#retry-failed-btn');
+  const retryStatus = $('#retry-failed-status');
+  if (retryBtn) {
+    retryBtn.onclick = async () => {
+      retryBtn.disabled = true;
+      retryStatus.textContent = 'Firing retry pass...';
+      try {
+        const res = await fetch('/api/admin/fire-trigger', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ trigger: 'retry-posts', sourceEmail: 'social-tab' }),
+        });
+        const j = await res.json();
+        if (res.ok) {
+          retryStatus.textContent = 'Fired - workflow will run within ~30s. Re-checking in 90s.';
+          setTimeout(() => { loadSocialPosts(); retryBtn.disabled = false; retryStatus.textContent = ''; }, 90_000);
+        } else {
+          retryStatus.textContent = 'Failed: ' + (j.error || res.status);
+          retryBtn.disabled = false;
+        }
+      } catch (e) {
+        retryStatus.textContent = 'Network error: ' + e.message;
+        retryBtn.disabled = false;
+      }
+    };
+  }
 }
 
 // Wire to tab activation: load when "social" tab becomes active

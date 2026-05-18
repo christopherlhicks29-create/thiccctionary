@@ -8,6 +8,7 @@ name: Post-Deploy Verify
 # guards that class of bug.
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
 

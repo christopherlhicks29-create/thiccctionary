@@ -5,6 +5,7 @@ name: Post to Buffer on Daily Merge
 # AND, if a video file exists for today, also posts a FB Reel + IG Reel.
 # Sends the entry as a newsletter to Buttondown subscribers.
 on:
+  workflow_dispatch:
   pull_request:
     types: [closed]
   # Manual fire-from-anywhere: touch data/.fire-buffer and push.

@@ -610,10 +610,58 @@ Notes:
 
 
 // ---------- main ----------
+
+// Wave 149: when the daily pipeline deliberately skips (picker rejects all
+// images, critique rejects the chosen image, retry query returns nothing),
+// we DO need to keep the run green - but the old behavior just called
+// process.exit(0) which left the dead subject sitting at the top of
+// data/subject-queue.json. Tomorrow's run pulled the same subject and
+// failed the same way (duplicate Tuba bug, 2026-05-17).
+//
+// bailGracefully() commits the queue pop FIRST, then logs the bail to
+// audits/dead-subjects/<date>.md so we can spot pattern subjects, then
+// exits 0. After this, the next run picks the next queue item or falls
+// through to the auto-picker - never the same dead subject.
+async function bailGracefully({ reason, subject, queueAfterPull }) {
+  console.log(`[bail] ${reason} - subject "${subject}"`);
+  // 1. Pop the dead subject from the queue
+  if (queueAfterPull) {
+    try {
+      await fs.writeFile(
+        path.join(ROOT, 'data', 'subject-queue.json'),
+        JSON.stringify(queueAfterPull, null, 2) + '\n'
+      );
+      console.log(`[bail] popped "${subject}" from queue. ${queueAfterPull.queue.length} item(s) remain.`);
+    } catch (e) {
+      console.warn('[bail] could not update subject-queue.json:', e.message);
+    }
+  } else {
+    console.log('[bail] no queueAfterPull (auto-picker subject) - nothing to pop.');
+  }
+  // 2. Log the dead subject so we can spot patterns
+  try {
+    const today = process.env.TARGET_DATE || new Date().toISOString().slice(0, 10);
+    const logDir = path.join(ROOT, 'audits', 'dead-subjects');
+    await fs.mkdir(logDir, { recursive: true });
+    const logPath = path.join(logDir, `${today}.md`);
+    const stamp = new Date().toISOString();
+    const line = `- ${stamp} | ${subject} | ${reason}\n`;
+    let existing = '';
+    try { existing = await fs.readFile(logPath, 'utf8'); } catch (_) { /* new file */ }
+    const header = existing ? '' : `# Dead subjects ${today}\n\nSubjects the daily pipeline rejected before producing an entry.\n\n`;
+    await fs.writeFile(logPath, header + existing + line, 'utf8');
+    console.log(`[bail] logged to audits/dead-subjects/${today}.md`);
+  } catch (e) {
+    console.warn('[bail] could not write dead-subjects log:', e.message);
+  }
+  // 3. Exit clean
+  process.exit(0);
+}
+
 async function main() {
   const raw = await fs.readFile(ENTRIES_PATH, 'utf8').catch(() => '[]');
   const entries = JSON.parse(raw);
-  const today = new Date().toISOString().slice(0, 10);
+  const today = process.env.TARGET_DATE || new Date().toISOString().slice(0, 10);
 
   const force = process.env.FORCE_REGENERATE === 'true';
   const existingIdx = entries.findIndex(e => e.date === today);
@@ -633,7 +681,24 @@ async function main() {
   if (pendingWords.length > 0) {
     console.log(`Found ${pendingWords.length} word(s) in open daily PRs: ${pendingWords.join(', ')}`);
   }
-  const usedWords = [...new Set([...recentWords, ...pendingWords])];
+  // Wave 149: pull recent dead subjects from audits/dead-subjects/*.md so the
+  // auto-picker doesn't re-pick something we just bailed on. Scan the last 14
+  // log files (date-stamped). The bail logger writes lines like
+  // `- 2026-05-17T... | Drum, Oil 55-Gallon | reason`.
+  const deadWords = [];
+  try {
+    const deadDir = path.join(ROOT, 'audits', 'dead-subjects');
+    const files = (await fs.readdir(deadDir).catch(() => [])).sort().slice(-14);
+    for (const f of files) {
+      const text = await fs.readFile(path.join(deadDir, f), 'utf8').catch(() => '');
+      for (const line of text.split('\n')) {
+        const m = line.match(/^- \S+ \| ([^|]+?) \|/);
+        if (m) deadWords.push(m[1].trim());
+      }
+    }
+    if (deadWords.length > 0) console.log(`Found ${deadWords.length} dead subject(s) in last 14 days; will avoid.`);
+  } catch (e) { /* dir absent, normal */ }
+  const usedWords = [...new Set([...recentWords, ...pendingWords, ...deadWords])];
   let subjectInfo;
   // Sentinel-file override: data/.fire-daily-subject (one line: a subject string) lets
   // me steer the picker from the sandbox without needing workflow_dispatch inputs.
@@ -769,16 +834,20 @@ async function main() {
     const broaderQuery = `${subjectInfo.unsplashQuery} photograph`;
     const retryCandidates = await searchUnsplash(broaderQuery);
     if (!retryCandidates || retryCandidates.length === 0) {
-      console.log(`No results for retry query "${broaderQuery}". Skipping today's run cleanly so the cron can pick a different subject tomorrow.`);
-      // Exit 0, this is a deliberate skip, not a failure. Run shows green,
-      // no PR opens (nothing to commit), today's date stays available for
-      // the next run.
-      process.exit(0);
+      console.log(`No results for retry query "${broaderQuery}".`);
+      await bailGracefully({
+        reason: 'unsplash returned zero results on both queries',
+        subject: subjectInfo.subject,
+        queueAfterPull,
+      });
     }
     chosen = await pickThiccestImage(subjectInfo.subject, retryCandidates);
     if (chosen && chosen.rejected) {
-      console.log(`All candidates failed veto on both queries for "${subjectInfo.subject}". Skipping today.`);
-      process.exit(0);  // deliberate skip, green run, no PR
+      await bailGracefully({
+        reason: 'picker vetoed all candidates on both queries',
+        subject: subjectInfo.subject,
+        queueAfterPull,
+      });
     }
   }
 
@@ -813,7 +882,11 @@ async function main() {
     console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');
     console.log('  score:', critique.score, ' verdict:', critique.verdict);
     console.log('  critique:', critique.critique);
-    process.exit(0);  // deliberate skip, green run, no PR opens, subject remains available for next run
+    await bailGracefully({
+      reason: `critique gate: verdict=${critique.verdict} score=${critique.score}`,
+      subject: subjectInfo.subject,
+      queueAfterPull,
+    });
   }
 
   // Step 5: write the entry

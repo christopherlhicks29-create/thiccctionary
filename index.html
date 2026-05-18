@@ -8,6 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Thiccctionary" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="application-name" content="Thiccctionary" />
 <link rel="canonical" href="https://thiccctionary.com/" />
 
 <!-- Open Graph -->
@@ -28,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=63" />
+<link rel="stylesheet" href="styles.css?v=64" />
 
 <!-- Mobile theme + locale -->
 <meta name="theme-color" content="#f5e8c7" />
@@ -505,12 +510,73 @@
   });
 </script>
 
+<!-- Wave 156: PWA install banner + service worker -->
+<aside id="pwa-install-banner" style="display: none; position: fixed; bottom: 16px; left: 16px; right: 16px; max-width: 480px; margin: 0 auto; padding: 12px 16px; background: var(--ink); color: var(--cream); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); font-size: 14px; line-height: 1.5; align-items: center; gap: 12px; z-index: 1000;">
+  <span style="flex: 1;">Install Thi<span style="color: #c46b6b; font-style: italic;">ccc</span>tionary for daily entries on your home screen.</span>
+  <button type="button" id="pwa-install-btn" style="background: var(--cream); color: var(--ink); border: none; padding: 6px 12px; border-radius: 4px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;">Install</button>
+  <button type="button" id="pwa-dismiss-btn" aria-label="Dismiss" style="background: transparent; color: var(--cream); border: none; font-size: 18px; cursor: pointer; opacity: 0.6; padding: 0 4px;">&times;</button>
+</aside>
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+(function() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+    });
+  }
+
+  // Install banner. Two paths:
+  //   - Chrome/Edge: beforeinstallprompt event fires when the site is
+  //     eligible. We capture, show our banner, prompt on click.
+  //   - iOS Safari: no beforeinstallprompt. Show a short Add to Home
+  //     Screen hint instead (only if not already installed).
+  const banner = document.getElementById('pwa-install-banner');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const dismissBtn = document.getElementById('pwa-dismiss-btn');
+  if (!banner) return;
+
+  const DISMISS_KEY = 'pwa-banner-dismissed';
+  const dismissedAt = parseInt(localStorage.getItem(DISMISS_KEY) || '0', 10);
+  const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+  const recentlyDismissed = dismissedAt && (Date.now() - dismissedAt) < SEVEN_DAYS;
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+  if (recentlyDismissed || isStandalone) return;
+
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (ev) => {
+    ev.preventDefault();
+    deferredPrompt = ev;
+    banner.style.display = 'flex';
   });
-}
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const result = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    banner.style.display = 'none';
+    if (result.outcome !== 'accepted') {
+      localStorage.setItem(DISMISS_KEY, String(Date.now()));
+    }
+  });
+
+  dismissBtn.addEventListener('click', () => {
+    banner.style.display = 'none';
+    localStorage.setItem(DISMISS_KEY, String(Date.now()));
+  });
+
+  // iOS Safari fallback: no beforeinstallprompt. Detect iOS and show
+  // an Add-to-Home-Screen hint after a delay (so it doesn't fire on
+  // every page load mid-scroll).
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS && !isStandalone) {
+    setTimeout(() => {
+      banner.querySelector('span').textContent = 'Add Thiccctionary to your home screen: tap Share, then Add to Home Screen.';
+      installBtn.style.display = 'none';
+      banner.style.display = 'flex';
+    }, 4000);
+  }
+})();
 </script>
 <script defer src="/scripts/mobile-nav.js?v=63"></script>
 </body>

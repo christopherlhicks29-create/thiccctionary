@@ -167,7 +167,11 @@ async function main() {
   const commentsPath = path.join(ROOT, 'data', 'article-comments.json');
   const commentsData = JSON.parse(await fs.readFile(commentsPath, 'utf8'));
   if (!commentsData.comments[ARTICLE_SLUG]) commentsData.comments[ARTICLE_SLUG] = [];
-  const existing = commentsData.comments[ARTICLE_SLUG];
+  // Wave 150: defensive copy. If we just held the reference, the push() below
+  // would mutate `existing` and cause [...existing, ...finalComments] downstream
+  // to double-count finalComments (root cause of duplicate Teddy comment on
+  // the-case-for-functional-girth article).
+  const existing = [...commentsData.comments[ARTICLE_SLUG]];
 
   // Generate
   const finalComments = [];
@@ -209,6 +213,22 @@ async function renderCommentsIntoArticle(slug, allComments) {
   if (allComments.length === 0) return;
   const htmlPath = path.join(ROOT, 'articles', `${slug}.html`);
   let html = await fs.readFile(htmlPath, 'utf8');
+
+  // Wave 150: dedup safety net. Drop any comment whose (byline_id + text) was
+  // already seen earlier in the list. Stops double-render no matter how the
+  // caller built the array.
+  const seenKeys = new Set();
+  const deduped = [];
+  for (const c of allComments) {
+    const key = `${c.byline_id}::${(c.text || '').trim()}`;
+    if (seenKeys.has(key)) {
+      console.warn(`[comments] dropping duplicate comment from ${c.byline_id}: ${(c.text || '').slice(0, 60)}...`);
+      continue;
+    }
+    seenKeys.add(key);
+    deduped.push(c);
+  }
+  allComments = deduped;
 
   // Build the comments block
   const items = allComments.map(c => {
