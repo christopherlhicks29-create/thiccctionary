@@ -26,7 +26,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
 const ARTICLE_SLUG = (process.env.ARTICLE_SLUG || '').trim();
-if (!ARTICLE_SLUG) { console.error('FATAL: ARTICLE_SLUG required'); process.exit(1); }
+const ARTICLE_SLUGS = (process.env.ARTICLE_SLUGS || '').trim();
+if (!ARTICLE_SLUG && !ARTICLE_SLUGS) { console.error('FATAL: ARTICLE_SLUG or ARTICLE_SLUGS required'); process.exit(1); }
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -133,6 +134,7 @@ Rate.`;
 }
 
 async function main() {
+  const ARTICLE_SLUG = (process.env.ARTICLE_SLUG || '').trim();
   console.log(`[comments] generating for ${ARTICLE_SLUG}`);
 
   // Load article metadata
@@ -288,4 +290,27 @@ async function renderCommentsIntoArticle(slug, allComments) {
   await fs.writeFile(htmlPath, html, 'utf8');
 }
 
-main().catch(err => { console.error('[comments] FATAL:', err); process.exit(1); });
+// Wave 169b: batch support. If ARTICLE_SLUGS is provided, loop through.
+async function runAll() {
+  if (ARTICLE_SLUGS) {
+    const slugs = ARTICLE_SLUGS.split(',').map(s => s.trim()).filter(Boolean);
+    console.log(`[comments] batch mode: ${slugs.length} slugs`);
+    let ok = 0, fail = 0;
+    for (const slug of slugs) {
+      console.log(`\n=== [${ok + fail + 1}/${slugs.length}] ${slug} ===`);
+      process.env.ARTICLE_SLUG = slug;
+      try {
+        await main();
+        ok++;
+      } catch (e) {
+        fail++;
+        console.error(`[comments] ${slug} FAILED: ${e.message}`);
+      }
+    }
+    console.log(`\n[comments] batch done. ok=${ok} fail=${fail}`);
+    if (ok === 0) process.exit(1);
+  } else {
+    await main();
+  }
+}
+runAll().catch(err => { console.error('[comments] FATAL:', err); process.exit(1); });
