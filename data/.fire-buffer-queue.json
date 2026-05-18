@@ -1,0 +1,7 @@
+{
+  "action": "delete-by-match",
+  "match_terms": ["One submits, for the record, that the Saturn V", "Moon and Stars"],
+  "dry_run": false,
+  "_t": 1779065194,
+  "_fired": { "at": "2026-05-18T00:46:34Z", "by": "wave-163-audit" }
+}
