@@ -1,9 +1,6 @@
 {
   "date": "2026-05-17",
-  "byline_override": "",
+  "byline_override": "bart",
   "topic_kind": "either",
-  "_fired": {
-    "at": "2026-05-17T15:25:02Z",
-    "by": "admin-button-test"
-  }
+  "_fired": { "at": "2026-05-18T00:51:10Z", "by": "wave-162-verify" }
 }
