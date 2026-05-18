@@ -10,78 +10,91 @@
     "slug": "physics-of-thiccc",
     "title": "The Physics of Thiccc: Why Big Things Stay Big",
     "description": "Square-cube law, structural necessity, and the engineering logic behind why truly large objects look the way they do. A field guide to the geometry of girth.",
-    "date": "2026-05-10"
+    "date": "2026-05-10",
+    "byline_id": "teddy"
   },
   {
     "slug": "bagger-288-thicccest-machine",
     "title": "The Bagger 288: The Thiccc-est Machine on Earth",
     "description": "At 96 metres tall and 220 metres long, the Bagger 288 is the largest land vehicle ever built. A field report on what it means to be truly, structurally, irreversibly thiccc.",
-    "date": "2026-05-10"
+    "date": "2026-05-10",
+    "byline_id": "teddy"
   },
   {
     "slug": "foods-of-substance",
     "title": "Foods of Substance: A Thiccc Survey",
     "description": "From Parmigiano wheels to heritage tomatoes to Atlantic Giant pumpkins, when food's structural commitment becomes its identity.",
-    "date": "2026-05-10"
+    "date": "2026-05-10",
+    "byline_id": "margie"
   },
   {
     "slug": "anatomy-thiccc-vehicle",
     "title": "The Anatomy of a Thiccc Vehicle",
     "description": "Five parts worth knowing: wheelbase, aft, dually, cargo bay, kin. A field guide to the parts of a thiccc vehicle.",
-    "date": "2026-05-05"
+    "date": "2026-05-05",
+    "byline_id": "teddy"
   },
   {
     "slug": "concrete-material-study",
     "title": "Concrete: A Material Study",
     "description": "The material behind cement mixers, Brutalism, and Hoover Dam. Why concrete forces thicccness on everything it builds.",
-    "date": "2026-05-05"
+    "date": "2026-05-05",
+    "byline_id": "eli"
   },
   {
     "slug": "everyday-sidewalk-thiccc",
     "title": "Thiccc Things You Walk Past Every Day",
     "description": "Fire hydrants, mailboxes, bollards, dumpsters, HVAC, the unsung architecture of a sidewalk.",
-    "date": "2026-05-04"
+    "date": "2026-05-04",
+    "byline_id": "eli"
   },
   {
     "slug": "taxonomy-thiccc-architecture",
     "title": "A Taxonomy of Thiccc Architecture",
     "description": "Defense, ideology, and mass housing. Three programs, one silhouette. Castle walls, Brutalism, Khrushchyovka.",
-    "date": "2026-05-04"
+    "date": "2026-05-04",
+    "byline_id": "bart"
   },
   {
     "slug": "industrial-scale-thiccc",
     "title": "The Inherent Thicccness of Industrial Scale",
     "description": "Why physics insists on the silhouette. Bagger 288, Saturn V, supertankers, Hoover Dam.",
-    "date": "2026-05-04"
+    "date": "2026-05-04",
+    "byline_id": "teddy"
   },
   {
     "slug": "cement-trucks-original-thiccc",
     "title": "Why Cement Trucks Are the Thiccc-est Industrial Vehicle",
     "description": "An argument, with engineering. The mixer is not in competition. It is the standard.",
-    "date": "2026-05-03"
+    "date": "2026-05-03",
+    "byline_id": "eli"
   },
   {
     "slug": "field-guide-spotting-thiccc",
     "title": "How to Spot a Thiccc Thing in the Wild: A Field Guide",
     "description": "Three tests. No instruments required. Silhouette, ratio, character.",
-    "date": "2026-05-03"
+    "date": "2026-05-03",
+    "byline_id": "eli"
   },
   {
     "slug": "the-five-thicccest-things",
     "title": "The Five Thiccc-est Things We&rsquo;ve Catalogued (So Far)",
     "description": "A working ranking. Heritage tomatoes to wide-body airliners. A hierarchy of girth.",
-    "date": "2026-05-02"
+    "date": "2026-05-02",
+    "byline_id": "bart"
   },
   {
     "slug": "what-counts-as-thiccc",
     "title": "What Counts as Thiccc? An Editorial Guide",
     "description": "The standing reference for what we&rsquo;ll catalog and what we won&rsquo;t. Includes the submission test.",
-    "date": "2026-05-02"
+    "date": "2026-05-02",
+    "byline_id": "bart"
   },
   {
     "slug": "history-of-thiccc",
     "title": "A Brief History of Thiccc, the Word",
     "description": "From early-2000s message boards to mainstream dictionaries. With sources.",
-    "date": "2026-05-02"
+    "date": "2026-05-02",
+    "byline_id": "margie"
   }
 ]
