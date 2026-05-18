@@ -1,9 +1,11 @@
 name: Generate office history bible
 
-# Wave 160: one-shot generator that produces data/office-history.json
-# from the staff bible and existing running bits. Commit the result so
-# downstream generators (office-post, daily-voice-rewrite,
-# article-comments) can read it.
+# Wave 160 (rebuilt for diagnostics). Generates data/office-history.json
+# from staff bible + running bits via Claude.
+#
+# Diagnostics: every run writes audits/office-history-runs/<timestamp>.log
+# to main, even on failure, so we can debug without needing the Actions
+# tab. Sentinel is consumed only on success.
 
 on:
   workflow_dispatch:
@@ -18,34 +20,90 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out main
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Node 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      - name: Diagnostic state
+        run: |
+          set -euo pipefail
+          mkdir -p audits/office-history-runs
+          {
+            echo "=== Run started: $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+            echo "Event: ${{ github.event_name }}"
+            echo "Sentinel present: $([ -f data/.fire-office-history ] && echo yes || echo NO)"
+            echo "Bible exists: $([ -f data/office-history.json ] && echo yes || echo no)"
+            echo "ANTHROPIC_API_KEY set: $([ -n \"${ANTHROPIC_API_KEY:-}\" ] && echo yes || echo NO)"
+            echo "Script exists: $([ -f scripts/generate-office-history.js ] && echo yes || echo NO)"
+          } | tee /tmp/bible-pre.log
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Run bible generator
+        id: gen
+        continue-on-error: true
         working-directory: scripts
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          node generate-office-history.js 2>&1 | tee /tmp/bible.log
+          set -o pipefail
+          node generate-office-history.js 2>&1 | tee /tmp/bible-run.log
+          echo "node_exit=$?" >> $GITHUB_OUTPUT
 
-      - name: Commit bible
+      - name: Capture diagnostic log
+        if: always()
         run: |
+          set -euo pipefail
+          mkdir -p audits/office-history-runs
+          STAMP=$(date -u +%Y-%m-%dT%H-%M-%SZ)
+          OUT="audits/office-history-runs/${STAMP}.log"
+          {
+            echo "=== Pre-run state ==="
+            cat /tmp/bible-pre.log 2>/dev/null || echo "(no pre-log)"
+            echo ""
+            echo "=== Generator output ==="
+            cat /tmp/bible-run.log 2>/dev/null || echo "(no run log)"
+            echo ""
+            echo "=== Post-run state ==="
+            echo "Bible exists: $([ -f data/office-history.json ] && echo yes || echo NO)"
+            echo "Bible size: $([ -f data/office-history.json ] && wc -c < data/office-history.json || echo 0) bytes"
+            echo "Generator exit code: ${{ steps.gen.outputs.node_exit || 'unknown' }}"
+            echo "gen step outcome: ${{ steps.gen.outcome }}"
+          } > "$OUT"
+          echo "Wrote diagnostic to $OUT"
+
+      - name: Commit results (always)
+        if: always()
+        run: |
+          set -euo pipefail
           git config user.name "Thiccctionary Editorial Board"
           git config user.email "bot@thiccctionary.com"
-          rm -f data/.fire-office-history
-          git add data/office-history.json data/.fire-office-history 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "no changes to commit"
+
+          # Only consume sentinel on success
+          if [ -f data/office-history.json ] && [ "${{ steps.gen.outcome }}" = "success" ]; then
+            rm -f data/.fire-office-history
+            git add data/office-history.json data/.fire-office-history audits/office-history-runs/ 2>/dev/null || true
+            MSG="Wave 160: office history bible generated"
           else
-            git commit -m "Wave 160: office history bible generated"
-            git pull --rebase origin main || true
-            git push origin main
+            git add audits/office-history-runs/ 2>/dev/null || true
+            MSG="Wave 160 DIAGNOSTIC: bible generation failed (see audits/office-history-runs)"
+          fi
+
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "$MSG"
+            for i in 1 2 3; do
+              git pull --rebase origin main 2>&1 && git push origin main 2>&1 && break
+              sleep 5
+            done
           fi
