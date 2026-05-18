@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-18",
+    "word": "Cabbage, Savoy",
+    "pronunciation": "/KAB-ij, suh-VOY/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A botanical heavyweight of the brassica family, renowned for its deeply crinkled leaves and substantial presence in the garden; esp. one whose verdant layers suggest a rotational symmetry best admired in morning light.",
+      "<em>colloq.</em> The undisputed champion of greens that rolls onto the farmer's market scene with a quiet but palpable confidence."
+    ],
+    "example": "In the soft glow of dawn, the farmer beheld a thiccc Savoy cabbage at the edge of the field. The neighboring lettuces could only dream of such heft.",
+    "etymology": "From Middle French <em>caboche</em>, meaning 'head', referring to its bulbous shape, and from Savoy, a region in France known for cultivating this varietal. Clearly, it was never meant to be subtle.",
+    "image": "images/2026-05-18-cabbage-savoy.jpg",
+    "caption": "Plate N., A quintessential thicccness in produce as seen in the first light.",
+    "tags": [
+      "produce",
+      "botanical",
+      "agriculture"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 7,
+    "photographer": "Michael Schreiber",
+    "photographerUrl": "https://unsplash.com/@schreibmich",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-field-of-lettuce-with-the-sun-in-the-background-Y4BUKU4KCIc",
+    "socialCaptions": {
+      "morning": "Cabbage, Savoy. 2.5 pounds of leafy complexity. Not since the Renaissance has symmetry been so revered.",
+      "afternoon": "In 1548, Savoy cabbage revolutionized salads. The crinkle-cut pioneer of garden aesthetics—Cabbage, Savoy.",
+      "evening": "From the archives, Cabbage, Savoy.\nA head of substance, 18 inches in diameter. The garden's answer to Gothic architecture.",
+      "reels": "Savoy cabbage—where leaf meets labyrinth. A botanical enigma."
+    }
+  },
+  {
     "date": "2026-04-20",
     "word": "Stack, Pancakes Diner",
     "pronunciation": "/stak PAN-kakes DIE-ner/",

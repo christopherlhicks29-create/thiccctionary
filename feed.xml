@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2026 01:53:48 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 19:14:41 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Cabbage, Savoy</title>
+      <link>https://thiccctionary.com/entries/2026-05-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-18.html</guid>
+      <pubDate>Mon, 18 May 2026 12:00:00 GMT</pubDate>
+      <description>A botanical heavyweight of the brassica family, renowned for its deeply crinkled leaves and substantial presence in the garden; esp. one whose verdant layers suggest a rotational symmetry best admired in morning light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-18-cabbage-savoy.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>botanical</category><category>agriculture</category>
+    </item>
     <item>
       <title>Grand Piano, Concert</title>
       <link>https://thiccctionary.com/entries/2026-05-17.html</link>
