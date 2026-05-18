@@ -156,12 +156,24 @@ async function main() {
   const author = staffData.staff.find(s => s.id === authorId);
   if (!author) { console.error(`Author byline ${authorId} not in staff bible`); process.exit(1); }
 
-  // Pick commenters: 1-3 random staff EXCLUDING the author
+  // Wave 161: anchor-pair guarantee.
+  // The Eli <-> Bart axis is the brand's central dynamic. If one of them
+  // writes, the OTHER is ALWAYS in the commenter list - no random skip.
+  // Saturn V feud, functional-girth debates, etc. depend on this.
+  const ANCHOR_PAIR = ['eli', 'bart'];
   const otherStaff = staffData.staff.filter(s => s.id !== authorId);
+  let commenters = [];
+  if (ANCHOR_PAIR.includes(authorId)) {
+    const counterpart = ANCHOR_PAIR.find(id => id !== authorId);
+    const counterpartStaff = otherStaff.find(s => s.id === counterpart);
+    if (counterpartStaff) commenters.push(counterpartStaff);
+  }
+  const remainingPool = otherStaff.filter(s => !commenters.find(c => c.id === s.id));
   const targetCount = Math.min(MAX_COMMENTS, Math.max(MIN_COMMENTS, Math.floor(Math.random() * MAX_COMMENTS) + 1));
-  const shuffled = [...otherStaff].sort(() => Math.random() - 0.5);
-  const commenters = shuffled.slice(0, targetCount);
-  console.log(`[comments] author=${author.id}, commenters=${commenters.map(c => c.id).join(', ')}`);
+  const stillNeeded = Math.max(0, targetCount - commenters.length);
+  const shuffled = [...remainingPool].sort(() => Math.random() - 0.5);
+  commenters = [...commenters, ...shuffled.slice(0, stillNeeded)];
+  console.log(`[comments] author=${author.id}, commenters=${commenters.map(c => c.id).join(', ')}${ANCHOR_PAIR.includes(authorId) ? ' (anchor-pair guaranteed)' : ''}`);
 
   // Load existing comments
   const commentsPath = path.join(ROOT, 'data', 'article-comments.json');
@@ -180,11 +192,18 @@ async function main() {
     for (let attempt = 1; attempt <= 2; attempt++) {
       const text = await generateComment(commenter, author, article, [...existing, ...finalComments]);
       const rating = await rateComment(text, commenter, author);
-      console.log(`  ${commenter.id} attempt ${attempt}: score ${rating.score}/${QUALITY_THRESHOLD}`);
+      // Wave 161: anchor pair gets a lower quality bar. A short pointed
+      // objection from Bart ("I am filing an objection.") naturally scores
+      // 5-6 by the rater but reads RIGHT for the brand and the dynamic.
+      // Holding them to the full 7/10 was silently dropping the most
+      // canonical beats.
+      const threshold = (ANCHOR_PAIR.includes(commenter.id) && ANCHOR_PAIR.includes(authorId)) ? 5 : QUALITY_THRESHOLD;
+      console.log(`  ${commenter.id} attempt ${attempt}: score ${rating.score}/${threshold}`);
       if (rating.score > bestScore) { bestText = text; bestScore = rating.score; bestReasons = rating.reasons || []; }
-      if (bestScore >= QUALITY_THRESHOLD) break;
+      if (bestScore >= threshold) break;
     }
-    if (bestScore >= QUALITY_THRESHOLD) {
+    const finalThreshold = (ANCHOR_PAIR.includes(commenter.id) && ANCHOR_PAIR.includes(authorId)) ? 5 : QUALITY_THRESHOLD;
+    if (bestScore >= finalThreshold) {
       finalComments.push({
         byline_id: commenter.id,
         byline_name: commenter.name,
@@ -241,7 +260,11 @@ async function renderCommentsIntoArticle(slug, allComments) {
   </article>`;
   }).join('\n');
 
-  const block = `\n<!-- COMMENTS:START -->\n<section class="article-comments" style="margin: 3rem 0 2rem; padding-top: 2rem; border-top: 1px solid var(--rule);">\n  <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0 0 1.25rem;">From the Editorial Staff</p>\n${items}\n</section>\n<!-- COMMENTS:END -->\n`;
+  // Wave 161: singular header when there's only one comment so the room
+  // doesn't read empty. "From the Editorial Staff" with one entry felt
+  // off; "An editorial response" reads correct for one or many.
+  const sectionLabel = allComments.length === 1 ? 'An editorial response' : 'From the Editorial Staff';
+  const block = `\n<!-- COMMENTS:START -->\n<section class="article-comments" style="margin: 3rem 0 2rem; padding-top: 2rem; border-top: 1px solid var(--rule);">\n  <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0 0 1.25rem;">${sectionLabel}</p>\n${items}\n</section>\n<!-- COMMENTS:END -->\n`;
 
   // Replace existing comments block if present, else insert before subscribe section
   if (html.includes('<!-- COMMENTS:START -->')) {

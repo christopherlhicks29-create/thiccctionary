@@ -1,16 +1,5 @@
 {
   "_comment": "Auto-generated in-character comments on Field Report articles. Keyed by article slug. Each comment is by another staff member (not the article author), in their voice, max 220 chars, capped 3 per article.",
   "version": 1,
-  "comments": {
-    "the-case-for-functional-girth": [
-      {
-        "byline_id": "teddy",
-        "byline_name": "Theodore \"Teddy\" Vance",
-        "byline_title": "Junior Cataloguer",
-        "text": "The Saturn V's girth IS the mechanism. Five F-1 engines require a fuel cross-section that cannot be reduced without ceasing to function. Per Thiccctionary bylaw 4(c): functional mass qualifies. Bart, read the excerpt.",
-        "score": 8,
-        "created": "2026-05-17T04:32:38.019Z"
-      }
-    ]
-  }
+  "comments": {}
 }
