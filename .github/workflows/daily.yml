@@ -25,6 +25,15 @@ permissions:
   contents: write
   pull-requests: write
 
+# Wave 168: prevent two daily runs racing each other. When the original
+# 13:00 UTC cron fails, the failure-handler retries it - if BOTH eventually
+# succeed, we get two competing PRs for the same date (PR #67 conflict).
+# This concurrency group cancels any in-flight daily run when a new one
+# starts, so only the latest attempt wins.
+concurrency:
+  group: daily-cron
+  cancel-in-progress: true
+
 jobs:
   generate:
     runs-on: ubuntu-latest
