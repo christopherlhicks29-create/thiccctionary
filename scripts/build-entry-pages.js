@@ -262,6 +262,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     EXAMPLE: entry.example || '',
     ETYMOLOGY: entry.etymology || '',
     IMAGE: imageUrlForPage(entry),
+    IMAGE_WEBP: imageUrlForPage(entry).replace(/\.jpg$/i, '.webp'),
     OG_IMAGE: imageUrlForOg(entry),
     OG_IMAGE_ENC: encodeURIComponent(imageUrlForOg(entry)),
     PIN_TEXT: (() => {

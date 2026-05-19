@@ -858,6 +858,15 @@ async function main() {
   await downloadImage(chosen, filename);
   console.log(`Saved image to images/${filename}`);
 
+  // Wave 183: generate WebP next to the JPEG for the <picture> srcset.
+  // Non-blocking - if WebP generation fails the entry still ships JPEG-only.
+  try {
+    const { execSync } = await import('node:child_process');
+    execSync(`node scripts/jpg-to-webp.js images/${filename}`, { cwd: ROOT, stdio: 'inherit' });
+  } catch (e) {
+    console.warn(`WebP generation failed (non-fatal): ${e.message}`);
+  }
+
   // Step 4b: design critique (logged to PR body so Christopher can see if image needs review)
   // Wrapped in extra try/catch + 20s timeout so it can NEVER block the daily pipeline.
   let critique = { score: null, verdict: 'unknown', critique: 'Critique step skipped.' };

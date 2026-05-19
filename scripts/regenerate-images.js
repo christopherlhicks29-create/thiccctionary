@@ -170,6 +170,14 @@ async function main() {
       const filename = `${entry.date}-${slug}.jpg`;
       await downloadImage(chosen, filename);
       console.log(`  Saved new image: images/${filename}`);
+
+      // Wave 183: generate WebP next to the JPEG. Non-blocking.
+      try {
+        const { execSync } = await import('node:child_process');
+        execSync(`node scripts/jpg-to-webp.js images/${filename}`, { cwd: ROOT, stdio: 'inherit' });
+      } catch (e) {
+        console.warn(`  WebP generation failed (non-fatal): ${e.message}`);
+      }
       // If the entry previously pointed at a date-only filename, remove the
       // stale file so the repo doesn't accumulate orphans.
       const previousImage = entry.image && entry.image !== `images/${filename}` ? entry.image.replace(/^\.?\//, '') : null;

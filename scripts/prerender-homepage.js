@@ -78,10 +78,12 @@ async function main() {
 
   let out = html;
 
-  // featured-image (wrap img in link to entry permalink)
+  // featured-image (wrap img in link to entry permalink). Use <picture>
+  // with WebP source + JPEG fallback (Wave 183).
   if (f.image) {
     const slug = f.date;
-    const imgHTML = `<a href="entries/${slug}.html"><img src="${esc(f.image)}" alt="${esc(f.word)}" /></a>`;
+    const webp = String(f.image).replace(/\.jpg$/i, '.webp');
+    const imgHTML = `<a href="entries/${slug}.html"><picture><source srcset="${esc(webp)}" type="image/webp" /><img src="${esc(f.image)}" alt="${esc(f.word)}" /></picture></a>`;
     out = replaceById(out, 'featured-image', imgHTML);
   }
 

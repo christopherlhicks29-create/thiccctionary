@@ -36,6 +36,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install libwebp-tools (Wave 183, for WebP generation)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
+
       - name: Read sentinel file (push triggers only)
         id: sentinel
         if: github.event_name == 'push'

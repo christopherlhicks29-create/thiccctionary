@@ -104,7 +104,10 @@
     <div class="entry-grid">
       <div class="entry-image-wrap">
         <div class="entry-image">
-          <img src="{{IMAGE}}" alt="{{WORD}}" loading="eager" decoding="async" data-pin-do="buttonHover" data-pin-url="{{CANONICAL}}" data-pin-media="{{OG_IMAGE}}" data-pin-description="{{PIN_TEXT_PLAIN}}" />
+          <picture>
+            <source srcset="{{IMAGE_WEBP}}" type="image/webp" />
+            <img src="{{IMAGE}}" alt="{{WORD}}" loading="eager" decoding="async" data-pin-do="buttonHover" data-pin-url="{{CANONICAL}}" data-pin-media="{{OG_IMAGE}}" data-pin-description="{{PIN_TEXT_PLAIN}}" />
+          </picture>
         </div>
         <p class="entry-caption">{{CAPTION}}</p>
         <p class="entry-credit">{{CREDIT_HTML}}</p>
