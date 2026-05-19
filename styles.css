@@ -1836,3 +1836,9 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 .article-prose li {
   margin-bottom: 0.5rem;
 }
+
+/* Wave 184: respect prefers-reduced-motion (accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+}

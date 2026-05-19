@@ -1,9 +1,13 @@
 User-agent: *
 Allow: /
+
+# Per-page exclusions
 Disallow: /random.html
 Disallow: /entries/_template.html
-
+Disallow: /admin/
 Disallow: /audits/
 Disallow: /tiktok-ready/
+Disallow: /og-image-generator.html
+Disallow: /profile-image-generator.html
+
 Sitemap: https://thiccctionary.com/sitemap.xml
-Disallow: /admin/

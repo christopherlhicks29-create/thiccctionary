@@ -1,0 +1,12 @@
+# Trailing slash normalization for directory-style URLs (cosmetic only,
+# Cloudflare Pages already serves index.html on directory hits)
+/articles  /articles/  301
+/reels     /reels/     301
+/rate      /rate/      301
+/api       /api/       301
+/about     /about/     301
+/embed     /embed/     301
+/cartoons  /cartoons/  301
+/press     /press/     301
+/follow    /follow/    301
+/admin     /admin/     301

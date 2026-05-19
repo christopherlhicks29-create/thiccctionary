@@ -20,3 +20,4 @@ posters/
 .gh-token
 
 data/.critique.json
+*.html.LATEST
