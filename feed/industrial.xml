@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/industrial.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "industrial".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2026 19:14:41 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 23:22:04 GMT</lastBuildDate>
     <item>
       <title>Concrete Mixer</title>
       <link>https://thiccctionary.com/entries/2026-04-27.html</link>
@@ -24,6 +24,15 @@
       <description>A large, cylindrical apparatus used for spooling extensive lengths of cable, notable for its substantial diameter and pronounced bulk when loaded to capacity.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-22-reel-cable-industrial.jpg" type="image/jpeg" length="0" />
       <category>cable</category><category>industrial</category><category>thiccc</category>
+    </item>
+    <item>
+      <title>Pipe, Industrial Stack</title>
+      <link>https://thiccctionary.com/entries/2026-04-19.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-19.html</guid>
+      <pubDate>Sun, 19 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A towering cylinder of engineered steel, designed for the expulsion of industrial emissions at a formidable height, often characterized by its unapologetic girth when viewed from any direction.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-19-pipe-industrial-stack.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>infrastructure</category><category>girth</category>
     </item>
   </channel>
 </rss>

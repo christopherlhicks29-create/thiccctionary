@@ -11,26 +11,5 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": [
-    {
-      "subject": "Cake, Wedding Three-Tier",
-      "query": "three tier wedding cake",
-      "category": "Foods of Substance"
-    },
-    {
-      "subject": "Door, Bank Vault Round",
-      "query": "round bank vault door",
-      "category": "Architecture & Infrastructure"
-    },
-    {
-      "subject": "Boot, Steel-Toe Work",
-      "query": "steel toe work boot leather",
-      "category": "Other"
-    },
-    {
-      "subject": "Boiler, Steam Locomotive",
-      "query": "steam locomotive boiler",
-      "category": "Industrial Machinery"
-    }
-  ]
+  "queue": []
 }

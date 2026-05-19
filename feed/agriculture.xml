@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/agriculture.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "agriculture".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2026 19:14:41 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 23:22:04 GMT</lastBuildDate>
     <item>
       <title>Cabbage, Savoy</title>
       <link>https://thiccctionary.com/entries/2026-05-18.html</link>
@@ -24,6 +24,15 @@
       <description>A cultivar of tomato, often grown from seeds passed down through generations, characterized by its robust flavor and generous proportions.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-28.jpg" type="image/jpeg" length="0" />
       <category>agriculture</category><category>heirloom</category><category>juicy</category>
+    </item>
+    <item>
+      <title>Tire, Tractor Rear</title>
+      <link>https://thiccctionary.com/entries/2026-04-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-18.html</guid>
+      <pubDate>Sat, 18 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A formidable rubber component affixed to the rear axle of agricultural machinery, designed to convey a sense of unyielding stability and mass, particularly when observed from behind where its full breadth is undeniable.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-18-tire-tractor-rear.jpg" type="image/jpeg" length="0" />
+      <category>tractor</category><category>agriculture</category><category>stability</category>
     </item>
   </channel>
 </rss>
