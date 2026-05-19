@@ -1,0 +1,26 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Service worker should NOT be cached - it manages its own caching
+/service-worker.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Hashed asset URLs (?v=N cache-buster) can cache aggressively
+/styles.css
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/scripts/ccc-highlight.js
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Images are immutable (filename includes date + slug) - cache forever
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Embed widget needs to be embeddable cross-origin
+/embed/*
+  X-Frame-Options: ALLOWALL
+  Content-Security-Policy: frame-ancestors *
