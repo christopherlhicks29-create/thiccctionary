@@ -1842,3 +1842,8 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
 }
+
+/* Wave 185: hide secondary share buttons on mobile to keep the share row from wrapping/scrolling */
+@media (max-width: 600px) {
+  .entry-share .share-btn--secondary { display: none; }
+}
