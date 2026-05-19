@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Reginald has now missed four calls, two emails, and a postcard. Spider's expense reports, meanwhile, arrive on time, correctly formatted. I am not drawing conclusions. I am simply maintaining a list.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-19T22:01:09.639Z",
+    "success_count": 2,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1779065590759",
