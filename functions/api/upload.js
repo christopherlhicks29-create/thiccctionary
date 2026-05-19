@@ -1,3 +1,5 @@
+import { validateImageFile } from './lib/validate-image.js';
+
 // POST /api/upload, accepts multipart image, stores in R2, returns public URL
 // Requires Cloudflare Pages binding: SUBMISSIONS_BUCKET → R2 bucket (public access enabled)
 
@@ -22,14 +24,12 @@ export async function onRequestPost(context) {
     return new Response(JSON.stringify({ error: 'No image file in upload.' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
   }
 
-  // Size limit: 10 MB
-  if (file.size > 10 * 1024 * 1024) {
-    return new Response(JSON.stringify({ error: 'Image too large (10 MB max).' }), { status: 413, headers: { 'Content-Type': 'application/json' } });
-  }
-
-  // Type check: only images
-  if (!file.type.startsWith('image/')) {
-    return new Response(JSON.stringify({ error: 'Only image files accepted.' }), { status: 415, headers: { 'Content-Type': 'application/json' } });
+  // Wave 181: defense-in-depth image validation (size + MIME allowlist +
+  // extension + magic-number check). Prevents non-image content from
+  // reaching R2 + downstream vision calls.
+  const v = await validateImageFile(file);
+  if (!v.ok) {
+    return new Response(JSON.stringify({ error: v.error }), { status: v.status, headers: { 'Content-Type': 'application/json' } });
   }
 
   // Generate a stable filename from current timestamp + random nonce + original extension

@@ -1,3 +1,4 @@
+import { validateImageFile } from './lib/validate-image.js';
 /**
  * POST /api/submit, full user-submission pipeline.
  *
@@ -252,8 +253,11 @@ export async function onRequestPost(context) {
   if (!file || typeof file === 'string') return errResp('Image is required', 400);
   if (!word) return errResp('Word is required', 400);
   if (!why) return errResp('Why field is required', 400);
-  if (file.size > 10 * 1024 * 1024) return errResp('Image too large (10 MB max)', 413);
-  if (!file.type.startsWith('image/')) return errResp('Only image files accepted', 415);
+  // Wave 181: defense-in-depth image validation (size + MIME allowlist +
+  // extension + magic-number check). Prevents non-image content from
+  // reaching R2 + the OpenAI vision call (wallet protection).
+  const v = await validateImageFile(file);
+  if (!v.ok) return errResp(v.error, v.status);
 
   // 1. Store image
   const ts = new Date().toISOString().replace(/[:.]/g,'-');
