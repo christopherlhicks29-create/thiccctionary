@@ -156,6 +156,13 @@ ${items}
 // academic register. Pulls photographer attribution + a plausible
 // internal cross-reference + an editorial-board citation that lands as
 // a joke on a first-time reader without requiring any inside knowledge.
+function isSlugFor(word) {
+  // Mirrors slugify() in scripts/build-is-pages.js.
+  let primary = String(word).split(',')[0].trim().toLowerCase();
+  primary = primary.replace(/^thiccc\s+/, '');
+  return primary.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 function renderSources(entry, allEntries = null) {
   const items = [];
 
@@ -165,6 +172,14 @@ function renderSources(entry, allEntries = null) {
     const photoUrl = entry.unsplashUrl || url;
     const safeName = String(entry.photographer).replace(/&/g, '&amp;').replace(/</g, '&lt;');
     items.push(`Photograph by <a href="${url}" target="_blank" rel="noopener">${safeName}</a>, via <a href="${photoUrl}" target="_blank" rel="noopener">Unsplash</a>. Catalogued under plate N.`);
+  }
+
+  // 1b. Wave 190: direct link to the standalone "Is X thiccc?" ruling page.
+  // Both citation-appropriate AND passes internal PageRank to the SEO landing.
+  const slug = isSlugFor(entry.word);
+  if (slug) {
+    const subj = String(entry.word).split(',')[0].trim();
+    items.push(`Direct ruling URL: <a href="../is/${slug}-thiccc/">thiccctionary.com/is/${slug}-thiccc/</a> &mdash; the shareable "Is ${/^[aeiouAEIOU]/.test(subj) ? 'an' : 'a'} ${String(subj).toLowerCase()} thiccc?" page.`);
   }
 
   // 2. A-Z cross-reference - real internal link to the alphabetical archive.
@@ -345,7 +360,23 @@ export async function buildSitemap(entries) {
     priority: '0.6',
   }));
 
-  const all = [...staticPages, ...entryPages];
+  // Wave 190: /is/<slug>-thiccc/ landing pages (programmatic SEO)
+  // and the hub at /is-it-thiccc/.
+  function isSlug(word) {
+    let primary = String(word).split(',')[0].trim().toLowerCase();
+    primary = primary.replace(/^thiccc\s+/, '');
+    return primary.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  const isPages = [
+    { loc: `${base}/is-it-thiccc/`, priority: '0.7' },
+    ...entries.map(e => ({
+      loc: `${base}/is/${isSlug(e.word)}-thiccc/`,
+      lastmod: e.date,
+      priority: '0.7',
+    })),
+  ];
+
+  const all = [...staticPages, ...entryPages, ...isPages];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.map(p => `  <url>
