@@ -182,6 +182,43 @@ for (const f of allFiles) {
   } catch (e) { /* json-parse rule handles this */ }
 }
 
+// Rule 5d: header nav + footer column consistency.
+// Catches the Wave 174 drift where pages had varying nav-link counts +
+// missing footer columns. Every site page (excluding admin/embed-widgets/
+// generators) MUST have the canonical 13 nav-links + 11 Sections + 5 Follow
+// + 4 Legal links + the ccc-highlight script tag.
+const CANON_NAV_COUNT = 13;
+const CANON_SECTIONS_COUNT = 11;
+const CANON_FOLLOW_COUNT = 5;
+const CANON_LEGAL_COUNT = 4;
+const PAGE_SKIP_RE = /^(admin\/|embed\/today\.html|embed\/[a-z0-9-]+\.html|og-image-generator\.html|profile-image-generator\.html|entries\/_template\.html|.*\.LATEST)$/;
+for (const f of allFiles) {
+  if (!f.endsWith('.html')) continue;
+  if (PAGE_SKIP_RE.test(f)) continue;
+  if (!fs.existsSync(f)) continue;
+  const c = fs.readFileSync(f, 'utf8');
+  // Skip if file has no nav at all (e.g., embed widgets)
+  if (!/<nav class="nav">/.test(c)) continue;
+  const navLinks = (c.match(/<a [^>]*class="nav-link[^"]*"/g) || []).length;
+  if (navLinks !== CANON_NAV_COUNT) {
+    fail(f, 'nav-drift', `expected ${CANON_NAV_COUNT} nav-links, got ${navLinks}. Run scripts/normalize-pages.js.`);
+  }
+  const m = (head) => {
+    const re = new RegExp(`<p class="footer-head">${head}</p>([\\s\\S]*?)</div>`);
+    const mt = c.match(re);
+    return mt ? (mt[1].match(/<a /g) || []).length : null;
+  };
+  const sec = m('Sections');
+  const fol = m('Follow');
+  const leg = m('Legal');
+  if (sec !== null && sec !== CANON_SECTIONS_COUNT) fail(f, 'footer-drift', `Sections expected ${CANON_SECTIONS_COUNT}, got ${sec}`);
+  if (fol !== null && fol !== CANON_FOLLOW_COUNT) fail(f, 'footer-drift', `Follow expected ${CANON_FOLLOW_COUNT}, got ${fol}`);
+  if (leg !== null && leg !== CANON_LEGAL_COUNT) fail(f, 'footer-drift', `Legal expected ${CANON_LEGAL_COUNT}, got ${leg}`);
+  if (!c.includes('/scripts/ccc-highlight.js')) {
+    fail(f, 'ccc-highlight-missing', `page missing /scripts/ccc-highlight.js script tag.`);
+  }
+}
+
 // Rule 6: workflow + sentinel co-creation guard
 const workflowFiles = newFiles.filter(f => f.startsWith('.github/workflows/') && f.endsWith('.yml'));
 const sentinelFiles = newFiles.filter(f => f.startsWith('data/.fire-'));

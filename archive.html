@@ -59,16 +59,19 @@
     </a>
   </h1>
   <nav class="nav">
-    <a href="index.html" class="nav-link">Today's Entry</a>
-    <a href="archive.html" class="nav-link nav-link--active">The Archive</a>
-    <a href="a-z.html" class="nav-link">A–Z</a>
-    <a href="articles/" class="nav-link">Articles</a><a href="reels/" class="nav-link">Reels</a><a href="cartoons/" class="nav-link">Cartoons</a>
-    <a href="random.html" class="nav-link">Random</a>
-    <a href="compare.html" class="nav-link">Compare</a>
-    <a href="rate/" class="nav-link">Rate</a>
-    <a href="api/" class="nav-link">API</a>
-    <a href="submit.html" class="nav-link">Submit a Thiccc</a>
-    <a href="about/masthead/" class="nav-link">The Editors</a><a href="about/" class="nav-link">About</a>
+    <a href="/" class="nav-link">Today's Entry</a>
+    <a href="/archive.html" class="nav-link nav-link--active">The Archive</a>
+    <a href="/a-z.html" class="nav-link">A-Z</a>
+    <a href="/articles/" class="nav-link">Articles</a>
+    <a href="/reels/" class="nav-link">Reels</a>
+    <a href="/cartoons/" class="nav-link">Cartoons</a>
+    <a href="/random.html" class="nav-link">Random</a>
+    <a href="/compare.html" class="nav-link">Compare</a>
+    <a href="/rate/" class="nav-link">Rate</a>
+    <a href="/api/" class="nav-link">API</a>
+    <a href="/submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="/about/masthead/" class="nav-link">The Editors</a>
+    <a href="/about/" class="nav-link">About</a>
   </nav>
 </header>
 
@@ -101,13 +104,17 @@
     </div>
     <div>
       <p class="footer-head">Sections</p>
-      <a href="archive.html">Archive</a>
-      <a href="tags/">Tags</a>
-      <a href="articles/">Articles</a>
-      <a href="rate/">Rate</a>
-      <a href="submit.html">Submit</a>
-      <a href="about/">About</a>
-          <a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a>
+      <a href="/archive.html">Archive</a>
+      <a href="/a-z.html">A-Z</a>
+      <a href="/articles/">Articles</a>
+      <a href="/reels/">Reels</a>
+      <a href="/cartoons/">Cartoons</a>
+      <a href="/compare.html">Compare</a>
+      <a href="/rate/">Rate</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/embed/">Embed</a>
+      <a href="/about/">About</a>
+      <a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a>
     </div>
     <div>
       <p class="footer-head">Follow</p>
@@ -119,143 +126,16 @@
     </div>
     <div>
       <p class="footer-head">Legal</p>
-      <a href="legal/terms.html">Terms</a>
-      <a href="legal/privacy.html">Privacy</a>
+      <a href="/legal/terms.html">Terms</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/press/">Press kit</a>
       <a href="mailto:admin@thiccctionary.com">Contact</a>
     </div>
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All proportions exaggerated for comedic effect.<br><span style="font-size:0.85em; opacity:0.65;">THICCCTIONARY is a federally trademark-pending word mark, <a href="https://tsdr.uspto.gov/#caseNumber=99827994" rel="noopener" target="_blank" style="color:inherit; text-decoration:underline;">USPTO serial 99827994</a>. Thiccctionary is an independent publication, unaffiliated with any other site or publication using a similar name.</span></p>
 </footer>
 
-<script>
-function highlightCcc(root) {
-  const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA']);
-  const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) {
-      let p = node.parentElement;
-      while (p) {
-        if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
-        for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
-        p = p.parentElement;
-      }
-      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-    }
-  });
-  const targets = [];
-  let n;
-  while ((n = walker.nextNode())) targets.push(n);
-  for (const node of targets) {
-    const frag = document.createDocumentFragment();
-    const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
-    parts.forEach(part => {
-      if (/^[cC]{3}$/.test(part)) {
-        const span = document.createElement('span');
-        span.className = 'ccc';
-        span.textContent = part;
-        frag.appendChild(span);
-      } else if (part) {
-        frag.appendChild(document.createTextNode(part));
-      }
-    });
-    node.parentNode.replaceChild(frag, node);
-  }
-}
 
-(async function () {
-  document.getElementById('year').textContent = new Date().getFullYear();
-  let entries = [];
-  let sortMode = 'newest';
-
-  try {
-    const res = await fetch('data/entries.json', { cache: 'no-store' });
-    entries = await res.json();
-  } catch (e) {
-    entries = [];
-  }
-
-  const grid = document.getElementById('archive-grid');
-  const search = document.getElementById('archive-search');
-  const count = document.getElementById('result-count');
-  const sortBtn = document.getElementById('sort-toggle');
-
-  function render(list) {
-    grid.innerHTML = '';
-    count.textContent = list.length;
-    if (list.length === 0) {
-      grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; font-style: italic; color: var(--ink-soft); padding: 40px;">No entries match your search. Try fewer words.</p>';
-      return;
-    }
-    list.forEach(e => {
-      const a = document.createElement('a');
-      a.className = 'recent-card';
-      a.href = `entries/${e.date}.html`;
-      const dateStr = new Date(e.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      a.innerHTML = `
-        <div class="recent-thumb" ${e.image ? `style="background-image: url('${e.image}'); background-size: cover; background-position: center;"` : `style="background: linear-gradient(135deg, #d4a574, #7a1f1f);"`}></div>
-        <div class="recent-meta">
-          <span class="recent-date">${dateStr}</span>
-          <h4 class="recent-word">${e.word}</h4>
-          <p class="recent-snip">${e.definitions[0].replace(/<[^>]+>/g, '').slice(0, 110)}…</p>
-        </div>`;
-      grid.appendChild(a);
-    });
-    highlightCcc(grid);
-  }
-
-  // Pick up ?tag=X URL param so /tags/ links pre-filter the archive
-  const urlParams = new URLSearchParams(window.location.search);
-  let activeTag = urlParams.get('tag') || null;
-  if (activeTag) activeTag = activeTag.toLowerCase();
-
-  function renderTags() {
-    const tagsContainer = document.getElementById('archive-tags');
-    if (!tagsContainer) return;
-    const tagSet = new Set();
-    entries.forEach(e => (e.tags || []).forEach(t => tagSet.add(t.toLowerCase())));
-    const tags = [...tagSet].sort();
-    if (tags.length === 0) { tagsContainer.style.display = 'none'; return; }
-    tagsContainer.innerHTML = `<button class="archive-tag${activeTag === null ? ' archive-tag--active' : ''}" data-tag="">All</button>` +
-      tags.map(t => `<button class="archive-tag${activeTag === t ? ' archive-tag--active' : ''}" data-tag="${t}">${t}</button>`).join('');
-    tagsContainer.querySelectorAll('.archive-tag').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const t = btn.dataset.tag;
-        activeTag = t || null;
-        renderTags();
-        applyFilters();
-      });
-    });
-  }
-
-  function applyFilters() {
-    const q = search.value.trim().toLowerCase();
-    let list = entries.filter(e => {
-      const matchesQuery = !q ||
-        e.word.toLowerCase().includes(q) ||
-        e.definitions.some(d => d.toLowerCase().includes(q)) ||
-        (e.tags || []).some(t => t.toLowerCase().includes(q));
-      const matchesTag = !activeTag || (e.tags || []).some(t => t.toLowerCase() === activeTag);
-      return matchesQuery && matchesTag;
-    });
-    list.sort((a, b) => sortMode === 'newest'
-      ? new Date(b.date) - new Date(a.date)
-      : a.word.localeCompare(b.word));
-    render(list);
-  }
-
-  search.addEventListener('input', applyFilters);
-  sortBtn.addEventListener('click', () => {
-    sortMode = sortMode === 'newest' ? 'alpha' : 'newest';
-    sortBtn.textContent = sortMode === 'newest' ? 'Sort: Newest first' : 'Sort: A → Z';
-    sortBtn.dataset.sort = sortMode;
-    applyFilters();
-  });
-
-  renderTags();
-  applyFilters();
-  highlightCcc(document.body);
-})();
-</script>
 
 <script>
 if ('serviceWorker' in navigator) {
@@ -265,5 +145,6 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 <script defer src="/scripts/mobile-nav.js?v=63"></script>
+<script defer src="/scripts/ccc-highlight.js?v=2"></script>
 </body>
 </html>
