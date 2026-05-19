@@ -160,8 +160,8 @@
 <main id="main-content">
   <a href="../archive.html" class="entry-back">← Back to the archive</a>
 
-  <aside class="entry-context" aria-label="What is this">
-    <p>Part of <a href="../">Thiccctionary</a>, a satirical daily dictionary of objects of unusual girth. New entry each morning.</p>
+  <aside class="entry-context" id="entry-context" aria-label="What is this">
+    <p><strong>First time here?</strong> Thi<span class="ccc">ccc</span>tionary is a satirical daily dictionary of objects, vehicles, plants, and structures of unusual girth. Strictly things, never people. A new entry lands each morning. <a href="../">See today's entry</a> &middot; <a href="../about/">About the project</a> &middot; <button type="button" id="entry-context-dismiss" aria-label="Dismiss this banner" style="background:none; border:none; color: var(--oxblood); cursor:pointer; padding: 0 4px; text-decoration: underline; font: inherit;">Hide</button></p>
   </aside>
 
   <article class="entry entry--single">
@@ -242,13 +242,13 @@
       <span class="related-word">Squash, Banana</span>
       <span class="related-snip">A member of the Cucurbitaceae family, characterized by an elongated shape and a robust girth, particularly whe…</span>
     </a>
-    <a class="related-card" href="2026-04-20.html">
-      <span class="related-word">Stack, Pancakes Diner</span>
-      <span class="related-snip">A multi-layered assembly of pancakes, each disk contributing to a cumulative profile of impressive verticality…</span>
+    <a class="related-card" href="2026-05-17.html">
+      <span class="related-word">Grand Piano, Concert</span>
+      <span class="related-snip">A substantial, resonant keyboard instrument, designed for symphonic performances, characterized by its elongat…</span>
     </a>
-    <a class="related-card" href="2026-04-30.html">
-      <span class="related-word">Avocado, Domestic</span>
-      <span class="related-snip">A pear-shaped fruit (Persea americana) of disproportionate top-to-bottom mass distribution, often photographed…</span>
+    <a class="related-card" href="2026-04-28.html">
+      <span class="related-word">Heritage Tomato</span>
+      <span class="related-snip">A cultivar of tomato, often grown from seeds passed down through generations, characterized by its robust flav…</span>
     </a>
     </div>
   </section>
@@ -373,5 +373,23 @@ if ('serviceWorker' in navigator) {
 <script defer src="/scripts/mobile-nav.js?v=66"></script>
 <script defer src="/scripts/ccc-highlight.js?v=2"></script>
 <script defer src="/scripts/subscribed-state.js?v=1"></script>
+<script>
+// Wave 188: entry-context aside is dismissible. Once dismissed, stays hidden across pageviews.
+(function() {
+  try {
+    const ctx = document.getElementById('entry-context');
+    if (!ctx) return;
+    if (localStorage.getItem('thiccctionary-context-dismissed') === '1') {
+      ctx.style.display = 'none';
+      return;
+    }
+    const btn = document.getElementById('entry-context-dismiss');
+    if (btn) btn.addEventListener('click', () => {
+      ctx.style.display = 'none';
+      try { localStorage.setItem('thiccctionary-context-dismissed', '1'); } catch {}
+    });
+  } catch {}
+})();
+</script>
 </body>
 </html>
