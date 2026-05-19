@@ -42,17 +42,22 @@ jobs:
         working-directory: scripts
         run: node prerender-az.js
 
-      - name: Commit homepage if prerender changed it
+      - name: Build "Is X thiccc?" SEO pages (Wave 190)
+        working-directory: scripts
+        run: node build-is-pages.js
+        continue-on-error: true
+
+      - name: Commit homepage + SEO pages if changed
         run: |
           git config user.name "Thiccctionary Editorial Board"
           git config user.email "bot@thiccctionary.com"
-          if ! git diff --quiet index.html a-z.html; then
-            git add index.html a-z.html
-            git commit -m "Prerender homepage + A-Z with today's entry"
+          git add index.html a-z.html is/ is-it-thiccc/ sitemap.xml 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Post-merge: prerender homepage + A-Z + build /is/ SEO pages"
             git pull --rebase origin main || true
             git push origin main || true
           else
-            echo "Homepage already up to date."
+            echo "Already up to date."
           fi
 
       - name: Resolve entry date
@@ -112,6 +117,10 @@ jobs:
           POST_MODE: reels
           TARGET_DATE: ${{ steps.target.outputs.date }}
         run: node post-to-buffer.js
+        continue-on-error: true
+
+      - name: Ping IndexNow (Bing/Yandex re-crawl) (Wave 190b)
+        run: node scripts/indexnow-ping.js
         continue-on-error: true
 
       - name: Send newsletter to Buttondown subscribers
