@@ -42,8 +42,27 @@ function esc(s) {
 // Replace the inner content of an element with id=<id>.
 // Anchors on `id="<id>"`, finds the opening tag, finds its closing tag, replaces between.
 function replaceById(html, id, newInner) {
-  const re = new RegExp(`(<[a-z0-9]+\\s+[^>]*id="${id}"[^>]*>)([\\s\\S]*?)(</[a-z0-9]+>)`, 'i');
-  return html.replace(re, (m, open, _old, close) => `${open}${newInner}${close}`);
+  // Depth-aware: find opening <tag id="..."> then walk forward counting
+  // <tag> / </tag> until depth returns to 0. Avoids the non-greedy regex
+  // bug where the match stops at the first </anything> inside (caused
+  // a-z.html duplicate-content bug in Wave 182's first attempt).
+  const openRe = new RegExp(`<([a-z0-9]+)\\s+[^>]*id="${id}"[^>]*>`, 'i');
+  const m = openRe.exec(html);
+  if (!m) return html;
+  const tag = m[1].toLowerCase();
+  const afterOpen = m.index + m[0].length;
+  const sameTagRe = new RegExp(`<(/?)${tag}(\\s|>)`, 'gi');
+  sameTagRe.lastIndex = afterOpen;
+  let depth = 1, closeIdx = -1, scan;
+  while ((scan = sameTagRe.exec(html)) !== null) {
+    if (scan[1] === '/') {
+      depth--;
+      if (depth === 0) { closeIdx = scan.index; break; }
+    } else { depth++; }
+  }
+  if (closeIdx < 0) return html;
+  const closeEnd = html.indexOf('>', closeIdx) + 1;
+  return html.slice(0, afterOpen) + newInner + html.slice(closeIdx, closeEnd) + html.slice(closeEnd);
 }
 
 async function main() {

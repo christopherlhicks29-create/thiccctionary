@@ -26,8 +26,31 @@ function esc(s) {
 }
 
 function replaceById(html, id, newInner) {
-  const re = new RegExp(`(<[a-z0-9]+\\s+[^>]*id="${id}"[^>]*>)([\\s\\S]*?)(</[a-z0-9]+>)`, 'i');
-  return html.replace(re, (m, open, _old, close) => `${open}${newInner}${close}`);
+  // Depth-aware: find opening <tag id="..."> then walk forward counting
+  // <tag> / </tag> until depth returns to 0.
+  const openRe = new RegExp(`<([a-z0-9]+)\\s+[^>]*id="${id}"[^>]*>`, 'i');
+  const m = openRe.exec(html);
+  if (!m) return html;
+  const tag = m[1].toLowerCase();
+  const openIdx = m.index;
+  const afterOpen = openIdx + m[0].length;
+  // Scan forward for nested <tag> / </tag>
+  const sameTagRe = new RegExp(`<(/?)${tag}(\\s|>)`, 'gi');
+  sameTagRe.lastIndex = afterOpen;
+  let depth = 1;
+  let closeIdx = -1;
+  let scan;
+  while ((scan = sameTagRe.exec(html)) !== null) {
+    if (scan[1] === '/') {
+      depth--;
+      if (depth === 0) { closeIdx = scan.index; break; }
+    } else {
+      depth++;
+    }
+  }
+  if (closeIdx < 0) return html;
+  const closeTagEnd = html.indexOf('>', closeIdx) + 1;
+  return html.slice(0, afterOpen) + newInner + html.slice(closeIdx, closeTagEnd) + html.slice(closeTagEnd);
 }
 
 async function main() {
@@ -63,8 +86,7 @@ async function main() {
 
   const sectionsHTML = presentLetters.map(L => {
     const items = byLetter[L].map(e => {
-      const dateLabel = new Date(e.date + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-      return `<li><a href="entries/${e.date}.html"><span class="az-entry-word">${esc(e.word)}</span><span class="az-entry-date">${dateLabel}</span></a></li>`;
+      return `<li><a href="entries/${e.date}.html"><span class="az-entry-word">${esc(e.word)}</span></a></li>`;
     }).join('\n          ');
     return `<section class="az-section" id="letter-${L}">
         <h3 class="az-letter-heading">${L}</h3>
