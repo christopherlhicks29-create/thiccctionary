@@ -58,6 +58,29 @@ jobs:
         continue-on-error: true
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
+      - name: Skip if today's entry already exists (Wave 188a)
+        id: collision
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          if node -e "
+            const e = require('./data/entries.json');
+            const t = '$TODAY';
+            const has = e.some(x => x.date === t);
+            if (has) { console.log('Entry for ' + t + ' already exists on main. Exiting before pipeline.'); process.exit(42); }
+            console.log('No entry for ' + t + ' yet. Proceeding.');
+          "; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          else
+            CODE=$?
+            if [ "$CODE" = "42" ]; then
+              echo "proceed=false" >> "$GITHUB_OUTPUT"
+              echo "::notice::Today's entry already on main; skipping cron run."
+            else
+              echo "proceed=true" >> "$GITHUB_OUTPUT"
+              echo "::warning::Collision check errored ($CODE); proceeding anyway."
+            fi
+          fi
+
       - name: Fetch open daily/* branches
         # generate-daily.js reads these to avoid picking a subject that's already
         # pending merge in another PR. Without this, watermelon gets picked twice
@@ -70,6 +93,7 @@ jobs:
         continue-on-error: true
 
       - name: Generate today's entry
+        if: steps.collision.outputs.proceed == 'true'
         id: gen
         working-directory: scripts
         env:
@@ -183,6 +207,7 @@ jobs:
         continue-on-error: true
 
       - name: Open Pull Request
+        if: steps.collision.outputs.proceed == 'true'
         id: open_pr
         if: success()
         uses: peter-evans/create-pull-request@v6
