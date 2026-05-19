@@ -49,6 +49,10 @@ jobs:
       - name: Install libwebp-tools (Wave 183, for WebP generation)
         run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
 
+      - name: Minify CSS (Wave 186)
+        run: node scripts/minify-css.js
+        continue-on-error: true
+
       - name: Install ffmpeg (for video build)
         timeout-minutes: 3
         continue-on-error: true
