@@ -357,7 +357,7 @@ ${p.lastmod ? `    <lastmod>${p.lastmod}</lastmod>\n` : ''}    <priority>${p.pri
 }
 
 // CLI mode
-if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('build-entry-pages.js')) {
+if (process.argv[1] && (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('build-entry-pages.js'))) {
   const raw = await fs.readFile(ENTRIES_PATH, 'utf8');
   const entries = JSON.parse(raw);
   await fs.mkdir(OUT_DIR, { recursive: true });

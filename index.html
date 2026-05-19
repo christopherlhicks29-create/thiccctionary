@@ -278,7 +278,7 @@
     <div class="signup-inner">
       <h3 class="section-title section-title--invert">A Daily Dose of Thiccc, Delivered.</h3>
       <p class="signup-copy">Subscribe to the morning broadsheet. One image. One definition. One satisfying noun.</p>
-      <form class="signup-form" action="https://buttondown.email/api/emails/embed-subscribe/thiccctionary" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/thiccctionary', 'popupwindow')">
+      <form class="signup-form" action="https://buttondown.email/api/emails/embed-subscribe/thiccctionary" method="post">
         <input type="email" name="email" placeholder="your@email.com" required />
         <button type="submit">Enlist</button>
       </form>
@@ -512,7 +512,7 @@
       if (target === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
       else if (target === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
       else if (target === 'copy') { navigator.clipboard.writeText(url); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy link', 1500); }
-      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automation.');
+      else if (target === 'instagram') { /* IG doesn't support web shares; button stays as visual cue. No popup. */ }
     });
   });
 </script>
