@@ -38,13 +38,17 @@ jobs:
         working-directory: scripts
         run: node prerender-homepage.js
 
+      - name: Prerender A-Z page (Wave 180)
+        working-directory: scripts
+        run: node prerender-az.js
+
       - name: Commit homepage if prerender changed it
         run: |
           git config user.name "Thiccctionary Editorial Board"
           git config user.email "bot@thiccctionary.com"
-          if ! git diff --quiet index.html; then
-            git add index.html
-            git commit -m "Prerender homepage with today's entry"
+          if ! git diff --quiet index.html a-z.html; then
+            git add index.html a-z.html
+            git commit -m "Prerender homepage + A-Z with today's entry"
             git pull --rebase origin main || true
             git push origin main || true
           else

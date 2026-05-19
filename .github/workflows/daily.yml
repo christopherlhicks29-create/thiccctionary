@@ -140,6 +140,11 @@ jobs:
         run: node prerender-homepage.js
         continue-on-error: true
 
+      - name: Prerender A-Z page from entries.json (Wave 180)
+        working-directory: scripts
+        run: node prerender-az.js
+        continue-on-error: true
+
       - name: Build vertical Reel video
         working-directory: scripts
         env:
