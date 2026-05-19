@@ -135,6 +135,11 @@ jobs:
           echo "$CRIT_TEXT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
+      - name: Prerender homepage with today's entry (Wave 179)
+        working-directory: scripts
+        run: node prerender-homepage.js
+        continue-on-error: true
+
       - name: Build vertical Reel video
         working-directory: scripts
         env:
