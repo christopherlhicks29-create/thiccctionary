@@ -176,6 +176,11 @@ jobs:
         run: node prerender-az.js
         continue-on-error: true
 
+      - name: Build "Is X thiccc?" SEO pages (Wave 190)
+        working-directory: scripts
+        run: node build-is-pages.js
+        continue-on-error: true
+
       - name: Build vertical Reel video
         working-directory: scripts
         env:
