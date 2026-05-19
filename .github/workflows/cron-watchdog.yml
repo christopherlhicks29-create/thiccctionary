@@ -73,3 +73,16 @@ jobs:
             echo "Recovery: touch data/.fire-tiktok-latest and push, fire-build-tiktok.yml will rebuild the MP4 for today's entry and commit it."
             exit 1
           fi
+
+      - name: Cleanup fire-watchdog sentinel (Wave 187a)
+        if: always() && github.event_name == 'push' && hashFiles('data/.fire-watchdog') != ''
+        run: |
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          rm -f data/.fire-watchdog
+          git add data/.fire-watchdog
+          if ! git diff --cached --quiet; then
+            git commit -m "Watchdog consumed fire-watchdog sentinel"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
