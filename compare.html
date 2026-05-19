@@ -123,7 +123,233 @@
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All proportions exaggerated for comedic effect.<br><span style="font-size:0.85em; opacity:0.65;">THICCCTIONARY is a federally trademark-pending word mark, <a href="https://tsdr.uspto.gov/#caseNumber=99827994" rel="noopener" target="_blank" style="color:inherit; text-decoration:underline;">USPTO serial 99827994</a>. Thiccctionary is an independent publication, unaffiliated with any other site or publication using a similar name.</span></p>
 </footer>
 
+<script>
+function highlightCcc(root) {
+  const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA', 'SELECT']);
+  const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      let p = node.parentElement;
+      while (p) {
+        if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+        for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
+        p = p.parentElement;
+      }
+      return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const targets = [];
+  let n;
+  while ((n = walker.nextNode())) targets.push(n);
+  for (const node of targets) {
+    const frag = document.createDocumentFragment();
+    const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+    parts.forEach(part => {
+      if (/^[cC]{3}$/.test(part)) {
+        const span = document.createElement('span');
+        span.className = 'ccc';
+        span.textContent = part;
+        frag.appendChild(span);
+      } else if (part) {
+        frag.appendChild(document.createTextNode(part));
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+}
 
+(async function () {
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  let entries = [];
+  try {
+    const res = await fetch('data/entries.json', { cache: 'no-store' });
+    entries = await res.json();
+    entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } catch (e) {
+    document.getElementById('vote-spread').innerHTML =
+      '<p style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">Could not load entries. <a href="archive.html">Try the archive instead</a>.</p>';
+    return;
+  }
+
+  const spread = document.getElementById('vote-spread');
+  const statsEl = document.getElementById('vote-stats');
+  const nextBtn = document.getElementById('vote-next');
+  const shareBtn = document.getElementById('vote-share');
+  const resetBtn = document.getElementById('vote-reset');
+
+  const pickerLeft = document.getElementById('picker-left');
+  const pickerRight = document.getElementById('picker-right');
+  const pickerApply = document.getElementById('picker-apply');
+
+  // Populate dropdowns
+  entries.forEach(e => {
+    [pickerLeft, pickerRight].forEach(sel => {
+      const opt = document.createElement('option');
+      opt.value = e.date;
+      opt.textContent = e.word;
+      sel.appendChild(opt);
+    });
+  });
+
+  // Tally lives in localStorage; per-date win counts.
+  function loadTally() {
+    try { return JSON.parse(localStorage.getItem('thiccctionary-tally') || '{}'); }
+    catch (e) { return {}; }
+  }
+  function saveTally(t) {
+    try { localStorage.setItem('thiccctionary-tally', JSON.stringify(t)); } catch (e) {}
+  }
+
+  function renderStats() {
+    const t = loadTally();
+    const total = Object.values(t).reduce((a, b) => a + b, 0);
+    if (total === 0) {
+      statsEl.textContent = '';
+      resetBtn.hidden = true;
+      return;
+    }
+    const top = Object.entries(t).sort((a, b) => b[1] - a[1])[0];
+    const topEntry = entries.find(e => e.date === top[0]);
+    const topName = topEntry ? topEntry.word : top[0];
+    statsEl.innerHTML = `Your tally: <strong>${total}</strong> verdicts cast · current champion: <strong>${escapeHtml(topName)}</strong> (${top[1]} win${top[1] === 1 ? '' : 's'})`;
+    resetBtn.hidden = false;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function renderEntryCard(e, side) {
+    const def = String(e.definitions[0] || '').replace(/<[^>]+>/g, '').slice(0, 180);
+    return `
+      <button class="vote-card" data-side="${side}" data-date="${e.date}" type="button" aria-label="Vote ${escapeHtml(e.word)} as thicccer">
+        <div class="vote-card-image" style="${e.image ? `background-image: url('${e.image}');` : ''}"></div>
+        <div class="vote-card-body">
+          <h3 class="vote-card-word">${escapeHtml(e.word)}</h3>
+          <p class="vote-card-pron">${escapeHtml(e.pronunciation || '')} <em>${escapeHtml(e.partOfSpeech || 'n.')}</em></p>
+          <p class="vote-card-def">${escapeHtml(def)}…</p>
+          <span class="vote-card-cta">${e.image ? '👆' : ''} Pick this one</span>
+        </div>
+      </button>`;
+  }
+
+  function pickRandomPair() {
+    if (entries.length < 2) return [entries[0], entries[0]];
+    const i = Math.floor(Math.random() * entries.length);
+    let j = Math.floor(Math.random() * entries.length);
+    while (j === i) j = Math.floor(Math.random() * entries.length);
+    return [entries[i], entries[j]];
+  }
+
+  function pickFromHash() {
+    const hash = window.location.hash.replace(/^#/, '');
+    const params = new URLSearchParams(hash);
+    const a = params.get('a');
+    const b = params.get('b');
+    const eA = entries.find(e => e.date === a);
+    const eB = entries.find(e => e.date === b);
+    if (eA && eB) return [eA, eB];
+    if (eA) {
+      const others = entries.filter(e => e.date !== a);
+      return [eA, others[Math.floor(Math.random() * others.length)]];
+    }
+    return null;
+  }
+
+  let currentPair = null;
+
+  function showPair(pair) {
+    currentPair = pair;
+    spread.innerHTML = renderEntryCard(pair[0], 'left') + '<div class="vote-vs">vs.</div>' + renderEntryCard(pair[1], 'right');
+    highlightCcc(spread);
+    nextBtn.hidden = false;
+    shareBtn.hidden = false;
+    // Update URL hash
+    const params = new URLSearchParams();
+    params.set('a', pair[0].date);
+    params.set('b', pair[1].date);
+    history.replaceState(null, '', '#' + params.toString());
+    // Wire vote buttons
+    spread.querySelectorAll('.vote-card').forEach(btn => {
+      btn.addEventListener('click', handleVote);
+    });
+    pickerLeft.value = pair[0].date;
+    pickerRight.value = pair[1].date;
+  }
+
+  function handleVote(ev) {
+    const card = ev.currentTarget;
+    const date = card.dataset.date;
+    const otherDate = currentPair[card.dataset.side === 'left' ? 1 : 0].date;
+    const winner = entries.find(e => e.date === date);
+    const loser = entries.find(e => e.date === otherDate);
+
+    // Update tally
+    const t = loadTally();
+    t[date] = (t[date] || 0) + 1;
+    saveTally(t);
+
+    // Visual response
+    spread.querySelectorAll('.vote-card').forEach(c => {
+      if (c.dataset.date === date) {
+        c.classList.add('vote-card--winner');
+      } else {
+        c.classList.add('vote-card--loser');
+      }
+      c.disabled = true;
+    });
+
+    // Insert verdict line
+    const verdict = document.createElement('div');
+    verdict.className = 'vote-verdict';
+    verdict.innerHTML = `<p><strong>${escapeHtml(winner.word)}</strong> defeats <strong>${escapeHtml(loser.word)}</strong>. The editorial board notes your verdict.</p>`;
+    spread.appendChild(verdict);
+
+    renderStats();
+  }
+
+  nextBtn.addEventListener('click', () => {
+    const pair = pickRandomPair();
+    showPair(pair);
+  });
+
+  shareBtn.addEventListener('click', () => {
+    const url = window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        shareBtn.textContent = 'Copied!';
+        setTimeout(() => shareBtn.textContent = 'Copy share link', 1500);
+      }).catch(() => prompt('Copy this link:', url));
+    } else {
+      prompt('Copy this link:', url);
+    }
+  });
+
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Reset your verdict tally?')) {
+      saveTally({});
+      renderStats();
+    }
+  });
+
+  pickerApply.addEventListener('click', () => {
+    const a = entries.find(e => e.date === pickerLeft.value);
+    const b = entries.find(e => e.date === pickerRight.value);
+    if (a && b && a.date !== b.date) {
+      showPair([a, b]);
+    } else if (a && b && a.date === b.date) {
+      alert('Pick two different entries.');
+    }
+  });
+
+  // Initial: hash > random
+  const initial = pickFromHash() || pickRandomPair();
+  showPair(initial);
+  renderStats();
+  highlightCcc(document.body);
+})();
+</script>
 
 <script>
 if ('serviceWorker' in navigator) {

@@ -374,7 +374,148 @@
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All proportions exaggerated for comedic effect.<br><span style="font-size:0.85em; opacity:0.65;">THICCCTIONARY is a federally trademark-pending word mark, <a href="https://tsdr.uspto.gov/#caseNumber=99827994" rel="noopener" target="_blank" style="color:inherit; text-decoration:underline;">USPTO serial 99827994</a>. Thiccctionary is an independent publication, unaffiliated with any other site or publication using a similar name.</span></p>
 </footer>
 
+<script>
+  // Auto-highlight: wrap every "ccc" cluster in body copy with the red-italic ccc style.
+  // Skips elements that are already styled (.wordmark, .ccc, code, pre, etc.) and skips inputs.
+  function highlightCcc(root) {
+    const skipTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'INPUT', 'TEXTAREA']);
+    const skipClasses = ['wordmark', 'wordmark-extra', 'ccc'];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        let p = node.parentElement;
+        while (p) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          for (const c of skipClasses) if (p.classList && p.classList.contains(c)) return NodeFilter.FILTER_REJECT;
+          p = p.parentElement;
+        }
+        return /ccc/i.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const targets = [];
+    let n;
+    while ((n = walker.nextNode())) targets.push(n);
+    for (const node of targets) {
+      const frag = document.createDocumentFragment();
+      // Match exactly 3 c's, case-insensitive, not preceded or followed by another c (so "Thiccctionary" with "ccc" matches but "Thicccc" with "cccc" doesn't double-wrap)
+      const parts = node.nodeValue.split(/((?<![cC])[cC]{3}(?![cC]))/);
+      parts.forEach(part => {
+        if (/^[cC]{3}$/.test(part)) {
+          const span = document.createElement('span');
+          span.className = 'ccc';
+          span.textContent = part;
+          frag.appendChild(span);
+        } else if (part) {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    }
+  }
 
+  // Tiny progressive-enhancement script. Loads today's entry from entries.json if present.
+  (async function () {
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Orientation strip dismiss (persists across visits via localStorage)
+    try {
+      const strip = document.getElementById('orientation-strip');
+      const dismissBtn = document.getElementById('orientation-dismiss');
+      if (strip && dismissBtn) {
+        if (localStorage.getItem('thiccctionary-orientation-dismissed') === '1') {
+          strip.style.display = 'none';
+        }
+        dismissBtn.addEventListener('click', () => {
+          strip.style.display = 'none';
+          try { localStorage.setItem('thiccctionary-orientation-dismissed', '1'); } catch (e) {}
+        });
+      }
+    } catch (e) { /* no localStorage = no dismiss persistence; strip stays */ }
+
+    const today = new Date();
+    document.getElementById('today-date').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+    try {
+      const res = await fetch('data/entries.json', { cache: 'no-store' });
+      if (!res.ok) return;
+      const entries = await res.json();
+      if (!Array.isArray(entries) || entries.length === 0) return;
+
+      // Sort by date desc
+      entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const featured = entries[0];
+
+      // Issue number = entry count
+      document.getElementById('issue-number').textContent = String(entries.length).padStart(3, '0');
+
+      // Populate featured. Link headword to its permalink.
+      if (featured.image) {
+        const wrap = document.getElementById('featured-image');
+        const slug = featured.date;
+        wrap.innerHTML = `<a href="entries/${slug}.html"><img src="${featured.image}" alt="${featured.word}" /></a>`;
+      }
+      document.getElementById('featured-caption').textContent = featured.caption || '';
+      const creditEl = document.getElementById('featured-credit');
+      if (featured.photographer) {
+        creditEl.innerHTML = `Photo by <a href="${featured.photographerUrl}?utm_source=thiccctionary&utm_medium=referral" target="_blank" rel="noopener">${featured.photographer}</a> on <a href="https://unsplash.com/?utm_source=thiccctionary&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>`;
+      } else {
+        creditEl.style.display = 'none';
+      }
+      document.getElementById('featured-word').textContent = featured.word;
+      document.getElementById('featured-pronunciation').innerHTML = `${featured.pronunciation || ''} &nbsp;<em>${featured.partOfSpeech || 'n.'}</em>`;
+      document.getElementById('featured-def-1').innerHTML = `<strong>1.</strong> ${featured.definitions[0]}`;
+      if (featured.definitions[1]) {
+        document.getElementById('featured-def-2').innerHTML = `<strong>2.</strong> ${featured.definitions[1]}`;
+      } else {
+        document.getElementById('featured-def-2').remove();
+      }
+      document.getElementById('featured-example').innerHTML = `"${featured.example}"`;
+      document.getElementById('featured-etymology').innerHTML = featured.etymology;
+
+      // Populate tags from the actual entry (was previously frozen on Boeing static fallback)
+      const tagsEl = document.getElementById('featured-tags');
+      if (tagsEl && Array.isArray(featured.tags)) {
+        tagsEl.innerHTML = featured.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      }
+
+      // Populate recents (skip the featured = index 0)
+      const grid = document.getElementById('recents-grid');
+      grid.innerHTML = '';
+      entries.slice(1, 9).forEach(e => {
+        const a = document.createElement('a');
+        a.className = 'recent-card';
+        a.href = `entries/${e.date}.html`;
+        a.innerHTML = `
+          <div class="recent-thumb" style="background-image: url('${e.image}'); background-size: cover; background-position: center;"></div>
+          <div class="recent-meta">
+            <span class="recent-date">${new Date(e.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+            <h4 class="recent-word">${e.word}</h4>
+            <p class="recent-snip">${e.definitions[0].replace(/<[^>]+>/g, '').slice(0, 70)}…</p>
+          </div>`;
+        grid.appendChild(a);
+      });
+    } catch (err) {
+      console.warn('No entries.json yet, showing placeholder content.', err);
+    }
+
+    // Run the brand-voice ccc highlighter after content is in the DOM.
+    highlightCcc(document.body);
+  })();
+
+  // Share buttons (basic prototype handlers)
+  document.querySelectorAll('[data-share]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const word = document.getElementById('featured-word').textContent;
+      const url = window.location.href;
+      const text = `Today's Thiccctionary entry: ${word}`;
+      const target = btn.dataset.share;
+      if (target === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+      else if (target === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      else if (target === 'copy') { navigator.clipboard.writeText(url); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy link', 1500); }
+      else if (target === 'instagram') alert('Instagram does not allow direct web shares. Save the image and post it manually, or use the Buffer automation.');
+    });
+  });
+</script>
 
 <!-- Wave 156: PWA install banner + service worker -->
 <aside id="pwa-install-banner" style="display: none; position: fixed; bottom: 16px; left: 16px; right: 16px; max-width: 480px; margin: 0 auto; padding: 12px 16px; background: var(--ink); color: var(--cream); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); font-size: 14px; line-height: 1.5; align-items: center; gap: 12px; z-index: 1000;">

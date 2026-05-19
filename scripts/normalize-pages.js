@@ -125,11 +125,11 @@ function replaceFooterColumn(html, head, canonHTML) {
 
 function ensureCccScript(html) {
   if (html.includes('/scripts/ccc-highlight.js')) return html;
-  // Strip any inline highlightCcc function (legacy) - keep simple: find
-  // a <script> block that contains "function highlightCcc" and delete it.
-  html = html.replace(/<script>\s*\/\/ Auto-highlight[\s\S]*?<\/script>/g, '');
-  html = html.replace(/<script>\s*function highlightCcc[\s\S]*?<\/script>/g, '');
-  // Now inject the script tag before </body>
+  // Wave 174-fix: PURELY ADDITIVE. Do NOT strip inline highlighter blocks
+  // because the homepage's inline script bundles the highlighter with the
+  // hydration logic + share-button handlers - stripping deletes all of it
+  // and breaks the homepage. The external script + any inline duplicate
+  // are both safe (the highlighter's own skip-list prevents double-wrap).
   if (html.includes('</body>')) {
     html = html.replace('</body>', `${CCC_SCRIPT_TAG}\n</body>`);
   }
