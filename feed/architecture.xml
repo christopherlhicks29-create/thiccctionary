@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Architecture</title>
+    <link>https://thiccctionary.com/archive.html?tag=architecture</link>
+    <atom:link href="https://thiccctionary.com/feed/architecture.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "architecture".</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 19 May 2026 23:22:04 GMT</lastBuildDate>
+    <item>
+      <title>Basilica, San Pedro</title>
+      <link>https://thiccctionary.com/entries/2026-04-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-24.html</guid>
+      <pubDate>Fri, 24 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A monumental ecclesiastical structure in Vatican City, notable for its expansive nave and an apse that seems to embrace the horizon; its thiccc columns and domes defy casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-24-basilica-san-pedro.jpg" type="image/jpeg" length="0" />
+      <category>Vatican City</category><category>architecture</category><category>ecclesiastical</category>
+    </item>
+    <item>
+      <title>Bell, Cathedral</title>
+      <link>https://thiccctionary.com/entries/2026-04-15.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-15.html</guid>
+      <pubDate>Wed, 15 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A resonant structure of considerable mass, often found suspended in lofty ecclesiastical towers, its substantial profile best appreciated when viewed from a respectful distance.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-15-bell-cathedral.jpg" type="image/jpeg" length="0" />
+      <category>resonance</category><category>architecture</category><category>monumental</category>
+    </item>
+  </channel>
+</rss>
