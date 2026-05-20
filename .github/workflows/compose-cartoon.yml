@@ -115,9 +115,12 @@ jobs:
           fi
           # Always stage the log
           git add "${{ steps.resolve.outputs.logfile }}" || true
-          # Stage any produced video
+          # Stage any produced video + persisted audio
           if [ -d videos/cartoons ] && [ -n "$(ls -A videos/cartoons 2>/dev/null)" ]; then
             git add videos/cartoons/ || true
+          fi
+          if [ -d data/cartoons/audio ] && [ -n "$(ls -A data/cartoons/audio 2>/dev/null)" ]; then
+            git add data/cartoons/audio/ || true
           fi
           if git diff --staged --quiet; then
             echo "Nothing to commit."

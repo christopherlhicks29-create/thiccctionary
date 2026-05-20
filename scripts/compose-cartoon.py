@@ -178,9 +178,14 @@ def make_title_card(text: str, dest: Path, duration: float):
 
 
 def make_photo_montage(image_urls: list, dest: Path, duration: float, tmp: Path):
-    """Build a Ken-Burns-style photo montage from URLs into an MP4."""
+    """Build a letterboxed photo montage from URLs into an MP4. Each image
+    is fit FULLY inside the 9:16 frame with brand-cream padding (no cropping
+    that loses the subject sides). Gentle Ken-Burns zoom that stays
+    within the visible image."""
     n = len(image_urls)
     per = duration / n
+    # CREAM_HEX matches brand cream (#f4ecdc), used as letterbox color
+    CREAM_HEX = "0xF4ECDC"
 
     segments = []
     for i, url in enumerate(image_urls):
@@ -191,19 +196,25 @@ def make_photo_montage(image_urls: list, dest: Path, duration: float, tmp: Path)
             print(f"  warn: skipping {url}: {e}")
             continue
 
-        # Resize + crop to 9:16 with Ken-Burns zoom over the duration
+        # Letterbox-fit the image: scale to fit ENTIRELY inside W x H, pad the
+        # gaps with cream. Subtle zoom (1.0 -> 1.04) so motion is alive but the
+        # subject is never cropped out.
         seg_out = tmp / f"montage_seg_{i}.mp4"
-        # zoompan: subtle zoom in over per-segment duration
         frames = int(per * 30)
-        zoom_filter = (
-            f"scale={W*2}:{H*2}:force_original_aspect_ratio=increase,"
-            f"crop={W*2}:{H*2},"
-            f"zoompan=z='min(zoom+0.0012,1.18)':d={frames}:s={W}x{H}:fps=30"
+        # Two-step: first scale+pad to W x H with cream, then a gentle zoompan
+        # that re-samples at 2x and zooms slightly. zoompan's `z` is bounded so
+        # we never zoom past 1.04 (max ~4% in, still shows whole subject).
+        vf = (
+            f"scale={W}:{H}:force_original_aspect_ratio=decrease,"
+            f"pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color={CREAM_HEX},"
+            f"setsar=1,"
+            f"scale={W*2}:{H*2},"
+            f"zoompan=z='min(zoom+0.0004,1.04)':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d={frames}:s={W}x{H}:fps=30"
         )
         run_ffmpeg([
             "-loop", "1", "-i", str(img_path),
             "-c:v", "libx264", "-t", str(per), "-pix_fmt", "yuv420p",
-            "-vf", zoom_filter,
+            "-vf", vf,
             str(seg_out),
         ], f"montage seg {i}")
         segments.append(seg_out)
@@ -336,6 +347,13 @@ def compose(manifest_path: Path) -> Path:
             # 1) Generate narration audio for this segment
             audio_path = tmp / f"{i:02d}_{name}.mp3"
             tts_segment(seg.get("narration", ""), seg_voice, tts_model, speed, audio_path, seg_instructions)
+            # Wave 191e: also persist the audio to data/cartoons/audio/<ep>/<seg>.mp3
+            # so we can use the deployed URL as audio reference for Wan 2.7 lip-sync.
+            if audio_path.exists() and seg.get("narration", "").strip():
+                persist_dir = ROOT / "data" / "cartoons" / "audio" / ep_id
+                persist_dir.mkdir(parents=True, exist_ok=True)
+                persist_path = persist_dir / f"{name}.mp3"
+                persist_path.write_bytes(audio_path.read_bytes())
 
             # 2) Build the visual
             silent_visual = tmp / f"{i:02d}_{name}.silent.mp4"
