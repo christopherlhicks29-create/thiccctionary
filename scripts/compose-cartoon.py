@@ -82,11 +82,11 @@ def get_duration(media_path: Path) -> float:
         return 0.0
 
 
-def tts_segment(text: str, voice: str, model: str, speed: float, dest: Path) -> Path:
-    """Generate TTS audio via OpenAI."""
+def tts_segment(text: str, voice: str, model: str, speed: float, dest: Path, instructions: str = "") -> Path:
+    """Generate TTS audio via OpenAI. Supports the `instructions` parameter
+    on gpt-4o-mini-tts for per-character personality. Silently no-ops to a
+    1-second silent mp3 when text is empty (title cards)."""
     if not text or not text.strip():
-        # Silent track for title cards with no narration. dest is .mp3 so encode
-        # with libmp3lame, not aac (aac in mp3 container = ffmpeg error).
         run_ffmpeg([
             "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
             "-t", "1", "-c:a", "libmp3lame", "-b:a", "128k", str(dest),
@@ -95,14 +95,20 @@ def tts_segment(text: str, voice: str, model: str, speed: float, dest: Path) -> 
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY not set")
-    print(f"  tts: '{text[:60]}{'...' if len(text)>60 else ''}'")
-    payload = json.dumps({
+    print(f"  tts: voice={voice} model={model}: '{text[:60]}{'...' if len(text)>60 else ''}'")
+    body = {
         "model": model,
         "voice": voice,
         "input": text,
         "speed": speed,
         "response_format": "mp3",
-    }).encode("utf-8")
+    }
+    # gpt-4o-mini-tts supports `instructions` for per-call style direction.
+    # tts-1 / tts-1-hd ignore it (or 400 on it), so only send when present
+    # AND the model is one we know supports it.
+    if instructions and instructions.strip() and "gpt-4o" in model:
+        body["instructions"] = instructions
+    payload = json.dumps(body).encode("utf-8")
     req = urllib.request.Request(
         "https://api.openai.com/v1/audio/speech",
         data=payload,
@@ -323,9 +329,13 @@ def compose(manifest_path: Path) -> Path:
             print(f"\n[{i+1}/{len(manifest['segments'])}] {name} ({seg['type']}, {seg['duration']}s)")
             duration = float(seg["duration"])
 
+            # Per-segment voice override + instructions, fall back to manifest defaults.
+            seg_voice = seg.get("voice", voice)
+            seg_instructions = seg.get("instructions", vo.get("instructions", ""))
+
             # 1) Generate narration audio for this segment
             audio_path = tmp / f"{i:02d}_{name}.mp3"
-            tts_segment(seg.get("narration", ""), voice, tts_model, speed, audio_path)
+            tts_segment(seg.get("narration", ""), seg_voice, tts_model, speed, audio_path, seg_instructions)
 
             # 2) Build the visual
             silent_visual = tmp / f"{i:02d}_{name}.silent.mp4"

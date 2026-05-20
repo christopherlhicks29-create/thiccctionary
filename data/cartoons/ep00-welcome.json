@@ -1,12 +1,13 @@
 {
   "_description": "Wave 191: Episode 0 of the Thiccctionary cartoon explainer series.",
   "id": "ep00-welcome",
-  "title": "Welcome to the Thiccctionary",
-  "version": 1,
+  "title": "Welcome to the Thicktionary",
+  "version": 3,
   "voiceover": {
     "voice": "onyx",
-    "model": "tts-1-hd",
-    "speed": 0.95
+    "model": "gpt-4o-mini-tts",
+    "speed": 1.0,
+    "instructions": "Speak in a deadpan, dry, slightly weary documentary register. Like a 1970s public-broadcaster narrator who has seen too much. No enthusiasm. No upspeak. Even tempo."
   },
   "segments": [
     {
@@ -14,7 +15,9 @@
       "name": "hugh_cold_open",
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
-      "narration": "This is the Thicktionary. A periodical of unusual girth."
+      "narration": "This is the Thicktionary. A periodical of unusual girth.",
+      "voice": "onyx",
+      "instructions": "Deadpan documentary register. Slow, level, slightly weary. Like a 1970s broadcaster intro. No warmth, no upspeak."
     },
     {
       "type": "photo_montage",
@@ -26,7 +29,9 @@
         "https://thiccctionary.com/images/2026-05-18-cabbage-savoy.jpg",
         "https://thiccctionary.com/images/2026-05-17-grand-piano-concert.jpg"
       ],
-      "narration": "Every morning, we catalogue one object of disproportionate substance. Strictly things. Never people."
+      "narration": "Every morning, we catalogue one object of disproportionate substance. Strictly things. Never people.",
+      "voice": "onyx",
+      "instructions": "Deadpan documentary narrator. Even pace. The final two sentences are editorial directives, not jokes. Read them flat."
     },
     {
       "type": "title_card",
@@ -40,49 +45,63 @@
       "name": "eli",
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005611_51e766a6-ddfc-4ad1-831c-a0604b35e26c.mp4",
-      "narration": "Eli Hartwell. Staff Writer. Notices things."
+      "narration": "I'm Eli Hartwell. Staff Writer. I notice things.",
+      "voice": "shimmer",
+      "instructions": "Dry, sardonic young woman in her late 20s. Observational. The audience surrogate. Reads her own intro as if she's mildly bored by the formality of it. No smile in the voice."
     },
     {
       "type": "video",
       "name": "bart",
       "duration": 6,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005632_8577ed6d-f601-476a-ae10-99812220baaa.mp4",
-      "narration": "Bartholomew Pruss. Senior Cataloguer. Refuses to acknowledge a subject as canonical until it has been catalogued thrice."
+      "narration": "Bartholomew Pruss. Senior Cataloguer. I will not acknowledge a subject as canonical until it has been catalogued thrice.",
+      "voice": "fable",
+      "instructions": "Older British-leaning male academic, formal to the point of mineral. Stern. Reads taxonomy as religious doctrine. Slight clip on the consonants. No warmth."
     },
     {
       "type": "video",
       "name": "teddy",
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005652_1b2cd5c5-bd93-4a18-a947-cd090006f7bd.mp4",
-      "narration": "Theodore Vance. Junior Cataloguer. Insists the Saturn V is a vehicle."
+      "narration": "Theodore Vance. Junior Cataloguer. The Saturn Five is, in fact, a vehicle.",
+      "voice": "echo",
+      "instructions": "Earnest young man in his mid 20s. Reverent toward the catalogue. Slightly flowery cadence. Sincere enthusiasm, never sarcastic. Treats his line about the Saturn Five as a serious correction."
     },
     {
       "type": "video",
       "name": "margie",
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_012334_9071105a-1d72-4d52-885f-488f6f3e9183.mp4",
-      "narration": "Margaret Whitmore-Hessian. Editor-in-Chief. Believes this publication is on par with The Economist."
+      "narration": "Margaret Whitmore-Hessian. Editor-in-Chief. This publication is on par with The Economist.",
+      "voice": "nova",
+      "instructions": "Confident older woman with gravitas. Slight upper-class British or transatlantic affect. Believes every word she says. Reads the comparison to The Economist with complete sincerity, no irony."
     },
     {
       "type": "video",
       "name": "spider",
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_010255_473a863c-b5c0-4501-b67e-17c80258b832.mp4",
-      "narration": "Spider Hennessy. Field Correspondent. Files from improbable locations."
+      "narration": "Spider Hennessy. Field Correspondent. I file from improbable locations.",
+      "voice": "ash",
+      "instructions": "Weathered middle-aged male field journalist. Slightly gravelly voice. Sounds like he's been outside in the wind for years. Atmospheric, low. Almost a whisper at the end."
     },
     {
       "type": "video",
       "name": "hugh_closer",
       "duration": 4,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
-      "narration": "And me. I read the scripts."
+      "narration": "And me. I read the scripts.",
+      "voice": "onyx",
+      "instructions": "Deadpan to the point of mineral. Almost no inflection. Read literally as if the line is a job description, not a joke."
     },
     {
       "type": "title_card",
       "name": "outro",
       "duration": 6,
-      "text": "A NEW ENTRY\nEACH MORNING\n\nthi-ccc-tionary.com",
-      "narration": "A new entry each morning. Thicktionary dot com."
+      "text": "A NEW ENTRY\nEACH MORNING\n\nthiccctionary.com",
+      "narration": "A new entry each morning. Thicktionary dot com.",
+      "voice": "onyx",
+      "instructions": "Deadpan documentary close. Slow falling tone on 'dot com'. Like the end of a public radio segment."
     }
   ]
 }
