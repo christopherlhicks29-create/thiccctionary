@@ -73,10 +73,11 @@ def run_ffmpeg(args: list, label: str = ""):
 def tts_segment(text: str, voice: str, model: str, speed: float, dest: Path) -> Path:
     """Generate TTS audio via OpenAI."""
     if not text or not text.strip():
-        # Silent track for title cards with no narration
+        # Silent track for title cards with no narration. dest is .mp3 so encode
+        # with libmp3lame, not aac (aac in mp3 container = ffmpeg error).
         run_ffmpeg([
             "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
-            "-t", "1", "-c:a", "aac", "-b:a", "128k", str(dest),
+            "-t", "1", "-c:a", "libmp3lame", "-b:a", "128k", str(dest),
         ], "silent")
         return dest
     api_key = os.environ.get("OPENAI_API_KEY")
