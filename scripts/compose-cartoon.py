@@ -70,6 +70,18 @@ def run_ffmpeg(args: list, label: str = ""):
     return result
 
 
+def get_duration(media_path: Path) -> float:
+    """Return media duration in seconds via ffprobe."""
+    result = subprocess.run([
+        "ffprobe", "-v", "error", "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1", str(media_path),
+    ], capture_output=True, text=True)
+    try:
+        return float(result.stdout.strip())
+    except ValueError:
+        return 0.0
+
+
 def tts_segment(text: str, voice: str, model: str, speed: float, dest: Path) -> Path:
     """Generate TTS audio via OpenAI."""
     if not text or not text.strip():
@@ -204,29 +216,47 @@ def make_photo_montage(image_urls: list, dest: Path, duration: float, tmp: Path)
     ], "montage concat")
 
 
-def fit_video_to_segment(src: Path, audio: Path, duration: float, dest: Path):
-    """Take a video clip + audio narration; mute original audio, overlay TTS, trim/pad to duration."""
-    # First, normalize the video to 720x1280 30fps + silent audio
+LEAD_SILENCE = 0.35   # silence before narration starts (visual settles)
+TAIL_SILENCE = 0.45   # silence after narration ends (room to breathe)
+
+
+def fit_video_to_segment(src: Path, audio: Path, min_duration: float, dest: Path):
+    """Audio-driven mux: segment duration = max(min_duration, audio + lead + tail).
+    Visual stretches to fit by holding the last frame; audio gets leading silence
+    so character mouth has time to start before narration begins."""
+    audio_dur = get_duration(audio)
+    src_dur = get_duration(src)
+    final_dur = max(min_duration, LEAD_SILENCE + audio_dur + TAIL_SILENCE)
+    print(f"  timing: audio={audio_dur:.2f}s, src={src_dur:.2f}s, min={min_duration}s -> final={final_dur:.2f}s")
+
+    # Normalize video to 720x1280 30fps. If source is shorter than final, hold the
+    # last frame to extend. tpad=stop_mode=clone clones the final frame.
     normalized = src.with_suffix(".norm.mp4")
+    extra = max(0.0, final_dur - src_dur)
+    vf = f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,fps=30"
+    if extra > 0.05:
+        vf += f",tpad=stop_mode=clone:stop_duration={extra:.3f}"
     run_ffmpeg([
         "-i", str(src),
-        "-vf", f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,fps=30",
-        "-an",
-        "-c:v", "libx264", "-pix_fmt", "yuv420p",
-        "-t", str(duration),
+        "-vf", vf,
+        "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p",
+        "-t", f"{final_dur:.3f}",
         str(normalized),
     ], f"normalize {src.name}")
 
-    # Build padded audio of exactly `duration` seconds
+    # Audio: prepend LEAD_SILENCE seconds of silence, then narration, then pad to final_dur.
     padded_audio = src.with_suffix(".audio.aac")
     run_ffmpeg([
+        "-f", "lavfi", "-t", f"{LEAD_SILENCE:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
         "-i", str(audio),
-        "-af", f"apad,atrim=0:{duration}",
-        "-c:a", "aac", "-b:a", "192k",
+        "-filter_complex", "[0:a][1:a]concat=n=2:v=0:a=1[concat];[concat]apad[padded]",
+        "-map", "[padded]",
+        "-t", f"{final_dur:.3f}",
+        "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2",
         str(padded_audio),
-    ], f"audio pad {audio.name}")
+    ], f"audio lead+pad {audio.name}")
 
-    # Mux normalized video with padded audio
+    # Mux normalized video with padded audio.
     run_ffmpeg([
         "-i", str(normalized), "-i", str(padded_audio),
         "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
@@ -235,18 +265,41 @@ def fit_video_to_segment(src: Path, audio: Path, duration: float, dest: Path):
     ], f"mux {dest.name}")
 
 
-def encode_segment_with_audio(silent_video: Path, audio: Path, duration: float, dest: Path):
-    """Take a silent MP4 (title card, montage) and attach narration audio."""
+def encode_segment_with_audio(silent_video: Path, audio: Path, min_duration: float, dest: Path):
+    """Audio-driven mux for title cards / photo montages. Visual extends by
+    holding last frame; audio gets leading silence to match the rest."""
+    audio_dur = get_duration(audio)
+    src_dur = get_duration(silent_video)
+    final_dur = max(min_duration, LEAD_SILENCE + audio_dur + TAIL_SILENCE)
+    print(f"  timing: audio={audio_dur:.2f}s, src={src_dur:.2f}s, min={min_duration}s -> final={final_dur:.2f}s")
+
+    # Re-encode visual with held last frame if shorter than final.
+    normalized = silent_video.with_suffix(".norm.mp4")
+    extra = max(0.0, final_dur - src_dur)
+    vf = f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,fps=30"
+    if extra > 0.05:
+        vf += f",tpad=stop_mode=clone:stop_duration={extra:.3f}"
+    run_ffmpeg([
+        "-i", str(silent_video),
+        "-vf", vf,
+        "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p",
+        "-t", f"{final_dur:.3f}",
+        str(normalized),
+    ], f"normalize {silent_video.name}")
+
     padded_audio = silent_video.with_suffix(".audio.aac")
     run_ffmpeg([
+        "-f", "lavfi", "-t", f"{LEAD_SILENCE:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
         "-i", str(audio),
-        "-af", f"apad,atrim=0:{duration}",
-        "-c:a", "aac", "-b:a", "192k",
+        "-filter_complex", "[0:a][1:a]concat=n=2:v=0:a=1[concat];[concat]apad[padded]",
+        "-map", "[padded]",
+        "-t", f"{final_dur:.3f}",
+        "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2",
         str(padded_audio),
-    ], f"audio pad {audio.name}")
+    ], f"audio lead+pad {audio.name}")
 
     run_ffmpeg([
-        "-i", str(silent_video), "-i", str(padded_audio),
+        "-i", str(normalized), "-i", str(padded_audio),
         "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
         "-shortest",
         str(dest),

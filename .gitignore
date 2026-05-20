@@ -21,3 +21,7 @@ posters/
 
 data/.critique.json
 *.html.LATEST
+
+# Wave 191b: cartoon-runs logs MUST commit for autonomous debugging
+!audits/cartoon-runs/
+!audits/cartoon-runs/**
