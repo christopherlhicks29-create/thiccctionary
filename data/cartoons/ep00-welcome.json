@@ -1,13 +1,13 @@
 {
-  "_description": "Wave 192: Episode 0, comedic cold-open. Sets the brand standard.",
+  "_description": "Wave 192b: Episode 0 v3, per-character voices, no catalog plates.",
   "id": "ep00-welcome",
   "title": "Welcome to the Thicktionary",
-  "version": 4,
+  "version": 5,
   "voiceover": {
     "voice": "onyx",
     "model": "gpt-4o-mini-tts",
     "speed": 1.0,
-    "instructions": "Deadpan documentary register. Slow, level, slightly weary. Like a 1970s public-broadcaster narrator who has seen too much. No enthusiasm. No upspeak."
+    "instructions": "Deadpan documentary register. Slow, level, slightly weary."
   },
   "segments": [
     {
@@ -17,31 +17,7 @@
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
       "narration": "Thicktionary. Daily catalogue. Objects of unusual girth.",
       "voice": "onyx",
-      "instructions": "Deadpan documentary opener. Three short staccato phrases. Each one its own beat. Like a public radio show intro card."
-    },
-    {
-      "type": "catalog_plate",
-      "name": "plate_bagger",
-      "duration": 2,
-      "image": "https://thiccctionary.com/images/2026-05-10-bagger-288.jpg",
-      "caption": "PLATE I|BAGGER 288, n.",
-      "narration": ""
-    },
-    {
-      "type": "catalog_plate",
-      "name": "plate_watermelon",
-      "duration": 2,
-      "image": "https://thiccctionary.com/images/2026-05-05-watermelon-moon-and-stars.jpg",
-      "caption": "PLATE II|WATERMELON, n.",
-      "narration": ""
-    },
-    {
-      "type": "catalog_plate",
-      "name": "plate_mixer",
-      "duration": 2,
-      "image": "https://thiccctionary.com/images/2026-05-11-cement-mixer-industrial.jpg",
-      "caption": "PLATE III|CEMENT MIXER, n.",
-      "narration": ""
+      "instructions": "Deadpan documentary opener. Three short staccato phrases, each its own beat. Public-radio show intro card energy."
     },
     {
       "type": "video",
@@ -49,8 +25,8 @@
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221247_f3e2b820-53ef-435f-8661-d692b23cebaf.mp4",
       "narration": "Submissions are reviewed.",
-      "voice": "onyx",
-      "instructions": "Deadpan documentary. Four words. Stated as bureaucratic fact, not opinion. Tiny falling tone on 'reviewed'."
+      "voice": "fable",
+      "instructions": "Older British-leaning male academic, formal to the point of mineral. Reads taxonomy as religious doctrine. Slight clip on the consonants. No warmth."
     },
     {
       "type": "video",
@@ -58,8 +34,8 @@
       "duration": 3,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_222135_b43ea48a-31a5-4732-a9ce-6816be5d1274.mp4",
       "narration": "Twice.",
-      "voice": "onyx",
-      "instructions": "One word. Deadpan. Slight emphasis. The kind of one-word sentence a documentary narrator drops as a beat."
+      "voice": "shimmer",
+      "instructions": "Dry, sardonic young woman. One word. Flat affect, no rise. The kind of one-word sentence a tired editor would mutter."
     },
     {
       "type": "video",
@@ -68,7 +44,7 @@
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221335_f834b81c-f14f-4f09-9ca4-3e524ef915d5.mp4",
       "narration": "Three times, if the Editor-in-Chief is in a mood.",
       "voice": "onyx",
-      "instructions": "Deadpan, completely matter-of-fact. The phrase 'in a mood' should be read with the same flat register as the rest, not winked at. The comedy is in NOT acknowledging the joke."
+      "instructions": "Deadpan documentary narrator. The phrase 'in a mood' should be read with the same flat register as the rest, not winked at. The comedy is in NOT acknowledging the joke."
     },
     {
       "type": "video",
@@ -76,8 +52,8 @@
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_230655_eb83bd84-4675-4d43-90c9-3cb65feebe32.mp4",
       "narration": "Field correspondence is filed from improbable locations.",
-      "voice": "onyx",
-      "instructions": "Deadpan documentary. Reads 'improbable locations' as if it's a normal editorial policy, no irony. Slight gravitas on 'field correspondence'."
+      "voice": "ash",
+      "instructions": "Weathered middle-aged male field journalist. Gravelly, low, slightly windburned. Reads 'improbable locations' as if it's a normal editorial policy, no irony. Almost a whisper at the end."
     },
     {
       "type": "video",
@@ -95,7 +71,7 @@
       "text": "thiccctionary.com\n\nA new entry each morning",
       "narration": "Thicktionary dot com.",
       "voice": "onyx",
-      "instructions": "Deadpan close. Two-word URL like an old public-radio show sign-off. Falling tone on 'dot com'."
+      "instructions": "Deadpan close. Public-radio sign-off cadence. Falling tone on 'dot com'."
     }
   ]
 }
