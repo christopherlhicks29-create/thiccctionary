@@ -1,0 +1,88 @@
+{
+  "_description": "Wave 191: Episode 0 of the Thiccctionary cartoon explainer series.",
+  "id": "ep00-welcome",
+  "title": "Welcome to the Thiccctionary",
+  "version": 1,
+  "voiceover": {
+    "voice": "onyx",
+    "model": "tts-1-hd",
+    "speed": 0.95
+  },
+  "segments": [
+    {
+      "type": "video",
+      "name": "hugh_cold_open",
+      "duration": 5,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
+      "narration": "This is the Thi-ccc-tionary. A periodical of unusual girth."
+    },
+    {
+      "type": "photo_montage",
+      "name": "greatest_hits",
+      "duration": 8,
+      "images": [
+        "https://thiccctionary.com/images/2026-05-10-bagger-288.jpg",
+        "https://thiccctionary.com/images/2026-05-05-watermelon-moon-and-stars.jpg",
+        "https://thiccctionary.com/images/2026-05-18-cabbage-savoy.jpg",
+        "https://thiccctionary.com/images/2026-05-17-grand-piano-concert.jpg"
+      ],
+      "narration": "Every morning, we catalogue one object of disproportionate substance. Strictly things. Never people."
+    },
+    {
+      "type": "title_card",
+      "name": "editorial_board",
+      "duration": 2,
+      "text": "THE EDITORIAL BOARD",
+      "narration": ""
+    },
+    {
+      "type": "video",
+      "name": "eli",
+      "duration": 5,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005611_51e766a6-ddfc-4ad1-831c-a0604b35e26c.mp4",
+      "narration": "Eli Hartwell. Staff Writer. Notices things."
+    },
+    {
+      "type": "video",
+      "name": "bart",
+      "duration": 6,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005632_8577ed6d-f601-476a-ae10-99812220baaa.mp4",
+      "narration": "Bartholomew Pruss. Senior Cataloguer. Refuses to acknowledge a subject as canonical until it has been catalogued thrice."
+    },
+    {
+      "type": "video",
+      "name": "teddy",
+      "duration": 5,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005652_1b2cd5c5-bd93-4a18-a947-cd090006f7bd.mp4",
+      "narration": "Theodore Vance. Junior Cataloguer. Insists the Saturn V is a vehicle."
+    },
+    {
+      "type": "video",
+      "name": "margie",
+      "duration": 5,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_012334_9071105a-1d72-4d52-885f-488f6f3e9183.mp4",
+      "narration": "Margaret Whitmore-Hessian. Editor-in-Chief. Believes this publication is on par with The Economist."
+    },
+    {
+      "type": "video",
+      "name": "spider",
+      "duration": 5,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_010255_473a863c-b5c0-4501-b67e-17c80258b832.mp4",
+      "narration": "Spider Hennessy. Field Correspondent. Files from improbable locations."
+    },
+    {
+      "type": "video",
+      "name": "hugh_closer",
+      "duration": 4,
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
+      "narration": "And me. I read the scripts."
+    },
+    {
+      "type": "title_card",
+      "name": "outro",
+      "duration": 6,
+      "text": "A NEW ENTRY\nEACH MORNING\n\nthi-ccc-tionary.com",
+      "narration": "A new entry each morning. Thi-ccc-tionary dot com."
+    }
+  ]
+}

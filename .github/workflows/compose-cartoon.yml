@@ -1,0 +1,108 @@
+name: Compose Cartoon Episode
+
+# Wave 191: stitches Higgsfield video clips + OpenAI TTS narration into a
+# finished vertical cartoon episode. Triggered manually with a manifest path,
+# or via sentinel file push at data/.fire-cartoon.
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: "Path to cartoon manifest (e.g. data/cartoons/ep00-welcome.json)"
+        required: true
+        default: "data/cartoons/ep00-welcome.json"
+  push:
+    branches: [main]
+    paths:
+      - "data/.fire-cartoon"
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: cartoon-compose
+      cancel-in-progress: false
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Resolve manifest path
+        id: resolve
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MANIFEST="${{ github.event.inputs.manifest }}"
+          else
+            # Sentinel push: read the manifest path from data/.fire-cartoon
+            MANIFEST=$(head -n 1 data/.fire-cartoon | tr -d '[:space:]')
+            if [ -z "$MANIFEST" ]; then
+              MANIFEST="data/cartoons/ep00-welcome.json"
+            fi
+          fi
+          echo "manifest=$MANIFEST" >> $GITHUB_OUTPUT
+          echo "Using manifest: $MANIFEST"
+          ls -la "$MANIFEST"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Pillow + ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python3 -m pip install --quiet Pillow
+
+      - name: Compose cartoon
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python3 scripts/compose-cartoon.py "${{ steps.resolve.outputs.manifest }}"
+
+      - name: Show output info
+        run: |
+          ls -la videos/cartoons/
+          for f in videos/cartoons/*.mp4; do
+            echo "===== $f ====="
+            ffprobe -v error -show_entries format=duration,size:stream=width,height,codec_name "$f" || true
+          done
+
+      - name: Commit + push if changed
+        run: |
+          git config user.name "Thiccctionary Cartoon Bot"
+          git config user.email "bot@thiccctionary.com"
+          # Clear sentinel if it triggered us
+          if [ -f data/.fire-cartoon ]; then
+            git rm -f data/.fire-cartoon || true
+          fi
+          git add videos/cartoons/
+          if git diff --staged --quiet; then
+            echo "No cartoon changes to commit."
+          else
+            MANIFEST="${{ steps.resolve.outputs.manifest }}"
+            EP_ID=$(python3 -c "import json,sys; print(json.load(open('$MANIFEST'))['id'])")
+            git commit -m "Cartoon: compose $EP_ID from $MANIFEST"
+            git pull --rebase origin main || true
+            git push origin main
+            echo "Committed and pushed cartoon."
+          fi
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Cartoon Compose"
+            echo "**Manifest:** \`${{ steps.resolve.outputs.manifest }}\`"
+            echo ""
+            if ls videos/cartoons/*.mp4 1>/dev/null 2>&1; then
+              for f in videos/cartoons/*.mp4; do
+                SIZE=$(stat -c%s "$f")
+                DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" 2>/dev/null || echo "?")
+                echo "- \`$f\` — $((SIZE/1024)) KB, ${DUR}s"
+              done
+            else
+              echo "_No output MP4s found._"
+            fi
+          } >> $GITHUB_STEP_SUMMARY
