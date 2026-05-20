@@ -176,6 +176,67 @@ def make_title_card(text: str, dest: Path, duration: float):
         str(dest),
     ], f"titlecard {dest.name}")
 
+def make_catalog_plate(image_url: str, caption_text: str, duration: float, dest: Path, tmp: Path):
+    """Single-image catalog plate: full photo letterboxed on cream background
+    with bottom-third Wikipedia-style caption like 'PLATE I. BAGGER 288, n.'.
+    Brief duration, no zoom (we want the caption visible and stable)."""
+    src_path = tmp / f"plate_src_{Path(image_url).stem}.jpg"
+    try:
+        fetch(image_url, src_path)
+    except Exception as e:
+        print(f"  warn: catalog_plate skipped {image_url}: {e}")
+        make_title_card(caption_text, dest, duration)
+        return
+    # Build the still PNG with PIL: cream background, image letterboxed, caption banner
+    plate_png = tmp / f"plate_{dest.stem}.png"
+    bg = Image.new("RGB", (W, H), CREAM)
+    src_img = Image.open(src_path).convert("RGB")
+    # Reserve bottom 240px for the caption banner
+    avail_h = H - 240 - 100  # 100px top margin
+    avail_w = W - 80
+    src_w, src_h = src_img.size
+    scale = min(avail_w / src_w, avail_h / src_h)
+    new_w = int(src_w * scale)
+    new_h = int(src_h * scale)
+    src_img = src_img.resize((new_w, new_h), Image.LANCZOS)
+    x = (W - new_w) // 2
+    y = 100 + (avail_h - new_h) // 2
+    bg.paste(src_img, (x, y))
+    # Top rule + bottom rule like a broadsheet
+    d = ImageDraw.Draw(bg)
+    d.rectangle([(60, 70), (W - 60, 74)], fill=OXBLOOD)
+    # Caption banner
+    cap_y = H - 220
+    d.rectangle([(0, cap_y), (W, H)], fill=CREAM_DEEP)
+    d.rectangle([(60, cap_y - 4), (W - 60, cap_y)], fill=OXBLOOD)
+    # Caption text, two lines: "PLATE I." (small mono) + "BAGGER 288, n." (large serif)
+    try:
+        mono = ImageFont.truetype(MONO_BOLD, 22)
+        serif = ImageFont.truetype(SERIF_BOLD, 44)
+    except OSError:
+        mono = ImageFont.load_default()
+        serif = ImageFont.load_default()
+    parts = caption_text.split("|", 1)
+    plate_label = parts[0].strip() if len(parts) > 1 else ""
+    headword = parts[1].strip() if len(parts) > 1 else caption_text
+    if plate_label:
+        pl_w = d.textlength(plate_label, font=mono)
+        d.text(((W - pl_w) // 2, cap_y + 30), plate_label, fill=OXBLOOD, font=mono)
+    hw_w = d.textlength(headword, font=serif)
+    while hw_w > W - 60 and serif.size > 28:
+        serif = ImageFont.truetype(SERIF_BOLD, serif.size - 4)
+        hw_w = d.textlength(headword, font=serif)
+    d.text(((W - hw_w) // 2, cap_y + 70), headword, fill=INK, font=serif)
+    bg.save(plate_png)
+    # Encode PNG to MP4
+    run_ffmpeg([
+        "-loop", "1", "-i", str(plate_png),
+        "-c:v", "libx264", "-t", str(duration), "-pix_fmt", "yuv420p",
+        "-vf", f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,fps=30",
+        str(dest),
+    ], f"plate {dest.name}")
+
+
 
 def make_photo_montage(image_urls: list, dest: Path, duration: float, tmp: Path):
     """Build a letterboxed photo montage from URLs into an MP4. Each image
@@ -373,6 +434,12 @@ def compose(manifest_path: Path) -> Path:
                 segment_files.append(final_seg)
             elif seg["type"] == "photo_montage":
                 make_photo_montage(seg["images"], silent_visual, duration, tmp)
+                final_seg = tmp / f"{i:02d}_{name}.final.mp4"
+                encode_segment_with_audio(silent_visual, audio_path, duration, final_seg)
+                segment_files.append(final_seg)
+            elif seg["type"] == "catalog_plate":
+                # Single photo with PLATE caption overlay
+                make_catalog_plate(seg["image"], seg.get("caption", ""), duration, silent_visual, tmp)
                 final_seg = tmp / f"{i:02d}_{name}.final.mp4"
                 encode_segment_with_audio(silent_visual, audio_path, duration, final_seg)
                 segment_files.append(final_seg)
