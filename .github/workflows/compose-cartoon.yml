@@ -3,6 +3,10 @@ name: Compose Cartoon Episode
 # Wave 191: stitches Higgsfield video clips + OpenAI TTS narration into a
 # finished vertical cartoon episode. Triggered manually with a manifest path,
 # or via sentinel file push at data/.fire-cartoon.
+#
+# Wave 191b: self-documenting. Every run (success OR failure) commits a
+# full log to audits/cartoon-runs/<stamp>.log so debugging never requires
+# clicking through GitHub Actions UI again.
 
 on:
   workflow_dispatch:
@@ -16,6 +20,9 @@ on:
     paths:
       - "data/.fire-cartoon"
 
+permissions:
+  contents: write
+
 jobs:
   compose:
     runs-on: ubuntu-latest
@@ -28,21 +35,29 @@ jobs:
         with:
           ref: main
 
-      - name: Resolve manifest path
+      - name: Resolve manifest path + run stamp
         id: resolve
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             MANIFEST="${{ github.event.inputs.manifest }}"
           else
             # Sentinel push: read the manifest path from data/.fire-cartoon
-            MANIFEST=$(head -n 1 data/.fire-cartoon | tr -d '[:space:]')
+            MANIFEST=""
+            if [ -f data/.fire-cartoon ]; then
+              MANIFEST=$(head -n 1 data/.fire-cartoon | tr -d '[:space:]')
+            fi
             if [ -z "$MANIFEST" ]; then
               MANIFEST="data/cartoons/ep00-welcome.json"
             fi
           fi
+          STAMP=$(date -u +%Y%m%d-%H%M%S)
           echo "manifest=$MANIFEST" >> $GITHUB_OUTPUT
+          echo "stamp=$STAMP" >> $GITHUB_OUTPUT
+          echo "logfile=audits/cartoon-runs/${STAMP}.log" >> $GITHUB_OUTPUT
+          mkdir -p audits/cartoon-runs
           echo "Using manifest: $MANIFEST"
-          ls -la "$MANIFEST"
+          echo "Log will commit to: audits/cartoon-runs/${STAMP}.log"
+          ls -la "$MANIFEST" || echo "WARN: manifest missing"
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -55,39 +70,78 @@ jobs:
           sudo apt-get install -y ffmpeg
           python3 -m pip install --quiet Pillow
 
-      - name: Compose cartoon
+      - name: Compose cartoon (captured to log)
+        id: compose
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python3 scripts/compose-cartoon.py "${{ steps.resolve.outputs.manifest }}"
+          LOG="${{ steps.resolve.outputs.logfile }}"
+          mkdir -p "$(dirname "$LOG")"
+          {
+            echo "# Compose cartoon run ${{ steps.resolve.outputs.stamp }}"
+            echo "# Manifest: ${{ steps.resolve.outputs.manifest }}"
+            echo "# Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo ""
+          } > "$LOG"
+          set +e
+          python3 -u scripts/compose-cartoon.py "${{ steps.resolve.outputs.manifest }}" 2>&1 | tee -a "$LOG"
+          RC=${PIPESTATUS[0]}
+          set -e
+          echo "" >> "$LOG"
+          echo "# exit_code: $RC" >> "$LOG"
+          echo "exit_code=$RC" >> $GITHUB_OUTPUT
+          if [ "$RC" -ne 0 ]; then
+            echo "::error::Compose script exited with code $RC. See $LOG for details."
+          fi
 
-      - name: Show output info
+      - name: Inspect output (if produced)
+        if: always()
         run: |
-          ls -la videos/cartoons/
+          ls -la videos/cartoons/ 2>/dev/null || echo "(no videos/cartoons/)"
           for f in videos/cartoons/*.mp4; do
+            [ -f "$f" ] || continue
             echo "===== $f ====="
             ffprobe -v error -show_entries format=duration,size:stream=width,height,codec_name "$f" || true
           done
 
-      - name: Commit + push if changed
+      - name: Commit log (always) + video (if produced)
+        if: always()
         run: |
+          set -e
           git config user.name "Thiccctionary Cartoon Bot"
           git config user.email "bot@thiccctionary.com"
-          # Clear sentinel if it triggered us
           if [ -f data/.fire-cartoon ]; then
             git rm -f data/.fire-cartoon || true
           fi
-          git add videos/cartoons/
-          if git diff --staged --quiet; then
-            echo "No cartoon changes to commit."
-          else
-            MANIFEST="${{ steps.resolve.outputs.manifest }}"
-            EP_ID=$(python3 -c "import json,sys; print(json.load(open('$MANIFEST'))['id'])")
-            git commit -m "Cartoon: compose $EP_ID from $MANIFEST"
-            git pull --rebase origin main || true
-            git push origin main
-            echo "Committed and pushed cartoon."
+          # Always stage the log
+          git add "${{ steps.resolve.outputs.logfile }}" || true
+          # Stage any produced video
+          if [ -d videos/cartoons ] && [ -n "$(ls -A videos/cartoons 2>/dev/null)" ]; then
+            git add videos/cartoons/ || true
           fi
+          if git diff --staged --quiet; then
+            echo "Nothing to commit."
+          else
+            RC="${{ steps.compose.outputs.exit_code }}"
+            STATUS="ok"
+            if [ "$RC" != "0" ] && [ -n "$RC" ]; then STATUS="FAIL($RC)"; fi
+            git commit -m "Cartoon compose ${{ steps.resolve.outputs.stamp }} [$STATUS] (${{ steps.resolve.outputs.manifest }})" || true
+            # Retry push with rebase if remote moved
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin main; then
+                echo "Pushed on attempt $i"
+                break
+              fi
+              sleep $((i*5))
+            done
+          fi
+
+      - name: Fail the job if compose failed
+        if: always() && steps.compose.outputs.exit_code != '0' && steps.compose.outputs.exit_code != ''
+        run: |
+          echo "Compose script exited ${{ steps.compose.outputs.exit_code }}."
+          exit 1
 
       - name: Job summary
         if: always()
@@ -95,12 +149,14 @@ jobs:
           {
             echo "## Cartoon Compose"
             echo "**Manifest:** \`${{ steps.resolve.outputs.manifest }}\`"
+            echo "**Log committed to:** \`${{ steps.resolve.outputs.logfile }}\`"
+            echo "**Exit code:** \`${{ steps.compose.outputs.exit_code }}\`"
             echo ""
             if ls videos/cartoons/*.mp4 1>/dev/null 2>&1; then
               for f in videos/cartoons/*.mp4; do
                 SIZE=$(stat -c%s "$f")
                 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" 2>/dev/null || echo "?")
-                echo "- \`$f\` — $((SIZE/1024)) KB, ${DUR}s"
+                echo "- \`$f\` $((SIZE/1024)) KB, ${DUR}s"
               done
             else
               echo "_No output MP4s found._"

@@ -11,6 +11,7 @@ on:
       - "Fire Reel cross-post (standalone)"
       - "Backfill, re-run morning post + newsletter for a specific date"
       - "Build TikTok Video"
+      - "Compose Cartoon Episode"
     types: [completed]
 
 permissions:
