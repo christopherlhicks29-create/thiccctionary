@@ -18,6 +18,7 @@ Usage:
 """
 
 import json
+import re
 import os
 import sys
 import subprocess
@@ -122,48 +123,81 @@ def tts_segment(text: str, voice: str, model: str, speed: float, dest: Path, ins
     return dest
 
 
+# Try Fraunces (brand display serif) — installed by workflow. Falls back to DejaVu.
+FRAUNCES_BOLD = "/usr/share/fonts/truetype/fraunces/Fraunces-Bold.ttf"
+FRAUNCES_REG = "/usr/share/fonts/truetype/fraunces/Fraunces-Regular.ttf"
+
+
+def _font(paths, size):
+    """Try each font path in order, fall back to PIL default."""
+    for p in paths:
+        try:
+            return ImageFont.truetype(p, size)
+        except (OSError, IOError):
+            continue
+    return ImageFont.load_default()
+
+
+def _draw_text_with_ccc(d, x, y, text, font, default_color, ccc_color):
+    """Draw text but render 'ccc' runs in the brand oxblood color.
+    Splits on any run of c/C of length 3+. Returns total width drawn."""
+    parts = re.split(r'([cC]{3,})', text)
+    cur_x = x
+    for part in parts:
+        if not part:
+            continue
+        color = ccc_color if re.fullmatch(r'[cC]{3,}', part) else default_color
+        d.text((cur_x, y), part, fill=color, font=font)
+        cur_x += d.textlength(part, font=font)
+    return cur_x - x
+
+
+def _text_width_with_ccc(d, text, font):
+    return d.textlength(text, font=font)
+
+
 def make_title_card(text: str, dest: Path, duration: float):
-    """Render a brand title card as PNG then encode to MP4."""
+    """Render a brand title card as PNG then encode to MP4.
+
+    Brand typography:
+    - Fraunces serif (Google Fonts), oxblood ccc highlight
+    - First line = small mono eyebrow (THICCCTIONARY), oxblood
+    - Body lines = Fraunces bold, ink black, oxblood on any 'ccc' run
+    - Cream background, oxblood rules top/bottom, ink hairlines on edges
+    """
     img = Image.new("RGB", (W, H), CREAM)
     d = ImageDraw.Draw(img)
 
-    # Top + bottom decorative rule
+    # Top + bottom decorative oxblood rules
     d.rectangle([(60, 80), (W - 60, 84)], fill=OXBLOOD)
     d.rectangle([(60, H - 84), (W - 60, H - 80)], fill=OXBLOOD)
 
-    # Vertical rules on edges
+    # Vertical ink hairlines on edges
     d.rectangle([(40, 60), (44, H - 60)], fill=INK)
     d.rectangle([(W - 44, 60), (W - 40, H - 60)], fill=INK)
 
-    # Small "THICCCTIONARY" header
-    try:
-        small = ImageFont.truetype(MONO_BOLD, 24)
-    except OSError:
-        small = ImageFont.load_default()
+    # Small monospace eyebrow header (brand mark, always present)
+    small = _font([MONO_BOLD], 24)
     header = "THICCCTIONARY"
-    bbox = d.textbbox((0, 0), header, font=small)
-    th_w = bbox[2] - bbox[0]
-    d.text(((W - th_w) // 2, 130), header, fill=OXBLOOD, font=small)
-    d.text(((W - th_w) // 2 + 1, 130), header, fill=OXBLOOD, font=small)  # bold sim
+    th_w = _draw_text_with_ccc(d, 0, 0, header, small, OXBLOOD, OXBLOOD)
+    _draw_text_with_ccc(d, (W - th_w) // 2, 130, header, small, OXBLOOD, OXBLOOD)
 
-    # Main text — wrap and size to fit
+    # Main body text in Fraunces (or DejaVu fallback). Highlight 'ccc' in oxblood.
     lines = text.split("\n")
-    # Try sizes from large to small until everything fits in a centered box
-    for size in (96, 88, 80, 72, 64, 56, 48, 40):
-        try:
-            font = ImageFont.truetype(SERIF_BOLD, size)
-        except OSError:
-            font = ImageFont.load_default()
-        line_h = int(size * 1.2)
+    for size in (104, 96, 88, 80, 72, 64, 56, 48, 40):
+        font = _font([FRAUNCES_BOLD, SERIF_BOLD], size)
+        line_h = int(size * 1.18)
         total_h = line_h * len(lines)
-        widths = [d.textlength(l, font=font) for l in lines]
-        if max(widths) <= W - 120 and total_h <= H - 400:
+        widths = []
+        for ln in lines:
+            widths.append(_text_width_with_ccc(d, ln, font))
+        if max(widths or [0]) <= W - 120 and total_h <= H - 400:
             break
 
     start_y = (H - total_h) // 2
     for i, line in enumerate(lines):
-        lw = d.textlength(line, font=font)
-        d.text(((W - lw) // 2, start_y + i * line_h), line, fill=INK, font=font)
+        lw = _text_width_with_ccc(d, line, font)
+        _draw_text_with_ccc(d, (W - lw) // 2, start_y + i * line_h, line, font, INK, OXBLOOD)
 
     png_path = dest.with_suffix(".png")
     img.save(png_path)

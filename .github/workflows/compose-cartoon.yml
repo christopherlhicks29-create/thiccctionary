@@ -64,11 +64,29 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Pillow + ffmpeg
+      - name: Install Pillow + ffmpeg + Fraunces font
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg
+          sudo apt-get install -y ffmpeg fonts-dejavu unzip
           python3 -m pip install --quiet Pillow
+          # Brand display serif: Fraunces from Google Fonts.
+          sudo mkdir -p /usr/share/fonts/truetype/fraunces
+          curl -sSL -o /tmp/fraunces.zip "https://fonts.google.com/download?family=Fraunces"
+          if [ -s /tmp/fraunces.zip ]; then
+            unzip -j -o /tmp/fraunces.zip "static/Fraunces-Bold.ttf" "static/Fraunces-Regular.ttf" -d /usr/share/fonts/truetype/fraunces/ 2>/dev/null || true
+            # Some downloads put fonts under different paths; fallback
+            if [ ! -f /usr/share/fonts/truetype/fraunces/Fraunces-Bold.ttf ]; then
+              unzip -j -o /tmp/fraunces.zip "Fraunces-Bold.ttf" "Fraunces-Regular.ttf" -d /usr/share/fonts/truetype/fraunces/ 2>/dev/null || true
+            fi
+            if [ ! -f /usr/share/fonts/truetype/fraunces/Fraunces-Bold.ttf ]; then
+              # Last resort: extract any Fraunces TTF found
+              unzip -j -o /tmp/fraunces.zip "*Fraunces*Bold*.ttf" "*Fraunces*Regular*.ttf" -d /usr/share/fonts/truetype/fraunces/ 2>/dev/null || true
+            fi
+            sudo fc-cache -f 2>/dev/null || true
+            ls -la /usr/share/fonts/truetype/fraunces/ || true
+          else
+            echo "WARN: Fraunces download failed, will fall back to DejaVu Serif"
+          fi
 
       - name: Compose cartoon (captured to log)
         id: compose
