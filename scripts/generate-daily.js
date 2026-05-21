@@ -344,7 +344,8 @@ AVOID, these patterns are dead on arrival:
 - Generic compliments: "such a statement piece", "absolute showstopper"
 - Marketing language: "commands attention", "makes a statement"
 - Ending the sentence at the headword without a tag, even one extra clause is required
-- Adverb stacking: "monumentally, imposingly, undeniably thiccc", one specific image, not three vague ones`;
+- Adverb stacking: "monumentally, imposingly, undeniably thiccc", one specific image, not three vague ones
+- INVERTED HEADWORD IN PROSE (Wave 196c, Christopher 2026-05-21): the headword in entries.json is stored in alphabetical-inverted form ("Atlas Stone, Strongman"; "Wheel, Parmigiano-Reggiano"; "Tuba, Contrabass"). NEVER paste that comma-inverted form into the example sentence. BAD: "He hoisted the thiccc Atlas Stone, Strongman with a grunt..." (reads as if "Strongman" is the person's name). GOOD: "He hoisted a thiccc Atlas Stone, the strongman-comp variety, with a grunt..." or "He hoisted a thiccc strongman atlas stone..." or just "He hoisted a thiccc Atlas Stone...". The qualifier becomes an adjective/aside or gets dropped; it never sits in the sentence as if it were the proper-noun form.`;
 
   const userPrompt = `Today's subject: "${subject}"
 
@@ -358,7 +359,7 @@ Schema:
   "pronunciation": "/sim-pul re-SPEL-ing/",  // simple respelling, capitalize the stressed syllable, hyphens between syllables, lowercase otherwise. Do NOT use IPA.
   "partOfSpeech": "n.",
   "definitions": ["definition 1 (1-2 sentences, dictionary register, voicy)", "optional definition 2 (sharper / colloquial, labeled with <em>colloq.</em> or <em>slang.</em>)"],
-  "example": "ONE sentence (optionally + a short tag) using BOTH the headword AND the literal word \"thiccc\" (always three c's). Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y', pick a scene.",
+  "example": "ONE sentence (optionally + a short tag) using a NATURAL English form of the subject (NOT the inverted catalog headword verbatim) AND the literal word \"thiccc\" (always three c's). For headwords like \"Wheel, Parmigiano-Reggiano\" use \"wheel of Parmigiano-Reggiano\" or just \"Parmigiano-Reggiano\" in the sentence; for \"Atlas Stone, Strongman\" use \"strongman atlas stone\" or \"Atlas Stone, [adjective] variety\". Never paste the comma-inverted form into running prose. Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y', pick a scene.",
   "etymology": "Real etymology FIRST (Latin/Greek/Middle English/Spanish/Nahuatl/etc., dated coinages, named industrialists) THEN a comedic kicker. The kicker is what makes the entry sing.",
   "caption": "Plate N., A short caption for the image, dictionary-illustration style. (N is a placeholder, leave it as 'Plate N.' literally.)",
   "tags": ["tag1", "tag2", "tag3"],
