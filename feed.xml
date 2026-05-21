@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2026 23:44:59 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 20:34:29 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Atlas Stone, Strongman</title>
+      <link>https://thiccctionary.com/entries/2026-05-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-21.html</guid>
+      <pubDate>Thu, 21 May 2026 12:00:00 GMT</pubDate>
+      <description>A spherical weight of imposing mass, employed in the sport of strongman competitions, often requiring Herculean effort to lift and maneuver. Its surface is characteristically rough, resembling a cosmic boulder that defies trivial engagement.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-21-atlas-stone-strongman.jpg" type="image/jpeg" length="0" />
+      <category>strongman</category><category>weight lifting</category><category>competition</category>
+    </item>
     <item>
       <title>Kettlebell, Competition</title>
       <link>https://thiccctionary.com/entries/2026-05-19.html</link>
