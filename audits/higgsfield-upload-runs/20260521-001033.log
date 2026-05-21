@@ -1,0 +1,10 @@
+# Higgsfield upload helper run 20260521-001033
+# Triggered by sentinel push
+
+URL host: d276s3zg8h21b2.cloudfront.net
+FILE: data/cartoons/audio/ep00-welcome/hugh_closer.mp3
+CTYPE: audio/mpeg
+SIZE: 81024 bytes
+PUTting...
+HTTP 200
+Upload OK
