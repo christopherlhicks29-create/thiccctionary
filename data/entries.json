@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-21",
+    "word": "Atlas Stone, Strongman",
+    "pronunciation": "/AT-las stoan, STRONG-man/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A spherical weight of imposing mass, employed in the sport of strongman competitions, often requiring Herculean effort to lift and maneuver. Its surface is characteristically rough, resembling a cosmic boulder that defies trivial engagement.",
+      "<em>colloq.</em> What happens when a moon decides it needs a gym membership."
+    ],
+    "example": "He hoisted the thiccc Atlas Stone, Strongman with a grunt that echoed through the arena. The spotters took a step back in reverent awe.",
+    "etymology": "From Greek Atlas, the Titan who held up the sky, + Old English stān, meaning 'stone'. Clearly, a marketing ploy for the gym-averse.",
+    "image": "images/2026-05-21-atlas-stone-strongman.jpg",
+    "caption": "Plate N. A collection of Atlas Stones, resting in their natural habitat, the strongman training ground.",
+    "tags": [
+      "strongman",
+      "weight lifting",
+      "competition"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Meriç Dağlı",
+    "photographerUrl": "https://unsplash.com/@meric",
+    "unsplashUrl": "https://unsplash.com/photos/pile-of-round-black-balls-TthLw9wNyQE",
+    "socialCaptions": {
+      "morning": "Atlas Stone, Strongman.\nTypically weighs 100-200 kg.\nGravity takes a rain check.",
+      "afternoon": "In 1983, Tom Magee shouldered 400 lbs stone—\nThe Earth took notes.\nAtlas Stone, Strongman.",
+      "evening": "From the archives, Atlas Stone, Strongman.\nFirst appearance at 1979 World's Strongest Man.\nStonehenge kindly declined the invite.",
+      "reels": "Rough surface, cosmic boulder—\nThe center of attention in any arena."
+    }
+  },
+  {
     "date": "2026-05-19",
     "word": "Kettlebell, Competition",
     "pronunciation": "/ket-ul-bel, com-pe-TISH-un/",
