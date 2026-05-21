@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Teddy has refiled the Saturn V brief. Again. It now has citations. I have returned it with \"see objection #34\" in the margin. The object is 363 feet tall and has never, at any point, driven anywhere.\n\nBartholomew",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-21T22:07:06.755Z",
+    "success_count": 2,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1779317217705",
