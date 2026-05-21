@@ -71,7 +71,9 @@ function pickTopic(byline, events, entries, recentPosts) {
     }
   }
   const eligibleBits = events.running_bits.filter(b => !b.characters || b.characters.includes(byline.id));
-  const useOffice = kind === 'office' || (kind === 'either' && Math.random() < 0.6);
+  // Wave 194: bumped 0.6 -> 0.85 so the office-vs-thiccc split is ~85/15,
+  // not 60/40. Christopher 2026-05-21: too many "regurgitated thiccc-item" posts on FB.
+  const useOffice = kind === 'office' || (kind === 'either' && Math.random() < 0.85);
   if (useOffice && eligibleBits.length > 0) {
     const bit = eligibleBits[Math.floor(Math.random() * eligibleBits.length)];
     return { kind: 'office', bit };
@@ -79,6 +81,41 @@ function pickTopic(byline, events, entries, recentPosts) {
   const recent = entries.slice(0, 14);
   const entry = recent[Math.floor(Math.random() * recent.length)];
   return { kind: 'thiccc', entry };
+}
+
+// Wave 194: hard structural gate. Catches the "Subject: observation"
+// catalog-card opener that the system prompt bans but the model+rater kept
+// letting through. (Audit 2026-05-17..05-20 found 3 of 5 thiccc-topic posts
+// starting with this pattern: "Contrabass tuba: bell diameter...",
+// "Side-by-side fridge: two full-length doors...", "Parmigiano-Reggiano
+// wheel: 84 lbs..." - all rated 8/10 by gpt-4o despite Rule 11.) A draft
+// that trips this gate is auto-rejected BEFORE scoring; the loop retries.
+function findStructuralViolations(draft, topic) {
+  const violations = [];
+  const firstLine = (draft || '').trim().split(/\n/)[0] || '';
+  // Pattern A: catalog-card colon opener. Match: short capitalized phrase
+  // (subject label, 5-40 chars long), then colon, then content.
+  // Exclude reply markers like "Re:", "PS:", "Fwd:".
+  const colonIdx = firstLine.indexOf(':');
+  if (colonIdx >= 5 && colonIdx <= 40 && /\s/.test((firstLine[colonIdx + 1] || ''))) {
+    const subject = firstLine.slice(0, colonIdx).trim();
+    const isReplyMarker = /^(re|p\.?\s?s\.?|n\.?\s?b\.?|fwd|update|ps)$/i.test(subject);
+    const looksLikeSubjectLabel = /^[A-Z][A-Za-z0-9\s\-,\.]+$/.test(subject);
+    if (looksLikeSubjectLabel && !isReplyMarker) {
+      violations.push('catalog-card colon opener ("' + subject + ': ...") banned by Rule 11. Lead with an event, action, or observation, not a labeled subject.');
+    }
+  }
+  // Pattern B: thiccc-topic posts that NAME the subject in the first ~30 chars.
+  // The morning catalog post already covers the subject; staff posts must
+  // reframe, not regurgitate.
+  if (topic && topic.kind === 'thiccc' && topic.entry && topic.entry.word) {
+    const head = (draft || '').slice(0, 35).toLowerCase();
+    const subj = topic.entry.word.toLowerCase().split(/[,\s]+/)[0];
+    if (subj.length >= 4 && head.startsWith(subj)) {
+      violations.push('opens with the catalog subject "' + topic.entry.word + '" - reframe so the joke leads, not the subject name. Tell the reader where YOU were when you encountered/remembered it.');
+    }
+  }
+  return violations;
 }
 
 async function callClaude(system, userMessage, model = 'claude-sonnet-4-6') {
@@ -131,7 +168,7 @@ ${bibleContext ? bibleContext + '\n\n' : ''}HARD RULES:
 3. THIS IS A SOCIAL MEDIA POST. NOT a magazine essay. NOT narration. NOT play-writing. Conversational tone, present-tense observation, punchy clauses. Read it aloud, if it sounds like an essay opener you wrote it wrong.
 4. STRUCTURE: lead with the subject (what it IS), then the dry observation/punchline. Land the joke fast.
 5. BANNED openers: "The band marched...", "There is a particular kind of...", "Consider the...", "One submits...", "This writer notes...", these are essay voice, not social voice.
-6. PREFER short, declarative sentences. Less "The contrabass tuba is a marvel of resonance whose bell diameter exceeds..." and more "Contrabass tuba: brass with the audacity to occupy three time zones."
+6. PREFER short, declarative sentences in the EMPLOYEE'S voice, not catalog-card voice. Less "The contrabass tuba is a marvel of resonance whose bell diameter exceeds..." and more "Walked past three brass players unloading a van today. One needed help. It was the tuba." The example MUST place the writer in a scene; it MUST NOT be 'Subject: observation.'
 7. Voice is DRY, not literary. Editorial in attitude, social in length and rhythm.
 8. NO em-dashes anywhere. Use commas, periods, colons, parens.
 9. NO words: embodies, encapsulates, intersection, transcends, tapestry, symphony, harmony, dance, captures the essence.
@@ -169,13 +206,29 @@ Keep it in character. Make it specific and funny. Land the joke. End with your s
   } else {
     const entry = topic.entry;
     const def = (entry.definitions?.[0] || entry.definition || '').replace(/<[^>]+>/g, '').slice(0, 200);
-    return `Write a social post about this catalogued subject:
-
-Subject: ${entry.word}
-Definition: ${def}
-${entry.example ? 'Example: ' + entry.example.replace(/<[^>]+>/g, '').slice(0, 150) : ''}
-
-React to it in character. Notice something specific about it. Land a dry joke. End with your signature.`;
+    const subjWord = entry.word;
+    const subjFirst = (entry.word.split(',')[0] || entry.word).trim();
+    // Wave 194: this prompt was producing "regurgitation", staff posts that
+    // just re-described the catalog subject. The morning catalog post already
+    // shows that subject with a photo + definition. Staff posts MUST transform.
+    return 'A recent catalogue subject (context only, NOT what your post is about):\n\n' +
+      'Subject: ' + subjWord + '\n' +
+      'Definition: ' + def + '\n' +
+      (entry.example ? 'Example: ' + entry.example.replace(/<[^>]+>/g, '').slice(0, 150) + '\n' : '') +
+      '\nWRITE A POST THAT REACTS TO THIS, BUT DOES NOT DESCRIBE IT.\n\n' +
+      'HARD CONSTRAINTS:\n' +
+      '1. The subject name CANNOT appear in the first 30 characters. Lead with what happened in YOUR week / office / commute / desk that the subject reminded you of.\n' +
+      '2. AUTO-REJECT openers (these are the regurgitation pattern Christopher flagged 2026-05-21):\n' +
+      '   - "' + subjWord + ': ..."  (catalog-card colon opener)\n' +
+      '   - "' + subjWord + ' is..." / "The ' + subjFirst + ' is..." (subject-led declarative)\n' +
+      '   - "' + subjFirst + ' entry approved" / "Today\'s entry: ..." (meta-cataloguer voice)\n' +
+      '3. GOOD: tell the reader where YOU were when you encountered, remembered, argued about, or worked around this subject. The subject is setting detail, not topic.\n' +
+      '4. If your post would be indistinguishable from the morning catalog post with the signature removed, throw it out and start over.\n\n' +
+      'GOOD EXAMPLES of the transformation:\n' +
+      '- (Bart, topic=Hoover Dam): "Filed objection #47 re: a colleague calling a parking lot \'monumental.\' The Hoover Dam is monumental. A parking lot is a parking lot. The catalogue, properly understood, distinguishes."\n' +
+      '- (Eli, topic=Tuba): "Walked past three brass players unloading a van today. Two trombones, one tuba. The tuba required a second human. This is the editorial position."\n' +
+      '- (Teddy, topic=Pumpkin): "Submitted a draft this morning that opened with \'pumpkin.\' Eli marked it \'subject-led, see Rule 11.\' One revises."\n\n' +
+      'End with your signature.';
   }
 }
 
@@ -193,6 +246,8 @@ Be tough. Reject easily. Specific anchors:
 - Wordy / not punchy = penalty
 - Lazy or obvious joke = penalty
 - Specific funny detail = bonus
+- Wave 194 hard reject (max score 4): "Subject: observation" catalog-card opener. Examples to reject: "Contrabass tuba: bell diameter wider than most doorways", "Side-by-side fridge: two full-length doors", "Parmigiano-Reggiano wheel: 84 lbs, 18 months". These read like catalog cards with a byline stapled on, not like a person posting. The morning catalog post already covers the subject; the staff post must transform.
+- Wave 194 hard reject (max score 5): the post would be indistinguishable from the morning catalog post if the signature were removed. The whole point of an employee post is the EMPLOYEE\'s perspective, not the catalog\'s.
 
 Return JSON: {"score": 0-10, "verdict": "publish" or "reject", "reasons": ["specific reason 1", "specific reason 2"]}
 
@@ -276,6 +331,17 @@ async function main() {
       // Quick retry with explicit length constraint
       draft = await callClaude(sys, `${user}\n\nYour last draft was ${draft.length} chars, must be ≤${MAX_LEN}. Cut it. Make every word count.`);
       draft = draft.replace(/^["'`]+|["'`]+$/g, '').trim();
+    }
+
+    // Wave 194: hard structural gate BEFORE the rater. Catches catalog-card
+    // colon openers and subject-led thiccc posts that the rater kept passing
+    // at 8/10. Failed drafts skip scoring and force a retry.
+    const structuralViolations = findStructuralViolations(draft, topic);
+    if (structuralViolations.length > 0) {
+      console.log('[office]   STRUCTURAL VIOLATION - auto-reject:');
+      structuralViolations.forEach(v => console.log('     X ' + v));
+      lastRating = { score: 0, verdict: 'reject', reasons: structuralViolations, autoRejected: true };
+      continue;
     }
 
     const rating = await rateDraft(draft, byline, topic);
