@@ -2,7 +2,7 @@
   "_description": "Wave 192b: Episode 0 v3, per-character voices, no catalog plates.",
   "id": "ep00-welcome",
   "title": "Welcome to the Thicktionary",
-  "version": 5,
+  "version": 6,
   "voiceover": {
     "voice": "onyx",
     "model": "gpt-4o-mini-tts",
@@ -15,9 +15,9 @@
       "name": "hugh_cold_open",
       "duration": 5,
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
-      "narration": "Thicktionary. Daily catalogue. Objects of unusual girth.",
+      "narration": "The Thicktionary. Daily catalogue. Objects of unusual girth.",
       "voice": "onyx",
-      "instructions": "Deadpan documentary opener. Three short staccato phrases, each its own beat. Public-radio show intro card energy."
+      "instructions": "Deadpan documentary opener. CRITICAL pronunciation: 'Thicktionary' must be pronounced as 'THICK-tion-airy' - the first syllable rhymes with 'brick', then 'TION' like in 'station', then 'AIRY' like in 'fairy'. NOT 'fictionary' or 'tinary'. Emphasize the hard TH-K opening. Three short staccato phrases, each its own beat. Public-radio show intro card energy."
     },
     {
       "type": "video",
@@ -69,9 +69,9 @@
       "name": "outro",
       "duration": 4,
       "text": "thiccctionary.com\n\nA new entry each morning",
-      "narration": "Thicktionary dot com.",
+      "narration": "The Thicktionary dot com.",
       "voice": "onyx",
-      "instructions": "Deadpan close. Public-radio sign-off cadence. Falling tone on 'dot com'."
+      "instructions": "Deadpan close. Pronunciation: 'Thicktionary' = THICK + TION + AIRY (rhymes with 'fairy'). Public-radio sign-off cadence. Falling tone on 'dot com'."
     }
   ]
 }
