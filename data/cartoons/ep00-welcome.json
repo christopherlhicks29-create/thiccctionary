@@ -1,8 +1,8 @@
 {
-  "_description": "Wave 192b: Episode 0 v3, per-character voices, no catalog plates.",
+  "_description": "Wave 192d: Episode 0 v7, kettlebell cold-open + Hugh voice-only (no face on camera).",
   "id": "ep00-welcome",
   "title": "Welcome to the Thicktionary",
-  "version": 6,
+  "version": 7,
   "voiceover": {
     "voice": "onyx",
     "model": "gpt-4o-mini-tts",
@@ -11,13 +11,15 @@
   },
   "segments": [
     {
-      "type": "video",
-      "name": "hugh_cold_open",
-      "duration": 5,
-      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
+      "type": "photo_montage",
+      "name": "cold_open_kettlebell",
+      "duration": 3,
+      "images": [
+        "https://thiccctionary.com/images/2026-05-19-kettlebell-competition.jpg"
+      ],
       "narration": "The Thicktionary. Daily catalogue. Objects of unusual girth.",
       "voice": "onyx",
-      "instructions": "Deadpan documentary opener. CRITICAL pronunciation: 'Thicktionary' must be pronounced as 'THICK-tion-airy' - the first syllable rhymes with 'brick', then 'TION' like in 'station', then 'AIRY' like in 'fairy'. NOT 'fictionary' or 'tinary'. Emphasize the hard TH-K opening. Three short staccato phrases, each its own beat. Public-radio show intro card energy."
+      "instructions": "Deadpan documentary opener. CRITICAL pronunciation: 'Thicktionary' must be pronounced as 'THICK-tion-airy' - the first syllable rhymes with 'brick', then 'TION' like in 'station', then 'AIRY' like in 'fairy'. NOT 'fictionary' or 'tinary'. Emphasize the hard TH-K opening. Three short staccato phrases, each its own beat."
     },
     {
       "type": "video",
@@ -53,13 +55,13 @@
       "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_230655_eb83bd84-4675-4d43-90c9-3cb65feebe32.mp4",
       "narration": "Field correspondence is filed from improbable locations.",
       "voice": "ash",
-      "instructions": "Weathered middle-aged male field journalist. Gravelly, low, slightly windburned. Reads 'improbable locations' as if it's a normal editorial policy, no irony. Almost a whisper at the end."
+      "instructions": "Weathered middle-aged male field journalist. Gravelly, low, slightly windburned. Reads 'improbable locations' as if it's a normal editorial policy, no irony."
     },
     {
-      "type": "video",
-      "name": "hugh_closer",
-      "duration": 7,
-      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_004238_2a9acfab-e054-4859-9e10-526fdce14b8b.mp4",
+      "type": "title_card",
+      "name": "closer",
+      "duration": 5,
+      "text": "STRICTLY THINGS\n\nNEVER PEOPLE",
       "narration": "Strictly things. Never people. It's a documentary obligation.",
       "voice": "onyx",
       "instructions": "Deadpan close. Three short sentences. The final 'It's a documentary obligation' is the punchline but should be read with ZERO smile, like a stated job requirement. Tiny falling cadence on 'obligation'."
