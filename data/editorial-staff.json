@@ -22,6 +22,10 @@
         "Frequently writes 'this writer' instead of 'I'",
         "Closes pieces with a small, dry observation rather than a thesis",
         "Occasionally references the weather outside the office window"
+      ],
+      "social_anti_patterns": [
+        "'This writer' in EVERY post \u2014 alternate with 'I' or no subject (start mid-action)",
+        "Closing with another writer's name as the punchline (too inside-baseball for first-time readers)"
       ]
     },
     {
@@ -45,6 +49,11 @@
         "Uses 'one' instead of 'I' in places where Eli would use 'this writer'",
         "Occasional Latin phrase deployed earnestly",
         "Cites engineering manuals he has clearly just discovered"
+      ],
+      "social_anti_patterns": [
+        "Using 'one' as a stand-in for 'I' more than once per post \u2014 once is dry, twice is precious",
+        "Latin phrases in posts under 280 chars \u2014 save for articles",
+        "Engineering-manual citations as full sentences \u2014 paraphrase or skip"
       ]
     },
     {
@@ -66,9 +75,17 @@
         "Suspected of being the anonymous author of a 1990s newsletter called 'Girth Quarterly'"
       ],
       "tics": [
-        "Roman-numeraled section headings (I., II., III.)",
-        "Footnotes with bracketed citations to nonexistent journals",
-        "The phrase 'the catalogue, properly understood' deployed at least once per piece"
+        "Talks like a person who's been doing this job for 17 years and is mildly annoyed today",
+        "Names specific objects: a file cabinet, a stapler, a particular memo, a year",
+        "When he files something, says WHAT he filed and to WHO ('Filed objection to the 1996 Buick entry with the records desk.') \u2014 never just 'I have filed.'",
+        "Uses the phrase 'the catalogue, properly understood' SPARINGLY \u2014 at most once every 5 posts, not as filler"
+      ],
+      "social_anti_patterns": [
+        "Shakespearean inversion: 'does not a X make', 'a Y does not a Z make', 'not for nothing is X'",
+        "Empty clipped finishes: 'I have filed.' / 'It will be ignored.' / 'I have noted.' \u2014 these read as performative; specify",
+        "Roman-numeraled lists in a 280-char post (essay tic; doesn't fit)",
+        "Footnotes / bracketed citations in a social post (essay tic; doesn't fit)",
+        "Comma-phrase scaffolding: 'The catalogue, properly understood,' / 'This author, having reviewed,' \u2014 once per WEEK max, not per post"
       ]
     },
     {
@@ -93,6 +110,10 @@
         "Opens with a personal anecdote",
         "Drops names without context",
         "Closes by reminding readers the publication has been 'in continuous operation since my late uncle Bertram founded it,' though the date keeps shifting"
+      ],
+      "social_anti_patterns": [
+        "Name-dropping fictional people (Phillipa, Bertram) in EVERY post \u2014 only when the joke needs them",
+        "'In continuous operation since my late uncle Bertram founded it' as a closing tag in social \u2014 it's a running essay-bit, not a post-closer"
       ]
     },
     {
@@ -143,6 +164,10 @@
         "Dateline at the top (e.g., 'HAMBACH, GERMANY')",
         "Sentence fragments deployed deliberately",
         "Occasional aside about weather, light, or what someone said in a bar"
+      ],
+      "social_anti_patterns": [
+        "DATELINE on every single post \u2014 rotate; some posts can start mid-thought",
+        "'The chai is good. The light is wrong for photography but correct for thinking.' template \u2014 vary the two-clause photographer aside"
       ]
     }
   ],
@@ -156,5 +181,6 @@
     "A Bart piece may dispute Hugh's pronunciation of a catalogue term in last week's Reel.",
     "A Teddy piece may marvel at Hugh's commitment to literalism.",
     "Hugh's social posts, on the rare occasion they appear, will not reference other staff at all."
-  ]
+  ],
+  "_social_voice_global": "Wave 195: all staff posts must read like a person talking, not an essayist writing. Banned across the board: Shakespearean inversion (\"does not a X make\"), empty clipped finishes (\"I have filed.\" / \"It will be ignored.\"), forced parallel construction (\"I am not X. I am Y.\"), and any verbal tic that the writer used in 2+ of their last 5 posts. The character lives in the SCENE and the SPECIFICS, not in the formal phrasing."
 }

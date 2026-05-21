@@ -115,6 +115,33 @@ function findStructuralViolations(draft, topic) {
       violations.push('opens with the catalog subject "' + topic.entry.word + '" - reframe so the joke leads, not the subject name. Tell the reader where YOU were when you encountered/remembered it.');
     }
   }
+  // Wave 195 Pattern C: Shakespearean inversion ("does not a X make", "not for nothing is").
+  // Christopher 2026-05-21 flagged "Bell diameter alone does not a submission make" as essay-formal.
+  if (/\b(does not|do not)\s+(a|an)\s+\w[\w\s\-]*?\s+make\b/i.test(draft)) {
+    violations.push('Shakespearean inversion ("does not a X make") banned by Rule 14. Use normal subject-verb-object English.');
+  }
+  if (/\bnot for nothing is\b/i.test(draft)) {
+    violations.push('"Not for nothing is X" banned by Rule 14 (literary inversion). Say it plainly.');
+  }
+  // Wave 195 Pattern D: empty clipped action finishes ("I have filed." with no object/context).
+  // Match end-of-post (or end-of-line) "I have filed." / "I have noted." / "It will be ignored."
+  // as a stand-alone short sentence. Tolerated only if followed by an object/phrase on same line.
+  const emptyFinishPatterns = [
+    /\bI have filed\.\s*(\n|$)/,
+    /\bI have noted\.\s*(\n|$)/,
+    /\bIt will be ignored\.\s*(\n|$)/,
+    /\bThe matter is closed\.\s*(\n|$)/,
+  ];
+  for (const pat of emptyFinishPatterns) {
+    if (pat.test(draft)) {
+      violations.push('empty clipped finish ("' + (draft.match(pat) || ['?'])[0].trim() + '") banned by Rule 15. Say WHAT was filed/noted/ignored and WHERE.');
+      break;
+    }
+  }
+  // Wave 195 Pattern E: tic-repetition check. If the signature phrase appears in current draft AND
+  // in 2+ of the writer's recent corpus posts, that's auto-reject. Corpus is in the prompt context
+  // but not here; the rater catches this with the -2 penalty. Pattern E is therefore a no-op
+  // for now; left as a hook for future enhancement.
   return violations;
 }
 
@@ -248,6 +275,10 @@ Be tough. Reject easily. Specific anchors:
 - Specific funny detail = bonus
 - Wave 194 hard reject (max score 4): "Subject: observation" catalog-card opener. Examples to reject: "Contrabass tuba: bell diameter wider than most doorways", "Side-by-side fridge: two full-length doors", "Parmigiano-Reggiano wheel: 84 lbs, 18 months". These read like catalog cards with a byline stapled on, not like a person posting. The morning catalog post already covers the subject; the staff post must transform.
 - Wave 194 hard reject (max score 5): the post would be indistinguishable from the morning catalog post if the signature were removed. The whole point of an employee post is the EMPLOYEE\'s perspective, not the catalog\'s.
+- Wave 195 hard reject (max score 4): Shakespearean inversion ("does not a X make", "not for nothing is X", "a Y does not a Z make"). This reads as essay, not as a person talking.
+- Wave 195 hard reject (max score 5): empty clipped finishes ("I have filed.", "It will be ignored.", "I have noted." with no object or context). The verb needs a target.
+- Wave 195 penalty (-2 from base score): same signature phrase ("the catalogue, properly understood", "this writer notes", "one submits") appearing in the post WHEN it ALSO appears in the writer\'s recent corpus shown in the prompt. Tics should rotate, not repeat.
+- Wave 195 penalty (-1 from base score): parallel "I am not X. I am simply Y." used twice OR posts of 3+ short flat-affect declarations in a row. Need rhythm variation.
 
 Return JSON: {"score": 0-10, "verdict": "publish" or "reject", "reasons": ["specific reason 1", "specific reason 2"]}
 
