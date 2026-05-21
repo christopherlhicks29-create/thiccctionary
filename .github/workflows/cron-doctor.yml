@@ -1,0 +1,131 @@
+name: Cron Doctor, diagnose silent daily skips
+
+# Wave 196: Diagnose why daily.yml has been silently skipping. Three runs
+# fired by Christopher (2026-05-20/21) and one by Claude (2026-05-21) all
+# produced no entry. No audits/daily-failures/*.log, no audits/dead-subjects/
+# entries. That means the failure mode is BEFORE the script's bailGracefully
+# path. Possible causes: (a) workflow not triggering at all (GH Actions
+# quota / concurrency / YAML), (b) the Wave 188a collision check
+# misfiring, (c) silent exit-0 with no log.
+#
+# This workflow strips daily.yml down to: trigger ack + OpenAI ping +
+# Unsplash ping + commit audit log. If THIS runs but daily.yml doesn't,
+# we know daily.yml's YAML is broken. If both run, we get a baseline for
+# OpenAI/Unsplash health from main branch alone.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-cron-doctor'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Acknowledge trigger
+        run: |
+          echo "Cron-doctor triggered at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "Event: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "SHA: ${{ github.sha }}"
+
+      - name: Ping OpenAI (smallest possible chat request)
+        id: openai
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "openai_status=missing_secret" >> $GITHUB_OUTPUT
+            echo "::warning::OPENAI_API_KEY secret is not set"
+            exit 0
+          fi
+          RESP=$(curl -sS -w "\nHTTP:%{http_code}" -X POST https://api.openai.com/v1/chat/completions \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"reply ok"}],"max_tokens":3}' 2>&1)
+          HTTP=$(echo "$RESP" | tail -1 | sed 's/HTTP://')
+          BODY=$(echo "$RESP" | sed '$d')
+          echo "openai_status=$HTTP" >> $GITHUB_OUTPUT
+          echo "OpenAI HTTP: $HTTP"
+          echo "Body (first 500 chars):"
+          echo "$BODY" | head -c 500
+          echo ""
+          # Capture body to file for audit
+          echo "$BODY" | head -c 2000 > /tmp/openai-body.txt
+
+      - name: Ping Unsplash (small search)
+        id: unsplash
+        env:
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        run: |
+          if [ -z "$UNSPLASH_ACCESS_KEY" ]; then
+            echo "unsplash_status=missing_secret" >> $GITHUB_OUTPUT
+            echo "::warning::UNSPLASH_ACCESS_KEY secret is not set"
+            exit 0
+          fi
+          RESP=$(curl -sS -w "\nHTTP:%{http_code}" \
+            "https://api.unsplash.com/search/photos?query=anvil&per_page=1" \
+            -H "Authorization: Client-ID $UNSPLASH_ACCESS_KEY" 2>&1)
+          HTTP=$(echo "$RESP" | tail -1 | sed 's/HTTP://')
+          BODY=$(echo "$RESP" | sed '$d')
+          echo "unsplash_status=$HTTP" >> $GITHUB_OUTPUT
+          echo "Unsplash HTTP: $HTTP"
+          echo "Body (first 300 chars):"
+          echo "$BODY" | head -c 300
+          echo ""
+          echo "$BODY" | head -c 1500 > /tmp/unsplash-body.txt
+
+      - name: Write audit log to repo
+        run: |
+          STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          mkdir -p audits/cron-doctor
+          LOG="audits/cron-doctor/$(date -u +%Y-%m-%d-%H%M%S).md"
+          {
+            echo "# Cron Doctor run $STAMP"
+            echo ""
+            echo "**Triggered by:** ${{ github.event_name }} (actor=${{ github.actor }}, sha=${{ github.sha }})"
+            echo ""
+            echo "## OpenAI"
+            echo "- HTTP: \`${{ steps.openai.outputs.openai_status }}\`"
+            echo "- Body excerpt:"
+            echo '```'
+            cat /tmp/openai-body.txt 2>/dev/null || echo "(no body captured)"
+            echo '```'
+            echo ""
+            echo "## Unsplash"
+            echo "- HTTP: \`${{ steps.unsplash.outputs.unsplash_status }}\`"
+            echo "- Body excerpt:"
+            echo '```'
+            cat /tmp/unsplash-body.txt 2>/dev/null || echo "(no body captured)"
+            echo '```'
+          } > "$LOG"
+          echo "wrote $LOG"
+          echo "---"
+          cat "$LOG"
+
+      - name: Cleanup sentinel + commit audit
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Cron Doctor (auto)"
+          rm -f data/.fire-cron-doctor
+          git add audits/cron-doctor/ data/.fire-cron-doctor 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "Cron-doctor diagnostic $(date -u +%Y-%m-%d-%H%M%S)"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
