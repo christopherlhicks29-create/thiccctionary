@@ -212,9 +212,13 @@ jobs:
         continue-on-error: true
 
       - name: Open Pull Request
-        if: steps.collision.outputs.proceed == 'true'
+        # Wave 196b: collapsed duplicate `if:` keys (Wave 188a's collision-guard
+        # + Wave 142a's success-gate). YAML strict parsers reject duplicate
+        # keys, which silently broke the entire workflow loader since
+        # 2026-05-19. cron-doctor proved triggering + secrets are fine; this
+        # was the actual blocker for 5/20+5/21 dailies.
+        if: success() && steps.collision.outputs.proceed == 'true'
         id: open_pr
-        if: success()
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Daily entry: ${{ steps.entry.outputs.date }}, ${{ steps.entry.outputs.word }}"
