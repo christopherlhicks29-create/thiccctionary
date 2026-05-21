@@ -57,13 +57,9 @@ Specific overlaps to consolidate:
 Christopher's virtual mailbox is live: **2955 New Center Point #1023, Colorado Springs, CO 80922**. USPS Form 1583 approved, email validation complete. This unblocks the trademark filing (`legal/TRADEMARK-APPLICATION-DRAFT.md` now has the real address + phone wired in).
 
 
-## Image-regen for Banana Cavendish
+## Image-regen for Banana Cavendish, FIRED 2026-05-21 (post-Wave-195)
 
-**Current state:** text was cleaned in Wave 43 but image is still generic-bananas-on-yellow stock shot.
-
-**When to revisit:** any session, fully autonomous via sentinel mechanism. Just write a sentinel JSON for date 2026-05-03 with a tighter subject_override.
-
-**Suggested override:** "single ripe banana close up macro food photography"
+Sentinel pushed with `subject_override: "single ripe banana close up macro food photography"`. Workflow opens a PR; Christopher merges or rejects via admin panel. If PR doesn't appear within ~5 min of commit landing, the regenerate-images.yml workflow itself is broken.
 
 ---
 

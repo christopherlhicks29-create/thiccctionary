@@ -11,5 +11,31 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Atlas Stone, Strongman",
+      "query": "atlas stone strongman",
+      "notes": "Spherical concrete competition stones 100-200kg, Henry Holland 1980s WSM heritage. Visual: round dense object that one human cannot easily move. Should rate 8.5+."
+    },
+    {
+      "subject": "Silo, Grain Concrete",
+      "query": "concrete grain silo farm",
+      "notes": "Reinforced-concrete cylindrical grain storage, 30-60ft tall, prairie-photogenic. Etymology from Greek siros (pit for grain). Visual: load-bearing infrastructure that's also farm-equipment."
+    },
+    {
+      "subject": "Anvil, Blacksmith",
+      "query": "blacksmith anvil iron forge",
+      "notes": "Cast steel/iron anvil 100-500 lbs, Hardy-hole + Pritchel-hole design dates to medieval Europe. Brooks Anvils still made in England. Visual: small footprint, immense density. The literal definition of 'a chunk.' Should rate 8.5+."
+    },
+    {
+      "subject": "Crankshaft, Marine Diesel",
+      "query": "marine diesel crankshaft engine",
+      "notes": "Wartsila/MAN B&W marine diesel crankshafts, single-piece forged steel 100-300 tons. Powers container ships. Visual: industrial-scale machined steel."
+    },
+    {
+      "subject": "Sequoia, General Sherman",
+      "query": "giant sequoia tree trunk",
+      "notes": "General Sherman tree: 275ft, 36ft base diameter, ~2,700 years old, ~1,400 tons. Etymology honoring Sequoyah. Visual: tree where humans look like ants at the base."
+    }
+  ]
 }
