@@ -100,7 +100,37 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           FORCE_REGENERATE: ${{ inputs.force_regenerate || 'false' }}
-        run: node generate-daily.js
+        run: |
+          # Wave 196d: capture stdout+stderr regardless of exit code, so the
+          # "Always commit trace" step below can ship the trace to main even
+          # when /tmp/daily-error.log isn't written (silent-skip scenarios).
+          set +o pipefail
+          node generate-daily.js 2>&1 | tee /tmp/daily-stdout.log
+          EXIT=${PIPESTATUS[0]}
+          echo "::notice::generate-daily.js exit=$EXIT"
+          exit $EXIT
+
+      - name: Always commit stdout trace (Wave 196d diagnostic)
+        if: always()
+        run: |
+          mkdir -p audits/daily-stdout
+          STAMP=$(date -u +%Y-%m-%d-%H%M%S)
+          if [ -f /tmp/daily-stdout.log ]; then
+            cp /tmp/daily-stdout.log "audits/daily-stdout/$STAMP.log"
+            echo "captured to audits/daily-stdout/$STAMP.log"
+          else
+            echo "(no /tmp/daily-stdout.log to capture)"
+          fi
+          git config user.email "actions@github.com"
+          git config user.name "Daily debug (auto)"
+          git add audits/daily-stdout/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "Daily stdout trace (Wave 196d)"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
 
       - name: Capture failure trace
         if: always() && failure()
