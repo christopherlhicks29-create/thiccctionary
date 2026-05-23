@@ -186,7 +186,7 @@
       <h2 style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;">
         <span>Pipeline status</span>
         <label style="font-size: 13px; font-weight: 400; color: var(--ink-soft); cursor: pointer; user-select: none; white-space: nowrap;">
-          <input type="checkbox" id="autofix-toggle" style="margin-right: 6px; vertical-align: middle;" />
+          <input type="checkbox" id="autofix-toggle" checked style="margin-right: 6px; vertical-align: middle;" />
           <span style="vertical-align: middle;">Auto-fix red pipelines</span>
         </label>
       </h2>
@@ -1069,6 +1069,22 @@ if (_origActivate) {
 if ((location.hash || '').slice(1) === 'social') loadSocialPosts();
 
 // Initial route based on hash
+// Wave 197b: persist auto-fix toggle state across page loads.
+// Christopher asked for the admin page to be more automated - first step
+// is "remember I want auto-fix on" without him clicking it every visit.
+(function persistAutofixToggle() {
+  const toggle = document.getElementById('autofix-toggle');
+  if (!toggle) return;
+  // Read saved state (default true if never set, matching the new HTML default).
+  const saved = localStorage.getItem('thiccctionary-admin-autofix');
+  if (saved !== null) {
+    toggle.checked = (saved === 'true');
+  }
+  toggle.addEventListener('change', () => {
+    localStorage.setItem('thiccctionary-admin-autofix', String(toggle.checked));
+  });
+})();
+
 activateTab((location.hash || '#dashboard').slice(1));
 </script>
 
