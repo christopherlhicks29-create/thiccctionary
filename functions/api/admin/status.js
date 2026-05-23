@@ -76,6 +76,20 @@ export async function onRequestGet({ env }) {
       };
     }
 
+    // Wave 202: read audits/buffer-posts/<today>.json so the admin Today's
+    // Reel tile can render per-platform status pills (FB / IG / X / etc).
+    try {
+      const postsRes = await gh('/repos/' + REPO + '/contents/audits/buffer-posts/' + today + '.json?ref=main&_=' + cacheBust, {}, env);
+      if (postsRes.ok) {
+        const file = await postsRes.json();
+        out.todayPosts = JSON.parse(atob(file.content.replace(/\n/g, '')));
+      } else {
+        out.todayPosts = null;
+      }
+    } catch (e) {
+      out.todayPosts = null;
+    }
+
     return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message, partial: out }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });

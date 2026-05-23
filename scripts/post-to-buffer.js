@@ -642,6 +642,36 @@ async function main() {
     }
   }
   console.log(`\nSummary: ${successes} succeeded, ${failures} failed (out of ${results.length}).`);
+
+  // Wave 202: write per-channel results to audits/buffer-posts/<date>.json
+  // so the admin dashboard can render per-platform status pills on the
+  // Today's Reel tile without needing Buffer API access.
+  try {
+    const resultsPath = path.join(ROOT, 'audits', 'buffer-posts', entry.date + '.json');
+    await fs.mkdir(path.dirname(resultsPath), { recursive: true });
+    let existing = {};
+    try { existing = JSON.parse(await fs.readFile(resultsPath, 'utf8')); } catch (e) { existing = {}; }
+    existing[mode] = {
+      ts: new Date().toISOString(),
+      successes,
+      failures,
+      channels: results.map(r => {
+        const ch = channels.find(c => c.channelId === r.channelId) || {};
+        return {
+          service: ch.service || 'unknown',
+          channelId: r.channelId,
+          status: r.ok ? 'posted' : 'failed',
+          postId: r.postId || null,
+          error: r.ok ? null : (r.body || '').slice(0, 200),
+        };
+      }),
+    };
+    await fs.writeFile(resultsPath, JSON.stringify(existing, null, 2) + '\n', 'utf8');
+    console.log('Wrote results to audits/buffer-posts/' + entry.date + '.json');
+  } catch (e) {
+    console.warn('Could not write buffer-posts log (non-fatal): ' + e.message);
+  }
+
   if (failures > 0) process.exit(1);
 }
 

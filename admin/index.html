@@ -455,12 +455,31 @@ async function loadDashboard() {
         <div class="sub">Latest on file: ${data.latestEntry ? esc(data.latestEntry.date) + ', ' + esc(data.latestEntry.word) : 'none'}. Fire the daily cron from Quick-fire.</div>
       </div>`;
   }
-  today.innerHTML += `
-    <div class="tile ${data.todayReelExists ? 'ok' : 'warn'}">
-      <div class="label">Today's Reel video</div>
-      <div class="value">${data.todayReelExists ? '✓ Present' : 'Missing'}</div>
-      <div class="sub">${data.todayReelExists ? '<code>videos/' + esc(data.today) + '.mp4</code>' : 'Fire <code>tiktok-latest</code> from Quick-fire to build it.'}</div>
-    </div>`;
+  // Wave 202: Today's Reel tile gets a <video> embed + per-platform status
+  // pills. Status comes from audits/buffer-posts/<today>.json which
+  // post-to-buffer.js writes on every cross-post.
+  const reelPosts = data.todayPosts && data.todayPosts.reels ? data.todayPosts.reels : null;
+  const reelChannels = reelPosts && reelPosts.channels ? reelPosts.channels : [];
+  function pillFor(service) {
+    const ch = reelChannels.find(c => c.service === service || c.service === service + 'page' || c.service === service + 'business');
+    if (!ch) return '<span class="pill neutral">' + service + ' ,</span>';
+    if (ch.status === 'posted') return '<span class="pill good">' + service + ' ✓</span>';
+    return '<span class="pill bad" title="' + esc(ch.error || 'failed') + '">' + service + ' ✗</span>';
+  }
+  let reelInnerHtml;
+  if (data.todayReelExists) {
+    reelInnerHtml =
+      '<div class="label">Today\'s Reel</div>' +
+      '<video controls preload="metadata" style="width: 100%; max-width: 320px; margin-top: 8px; border-radius: 4px; background: #000;" src="https://thiccctionary.com/videos/' + esc(data.today) + '.mp4"></video>' +
+      '<div class="sub" style="margin-top: 10px;">Posted to: ' + pillFor('facebook') + ' ' + pillFor('instagram') + (reelPosts ? '' : '<br><em style="font-size:12px;">(no post log yet, will populate after next cross-post)</em>') + '</div>' +
+      '<div class="sub" style="margin-top: 6px; font-size: 11px; color: var(--ink-soft);"><code>videos/' + esc(data.today) + '.mp4</code></div>';
+  } else {
+    reelInnerHtml =
+      '<div class="label">Today\'s Reel video</div>' +
+      '<div class="value">Missing</div>' +
+      '<div class="sub">Fire <code>tiktok-latest</code> from Quick-fire to build it.</div>';
+  }
+  today.innerHTML += '<div class="tile ' + (data.todayReelExists ? 'ok' : 'warn') + '">' + reelInnerHtml + '</div>';
 
   // Catalog tiles
   const catalog = $('#catalog-tiles');
