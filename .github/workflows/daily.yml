@@ -7,7 +7,7 @@ name: Daily Thiccc, Generate Draft PR
 # Merge the PR (one tap on GitHub mobile) to publish.
 on:
   schedule:
-    - cron: '0 13 * * *'   # 13:00 UTC daily
+    - cron: '0 12 * * *'   # 12:00 UTC daily = 6am MDT (May-Nov) / 5am MST (Nov-Mar). Wave 199b: Christopher 2026-05-23 wanted 6am MST. GitHub Actions cron is UTC-only (no DST). 12:00 UTC is 6am wall-clock during DST (most of the year) and drifts to 5am MST in winter.
   workflow_dispatch:
     inputs:
       force_regenerate:
