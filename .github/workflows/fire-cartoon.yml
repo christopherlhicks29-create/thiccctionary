@@ -70,6 +70,7 @@ jobs:
           echo "cartoon_id=$ID" >> $GITHUB_OUTPUT
 
       - name: Post Cartoon to Buffer
+        id: post
         working-directory: scripts
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
@@ -77,7 +78,52 @@ jobs:
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           CARTOON_ID: ${{ steps.target.outputs.cartoon_id }}
           CARTOON_CAPTION_OVERRIDE: ${{ inputs.caption_override }}
-        run: node post-cartoon-to-buffer.js
+        run: |
+          # Wave 198c: capture stdout+stderr so the audit step below can ship
+          # the Buffer response to main regardless of exit code.
+          set +o pipefail
+          node post-cartoon-to-buffer.js 2>&1 | tee /tmp/cartoon-post.log
+          EXIT=${PIPESTATUS[0]}
+          echo "::notice::post-cartoon-to-buffer.js exit=$EXIT"
+          echo "exit=$EXIT" >> $GITHUB_OUTPUT
+          exit $EXIT
+
+      - name: Commit cartoon-post audit log
+        if: always()
+        run: |
+          STAMP=$(date -u +%Y%m%d-%H%M%S)
+          ID="${{ steps.target.outputs.cartoon_id || 'unknown' }}"
+          EXIT="${{ steps.post.outputs.exit || '?' }}"
+          STATUS="ok"
+          if [ "$EXIT" != "0" ]; then STATUS="FAIL($EXIT)"; fi
+          mkdir -p audits/cartoon-posts
+          LOG="audits/cartoon-posts/$STAMP.log"
+          {
+            echo "# Cartoon cross-post run $STAMP"
+            echo "# Cartoon ID: $ID"
+            echo "# Exit code: $EXIT"
+            echo "# Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo ""
+            if [ -f /tmp/cartoon-post.log ]; then
+              cat /tmp/cartoon-post.log
+            else
+              echo "(no /tmp/cartoon-post.log captured)"
+            fi
+          } > "$LOG"
+          echo "Audit log: $LOG"
+          echo "--- preview ---"
+          head -30 "$LOG"
+          echo "---"
+          git config user.email "actions@github.com"
+          git config user.name "Fire Cartoon (auto)"
+          git add audits/cartoon-posts/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "Cartoon cross-post $STAMP [$STATUS] ($ID)"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
 
       - name: Clear sentinel
         if: always() && github.event_name == 'push'
