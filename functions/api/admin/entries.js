@@ -20,7 +20,7 @@ async function gh(path, opts = {}, env) {
 }
 
 export async function onRequestGet({ request, env }) {
-  if (!env.GITHUB_PAT) return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+  if (!env.GITHUB_PAT) return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
 
   try {
     const res = await gh(`/repos/${REPO}/contents/data/entries.json?ref=main`, {}, env);
@@ -35,8 +35,8 @@ export async function onRequestGet({ request, env }) {
 
     if (date) {
       const entry = entries.find(e => e.date === date);
-      if (!entry) return new Response(JSON.stringify({ error: 'Entry not found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
-      return new Response(JSON.stringify({ entry, sha, indexInFile: entries.findIndex(e => e.date === date) }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      if (!entry) return new Response(JSON.stringify({ error: 'Entry not found' }), { status: 404, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
+      return new Response(JSON.stringify({ entry, sha, indexInFile: entries.findIndex(e => e.date === date) }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
 
     // List metadata only
@@ -49,8 +49,8 @@ export async function onRequestGet({ request, env }) {
       bookReady: e.bookReady ?? null,
       tags: e.tags || [],
     }));
-    return new Response(JSON.stringify({ entries: list, total: entries.length }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ entries: list, total: entries.length }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }

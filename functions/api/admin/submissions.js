@@ -10,15 +10,15 @@ async function gh(path, opts = {}, env) {
     'Authorization': `Bearer ${env.GITHUB_PAT}`,
     'Accept': 'application/vnd.github+json',
     'User-Agent': 'thiccctionary-admin',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
     ...(opts.headers || {}),
   };
-  return fetch(`https://api.github.com${path}`, { ...opts, headers });
+  return fetch(`https://api.github.com${path}`, { ...opts, headers, cache: 'no-store' });
 }
 
 export async function onRequestGet({ env }) {
   if (!env.GITHUB_PAT) {
-    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
   try {
     const res = await gh(`/repos/${REPO}/pulls?state=open&per_page=50`, {}, env);
@@ -49,8 +49,8 @@ export async function onRequestGet({ env }) {
       };
     }));
 
-    return new Response(JSON.stringify({ submissions: enriched }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ submissions: enriched }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }

@@ -10,26 +10,26 @@ async function gh(path, opts = {}, env) {
     'Authorization': `Bearer ${env.GITHUB_PAT}`,
     'Accept': 'application/vnd.github+json',
     'User-Agent': 'thiccctionary-admin',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
     ...(opts.headers || {}),
   };
-  return fetch(`https://api.github.com${path}`, { ...opts, headers });
+  return fetch(`https://api.github.com${path}`, { ...opts, headers, cache: 'no-store' });
 }
 
 export async function onRequestPost({ request, env }) {
   if (!env.GITHUB_PAT) {
-    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
   let body;
   try { body = await request.json(); }
-  catch (e) { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers: { 'Content-Type': 'application/json' } }); }
+  catch (e) { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } }); }
 
   const { prNumber, action } = body;
   if (!Number.isInteger(prNumber) || prNumber < 1) {
-    return new Response(JSON.stringify({ error: 'prNumber must be a positive integer' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'prNumber must be a positive integer' }), { status: 400, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
   if (action !== 'approve' && action !== 'reject') {
-    return new Response(JSON.stringify({ error: 'action must be "approve" or "reject"' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'action must be "approve" or "reject"' }), { status: 400, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 
   try {
@@ -40,15 +40,15 @@ export async function onRequestPost({ request, env }) {
       }, env);
       if (!res.ok) {
         const err = await res.text();
-        return new Response(JSON.stringify({ error: `Merge failed: ${res.status} ${err.slice(0,200)}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+        return new Response(JSON.stringify({ error: `Merge failed: ${res.status} ${err.slice(0,200)}` }), { status: 502, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
       }
-      return new Response(JSON.stringify({ ok: true, action: 'approved' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ ok: true, action: 'approved' }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
 
     // reject
     const prRes = await gh(`/repos/${REPO}/pulls/${prNumber}`, {}, env);
     if (!prRes.ok) {
-      return new Response(JSON.stringify({ error: `PR not found: ${prRes.status}` }), { status: 404, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: `PR not found: ${prRes.status}` }), { status: 404, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
     const pr = await prRes.json();
     const branch = pr.head.ref;
@@ -57,12 +57,12 @@ export async function onRequestPost({ request, env }) {
       body: JSON.stringify({ state: 'closed' }),
     }, env);
     if (!closeRes.ok) {
-      return new Response(JSON.stringify({ error: `Close failed: ${closeRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: `Close failed: ${closeRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
     // Delete branch (best-effort, don't fail if already gone)
     await gh(`/repos/${REPO}/git/refs/heads/${branch}`, { method: 'DELETE' }, env).catch(() => {});
-    return new Response(JSON.stringify({ ok: true, action: 'rejected' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ ok: true, action: 'rejected' }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }

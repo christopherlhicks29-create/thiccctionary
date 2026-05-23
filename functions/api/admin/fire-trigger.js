@@ -45,25 +45,25 @@ async function gh(path, opts = {}, env) {
     'Authorization': `Bearer ${env.GITHUB_PAT}`,
     'Accept': 'application/vnd.github+json',
     'User-Agent': 'thiccctionary-admin',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
     ...(opts.headers || {}),
   };
-  return fetch(`https://api.github.com${path}`, { ...opts, headers });
+  return fetch(`https://api.github.com${path}`, { ...opts, headers, cache: 'no-store' });
 }
 
 export async function onRequestPost({ request, env }) {
   if (!env.GITHUB_PAT) {
-    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 
   let body;
   try { body = await request.json(); }
-  catch (e) { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers: { 'Content-Type': 'application/json' } }); }
+  catch (e) { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } }); }
 
   const { trigger, date, sourceEmail } = body;
   const cfg = TRIGGERS[trigger];
   if (!cfg) {
-    return new Response(JSON.stringify({ error: `Unknown trigger: ${trigger}. Valid: ${Object.keys(TRIGGERS).join(', ')}` }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: `Unknown trigger: ${trigger}. Valid: ${Object.keys(TRIGGERS).join(', ')}` }), { status: 400, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 
   // Wave 152: workflow_dispatch path - re-run a workflow directly via
@@ -90,7 +90,7 @@ export async function onRequestPost({ request, env }) {
         }, env);
         if (!dispatchRes2.ok) {
           const err = await dispatchRes2.text();
-          return new Response(JSON.stringify({ error: `Workflow dispatch failed: ${dispatchRes2.status} ${err.slice(0, 300)}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+          return new Response(JSON.stringify({ error: `Workflow dispatch failed: ${dispatchRes2.status} ${err.slice(0, 300)}` }), { status: 502, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
         }
       }
       return new Response(JSON.stringify({
@@ -99,14 +99,14 @@ export async function onRequestPost({ request, env }) {
         label: cfg.label,
         workflow: cfg.workflow,
         message: `Workflow dispatched. Will appear in Actions tab within ~10s.`,
-      }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     } catch (e) {
-      return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
   }
 
   if (cfg.needsDate && !/^\d{4}-\d{2}-\d{2}$/.test(date || '')) {
-    return new Response(JSON.stringify({ error: `Trigger '${trigger}' requires date in YYYY-MM-DD format` }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: `Trigger '${trigger}' requires date in YYYY-MM-DD format` }), { status: 400, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 
   // Build sentinel content based on mode
@@ -167,7 +167,7 @@ export async function onRequestPost({ request, env }) {
 
     if (!putRes.ok) {
       const err = await putRes.text();
-      return new Response(JSON.stringify({ error: `Failed to commit sentinel: ${putRes.status} ${err.slice(0, 300)}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: `Failed to commit sentinel: ${putRes.status} ${err.slice(0, 300)}` }), { status: 502, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
 
     return new Response(JSON.stringify({
@@ -176,8 +176,8 @@ export async function onRequestPost({ request, env }) {
       label: cfg.label,
       sentinelPath: cfg.path,
       message: `Fired. Workflow should start within ~30s. Check https://github.com/${REPO}/actions for status.`,
-    }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }

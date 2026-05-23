@@ -12,12 +12,12 @@ async function gh(path, opts = {}, env) {
     'User-Agent': 'thiccctionary-admin',
     ...(opts.headers || {}),
   };
-  return fetch(`https://api.github.com${path}`, { ...opts, headers });
+  return fetch(`https://api.github.com${path}`, { ...opts, headers, cache: 'no-store' });
 }
 
 export async function onRequestGet({ env }) {
   if (!env.GITHUB_PAT) {
-    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 
   const today = new Date().toISOString().slice(0, 10);
@@ -25,7 +25,8 @@ export async function onRequestGet({ env }) {
 
   try {
     // 1. Today's entry, read entries.json from main
-    const entriesRes = await gh(`/repos/${REPO}/contents/data/entries.json?ref=main`, {}, env);
+    const cacheBust = Date.now();
+    const entriesRes = await gh(`/repos/${REPO}/contents/data/entries.json?ref=main&_=${cacheBust}`, {}, env);
     if (entriesRes.ok) {
       const file = await entriesRes.json();
       const decoded = atob(file.content.replace(/\n/g, ''));
@@ -43,11 +44,11 @@ export async function onRequestGet({ env }) {
     }
 
     // 2. Reel for today, check if videos/<today>.mp4 exists
-    const reelRes = await gh(`/repos/${REPO}/contents/videos/${today}.mp4?ref=main`, {}, env);
+    const reelRes = await gh(`/repos/${REPO}/contents/videos/${today}.mp4?ref=main&_=${cacheBust}`, {}, env);
     out.todayReelExists = reelRes.ok;
 
     // 3. Open submission PRs count
-    const prRes = await gh(`/repos/${REPO}/pulls?state=open&per_page=50`, {}, env);
+    const prRes = await gh(`/repos/${REPO}/pulls?state=open&per_page=50&_=${cacheBust}`, {}, env);
     if (prRes.ok) {
       const prs = await prRes.json();
       out.openSubmissions = prs.filter(pr => (pr.labels || []).some(l => l.name === 'submissions-review')).length;
@@ -55,7 +56,7 @@ export async function onRequestGet({ env }) {
     }
 
     // 4. Recent workflow runs, latest of each key workflow
-    const runsRes = await gh(`/repos/${REPO}/actions/runs?per_page=100`, {}, env);
+    const runsRes = await gh(`/repos/${REPO}/actions/runs?per_page=100&_=${cacheBust}`, {}, env);
     if (runsRes.ok) {
       const runs = (await runsRes.json()).workflow_runs || [];
       const latestOf = name => runs.find(r => r.name === name);
@@ -75,8 +76,8 @@ export async function onRequestGet({ env }) {
       };
     }
 
-    return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message, partial: out }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message, partial: out }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }

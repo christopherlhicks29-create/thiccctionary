@@ -21,12 +21,12 @@ async function gh(p, env) {
 
 export async function onRequestGet({ env }) {
   if (!env.GITHUB_PAT) {
-    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
   try {
     const queueRaw = await gh(`/repos/${REPO}/contents/data/office-post-queue.json?ref=main`, env);
     if (!queueRaw) {
-      return new Response(JSON.stringify({ posts: [], note: 'queue not found' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ posts: [], note: 'queue not found' }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
     const queue = JSON.parse(queueRaw);
     const recent = queue.slice(0, 25).map(p => ({
@@ -42,8 +42,8 @@ export async function onRequestGet({ env }) {
       text: p.text,
       errors: p.errors || [],
     }));
-    return new Response(JSON.stringify({ posts: recent }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ posts: recent }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }

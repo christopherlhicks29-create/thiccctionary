@@ -12,29 +12,29 @@ async function gh(path, opts = {}, env) {
     'User-Agent': 'thiccctionary-admin',
     ...(opts.headers || {}),
   };
-  return fetch(`https://api.github.com${path}`, { ...opts, headers });
+  return fetch(`https://api.github.com${path}`, { ...opts, headers, cache: 'no-store' });
 }
 
 export async function onRequestGet({ env }) {
   if (!env.GITHUB_PAT) {
-    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: 'GITHUB_PAT not configured' }), { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 
   try {
     const listRes = await gh(`/repos/${REPO}/contents/audits?ref=main`, {}, env);
     if (!listRes.ok) {
-      return new Response(JSON.stringify({ error: `Couldn't list audits dir: ${listRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: `Couldn't list audits dir: ${listRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
     const files = (await listRes.json()).filter(f => /^health-\d{4}-\d{2}-\d{2}\.md$/.test(f.name));
     files.sort((a, b) => b.name.localeCompare(a.name));
     const latest = files[0];
     if (!latest) {
-      return new Response(JSON.stringify({ error: 'No health audits found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: 'No health audits found' }), { status: 404, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
 
     const fileRes = await gh(`/repos/${REPO}/contents/audits/${latest.name}?ref=main`, {}, env);
     if (!fileRes.ok) {
-      return new Response(JSON.stringify({ error: `Couldn't read audit file: ${fileRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+      return new Response(JSON.stringify({ error: `Couldn't read audit file: ${fileRes.status}` }), { status: 502, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
     }
     const file = await fileRes.json();
     const mdBytes = Uint8Array.from(atob(file.content.replace(/\n/g, '')), c => c.charCodeAt(0));
@@ -56,8 +56,8 @@ export async function onRequestGet({ env }) {
       scanned: scannedMatch ? scannedMatch[1].trim() : null,
       sections,
       htmlUrl: latest.html_url,
-    }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } });
   }
 }
