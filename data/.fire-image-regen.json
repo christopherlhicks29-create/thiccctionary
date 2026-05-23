@@ -1,6 +1,0 @@
-{
-  "dates": "2026-05-23",
-  "subject_override": "antique anvil museum exhibit metal object no human",
-  "_fired_by": "Claude Wave-201b",
-  "_reason": "Third regen attempt. First two picked blacksmiths despite override. Forcing 'museum exhibit' framing to bias toward isolated object. The regenerate-images workflow does NOT have the Wave 200 critic gate yet (separate scope), so this is the picker's choice."
-}
