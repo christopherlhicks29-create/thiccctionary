@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-23",
+    "word": "Anvil, Blacksmith",
+    "pronunciation": "/AN-vil, BLAK-smith/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A dense, industrial-grade tool upon which metal is worked, characterized by its substantial mass and steadfast refusal to budge without considerable effort. Frequently sighted with a patina of history and dust, typically under raking light.",
+      "<em>colloq.</em> What you get when a paperweight aspires to be a cornerstone."
+    ],
+    "example": "In the back of the workshop, the blacksmith's thiccc anvil sat, defying casual description and most moving equipment.",
+    "etymology": "From Middle English <em>anefelt</em>, derived from Old English <em>anfilt</em>, meaning 'to beat upon', because some things just need a good hammering.",
+    "image": "images/2026-05-23-anvil-blacksmith.jpg",
+    "caption": "Plate N. An anvil, embodying immovability under raking light.",
+    "tags": [
+      "blacksmith",
+      "tool",
+      "industrial"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 6,
+    "photoScore": 6,
+    "photographer": "Thomas Foertsch",
+    "photographerUrl": "https://unsplash.com/@tfoertsch",
+    "unsplashUrl": "https://unsplash.com/photos/blacksmith-working-at-a-forge-with-tools-around-mMoSpwLJQzM",
+    "socialCaptions": {
+      "morning": "Anvil, Blacksmith.\n300 pounds of immovable ambition.\nAsking only for a hammer's love.",
+      "afternoon": "A relic of the 15th century—\nstill undefeated in the weight class.\nAnvil, Blacksmith.",
+      "evening": "From the archives, Anvil, Blacksmith.\n1873: The last time anyone dared to relocate it.\nThe floorboards still remember.",
+      "reels": "Silent guardian of the forge.\nAnvil—thiccc metal sentinel."
+    }
+  },
+  {
     "date": "2026-05-22",
     "word": "Silo, Grain Concrete",
     "pronunciation": "/SY-loh, grayn KON-kreet/",
