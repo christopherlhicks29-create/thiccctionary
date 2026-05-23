@@ -1,0 +1,50 @@
+{
+  "_description": "Wave 198: bart-objections running bit. ~32s. Status: SCRIPT BANKED, video_url fields are TODO \u2014 Christopher generates Higgsfield clips from Bart's existing portrait reference frame before compose-cartoon.py runs.",
+  "id": "ep01-bart-objections",
+  "title": "Bart Files an Objection",
+  "version": 1,
+  "voiceover": {
+    "voice": "onyx",
+    "model": "gpt-4o-mini-tts",
+    "speed": 1.0,
+    "instructions": "Deadpan documentary register. Slow, level, slightly weary."
+  },
+  "segments": [
+    {
+      "type": "title_card",
+      "name": "title_open",
+      "duration": 4,
+      "text": "OBJECTION #47\n\nFiled this morning by\nthe Senior Cataloguer",
+      "narration": "Objection number forty-seven. Filed this morning by the Senior Cataloguer.",
+      "voice": "onyx",
+      "instructions": "Documentary opener. CRITICAL: 'forty-seven' delivered as a flat number, no emphasis. Falling tone on 'cataloguer'."
+    },
+    {
+      "type": "video",
+      "name": "bart_at_desk",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at desk, slowly stapling a document. Reference his existing portrait. Slight head shake.",
+      "narration": "The subject was the trombone. Pitch unspecified.",
+      "voice": "onyx",
+      "instructions": "Two short sentences. Flat. 'Pitch unspecified' said as if reading from a form."
+    },
+    {
+      "type": "video",
+      "name": "bart_filing",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Bart sliding a manila folder into a file cabinet drawer. Methodical.",
+      "narration": "The objection has been filed under T, between Toaster, Heritage and Truss, Roof.",
+      "voice": "onyx",
+      "instructions": "Read as if quoting a filing-system catalog card. No comedic inflection \u2014 the comedy is in the bureaucratic specificity."
+    },
+    {
+      "type": "title_card",
+      "name": "closing_tag",
+      "duration": 4,
+      "text": "Year-to-date: 47\n\nthiccctionary.com",
+      "narration": "Year to date, forty-seven.",
+      "voice": "onyx",
+      "instructions": "One short sentence. Falling tone. Final beat."
+    }
+  ]
+}

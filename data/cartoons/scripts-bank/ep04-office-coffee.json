@@ -1,0 +1,50 @@
+{
+  "_description": "Wave 198: office-coffee running bit, multi-character. ~36s. Status: SCRIPT BANKED, video_url fields are TODO.",
+  "id": "ep04-office-coffee",
+  "title": "The Coffee Machine, Status Report",
+  "version": 1,
+  "voiceover": {
+    "voice": "onyx",
+    "model": "gpt-4o-mini-tts",
+    "speed": 1.0,
+    "instructions": "Deadpan documentary register. Slow, level, slightly weary."
+  },
+  "segments": [
+    {
+      "type": "title_card",
+      "name": "title_open",
+      "duration": 4,
+      "text": "THE COFFEE MACHINE\n\nStatus: as of March\nstill broken",
+      "narration": "The coffee machine. Status, as of March, still broken.",
+      "voice": "onyx",
+      "instructions": "Documentary opener. Three short fragments. Falling tone on each."
+    },
+    {
+      "type": "video",
+      "name": "eli_complaint",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Eli at a desk, writing on a printed form. Brief.",
+      "narration": "Eli has filed three complaints. With the building manager.",
+      "voice": "onyx",
+      "instructions": "Two short sentences. 'With the building manager' as a separate beat, slight pause."
+    },
+    {
+      "type": "video",
+      "name": "bart_remembers",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at his desk, sipping from a clearly cold mug. Slight frown.",
+      "narration": "Bart says the previous coffee machine was better. He will not specify which one.",
+      "voice": "onyx",
+      "instructions": "Read as factual report. 'He will not specify which one' said with the same affect as the first sentence \u2014 no winking."
+    },
+    {
+      "type": "title_card",
+      "name": "closing_tag",
+      "duration": 4,
+      "text": "Day 84\n\nthiccctionary.com",
+      "narration": "Day eighty-four.",
+      "voice": "onyx",
+      "instructions": "Two words. Bone-dry. Falling tone."
+    }
+  ]
+}

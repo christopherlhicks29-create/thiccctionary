@@ -1,0 +1,50 @@
+{
+  "_description": "Wave 198: eli-window running bit. ~34s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Eli is observably the only one doing actual work, and her work is counting fire hydrants.",
+  "id": "ep06-eli-hydrants",
+  "title": "Eli's Notebook",
+  "version": 1,
+  "voiceover": {
+    "voice": "onyx",
+    "model": "gpt-4o-mini-tts",
+    "speed": 1.0,
+    "instructions": "Deadpan documentary register. Slow, level, slightly weary."
+  },
+  "segments": [
+    {
+      "type": "title_card",
+      "name": "title_open",
+      "duration": 4,
+      "text": "THE NOTEBOOK\n\nMaintained by\nthe Staff Writer",
+      "narration": "The notebook. Maintained by the Staff Writer.",
+      "voice": "onyx",
+      "instructions": "Documentary opener. Two short fragments. Falling tone on 'Writer'."
+    },
+    {
+      "type": "video",
+      "name": "eli_window",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Eli at her window desk, looking out at the street with a small notebook open in her lap.",
+      "narration": "Eli sits by the window. She documents the city's fire hydrant population.",
+      "voice": "onyx",
+      "instructions": "Two sentences. The second is delivered as if it were 'she audits the quarterly returns.' No raised eyebrow."
+    },
+    {
+      "type": "video",
+      "name": "eli_count",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Eli writing in the notebook, pen moving deliberately.",
+      "narration": "The notebook is up to three hundred and twelve.",
+      "voice": "onyx",
+      "instructions": "Numbers in full ('three hundred and twelve' not '312'). Said as if reading from an inventory. No emphasis."
+    },
+    {
+      "type": "title_card",
+      "name": "closing_tag",
+      "duration": 4,
+      "text": "Six blocks.\n\nthiccctionary.com",
+      "narration": "Six blocks.",
+      "voice": "onyx",
+      "instructions": "Two words. The 'no comment' shrug is in the silence after. Hold the beat."
+    }
+  ]
+}

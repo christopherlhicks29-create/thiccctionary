@@ -8,7 +8,7 @@ name: Fire Cartoon cross-post (FB + IG Reels)
 #
 # Triggers:
 #   1. workflow_dispatch (manual) with cartoon_id input
-#   2. push to data/.fire-cartoon, ID read from sentinel file (first
+#   2. push to data/.fire-cartoon-post, ID read from sentinel file (first
 #      non-comment line, e.g. "ep00-welcome")
 
 on:
@@ -25,7 +25,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'data/.fire-cartoon'
+      - 'data/.fire-cartoon-post'
 
 permissions:
   contents: write
@@ -51,8 +51,8 @@ jobs:
           ID=""
           if [ -n "${{ inputs.cartoon_id }}" ]; then
             ID="${{ inputs.cartoon_id }}"
-          elif [ -f data/.fire-cartoon ]; then
-            ID=$(grep -v '^#' data/.fire-cartoon | grep -v '^$' | head -n 1 | awk '{print $1}')
+          elif [ -f data/.fire-cartoon-post ]; then
+            ID=$( grep -v '^#' data/.fire-cartoon-post | grep -v '^$' | head -n 1 | awk '{print $1}')
           fi
           if [ -z "$ID" ]; then
             echo "::error::Could not resolve cartoon_id."
@@ -84,9 +84,9 @@ jobs:
         run: |
           git config user.name "Thiccctionary Editorial Board"
           git config user.email "bot@thiccctionary.com"
-          if [ -f data/.fire-cartoon ]; then
-            rm -f data/.fire-cartoon
-            git add -u data/.fire-cartoon
+          if [ -f data/.fire-cartoon-post ]; then
+            rm -f data/.fire-cartoon-post
+            git add -u data/.fire-cartoon-post
             git commit -m "Cartoon cross-post fired for ${{ steps.target.outputs.cartoon_id }} (sentinel cleared)"
             git push origin HEAD:main || true
           fi

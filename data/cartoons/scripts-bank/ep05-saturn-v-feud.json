@@ -1,0 +1,50 @@
+{
+  "_description": "Wave 198: saturn-v-feud running bit. ~40s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Bart and Teddy at different desks, both clearly aware of each other but never looking up.",
+  "id": "ep05-saturn-v-feud",
+  "title": "The Saturn V, A Disagreement",
+  "version": 1,
+  "voiceover": {
+    "voice": "onyx",
+    "model": "gpt-4o-mini-tts",
+    "speed": 1.0,
+    "instructions": "Deadpan documentary register. Slow, level, slightly weary."
+  },
+  "segments": [
+    {
+      "type": "title_card",
+      "name": "title_open",
+      "duration": 4,
+      "text": "THE SATURN V\n\nMonth 14\nof a disagreement",
+      "narration": "The Saturn V. Month fourteen of a disagreement.",
+      "voice": "onyx",
+      "instructions": "Documentary opener. 'A disagreement' delivered as if it were 'an audit' \u2014 same flat affect."
+    },
+    {
+      "type": "video",
+      "name": "bart_position",
+      "duration": 6,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at his desk, writing on a manila folder, glasses low on nose.",
+      "narration": "Bart maintains the Saturn V is not a vehicle. It is, in his words, a building that briefly left.",
+      "voice": "onyx",
+      "instructions": "Two sentences. The second is the kicker \u2014 read it with NO smile, exactly the same flat register as the first."
+    },
+    {
+      "type": "video",
+      "name": "teddy_response",
+      "duration": 7,
+      "video_url": "TODO: generate Higgsfield clip \u2014 Teddy at his desk, slightly more energetic, reading from a book.",
+      "narration": "Teddy disagrees, politely, in Latin where possible.",
+      "voice": "onyx",
+      "instructions": "Documentary cadence. Slight comma-pause after 'politely'. Falling tone on 'possible'."
+    },
+    {
+      "type": "title_card",
+      "name": "closing_tag",
+      "duration": 4,
+      "text": "The dispute continues.\n\nthiccctionary.com",
+      "narration": "The dispute continues.",
+      "voice": "onyx",
+      "instructions": "Three words. Final beat. The shrug is in the writing, not the read."
+    }
+  ]
+}
