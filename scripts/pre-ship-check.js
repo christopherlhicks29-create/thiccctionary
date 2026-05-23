@@ -114,12 +114,35 @@ for (const f of allFiles) {
   catch (e) { fail(f, 'js-syntax', e.stderr?.toString().slice(0, 300) || e.message); }
 }
 
-// Rule 4: YAML parses (use python yaml)
+// Rule 4: YAML parses AND has no duplicate keys (strict).
+// Wave 197: duplicate keys in daily.yml (Wave 188a's if: + Wave 142a's if:)
+// silently broke the GitHub Actions workflow loader for 3 days. Python's
+// yaml.safe_load permissively uses the last value; the GH parser strictly
+// rejects. Use a custom strict loader that errors on duplicate keys.
+const STRICT_YAML_CHECK = `
+import yaml, sys
+class L(yaml.SafeLoader):
+    pass
+def err(loader, node, deep=False):
+    m = {}
+    for k_n, v_n in node.value:
+        k = loader.construct_object(k_n, deep=deep)
+        if k in m:
+            raise yaml.YAMLError(f'duplicate key {k!r} at line {k_n.start_mark.line + 1}')
+        m[k] = loader.construct_object(v_n, deep=deep)
+    return m
+L.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, err)
+try:
+    yaml.load(open(sys.argv[1]), Loader=L)
+except yaml.YAMLError as e:
+    print(str(e), file=sys.stderr)
+    sys.exit(1)
+`.trim();
 for (const f of allFiles) {
   if (!/\.ya?ml$/.test(f)) continue;
   if (!fs.existsSync(f)) continue;
   try {
-    execSync(`python3 -c "import yaml; yaml.safe_load(open('${f}'))"`, { stdio: 'pipe' });
+    execSync(`python3 -c "${STRICT_YAML_CHECK.replace(/"/g, '\\"')}" "${f}"`, { stdio: 'pipe' });
   } catch (e) {
     fail(f, 'yaml-parse', e.stderr?.toString().slice(0, 300) || e.message);
   }

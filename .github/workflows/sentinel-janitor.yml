@@ -1,0 +1,80 @@
+name: Sentinel Janitor, sweep stale .fire-* files
+
+# Wave 197: Stuck sentinels are evidence of workflow failures. When a
+# consumer workflow fails before its cleanup step, its sentinel persists
+# on main forever. Over time the repo accumulates them (6 stuck as of
+# 2026-05-23, oldest 15 days old). They're harmless but they're noise:
+# they hide REAL pending sentinels and break the "no recent fire = no
+# work pending" mental model.
+#
+# This workflow runs hourly. For each data/.fire-* file present, it
+# checks the age via `git log -1 --format=%ct` and deletes anything
+# older than STALE_HOURS (default 2). Commits the cleanup. Idempotent.
+
+on:
+  schedule:
+    - cron: '15 * * * *'   # every hour at :15
+  workflow_dispatch:
+    inputs:
+      stale_hours:
+        description: "Delete sentinels older than N hours (default 2)"
+        type: string
+        required: false
+        default: "2"
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # need history to read commit timestamps
+
+      - name: Sweep stale sentinels
+        env:
+          STALE_HOURS: ${{ inputs.stale_hours || '2' }}
+        run: |
+          NOW=$(date -u +%s)
+          STALE_SECONDS=$(( STALE_HOURS * 3600 ))
+          DELETED=()
+          for f in data/.fire-*; do
+            [ -e "$f" ] || continue
+            # Get the most recent commit timestamp that touched this file
+            TS=$(git log -1 --format=%ct -- "$f")
+            if [ -z "$TS" ]; then
+              echo "skip: $f has no git history"
+              continue
+            fi
+            AGE=$((NOW - TS))
+            AGE_HOURS=$((AGE / 3600))
+            if [ "$AGE" -gt "$STALE_SECONDS" ]; then
+              echo "stale: $f ($AGE_HOURS h old) -> deleting"
+              git rm "$f"
+              DELETED+=("$f ($AGE_HOURS h)")
+            else
+              echo "fresh: $f ($AGE_HOURS h old) -> keeping"
+            fi
+          done
+          if [ ${#DELETED[@]} -eq 0 ]; then
+            echo "no stale sentinels found"
+          else
+            echo ""
+            echo "deleted ${#DELETED[@]} sentinel(s):"
+            printf '  - %s\n' "${DELETED[@]}"
+          fi
+
+      - name: Commit cleanup
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Sentinel Janitor (auto)"
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "Sentinel-janitor: sweep $(git diff --cached --stat | tail -1)"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
