@@ -486,6 +486,11 @@ async function critiqueChosenImage(subject, photo) {
 
 For musical instruments specifically: a photo of a tuba being PLAYED by someone is a photo of the tuba (subject = instrument, person is incidental). A photo of a brass-band marching is also of the instruments. Reject only if the COMPOSITION centers a person's face/body.
 
+7. SUBJECT-PROMINENCE TEST (Wave 200, Christopher 2026-05-23 'the latest post is more of a blacksmith than an anvil'). Estimate what percentage of the visible image area the SUBJECT itself occupies. Two-step test:
+   - Score must reflect prominence: if the subject occupies < 40% of the frame, score ceiling is 5. If < 25%, score ceiling is 3 (auto-reject).
+   - A 'blacksmith hammering an anvil' photo where the anvil is 20% of the frame and a person fills 60% is NOT an acceptable pick for an entry titled 'Anvil.' It is a photo of a blacksmith. Reject.
+   - Tests to apply mentally: would a stranger seeing this photo with NO CAPTION immediately identify the subject as the thing we cataloged? If they'd guess 'blacksmith' or 'workshop' instead of 'anvil', score it down.
+
 Score the photo from 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
 
   const userPrompt = `Subject: ${subject}
@@ -497,8 +502,9 @@ Evaluate this image and output JSON:
 {
   "score": <1-10>,
   "verdict": "ship" | "needs-review" | "reject",
+  "subjectPercentEstimate": <integer 0-100, what percent of the image area the actual subject thing occupies. 60-90 is healthy; <40 means a person or background is dominant>,
   "photoSubject": "one short clause describing what the photo ACTUALLY depicts, be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
-  "critique": "one paragraph explaining the score, what's good, what's weak"
+  "critique": "one paragraph explaining the score, what's good, what's weak. If subjectPercentEstimate is < 40, EXPLAIN what is dominating the frame instead."
 }`;
 
   try {
@@ -893,13 +899,37 @@ async function main() {
   // for review without halting.
   if (critique && (
     critique.verdict === 'reject' ||
-    (typeof critique.score === 'number' && critique.score < 6)
+    (typeof critique.score === 'number' && critique.score < 7) ||
+    (typeof critique.subjectPercentEstimate === 'number' && critique.subjectPercentEstimate < 25)
   )) {
     console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');
-    console.log('  score:', critique.score, ' verdict:', critique.verdict);
+    console.log('  score:', critique.score, ' verdict:', critique.verdict, ' subjectPct:', critique.subjectPercentEstimate);
     console.log('  critique:', critique.critique);
+    // Wave 200: append to picker-rejections.jsonl so future picker runs learn
+    // from this failure. The picker reads the last 20 rejection records and
+    // injects them as 'AVOID picks like these' examples in its prompt.
+    try {
+      const rejPath = path.join(ROOT, 'audits', 'picker-rejections.jsonl');
+      await fs.mkdir(path.dirname(rejPath), { recursive: true });
+      const record = {
+        ts: new Date().toISOString(),
+        subject: subjectInfo.subject,
+        query: subjectInfo.query || null,
+        photographer: chosen.photographer,
+        photoUrl: chosen.fullUrl,
+        photoDescription: chosen.description || null,
+        criticScore: critique.score,
+        criticPhotoSubject: critique.photoSubject || null,
+        criticReason: critique.critique || null,
+        subjectPercentEstimate: critique.subjectPercentEstimate ?? null,
+      };
+      await fs.appendFile(rejPath, JSON.stringify(record) + '\n', 'utf8');
+      console.log('[picker-learning] appended rejection to ' + rejPath);
+    } catch (e) {
+      console.warn('[picker-learning] could not append rejection log:', e.message);
+    }
     await bailGracefully({
-      reason: `critique gate: verdict=${critique.verdict} score=${critique.score}`,
+      reason: `critique gate: verdict=${critique.verdict} score=${critique.score} subjectPct=${critique.subjectPercentEstimate}`,
       subject: subjectInfo.subject,
       queueAfterPull,
     });
