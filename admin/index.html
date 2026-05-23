@@ -439,7 +439,7 @@ async function loadDashboard() {
   const today = $('#today-tiles');
   today.innerHTML = '';
   if (data.todayEntry) {
-    const imgUrl = /^https?:\/\//.test(data.todayEntry.image) ? data.todayEntry.image : 'https://thiccctionary.com/' + data.todayEntry.image;
+    const imgUrl = (/^https?:\/\//.test(data.todayEntry.image) ? data.todayEntry.image : 'https://thiccctionary.com/' + data.todayEntry.image) + '?cb=' + Date.now();
     today.innerHTML += `
       <div class="tile ok" style="grid-column: span 2;">
         <div class="image-preview" style="background-image:url('${esc(imgUrl)}')"></div>
@@ -642,7 +642,7 @@ async function loadSubmissions() {
   list.innerHTML = '';
   subs.forEach(sub => {
     const e = sub.entry || {};
-    const imgUrl = e.image || '';
+    const imgUrl = (e.image || '') + (e.image ? ('?cb=' + Date.now()) : '');
     const card = document.createElement('article');
     card.className = 'submission';
     card.dataset.prNumber = sub.number;
@@ -753,7 +753,7 @@ async function loadEntries() {
     <tbody></tbody>`;
   const tbody = table.querySelector('tbody');
   (data.entries || []).forEach(e => {
-    const imgUrl = /^https?:\/\//.test(e.image || '') ? e.image : 'https://thiccctionary.com/' + (e.image || '');
+    const imgUrl = (/^https?:\/\//.test(e.image || '') ? e.image : 'https://thiccctionary.com/' + (e.image || '')) + (e.image ? ('?cb=' + Date.now()) : '');
     const tr = document.createElement('tr');
     tr.style.cursor = 'pointer';
     tr.style.borderTop = '1px solid var(--rule)';
@@ -790,7 +790,7 @@ async function loadEntryForEdit(date) {
   }
 
   const e = data.entry;
-  const imgUrl = /^https?:\/\//.test(e.image || '') ? e.image : 'https://thiccctionary.com/' + (e.image || '');
+  const imgUrl = (/^https?:\/\//.test(e.image || '') ? e.image : 'https://thiccctionary.com/' + (e.image || '')) + (e.image ? ('?cb=' + Date.now()) : '');
   const tagsStr = (e.tags || []).join(', ');
   const defsStr = (e.definitions || []).join('\n\n');
 
@@ -886,8 +886,14 @@ async function loadEntryForEdit(date) {
       const r = await fetch('/api/admin/fire-trigger', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ trigger, date: d }) });
       const dat = await r.json();
       if (!r.ok) { showToast(dat.error || ('Failed: ' + r.status), 'error'); btn.disabled = false; btn.textContent = orig; return; }
-      showToast(dat.message || `${label} regen fired`, 'ok');
-      setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 3000);
+      showToast(`${label} regen fired. Workflow runs in ~30-90s, then refresh this page to see the new ${label}.`, 'ok');
+      // For image regens, auto-reload the entry view after ~90s with cache-busted URLs
+      if (which === 'image') {
+        btn.textContent = 'Waiting for PR…';
+        setTimeout(() => { loadEntryForEdit(d); }, 90000);
+      } else {
+        setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 3000);
+      }
     } catch (e) { showToast('Error: ' + e.message, 'error'); btn.disabled = false; btn.textContent = orig; }
   }));
 }
