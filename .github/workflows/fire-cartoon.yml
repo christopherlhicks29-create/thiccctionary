@@ -1,0 +1,92 @@
+name: Fire Cartoon cross-post (FB + IG Reels)
+
+# Wave 198: cross-posts a Thiccctionary cartoon (e.g. ep00-welcome) to
+# FB + IG Reels via Buffer. Cartoons live at videos/cartoons/<id>.mp4
+# with a manifest at data/cartoons/<id>.json. Distinct from the daily
+# entry Reel pipeline (videos/<date>.mp4) because cartoons are a
+# separate content stream with their own cadence (Sunday 11:00 UTC).
+#
+# Triggers:
+#   1. workflow_dispatch (manual) with cartoon_id input
+#   2. push to data/.fire-cartoon, ID read from sentinel file (first
+#      non-comment line, e.g. "ep00-welcome")
+
+on:
+  workflow_dispatch:
+    inputs:
+      cartoon_id:
+        description: "Cartoon ID (matches data/cartoons/<id>.json + videos/cartoons/<id>.mp4)."
+        type: string
+        required: true
+      caption_override:
+        description: "Hand-write the caption (optional, default extracts from manifest)."
+        type: string
+        required: false
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-cartoon'
+
+permissions:
+  contents: write
+
+jobs:
+  cross-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Resolve cartoon ID
+        id: target
+        run: |
+          ID=""
+          if [ -n "${{ inputs.cartoon_id }}" ]; then
+            ID="${{ inputs.cartoon_id }}"
+          elif [ -f data/.fire-cartoon ]; then
+            ID=$(grep -v '^#' data/.fire-cartoon | grep -v '^$' | head -n 1 | awk '{print $1}')
+          fi
+          if [ -z "$ID" ]; then
+            echo "::error::Could not resolve cartoon_id."
+            exit 1
+          fi
+          if [ ! -f "data/cartoons/$ID.json" ]; then
+            echo "::error::No manifest at data/cartoons/$ID.json"
+            exit 1
+          fi
+          if [ ! -f "videos/cartoons/$ID.mp4" ]; then
+            echo "::error::No video at videos/cartoons/$ID.mp4. Compose first."
+            exit 1
+          fi
+          echo "Cross-posting cartoon $ID"
+          echo "cartoon_id=$ID" >> $GITHUB_OUTPUT
+
+      - name: Post Cartoon to Buffer
+        working-directory: scripts
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+          CARTOON_ID: ${{ steps.target.outputs.cartoon_id }}
+          CARTOON_CAPTION_OVERRIDE: ${{ inputs.caption_override }}
+        run: node post-cartoon-to-buffer.js
+
+      - name: Clear sentinel
+        if: always() && github.event_name == 'push'
+        run: |
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          if [ -f data/.fire-cartoon ]; then
+            rm -f data/.fire-cartoon
+            git add -u data/.fire-cartoon
+            git commit -m "Cartoon cross-post fired for ${{ steps.target.outputs.cartoon_id }} (sentinel cleared)"
+            git push origin HEAD:main || true
+          fi
