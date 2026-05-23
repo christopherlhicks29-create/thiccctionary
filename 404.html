@@ -150,5 +150,28 @@ if ('serviceWorker' in navigator) {
   el.textContent = pool[hourKey % pool.length];
 })();
 </script>
+<script>
+// Wave 201b: rotating footer tag. 10-line pool, hash-by-date.
+(function rotateFooterTag() {
+  var els = document.querySelectorAll('.footer-tag');
+  if (!els || els.length === 0) return;
+  var pool = [
+    'Documenting girth, since 2026.',
+    'In continuous operation since 1962, or 1971, or shortly after the war.',
+    'A daily reference for the physically immoderate.',
+    'Six editors. One catalogue. No people.',
+    'Reviewed twice. Three times if Margie is in Monaco.',
+    'Updated mornings. Filed by lunch. Objected to by 2pm.',
+    'Documenting things, never people. We have been clear about this.',
+    'The lexicon, properly understood, is the lexicon.',
+    'Published from a desk that has been here longer than the building.',
+    'Each entry hand-catalogued. Each objection hand-filed.'
+  ];
+  var d = new Date();
+  var dayKey = d.getUTCFullYear() * 1000 + (d.getUTCMonth() + 1) * 50 + d.getUTCDate();
+  var pick = pool[dayKey % pool.length];
+  els.forEach(function(el) { el.textContent = pick; });
+})();
+</script>
 </body>
 </html>
