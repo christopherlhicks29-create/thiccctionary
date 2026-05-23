@@ -129,7 +129,7 @@
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
   </h1>
-  <p class="tagline"><em>n.</em> &nbsp;a comprehensive lexicon of objects, vehicles, and entities of unusual girth &nbsp;·&nbsp; updated daily, mostly</p>
+  <p class="tagline" id="rotating-tagline"><em>n.</em> &nbsp;a comprehensive lexicon of objects, vehicles, and entities of unusual girth &nbsp;·&nbsp; updated daily, mostly</p>
   <nav class="nav">
     <a href="/" class="nav-link nav-link--active">Today's Entry</a>
     <a href="/archive.html" class="nav-link">The Archive</a>
@@ -577,5 +577,32 @@
 <script defer src="/scripts/mobile-nav.js?v=66"></script>
 <script defer src="/scripts/ccc-highlight.js?v=2"></script>
 <script defer src="/scripts/subscribed-state.js?v=1"></script>
+
+<script>
+// Wave 201: rotating tagline pool. Stable per UTC day (hashes the date),
+// rotates at midnight UTC. 12 deadpan deks. Inside-joke ratio capped per
+// brand voice rule (no more than 4 of 12 reference fictional staff/bits).
+(function rotateTagline() {
+  var el = document.getElementById('rotating-tagline');
+  if (!el) return;
+  var pool = [
+    '<em>n.</em> &nbsp;a comprehensive lexicon of objects, vehicles, and entities of unusual girth &nbsp;·&nbsp; updated daily, mostly',
+    '<em>n.</em> &nbsp;the only dictionary that knows what it is doing &nbsp;·&nbsp; updated when something thiccc happens',
+    '<em>n.</em> &nbsp;strictly things, never people &nbsp;·&nbsp; we have been clear about this',
+    '<em>n.</em> &nbsp;a dictionary, properly understood &nbsp;·&nbsp; thiccc, properly catalogued',
+    '<em>n.</em> &nbsp;documenting girth since 2026 &nbsp;·&nbsp; or possibly the war, depending on which masthead',
+    '<em>n.</em> &nbsp;reviewed twice &nbsp;·&nbsp; three times if the Editor-in-Chief is in a mood',
+    '<em>n.</em> &nbsp;a reference work for the visually substantial &nbsp;·&nbsp; updated before lunch, usually',
+    '<em>n.</em> &nbsp;objects of unusual width, formally documented &nbsp;·&nbsp; six full-time editors, one daily entry',
+    '<em>n.</em> &nbsp;we catalog the thiccc &nbsp;·&nbsp; we file the objections',
+    '<em>n.</em> &nbsp;a serious publication about absurd things &nbsp;·&nbsp; or possibly the reverse',
+    '<em>n.</em> &nbsp;dictionary-grade descriptions of physically immoderate objects &nbsp;·&nbsp; new entry every weekday, usually',
+    '<em>n.</em> &nbsp;the editors maintain a list &nbsp;·&nbsp; today\'s entry is on it'
+  ];
+  var d = new Date();
+  var dayKey = d.getUTCFullYear() * 1000 + (d.getUTCMonth() + 1) * 50 + d.getUTCDate();
+  el.innerHTML = pool[dayKey % pool.length];
+})();
+</script>
 </body>
 </html>

@@ -45,12 +45,15 @@
   <div class="center-page">
     <p class="error-stamp">Entry Not Found</p>
     <h2 class="error-headline">404</h2>
-    <p class="error-body">This page is not in our lexicon. It may have been thiccc once, but it is no longer documented here.</p>
+    <p class="error-body" id="rotating-404">This page is not, in our considered opinion, thiccc. It may have been once. It is not catalogued here now.</p>
     <p>
       <a href="index.html" class="btn-primary">Take me to today's entry</a>
     </p>
     <p style="margin-top: 18px;">
-      <a href="random.html" class="see-all">…or show me something random</a>
+      <a href="random.html" class="see-all">&hellip;or show me something random</a>
+    </p>
+    <p style="margin-top: 28px; font-size: 13px; color: var(--ink-soft); font-style: italic;">
+      Filed under: pages that do not exist. The catalogue, properly understood, does not maintain those.
     </p>
   </div>
 </main>
@@ -126,5 +129,26 @@ if ('serviceWorker' in navigator) {
 <script defer src="/scripts/mobile-nav.js?v=66"></script>
 <script defer src="/scripts/ccc-highlight.js?v=2"></script>
 <script defer src="/scripts/subscribed-state.js?v=1"></script>
+
+<script>
+// Wave 201: rotating 404 body line. 6-line pool, hash by hour so refreshing
+// gets a new line within a single visit (gives the user a small joke for
+// the inconvenience of a missing page).
+(function rotate404() {
+  var el = document.getElementById('rotating-404');
+  if (!el) return;
+  var pool = [
+    'This page is not, in our considered opinion, thiccc. It may have been once. It is not catalogued here now.',
+    'No entry on file. The records desk has been notified.',
+    'The Senior Cataloguer has filed an objection to the URL you requested.',
+    'Whatever was at this address has been deemed outside the publication\'s remit.',
+    'This page is not in the lexicon. The lexicon, properly understood, is the lexicon.',
+    'We have looked. There is nothing thiccc here. Try another address.'
+  ];
+  var d = new Date();
+  var hourKey = d.getUTCFullYear() * 100000 + (d.getUTCMonth() + 1) * 5000 + d.getUTCDate() * 50 + d.getUTCHours();
+  el.textContent = pool[hourKey % pool.length];
+})();
+</script>
 </body>
 </html>
