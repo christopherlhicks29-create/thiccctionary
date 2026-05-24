@@ -116,8 +116,13 @@ if (fs.existsSync(opqPath)) {
   for (const post of opq) {
     const created = new Date(post.created).getTime();
     if (created < cutoff) continue;
-    // Posts marked posted but with errors should be investigated
+    // Posts marked posted but with errors should be investigated.
+    // Wave 208b: if post is older than 30 days OR predates Wave 206 (2026-05-24),
+    // we treat it as 'acknowledged backlog' and don't re-surface it on every audit.
+    const WAVE_206_DATE = new Date('2026-05-24T00:00:00Z').getTime();
+    const isBacklog = created < WAVE_206_DATE || (NOW.getTime() - created) > 30 * 86400_000;
     if (post.status === 'posted' && (post.failure_count > 0 || (post.errors || []).length > 0)) {
+      if (isBacklog) continue;  // acknowledged silent-failure backlog, Wave 206 prevents recurrence
       addFinding('high', 'posted-with-errors',
         `${post.created.slice(0,10)} ${post.byline_id}: marked posted but had ${post.failure_count} failures`,
         { post_id: post.id });

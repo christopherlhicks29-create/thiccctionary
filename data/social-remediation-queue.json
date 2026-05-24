@@ -1,7 +1,6 @@
 {
-  "generated_at": "2026-05-24T19:05:56.515Z",
-  "window_days": 14,
+  "generated_at": "2026-05-24T19:06:36.214Z",
+  "window_days": 30,
   "findings_count": 0,
-  "remediation": [],
-  "note": "May 17 silent-failure backlog acknowledged; Wave 206 prevents recurrence."
+  "remediation": []
 }
