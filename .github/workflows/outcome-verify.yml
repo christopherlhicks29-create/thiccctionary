@@ -1,0 +1,74 @@
+name: Outcome verifier (silent-failure detector)
+
+# Wave 205: closes the "exit 0 but no artifact" gap. Runs hourly to check
+# whether expected daily artifacts actually landed. If a workflow reported
+# success but the artifact is missing, this fires the appropriate sentinel
+# to re-trigger production.
+#
+# Why hourly instead of once: daily.yml runs at 12:00 UTC, opens a PR that
+# may take ~1 hour to merge. A 13:00 verifier would false-positive on the
+# merge-pending window. Hourly catches both scheduled runs AND post-merge
+# states without tight coupling to producer cadences.
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour on the hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run outcome checks
+        id: verify
+        continue-on-error: true
+        run: node scripts/verify-outcomes.js --workflow=all
+
+      - name: Commit audit log
+        if: always()
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions (outcome-verify)"
+          git add audits/outcome-checks/ 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Outcome verify log $(date -u +%Y%m%d-%H%M%S)"
+            git pull --rebase origin main 2>&1 | tail -3
+            git push origin main 2>&1 | tail -3
+          fi
+
+      - name: Fire daily sentinel if daily entry missing
+        if: steps.verify.outcome == 'failure'
+        run: |
+          # Only fire if today's entry is the missing artifact. Guard against
+          # double-fires by checking the sentinel doesn't already exist with
+          # a recent timestamp.
+          TODAY=$(date -u +%Y-%m-%d)
+          if [ -f "entries/$TODAY.html" ]; then
+            echo "Entry already exists, not firing sentinel."
+            exit 0
+          fi
+          if [ -f "data/.fire-daily" ]; then
+            AGE_MIN=$(( ( $(date -u +%s) - $(stat -c %Y data/.fire-daily 2>/dev/null || echo 0) ) / 60 ))
+            if [ "$AGE_MIN" -lt 60 ]; then
+              echo "Sentinel fired ${AGE_MIN}min ago, not re-firing."
+              exit 0
+            fi
+          fi
+          echo "Firing daily sentinel to recover missing $TODAY entry."
+          echo "outcome-verify: missing entry detected at $(date -u +%H:%M:%SZ)" > data/.fire-daily
+          git add data/.fire-daily
+          git commit -m "outcome-verify: fire daily sentinel (missing $TODAY entry)"
+          git pull --rebase origin main 2>&1 | tail -3
+          git push origin main 2>&1 | tail -3
