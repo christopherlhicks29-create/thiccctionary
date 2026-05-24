@@ -6,16 +6,11 @@
     "partOfSpeech": "n.",
     "definitions": [
       "A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.",
-      "<em>colloq.</em> The maritime leviathan of rotational engineering; defies casual lifting.",
-      "example\": \"He stood before the thiccc marine diesel crankshaft, contemplating its mass. The dock crane was the only one offering to help.\"",
-      "etymology\": \"From crank (Middle English 'cranke', 'a bend' or 'turn') + shaft (Old English 'sceaft', 'pole or rod'), with the marine diesel suffix signifying its aquatic vocation. And here we thought the ocean was the heaviest thing afloat.\"",
-      "caption\": \"Plate N., Marine diesel crankshaft reclining in repose, awaiting its nautical duties.\"",
-      "tags\": [\"maritime\", \"engineering\", \"rotational\"],",
-      "category\": \"Industrial Machinery\""
+      "<em>colloq.</em> What you call a crankshaft after it stops fitting through normal doorways."
     ],
-    "example": "",
+    "example": "The marine diesel crankshaft had been lying in the engine room for three weeks before the crew agreed on how to lift it.",
     "image": "images/2026-05-24-crankshaft-marine-diesel.jpg",
-    "category": "Uncategorized",
+    "category": "Industrial Machinery",
     "bookReady": true,
     "humorScore": 8,
     "photoScore": 7,
@@ -27,7 +22,14 @@
       "afternoon": "Behold the 20-ton steel ambassador of torque—Crankshaft, Marine Diesel.",
       "evening": "From the archives, Crankshaft, Marine Diesel.\nPivotal since the advent of the internal combustion engine.",
       "reels": "Spins at 100 RPM. Thicc pioneer of the high seas."
-    }
+    },
+    "etymology": "From crank (Middle English <em>cranke</em>, 'a bend or turn') + shaft (Old English <em>sceaft</em>, 'pole or rod'), with the maritime diesel sub-genre dating to Rudolf Diesel's 1893 patent. The ocean asked for power. The crankshaft replied with mass.",
+    "caption": "Plate N., Marine diesel crankshaft at rest, awaiting installation.",
+    "tags": [
+      "maritime",
+      "engineering",
+      "rotational"
+    ]
   },
   {
     "date": "2026-05-23",
