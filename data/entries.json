@@ -1,5 +1,35 @@
 [
   {
+    "date": "2026-05-24",
+    "word": "Crankshaft, Marine Diesel",
+    "pronunciation": "/krangk-shaft, muh-reen DEE-sel/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.",
+      "<em>colloq.</em> The maritime leviathan of rotational engineering; defies casual lifting.",
+      "example\": \"He stood before the thiccc marine diesel crankshaft, contemplating its mass. The dock crane was the only one offering to help.\"",
+      "etymology\": \"From crank (Middle English 'cranke', 'a bend' or 'turn') + shaft (Old English 'sceaft', 'pole or rod'), with the marine diesel suffix signifying its aquatic vocation. And here we thought the ocean was the heaviest thing afloat.\"",
+      "caption\": \"Plate N., Marine diesel crankshaft reclining in repose, awaiting its nautical duties.\"",
+      "tags\": [\"maritime\", \"engineering\", \"rotational\"],",
+      "category\": \"Industrial Machinery\""
+    ],
+    "example": "",
+    "image": "images/2026-05-24-crankshaft-marine-diesel.jpg",
+    "category": "Uncategorized",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 7,
+    "photographer": "Tomasz Zielonka",
+    "photographerUrl": "https://unsplash.com/@tzielonka",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-machine-is-sitting-on-the-ground-F2n-WbjEa8Y",
+    "socialCaptions": {
+      "morning": "Crankshaft, Marine Diesel. 33 feet of rotational gravitas. Commanding respect since 1893.",
+      "afternoon": "Behold the 20-ton steel ambassador of torque—Crankshaft, Marine Diesel.",
+      "evening": "From the archives, Crankshaft, Marine Diesel.\nPivotal since the advent of the internal combustion engine.",
+      "reels": "Spins at 100 RPM. Thicc pioneer of the high seas."
+    }
+  },
+  {
     "date": "2026-05-23",
     "word": "Anvil, Blacksmith",
     "pronunciation": "/AN-vil, BLAK-smith/",
