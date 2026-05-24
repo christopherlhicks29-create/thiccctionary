@@ -938,6 +938,40 @@ async function main() {
   // Step 5: write the entry
   let entryCopy = await generateEntry(subjectInfo.subject, chosen);
 
+  // Step 5-shape (Wave 205b): structural validator. Catches the failure that bit
+  // Christopher on 2026-05-24 (Crankshaft) where the LLM emitted malformed JSON
+  // and the parser put example/etymology/caption keys INSIDE the definitions
+  // array as additional string entries. Symptom: top-level example/etymology
+  // empty, definitions[] contains strings like 'example": "..."'.
+  function shapeValidate(e) {
+    if (!e || typeof e !== 'object') return 'parsed value is not an object';
+    const required = ['word','pronunciation','partOfSpeech','definitions','example','etymology'];
+    for (const k of required) {
+      if (!(k in e) || e[k] === undefined || e[k] === null) return `missing top-level field "${k}"`;
+      if (typeof e[k] === 'string' && e[k].trim() === '') return `empty top-level field "${k}"`;
+    }
+    if (!Array.isArray(e.definitions) || e.definitions.length === 0) return 'definitions is not a non-empty array';
+    // Catch the Crankshaft-style corruption: definitions[] containing strings
+    // that look like other JSON keys ('example":', 'etymology":', 'caption":').
+    for (const d of e.definitions) {
+      if (typeof d !== 'string') return 'definitions[] contains non-string';
+      if (/^\s*(example|etymology|caption|tags|category)["']?\s*:/i.test(d)) {
+        return `definitions[] contains leaked JSON key: ${JSON.stringify(d.slice(0,60))}`;
+      }
+    }
+    return null;  // ok
+  }
+  for (let shapeAttempt = 1; shapeAttempt <= 3; shapeAttempt++) {
+    const err = shapeValidate(entryCopy);
+    if (!err) break;
+    if (shapeAttempt >= 3) {
+      console.error(`Shape validator failed on all 3 attempts: ${err}. Aborting to avoid shipping a broken entry.`);
+      process.exit(1);
+    }
+    console.log(`Shape attempt ${shapeAttempt}/3 rejected: ${err}. Retrying with hint.`);
+    entryCopy = await generateEntry(subjectInfo.subject + ` HINT: previous attempt produced malformed JSON (${err}). Output MUST be valid JSON with separate top-level keys for definitions, example, etymology, caption, tags, category. Do NOT put example/etymology/etc inside the definitions array.`, chosen);
+  }
+
   // Step 5-bw: banned-words filter (Wave 42). Reject and retry up to 3 times if output
   // contains banned body-language, internet-voice, or filler patterns.
   // The brand voice depends on these NOT appearing, soft prompt rules aren't enough.
