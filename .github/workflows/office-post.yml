@@ -107,6 +107,7 @@ jobs:
           fi
 
       - name: Post to Buffer
+        id: bufpost
         if: steps.gate.outputs.proceed == 'true' && steps.gen.outputs.exit == '0' && inputs.dry_run != 'true'
         working-directory: scripts
         env:
@@ -118,7 +119,18 @@ jobs:
           set +e
           node post-to-buffer.js 2>&1 | tee /tmp/post.log
           POST_EXIT=${PIPESTATUS[0]}
-          echo "post exit: $POST_EXIT"
+          # Wave 206: fail loud if Buffer reported 0 successes. Previously this
+          # silently passed with POST_EXIT swallowed, so a broken FB connection
+          # (5/18 to 5/24) showed green on the dashboard for 8 days.
+          if [ "$POST_EXIT" != "0" ]; then
+            echo "::error title=Office post failed::post-to-buffer.js exited $POST_EXIT"
+            exit $POST_EXIT
+          fi
+          if grep -E "Summary: 0 succeeded" /tmp/post.log >/dev/null 2>&1; then
+            echo "::error title=Office post 0 successes::All Buffer channels rejected. See /tmp/post.log."
+            exit 1
+          fi
+          echo "post exit: 0 (with at least one Buffer success)"
 
       - name: Commit queue status updates
         if: steps.gate.outputs.proceed == 'true' && steps.gen.outputs.exit == '0' && inputs.dry_run != 'true'

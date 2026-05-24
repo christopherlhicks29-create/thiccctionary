@@ -635,6 +635,36 @@ async function main() {
   }
 
   const text = await buildText(entry, mode, baseUrl);
+
+  // Wave 207: dedup gate. If the EXACT same text was posted in the last 48h
+  // (per audits/buffer-posts/), skip this post instead of pushing a duplicate.
+  // The Transformer "No transformation arc" Reel was queued twice on the same
+  // day in May 2026 because of a retry race. This gate prevents that pattern.
+  try {
+    const fsSync = await import('node:fs');
+    const auditDir = path.join(ROOT, 'audits', 'buffer-posts');
+    if (fsSync.existsSync(auditDir)) {
+      const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+      const files = fsSync.readdirSync(auditDir);
+      for (const f of files) {
+        try {
+          const stat = fsSync.statSync(path.join(auditDir, f));
+          if (stat.mtimeMs < cutoff) continue;
+          const data = JSON.parse(fsSync.readFileSync(path.join(auditDir, f), 'utf8'));
+          for (const modeRec of Object.values(data || {})) {
+            const prior = (modeRec && modeRec.text) || '';
+            if (prior && prior.trim() === text.trim()) {
+              console.log(`[dedup] same caption was already posted (${f}). Skipping to avoid duplicate.`);
+              process.exit(0);
+            }
+          }
+        } catch {}
+      }
+    }
+  } catch (e) {
+    console.warn(`[dedup] check errored (non-blocking): ${e.message}`);
+  }
+
   if (mode === 'reels') {
     console.log(`Posting Reel to ${channels.length} channels with video: ${videoUrl}`);
   } else {
