@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Bart referred to me, to my face, as \"the Junior Cataloguer\" again today. Third time this week. One has, after careful reflection, decided this is simply one's title now. Like a knighthood. But smaller.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-24T20:35:39.901Z",
+    "success_count": 2,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1779648550243",
