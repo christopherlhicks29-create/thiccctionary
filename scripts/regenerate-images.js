@@ -16,6 +16,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { critiqueImage, passesGate, GATES } from './image-critic.js';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 
@@ -164,7 +165,39 @@ async function main() {
       }
 
       const subjectForVision = override || entry.word;
-      const chosen = await pickThiccestImage(subjectForVision, candidates);
+      let chosen = null;
+      let critique = null;
+      // Wave 204: critic gate. Up to 3 picks from this candidate set; reject any
+      // that fail the subject-prominence test (score>=7, subject>=25%% of frame).
+      const tried = new Set();
+      for (let attempt = 1; attempt <= 3 && !chosen; attempt++) {
+        const remaining = candidates.filter((_, i) => !tried.has(i));
+        if (remaining.length === 0) {
+          console.log('  All candidates exhausted by critic; giving up on this entry.');
+          break;
+        }
+        const candidate = await pickThiccestImage(subjectForVision, remaining);
+        const candidateIdx = candidates.indexOf(candidate);
+        tried.add(candidateIdx);
+        const c = await critiqueImage({
+          subject: subjectForVision,
+          imageUrl: candidate.fullUrl,
+          photoDescription: candidate.description,
+          photographer: candidate.photographer,
+        });
+        if (passesGate(c, GATES.regen)) {
+          chosen = candidate;
+          critique = c;
+          if (c) console.log(`  Critic PASS (attempt ${attempt}/3): score=${c.score}, subject%=${c.subjectPercentEstimate}`);
+        } else {
+          console.log(`  Critic REJECT (attempt ${attempt}/3): score=${c?.score}, subject%=${c?.subjectPercentEstimate}, "${c?.photoSubject}". Trying next.`);
+        }
+      }
+      if (!chosen) {
+        console.log('  No candidate passed the critic gate. Skipping this entry.');
+        failed++;
+        continue;
+      }
       // New convention: include slug so old URLs stop resolving on revert.
       const slug = String(entry.word).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
       const filename = `${entry.date}-${slug}.jpg`;

@@ -39,6 +39,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
 import { contextFor as bibleContextFor } from './lib/office-bible.js';
+import { critiqueImage, passesGate, GATES } from './image-critic.js';
 
 const BUFFER_GRAPHQL = 'https://api.buffer.com/';
 
@@ -247,11 +248,9 @@ Write a ${mode} post in YOUR voice. Sign with your first name on the final line.
   } catch (e) { console.error('[byline-rewrite] error', e.message); return null; }
 }
 
-function pickEntry(entries, mode) {
+async function pickEntry(entries, mode, baseUrl) {
   // Wave 80: TARGET_DATE override lets us backfill posts for a specific entry
-  // without touching the entries.json order. Useful when entries[0] is something
-  // we don't want to post (e.g., a submission) but we need to retry the daily
-  // entry's cross-post.
+  // without touching the entries.json order.
   const targetDate = (process.env.TARGET_DATE || '').trim();
   if (targetDate) {
     const found = entries.find(e => e.date === targetDate);
@@ -267,7 +266,26 @@ function pickEntry(entries, mode) {
       console.log('Archive has fewer than 3 entries; evening post falls back to most recent.');
       return entries[0];
     }
-    return candidates[Math.floor(Math.random() * candidates.length)];
+    // Wave 204: critic-gated throwback. Sample up to 4 random entries and run
+    // each through the image critic. Pick the first one whose image passes the
+    // throwback gate. Prevents shipping coconut-for-banana style mismatches.
+    const shuffled = [...candidates].sort(() => Math.random() - 0.5).slice(0, 4);
+    for (const cand of shuffled) {
+      const isAbs = /^https?:\/\//i.test(cand.image || '');
+      const imageUrl = isAbs ? cand.image : `${baseUrl}/${cand.image}`;
+      const c = await critiqueImage({
+        subject: cand.word,
+        imageUrl,
+        photoDescription: cand.caption,
+      });
+      if (passesGate(c, GATES.throwback)) {
+        if (c) console.log(`Throwback PASS: ${cand.date} ${cand.word} (score=${c.score}, subj%=${c.subjectPercentEstimate})`);
+        return cand;
+      }
+      console.log(`Throwback REJECT: ${cand.date} ${cand.word} (score=${c?.score}, subj%=${c?.subjectPercentEstimate}, "${c?.photoSubject}"). Trying next.`);
+    }
+    console.log('Throwback: all 4 candidates failed critic. Falling back to most recent entry.');
+    return entries[0];
   }
   return entries[0];
 }
@@ -574,7 +592,7 @@ async function main() {
     console.log('No entries found.');
     return;
   }
-  const entry = pickEntry(entries, mode);
+  const entry = await pickEntry(entries, mode, process.env.SITE_BASE_URL.replace(/\/$/, ''));
   console.log(`Selected entry: ${entry.date} -- "${entry.word}"`);
 
   const baseUrl = process.env.SITE_BASE_URL.replace(/\/$/, '');

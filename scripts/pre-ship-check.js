@@ -274,6 +274,16 @@ if (stylesChanged) {
   } catch (_) { /* index.html unreadable; skip */ }
 }
 
+// Wave 204, Rule 8: visual smoke test (static scan for double-quotes,
+// dangling <img src>, invisible-footer-color patterns). Runs as a child
+// process so it can keep its own walking/state isolated.
+try {
+  const { execSync } = await import('node:child_process');
+  execSync('node scripts/smoke-test-visual.js', { stdio: 'inherit' });
+} catch (e) {
+  fail('(visual)', 'smoke-test', 'scripts/smoke-test-visual.js reported failures (see output above)');
+}
+
 // Report
 console.log(`[preship] checked ${allFiles.length} file(s) in ${mode} mode`);
 if (failures.length === 0) {
