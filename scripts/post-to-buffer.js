@@ -604,6 +604,42 @@ async function main() {
   const videoUrl = mode === 'reels' ? `${baseUrl}/videos/${entry.date}.mp4` : null;
   const thumbnailUrl = mode === 'reels' ? imageUrl : null;
 
+  // Wave 208 Layer B: pre-post critic for all image-bearing modes. Evening was
+  // already gated by pickEntry's throwback gate; this catches the other modes.
+  // If image fails the gate, we SKIP the post (exit 0) rather than hard-fail,
+  // since the entry already shipped to the site and one missed social slot
+  // beats a wrong-image social slot.
+  if (['morning', 'afternoon', 'reels'].includes(mode) && entry.image) {
+    try {
+      const c = await critiqueImage({
+        subject: entry.word,
+        imageUrl,
+        photoDescription: entry.caption,
+      });
+      if (!passesGate(c, GATES.throwback)) {
+        console.log(`[critic-gate] skipping ${mode} post for ${entry.date} ${entry.word}: image fails subject-prominence test (score=${c?.score}, subj%=${c?.subjectPercentEstimate}, "${c?.photoSubject}").`);
+        // Append to remediation queue so admin sees it
+        try {
+          const remPath = path.join(ROOT, 'data', 'social-remediation-queue.json');
+          let rq = { remediation: [] };
+          try { rq = JSON.parse(await fs.readFile(remPath, 'utf8')); } catch {}
+          if (!Array.isArray(rq.remediation)) rq.remediation = [];
+          rq.remediation.push({
+            action: 'regen-image',
+            target: entry.date,
+            reason: `Critic rejected at ${mode} post time: ${c?.photoSubject || 'unknown subject'}`,
+            suggested_at: new Date().toISOString(),
+          });
+          await fs.writeFile(remPath, JSON.stringify(rq, null, 2));
+        } catch {}
+        process.exit(0);
+      }
+      if (c) console.log(`[critic-gate] ${mode} ${entry.date}: PASS (score=${c.score}, subj%=${c.subjectPercentEstimate})`);
+    } catch (e) {
+      console.warn(`[critic-gate] errored (non-blocking): ${e.message}`);
+    }
+  }
+
   if (mode === 'reels') {
     // Pre-flight check: confirm the video URL is reachable. If not, skip with a clear error.
     try {

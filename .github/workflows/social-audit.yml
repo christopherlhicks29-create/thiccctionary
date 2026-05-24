@@ -1,0 +1,57 @@
+name: Social audit (weekly)
+
+# Wave 208 Layer A: scans local audit logs for caption/post issues across all
+# social channels, writes audits/social-audit/YYYY-MM-DD.md, and updates
+# data/social-remediation-queue.json which the admin panel reads.
+#
+# Runs Sundays 14:00 UTC. Also fires on push to data/.fire-social-audit.
+
+on:
+  schedule:
+    - cron: '0 14 * * 0'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-social-audit'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run social audit
+        run: node scripts/social-audit.js --days=14
+
+      - name: Commit audit + remediation queue
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Thiccctionary Audit (auto)"
+          git add audits/social-audit/ data/social-remediation-queue.json 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Social audit $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main 2>&1 | tail -3 || true
+            git push origin main
+          else
+            echo "no changes to commit"
+          fi
+
+      - name: Cleanup fire sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-social-audit ]; then
+            rm data/.fire-social-audit
+            git add data/.fire-social-audit
+            git commit -m "Cleanup social-audit sentinel"
+            git pull --rebase origin main 2>&1 | tail -3 || true
+            git push origin main || true
+          fi

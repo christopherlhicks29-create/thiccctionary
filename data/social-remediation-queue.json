@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-05-24T18:54:15.056Z",
+  "window_days": 30,
+  "findings_count": 4,
+  "remediation": [
+    {
+      "action": "investigate",
+      "target": "office-1778991382144",
+      "reason": "success_count=1, failure_count=1",
+      "suggested_at": "2026-05-24T18:54:15.056Z"
+    },
+    {
+      "action": "investigate",
+      "target": "office-1778991079252",
+      "reason": "success_count=0, failure_count=2",
+      "suggested_at": "2026-05-24T18:54:15.056Z"
+    },
+    {
+      "action": "investigate",
+      "target": "office-1778985176673",
+      "reason": "success_count=0, failure_count=2",
+      "suggested_at": "2026-05-24T18:54:15.056Z"
+    },
+    {
+      "action": "investigate",
+      "target": "office-1778982368431",
+      "reason": "success_count=0, failure_count=2",
+      "suggested_at": "2026-05-24T18:54:15.056Z"
+    }
+  ]
+}

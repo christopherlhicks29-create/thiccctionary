@@ -267,6 +267,14 @@ Steam Locomotive, Big Boy"></textarea>
     </div>
 
     <div class="action-card">
+      <h3>Social audit</h3>
+      <p class="desc">Triggers <code>social-audit.yml</code>. Scans the last 14 days of office posts, Buffer responses, and entry data. Surfaces broken captions, duplicates, and posts with hidden Buffer failures. Results appear on the <a href="#social-audit">Social audit tab</a> + <code>audits/social-audit/</code>.</p>
+      <div class="row">
+        <button class="action" data-trigger="social-audit" data-confirm="Run social audit now?">Run social audit</button>
+      </div>
+    </div>
+
+    <div class="action-card">
       <h3>Buffer queue</h3>
       <p class="desc">Manage the Buffer scheduled-post queue directly via API. <strong>List</strong> dumps the queue contents to <code>audits/buffer-queue/</code>. <strong>Purge</strong> deletes posts whose text contains any of the match phrases (newline-separated, case-insensitive).</p>
       <div class="row" style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-start;">
@@ -377,6 +385,7 @@ function activateTab(name) {
   if (name === 'dashboard') loadDashboard();
   if (name === 'health') loadHealth();
   if (name === 'entries') loadEntries();
+  if (name === 'social-audit') loadSocialAudit();
 }
 $$('nav.tabs a').forEach(a => a.addEventListener('click', e => {
   e.preventDefault();
@@ -384,6 +393,30 @@ $$('nav.tabs a').forEach(a => a.addEventListener('click', e => {
   activateTab(a.dataset.tab);
 }));
 window.addEventListener('hashchange', () => activateTab((location.hash || '#dashboard').slice(1)));
+
+async function loadSocialAudit() {
+  const summary = document.getElementById('social-audit-summary');
+  const list = document.getElementById('social-audit-list');
+  if (!summary || !list) return;
+  try {
+    const r = await fetch('https://thiccctionary.com/data/social-remediation-queue.json?cb=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) {
+      summary.innerHTML = '<div class="empty-state">No audit run yet. Fire <code>data/.fire-social-audit</code> via Quick-fire.</div>';
+      return;
+    }
+    const data = await r.json();
+    const rem = data.remediation || [];
+    const ts = data.generated_at ? new Date(data.generated_at).toLocaleString() : 'unknown';
+    summary.innerHTML = '<div><strong>' + rem.length + ' remediation action(s)</strong> as of ' + esc(ts) + ' (window: last ' + (data.window_days || 7) + ' days, ' + (data.findings_count || 0) + ' findings).</div>';
+    if (rem.length === 0) {
+      list.innerHTML = '<div class="empty-state">No remediation actions queued. Posts look clean.</div>';
+      return;
+    }
+    list.innerHTML = rem.map(r => '<div class="card" style="margin-bottom: 8px; padding: 12px;"><strong>' + esc(r.action) + '</strong> <code>' + esc(r.target) + '</code><br><span style="color: var(--ink-soft); font-size: 13px;">' + esc(r.reason) + '</span></div>').join('');
+  } catch (e) {
+    summary.innerHTML = '<div class="empty-state">Audit fetch failed: ' + esc(e.message) + '</div>';
+  }
+}
 
 function pillFor(conclusion) {
   if (!conclusion) return '<span class="pill warn">Running / unknown</span>';
