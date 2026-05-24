@@ -637,11 +637,11 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   max-width: var(--max-w);
   margin: 0 auto;
   padding-top: 24px;
-  border-top: 1px solid rgba(244, 236, 220, 0.12);
+  border-top: 1px solid rgba(74, 61, 51, 0.18);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: rgba(244, 236, 220, 0.4);
+  color: var(--ink-soft);
   text-align: center;
 }
 

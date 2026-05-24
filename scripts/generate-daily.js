@@ -1003,7 +1003,7 @@ async function main() {
     pronunciation: entryCopy.pronunciation,
     partOfSpeech: entryCopy.partOfSpeech,
     definitions: entryCopy.definitions,
-    example: entryCopy.example,
+    example: (entryCopy.example || '').replace(/^[\u0022\u201C\u201D\u2018\u2019\u0027\s]+/, '').replace(/[\u0022\u201C\u201D\u2018\u2019\s]+$/, ''),
     etymology: entryCopy.etymology,
     image: `images/${filename}`,
     caption: entryCopy.caption,

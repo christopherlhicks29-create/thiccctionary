@@ -261,13 +261,13 @@ if (stylesChanged) {
   // Grab the current ?v=NN from index.html on disk
   try {
     const home = fs.readFileSync('index.html', 'utf8');
-    const m = home.match(/styles\.css\?v=(\d+)/);
+    const m = home.match(/styles\.min\.css\?v=(\d+)/);
     const currentV = m ? parseInt(m[1], 10) : null;
     // Was the cache-buster bumped in this diff?
     const indexDiff = mode === 'working'
       ? execSync('git diff HEAD -- index.html', { encoding: 'utf8' })
       : execSync('git diff --cached -- index.html', { encoding: 'utf8' });
-    const bumped = /^\+.*styles\.css\?v=/m.test(indexDiff);
+    const bumped = /^\+.*styles\.min\.css\?v=/m.test(indexDiff);
     if (!bumped) {
       fail('styles.css', 'cache-buster-bump', `styles.css changed but the ?v=${currentV} query-param wasn't bumped in HTML files. Visitors will keep getting the cached old stylesheet.`);
     }
