@@ -559,8 +559,11 @@ async function main() {
       if (idx === -1) return { service: null, channelId: s };
       return { service: s.slice(0, idx).toLowerCase(), channelId: s.slice(idx + 1) };
     });
-    // Skip Instagram for office mode (text-only post, IG requires media)
-    const channels = allChannels.filter(c => c.service !== 'instagram');
+    // Wave 208c: office mode goes to text-first platforms only (X, Threads).
+    // Christopher 2026-05-24: FB office posts are inside-joke saturated and
+    // text-only (FB algorithm buries them). Office voice works on X/Threads
+    // where dry deadpan reads better; FB gets only entry-driven image posts.
+    const channels = allChannels.filter(c => c.service !== 'instagram' && c.service !== 'facebook');
     if (channels.length === 0) {
       console.log('No non-Instagram channels configured for office post.');
       return;
