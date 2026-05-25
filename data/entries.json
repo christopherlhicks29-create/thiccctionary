@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-25",
+    "word": "Sequoia, General Sherman",
+    "pronunciation": "/seh-KWOY-uh, JEN-er-al SHER-man/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A giant sequoia tree of formidable diameter, renowned for its substantial girth and skyward ambition; esp. when viewed from below, where its base commands unyielding respect.",
+      "<em>colloq.</em> The arboreal equivalent of a heavyweight champion, its trunk approaching architectural proportions without the burden of blueprints."
+    ],
+    "example": "Standing before the thiccc General Sherman, the picnic area felt merely ornamental.",
+    "etymology": "Named for William Tecumseh Sherman (1820–1891), a Union Army general during the American Civil War, who never had to face a foe this immovable.",
+    "image": "images/2026-05-25-sequoia-general-sherman.jpg",
+    "caption": "Plate N., General Sherman, the heavyweight contender of the forest.",
+    "tags": [
+      "botanical",
+      "forestry",
+      "natural wonders"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Jon Dietrich",
+    "photographerUrl": "https://unsplash.com/@jldietrich651",
+    "unsplashUrl": "https://unsplash.com/photos/snowy-tree-fPyTKge3Nto",
+    "socialCaptions": {
+      "morning": "Sequoia, General Sherman. 275 feet of vertical ambition. \nIt’s not just a tree—it's a biography.",
+      "afternoon": "2.7 million pounds of cellulose, holding court. \nGeneral Sherman presides.",
+      "evening": "From the archives, Sequoia, General Sherman.\nBorn in 700 BC. Still refusing to surrender.",
+      "reels": "52,500 cubic feet of pure thiccc. General Sherman, unmoved by centuries."
+    }
+  },
+  {
     "date": "2026-05-24",
     "word": "Crankshaft, Marine Diesel",
     "pronunciation": "/krangk-shaft, muh-reen DEE-sel/",
