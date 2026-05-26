@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Sequoia, General Sherman",
-      "query": "giant sequoia tree trunk",
-      "notes": "General Sherman tree: 275ft, 36ft base diameter, ~2,700 years old, ~1,400 tons. Etymology honoring Sequoyah. Visual: tree where humans look like ants at the base."
-    },
-    {
       "subject": "Forklift, Heavy Container",
       "query": "container handler forklift port",
       "category": "Industrial Machinery"

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Maritime</title>
+    <link>https://thiccctionary.com/archive.html?tag=maritime</link>
+    <atom:link href="https://thiccctionary.com/feed/maritime.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "maritime".</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 May 2026 19:36:00 GMT</lastBuildDate>
+    <item>
+      <title>Crankshaft, Marine Diesel</title>
+      <link>https://thiccctionary.com/entries/2026-05-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-24.html</guid>
+      <pubDate>Sun, 24 May 2026 12:00:00 GMT</pubDate>
+      <description>A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-24-crankshaft-marine-diesel.jpg" type="image/jpeg" length="0" />
+      <category>maritime</category><category>engineering</category><category>rotational</category>
+    </item>
+    <item>
+      <title>Ship, Container Maersk</title>
+      <link>https://thiccctionary.com/entries/2026-04-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-25.html</guid>
+      <pubDate>Sat, 25 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A maritime vessel characterized by its extensive breadth and formidable mass, designed to transport countless containers across the world&apos;s oceans; esp. one viewed astern, where its posterior expanse defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-25-ship-container-maersk.jpg" type="image/jpeg" length="0" />
+      <category>maritime</category><category>logistics</category><category>harbor</category>
+    </item>
+  </channel>
+</rss>

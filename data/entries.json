@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-26",
+    "word": "Sequoia, General Sherman",
+    "pronunciation": "/si-KWOY-a, jen-er-al SHUR-man/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A colossal conifer of prodigious girth, renowned for its vertical majesty and horizontal heft; often admired from below with neck-craning reverence.",
+      "<em>colloq.</em> A tree that does not occupy its forest so much as define the landscape with an unspoken contract of awe."
+    ],
+    "example": "He stood before the thiccc General Sherman, its trunk not so much climbing as asserting its dominion over the horizon.",
+    "etymology": "Named after Union Army General William Tecumseh Sherman, commemorated by naturalist James Wolverton in 1879. A tree of such magnitude, it might have required a military campaign to fully circumnavigate.",
+    "image": "images/2026-05-26-sequoia-general-sherman.jpg",
+    "caption": "Plate N., General Sherman viewed from below, its thicccness an unwavering testament to arboreal ambition.",
+    "tags": [
+      "botanical",
+      "landmark",
+      "majestic"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Jon Dietrich",
+    "photographerUrl": "https://unsplash.com/@jldietrich651",
+    "unsplashUrl": "https://unsplash.com/photos/snowy-tree-fPyTKge3Nto",
+    "socialCaptions": {
+      "morning": "Sequoia, General Sherman—height of 275 feet.\nThe sky feels shorter in its presence.",
+      "afternoon": "The General Sherman is 36.5 feet in diameter.\nA circumference of sheer audacity—General Sherman.",
+      "evening": "From the archives, Sequoia, General Sherman.\nEstimated age: 2,200 years.\nThe tree has learned patience.",
+      "reels": "Weighs 2.7 million pounds—\nEarth's heavyweight champion."
+    }
+  },
+  {
     "date": "2026-05-24",
     "word": "Crankshaft, Marine Diesel",
     "pronunciation": "/krangk-shaft, muh-reen DEE-sel/",
