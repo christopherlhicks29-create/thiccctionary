@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-27",
+    "word": "Sequoia, General Sherman",
+    "pronunciation": "/SEE-kwoi-uh, JEN-er-uhl SHUR-mun/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A colossal tree specimen, native to the western slopes of the Sierra Nevada, characterized by its mind-bending diameter and unapologetic presence in any forest setting; especially when observed from below in raking light.",
+      "<em>colloq.</em> The arboreal equivalent of a heavyweight champion, refusing to yield to mere mortals or storms, with a trunk that redefines what it means to be thiccc."
+    ],
+    "example": "He gazed up at the thiccc General Sherman Sequoia, its base wider than his driveway at home. The forest simply stepped aside.",
+    "etymology": "Named after American Civil War general William Tecumseh Sherman, the tree's title nods to both its imposing stature and the military leader's own reputation for overwhelming force. The forest concurred.",
+    "image": "images/2026-05-27-sequoia-general-sherman.jpg",
+    "caption": "Plate N. General Sherman Sequoia, espied in its natural domain.",
+    "tags": [
+      "botanical",
+      "colossal",
+      "arboreal"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 7,
+    "photographer": "Jon Dietrich",
+    "photographerUrl": "https://unsplash.com/@jldietrich651",
+    "unsplashUrl": "https://unsplash.com/photos/snowy-tree-fPyTKge3Nto",
+    "socialCaptions": {
+      "morning": "Sequoia, General Sherman. 275 feet tall—higher than a 26-story building.\nClearly, the sky is not the limit.",
+      "afternoon": "The bark alone is up to 31 inches thick, a natural fortress.\nNo woodpecker dare—General Sherman.",
+      "evening": "From the archives, Sequoia, General Sherman.\nBorn circa 700 B.C.; still standing—unmoved by time.",
+      "reels": "52,500 cubic feet of tree.\nThe forest's silent giant—thiccc indeed."
+    }
+  },
+  {
     "date": "2026-05-24",
     "word": "Crankshaft, Marine Diesel",
     "pronunciation": "/krangk-shaft, muh-reen DEE-sel/",
