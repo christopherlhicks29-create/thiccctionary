@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-28",
+    "word": "Sequoia, General Sherman",
+    "pronunciation": "/si-KWO-ya, GEN-er-al SHER-man/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A monumental arboreal entity located within Sequoia National Park, distinguished by an unparalleled trunk diameter and towering stature, particularly striking when viewed astern, in raking light.",
+      "<em>colloq.</em> The arboreal equivalent of a heavyweight champion, standing unchallenged, providing ample shade and a sense of one's own insignificance."
+    ],
+    "example": "He stood awestruck before the General Sherman, a thiccc sequoia that seemed to anchor the entire forest. Even the squirrels looked impressed.",
+    "etymology": "Named after Union General William Tecumseh Sherman, the tree's nomenclature pays homage to military grandeur. The name was bestowed in the 1870s, when naming trees after generals was all the rage.",
+    "image": "images/2026-05-28-sequoia-general-sherman.jpg",
+    "caption": "Plate N., The General Sherman Sequoia, embodying the forest's unapologetic girth.",
+    "tags": [
+      "trees",
+      "national parks",
+      "giants"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Jon Dietrich",
+    "photographerUrl": "https://unsplash.com/@jldietrich651",
+    "unsplashUrl": "https://unsplash.com/photos/snowy-tree-fPyTKge3Nto",
+    "socialCaptions": {
+      "morning": "Sequoia, General Sherman. 275 feet tall—an arboreal skyscraper. The forest floor just watches.",
+      "afternoon": "1,487 cubic meters of wood—solid as a regiment. General Sherman stands undefeated.",
+      "evening": "From the archives, Sequoia, General Sherman.\nThe tree that outgrew its name. Military-grade stature.",
+      "reels": "52,500 cubic feet of tree. The squirrels salute."
+    }
+  },
+  {
     "date": "2026-05-24",
     "word": "Crankshaft, Marine Diesel",
     "pronunciation": "/krangk-shaft, muh-reen DEE-sel/",
