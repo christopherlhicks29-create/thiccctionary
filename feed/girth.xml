@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Girth</title>
+    <link>https://thiccctionary.com/archive.html?tag=girth</link>
+    <atom:link href="https://thiccctionary.com/feed/girth.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "girth".</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 May 2026 20:43:10 GMT</lastBuildDate>
+    <item>
+      <title>Sequoia, General Sherman</title>
+      <link>https://thiccctionary.com/entries/2026-05-29.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-29.html</guid>
+      <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
+      <description>A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-29-sequoia-general-sherman.jpg" type="image/jpeg" length="0" />
+      <category>botany</category><category>trees</category><category>girth</category>
+    </item>
+    <item>
+      <title>Pipe, Industrial Stack</title>
+      <link>https://thiccctionary.com/entries/2026-04-19.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-19.html</guid>
+      <pubDate>Sun, 19 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A towering cylinder of engineered steel, designed for the expulsion of industrial emissions at a formidable height, often characterized by its unapologetic girth when viewed from any direction.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-19-pipe-industrial-stack.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>infrastructure</category><category>girth</category>
+    </item>
+  </channel>
+</rss>

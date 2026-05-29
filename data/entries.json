@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-29",
+    "word": "Sequoia, General Sherman",
+    "pronunciation": "/seh-KWOY-uh, JEN-er-ul SHUR-man/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.",
+      "<em>colloq.</em> A botanical monument so thiccc that neighboring trees apply for witness protection."
+    ],
+    "example": "He stood before a thiccc General Sherman, and the forest held its breath, one squirrel at a time.",
+    "etymology": "Named after American Civil War General William Tecumseh Sherman, the tree was so designated by naturalist James Wolverton in 1879. Given its size, the name was perhaps a touch optimistic.",
+    "image": "images/2026-05-29-sequoia-general-sherman.jpg",
+    "caption": "Plate N., General Sherman, viewed from an angle where the sky becomes optional.",
+    "tags": [
+      "botany",
+      "trees",
+      "girth"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 7,
+    "photographer": "Jason Hawke 🇨🇦",
+    "photographerUrl": "https://unsplash.com/@jfhawke",
+    "unsplashUrl": "https://unsplash.com/photos/a-group-of-trees-with-sequoia-national-park-in-the-background-1bn6zbwM_gQ",
+    "socialCaptions": {
+      "morning": "Sequoia, General Sherman. 275 feet tall, 52,500 cubic feet of volume.\nEven the sun needs a ladder.",
+      "afternoon": "In 2006, a branch fell from General Sherman.\nIt weighed 2 tons.\nNature's gentle reminder—General Sherman.",
+      "evening": "From the archives, Sequoia, General Sherman.\nBorn around 700 AD, still no plans to retire.\nTrees don't get tenure—they give it.",
+      "reels": "General Sherman refuses to leaf.\nThe forest takes notes."
+    }
+  },
+  {
     "date": "2026-05-24",
     "word": "Crankshaft, Marine Diesel",
     "pronunciation": "/krangk-shaft, muh-reen DEE-sel/",
