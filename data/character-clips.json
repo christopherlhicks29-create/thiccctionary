@@ -35,7 +35,9 @@
       "action": "Typing on laptop, deck of yacht",
       "date": "2026-05-30",
       "model": "Seedance 2.0",
-      "credits": 31.5
+      "credits": 31.5,
+      "caption": "The Director of Editorial Operations, working remotely.",
+      "tag": "publication"
     },
     {
       "char": "constance",
@@ -43,7 +45,9 @@
       "action": "On phone at yacht railing, Mediterranean",
       "date": "2026-05-30",
       "model": "Seedance 2.0",
-      "credits": 27
+      "credits": 27,
+      "caption": "Constance is on the call. Constance is always on the call.",
+      "tag": "publication"
     },
     {
       "char": "bart",
@@ -52,7 +56,8 @@
       "date": "2026-05-30",
       "model": "Seedance 2.0",
       "credits": 31.5,
-      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated."
+      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated.",
+      "tag": "flagged"
     },
     {
       "char": "bart",
@@ -61,7 +66,8 @@
       "date": "2026-05-30",
       "model": "Seedance 2.0",
       "credits": 27,
-      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated."
+      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated.",
+      "tag": "flagged"
     },
     {
       "char": "bart",
@@ -69,7 +75,9 @@
       "action": "Slides folder into drawer, slow close",
       "date": "2026-05-30",
       "model": "Seedance 2.0",
-      "credits": 27
+      "credits": 27,
+      "caption": "Filed in the green cabinet, third drawer.",
+      "tag": "personnel"
     },
     {
       "char": "bart",
@@ -77,7 +85,9 @@
       "action": "Speaks at broadcast mic (lip-synced)",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 10.5
+      "credits": 10.5,
+      "caption": "The Senior Cataloguer, weighing in.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -85,7 +95,9 @@
       "action": "Radio mic, alt take",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 7.5
+      "credits": 7.5,
+      "caption": "From the desk of the Senior Cataloguer.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -93,7 +105,9 @@
       "action": "Radio mic, deadpan take 3",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 12
+      "credits": 12,
+      "caption": "A statement, for the record.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -101,7 +115,9 @@
       "action": "Radio mic, take 4",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 9
+      "credits": 9,
+      "caption": "The undersigned wishes to be heard.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -109,7 +125,9 @@
       "action": "Radio mic, take 5",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 9
+      "credits": 9,
+      "caption": "On the matter of the catalogue.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -117,7 +135,9 @@
       "action": "Radio mic, cleaner background",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 9
+      "credits": 9,
+      "caption": "Editorial standards have always mattered.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -125,7 +145,9 @@
       "action": "Radio mic, take 7",
       "date": "2026-05-21",
       "model": "Wan 2.7",
-      "credits": 9
+      "credits": 9,
+      "caption": "This will be entered into the record.",
+      "tag": "office"
     },
     {
       "char": "hugh",
@@ -133,7 +155,9 @@
       "action": "Back-to-camera at industrial railing",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Field correspondent, calling it in.",
+      "tag": "field"
     },
     {
       "char": "hugh",
@@ -141,7 +165,9 @@
       "action": "On phone, sunset, three-quarter profile",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Hugh, reporting from the perimeter.",
+      "tag": "field"
     },
     {
       "char": "hugh",
@@ -149,7 +175,9 @@
       "action": "Silhouette at orange sunset",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Confirmed: the stack is thiccc.",
+      "tag": "field"
     },
     {
       "char": "hugh",
@@ -157,7 +185,9 @@
       "action": "Holds telephone handset at railing",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "The handset still works. The railing still holds.",
+      "tag": "field"
     },
     {
       "char": "margie",
@@ -165,7 +195,9 @@
       "action": "Pulls page from typewriter, scowls",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Margie has notes. Margie always has notes.",
+      "tag": "office"
     },
     {
       "char": "hugh",
@@ -173,7 +205,9 @@
       "action": "On rotary phone atop a smokestack",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Tall things from tall things, an editorial principle.",
+      "tag": "field"
     },
     {
       "char": "constance",
@@ -181,7 +215,9 @@
       "action": "Signs document, brass embossing seal",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Sealed. Filed. Acknowledged. Tabled.",
+      "tag": "personnel"
     },
     {
       "char": "margie",
@@ -189,7 +225,9 @@
       "action": "Re-feeds page to correct it",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Re-feeding the page. The page will be re-read.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -197,7 +235,9 @@
       "action": "Glares at folder, sets it down",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Filed under: not today.",
+      "tag": "personnel"
     },
     {
       "char": "constance",
@@ -205,7 +245,9 @@
       "action": "Behind editor-in-chief desk, single nod",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "The Director will see your submission now.",
+      "tag": "publication"
     },
     {
       "char": "hugh",
@@ -213,7 +255,9 @@
       "action": "Raises 35mm camera then lowers",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "One frame is plenty.",
+      "tag": "field"
     },
     {
       "char": "constance",
@@ -221,7 +265,9 @@
       "action": "Behind desk, calm gravitas, alt take",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Editorial gravitas, undated, ongoing.",
+      "tag": "publication"
     },
     {
       "char": "marvin",
@@ -229,7 +275,9 @@
       "action": "Holds Saturn V model, reverent",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "The Saturn V remains the standard.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -237,7 +285,9 @@
       "action": "Holds folder, glares over the top",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "The Senior Cataloguer has located the file.",
+      "tag": "personnel"
     },
     {
       "char": "margie",
@@ -245,7 +295,9 @@
       "action": "Single dry raised eyebrow at camera",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "Margie disagrees, but quietly.",
+      "tag": "office"
     },
     {
       "char": "bart",
@@ -253,7 +305,9 @@
       "action": "Adjusts glasses, single deadpan line",
       "date": "2026-05-20",
       "model": "Seedance 2.0",
-      "credits": 22.5
+      "credits": 22.5,
+      "caption": "This concludes the bulletin.",
+      "tag": "office"
     }
   ],
   "portraits": [

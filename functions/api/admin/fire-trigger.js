@@ -34,6 +34,7 @@ const TRIGGERS = {
   'image-audit':   { path: 'data/.fire-image-audit',          needsDate: false, contentMode: 'text',                label: 'Audit every image, flag bad ones, queue regens (Wave 212)' },
   'from-the-boat': { path: 'data/.fire-from-the-boat',         needsDate: false, contentMode: 'text',                label: 'Generate From the Boat (Bertram dispatch)' },
   'grievance':     { path: 'data/.fire-grievance',            needsDate: false, contentMode: 'text',                label: 'Auto-file a new Personnel File grievance (Bart + Constance)' },
+  'character-reel': { path: 'data/.fire-character-reel',      needsDate: false, contentMode: 'text',                label: 'Cross-post one Higgsfield character clip via Buffer (FB+IG Reels)' },
   // Wave 152: direct workflow_dispatch triggers. Used by the admin auto-fix
   // loop to re-run failed pipelines without writing a sentinel file. Keyed
   // by workflow filename (under .github/workflows/).
