@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Notebook hit 312 this morning. Someone leaned over my shoulder, saw the tally, and asked if I was okay. I said yes. They did not look convinced. The hydrant outside the deli is still cream. It counts.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-05-30T20:38:12.787Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1780094685088",
