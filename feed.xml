@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 May 2026 23:43:43 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 23:51:58 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -260,6 +260,15 @@
       <category>infrastructure</category><category>engineering</category><category>dams</category>
     </item>
     <item>
+      <title>Whale, Blue</title>
+      <link>https://thiccctionary.com/entries/2026-05-07.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-07.html</guid>
+      <pubDate>Thu, 07 May 2026 12:00:00 GMT</pubDate>
+      <description>A marine leviathan whose girth and length transcend terrestrial metrics, often seen astern with a raking light that accentuates its oceanic immensity.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-07-whale-blue.jpg" type="image/jpeg" length="0" />
+      <category>marine</category><category>leviathan</category><category>oceanic</category>
+    </item>
+    <item>
       <title>Wheel, Parmigiano-Reggiano</title>
       <link>https://thiccctionary.com/entries/2026-05-06.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-06.html</guid>
@@ -455,6 +464,15 @@
       <description>A monumental ecclesiastical structure in Vatican City, notable for its expansive nave and an apse that seems to embrace the horizon; its thiccc columns and domes defy casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-24-basilica-san-pedro.jpg" type="image/jpeg" length="0" />
       <category>Vatican City</category><category>architecture</category><category>ecclesiastical</category>
+    </item>
+    <item>
+      <title>Ferris Wheel, London Eye</title>
+      <link>https://thiccctionary.com/entries/2026-04-23.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-23.html</guid>
+      <pubDate>Thu, 23 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A monumental observation wheel situated on the South Bank of the River Thames, noted for its unparalleled rotundity and panoramic dominion over the skyline.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-23-ferris-wheel-london-eye.jpg" type="image/jpeg" length="0" />
+      <category>London</category><category>observation</category><category>skyline</category>
     </item>
     <item>
       <title>Reel, Cable Industrial</title>
