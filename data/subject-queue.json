@@ -13,31 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Sequoia, General Sherman",
-      "query": "giant sequoia tree trunk",
-      "notes": "General Sherman tree: 275ft, 36ft base diameter, ~2,700 years old, ~1,400 tons. Etymology honoring Sequoyah. Visual: tree where humans look like ants at the base."
-    },
-    {
-      "subject": "Forklift, Heavy Container",
-      "query": "container handler forklift port",
-      "category": "Industrial Machinery"
-    },
-    {
-      "subject": "Beet, Sugar",
-      "query": "large sugar beet harvested",
-      "category": "Produce & Botanical"
-    },
-    {
-      "subject": "Cannonball, Civil War",
-      "query": "civil war cannonball iron",
-      "category": "Other"
-    },
-    {
-      "subject": "Boulder, Half Dome",
-      "query": "half dome yosemite granite",
-      "category": "Architecture & Infrastructure"
-    },
-    {
       "subject": "Anchor, Stockless",
       "query": "ship anchor stockless steel",
       "category": "Industrial Machinery"
