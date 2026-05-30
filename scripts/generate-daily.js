@@ -810,6 +810,15 @@ async function main() {
       if (!/No Unsplash results/i.test(e.message)) throw e;
       attempts += 1;
       console.warn(`Subject "${subjectInfo.subject}" returned zero Unsplash results for query "${subjectInfo.unsplashQuery}". (attempt ${attempts})`);
+      // Wave 222c: if SUBJECT_OVERRIDE is set, do NOT silently fall back to
+      // another subject. The caller (burst-entries, admin batch, manual env)
+      // wants exactly this subject or a clean failure. Falling back was
+      // hiding mismatches: 5/26 "Big Boy 4014" became "Cement Truck" because
+      // Unsplash had zero results for Big Boy. Better to fail honestly and
+      // let the caller retry with a photographable variant.
+      if (process.env.SUBJECT_OVERRIDE) {
+        throw new Error(`SUBJECT_OVERRIDE="${process.env.SUBJECT_OVERRIDE}" returned zero Unsplash results. Refusing to fall back to a different subject.`);
+      }
       if (attempts > MAX_FALLBACK_ATTEMPTS) {
         // Last-resort known-safe pool, every entry here has been verified to
         // return Unsplash photos, and the auto-picker would happily pick any
