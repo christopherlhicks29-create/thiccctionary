@@ -275,6 +275,14 @@ Steam Locomotive, Big Boy"></textarea>
     </div>
 
     <div class="action-card">
+      <h3>Force editorial (From the Boat)</h3>
+      <p class="desc">Triggers <code>from-the-boat.yml</code>. Bertram Whitmore, Founder &amp; Publisher, writes a meandering dispatch from the Margaret IV. Scheduled 1st and 15th of every month. Saves to <code>articles/from-the-boat-YYYY-MM-DD.html</code>.</p>
+      <div class="row">
+        <button class="action" data-trigger="from-the-boat" data-confirm="Generate a From the Boat dispatch now?">Force From the Boat</button>
+      </div>
+    </div>
+
+    <div class="action-card">
       <h3>Image audit (catalog-wide)</h3>
       <p class="desc">Triggers <code>image-audit.yml</code>. Runs the Wave 204 critic against every entry's live image. Flags mismatches (caption says X, photo shows Y). Auto-queues a regen for the worst offender. Run weekly via cron, or fire on-demand.</p>
       <div class="row">

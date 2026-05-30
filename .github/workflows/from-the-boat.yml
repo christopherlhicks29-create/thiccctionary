@@ -1,0 +1,50 @@
+name: From the Boat (Bertram, irregular)
+
+# Wave 213: Bertram Whitmore writes from the Margaret IV, somewhere at sea.
+# Twice a month. Cron 1st and 15th at 14:00 UTC, plus admin sentinel.
+
+on:
+  schedule:
+    - cron: '0 14 1 * *'
+    - cron: '0 14 15 * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-from-the-boat'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate dispatch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-from-the-boat.js
+      - name: Commit + push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Bertram (auto)"
+          git add articles/ data/articles.json 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "From the Boat (auto) $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
+      - name: Cleanup fire sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-from-the-boat ]; then
+            rm data/.fire-from-the-boat
+            git add data/.fire-from-the-boat
+            git commit -m "Cleanup from-the-boat sentinel"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
