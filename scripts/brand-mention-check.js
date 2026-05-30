@@ -102,7 +102,12 @@ async function main() {
   // Dedupe by id
   const byId = new Map();
   for (const m of all) byId.set(m.id, m);
-  const mentions = [...byId.values()].sort((a, b) => b.created.localeCompare(a.created));
+  // Algolia HN does fuzzy/prefix matching ('thiccctionary' matches 'TDictionary',
+  // 'collation' etc). Enforce a strict substring check on title+excerpt to drop
+  // false positives. Reddit is exact-match by default but the filter is harmless.
+  const QUERY_RE = /thicc?tionary/i;
+  const filtered = [...byId.values()].filter(m => QUERY_RE.test((m.title || '') + ' ' + (m.excerpt || '')));
+  const mentions = filtered.sort((a, b) => b.created.localeCompare(a.created));
 
   const seen = await loadSeen();
   const newOnes = mentions.filter(m => !seen.has(m.id));
