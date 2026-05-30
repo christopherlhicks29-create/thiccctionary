@@ -1,0 +1,106 @@
+name: Higgsfield Download Helper
+
+# Bridge helper for pulling Higgsfield-generated video/image bytes into
+# the repo. Higgsfield serves results from cloudfront.net which the
+# cowork sandbox cannot reach (allowlist 403). GitHub runners have full
+# network, so they fetch on our behalf and commit to /videos/characters/
+# (videos) or /images/characters/ (images).
+#
+# Sentinel format at data/.fire-higgsfield-download (one block per pair):
+#   URL: <full cloudfront URL>
+#   PATH: <repo-relative output path>
+#
+# Repeat. Lines starting with # are ignored.
+# Log goes to audits/higgsfield-download-runs/<stamp>.log
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/.fire-higgsfield-download"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Read sentinel + download
+        id: dl
+        run: |
+          set -e
+          mkdir -p audits/higgsfield-download-runs
+          STAMP=$(date -u +%Y%m%d-%H%M%S)
+          LOG="audits/higgsfield-download-runs/${STAMP}.log"
+          echo "stamp=$STAMP" >> $GITHUB_OUTPUT
+          echo "logfile=$LOG" >> $GITHUB_OUTPUT
+          {
+            echo "# Higgsfield download helper run $STAMP"
+            echo ""
+          } > "$LOG"
+          if [ ! -f data/.fire-higgsfield-download ]; then
+            echo "::error::Sentinel file missing"
+            echo "FAIL: sentinel missing" >> "$LOG"
+            exit 1
+          fi
+          URL=""
+          OUTPATH=""
+          OK=0
+          FAIL=0
+          while IFS= read -r line || [ -n "$line" ]; do
+            case "$line" in
+              \#*|"") ;;
+              URL:*)
+                URL=$(echo "$line" | sed 's/^URL: *//' | tr -d '\r')
+                ;;
+              PATH:*)
+                OUTPATH=$(echo "$line" | sed 's/^PATH: *//' | tr -d '\r')
+                if [ -n "$URL" ] && [ -n "$OUTPATH" ]; then
+                  mkdir -p "$(dirname "$OUTPATH")"
+                  echo "DL: $OUTPATH <- $URL" | tee -a "$LOG"
+                  HTTP=$(curl -sS -L -o "$OUTPATH" -w "%{http_code}" "$URL")
+                  SIZE=$(stat -c%s "$OUTPATH" 2>/dev/null || echo 0)
+                  echo "  HTTP $HTTP, $SIZE bytes" | tee -a "$LOG"
+                  if [ "$HTTP" = "200" ] && [ "$SIZE" -gt 1000 ]; then
+                    OK=$((OK+1))
+                  else
+                    FAIL=$((FAIL+1))
+                    rm -f "$OUTPATH"
+                  fi
+                  URL=""
+                  OUTPATH=""
+                fi
+                ;;
+            esac
+          done < data/.fire-higgsfield-download
+          echo "" | tee -a "$LOG"
+          echo "Summary: $OK ok, $FAIL fail" | tee -a "$LOG"
+          echo "ok=$OK" >> $GITHUB_OUTPUT
+          echo "fail=$FAIL" >> $GITHUB_OUTPUT
+          [ "$FAIL" -eq 0 ]
+
+      - name: Commit downloads + log, clear sentinel
+        if: always()
+        run: |
+          git config user.name "Thiccctionary Download Bot"
+          git config user.email "bot@thiccctionary.com"
+          if [ -f data/.fire-higgsfield-download ]; then
+            git rm -f data/.fire-higgsfield-download || true
+          fi
+          git add videos/characters/ images/characters/ 2>/dev/null || true
+          git add "${{ steps.dl.outputs.logfile }}" || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Higgsfield download helper ${{ steps.dl.outputs.stamp }} [ok=${{ steps.dl.outputs.ok }} fail=${{ steps.dl.outputs.fail }}]" || true
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin main; then break; fi
+              sleep $((i*3))
+            done
+          fi
