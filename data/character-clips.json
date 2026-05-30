@@ -56,7 +56,7 @@
       "date": "2026-05-30",
       "model": "Seedance 2.0",
       "credits": 31.5,
-      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated.",
+      "flagged": "PERMANENT: Seedance cannot render stapler use correctly. Action retired from regen list.",
       "tag": "flagged"
     },
     {
@@ -66,7 +66,7 @@
       "date": "2026-05-30",
       "model": "Seedance 2.0",
       "credits": 27,
-      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated.",
+      "flagged": "PERMANENT: Seedance cannot render stapler use correctly. Action retired from regen list.",
       "tag": "flagged"
     },
     {
@@ -317,5 +317,8 @@
       "note": "Younger Bart broadcast-radio portrait (nano_banana_2)",
       "date": "2026-05-21"
     }
+  ],
+  "retired_actions": [
+    "stapling (any character) - Seedance / Wan 2.7 fail mode on fine tool manipulation, 3 takes wasted"
   ]
 }
