@@ -275,6 +275,14 @@ Steam Locomotive, Big Boy"></textarea>
     </div>
 
     <div class="action-card">
+      <h3>Image audit (catalog-wide)</h3>
+      <p class="desc">Triggers <code>image-audit.yml</code>. Runs the Wave 204 critic against every entry's live image. Flags mismatches (caption says X, photo shows Y). Auto-queues a regen for the worst offender. Run weekly via cron, or fire on-demand.</p>
+      <div class="row">
+        <button class="action" data-trigger="image-audit" data-confirm="Run catalog-wide image audit now? Takes ~3 minutes, costs ~$0.04 in OpenAI calls.">Audit all images</button>
+      </div>
+    </div>
+
+    <div class="action-card">
       <h3>Social audit</h3>
       <p class="desc">Triggers <code>social-audit.yml</code>. Scans the last 14 days of office posts, Buffer responses, and entry data. Surfaces broken captions, duplicates, and posts with hidden Buffer failures. Results appear on the <a href="#social-audit">Social audit tab</a> + <code>audits/social-audit/</code>.</p>
       <div class="row">

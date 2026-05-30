@@ -1,0 +1,67 @@
+name: Image audit (catalog-wide)
+
+# Wave 212: scans every entry's live image with the Wave 204 critic, flags
+# mismatches (Squash-Banana-but-shows-yellow-bananas pattern), auto-queues
+# regens for the worst. Cron Mondays 03:00 UTC (off-hours, weekly).
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      audit_limit:
+        description: "Cap on entries scanned (blank = all)"
+        type: string
+        required: false
+      auto_queue_top:
+        description: "Auto-queue regen for top N worst (default 1)"
+        type: string
+        required: false
+        default: '1'
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-image-audit'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run audit
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AUDIT_LIMIT: ${{ inputs.audit_limit || '' }}
+          AUTO_QUEUE_TOP: ${{ inputs.auto_queue_top || '1' }}
+        run: node scripts/image-audit.js
+
+      - name: Commit results
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Image audit (auto)"
+          git add audits/image-audit/ data/image-audit-results.json data/regen-queue.json 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Image audit $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
+
+      - name: Cleanup fire sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-image-audit ]; then
+            rm data/.fire-image-audit
+            git add data/.fire-image-audit
+            git commit -m "Cleanup image-audit sentinel"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
