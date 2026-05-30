@@ -217,7 +217,9 @@
       <p class="desc">Triggers <code>daily.yml</code>. Use if the 13:00 UTC cron didn't fire or you want to retry. Won't duplicate if today's entry already exists (unless you delete it first).</p>
       <div class="row">
         <button class="primary" data-trigger="daily" data-confirm="Fire daily.yml for today?">Fire daily cron</button>
+        <button data-trigger="daily-force" data-confirm="FORCE daily.yml (bypass collision gate)? Use only if a previous run shipped no entry.">Force daily (override)</button>
       </div>
+      <p class="desc" style="margin-top: 0.5rem; font-size: 11px; opacity: 0.7;">Wave 220i: <strong>Force</strong> bypasses the &ldquo;entry already exists&rdquo; check. Use if the cron runs green but produces no entry (silent-skip mode).</p>
     </div>
 
     <div class="action-card">

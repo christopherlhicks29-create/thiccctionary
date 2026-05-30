@@ -41,6 +41,8 @@ const TRIGGERS = {
   'post-deploy-verify':  { mode: 'workflow-dispatch', workflow: 'post-deploy-verify.yml',  label: 'Re-verify the live site' },
   'post-on-merge':       { mode: 'workflow-dispatch', workflow: 'post-on-merge.yml',       label: 'Re-run post-to-Buffer on latest daily' },
   'daily-dispatch':      { mode: 'workflow-dispatch', workflow: 'daily.yml',               label: 'Re-run daily entry generator' },
+  // Wave 220i: force-regenerate path. Bypasses the collision gate. Use when daily.yml runs green but produces no entry (silent-skip mode).
+  'daily-force':         { mode: 'workflow-dispatch', workflow: 'daily.yml',               label: 'Force daily (override collision)', dispatchInputs: { force_regenerate: true } },
   'office-history-dispatch': { mode: 'workflow-dispatch', workflow: 'office-history.yml',     label: 'Generate office history bible (direct dispatch)' },
 };
 
@@ -78,11 +80,14 @@ export async function onRequestPost({ request, env }) {
     try {
       const ts = new Date().toISOString();
       const who = sourceEmail || 'admin-panel-autofix';
+      const inputs = cfg.dispatchInputs
+        ? { ...cfg.dispatchInputs, reason: `admin auto-fix at ${ts} by ${who}` }
+        : { reason: `admin auto-fix at ${ts} by ${who}` };
       const dispatchRes = await gh(`/repos/${REPO}/actions/workflows/${cfg.workflow}/dispatches`, {
         method: 'POST',
         body: JSON.stringify({
           ref: 'main',
-          inputs: { reason: `admin auto-fix at ${ts} by ${who}` },
+          inputs,
         }),
       }, env);
       if (!dispatchRes.ok) {
