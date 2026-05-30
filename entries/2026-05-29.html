@@ -244,13 +244,13 @@
       <span class="related-word">Pumpkin, Atlantic Giant</span>
       <span class="related-snip">A cultivar of pumpkin renowned for its prodigious girth, cultivated primarily for competitive size and decorat…</span>
     </a>
-    <a class="related-card" href="2026-05-18.html">
-      <span class="related-word">Cabbage, Savoy</span>
-      <span class="related-snip">A botanical heavyweight of the brassica family, renowned for its deeply crinkled leaves and substantial presen…</span>
+    <a class="related-card" href="2026-04-21.html">
+      <span class="related-word">Squash, Banana</span>
+      <span class="related-snip">A member of the Cucurbitaceae family, characterized by an elongated shape and a robust girth, particularly whe…</span>
     </a>
-    <a class="related-card" href="2026-05-09.html">
-      <span class="related-word">Spruce, Suburban</span>
-      <span class="related-snip">A mature evergreen specimen (genus Picea) cultivated as a residential or municipal landscape feature; characte…</span>
+    <a class="related-card" href="2026-04-19.html">
+      <span class="related-word">Pipe, Industrial Stack</span>
+      <span class="related-snip">A towering cylinder of engineered steel, designed for the expulsion of industrial emissions at a formidable he…</span>
     </a>
     </div>
   </section>
@@ -277,6 +277,35 @@
   <p style="text-align: center; margin: 0 0 60px; font-size: 13px; color: var(--ink-soft); font-style: italic;">
     Run a blog? <a href="../embed/" style="color: var(--oxblood); border-bottom: 1px solid var(--oxblood); text-decoration: none;">Embed today's entry on your site</a>.
   </p>
+
+  <!-- Wave 220g: Personnel File rotator. Picks a grievance pseudo-randomly per page-render via inline script -->
+  <aside id="hr-rotator" style="margin: 0 auto 3rem; max-width: 720px; padding: 22px 24px 18px; border: 1px solid var(--rule); border-radius: 6px; background: rgba(74,61,51,0.03);">
+    <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood); margin: 0 0 0.4rem;"><span id="hr-label">From the Personnel File</span></p>
+    <p id="hr-headline" style="font-family: var(--font-display); font-size: 16px; font-weight: 600; margin: 0 0 0.5rem;"></p>
+    <p id="hr-body" style="font-family: var(--font-body); font-size: 14px; line-height: 1.6; margin: 0 0 0.55rem; color: var(--ink);"></p>
+    <p style="margin: 0; text-align: right; font-style: italic; font-size: 12.5px; color: var(--ink-soft);">The Senior Cataloguer</p>
+    <p style="margin: 0.85rem 0 0; text-align: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;"><a href="/about/documents/personnel-file/" style="color: var(--oxblood); text-decoration: none; border-bottom: 1px dotted var(--oxblood);">Read all seven filed grievances &rarr;</a></p>
+  </aside>
+  <script>
+    (function() {
+      var bank = [
+        {n: 47, label: 'Grievance No. 47 &middot; Filed 12 March 2024', h: 'Re: The State of the Coffee Machine.', b: 'The coffee machine has been inoperative since March. The undersigned has filed three prior objections (Nos. 31, 38, 44) regarding the same. The undersigned does not require coffee but maintains that a publication that cannot brew coffee cannot reasonably claim to be in continuous operation. Recommend replacement.'},
+        {n: 44, label: 'Grievance No. 44 &middot; Filed 11 January 2024', h: "Re: The Junior Cataloguer's Saturn V Submission.", b: 'The undersigned has now received the Saturn V brief from the Junior Cataloguer for the seventeenth time. Each refiling has added approximately forty pages of new citations. The undersigned proposes that the Junior Cataloguer be asked to consider other subjects.'},
+        {n: 41, label: 'Grievance No. 41 &middot; Filed 8 October 2023', h: 'Re: The Confirmation Email.', b: "The current confirmation email reads: 'Thanks so much for your submission! We can't wait to see what you've sent us!' This is not the voice of the publication. The undersigned recommends, at minimum, removing the exclamation points."},
+        {n: 38, label: 'Grievance No. 38 &middot; Filed 4 May 2023', h: 'Re: The Workplace Concern Form.', b: 'The undersigned has been asked, in response to Grievance No. 31, to complete a Workplace Concern Form. The undersigned has, in fact, completed a Workplace Concern Form. The form is itself a grievance, here filed.'},
+        {n: 22, label: 'Grievance No. 22 &middot; Filed 9 April 2020', h: 'Re: The Office Plant.', b: "A potted ficus has been placed on the file cabinet adjacent to the undersigned's desk. The undersigned did not consent to its placement, was not consulted, and observes that the cabinet contains active editorial files which the plant's watering schedule places at unnecessary risk. Recommend removal."},
+        {n: 14, label: 'Grievance No. 14 &middot; Filed 22 August 2017', h: "Re: A Memo Bearing the Publication's Letterhead.", b: "The undersigned has observed that a memo bearing the publication's letterhead, dated 12 August, refers to a 'team huddle.' The publication does not huddle. The publication files, reviews, and publishes. The undersigned requests that the term be retired."}
+      ];
+      // Deterministic per-page: hash the URL pathname so each entry consistently shows the same grievance
+      var key = location.pathname || '/';
+      var h = 0;
+      for (var i = 0; i < key.length; i++) { h = ((h << 5) - h) + key.charCodeAt(i); h |= 0; }
+      var pick = bank[Math.abs(h) % bank.length];
+      document.getElementById('hr-label').innerHTML = 'From the Personnel File &middot; ' + pick.label.replace(/^Grievance /, '');
+      document.getElementById('hr-headline').textContent = pick.h;
+      document.getElementById('hr-body').textContent = pick.b;
+    })();
+  </script>
 </main>
 
 <footer class="footer">

@@ -6,11 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/botanical.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "botanical".</description>
     <language>en-us</language>
-<<<<<<< HEAD
-    <lastBuildDate>Sat, 30 May 2026 00:43:01 GMT</lastBuildDate>
-=======
-    <lastBuildDate>Fri, 29 May 2026 20:43:10 GMT</lastBuildDate>
->>>>>>> origin/daily/2026-05-29
+    <lastBuildDate>Sat, 30 May 2026 18:56:45 GMT</lastBuildDate>
     <item>
       <title>Cabbage, Savoy</title>
       <link>https://thiccctionary.com/entries/2026-05-18.html</link>
