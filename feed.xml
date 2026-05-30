@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 May 2026 18:58:47 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 22:51:27 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -37,6 +37,42 @@
       <description>A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-29-sequoia-general-sherman.jpg" type="image/jpeg" length="0" />
       <category>botany</category><category>trees</category><category>girth</category>
+    </item>
+    <item>
+      <title>Ever Given, Suez Container Ship</title>
+      <link>https://thiccctionary.com/entries/2026-05-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-28.html</guid>
+      <pubDate>Thu, 28 May 2026 12:00:00 GMT</pubDate>
+      <description>A container vessel of formidable displacement, noted for its capacity to momentarily rearrange global trade routes. Specifically, a ship whose breadth challenges traditional canal dimensions.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-28-ever-given-suez-container-ship.jpg" type="image/jpeg" length="0" />
+      <category>maritime</category><category>logistics</category><category>engineering</category>
+    </item>
+    <item>
+      <title>Pumpkin, Mammoth Gold</title>
+      <link>https://thiccctionary.com/entries/2026-05-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-27.html</guid>
+      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
+      <description>An especially large cultivar of pumpkin renowned for its substantial mass and radiant hues; typically exhibited with pride at autumnal gatherings and agricultural fairs.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-27-pumpkin-mammoth-gold.jpg" type="image/jpeg" length="0" />
+      <category>agriculture</category><category>autumn</category><category>gourds</category>
+    </item>
+    <item>
+      <title>Cement Truck, BetaMax REGEN</title>
+      <link>https://thiccctionary.com/entries/2026-05-26.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-26.html</guid>
+      <pubDate>Tue, 26 May 2026 12:00:00 GMT</pubDate>
+      <description>A cement mixer of considerable bulk, noted for its rotund drum and dedication to gravitational permanence; especially when viewed in profile, the subject&apos;s posterior challenges architectural norms.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-26-cement-truck-betamax.jpg" type="image/jpeg" length="0" />
+      <category>bulk</category><category>construction</category><category>nostalgia</category>
+    </item>
+    <item>
+      <title>Boulder, Glacial Erratic</title>
+      <link>https://thiccctionary.com/entries/2026-05-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-25.html</guid>
+      <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
+      <description>A substantial rock formation, often resting incongruously upon a landscape, relocated by ancient glacial activity, notable for its commanding presence when viewed astern in natural light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-25-boulder-glacial-erratic.jpg" type="image/jpeg" length="0" />
+      <category>geology</category><category>landscape</category><category>glacial</category>
     </item>
     <item>
       <title>Crankshaft, Marine Diesel</title>
