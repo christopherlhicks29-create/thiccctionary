@@ -30,6 +30,7 @@ const TRIGGERS = {
   'batch-entries': { path: 'data/.fire-batch-entries.json',  needsDate: false, contentMode: 'batch-json',          label: 'Burst-create multiple archive entries' },
   'office-history':{ path: 'data/.fire-office-history',       needsDate: false, contentMode: 'text',                label: 'Generate office history bible (6mo)' },
   'social-audit':  { path: 'data/.fire-social-audit',         needsDate: false, contentMode: 'text',                label: 'Run social media audit (Wave 208)' },
+  'mailbag':       { path: 'data/.fire-mailbag',              needsDate: false, contentMode: 'text',                label: 'Generate a Mailbag (Bart replies to fake letters)' },
   // Wave 152: direct workflow_dispatch triggers. Used by the admin auto-fix
   // loop to re-run failed pipelines without writing a sentinel file. Keyed
   // by workflow filename (under .github/workflows/).

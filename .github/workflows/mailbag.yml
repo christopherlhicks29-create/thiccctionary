@@ -1,0 +1,55 @@
+name: Mailbag (Bartholomew, weekly)
+
+# Wave 210: Wednesday Mailbag. Bart answers fake reader letters spanning
+# thiccc taxonomy, office matters, and geopolitics. Cron Wednesdays at
+# 16:00 UTC. Also fireable via admin sentinel data/.fire-mailbag.
+
+on:
+  schedule:
+    - cron: '0 16 * * 3'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-mailbag'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate Mailbag
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-mailbag.js
+
+      - name: Commit + push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Bartholomew (auto)"
+          git add articles/ data/articles.json 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Mailbag Vol. (auto) $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
+
+      - name: Cleanup fire sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-mailbag ]; then
+            rm data/.fire-mailbag
+            git add data/.fire-mailbag
+            git commit -m "Cleanup mailbag sentinel"
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
