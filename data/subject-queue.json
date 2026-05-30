@@ -11,5 +11,56 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Walrus, Pacific",
+      "query": "walrus pacific tusks",
+      "notes": "iconic thiccc body, abundant Unsplash inventory"
+    },
+    {
+      "subject": "Refrigerator, Industrial",
+      "query": "industrial commercial refrigerator",
+      "notes": "kitchen-grade beast"
+    },
+    {
+      "subject": "Tugboat, Harbor",
+      "query": "tugboat harbor working",
+      "notes": "stubby and strong"
+    },
+    {
+      "subject": "Manatee, West Indian",
+      "query": "manatee underwater florida",
+      "notes": "round, slow, beloved"
+    },
+    {
+      "subject": "Boulder, Cathedral",
+      "query": "boulder large cathedral rock",
+      "notes": "if Boulder Glacial Erratic was good Boulder Cathedral is good"
+    },
+    {
+      "subject": "Combine Harvester, John Deere",
+      "query": "combine harvester field wheat",
+      "notes": "industrial agriculture"
+    },
+    {
+      "subject": "Tugboat, McAllister",
+      "query": "harbor tugboat new york",
+      "notes": "alternate tugboat"
+    },
+    {
+      "subject": "Wrench, Pipe",
+      "query": "stillson pipe wrench tool",
+      "notes": "tool itself; if hand+tool fails see retired_actions"
+    },
+    {
+      "subject": "Hydrant, Fire",
+      "query": "fire hydrant red street",
+      "notes": "abundant inventory"
+    },
+    {
+      "subject": "Goose, Canada",
+      "query": "canada goose flying",
+      "notes": "barrel-chested"
+    }
+  ]
 }

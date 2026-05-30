@@ -104,10 +104,13 @@ jobs:
           # Wave 196d: capture stdout+stderr regardless of exit code, so the
           # "Always commit trace" step below can ship the trace to main even
           # when /tmp/daily-error.log isn't written (silent-skip scenarios).
+          # Wave 222: call generate-daily-with-retry.js wrapper so when a
+          # subject bails (critique gate, zero unsplash results, picker veto),
+          # the next queue subject is tried automatically within the same run.
           set +o pipefail
-          node generate-daily.js 2>&1 | tee /tmp/daily-stdout.log
+          node generate-daily-with-retry.js 2>&1 | tee /tmp/daily-stdout.log
           EXIT=${PIPESTATUS[0]}
-          echo "::notice::generate-daily.js exit=$EXIT"
+          echo "::notice::generate-daily-with-retry.js exit=$EXIT"
           exit $EXIT
 
       - name: Always commit run trace (Wave 222 hardened diagnostic)
