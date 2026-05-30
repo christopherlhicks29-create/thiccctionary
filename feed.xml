@@ -6,13 +6,26 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
+<<<<<<< HEAD
     <lastBuildDate>Sat, 30 May 2026 00:43:01 GMT</lastBuildDate>
+=======
+    <lastBuildDate>Fri, 29 May 2026 20:43:10 GMT</lastBuildDate>
+>>>>>>> origin/daily/2026-05-29
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Sequoia, General Sherman</title>
+      <link>https://thiccctionary.com/entries/2026-05-29.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-29.html</guid>
+      <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
+      <description>A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-29-sequoia-general-sherman.jpg" type="image/jpeg" length="0" />
+      <category>botany</category><category>trees</category><category>girth</category>
+    </item>
     <item>
       <title>Crankshaft, Marine Diesel</title>
       <link>https://thiccctionary.com/entries/2026-05-24.html</link>

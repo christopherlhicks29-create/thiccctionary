@@ -6,7 +6,11 @@
     <atom:link href="https://thiccctionary.com/feed/construction.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "construction".</description>
     <language>en-us</language>
+<<<<<<< HEAD
     <lastBuildDate>Sat, 30 May 2026 00:43:01 GMT</lastBuildDate>
+=======
+    <lastBuildDate>Fri, 29 May 2026 20:43:10 GMT</lastBuildDate>
+>>>>>>> origin/daily/2026-05-29
     <item>
       <title>Silo, Grain Concrete</title>
       <link>https://thiccctionary.com/entries/2026-05-22.html</link>
