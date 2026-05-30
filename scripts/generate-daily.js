@@ -897,9 +897,12 @@ async function main() {
   // says 'reject' or scores below 4 OR mentions people gets the workflow to
   // exit non-zero, leaving no PR. Subtle issues still surface in the PR body
   // for review without halting.
+  // Wave 209b: lowered critic threshold 7 -> 5. Critic was bailing on too many
+  // entries, blocking 5+ days of dailies (2026-05-25 to 5-29). Score-5 ships
+  // with needsReview=true; subject-prominence < 25 still rejects (true insults).
   if (critique && (
     critique.verdict === 'reject' ||
-    (typeof critique.score === 'number' && critique.score < 7) ||
+    (typeof critique.score === 'number' && critique.score < 5) ||
     (typeof critique.subjectPercentEstimate === 'number' && critique.subjectPercentEstimate < 25)
   )) {
     console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');

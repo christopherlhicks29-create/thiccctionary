@@ -151,17 +151,28 @@ jobs:
           fi
 
       - name: Verify entry actually changed
+        id: verify
         run: |
           # If generate-daily.js failed silently, entries.json[0].date won't match today.
-          # Bail out before opening a stale PR.
+          # Wave 209b: tolerate graceful bail (audits/dead-subjects/<today>.md exists
+          # = the script intentionally skipped because no candidate ranked high enough).
+          # In that case, set outputs.entry_written=false and continue with exit 0; skip
+          # downstream PR steps via the conditional. True silent failures (no bail log)
+          # still fail the workflow.
           TODAY=$(date -u +%Y-%m-%d)
           NEW_DATE=$(node -e "const e=require('./data/entries.json'); console.log(e[0].date);")
           NEW_WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
           if [ "$NEW_DATE" != "$TODAY" ]; then
+            if [ -f "audits/dead-subjects/$TODAY.md" ]; then
+              echo "::warning::Graceful bail logged in audits/dead-subjects/$TODAY.md, no entry written. Outcome-verify will retry."
+              echo "entry_written=false" >> $GITHUB_OUTPUT
+              exit 0
+            fi
             echo "::error::entries.json[0].date is $NEW_DATE, not today ($TODAY). Entry generation failed silently. Aborting."
             exit 1
           fi
           echo "Verified: today's entry is $NEW_WORD ($NEW_DATE)"
+          echo "entry_written=true" >> $GITHUB_OUTPUT
 
       - name: Read entry metadata + design critique
         id: entry
@@ -242,12 +253,9 @@ jobs:
         continue-on-error: true
 
       - name: Open Pull Request
-        # Wave 196b: collapsed duplicate `if:` keys (Wave 188a's collision-guard
-        # + Wave 142a's success-gate). YAML strict parsers reject duplicate
-        # keys, which silently broke the entire workflow loader since
-        # 2026-05-19. cron-doctor proved triggering + secrets are fine; this
-        # was the actual blocker for 5/20+5/21 dailies.
-        if: success() && steps.collision.outputs.proceed == 'true'
+        # Wave 196b: collapsed duplicate `if:` keys.
+        # Wave 209b: also gate on entry_written=true (skip when graceful bail).
+        if: success() && steps.collision.outputs.proceed == 'true' && steps.verify.outputs.entry_written == 'true'
         id: open_pr
         uses: peter-evans/create-pull-request@v6
         with:
