@@ -127,8 +127,8 @@ async function main() {
 <body>
 <header class="masthead">
   <div class="masthead-top">
-    <span class="meta-line">Editorial Desk</span>
-    <span class="meta-line meta-line--right">Long-form &amp; rankings</span>
+    <span class="meta-line">Vol. I &nbsp;&middot;&nbsp; Iss. <span id="issue-number">040</span> &nbsp;&middot;&nbsp; <span id="today-date">Friday, May 30, 2026</span></span>
+    <span class="meta-line meta-line--right">Est. MMXXVI &nbsp;&middot;&nbsp; A Daily Reference</span>
   </div>
   <h1 class="wordmark" aria-label="Thiccctionary">
     <a href="/" class="wordmark-link" aria-label="Thiccctionary, home">
@@ -154,7 +154,7 @@ ${htmlBody}
 <footer class="site-footer">
 <p class="copyright">&copy; <span id="year">${today.slice(0,4)}</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
 </footer>
-</body>
+<script defer src="/scripts/masthead-date.js?v=1"></script>\n</body>
 </html>
 `;
 
