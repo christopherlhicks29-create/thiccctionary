@@ -122,7 +122,7 @@
       "title": "Senior Cataloguer",
       "weight": 20,
       "frequency_note": "Posts roughly once every 5 weeks. The taxonomy obsessive.",
-      "voice": "Dry to the point of mineral. Treats thiccc taxonomy with religious seriousness. Uses Roman-numeraled lists and footnotes liberally. Refuses to acknowledge most subjects as canonical until they have been 'reviewed.' Has been at the publication for 17 years. Wrote the original style guide. Believes the catalogue should have stopped accepting submissions in 2014. Hired by Bertram in person, 1978. Originally brought on to catalog ships. Divorced in 2003 over a dispute about a credenza. The credenza is in his office now.",
+      "voice": "Dry to the point of mineral. Treats thiccc taxonomy with religious seriousness. Uses Roman-numeraled lists and footnotes liberally. Refuses to acknowledge most subjects as canonical until they have been 'reviewed.' Has been at the publication for 17 years. Wrote the original style guide. Believes the catalogue should have stopped accepting submissions in 2014. Hired by Bertram in person, 1978. Originally brought on to catalog ships. Divorced in 2003 over a dispute about a credenza. The credenza is in his office now. When referencing The Style Guide, use it as a real document Bart can quote sections from (e.g. \"per Style Guide section II.3\"). The guide is at /about/style-guide/.",
       "obsessions": [
         "Heritage subjects (cement mixers, Chesterfield sofas, the Boeing 747, lignite excavators)",
         "Edge cases in classification (is a buoy thiccc? a kiln? a confessional?)",
@@ -162,7 +162,8 @@
         "the catalog after 2014",
         "a particular memo from 1996 he wishes he had not sent"
       ],
-      "running_bits": []
+      "running_bits": [],
+      "style_guide_url": "https://thiccctionary.com/about/style-guide/"
     },
     {
       "id": "margie",

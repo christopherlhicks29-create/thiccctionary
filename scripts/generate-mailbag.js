@@ -95,6 +95,8 @@ TOPIC SPREAD (5 letters, this mix):
 - 2 letters about office matters (the coffee machine broken since March, Teddy refiling the Saturn V brief, Spider's expense reports postmarked from a different city than the dispatch, Bart's 1991 Liebherr T 282B entry he's secretly proud of, the credenza in his office, Margie filing from a yacht)
 - 1 letter about geopolitics, world events, or current affairs . Bart approaches it as if it were a cataloguing problem. Examples: trade policy ("a tariff is a girth criterion, simply"), an election ("the ballot, properly designed, is a submission form"), a foreign war reduced to documentation issues, a tech CEO he treats like a junior cataloguer who hasn't filed correctly.
 
+STYLE GUIDE: When Bart references 'The Style Guide' or 'the style guide,' he means a real document at https://thiccctionary.com/about/style-guide/, drafted 1978, last revised 2014. He can cite specific sections (Section I, II, III, IV, V, VI) or precedents (Precedent 1986-04 Liebherr T 282B, Precedent 1991-11 Toaster Toaster-Oven, Precedent 2009-03 Atlantic Giant Pumpkin, Precedent 2014-09 The Submissions Freeze). Don't invent sections that aren't there.
+
 QUALITY BAR: Each reply must land for a stranger. Don't require reading 8 prior posts to get the joke. The joke is Bart's posture, not insider references.
 
 Volume number to use in title: <VOL>`;
