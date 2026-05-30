@@ -110,26 +110,41 @@ jobs:
           echo "::notice::generate-daily.js exit=$EXIT"
           exit $EXIT
 
-      - name: Always commit stdout trace (Wave 196d diagnostic)
+      - name: Always commit run trace (Wave 222 hardened diagnostic)
         if: always()
         run: |
           mkdir -p audits/daily-stdout
           STAMP=$(date -u +%Y-%m-%d-%H%M%S)
-          if [ -f /tmp/daily-stdout.log ]; then
-            cp /tmp/daily-stdout.log "audits/daily-stdout/$STAMP.log"
-            echo "captured to audits/daily-stdout/$STAMP.log"
-          else
-            echo "(no /tmp/daily-stdout.log to capture)"
-          fi
+          TRACE="audits/daily-stdout/$STAMP.log"
+          {
+            echo "# Daily run trace $STAMP"
+            echo ""
+            echo "Triggered by: ${{ github.event_name }} (actor=${{ github.actor }})"
+            echo "Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo "force_regenerate input: ${{ inputs.force_regenerate || 'false' }}"
+            echo "collision.proceed: ${{ steps.collision.outputs.proceed || 'NOT_SET' }}"
+            echo "Generate step ran: ${{ steps.gen.outcome || 'SKIPPED' }}"
+            echo "Verify step ran: ${{ steps.verify.outcome || 'SKIPPED' }}"
+            echo "entry_written: ${{ steps.verify.outputs.entry_written || 'NOT_SET' }}"
+            echo ""
+            echo "## generate-daily.js stdout"
+            echo '```'
+            cat /tmp/daily-stdout.log 2>/dev/null || echo "(no /tmp/daily-stdout.log captured - Generate step did not run)"
+            echo '```'
+          } > "$TRACE"
+          echo "wrote $TRACE ($(wc -c < "$TRACE") bytes)"
           git config user.email "actions@github.com"
           git config user.name "Daily debug (auto)"
-          git add audits/daily-stdout/ 2>/dev/null || true
+          git add "$TRACE" 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "nothing to commit"
+            echo "nothing to commit (somehow)"
           else
-            git commit -m "Daily stdout trace (Wave 196d)"
-            git pull --rebase origin main || true
-            git push origin main || true
+            git commit -m "Daily trace $STAMP (event=${{ github.event_name }})"
+            for i in 1 2 3; do
+              git pull --rebase origin main 2>&1 | tail -3 || true
+              if git push origin main 2>&1; then break; fi
+              sleep $((i*3))
+            done
           fi
 
       - name: Capture failure trace

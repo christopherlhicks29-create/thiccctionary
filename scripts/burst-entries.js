@@ -60,10 +60,19 @@ async function main() {
   const oldest = entries[entries.length - 1].date;
   console.log(`[burst] oldest entry is ${oldest}, will backfill from there`);
 
+  // Wave 222: optional explicit dates array. If provided and length matches,
+  // use those dates instead of backwards-from-oldest. Lets the admin backfill
+  // specific MISSING dates between existing entries, not just append before.
+  const explicitDates = Array.isArray(payload.dates) && payload.dates.length === subjects.length
+    ? payload.dates
+    : null;
+  if (explicitDates) console.log(`[burst] using explicit dates: ${explicitDates.join(', ')}`);
+
   let succeeded = 0, failed = 0;
   for (let i = 0; i < subjects.length; i++) {
-    // dates go backward: oldest - 1, oldest - 2, oldest - 3, ...
-    const targetDate = daysAgo(oldest, i + 1);
+    const targetDate = explicitDates
+      ? explicitDates[i]
+      : daysAgo(oldest, i + 1);
     const subject = subjects[i];
     console.log(`\n[burst] [${i+1}/${subjects.length}] subject="${subject}" date=${targetDate}`);
 
