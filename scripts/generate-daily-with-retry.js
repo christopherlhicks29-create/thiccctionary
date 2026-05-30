@@ -6,7 +6,7 @@
  * because generate-daily.js bails when the queue-head subject fails the
  * critique gate (or has zero Unsplash results, or picker vetoes all
  * candidates). The bail is intentional, but it leaves the entire day
- * with no entry. Padding the queue doesn't help — the picker keeps
+ * with no entry. Padding the queue doesn't help - the picker keeps
  * picking the same failing head subject every run.
  *
  * Fix: wrap generate-daily.js. On bail, the original script pops the
