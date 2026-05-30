@@ -9,7 +9,7 @@ from pathlib import Path
 from weasyprint import HTML, CSS
 import re
 
-ROOT = Path('/tmp/thiccc-fresh')
+ROOT = Path(__file__).resolve().parent.parent
 DOCS = [
     ('about/documents/personnel-file', 'personnel-file.pdf', 'The Personnel File', 'Selected Grievances, Senior Cataloguer'),
     ('about/documents/amendment-1991-08', 'amendment-1991-08.pdf', 'Amendment 1991-08', 'Adoption of the Silhouette Test'),

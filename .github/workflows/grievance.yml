@@ -1,0 +1,61 @@
+name: Personnel File grievance (weekly)
+
+# Wave 221: Tuesday auto-grievance.
+# Bart files a fresh objection with HR. Constance responds in parking-lot
+# HR-speak. Inserts into about/documents/personnel-file/index.html.
+# Cron Tuesdays 14:00 UTC. Also fireable via admin sentinel data/.fire-grievance.
+
+on:
+  schedule:
+    - cron: '0 14 * * 2'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-grievance'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate grievance
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-grievance.js
+
+      - name: Regenerate PDF
+        run: |
+          pip install weasyprint --break-system-packages --quiet
+          python3 scripts/build-doc-pdfs.py
+
+      - name: Commit + push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Constance (auto)"
+          git add about/documents/personnel-file/ 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Personnel File: new grievance auto-filed $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
+
+      - name: Cleanup fire sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-grievance ]; then
+            rm data/.fire-grievance
+            git add data/.fire-grievance
+            git commit -m "Cleanup grievance sentinel" || true
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
