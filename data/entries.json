@@ -700,6 +700,38 @@
     }
   },
   {
+    "date": "2026-05-07",
+    "word": "Whale, Blue",
+    "pronunciation": "/whayl/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A marine leviathan whose girth and length transcend terrestrial metrics, often seen astern with a raking light that accentuates its oceanic immensity.",
+      "<em>colloq.</em> An aquatic presence so commanding that even the Pacific appears to make room. The sea knows when it's time to part."
+    ],
+    "example": "That blue whale is so thiccc it made the research vessel look like a bath toy. The ocean had to negotiate terms.",
+    "etymology": "From Middle English <em>whale</em>, from Old English <em>hwæl</em>, akin to Old Norse <em>hvalr</em>. Derived from Proto-Germanic <em>hwalaz</em>, a term that likely meant, 'Hope you brought a wide-angle lens.'",
+    "image": "images/2026-05-07-whale-blue.jpg",
+    "caption": "Plate N. A blue whale exemplifying thicccness, with maritime diplomacy in the background.",
+    "tags": [
+      "marine",
+      "leviathan",
+      "oceanic"
+    ],
+    "category": "Engineering Marvels",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 7,
+    "photographer": "Stephen H",
+    "photographerUrl": "https://unsplash.com/@stteee",
+    "unsplashUrl": "https://unsplash.com/photos/a-whale-is-in-the-water-with-a-boat-in-the-background-biMFrW4p9lU",
+    "socialCaptions": {
+      "morning": "Whale, Blue—largest animal to ever live. 100 feet long. \nIts heart alone is the size of a compact car.",
+      "afternoon": "With a tongue weighing as much as an elephant, the Blue Whale \nreminds us that some scales are simply insufficient—#whale.",
+      "evening": "From the archives, Whale, Blue.\nMigrates thousands of miles annually. The ocean offers no frequent flyer miles.",
+      "reels": "Aorta wide enough for a human to crawl through.\nThe ultimate deep-sea corridor."
+    }
+  },
+  {
     "date": "2026-05-06",
     "word": "Wheel, Parmigiano-Reggiano",
     "pronunciation": "par-mih-JAH-noh red-jee-AH-noh",
@@ -1091,6 +1123,38 @@
       "afternoon": "Michelangelo's dome, a 448-foot assertion against gravity. \nIt seems the sky has met its match—Basilica, San Pedro.",
       "evening": "From the archives, Basilica, San Pedro.\nThe nave stretches 613 feet, yet never breaks a sweat.\nA true marathoner of architecture.",
       "reels": "The Swiss Guard may stand watch, but it's the columns that hold court."
+    }
+  },
+  {
+    "date": "2026-04-23",
+    "word": "Ferris Wheel, London Eye",
+    "pronunciation": "/FERR-iss weel, LUN-dun EYE/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A monumental observation wheel situated on the South Bank of the River Thames, noted for its unparalleled rotundity and panoramic dominion over the skyline.",
+      "<em>colloq.</em> An architectural unit that defies concise documentation, especially when viewed in raking light from a riverboat."
+    ],
+    "example": "As the sun set, the London Eye cast a thiccc silhouette over the Thames, and Big Ben seemed to nod in respect.",
+    "etymology": "Named for George Washington Gale Ferris Jr., the inventor of the original Ferris wheel (1893), and the city of London, where it resides. Functionally, it's a circle that went pro.",
+    "image": "images/2026-04-23-ferris-wheel-london-eye.jpg",
+    "caption": "Plate N., The London Eye in its thiccc majesty, as seen from the Thames.",
+    "tags": [
+      "London",
+      "observation",
+      "skyline"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Tanya Barrow",
+    "photographerUrl": "https://unsplash.com/@tanyabarrow",
+    "unsplashUrl": "https://unsplash.com/photos/the-london-eye-ferris-wheel-by-the-thames-river-m2YWKCLvT08",
+    "socialCaptions": {
+      "morning": "Ferris Wheel, London Eye.\n32 capsules—each carrying the hopes and curiosities of 25 passengers.\nA spherical symposium.",
+      "afternoon": "The London Eye rotates at a graceful 0.6 mph.\nSpeed limits are for roads, not icons.\nFerris Wheel, London Eye.",
+      "evening": "From the archives, Ferris Wheel, London Eye.\nErected in 1999, it celebrated the new millennium by redefining 'rounding out'.",
+      "reels": "In 30 minutes, the Eye sees all of London.\nThiccc vision."
     }
   },
   {
