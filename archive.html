@@ -220,9 +220,20 @@ function highlightCcc(root) {
   function renderTags() {
     const tagsContainer = document.getElementById('archive-tags');
     if (!tagsContainer) return;
-    const tagSet = new Set();
-    entries.forEach(e => (e.tags || []).forEach(t => tagSet.add(t.toLowerCase())));
-    const tags = [...tagSet].sort();
+    // Wave 211: only show tags that actually filter (count >= 2). Singletons
+    // narrow the archive to a single entry, which is the same as just clicking
+    // that entry's card. Sorted by frequency desc, alpha as tiebreaker, capped
+    // at 20 to keep the wall of pills from defeating the purpose.
+    const counts = new Map();
+    entries.forEach(e => (e.tags || []).forEach(t => {
+      const k = t.toLowerCase();
+      counts.set(k, (counts.get(k) || 0) + 1);
+    }));
+    const tags = [...counts.entries()]
+      .filter(([, n]) => n >= 2)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 20)
+      .map(([t]) => t);
     if (tags.length === 0) { tagsContainer.style.display = 'none'; return; }
     tagsContainer.innerHTML = `<button class="archive-tag${activeTag === null ? ' archive-tag--active' : ''}" data-tag="">All</button>` +
       tags.map(t => `<button class="archive-tag${activeTag === t ? ' archive-tag--active' : ''}" data-tag="${t}">${t}</button>`).join('');
