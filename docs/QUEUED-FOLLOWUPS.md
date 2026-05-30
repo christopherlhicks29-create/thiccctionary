@@ -155,3 +155,33 @@ Status tracking: https://tsdr.uspto.gov/#caseNumber=99827994
 5. **Image regen for Banana Cavendish** (fired 5/21, no PR seen) is still pending verification.
 
 **Why this matters:** Catalog has a visible 4-day gap (5/25-5/28). The publication's whole conceit is "daily." A 4-day gap on a 40-entry catalog is a 10% miss. Foundation is leaking.
+
+---
+
+## Wave 220+: weekly auto-generated grievance column
+
+**Direction (Christopher 2026-05-30):** "Maybe make the HR bit bigger? It's currently pretty deep in the links. I think it's funny and develops the characters. Your call."
+
+**Wave 220 shipped (this session):**
+- Homepage tile: "Filed With HR" feature box between Verdict Ledger and Newsletter sections, showing Grievance No. 31 (the coffee machine) with Constance's response, linking to full Personnel File.
+- /about/documents/ index reordered: Personnel File now position 2 (after Style Guide), highlighted with oxblood border.
+- Personnel File added as a tile in the "From the Editorial Desk" article grid on homepage.
+
+**Next wave (NOT shipped):** auto-generate a NEW grievance each week. Same playbook as Mailbag (Wave 210):
+- New script `scripts/generate-grievance.js` -- calls Claude with Bart-files-something + Constance-responds-in-HR-speak prompt. Pulls from a bank of grievance topics + her response patterns.
+- New workflow `.github/workflows/grievance.yml` running Tuesdays 14:00 UTC (Mailbag is Wednesdays, so they stagger).
+- Append generated entries to `about/documents/personnel-file/index.html` (or migrate to a JSON-fed file and rebuild the HTML).
+- Rotate the homepage "Filed With HR" tile to feature the LATEST grievance, not a hardcoded one.
+- Add an `data/.fire-grievance` sentinel + admin force button for manual fires.
+
+**Topic bank to seed (8 ideas):**
+1. The motion-sensor lights in the editorial office turn off when Bart is reading
+2. A spelling correction was made to a memo without prior authorization
+3. The Q3 review of the coffee machine has been re-deferred to Q1 next year
+4. Someone added a houseplant to the Senior Cataloguer's window sill ("a windowsill is not, by any defensible reading, a planter")
+5. The new submission form has a confirmation page that says 'Yay!'
+6. A Slack workspace has been registered in the publication's name; the Senior Cataloguer was not consulted
+7. The fire drill on the third Tuesday is unnecessary in a publication on the second floor
+8. A "team-building lunch" was scheduled; the Senior Cataloguer is opposed in principle
+
+**Why hold this for next session:** The 5/30 cron failure + 4-day catalog gap is higher priority than another auto-generation pipeline. Build the column after foundation is fixed.
