@@ -13,12 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Cargo Ship, Ever Given",
-      "query": "container ship suez cargo evergreen",
-      "category": "Vehicles",
-      "notes": "The Suez Canal blocker. 220,000 tons gross. Instantly recognizable culturally."
-    },
-    {
       "subject": "Crane, Liebherr LR 13000",
       "query": "crawler crane construction lifting",
       "category": "Industrial Machinery",
