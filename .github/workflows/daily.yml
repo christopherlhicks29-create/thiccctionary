@@ -280,8 +280,8 @@ jobs:
           labels: |
             daily-entry
 
-      - name: Auto-merge when fired from admin (push event)
-        if: success() && github.event_name == 'push' && steps.open_pr.outputs.pull-request-number
+      - name: Auto-merge daily PR (Wave 209, all runs, skip needs-review/reject)
+        if: success() && steps.open_pr.outputs.pull-request-number && steps.entry.outputs.crit_verdict != 'needs-review' && steps.entry.outputs.crit_verdict != 'reject'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

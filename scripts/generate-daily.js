@@ -961,12 +961,36 @@ async function main() {
     }
     return null;  // ok
   }
+  // Wave 209: fail-soft instead of fail-hard. If 3 retries still produce
+  // malformed JSON, salvage what we have, fill in defaults for missing
+  // fields, and ship with a 'needsReview: true' flag so admin sees it.
+  // A weak entry Christopher can fix beats a broken pipeline that ships
+  // nothing for 5 days.
+  let shapeWarning = null;
   for (let shapeAttempt = 1; shapeAttempt <= 3; shapeAttempt++) {
     const err = shapeValidate(entryCopy);
     if (!err) break;
     if (shapeAttempt >= 3) {
-      console.error(`Shape validator failed on all 3 attempts: ${err}. Aborting to avoid shipping a broken entry.`);
-      process.exit(1);
+      shapeWarning = err;
+      console.warn(`Shape validator failed on all 3 attempts: ${err}. Salvaging best attempt with defaults.`);
+      // Salvage: ensure required fields exist with safe defaults
+      const subj = subjectInfo.subject || 'Untitled Entry';
+      entryCopy = entryCopy && typeof entryCopy === 'object' ? entryCopy : {};
+      entryCopy.word = entryCopy.word || subj;
+      entryCopy.pronunciation = entryCopy.pronunciation || `/${subj.toLowerCase().replace(/[^a-z\s]/g,'').replace(/\s+/g,' ')}/`;
+      entryCopy.partOfSpeech = entryCopy.partOfSpeech || 'n.';
+      // Definitions: keep only strings that DON'T look like leaked keys
+      const defs = Array.isArray(entryCopy.definitions) ? entryCopy.definitions : [];
+      entryCopy.definitions = defs.filter(d => typeof d === 'string' && !/^\s*(example|etymology|caption|tags|category)["']?\s*:/i.test(d));
+      if (entryCopy.definitions.length === 0) entryCopy.definitions = [`A subject of formidable girth. Documentation pending review.`];
+      entryCopy.example = (entryCopy.example && String(entryCopy.example).trim()) || `The ${subj} was, by any measure, thiccc.`;
+      entryCopy.etymology = (entryCopy.etymology && String(entryCopy.etymology).trim()) || 'Etymology pending review.';
+      entryCopy.caption = entryCopy.caption || `Plate N., ${subj}.`;
+      entryCopy.tags = Array.isArray(entryCopy.tags) ? entryCopy.tags : [];
+      entryCopy.category = entryCopy.category || 'Uncategorized';
+      entryCopy.needsReview = true;
+      entryCopy.shapeWarning = err;
+      break;
     }
     console.log(`Shape attempt ${shapeAttempt}/3 rejected: ${err}. Retrying with hint.`);
     entryCopy = await generateEntry(subjectInfo.subject + ` HINT: previous attempt produced malformed JSON (${err}). Output MUST be valid JSON with separate top-level keys for definitions, example, etymology, caption, tags, category. Do NOT put example/etymology/etc inside the definitions array.`, chosen);
