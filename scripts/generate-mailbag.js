@@ -136,6 +136,9 @@ async function main() {
 <meta property="og:description" content="Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters." />
 <meta property="og:image" content="https://thiccctionary.com/articles/og/${slug}.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../styles.min.css?v=68" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 </head>
