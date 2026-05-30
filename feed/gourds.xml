@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Gourds</title>
+    <link>https://thiccctionary.com/archive.html?tag=gourds</link>
+    <atom:link href="https://thiccctionary.com/feed/gourds.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "gourds".</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 May 2026 22:51:27 GMT</lastBuildDate>
+    <item>
+      <title>Pumpkin, Mammoth Gold</title>
+      <link>https://thiccctionary.com/entries/2026-05-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-27.html</guid>
+      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
+      <description>An especially large cultivar of pumpkin renowned for its substantial mass and radiant hues; typically exhibited with pride at autumnal gatherings and agricultural fairs.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-27-pumpkin-mammoth-gold.jpg" type="image/jpeg" length="0" />
+      <category>agriculture</category><category>autumn</category><category>gourds</category>
+    </item>
+    <item>
+      <title>Pumpkin, Atlantic Giant</title>
+      <link>https://thiccctionary.com/entries/2026-04-26.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-26.html</guid>
+      <pubDate>Sun, 26 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cultivar of pumpkin renowned for its prodigious girth, cultivated primarily for competitive size and decorative impact.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-26.jpg" type="image/jpeg" length="0" />
+      <category>botanical</category><category>gourds</category><category>competitive horticulture</category>
+    </item>
+  </channel>
+</rss>
