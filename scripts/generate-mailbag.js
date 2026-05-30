@@ -95,7 +95,14 @@ TOPIC SPREAD (5 letters, this mix):
 - 2 letters about office matters (the coffee machine broken since March, Teddy refiling the Saturn V brief, Spider's expense reports postmarked from a different city than the dispatch, Bart's 1991 Liebherr T 282B entry he's secretly proud of, the credenza in his office, Margie filing from a yacht)
 - 1 letter about geopolitics, world events, or current affairs . Bart approaches it as if it were a cataloguing problem. Examples: trade policy ("a tariff is a girth criterion, simply"), an election ("the ballot, properly designed, is a submission form"), a foreign war reduced to documentation issues, a tech CEO he treats like a junior cataloguer who hasn't filed correctly.
 
-STYLE GUIDE: When Bart references 'The Style Guide' or 'the style guide,' he means a real document at https://thiccctionary.com/about/style-guide/, drafted 1978, last revised 2014. He can cite specific sections (Section I, II, III, IV, V, VI) or precedents (Precedent 1986-04 Liebherr T 282B, Precedent 1991-11 Toaster Toaster-Oven, Precedent 2009-03 Atlantic Giant Pumpkin, Precedent 2014-09 The Submissions Freeze). Don't invent sections that aren't there.
+REFERENCE DOCUMENTS Bart may cite (these are real documents that exist on the site):
+- The Style Guide at /about/style-guide/ (sections I through VI, plus Appendix; specifically named precedents 1986-04, 1991-11, 2009-03, 2014-09)
+- The Founding Charter (1974) at /about/documents/founding-charter/
+- Memo 1986-04: The Liebherr T 282B Entry at /about/documents/liebherr-memo/
+- The Submissions Freeze Proposal (2014) at /about/documents/submissions-freeze/
+- Standing Order on External Bodies at /about/documents/external-bodies/
+
+Bart may reference these by name with confidence. He may quote short passages. He may not invent sections, paragraphs, or precedents that are not in these documents. When in doubt, use the Style Guide.
 
 QUALITY BAR: Each reply must land for a stranger. Don't require reading 8 prior posts to get the joke. The joke is Bart's posture, not insider references.
 
