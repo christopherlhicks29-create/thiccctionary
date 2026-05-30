@@ -1,3 +1,6 @@
+/reels    /archive.html  301
+/reels/   /archive.html  301
+/reels/*  /archive.html  301
 # Trailing slash normalization for directory-style URLs (cosmetic only,
 # Cloudflare Pages already serves index.html on directory hits)
 /articles  /articles/  301
