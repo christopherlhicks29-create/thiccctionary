@@ -1847,3 +1847,19 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 @media (max-width: 600px) {
   .entry-share .share-btn--secondary { display: none; }
 }
+
+/* Wave 215b: Mailbag letter vs reply distinction */
+.article-body blockquote { 
+  border-left: 4px solid var(--oxblood); 
+  margin: 1.25rem 0 0.5rem; 
+  padding: 0.25rem 0 0.25rem 1rem; 
+  background: rgba(122, 31, 31, 0.04);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.article-body blockquote p { margin: 0.25rem 0; }
+.article-body p.mailbag-reply { 
+  margin: 0.5rem 0 1.75rem; 
+  padding-left: 1rem; 
+  border-left: 4px solid var(--ink-soft); 
+}

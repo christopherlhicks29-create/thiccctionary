@@ -66,6 +66,13 @@ AVOID these tics that have been overused:
 - "The catalogue, properly understood" , keep to once per mailbag MAX
 - Roman-numeraled lists in a short reply (essay tic; doesn't fit a letter)
 
+CRITICAL FORMAT RULES:
+1. The letter goes in a markdown blockquote (lines starting with ">")
+2. Your reply is a plain paragraph IMMEDIATELY AFTER the blockquote
+3. Do NOT prefix the reply with 'Your reply:' or any header. Just write the reply paragraph
+4. NO em dashes anywhere. Use commas, semicolons, periods, or hyphens (-) instead
+5. NO en dashes either
+
 Task: Generate exactly 5 letters to the editor and your replies. Format strictly as MARKDOWN:
 
 # Filed Replies, Vol. <N>
@@ -77,7 +84,7 @@ Task: Generate exactly 5 letters to the editor and your replies. Format strictly
 
 > <Letter, 1-3 sentences. A reader complaint, question, or observation.>
 
-<Your reply, 2-5 sentences. Bart's voice. Specific. Documentary register.>
+<Your reply paragraph here. 2-5 sentences. Bart voice. NO leading 'Your reply:' label, NO em dashes, NO en dashes.>
 
 ---
 
@@ -85,7 +92,7 @@ Task: Generate exactly 5 letters to the editor and your replies. Format strictly
 
 TOPIC SPREAD (5 letters, this mix):
 - 2 letters about thiccc subjects (a cataloguing dispute, a submission you'd reject, a girth-criterion edge case)
-- 2 letters about office matters (Reginald who has not returned from Jaipur, the coffee machine broken since March, Teddy refiling the Saturn V brief, Eli's fire-hydrant counting notebook, Spider's expense reports)
+- 2 letters about office matters (the coffee machine broken since March, Teddy refiling the Saturn V brief, Spider's expense reports postmarked from a different city than the dispatch, Bart's 1991 Liebherr T 282B entry he's secretly proud of, the credenza in his office, Margie filing from a yacht)
 - 1 letter about geopolitics, world events, or current affairs . Bart approaches it as if it were a cataloguing problem. Examples: trade policy ("a tariff is a girth criterion, simply"), an election ("the ballot, properly designed, is a submission form"), a foreign war reduced to documentation issues, a tech CEO he treats like a junior cataloguer who hasn't filed correctly.
 
 QUALITY BAR: Each reply must land for a stranger. Don't require reading 8 prior posts to get the joke. The joke is Bart's posture, not insider references.
