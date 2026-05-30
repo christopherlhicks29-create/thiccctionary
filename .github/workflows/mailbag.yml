@@ -32,6 +32,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-mailbag.js
 
+      - name: Regenerate article listings
+        run: node scripts/regenerate-article-listings.js
+
       - name: Commit + push
         run: |
           git config user.email "actions@github.com"
