@@ -1,5 +1,20 @@
 # Thiccctionary Wave Log
 
+## Wave 222 (2026-05-30 PM session, this run)
+- 222a: Hardened daily.yml trace step — always commits run-metadata even when no log file
+- 222b: scripts/generate-daily-with-retry.js wraps generate-daily.js; queue auto-advances on critique bail (up to 4 attempts per run)
+- 222c: SUBJECT_OVERRIDE no longer falls back to a different subject on zero Unsplash results
+- Higgsfield production loop: download bridge + admin/characters browser + character-reel cross-post pipeline (Saturdays) + admin button + posted-tracker + 26 captioned clips
+- Personnel File embeds bart-folder-refusal autoplay-muted-loop
+- Stapling action retired (Seedance + Wan 2.7 both fail at fine tool manipulation, 3 takes, ~81 credits sunk)
+- Reels removed from public site: /reels page deleted, nav-link from 127 HTMLs, footer from 104, redirect added, MP4+Buffer pipeline preserved
+- Hugh reframed on masthead as Field Correspondent & Voiceover
+- 5/25-5/30 catalog gap closed (Boulder, Cement Truck REGEN, Pumpkin, Ever Given, Hippopotamus)
+- 5/20 backfilled (Tabular Iceberg, Antarctic)
+- daily.yml diagnosis: NOT silent-skip, critique-gate graceful bail. Real fix is Wave 222b auto-advance.
+- Christopher promoted me to 'The Guy' mid-session
+
+
 One-line summary of every shipped change. Newest at top. Anyone (including future-Christopher) can skim this in 60 seconds.
 
 | Date | Wave | Summary |
