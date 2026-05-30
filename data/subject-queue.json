@@ -16,6 +16,36 @@
       "subject": "Anchor, Stockless",
       "query": "ship anchor stockless steel",
       "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Boulder, Glacial Erratic",
+      "query": "glacial erratic boulder field",
+      "category": "Natural Subjects",
+      "notes": "House-sized rock dropped by retreating glaciers. The Madison Boulder in NH is a strong reference."
+    },
+    {
+      "subject": "Locomotive, Big Boy 4014",
+      "query": "union pacific big boy steam locomotive",
+      "category": "Vehicles",
+      "notes": "1.2 million lbs, longest steam locomotive ever built, articulated."
+    },
+    {
+      "subject": "Iceberg, Tabular",
+      "query": "tabular iceberg antarctica",
+      "category": "Natural Subjects",
+      "notes": "Flat-topped Antarctic icebergs the size of small countries. A68a calved off Larsen C in 2017 was 2,240 sq mi."
+    },
+    {
+      "subject": "Cargo Ship, Ever Given",
+      "query": "container ship suez cargo evergreen",
+      "category": "Vehicles",
+      "notes": "The Suez Canal blocker. 220,000 tons gross. Instantly recognizable culturally."
+    },
+    {
+      "subject": "Crane, Liebherr LR 13000",
+      "query": "crawler crane construction lifting",
+      "category": "Industrial Machinery",
+      "notes": "World's largest conventional crawler crane. 3,000-ton capacity. Bart's favorite manufacturer."
     }
   ]
 }

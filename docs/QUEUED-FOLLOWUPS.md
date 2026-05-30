@@ -120,3 +120,38 @@ Status tracking: https://tsdr.uspto.gov/#caseNumber=99827994
 - PWA upgrade of existing site, cheapest, weakest "real app" signal
 
 **When to revisit:** Once catalog hits ~50 entries (~mid-2026) AND we have first-mention press coverage. App needs critical mass of content + audience to justify the development effort.
+
+---
+
+## CRITICAL: daily.yml not consuming sentinels (2026-05-30, found by Director)
+
+**Symptom:** 5 missing daily entries in the catalog:
+- 5/25, 5/26, 5/27, 5/28: cron generated "Sequoia, General Sherman" 4 times (picker stuck); Christopher closed 4 duplicate PRs. Only 5/29 Sequoia made it to main. The other 4 dates have no entry.
+- 5/30 (today): `.fire-daily` sentinel was pushed 3 times by outcome-verify; no daily PR or entry resulted. Daily.yml is not converting sentinels into entries.
+
+**What I did this session (Wave 219 post-script):**
+1. Bumped `.fire-daily` with a marker comment and pushed again to retrigger workflow path filter.
+2. Padded `data/subject-queue.json` from 1 -> 6 items so the auto-picker can't fall back to Sequoia again.
+
+**Next-session priorities (in order):**
+
+1. **Pull GH Actions logs for daily.yml runs since 2026-05-30 16:00 UTC** and find the actual failure mode. Three sentinel-fires today produced zero successful entries. Either:
+   - Workflow isn't triggering on `data/.fire-daily` push (check `paths:` filter behavior with sentinel rewrites)
+   - Workflow triggers but `generate-daily.js` fails before sentinel-consume step
+   - Concurrency cancel-in-progress is killing each retry before it finishes
+
+2. **Backfill 5/25, 5/26, 5/27, 5/28 with distinct subjects.** Suggested picks (avoiding catalog dupes):
+   - 5/25: Boulder, Glacial Erratic
+   - 5/26: Locomotive, Big Boy 4014
+   - 5/27: Iceberg, Tabular
+   - 5/28: Cargo Ship, Ever Given
+   
+   Mechanism: extend `daily.yml` (or a new `backfill-entry.yml`) to accept `target_date` + `subject_override` inputs, OR hand-write 4 entries to `entries.json` and rebuild HTML pages.
+
+3. **Fix `pendingPrWords()` so closed-but-not-merged duplicates count as "used."** Today's bug: 4 separate `daily/2026-05-XX` branches all generated Sequoia. Christopher closed them WITHOUT merging. The next day's `pendingPrWords()` only looks at OPEN `daily/*` refs, so once closed, the duplicate signal vanished and the picker re-picked Sequoia next day. Either: (a) also read CLOSED PRs from the last 7 days, OR (b) write rejected subjects to `audits/dead-subjects/<date>.md` on PR close.
+
+4. **Investigate why the queue was empty before today.** queue head was Anchor today (good), but at no point during 5/25-5/29 did any queued subject get picked. Either the queue was emptied earlier or `refill-subject-queue.js` is dumping the queue and the auto-picker is winning. Verify queue-priority in `generate-daily.js`.
+
+5. **Image regen for Banana Cavendish** (fired 5/21, no PR seen) is still pending verification.
+
+**Why this matters:** Catalog has a visible 4-day gap (5/25-5/28). The publication's whole conceit is "daily." A 4-day gap on a 40-entry catalog is a 10% miss. Foundation is leaking.
