@@ -1,7 +1,7 @@
 {
-  "_description": "Wave 198: margie-monaco running bit. ~36s. Status: SCRIPT BANKED, video_url fields are TODO.",
+  "_description": "Wave 215, ep02 rewrite. Margie role corrected to Society Correspondent per current masthead. Two video segments rendering via Higgsfield MCP 2026-05-30.",
   "id": "ep02-margie-monaco",
-  "title": "The Editor-in-Chief Files From Abroad",
+  "title": "The Society Correspondent Files From Abroad",
   "version": 1,
   "voiceover": {
     "voice": "onyx",
@@ -17,14 +17,14 @@
       "text": "DISPATCH FROM MONACO\n\nWeek six of\na working visit",
       "narration": "Dispatch from Monaco. Week six of a working visit.",
       "voice": "onyx",
-      "instructions": "Documentary opener. 'A working visit' delivered exactly the same as 'Monaco' \u2014 no irony in the read."
+      "instructions": "Documentary opener. 'A working visit' delivered exactly the same as 'Monaco' — no irony in the read."
     },
     {
       "type": "video",
       "name": "margie_yacht",
       "duration": 7,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Margie at a small table on a yacht deck, typing on a laptop, water visible behind her. Reference her existing portrait.",
-      "narration": "The Editor-in-Chief has filed copy from a yacht, a vineyard, and a small claims court.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260530_155934_be8cc192-933d-4d4b-8ae7-143ed8d521e4.mp4",
+      "narration": "The Society Correspondent has filed copy from a yacht, a vineyard, and a small claims court.",
       "voice": "onyx",
       "instructions": "List the three locations as if reading expense codes. Flat between each comma."
     },
@@ -32,10 +32,10 @@
       "type": "video",
       "name": "margie_phone",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Margie holding a phone to her ear, looking out over harbor. Brief.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260530_155508_921d2334-5733-4cf3-8fb6-210dd4c9c125.mp4",
       "narration": "She insists this counts as in-office.",
       "voice": "onyx",
-      "instructions": "Six words. No comedic emphasis on 'insists' \u2014 the comedy is the report-style framing."
+      "instructions": "Six words. No comedic emphasis on 'insists' — the comedy is the report-style framing."
     },
     {
       "type": "title_card",
