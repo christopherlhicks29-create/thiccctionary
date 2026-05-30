@@ -301,6 +301,14 @@ Steam Locomotive, Big Boy"></textarea>
     </div>
 
     <div class="action-card">
+      <h3>Brand mention monitor</h3>
+      <p class="desc">Triggers <code>brand-mention.yml</code>. Polls Reddit + HackerNews for "thiccctionary" mentions. Writes <code>audits/brand-mentions/&lt;date&gt;.md</code> with new mentions highlighted at top. Scheduled daily 13:00 UTC. Free, no auth, $0/run.</p>
+      <div class="row">
+        <button class="action" data-trigger="brand-mention" data-confirm="Run brand mention scan now?">Run brand scan</button>
+      </div>
+    </div>
+
+    <div class="action-card">
       <h3>Force editorial (From the Boat)</h3>
       <p class="desc">Triggers <code>from-the-boat.yml</code>. Bertram Whitmore, Founder &amp; Publisher, writes a meandering dispatch from the Margaret IV. Scheduled 1st and 15th of every month. Saves to <code>articles/from-the-boat-YYYY-MM-DD.html</code>.</p>
       <div class="row">
