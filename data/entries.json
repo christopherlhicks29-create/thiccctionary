@@ -1127,35 +1127,30 @@
   },
   {
     "date": "2026-04-14",
-    "word": "Thick water",
-    "pronunciation": "thick WA-ter",
+    "word": "Thickened Water",
+    "pronunciation": "THIK-uhnd WAH-ter",
     "partOfSpeech": "n.",
     "definitions": [
-      "A body of water whose amplitude and density seem to challenge the laws of fluid dynamics; esp. one viewed astern, as it moves with ponderous grace.",
-      "<em>slang.</em> A wave that flexes its mass with unapologetic heft, leaving mere ripples to question their existence."
+      "A pre-thickened drinking water formulated for individuals with dysphagia, sold in nectar, honey, and pudding consistencies per the IDDSI framework. Drunk slowly. Reviewed with respect.",
+      "<em>colloq.</em> Water that finally got around to it."
     ],
-    "example": "He watched the wave roll in, a thiccc mass of water that made the beach reconsider its boundaries.",
-    "etymology": "From Old English 'wæter', akin to Old High German 'wazzar', with the adjective 'thick' from Old English 'thicce', meaning 'viscous; dense'. The concept of 'thiccc' water emerged in the internet age, where density is a compliment.",
+    "example": "The speech-language pathologist nodded at the 46-oz tub of thiccc Thick-It on the bedside tray and noted, for the chart, that the patient was now safely hydrating at Nectar consistency.",
+    "etymology": "Thickened (Middle English <em>thikne</em>, 'to become dense') applied to drinking water in the late 20th century when speech-language pathology codified <em>dysphagia</em> management. The International Dysphagia Diet Standardisation Initiative (IDDSI) added formal Levels 1, 2, 3, 4 in 2017. The Thiccctionary recognizes all four levels. Pudding is the thiccccest.",
     "image": "images/2026-04-14-thick-water.jpg",
-    "caption": "Plate N. Ocean waves demonstrating formidable thickness in midday light.",
+    "caption": "Plate N., 46-oz tub of Thick-It thickened water at Nectar consistency, on a hospital bedside tray.",
     "tags": [
-      "ocean",
-      "density",
-      "waves"
+      "medical",
+      "hydration",
+      "dysphagia",
+      "consumer-goods"
     ],
-    "category": "Engineering Marvels",
+    "category": "Domestic Goods",
     "bookReady": null,
     "humorScore": 6,
     "photoScore": 8,
     "photographer": "Austris Augusts",
     "photographerUrl": "https://unsplash.com/@austris_a",
-    "unsplashUrl": "https://unsplash.com/photos/sea-waves-during-daytime-npFw3LjlyiU",
-    "socialCaptions": {
-      "morning": "Thick water. \nAn ocean that reads Newton's Principia and politely declines.",
-      "afternoon": "In 2015, the internet discovered water's untapped potential.\nH2O, but make it thiccc.",
-      "evening": "From the archives, Thick water.\nIn 2020, a wave in Hawaii was spotted.\nIt took its time—arrived fashionably late.",
-      "reels": "When water learned from syrup and never looked back."
-    }
+    "unsplashUrl": "https://unsplash.com/photos/sea-waves-during-daytime-npFw3LjlyiU"
   },
   {
     "date": "2026-04-13",
