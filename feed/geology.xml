@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Geology</title>
+    <link>https://thiccctionary.com/archive.html?tag=geology</link>
+    <atom:link href="https://thiccctionary.com/feed/geology.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "geology".</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 May 2026 23:43:43 GMT</lastBuildDate>
+    <item>
+      <title>Boulder, Glacial Erratic</title>
+      <link>https://thiccctionary.com/entries/2026-05-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-25.html</guid>
+      <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
+      <description>A substantial rock formation, often resting incongruously upon a landscape, relocated by ancient glacial activity, notable for its commanding presence when viewed astern in natural light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-25-boulder-glacial-erratic.jpg" type="image/jpeg" length="0" />
+      <category>geology</category><category>landscape</category><category>glacial</category>
+    </item>
+    <item>
+      <title>Tabular Iceberg, Antarctic</title>
+      <link>https://thiccctionary.com/entries/2026-05-20.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-20.html</guid>
+      <pubDate>Wed, 20 May 2026 12:00:00 GMT</pubDate>
+      <description>A colossal slab of ice, characterized by its flat top and steep sides, often mistaken for a floating geological feature. Its mass and breadth defy casual navigation, esp. when viewed in stark contrast against the horizon.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-20-tabular-iceberg-antarctic.jpg" type="image/jpeg" length="0" />
+      <category>iceberg</category><category>Antarctica</category><category>geology</category>
+    </item>
+  </channel>
+</rss>

@@ -320,6 +320,38 @@
     }
   },
   {
+    "date": "2026-05-20",
+    "word": "Tabular Iceberg, Antarctic",
+    "pronunciation": "TAB-yoo-lar ICE-berg, an-TARK-tik",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A colossal slab of ice, characterized by its flat top and steep sides, often mistaken for a floating geological feature. Its mass and breadth defy casual navigation, esp. when viewed in stark contrast against the horizon.",
+      "<em>colloq.</em> That thiccc chunk of frozen water that makes other icebergs look like they're just trying too hard. Refuses to float unnoticed."
+    ],
+    "example": "He marveled at the thiccc Antarctic tabular iceberg, its sheer volume making even the cruise ship seem like a bathtub toy.",
+    "etymology": "From Latin <em>tabula</em> meaning 'tablet, flat piece' + iceberg, from Dutch <em>ijsberg</em> meaning 'ice mountain'. The ancients might have admired its lines, but they lacked the chill.",
+    "image": "images/2026-05-20-tabular-iceberg-antarctic.jpg",
+    "caption": "Plate N. A thiccc tabular iceberg, basking in the Antarctic light.",
+    "tags": [
+      "iceberg",
+      "Antarctica",
+      "geology"
+    ],
+    "category": "Engineering Marvels",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Curioso Photography",
+    "photographerUrl": "https://unsplash.com/@curioso",
+    "unsplashUrl": "https://unsplash.com/photos/iceberg-XeY4y17Q4fc",
+    "socialCaptions": {
+      "morning": "Tabular Iceberg, Antarctic.\nEighty miles long—longer than the Great Wall of China.\nAccidentally models its own horizon.",
+      "afternoon": "An icy plateau with no regard for your GPS.\nTabular Iceberg, Antarctic.",
+      "evening": "From the archives, Tabular Iceberg, Antarctic.\nA billion tons of ice.\nThe Southern Ocean watches in awe.",
+      "reels": "Floating continent? No, just a thiccc iceberg.\nAntarctic keeps it cool."
+    }
+  },
+  {
     "date": "2026-05-19",
     "word": "Kettlebell, Competition",
     "pronunciation": "/ket-ul-bel, com-pe-TISH-un/",
