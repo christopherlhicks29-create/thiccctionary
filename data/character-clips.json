@@ -2,43 +2,266 @@
   "generatedAt": "2026-05-30",
   "note": "Higgsfield Seedance 2.0 + Wan 2.7 generations. Costs in Higgsfield credits.",
   "characters": [
-    { "id": "bart", "name": "Bart, the Senior Cataloguer", "look": "Elderly, bespectacled, tweed jacket, wood-paneled editorial office" },
-    { "id": "constance", "name": "Constance Pribyl, Director of Editorial Operations", "look": "Elegant older woman, silk scarf, yacht or mahogany desk" },
-    { "id": "hugh", "name": "Hugh (the Field Photojournalist)", "look": "Green field jacket, industrial smokestacks, golden-hour calls" },
-    { "id": "margie", "name": "Margie (the Junior Typist)", "look": "Young woman at vintage manual typewriter, weary expression" },
-    { "id": "marvin", "name": "Marvin (the Saturn V kid)", "look": "Young earnest man with a Saturn V rocket model" }
+    {
+      "id": "bart",
+      "name": "Bart, the Senior Cataloguer",
+      "look": "Elderly, bespectacled, tweed jacket, wood-paneled editorial office"
+    },
+    {
+      "id": "constance",
+      "name": "Constance Pribyl, Director of Editorial Operations",
+      "look": "Elegant older woman, silk scarf, yacht or mahogany desk"
+    },
+    {
+      "id": "hugh",
+      "name": "Hugh (the Field Photojournalist)",
+      "look": "Green field jacket, industrial smokestacks, golden-hour calls"
+    },
+    {
+      "id": "margie",
+      "name": "Margie (the Junior Typist)",
+      "look": "Young woman at vintage manual typewriter, weary expression"
+    },
+    {
+      "id": "marvin",
+      "name": "Marvin (the Saturn V kid)",
+      "look": "Young earnest man with a Saturn V rocket model"
+    }
   ],
   "clips": [
-    { "char": "constance", "path": "videos/characters/constance-yacht-laptop.mp4",      "action": "Typing on laptop, deck of yacht",          "date": "2026-05-30", "model": "Seedance 2.0", "credits": 31.5 },
-    { "char": "constance", "path": "videos/characters/constance-yacht-phone.mp4",       "action": "On phone at yacht railing, Mediterranean", "date": "2026-05-30", "model": "Seedance 2.0", "credits": 27 },
-    { "char": "bart",      "path": "videos/characters/bart-stapling-a.mp4",             "action": "Stapling a manila document",                "date": "2026-05-30", "model": "Seedance 2.0", "credits": 31.5 },
-    { "char": "bart",      "path": "videos/characters/bart-stapling-b.mp4",             "action": "Stapling, alt take",                        "date": "2026-05-30", "model": "Seedance 2.0", "credits": 27 },
-    { "char": "bart",      "path": "videos/characters/bart-filing-cabinet.mp4",         "action": "Slides folder into drawer, slow close",    "date": "2026-05-30", "model": "Seedance 2.0", "credits": 27 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-a.mp4",            "action": "Speaks at broadcast mic (lip-synced)",      "date": "2026-05-21", "model": "Wan 2.7",     "credits": 10.5 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-b.mp4",            "action": "Radio mic, alt take",                       "date": "2026-05-21", "model": "Wan 2.7",     "credits": 7.5 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-c.mp4",            "action": "Radio mic, deadpan take 3",                 "date": "2026-05-21", "model": "Wan 2.7",     "credits": 12 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-d.mp4",            "action": "Radio mic, take 4",                         "date": "2026-05-21", "model": "Wan 2.7",     "credits": 9 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-e.mp4",            "action": "Radio mic, take 5",                         "date": "2026-05-21", "model": "Wan 2.7",     "credits": 9 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-f.mp4",            "action": "Radio mic, cleaner background",             "date": "2026-05-21", "model": "Wan 2.7",     "credits": 9 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-mic-g.mp4",            "action": "Radio mic, take 7",                         "date": "2026-05-21", "model": "Wan 2.7",     "credits": 9 },
-    { "char": "hugh",      "path": "videos/characters/hugh-industrial-call-back.mp4",   "action": "Back-to-camera at industrial railing",      "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "hugh",      "path": "videos/characters/hugh-sunset-call-profile.mp4",    "action": "On phone, sunset, three-quarter profile",   "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "hugh",      "path": "videos/characters/hugh-silhouette-call.mp4",        "action": "Silhouette at orange sunset",                "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "hugh",      "path": "videos/characters/hugh-railing-handset.mp4",        "action": "Holds telephone handset at railing",        "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "margie",    "path": "videos/characters/margie-typewriter-scowl.mp4",     "action": "Pulls page from typewriter, scowls",        "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "hugh",      "path": "videos/characters/hugh-smokestack-call.mp4",        "action": "On rotary phone atop a smokestack",         "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "constance", "path": "videos/characters/constance-signs-and-stamps.mp4",  "action": "Signs document, brass embossing seal",     "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "margie",    "path": "videos/characters/margie-typewriter-correct.mp4",   "action": "Re-feeds page to correct it",              "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "bart",      "path": "videos/characters/bart-folder-refusal.mp4",         "action": "Glares at folder, sets it down",           "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "constance", "path": "videos/characters/constance-desk-authority-a.mp4",  "action": "Behind editor-in-chief desk, single nod",  "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "hugh",      "path": "videos/characters/hugh-camera-portrait.mp4",        "action": "Raises 35mm camera then lowers",           "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "constance", "path": "videos/characters/constance-desk-authority-b.mp4",  "action": "Behind desk, calm gravitas, alt take",     "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "marvin",    "path": "videos/characters/marvin-saturn-v-model.mp4",       "action": "Holds Saturn V model, reverent",           "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "bart",      "path": "videos/characters/bart-filing-cabinet-glare.mp4",   "action": "Holds folder, glares over the top",        "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "margie",    "path": "videos/characters/margie-typewriter-eyebrow.mp4",   "action": "Single dry raised eyebrow at camera",      "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 },
-    { "char": "bart",      "path": "videos/characters/bart-radio-deadpan.mp4",          "action": "Adjusts glasses, single deadpan line",     "date": "2026-05-20", "model": "Seedance 2.0", "credits": 22.5 }
+    {
+      "char": "constance",
+      "path": "videos/characters/constance-yacht-laptop.mp4",
+      "action": "Typing on laptop, deck of yacht",
+      "date": "2026-05-30",
+      "model": "Seedance 2.0",
+      "credits": 31.5
+    },
+    {
+      "char": "constance",
+      "path": "videos/characters/constance-yacht-phone.mp4",
+      "action": "On phone at yacht railing, Mediterranean",
+      "date": "2026-05-30",
+      "model": "Seedance 2.0",
+      "credits": 27
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-stapling-a.mp4",
+      "action": "Stapling a manila document",
+      "date": "2026-05-30",
+      "model": "Seedance 2.0",
+      "credits": 31.5,
+      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated."
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-stapling-b.mp4",
+      "action": "Stapling, alt take",
+      "date": "2026-05-30",
+      "model": "Seedance 2.0",
+      "credits": 27,
+      "flagged": "hand/stapler motion is wrong (AI tool-handling failure). Hidden from library until regenerated."
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-filing-cabinet.mp4",
+      "action": "Slides folder into drawer, slow close",
+      "date": "2026-05-30",
+      "model": "Seedance 2.0",
+      "credits": 27
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-a.mp4",
+      "action": "Speaks at broadcast mic (lip-synced)",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 10.5
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-b.mp4",
+      "action": "Radio mic, alt take",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 7.5
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-c.mp4",
+      "action": "Radio mic, deadpan take 3",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 12
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-d.mp4",
+      "action": "Radio mic, take 4",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 9
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-e.mp4",
+      "action": "Radio mic, take 5",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 9
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-f.mp4",
+      "action": "Radio mic, cleaner background",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 9
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-mic-g.mp4",
+      "action": "Radio mic, take 7",
+      "date": "2026-05-21",
+      "model": "Wan 2.7",
+      "credits": 9
+    },
+    {
+      "char": "hugh",
+      "path": "videos/characters/hugh-industrial-call-back.mp4",
+      "action": "Back-to-camera at industrial railing",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "hugh",
+      "path": "videos/characters/hugh-sunset-call-profile.mp4",
+      "action": "On phone, sunset, three-quarter profile",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "hugh",
+      "path": "videos/characters/hugh-silhouette-call.mp4",
+      "action": "Silhouette at orange sunset",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "hugh",
+      "path": "videos/characters/hugh-railing-handset.mp4",
+      "action": "Holds telephone handset at railing",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "margie",
+      "path": "videos/characters/margie-typewriter-scowl.mp4",
+      "action": "Pulls page from typewriter, scowls",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "hugh",
+      "path": "videos/characters/hugh-smokestack-call.mp4",
+      "action": "On rotary phone atop a smokestack",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "constance",
+      "path": "videos/characters/constance-signs-and-stamps.mp4",
+      "action": "Signs document, brass embossing seal",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "margie",
+      "path": "videos/characters/margie-typewriter-correct.mp4",
+      "action": "Re-feeds page to correct it",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-folder-refusal.mp4",
+      "action": "Glares at folder, sets it down",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "constance",
+      "path": "videos/characters/constance-desk-authority-a.mp4",
+      "action": "Behind editor-in-chief desk, single nod",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "hugh",
+      "path": "videos/characters/hugh-camera-portrait.mp4",
+      "action": "Raises 35mm camera then lowers",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "constance",
+      "path": "videos/characters/constance-desk-authority-b.mp4",
+      "action": "Behind desk, calm gravitas, alt take",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "marvin",
+      "path": "videos/characters/marvin-saturn-v-model.mp4",
+      "action": "Holds Saturn V model, reverent",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-filing-cabinet-glare.mp4",
+      "action": "Holds folder, glares over the top",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "margie",
+      "path": "videos/characters/margie-typewriter-eyebrow.mp4",
+      "action": "Single dry raised eyebrow at camera",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    },
+    {
+      "char": "bart",
+      "path": "videos/characters/bart-radio-deadpan.mp4",
+      "action": "Adjusts glasses, single deadpan line",
+      "date": "2026-05-20",
+      "model": "Seedance 2.0",
+      "credits": 22.5
+    }
   ],
   "portraits": [
-    { "char": "bart-young", "path": "images/characters/young-bart-portrait.png", "note": "Younger Bart broadcast-radio portrait (nano_banana_2)", "date": "2026-05-21" }
+    {
+      "char": "bart-young",
+      "path": "images/characters/young-bart-portrait.png",
+      "note": "Younger Bart broadcast-radio portrait (nano_banana_2)",
+      "date": "2026-05-21"
+    }
   ]
 }

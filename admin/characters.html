@@ -50,6 +50,10 @@
     border:1px solid var(--rule); background:#fff; border-radius:3px; text-decoration:none;
     color:var(--ink); cursor:pointer; font:inherit; }
   .card-body .actions a:hover, .card-body .actions button:hover { background:#f8f1de; }
+
+  .card.flagged { border-color:#9b2c2c; opacity:0.85; }
+  .flag-banner { background:#9b2c2c; color:#fff; padding:6px 10px; font-size:11px;
+    text-transform:uppercase; letter-spacing:0.05em; font-weight:600; }
   .empty { color:#6b5d4a; font-style:italic; padding:24px 0; text-align:center; }
   .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
     background:var(--ink); color:var(--cream); padding:10px 18px; border-radius:24px;
@@ -128,7 +132,8 @@ function render(filter) {
             </div>
           `).join('')}
           ${clips.map(c => `
-            <div class="card">
+            <div class="card${c.flagged?' flagged':''}">
+              ${c.flagged ? `<div class="flag-banner">FLAGGED &mdash; ${c.flagged}</div>` : ''}
               <video src="/${c.path}" controls preload="metadata" muted></video>
               <div class="card-body">
                 <p class="action">${c.action}</p>
