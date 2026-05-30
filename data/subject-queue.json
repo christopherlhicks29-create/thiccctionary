@@ -11,12 +11,5 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": [
-    {
-      "subject": "Crane, Liebherr LR 13000",
-      "query": "crawler crane construction lifting",
-      "category": "Industrial Machinery",
-      "notes": "World's largest conventional crawler crane. 3,000-ton capacity. Bart's favorite manufacturer."
-    }
-  ]
+  "queue": []
 }

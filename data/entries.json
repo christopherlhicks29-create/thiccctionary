@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-05-30",
+    "word": "Hippopotamus, Common",
+    "pronunciation": "/hip-oh-POT-uh-mus, KOM-un/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A semi-aquatic mammal whose substantial mass and low center of gravity render it a prime exemplar of thicccness in nature; especially when viewed astern, its posterior defies casual description.",
+      "<em>colloq.</em> A riverine barge with no particular hurry, often observed exuding calm dominance over its watery domain."
+    ],
+    "example": "He spotted a thiccc hippopotamus lounging in the river's embrace. The water dared not rush her.",
+    "etymology": "From Greek <em>hippos</em> (horse) + <em>potamos</em> (river), literally 'river horse', which seems to have been a conceptual leap of faith.",
+    "image": "images/2026-05-30-hippopotamus-common.jpg",
+    "caption": "Plate N. The subject's posterior, viewed astern, defies casual description.",
+    "tags": [
+      "massive",
+      "semi-aquatic",
+      "dominant"
+    ],
+    "category": "Engineering Marvels",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Gurth Bramall",
+    "photographerUrl": "https://unsplash.com/@gurthb",
+    "unsplashUrl": "https://unsplash.com/photos/a-hippopotamus-standing-in-a-grassy-field-5buSC9txelY",
+    "socialCaptions": {
+      "morning": "Hippopotamus, Common. 1,500 kg of aquatic diplomacy.\nGraciously navigates both water and land—gravity bows.",
+      "afternoon": "In 1858, Owen named the Hippopotamus amphibius.\nThe Nile merely nodded—Hippopotamus, Common.",
+      "evening": "From the archives, Hippopotamus, Common.\nThirty miles per hour on land, unstoppable by casual observation.",
+      "reels": "Five-minute breath-hold—no snorkeling required."
+    }
+  },
+  {
     "date": "2026-05-29",
     "word": "Sequoia, General Sherman",
     "pronunciation": "/seh-KWOY-uh, JEN-er-ul SHUR-man/",
