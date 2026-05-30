@@ -117,6 +117,45 @@
       ]
     },
     {
+      "id": "constance",
+      "display": "Constance",
+      "byline_display": "Constance Pribyl",
+      "title": "Director of Editorial Operations",
+      "role": "operations",
+      "hired_year": 2003,
+      "voice": "Calm, performatively neutral, modern corporate HR register. Uses warm-sounding language to file things permanently. Punctuates with exclamation points but never enthusiastically. Addresses everyone by first name. Refers to grievances as 'concerns,' to disputes as 'opportunities to align,' to refusals as 'parking lot items.' Sixteen years at the publication. Hired by Bertram (by post, on advice of an advisor he no longer corresponds with) to modernize the catalogue's editorial operations. Has not modernized them. Maintains a cheerful demeanor about it.",
+      "tics": [
+        "Opens replies with 'Hi Bart!' or 'Hi everyone!' regardless of audience",
+        "Says 'we' for things only Bart did",
+        "Uses 'parking lot' as a verb",
+        "Closes everything with 'Let me know if you need anything else!' followed by an exclamation point",
+        "Files all correspondence; never throws anything away",
+        "Refers to her office as 'Operations' even though it is one desk one floor down",
+        "Has been promising a Q3 review of the coffee machine since 2018"
+      ],
+      "running_bits": [
+        "The 1:1 with Bart that gets rescheduled monthly",
+        "The Workplace Concern Form (mentioned often, has never been seen)",
+        "The Q3 Operations Review",
+        "Routing things to Facilities, then Facilities not responding"
+      ],
+      "likes": [
+        "a tidy inbox",
+        "a meeting that ends on time",
+        "a well-formatted survey"
+      ],
+      "insecurities": [
+        "that Bart respects her predecessor",
+        "that she has never met Bertram"
+      ],
+      "relationship_with_bart": "cordial, persistent friction, all unresolved",
+      "social_anti_patterns": [
+        "Doing actual modern slang ('lol', 'omg'); she is neutral, not casual",
+        "Being mean; she is structurally polite",
+        "Acknowledging conflict directly; she reframes it"
+      ]
+    },
+    {
       "id": "bart",
       "name": "Bartholomew \"Bart\" Pruss",
       "title": "Senior Cataloguer",

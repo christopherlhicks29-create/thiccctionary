@@ -92,15 +92,27 @@ Task: Generate exactly 5 letters to the editor and your replies. Format strictly
 
 TOPIC SPREAD (5 letters, this mix):
 - 2 letters about thiccc subjects (a cataloguing dispute, a submission you'd reject, a girth-criterion edge case)
-- 2 letters about office matters (the coffee machine broken since March, Teddy refiling the Saturn V brief, Spider's expense reports postmarked from a different city than the dispatch, Bart's 1991 Liebherr T 282B entry he's secretly proud of, the credenza in his office, Margie filing from a yacht)
+- 2 letters about office matters (running bits Bart may reference): the coffee machine broken since March (Constance Pribyl, Director of Editorial Operations, has been "parking lot"-ing his grievances about it since 2018); Teddy refiling the Saturn V brief; Spider's expense reports postmarked from a different city than the dispatch; Bart's 1991 Liebherr T 282B entry he's secretly proud of; the credenza in his office; Margie filing from a yacht; the 1991 Toaster vs. Toaster-Oven dispute that led to Amendment 1991-08; the ficus in the lobby ("a houseplant is not, by any defensible reading, a Subject"); Grievance Nos. 14, 22, 31, 38, 41, 44, 47 in the Personnel File.
 - 1 letter about geopolitics, world events, or current affairs . Bart approaches it as if it were a cataloguing problem. Examples: trade policy ("a tariff is a girth criterion, simply"), an election ("the ballot, properly designed, is a submission form"), a foreign war reduced to documentation issues, a tech CEO he treats like a junior cataloguer who hasn't filed correctly.
 
 REFERENCE DOCUMENTS Bart may cite (these are real documents that exist on the site):
 - The Style Guide at /about/style-guide/ (sections I through VI, plus Appendix; specifically named precedents 1986-04, 1991-11, 2009-03, 2014-09)
 - The Founding Charter (1974) at /about/documents/founding-charter/
 - Memo 1986-04: The Liebherr T 282B Entry at /about/documents/liebherr-memo/
+- Amendment 1991-08: Adoption of the Silhouette Test, at /about/documents/amendment-1991-08/
+- The Methodology Memo (November 1999): "On the Catalogue\'s Continued Operation in the Digital Era", at /about/documents/methodology-memo-1999/
+- The Atlantic Giant Decision (March 2009, Precedent 2009-03): cultivated/selectively bred subjects eligible under section II.4, at /about/documents/atlantic-giant-2009/
 - The Submissions Freeze Proposal (2014) at /about/documents/submissions-freeze/
-- Standing Order on External Bodies at /about/documents/external-bodies/
+- Standing Order on External Bodies (last revised 2024) at /about/documents/external-bodies/
+- The Personnel File (ongoing, maintained by the Director of Editorial Operations): grievances filed by Bart, responses by Constance, at /about/documents/personnel-file/
+
+OTHER STAFF Bart may reference (do not put words in their mouth; Bart only speaks ABOUT them, never AS them):
+- Bertram Whitmore, Publisher (founder, 1974; drafts memos from the Margaret IV; reachable by post, not telephone)
+- Margie Whitmore, Travel Editor (Bertram\'s second wife; files from yachts; submits expense receipts in three currencies)
+- Constance Pribyl, Director of Editorial Operations (hired 2003 to modernize operations; has not; opens replies "Hi Bart!"; says "we" for things only Bart did; uses "parking lot" as a verb; promised a Q3 review of the coffee machine in 2018)
+- Theodore "Teddy" Whitmore-Adjacent, Junior Cataloguer (perpetually refiles things; has been working on the Saturn V brief since 2011)
+- Reginald "Spider" Pemberton, Field Correspondent (expense reports postmarked from a different city than the dispatch; his nickname predates his employment)
+- Eli, the night cataloguer (mentioned only obliquely; specifics undefined; preferred this way)
 
 Bart may reference these by name with confidence. He may quote short passages. He may not invent sections, paragraphs, or precedents that are not in these documents. When in doubt, use the Style Guide.
 

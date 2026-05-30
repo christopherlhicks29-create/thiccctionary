@@ -1,0 +1,110 @@
+{
+  "_description": "Wave 219, canonical facts for the Thiccctionary fictional company. Every generator MUST read this and not contradict it. Add new facts here when established; never let the LLM invent new canon in a single post.",
+  "publication": {
+    "name": "The Thiccctionary",
+    "founded": 1974,
+    "founder": "Bertram Whitmore",
+    "office": "Manhattan, above a dry cleaner",
+    "rent_1974": "sixty-two dollars a month, fully serviced",
+    "high_water_mark": "Memo 1986-04, the Liebherr T 282B entry, by the Senior Cataloguer",
+    "peaked_no_earlier_than": 1986,
+    "submissions_freeze_proposal": {"year": 2014, "status": "filed, not adopted"}
+  },
+  "staff": {
+    "bertram": {
+      "full_name": "Bertram Whitmore",
+      "title": "Founder and Publisher",
+      "founded_year": 1974,
+      "boat": "Margaret IV",
+      "boat_named_after": "his late wife Margaret",
+      "last_visited_office": 1991,
+      "writes": "irregular memos by typewriter, sent by post",
+      "reachable_by_phone": false
+    },
+    "bart": {
+      "full_name": "Bartholomew Whitmore",
+      "title": "Editor-in-Chief and Senior Cataloguer",
+      "hired_year": 1978,
+      "hired_by": "Bertram, in person",
+      "originally_brought_on_to": "catalog ships",
+      "divorced_year": 2003,
+      "divorce_cause": "a dispute about a credenza",
+      "credenza_location": "his office, currently",
+      "prize_entry": "Liebherr T 282B (1986)",
+      "wrote_original_style_guide": true,
+      "hates_being_called": "Bart",
+      "files_objections": true
+    },
+    "constance": {
+      "full_name": "Constance Pribyl",
+      "title": "Director of Editorial Operations",
+      "hired_year": 2003,
+      "hired_to": "modernize the publication",
+      "hired_by": "Bertram, by post, on advice of an advisor he no longer corresponds with",
+      "office_relation": "same building as the Senior Cataloguer, one floor down (above the dry cleaner's storage room)",
+      "voice": "calm, performatively neutral, modern corporate HR register",
+      "uses_phrases": ["we hear you", "let's circle back", "thank you for raising this concern", "I have added this to our parking lot", "closing this ticket", "let's align on a path forward", "this is an opportunity"],
+      "relationship_with_bart": "cordial, persistent friction, sixteen years of unresolved 1:1 follow-ups",
+      "files_everything": true
+    },
+    "eli": {
+      "full_name": "Eliza Hartwell",
+      "title": "Staff Writer",
+      "age": 24,
+      "background": "from a town smaller than the readership",
+      "lives_in": "a fourth-floor walk-up",
+      "counts_things": true,
+      "no_longer_counts": "fire hydrants (retired)"
+    },
+    "teddy": {
+      "full_name": "Theodore",
+      "informal": "Teddy",
+      "title": "Junior Cataloguer",
+      "age": 24,
+      "background": "philosophy minor, recent grad of a small liberal arts college",
+      "obsessions": ["Roman aqueducts", "Liberty Ships", "Saturn V", "Hoover Dam construction logs", "Erie Canal lock system"],
+      "does_not_drink": true,
+      "probation_status_he_does_not_know_about": true
+    },
+    "margie": {
+      "full_name": "Margaret Whitmore-Reuss",
+      "informal": "Margie",
+      "title": "Society Correspondent",
+      "relation_to_founder": "Bertram's brother's daughter",
+      "address": "no permanent",
+      "viscount_marriage": {"years": "2011-2012", "topic": "would rather not discuss"},
+      "scarf_in_july": true
+    },
+    "spider": {
+      "title": "Foreign Correspondent",
+      "name_is_pseudonym": true,
+      "office_has_met_him": false,
+      "files_from": ["rotating cities"],
+      "expense_reports": "immaculate"
+    },
+    "hugh": {
+      "title": "Voiceover and Reels",
+      "voice": "documentary register, never winks"
+    }
+  },
+  "documents": {
+    "style_guide": {"first_edition": 1978, "last_revision": 2014, "url": "/about/style-guide/"},
+    "founding_charter": {"year": 1974, "url": "/about/documents/founding-charter/"},
+    "liebherr_memo": {"year": 1986, "id": "1986-04", "url": "/about/documents/liebherr-memo/"},
+    "submissions_freeze": {"year": 2014, "url": "/about/documents/submissions-freeze/"},
+    "external_bodies": {"first_issued": 1997, "last_revised": 2024, "url": "/about/documents/external-bodies/"},
+    "personnel_file": {"url": "/about/documents/personnel-file/"},
+    "amendment_1991_08": {"year": 1991, "topic": "the Silhouette Test", "url": "/about/documents/amendment-1991-08/"},
+    "methodology_memo": {"year": 1999, "url": "/about/documents/methodology-memo-1999/"},
+    "atlantic_giant_decision": {"year": 2009, "url": "/about/documents/atlantic-giant-2009/"}
+  },
+  "precedents": {
+    "1986-04": "Liebherr T 282B, established that engineered industrial vehicles qualify",
+    "1991-11": "Toaster, Toaster-Oven dispute, established the Silhouette Test (Style Guide II.2)",
+    "2009-03": "Atlantic Giant Pumpkin, established that cultivated subjects qualify (Style Guide II.4)",
+    "2014-09": "The Submissions Freeze Proposal, filed by Senior Cataloguer, not adopted"
+  },
+  "running_threads": {
+    "the_coffee_machine": "Broken since March (year unspecified). Has been a grievance subject in multiple Personnel File entries. Constance has 'routed it to Facilities' three separate times."
+  }
+}
