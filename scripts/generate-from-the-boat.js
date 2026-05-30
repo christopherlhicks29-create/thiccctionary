@@ -150,12 +150,51 @@ async function main() {
     <a href="/compare.html" class="nav-link">Compare</a>
   </nav>
 </header>
-<main class="container article-body">
+<main id="main-content">
+<article class="entry entry--single">
+<div class="article-prose" style="max-width: 720px; margin: 2rem auto; padding: 0 16px; line-height: 1.8;">
 <p class="article-meta"><a href="./">&larr; All articles</a> &middot; ${today}</p>
 ${htmlBody}
+</div>
+</article>
 </main>
-<footer class="site-footer">
-<p class="copyright">&copy; <span id="year">${today.slice(0,4)}</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary<span style="font-size:0.55em; vertical-align:super; margin-left:2px; opacity:0.7;">TM</span></p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="/archive.html">Archive</a>
+      <a href="/a-z.html">A-Z</a>
+      <a href="/articles/">Articles</a>
+      <a href="/about/documents/">References</a>
+      <a href="/cartoons/">Cartoons</a>
+      <a href="/compare.html">Compare</a>
+      <a href="/rate/">Rate</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/embed/">Embed</a>
+      <a href="/about/">About</a>
+      <a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X &middot; @thiccctionary</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook &middot; /Thiccctionary</a>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram &middot; @ogthiccctionary</a>
+      <a href="https://www.tiktok.com/@thethiccctionary" target="_blank" rel="noopener">TikTok &middot; @thethiccctionary</a>
+      <a href="/follow/">All handles &rarr;</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="/legal/terms.html">Terms</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/press/">Press kit</a>
+      <a href="mailto:admin@thiccctionary.com">Contact</a>
+    </div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
 </footer>
 <script defer src="/scripts/masthead-date.js?v=1"></script>\n</body>
 </html>
