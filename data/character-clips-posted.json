@@ -1,4 +1,19 @@
 {
-  "posted": [],
-  "lastPostedAt": null
+  "posted": [
+    {
+      "path": "videos/characters/teddy-reading-book.mp4",
+      "at": "2026-05-31T23:16:37.556Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a1cc15497f5fea3f19de2b1"
+        },
+        {
+          "service": "instagram",
+          "id": "6a1cc155f47c8b09310e7c2c"
+        }
+      ]
+    }
+  ],
+  "lastPostedAt": "2026-05-31T23:16:37.556Z"
 }
