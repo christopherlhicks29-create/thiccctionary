@@ -1,4 +1,23 @@
 # Thiccctionary Wave Log
+## Wave 224 (2026-05-31 evening session, 50+ commits)
+- All audit findings shipped without user prompt: 12 double-h1 pages demoted to h2, 2 missing OG images generated, style-guide meta description shortened, admin cron-time copy fixed
+- Masthead character clip assignments fixed (Margie→Eliza swap, Constance→Bertram clip move, Hugh+Spider clips removed - all hugh-* visuals read as Spider archetype)
+- Generated NEW Constance clip via Higgsfield (mid-50s Black woman in navy blazer, ~27 credits)
+- Cartoons page: was showing only static portraits; embedded the 3 existing episode MP4s (ep00, ep01, ep02)
+- Composed 3 NEW cartoon episodes from scripts-bank using existing Higgsfield clips at $0 new spend: ep04 Coffee Machine, ep06 Eli Notebook, ep07 Girth Quarterly
+- Fixed failure-handler retry bug (compose-cartoon default was silently rerunning ep00 on any failure)
+- Fired Teddy regen for ep05 Saturn V Feud (~27 credits)
+- Strip em-dashes from 57 historical caption fields + From the Boat article + generator prompts (mailbag, grievance, from-the-boat, generate-daily)
+- Footer consistency sweep: 14 pages moved from minimal site-footer to canonical footer-grid
+- Reels removed from public site (page, nav, footer, build template, redirect)
+- daily.yml retry wrapper (Wave 222b) + override-strict patch (Wave 222c) shipped + verified working (cron landed 5/31 Kettle entry cleanly)
+- 5/26 Cement Truck stripped of REGEN (entry corrupted by Wave 73-74 silent substitution)
+- Brand-mention monitor extended with Google News RSS source
+- Subject queue padded from 7→15 photogenic subjects
+- Buffer queue audited, 1 em-dash post purged
+- docs/SOCIAL-BIO-UPDATE.md created (only thing requiring Christopher to do himself: en-dash in X/IG/FB bio)
+- Memory updated 3x: feedback_the_guy (added small-spend authority + reinforced no-interjection PM mode), feedback_continuous_qa (hardened the QA ownership rule)
+
 
 ## Wave 222 (2026-05-30 PM session, this run)
 - 222a: Hardened daily.yml trace step — always commits run-metadata even when no log file
