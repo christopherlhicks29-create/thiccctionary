@@ -1,4 +1,23 @@
 # Thiccctionary Wave Log
+## Wave 226 (2026-05-31 late evening, Christopher caught a fabricated entry)
+Christopher spotted "Kettle, Industrial F350" on the live homepage. Auto-picker had hallucinated a fake product line (F350 is Ford truck nomenclature, not a kitchen kettle designation). Same class of bug as 5/26 Cement Truck BetaMax REGEN, but on the AUTO-PICKER path that the SUBJECT_OVERRIDE patch hadn't covered.
+
+Cleanup (in-place):
+- Stripped entry from data/entries.json, feed.xml, feed/culinary.xml, feed/industrial.xml, a-z.html, sitemap.xml
+- Deleted entries/2026-05-31.html, images/2026-05-31-kettle-industrial-f350.{jpg,webp}, videos/2026-05-31.mp4
+- Rewired index.html fallback featured block to 5/30 Hippopotamus
+- Rewrote /is/kettle-thiccc/ to point at Kettlebell, Competition (5/19) since that real entry already exists
+- Sentinel-fired the daily workflow with SUBJECT_OVERRIDE; PR #98 landed "Tractor Tire" as replacement entry
+
+Safeguards (the substantive fix):
+- scripts/generate-daily.js auto-picker prompt: HARD RULE against borrowing vehicle/aircraft/military model numbers onto non-vehicle subjects (F350, F-150, 747, M1, KX-9000 patterns). If no real product line exists, pick a different subject.
+- scripts/generate-daily.js critique prompt: new test #8 SUBJECT-IDENTITY REALITY CHECK. Auto-rejects fabricated subjects regardless of how good the photo looks.
+- scripts/editorial-sanity.js: NEW. Catches fabricated subjects, photo-subject mismatch, em-dash leaks in the catalog. Runs over entries.json. Auto-wired into pre-ship-check.js as Rule 9. Manual run: `node scripts/editorial-sanity.js --all`.
+- memory/feedback_continuous_qa.md: hardened. QA mandate now explicitly includes EDITORIAL sanity, not just structural. Session-start protocol: spot-check the last 1-3 daily entries before doing any other work.
+
+Why I missed it as PM: site-health audit checks STRUCTURE (links, alt text, schema). It does NOT check EDITORIAL sanity (is the subject real, does the photo match). Fabricated entry with valid links + real photo passes every structural check I ran. Fixed at the source now.
+
+
 ## Wave 225 (2026-05-31 late evening, autonomous unattended)
 - Generated 6 canonical cast portraits via nano_banana_2 (Margie, Teddy, Eli, Hugh, Bart, Spider) - photoreal documentary style. Pulled to /images/staff/. 12 credits.
 - Embedded Teddy, Margie, Spider, Hugh portraits on /about/masthead/ (the 4 cards previously text-only). Added .staff-portrait CSS variant (3:4, 130px). Bertram/Bart/Constance/Eliza keep working videos.
