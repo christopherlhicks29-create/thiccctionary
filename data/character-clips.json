@@ -31,6 +31,11 @@
       "id": "constance",
       "name": "Constance Pribyl, Director of Editorial Operations",
       "look": "Mid-50s Black woman, short natural hair, navy blazer, modern editorial office. Distinct from the elderly silk-scarf Bertram archetype."
+    },
+    {
+      "id": "teddy",
+      "name": "Theodore (\"Teddy\"), Junior Cataloguer",
+      "look": "Mid-20s, wire-rim glasses, knit sweater vest, with a Saturn V model on his desk. Reading from books."
     }
   ],
   "clips": [
@@ -323,6 +328,16 @@
       "credits": 27,
       "caption": "The Director will sign your paperwork now.",
       "tag": "personnel"
+    },
+    {
+      "char": "teddy",
+      "path": "videos/characters/teddy-reading-book.mp4",
+      "action": "Reads from a large book at his desk, Saturn V model visible",
+      "date": "2026-05-31",
+      "model": "Seedance 2.0",
+      "credits": 27,
+      "caption": "The Junior Cataloguer has located a citation.",
+      "tag": "office"
     }
   ],
   "portraits": [

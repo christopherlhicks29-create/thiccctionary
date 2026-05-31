@@ -1,5 +1,5 @@
 {
-  "_description": "Wave 198: saturn-v-feud running bit. ~40s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Bart and Teddy at different desks, both clearly aware of each other but never looking up.",
+  "_description": "Wave 200d: shipped 2026-05-31 with bart-folder-refusal + NEW Teddy clip (27 credits).",
   "id": "ep05-saturn-v-feud",
   "title": "The Saturn V, A Disagreement",
   "version": 1,
@@ -23,7 +23,7 @@
       "type": "video",
       "name": "bart_position",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at his desk, writing on a manila folder, glasses low on nose.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221247_f3e2b820-53ef-435f-8661-d692b23cebaf.mp4",
       "narration": "Bart maintains the Saturn V is not a vehicle. It is, in his words, a building that briefly left.",
       "voice": "onyx",
       "instructions": "Two sentences. The second is the kicker \u2014 read it with NO smile, exactly the same flat register as the first."
@@ -32,7 +32,7 @@
       "type": "video",
       "name": "teddy_response",
       "duration": 7,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Teddy at his desk, slightly more energetic, reading from a book.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260531_032104_d3167b01-25e3-4b1e-b3be-fd5e598ac11a.mp4",
       "narration": "Teddy disagrees, politely, in Latin where possible.",
       "voice": "onyx",
       "instructions": "Documentary cadence. Slight comma-pause after 'politely'. Falling tone on 'possible'."
