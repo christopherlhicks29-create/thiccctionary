@@ -1,4 +1,21 @@
 # Thiccctionary Wave Log
+## Wave 226d cascade (2026-05-31 late evening, continued)
+After shipping Wave 226 safeguards, did a self-audit and caught/fixed three more issues without Christopher prompting:
+
+- **Tractor Tire -> Tractor, Compact Utility:** The replacement entry shipped via PR #98 had a subject-prominence mismatch (photo of whole tractor, subject was just "tire"). photoScore=6, right at threshold. Rewrote in-place: word, definitions, example, etymology, caption, social captions, image filenames, /is/ directory rename (`tractor-tire-thiccc` -> `tractor-compact-utility-thiccc`), all canonical URLs, all cross-references in feeds + a-z + sitemap + entries/2026-05-30.html + is-it-thiccc.
+
+- **editorial-sanity gained 2 more checks (5 total now):**
+  - `checkSubjectSpecificity`: catches "Tractor Tire" failure mode (subject names sub-component, photo only shows the larger object).
+  - `checkAnimalSubject`: catches animals (Hippopotamus, Whale, Sheep, etc). Word-boundary match avoids false positives like "cat" inside "cathedral."
+  - `checkHumanBodySubject`: RED severity, catches bodybuilder/sumo/butt/breast/etc. Brand rule absolute.
+
+- **3 existing animal entries flagged (NOT pulled):** Hippopotamus 5/30, Blue Whale 5/07, Hissar sheep 4/12 violate the inanimate-only rule. Notice dropped at `drafts/audits/2026-05-31-animal-subjects.md` for Christopher's CEO call (entry retirement is CEO-list per feedback_the_guy).
+
+- **auto-picker prompt:** added explicit "ABSOLUTELY FORBIDDEN" list naming 25+ animal taxa by name. Picker should not regress on animals.
+
+Final state: editorial-sanity = 0 RED, 3 YELLOW (the 3 animals). site-health = GREEN. Catalog = 49 entries through 2026-05-31. Auto-picker now blocks both fabricated model numbers AND animal subjects at source. Critique gate has the same backstop. pre-ship has Rule 9 as the gate before commit.
+
+
 ## Wave 226 (2026-05-31 late evening, Christopher caught a fabricated entry)
 Christopher spotted "Kettle, Industrial F350" on the live homepage. Auto-picker had hallucinated a fake product line (F350 is Ford truck nomenclature, not a kitchen kettle designation). Same class of bug as 5/26 Cement Truck BetaMax REGEN, but on the AUTO-PICKER path that the SUBJECT_OVERRIDE patch hadn't covered.
 
