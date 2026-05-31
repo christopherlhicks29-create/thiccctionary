@@ -284,6 +284,18 @@ try {
   fail('(visual)', 'smoke-test', 'scripts/smoke-test-visual.js reported failures (see output above)');
 }
 
+// Wave 226, Rule 9: editorial sanity audit on data/entries.json. Catches
+// fabricated subjects (5/31 "Industrial F350" incident), photo-subject
+// mismatch, em-dash leaks in catalog. Only runs when entries.json staged.
+if (allFiles.some(f => f === 'data/entries.json')) {
+  try {
+    const { execSync } = await import('node:child_process');
+    execSync('node scripts/editorial-sanity.js --count 10', { stdio: 'inherit' });
+  } catch (e) {
+    fail('data/entries.json', 'editorial-sanity', 'scripts/editorial-sanity.js found RED flags in recent entries (see output above)');
+  }
+}
+
 // Report
 console.log(`[preship] checked ${allFiles.length} file(s) in ${mode} mode`);
 if (failures.length === 0) {
