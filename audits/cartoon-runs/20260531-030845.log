@@ -1,0 +1,19 @@
+# Compose cartoon run 20260531-030845
+# Manifest: ep04-office-coffee
+# Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/26701792264
+
+Traceback (most recent call last):
+  File "/home/runner/work/thiccctionary/thiccctionary/scripts/compose-cartoon.py", line 507, in <module>
+    compose(manifest_path)
+  File "/home/runner/work/thiccctionary/thiccctionary/scripts/compose-cartoon.py", line 422, in compose
+    manifest = json.loads(manifest_path.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'ep04-office-coffee'
+
+# exit_code: 1
