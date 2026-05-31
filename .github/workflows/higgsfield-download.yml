@@ -94,7 +94,11 @@ jobs:
           if [ -f data/.fire-higgsfield-download ]; then
             git rm -f data/.fire-higgsfield-download || true
           fi
-          git add videos/characters/ images/characters/ 2>/dev/null || true
+          git add videos/characters/ images/characters/ drafts/ 2>/dev/null || true
+          # Also stage any path declared in the sentinel (handles arbitrary destinations)
+          if [ -f data/.fire-higgsfield-download.processed ]; then
+            grep "^PATH:" data/.fire-higgsfield-download.processed | sed "s/^PATH: *//" | while read p; do git add -f "$p" 2>/dev/null || true; done
+          fi
           git add "${{ steps.dl.outputs.logfile }}" || true
           if ! git diff --staged --quiet; then
             git commit -m "Higgsfield download helper ${{ steps.dl.outputs.stamp }} [ok=${{ steps.dl.outputs.ok }} fail=${{ steps.dl.outputs.fail }}]" || true
