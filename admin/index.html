@@ -214,7 +214,7 @@
 
     <div class="action-card">
       <h3>Generate today's daily entry</h3>
-      <p class="desc">Triggers <code>daily.yml</code>. Use if the 13:00 UTC cron didn't fire or you want to retry. Won't duplicate if today's entry already exists (unless you delete it first).</p>
+      <p class="desc">Triggers <code>daily.yml</code>. Use if the 12:00 UTC cron didn't fire or you want to retry. Won't duplicate if today's entry already exists (unless you delete it first).</p>
       <div class="row">
         <button class="primary" data-trigger="daily" data-confirm="Fire daily.yml for today?">Fire daily cron</button>
         <button data-trigger="daily-force" data-confirm="FORCE daily.yml (bypass collision gate)? Use only if a previous run shipped no entry.">Force daily (override)</button>
