@@ -36,6 +36,11 @@
       "id": "teddy",
       "name": "Theodore (\"Teddy\"), Junior Cataloguer",
       "look": "Mid-20s, wire-rim glasses, knit sweater vest, with a Saturn V model on his desk. Reading from books."
+    },
+    {
+      "id": "spider",
+      "name": "Spider, Foreign Correspondent",
+      "look": "FACELESS. Back-to-camera silhouette in green field jacket + battered fedora. Industrial sites, golden-hour. Per canon: 'No one at the office has met him.'"
     }
   ],
   "clips": [
@@ -348,6 +353,16 @@
       "credits": 27,
       "caption": "The Publisher, at sea, drafting.",
       "tag": "publication"
+    },
+    {
+      "char": "spider",
+      "path": "videos/characters/spider-faceless.mp4",
+      "action": "Back-to-camera figure on industrial railing, holding rotary handset, gesturing at smokestacks",
+      "date": "2026-05-31",
+      "model": "Seedance 2.0",
+      "credits": 27,
+      "caption": "Filed from somewhere. The dateline says less than you think.",
+      "tag": "field"
     }
   ],
   "portraits": [

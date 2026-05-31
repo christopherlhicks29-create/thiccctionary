@@ -1,5 +1,5 @@
 {
-  "_description": "Wave 198: spider-dispatches running bit. ~38s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Spider in increasingly improbable locations, all photographed seriously.",
+  "_description": "Wave 200e: shipped 2026-05-31 with single faceless Spider clip used for all 3 dispatch segments (canon: never seen).",
   "id": "ep03-spider-dispatches",
   "title": "Spider Files From the Field",
   "version": 1,
@@ -23,7 +23,7 @@
       "type": "video",
       "name": "spider_mine",
       "duration": 5,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Spider at the edge of a lignite mine at dawn, camera in hand, vast machinery in distance. Reference Spider portrait. Wide angle.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260531_035006_51540c07-10d9-4179-b68d-db9d94e427d6.mp4",
       "narration": "HAMBACH, GERMANY. Lignite mine, dawn.",
       "voice": "onyx",
       "instructions": "Dateline format. 'HAMBACH, GERMANY' as a headline, slight pause, then 'lignite mine, dawn' as caption."
@@ -32,7 +32,7 @@
       "type": "video",
       "name": "spider_tanker",
       "duration": 5,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Spider on the deck of a container ship at sea, leaning on a railing.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260531_035006_51540c07-10d9-4179-b68d-db9d94e427d6.mp4",
       "narration": "SINGAPORE STRAIT. Deck of a supertanker.",
       "voice": "onyx",
       "instructions": "Same dateline cadence as previous. Same flat read."
@@ -41,7 +41,7 @@
       "type": "video",
       "name": "spider_chai",
       "duration": 5,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Spider seated at a small chai stall, ceramic cup in hand.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260531_035006_51540c07-10d9-4179-b68d-db9d94e427d6.mp4",
       "narration": "JAIPUR. Chai stall, late afternoon.",
       "voice": "onyx",
       "instructions": "Same cadence. The repetition is the joke."
