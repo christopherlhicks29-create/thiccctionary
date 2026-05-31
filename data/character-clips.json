@@ -18,9 +18,9 @@
       "look": "Green field jacket, industrial smokestacks, golden-hour calls"
     },
     {
-      "id": "margie",
-      "name": "Margie (the Junior Typist)",
-      "look": "Young woman at vintage manual typewriter, weary expression"
+      "id": "eliza",
+      "name": "Eliza Hartwell, Staff Writer",
+      "look": "Young woman at vintage manual typewriter, weary expression \u2014 matches Eliza Hartwell on masthead"
     },
     {
       "id": "marvin",
@@ -190,7 +190,7 @@
       "tag": "field"
     },
     {
-      "char": "margie",
+      "char": "eliza",
       "path": "videos/characters/margie-typewriter-scowl.mp4",
       "action": "Pulls page from typewriter, scowls",
       "date": "2026-05-20",
@@ -220,7 +220,7 @@
       "tag": "personnel"
     },
     {
-      "char": "margie",
+      "char": "eliza",
       "path": "videos/characters/margie-typewriter-correct.mp4",
       "action": "Re-feeds page to correct it",
       "date": "2026-05-20",
@@ -290,7 +290,7 @@
       "tag": "personnel"
     },
     {
-      "char": "margie",
+      "char": "eliza",
       "path": "videos/characters/margie-typewriter-eyebrow.mp4",
       "action": "Single dry raised eyebrow at camera",
       "date": "2026-05-20",
