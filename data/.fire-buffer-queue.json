@@ -1,6 +1,0 @@
-{
-  "action": "delete-by-match",
-  "match_terms": ["wheat kingdom"],
-  "dry_run": false,
-  "_t": "purge-em-dash-silo"
-}
