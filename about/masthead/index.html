@@ -21,6 +21,8 @@
   .staff-bio { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--ink); }
   .staff-beat { font-family: var(--font-mono); font-size: 11px; color: var(--oxblood); margin-top: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .publisher-card { grid-column: 1 / -1; border-left-color: var(--ink); background: rgba(46, 32, 19, 0.04); }
+  .staff-clip { float: right; width: 110px; aspect-ratio: 9/16; margin: 0 0 0.5rem 1rem; background: #000; border: 1px solid rgba(74,61,51,0.18); object-fit: cover; }
+  @media (max-width: 760px) { .staff-clip { float: none; width: 100%; max-width: 220px; margin: 0 auto 1rem; display: block; } }
 </style>
 </head>
 <body>
@@ -70,6 +72,7 @@
 
     <div class="staff-card">
       <h3>Bartholomew Whitmore</h3>
+      <video class="staff-clip" src="/videos/characters/bart-radio-deadpan.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       <p class="staff-title">Editor-in-Chief &middot; Senior Cataloguer</p>
       <p class="staff-bio">Hired by Bertram in 1978 to catalog ships. Wrote the original style guide. Divorced in 2003 over a dispute about a credenza; the credenza is in his office now. Secretly proud of his 1991 Liebherr T 282B entry. Hates being called Bart. Will never admit he likes Teddy.</p>
       <p class="staff-bio"><a href="../style-guide/" style="color: var(--oxblood); font-weight: 600;">Read his Style Guide &rarr;</a> &middot; <a href="../style-guide/thiccctionary-style-guide.pdf" download style="color: var(--oxblood); font-weight: 600;">PDF &darr;</a></p>
@@ -78,6 +81,7 @@
 
     <div class="staff-card">
       <h3>Constance Pribyl</h3>
+      <video class="staff-clip" src="/videos/characters/constance-desk-authority-a.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       <p class="staff-title">Director of Editorial Operations</p>
       <p class="staff-bio">Hired by Bertram in 2003, by post, to modernize the publication's editorial operations. Has not modernized them. Maintains a cheerful demeanor about it. Refers to grievances as concerns, refusals as parking lot items, and disputes as opportunities to align. Has been promising a Q3 review of the coffee machine since 2018.</p>
       <p class="staff-beat">Maintains &middot; <a href="../documents/personnel-file/" style="color: var(--oxblood);">The Personnel File</a></p>
@@ -99,6 +103,7 @@
 
     <div class="staff-card">
       <h3>Margaret (&ldquo;Margie&rdquo;) Whitmore-Reuss</h3>
+      <video class="staff-clip" src="/videos/characters/margie-typewriter-eyebrow.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       <p class="staff-title">Society Correspondent</p>
       <p class="staff-bio">Bertram's brother's daughter. Does not maintain a permanent address; files from wherever she happens to be. Briefly married to a viscount, 2011 to 2012; would rather not discuss it. Strong opinions about cheese. Wears a scarf in every season including July.</p>
       <p class="staff-beat">Column &middot; The Margie Column (when she returns calls)</p>
@@ -113,6 +118,7 @@
 
     <div class="staff-card">
       <h3>Hugh</h3>
+      <video class="staff-clip" src="/videos/characters/hugh-railing-handset.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       <p class="staff-title">Field Correspondent &amp; Voiceover</p>
       <p class="staff-bio">Files telephone reports from industrial sites, refinery catwalks, and the occasional smokestack platform. Records audio when in town. Speaks slowly. Has been described as &ldquo;documentary register, never winks.&rdquo; Maintains a green field jacket and a working rotary handset.</p>
       <p class="staff-beat">Field reporting (irregular) &middot; Voiceover (daily) &middot; Cartoons (occasional)</p>
@@ -125,8 +131,43 @@
   </p>
 </main>
 
-<footer class="site-footer">
-  <p class="copyright">&copy; 2026 Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All staff biographies fictional. All entries also fictional.</p>
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary<span style="font-size:0.55em; vertical-align:super; margin-left:2px; opacity:0.7;">TM</span></p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="/archive.html">Archive</a>
+      <a href="/a-z.html">A-Z</a>
+      <a href="/articles/">Articles</a>
+      <a href="/about/documents/">References</a>
+      <a href="/cartoons/">Cartoons</a>
+      <a href="/compare.html">Compare</a>
+      <a href="/rate/">Rate</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/embed/">Embed</a>
+      <a href="/about/">About</a>
+      <a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X &middot; @thiccctionary</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook &middot; /Thiccctionary</a>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram &middot; @ogthiccctionary</a>
+      <a href="https://www.tiktok.com/@thethiccctionary" target="_blank" rel="noopener">TikTok &middot; @thethiccctionary</a>
+      <a href="/follow/">All handles &rarr;</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="/legal/terms.html">Terms</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/press/">Press kit</a>
+      <a href="mailto:admin@thiccctionary.com">Contact</a>
+    </div>
+  </div>
+  <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All staff biographies fictional. All entries also fictional.</p>
 </footer>
 <script defer src="/scripts/ccc-highlight.js?v=2"></script>
 <script defer src="/scripts/masthead-date.js?v=1"></script>
