@@ -41,6 +41,11 @@
       "id": "spider",
       "name": "Spider, Foreign Correspondent",
       "look": "FACELESS. Back-to-camera silhouette in green field jacket + battered fedora. Industrial sites, golden-hour. Per canon: 'No one at the office has met him.'"
+    },
+    {
+      "id": "tableau",
+      "name": "Office Tableaux",
+      "look": "Empty-room shots, no characters. For 'absence' beats in cartoons."
     }
   ],
   "clips": [
@@ -363,6 +368,16 @@
       "credits": 27,
       "caption": "Filed from somewhere. The dateline says less than you think.",
       "tag": "field"
+    },
+    {
+      "char": "tableau",
+      "path": "videos/characters/empty-desk-off-hook.mp4",
+      "action": "Empty desk, phone receiver off the hook, late afternoon light",
+      "date": "2026-05-31",
+      "model": "Seedance 2.0",
+      "credits": 27,
+      "caption": "Someone has not returned to the desk.",
+      "tag": "office"
     }
   ],
   "portraits": [

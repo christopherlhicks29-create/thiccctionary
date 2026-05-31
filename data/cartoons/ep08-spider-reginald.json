@@ -1,5 +1,5 @@
 {
-  "_description": "Wave 198: spider-brother-in-law running bit. ~38s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Bart's certainty contrasted with the total absence of evidence.",
+  "_description": "Wave 200f: shipped 2026-05-31 with bart-folder-refusal + NEW empty-desk-off-hook clip (27 credits).",
   "id": "ep08-spider-reginald",
   "title": "Reginald, Allegedly",
   "version": 1,
@@ -23,7 +23,7 @@
       "type": "video",
       "name": "bart_certainty",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at his desk, tapping a folder with one finger.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221247_f3e2b820-53ef-435f-8661-d692b23cebaf.mp4",
       "narration": "Bart insists Spider is a pseudonym. The pseudonym, he believes, belongs to his brother-in-law Reginald.",
       "voice": "onyx",
       "instructions": "Two sentences. 'Brother-in-law Reginald' read as one phrase, no comedic emphasis."
@@ -32,7 +32,7 @@
       "type": "video",
       "name": "evidence_absent",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Empty desk, a phone receiver lying off the hook, no Reginald visible.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260531_035913_9b9657ec-037c-4aa7-87e9-ef253ddc88f3.mp4",
       "narration": "Reginald has not returned the office's calls. He has not, to anyone's knowledge, returned from Jaipur.",
       "voice": "onyx",
       "instructions": "Two sentences. Both delivered as standard report. 'To anyone's knowledge' said evenly, no italics."
