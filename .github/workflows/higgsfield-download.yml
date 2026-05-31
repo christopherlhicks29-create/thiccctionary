@@ -91,16 +91,13 @@ jobs:
         run: |
           git config user.name "Thiccctionary Download Bot"
           git config user.email "bot@thiccctionary.com"
-          if [ -f data/.fire-higgsfield-download ]; then
-            git rm -f data/.fire-higgsfield-download || true
-          fi
-          # Stage every PATH from the sentinel BEFORE it gets removed.
-          # The sentinel is still present at this point.
+          # Stage every PATH from the sentinel FIRST (before rm wipes it).
           if [ -f data/.fire-higgsfield-download ]; then
             grep "^PATH:" data/.fire-higgsfield-download | sed "s/^PATH: *//" | while read pp; do git add -f "$pp" 2>/dev/null || true; done
+            git rm -f data/.fire-higgsfield-download || true
           fi
-          # Also catch the common dirs in case sentinel parsing skipped anything
-          git add videos/characters/ images/characters/ images/cartoons/ drafts/ 2>/dev/null || true
+          # Fallback: catch common dirs in case sentinel parsing skipped anything
+          git add videos/characters/ images/characters/ images/cartoons/ images/staff/ drafts/ 2>/dev/null || true
           git add "${{ steps.dl.outputs.logfile }}" || true
           if ! git diff --staged --quiet; then
             git commit -m "Higgsfield download helper ${{ steps.dl.outputs.stamp }} [ok=${{ steps.dl.outputs.ok }} fail=${{ steps.dl.outputs.fail }}]" || true
