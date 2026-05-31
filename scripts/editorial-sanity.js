@@ -104,6 +104,24 @@ function checkSubjectSpecificity(entry) {
   return null;
 }
 
+function checkAnimalSubject(entry) {
+  // The brand rule (from generate-daily.js auto-picker prompt) is INANIMATE objects only.
+  // Animals have slipped through 3 times (Whale, Hippopotamus, Sheep). Flag any new ones.
+  const ANIMALS = ['hippopotamus','elephant','whale','rhinoceros','manatee','walrus',
+    'dog','cat','horse','cow','pig','sheep','tortoise','bear','panda','gorilla',
+    'tiger','lion','seal','dolphin','beluga','crocodile','alligator','bison',
+    'kangaroo','koala','rhino','giraffe','octopus','squid','python','anaconda'];
+  const word = (entry.word || '').toLowerCase();
+  for (const a of ANIMALS) {
+    // Word-boundary match: avoid false positive "cat" inside "cathedral", "bull" inside "bullhorn", etc.
+    const re = new RegExp('\\b' + a + '\\b', 'i');
+    if (re.test(word)) {
+      return `Subject "${entry.word}" is an ANIMAL. Brand rule: inanimate objects only. Pull or flag for CEO call.`;
+    }
+  }
+  return null;
+}
+
 function checkBrandVoice(entry) {
   // Em-dashes anywhere in catalog content = leak
   const fields = ['word', 'example', 'caption', 'etymology', ...(entry.definitions || [])];
@@ -136,6 +154,7 @@ async function main() {
     const a = isSubjectIdentitySuspicious(e); if (a) findings.push({sev:'RED', msg:a});
     const b = checkPhotoSubjectCoherence(e);   if (b) findings.push({sev:'YELLOW', msg:b});
     const d = checkSubjectSpecificity(e);    if (d) findings.push({sev:'YELLOW', msg:d});
+    const e2 = checkAnimalSubject(e);       if (e2) findings.push({sev:'YELLOW', msg:e2});
     const c = checkBrandVoice(e);              if (c) findings.push({sev:'RED', msg:c});
     if (findings.length === 0) continue;
     console.log(`## ${e.date} ${e.word} (${e.category})`);

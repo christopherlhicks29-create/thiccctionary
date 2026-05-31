@@ -89,7 +89,9 @@ function pendingPrWords() {
 }
 
 async function pickSubject(usedWords) {
-  const sysPrompt = `You suggest subjects for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS (never people, never bodies, never animals). Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods. The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
+  const sysPrompt = `You suggest subjects for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS. Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods.
+
+ABSOLUTELY FORBIDDEN, the picker has slipped on these before: NEVER pick a person, a body, a body part, OR AN ANIMAL. Specifically prohibited subjects: hippopotamus, whale, walrus, manatee, elephant, sheep, cow, pig, bear, dog, cat, tortoise, gorilla, panda, horse, tiger, lion, dolphin, seal, beluga, crocodile, alligator, bull, bison. If the subject is alive, breathes, walks, swims, flies, or has a heartbeat, REJECT it and pick something else. Inanimate manufactured or grown things only (vegetables and fruits are fine, harvested produce is not "alive" in the brand-rule sense). The subject must be something that would plausibly be photographed on Unsplash and look genuinely chunky/curvy/voluminous in good photos.
 
 SCROLL-STOPPING BIAS, this is critical. The reader is scrolling past on social. A clean photo of a regular sofa won't stop them. A real photo of a 2,500-lb championship pumpkin, a Saturn V booster on a transport crawler, a Brutalist concrete bunker, a 40-foot-tall industrial tuba, a sousaphone, a giant hay bale, a Cadbury Creme Egg the size of a microwave, or a comically thicc submarine WILL. The subject's REAL form should be inherently striking, visually absurd in its own right, with no Photoshop or AI needed.
 
