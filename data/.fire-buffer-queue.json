@@ -1,5 +1,0 @@
-{
-  "action": "delete-by-match",
-  "match_terms": ["Industrial F350", "industrial f350", "Tractor Tire", "tractor tire", "tractor-tire", "F350"],
-  "dry_run": false
-}
