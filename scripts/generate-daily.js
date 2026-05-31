@@ -93,7 +93,7 @@ async function pickSubject(usedWords) {
 
 SCROLL-STOPPING BIAS, this is critical. The reader is scrolling past on social. A clean photo of a regular sofa won't stop them. A real photo of a 2,500-lb championship pumpkin, a Saturn V booster on a transport crawler, a Brutalist concrete bunker, a 40-foot-tall industrial tuba, a sousaphone, a giant hay bale, a Cadbury Creme Egg the size of a microwave, or a comically thicc submarine WILL. The subject's REAL form should be inherently striking, visually absurd in its own right, with no Photoshop or AI needed.
 
-Bias your picks toward subjects that are absurdly thicc IN REALITY. Brands and models help (Saturn V, Sousaphone, Champion Prize Pumpkin, Boeing 747, Chesterfield Sofa). Strong absurd-real subjects that would land:
+Bias your picks toward subjects that are absurdly thicc IN REALITY. Brands and models help (Saturn V, Sousaphone, Champion Prize Pumpkin, Boeing 747, Chesterfield Sofa). HARD RULE: do NOT invent or borrow model numbers from unrelated product categories. "F350", "F-150", "747", "M1A2" are real Ford trucks, planes, and tanks; they are NOT generic intensifiers. Never paste a vehicle/aircraft model number onto a kitchen, furniture, or appliance subject (no "F350 kettle", no "Boeing 747 sofa", no "M1 toaster"). If you cannot name a real product line for a subject, pick a different subject. Strong absurd-real subjects that would land:
 - Giant gourds and championship-cultivar fruit/veg (record-setting pumpkins, watermelons, rutabagas)
 - Industrial machinery at scale (mining-truck tires, transformer drums, smokestacks, Saturn V boosters, pipe organs)
 - Brutalist or fortress architecture (concrete bunkers, Soviet apartment blocks, Hoover Dam)
@@ -492,6 +492,12 @@ For musical instruments specifically: a photo of a tuba being PLAYED by someone 
    - Score must reflect prominence: if the subject occupies < 40% of the frame, score ceiling is 5. If < 25%, score ceiling is 3 (auto-reject).
    - A 'blacksmith hammering an anvil' photo where the anvil is 20% of the frame and a person fills 60% is NOT an acceptable pick for an entry titled 'Anvil.' It is a photo of a blacksmith. Reject.
    - Tests to apply mentally: would a stranger seeing this photo with NO CAPTION immediately identify the subject as the thing we cataloged? If they'd guess 'blacksmith' or 'workshop' instead of 'anvil', score it down.
+
+8. SUBJECT-IDENTITY REALITY CHECK (Wave 226, post 5/31 'Industrial F350 kettle' incident). The subject string itself must be a REAL, plausibly-verifiable product designation, not a fabrication. RED FLAGS to auto-reject (verdict 'reject', score <= 3) regardless of how good the photo looks:
+   - Model number borrowed from one product category and stuck onto another. Examples: "F350 kettle" (F350 = Ford truck), "Boeing 747 sofa", "M1 toaster", "Saturn V coffee pot". Vehicle/aircraft/military model numbers do not belong on kitchen, furniture, appliance, or animal subjects. If the subject combines a vehicle/aircraft/military model number with a non-vehicle/aircraft category, REJECT.
+   - Made-up product line that does not exist outside this entry. If the photo description contains a normal generic product (e.g. "stainless steel cooking pot") but the subject claims a specific manufacturer model that does not appear in the photo's metadata, treat as fabricated unless you personally recognize the model as real.
+   - Subject contains an obvious LLM-hallucination tell: random alphanumeric strings (KX-9000, ProMax-3500) on otherwise generic objects.
+   If the subject passes the reality check, no action required. If it fails, the critique should say so explicitly in the critique paragraph and set verdict='reject'.
 
 Score the photo from 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
 
