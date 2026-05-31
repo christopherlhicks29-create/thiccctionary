@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Boulder, Cathedral",
-      "query": "boulder large cathedral rock",
-      "notes": "if Boulder Glacial Erratic was good Boulder Cathedral is good"
-    },
-    {
       "subject": "Combine Harvester, John Deere",
       "query": "combine harvester field wheat",
       "notes": "industrial agriculture"
