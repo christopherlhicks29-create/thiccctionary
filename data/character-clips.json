@@ -338,6 +338,16 @@
       "credits": 27,
       "caption": "The Junior Cataloguer has located a citation.",
       "tag": "office"
+    },
+    {
+      "char": "bertram",
+      "path": "videos/characters/bertram-real.mp4",
+      "action": "Composes a memo at his portable typewriter on the deck of the Margaret IV",
+      "date": "2026-05-31",
+      "model": "Seedance 2.0",
+      "credits": 27,
+      "caption": "The Publisher, at sea, drafting.",
+      "tag": "publication"
     }
   ],
   "portraits": [
