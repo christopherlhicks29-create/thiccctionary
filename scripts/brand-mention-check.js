@@ -8,8 +8,9 @@
  * since the last run get highlighted at the top.
  *
  * Sources:
- *   - Reddit:  https://www.reddit.com/search.json?q=<query>&sort=new&limit=25
- *   - HN:      https://hn.algolia.com/api/v1/search?query=<query>&tags=story,comment
+ *   - Reddit:    https://www.reddit.com/search.json?q=<query>&sort=new
+ *   - HN:        https://hn.algolia.com/api/v1/search?query=<query>
+ *   - Google:    https://news.google.com/rss/search?q=<query>
  *
  * Schedule: daily 13:00 UTC via .github/workflows/brand-mention.yml.
  * Manual fire: data/.fire-brand-mention sentinel.
@@ -71,6 +72,41 @@ async function hackerNews(query) {
   }));
 }
 
+async function googleNews(query) {
+  // Free, no-auth RSS endpoint. Returns recent news articles mentioning the query.
+  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'thiccctionary-brand-monitor/1.0' },
+  });
+  if (!res.ok) { console.warn(`  ! google news ${res.status}`); return []; }
+  const xml = await res.text();
+  // Parse minimal <item> blocks without a full XML lib
+  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)];
+  const grab = (block, tag) => {
+    const m = block.match(new RegExp(`<${tag}>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?</${tag}>`));
+    return m ? m[1].trim() : '';
+  };
+  return items.slice(0, 25).map(m => {
+    const b = m[1];
+    const title = grab(b, 'title').replace(/<[^>]+>/g, '');
+    const link = grab(b, 'link');
+    const pubDate = grab(b, 'pubDate');
+    const source = grab(b, 'source').replace(/<[^>]+>/g, '');
+    const desc = grab(b, 'description').replace(/<[^>]+>/g, '').slice(0, 200);
+    // Hash a stable ID from URL since Google News URLs are stable
+    const id = `gnews:${link.split('?')[0].slice(-40)}`;
+    return {
+      source: 'google-news',
+      id,
+      title,
+      author: source || 'unknown',
+      url: link,
+      created: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString(),
+      excerpt: desc,
+    };
+  });
+}
+
 async function loadSeen() {
   try { return new Set(JSON.parse(await fs.readFile(SEEN_PATH, 'utf8'))); }
   catch { return new Set(); }
@@ -96,8 +132,9 @@ async function main() {
   for (const q of QUERIES) {
     const r = await reddit(q);
     const h = await hackerNews(q);
-    console.log(`  ${q}: reddit ${r.length}, hn ${h.length}`);
-    all.push(...r, ...h);
+    const g = await googleNews(q);
+    console.log(`  ${q}: reddit ${r.length}, hn ${h.length}, gnews ${g.length}`);
+    all.push(...r, ...h, ...g);
   }
   // Dedupe by id
   const byId = new Map();
@@ -120,7 +157,7 @@ async function main() {
   const sections = [];
   sections.push(`# Brand mention report ${today}`);
   sections.push(`Queries: ${QUERIES.join(', ')}`);
-  sections.push(`Sources: Reddit, HackerNews (Algolia)`);
+  sections.push(`Sources: Reddit, HackerNews (Algolia), Google News RSS`);
   sections.push(``);
   sections.push(`**Total mentions found: ${mentions.length}**`);
   sections.push(`**New since last check: ${newOnes.length}**`);
