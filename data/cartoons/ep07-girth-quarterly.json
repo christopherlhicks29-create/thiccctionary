@@ -1,5 +1,5 @@
 {
-  "_description": "Wave 198: girth-quarterly running bit. ~36s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Bart's desk drawer contains the stapled newsletter, but he never actually shows it.",
+  "_description": "Wave 200c: shipped 2026-05-31 with bart-filing-cabinet-glare + bart-folder-refusal. Zero new spend.",
   "id": "ep07-girth-quarterly",
   "title": "Girth Quarterly, Volume 3 Issue 2",
   "version": 1,
@@ -23,7 +23,7 @@
       "type": "video",
       "name": "bart_drawer",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at his desk, hand resting on a partially-open drawer. He does not look down.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005632_8577ed6d-f601-476a-ae10-99812220baaa.mp4",
       "narration": "The author was anonymous. Bart keeps a stapled copy in his desk drawer.",
       "voice": "onyx",
       "instructions": "Two sentences. Read 'in his desk drawer' as if it were 'in his filing cabinet' \u2014 exact same flat tone."
@@ -32,7 +32,7 @@
       "type": "video",
       "name": "bart_silence",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Bart now looking at the camera, expressionless. Hold.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221247_f3e2b820-53ef-435f-8661-d692b23cebaf.mp4",
       "narration": "He will neither confirm nor deny.",
       "voice": "onyx",
       "instructions": "Six words. The kind of line a press secretary uses. Documentary-narrator falling tone."
