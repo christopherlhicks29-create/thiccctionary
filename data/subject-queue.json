@@ -81,6 +81,66 @@
       "subject": "Cargo Plane, C-17 Globemaster",
       "query": "c-17 globemaster cargo plane",
       "notes": "massive military airlift"
+    },
+    {
+      "subject": "Refrigerator, Subzero",
+      "query": "sub-zero refrigerator kitchen",
+      "notes": "tall built-in fridge"
+    },
+    {
+      "subject": "Sofa, Chesterfield Tufted",
+      "query": "chesterfield sofa leather",
+      "notes": "tufted leather classic"
+    },
+    {
+      "subject": "Chair, Eames Lounge",
+      "query": "eames lounge chair leather",
+      "notes": "iconic mid-century"
+    },
+    {
+      "subject": "Bookshelf, Floor-to-Ceiling Library",
+      "query": "library wall bookshelf",
+      "notes": "wall of books"
+    },
+    {
+      "subject": "Bell, Cathedral Bronze",
+      "query": "cathedral bronze bell",
+      "notes": "large church bell"
+    },
+    {
+      "subject": "Stove, Wood-Burning Cast Iron",
+      "query": "cast iron wood stove",
+      "notes": "potbelly stove style"
+    },
+    {
+      "subject": "Briefcase, Halliburton Zero",
+      "query": "aluminum briefcase metal",
+      "notes": "industrial-strength case"
+    },
+    {
+      "subject": "Roller, Steam Compactor",
+      "query": "steam roller construction",
+      "notes": "old-school road roller"
+    },
+    {
+      "subject": "Anchor, Ship Stockless",
+      "query": "ship anchor steel stockless",
+      "notes": "naval steel anchor"
+    },
+    {
+      "subject": "Drum, Marching Bass",
+      "query": "marching band bass drum",
+      "notes": "huge concert drum"
+    },
+    {
+      "subject": "Cake, Tiered Wedding",
+      "query": "tiered wedding cake",
+      "notes": "multi-tier confection"
+    },
+    {
+      "subject": "Crock Pot, Stoneware",
+      "query": "stoneware ceramic crock pot",
+      "notes": "heavy cooking vessel"
     }
   ]
 }
