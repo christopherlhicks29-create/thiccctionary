@@ -26,6 +26,11 @@
       "id": "marvin",
       "name": "Marvin (the Saturn V kid)",
       "look": "Young earnest man with a Saturn V rocket model"
+    },
+    {
+      "id": "constance",
+      "name": "Constance Pribyl, Director of Editorial Operations",
+      "look": "Mid-50s Black woman, short natural hair, navy blazer, modern editorial office. Distinct from the elderly silk-scarf Bertram archetype."
     }
   ],
   "clips": [
@@ -308,6 +313,16 @@
       "credits": 22.5,
       "caption": "This concludes the bulletin.",
       "tag": "office"
+    },
+    {
+      "char": "constance",
+      "path": "videos/characters/constance-real.mp4",
+      "action": "Signs a document at her modern editorial desk, folds hands, looks at camera",
+      "date": "2026-05-31",
+      "model": "Seedance 2.0",
+      "credits": 27,
+      "caption": "The Director will sign your paperwork now.",
+      "tag": "personnel"
     }
   ],
   "portraits": [
