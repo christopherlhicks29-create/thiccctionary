@@ -120,6 +120,8 @@ async function main() {
 <meta property="og:title" content="${escapeHtml(title)}" />
 <meta property="og:description" content="Bertram Whitmore, Publisher, writes from the Margaret IV." />
 <meta property="og:image" content="https://thiccctionary.com/articles/og/${slug}.png" />
+<meta property="og:url" content="https://thiccctionary.com/articles/${slug}.html" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

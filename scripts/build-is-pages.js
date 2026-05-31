@@ -220,6 +220,7 @@ ${JSON.stringify(jsonLd, null, 2)}
     <a href="/archive.html" class="nav-link">The Archive</a>
     <a href="/a-z.html" class="nav-link">A-Z</a>
     <a href="/articles/" class="nav-link">Articles</a>
+    <a href="/about/documents/" class="nav-link">References</a>
     <a href="/cartoons/" class="nav-link">Cartoons</a>
     <a href="/random.html" class="nav-link">Random</a>
     <a href="/compare.html" class="nav-link">Compare</a>
@@ -301,6 +302,7 @@ ${JSON.stringify(jsonLd, null, 2)}
       <a href="/archive.html">Archive</a>
       <a href="/a-z.html">A-Z</a>
       <a href="/articles/">Articles</a>
+      <a href="/about/documents/">References</a>
       <a href="/cartoons/">Cartoons</a>
       <a href="/compare.html">Compare</a>
       <a href="/rate/">Rate</a>
@@ -434,6 +436,7 @@ ${JSON.stringify(itemListJsonLd, null, 2)}
     <a href="/archive.html" class="nav-link">The Archive</a>
     <a href="/a-z.html" class="nav-link">A-Z</a>
     <a href="/articles/" class="nav-link">Articles</a>
+    <a href="/about/documents/" class="nav-link">References</a>
     <a href="/cartoons/" class="nav-link">Cartoons</a>
     <a href="/random.html" class="nav-link">Random</a>
     <a href="/compare.html" class="nav-link">Compare</a>
@@ -477,6 +480,7 @@ ${cards}
       <a href="/archive.html">Archive</a>
       <a href="/a-z.html">A-Z</a>
       <a href="/articles/">Articles</a>
+      <a href="/about/documents/">References</a>
       <a href="/cartoons/">Cartoons</a>
       <a href="/compare.html">Compare</a>
       <a href="/rate/">Rate</a>
