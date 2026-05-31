@@ -8,9 +8,9 @@
       "look": "Elderly, bespectacled, tweed jacket, wood-paneled editorial office"
     },
     {
-      "id": "constance",
-      "name": "Constance Pribyl, Director of Editorial Operations",
-      "look": "Elegant older woman, silk scarf, yacht or mahogany desk"
+      "id": "bertram",
+      "name": "Bertram Whitmore, Founder & Publisher",
+      "look": "Elderly elegant figure with silk scarf, behind editorial desk or on yacht \u2014 the founder archetype. (Higgsfield prompts said \"older woman\" but visual reads as Bertram per Christopher 2026-05-31.)"
     },
     {
       "id": "hugh",
@@ -30,7 +30,7 @@
   ],
   "clips": [
     {
-      "char": "constance",
+      "char": "bertram",
       "path": "videos/characters/constance-yacht-laptop.mp4",
       "action": "Typing on laptop, deck of yacht",
       "date": "2026-05-30",
@@ -40,7 +40,7 @@
       "tag": "publication"
     },
     {
-      "char": "constance",
+      "char": "bertram",
       "path": "videos/characters/constance-yacht-phone.mp4",
       "action": "On phone at yacht railing, Mediterranean",
       "date": "2026-05-30",
@@ -210,7 +210,7 @@
       "tag": "field"
     },
     {
-      "char": "constance",
+      "char": "bertram",
       "path": "videos/characters/constance-signs-and-stamps.mp4",
       "action": "Signs document, brass embossing seal",
       "date": "2026-05-20",
@@ -240,7 +240,7 @@
       "tag": "personnel"
     },
     {
-      "char": "constance",
+      "char": "bertram",
       "path": "videos/characters/constance-desk-authority-a.mp4",
       "action": "Behind editor-in-chief desk, single nod",
       "date": "2026-05-20",
@@ -260,7 +260,7 @@
       "tag": "field"
     },
     {
-      "char": "constance",
+      "char": "bertram",
       "path": "videos/characters/constance-desk-authority-b.mp4",
       "action": "Behind desk, calm gravitas, alt take",
       "date": "2026-05-20",
