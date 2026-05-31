@@ -75,6 +75,35 @@ function checkPhotoSubjectCoherence(entry) {
   return null;
 }
 
+function checkSubjectSpecificity(entry) {
+  // Catches the "Tractor Tire" failure mode: subject names a SPECIFIC sub-component
+  // (Tire, Wheel, Engine, Cab) of a larger object, but the photo URL only references
+  // the larger object generically. Example: subject "Tractor Tire" + photo URL
+  // "a-red-tractor-is-parked-on-a-gravel-road" - the "tire" specifier is missing,
+  // photo shows whole tractor.
+  const word = entry.word || '';
+  const url = (entry.unsplashUrl || '').toLowerCase();
+  if (!url) return null;
+  // Pattern: "X Y" or "X, Y" where Y is a known sub-component term
+  const SUB_COMPONENTS = ['tire', 'wheel', 'engine', 'cab', 'hood', 'mirror',
+    'fender', 'bumper', 'headlight', 'tailgate', 'door', 'handle',
+    'lid', 'spout', 'handle', 'blade', 'bit', 'tooth', 'tread'];
+  const wordLower = word.toLowerCase();
+  for (const comp of SUB_COMPONENTS) {
+    // Match "<noun> <comp>" or "<noun>, <comp>"
+    const re = new RegExp('\\b([a-z]+),?\\s+' + comp + '\\b', 'i');
+    const m = wordLower.match(re);
+    if (m) {
+      const parent = m[1];
+      // If photo URL contains parent but NOT the sub-component, flag
+      if (url.includes(parent) && !url.includes(comp)) {
+        return `Subject "${word}" names sub-component "${comp}" of "${parent}", but photo URL only references "${parent}" generically (missing "${comp}"). Photo likely shows whole ${parent}, not the ${comp}.`;
+      }
+    }
+  }
+  return null;
+}
+
 function checkBrandVoice(entry) {
   // Em-dashes anywhere in catalog content = leak
   const fields = ['word', 'example', 'caption', 'etymology', ...(entry.definitions || [])];
@@ -106,6 +135,7 @@ async function main() {
     const findings = [];
     const a = isSubjectIdentitySuspicious(e); if (a) findings.push({sev:'RED', msg:a});
     const b = checkPhotoSubjectCoherence(e);   if (b) findings.push({sev:'YELLOW', msg:b});
+    const d = checkSubjectSpecificity(e);    if (d) findings.push({sev:'YELLOW', msg:d});
     const c = checkBrandVoice(e);              if (c) findings.push({sev:'RED', msg:c});
     if (findings.length === 0) continue;
     console.log(`## ${e.date} ${e.word} (${e.category})`);
