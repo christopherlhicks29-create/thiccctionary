@@ -1,5 +1,5 @@
 {
-  "_description": "Wave 198: eli-window running bit. ~34s. Status: SCRIPT BANKED, video_url fields are TODO. The visual joke: Eli is observably the only one doing actual work, and her work is counting fire hydrants.",
+  "_description": "Wave 200b: shipped 2026-05-31 with existing Eli/Margie typewriter clips. Zero new credit spend.",
   "id": "ep06-eli-hydrants",
   "title": "Eli's Notebook",
   "version": 1,
@@ -23,7 +23,7 @@
       "type": "video",
       "name": "eli_window",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Eli at her window desk, looking out at the street with a small notebook open in her lap.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_005611_51e766a6-ddfc-4ad1-831c-a0604b35e26c.mp4",
       "narration": "Eli sits by the window. She documents the city's fire hydrant population.",
       "voice": "onyx",
       "instructions": "Two sentences. The second is delivered as if it were 'she audits the quarterly returns.' No raised eyebrow."
@@ -32,7 +32,7 @@
       "type": "video",
       "name": "eli_count",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Eli writing in the notebook, pen moving deliberately.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221310_d07459f8-ce96-48d8-a96e-f77baac2d72d.mp4",
       "narration": "The notebook is up to three hundred and twelve.",
       "voice": "onyx",
       "instructions": "Numbers in full ('three hundred and twelve' not '312'). Said as if reading from an inventory. No emphasis."
