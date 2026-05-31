@@ -14,7 +14,7 @@ on:
       manifest:
         description: "Path to cartoon manifest (e.g. data/cartoons/ep00-welcome.json)"
         required: true
-        default: "data/cartoons/ep00-welcome.json"
+        default: ""  # explicit: failure-handler retries should not silently rerun ep00. Operator must pass an input.
   push:
     branches: [main]
     paths:
