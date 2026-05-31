@@ -1,5 +1,5 @@
 {
-  "_description": "Wave 198: office-coffee running bit, multi-character. ~36s. Status: SCRIPT BANKED, video_url fields are TODO.",
+  "_description": "Wave 200: office-coffee bit. Reuses existing clips: Eli typist (margie-typewriter-correct), Bart filing-cabinet. Fired 2026-05-31 without new gens.",
   "id": "ep04-office-coffee",
   "title": "The Coffee Machine, Status Report",
   "version": 1,
@@ -23,7 +23,7 @@
       "type": "video",
       "name": "eli_complaint",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Eli at a desk, writing on a printed form. Brief.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260520_221310_d07459f8-ce96-48d8-a96e-f77baac2d72d.mp4",
       "narration": "Eli has filed three complaints. With the building manager.",
       "voice": "onyx",
       "instructions": "Two short sentences. 'With the building manager' as a separate beat, slight pause."
@@ -32,7 +32,7 @@
       "type": "video",
       "name": "bart_remembers",
       "duration": 6,
-      "video_url": "TODO: generate Higgsfield clip \u2014 Bart at his desk, sipping from a clearly cold mug. Slight frown.",
+      "video_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrLrku7NsiZ6gQMVdh18QVB14C/hf_20260530_153726_e56c64b3-eca3-46cd-a6b1-3746624c7e66.mp4",
       "narration": "Bart says the previous coffee machine was better. He will not specify which one.",
       "voice": "onyx",
       "instructions": "Read as factual report. 'He will not specify which one' said with the same affect as the first sentence \u2014 no winking."
