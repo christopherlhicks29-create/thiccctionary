@@ -122,6 +122,21 @@ function checkAnimalSubject(entry) {
   return null;
 }
 
+function checkHumanBodySubject(entry) {
+  // Brand rule: never people, bodies, body parts. Catches subjects like
+  // "Bodybuilder, Heavyweight" or "Sumo Wrestler" that occasionally slip past
+  // the auto-picker.
+  const BANNED = ['bodybuilder','sumo','wrestler','butt','breast','thigh','belly','tummy','torso','buttocks','rear end','arm','leg','muscle','bicep','tricep','pectoral'];
+  const word = (entry.word || '').toLowerCase();
+  for (const b of BANNED) {
+    const re = new RegExp('\\b' + b + '\\b', 'i');
+    if (re.test(word)) {
+      return `Subject "${entry.word}" references a human or body part. Brand rule: never people, never bodies. RED.`;
+    }
+  }
+  return null;
+}
+
 function checkBrandVoice(entry) {
   // Em-dashes anywhere in catalog content = leak
   const fields = ['word', 'example', 'caption', 'etymology', ...(entry.definitions || [])];
@@ -155,6 +170,7 @@ async function main() {
     const b = checkPhotoSubjectCoherence(e);   if (b) findings.push({sev:'YELLOW', msg:b});
     const d = checkSubjectSpecificity(e);    if (d) findings.push({sev:'YELLOW', msg:d});
     const e2 = checkAnimalSubject(e);       if (e2) findings.push({sev:'YELLOW', msg:e2});
+    const f = checkHumanBodySubject(e);      if (f) findings.push({sev:'RED', msg:f});
     const c = checkBrandVoice(e);              if (c) findings.push({sev:'RED', msg:c});
     if (findings.length === 0) continue;
     console.log(`## ${e.date} ${e.word} (${e.category})`);
