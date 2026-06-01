@@ -88,6 +88,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/entries/2026-06-01.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/entries/2026-05-31.html</loc>
     <lastmod>2026-05-31</lastmod>
     <priority>0.6</priority>
@@ -337,7 +342,12 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/is/tractor-compact-utility-thiccc/</loc>
+    <loc>https://thiccctionary.com/is/combine-harvester-thiccc/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/is/tractor-thiccc/</loc>
     <lastmod>2026-05-31</lastmod>
     <priority>0.7</priority>
   </url>
@@ -583,7 +593,7 @@
   </url>
   <url>
     <loc>https://thiccctionary.com/is/pumpkin-produce-thiccc/</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

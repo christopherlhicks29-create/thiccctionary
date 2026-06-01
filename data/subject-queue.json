@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Combine Harvester, John Deere",
-      "query": "combine harvester field wheat",
-      "notes": "industrial agriculture"
-    },
-    {
       "subject": "Tugboat, McAllister",
       "query": "harbor tugboat new york",
       "notes": "alternate tugboat"
