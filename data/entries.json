@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-02",
+    "word": "Boeing 777X",
+    "pronunciation": "BOE-ing seven-seven-X",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A long-haul aircraft renowned for its expansive width and fuselage curvature, especially when observed from behind in dramatic lighting.",
+      "<em>colloq.</em> The ultimate expression of aeronautical thiccness: possesses an empennage that appears to challenge the horizon itself."
+    ],
+    "example": "Viewed from the tarmac, the Boeing 777X is a thiccc marvel of engineering. The wingspan alone seems to warrant a separate zip code.",
+    "etymology": "From Boeing Company (Seattle-based aircraft manufacturer, est. 1916) combined with a model designation signifying the latest in a series of wide-bodied jets. Allegedly, the 'X' stands for 'extra thiccc'.",
+    "image": "images/2026-06-02-boeing-777x.jpg",
+    "caption": "Plate N. The 777X, in all its thiccc glory, preparing for takeoff.",
+    "tags": [
+      "aviation",
+      "engineering",
+      "widebody"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 9,
+    "photographer": "Daniel Shapiro",
+    "photographerUrl": "https://unsplash.com/@dshap",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-jetliner-flying-through-a-gray-sky-_oQGBmC0s14",
+    "socialCaptions": {
+      "morning": "Boeing 777X: 235 feet of aerodynamic audacity.\nA fuselage that whispers to the clouds—thiccc science in motion.",
+      "afternoon": "The 777X boasts a wingspan of 235 feet and 5 inches.\nDesigned to fold on command, it’s undeniably thiccc.",
+      "evening": "From the archives, Boeing 777X.\nDebuted in 2019, its engines alone could power a small village—thiccc flight dynamics.",
+      "reels": "Engines by GE9X.\nThicccness measured in decibels."
+    }
+  },
+  {
     "date": "2026-06-01",
     "word": "Combine Harvester, John Deere",
     "pronunciation": "/kuhm-bine HAR-vess-ter, john DEER/",

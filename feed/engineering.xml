@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/engineering.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "engineering".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jun 2026 22:25:53 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 16:42:37 GMT</lastBuildDate>
+    <item>
+      <title>Boeing 777X</title>
+      <link>https://thiccctionary.com/entries/2026-06-02.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-02.html</guid>
+      <pubDate>Tue, 02 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A long-haul aircraft renowned for its expansive width and fuselage curvature, especially when observed from behind in dramatic lighting.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-02-boeing-777x.jpg" type="image/jpeg" length="0" />
+      <category>aviation</category><category>engineering</category><category>widebody</category>
+    </item>
     <item>
       <title>Ever Given, Suez Container Ship</title>
       <link>https://thiccctionary.com/entries/2026-05-28.html</link>

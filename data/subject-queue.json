@@ -13,16 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Tugboat, McAllister",
-      "query": "harbor tugboat new york",
-      "notes": "alternate tugboat"
-    },
-    {
-      "subject": "Wrench, Pipe",
-      "query": "stillson pipe wrench tool",
-      "notes": "tool itself; if hand+tool fails see retired_actions"
-    },
-    {
       "subject": "Hydrant, Fire",
       "query": "fire hydrant red street",
       "notes": "abundant inventory"
