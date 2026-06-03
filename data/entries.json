@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-03",
+    "word": "Goose, Canada",
+    "pronunciation": "/kan-uh-duh GOOS/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A waterfowl of substantial rear projection, often observed with a pronounced tail section that defies casual description when viewed astern.",
+      "<em>colloq.</em> The original aquatic unit of aerodynamic girth, effortlessly gliding while maintaining its unapologetic breadth."
+    ],
+    "example": "A Canada Goose so thiccc interrupted the serene pond tableau, leaving a wake like a corporate yacht.",
+    "etymology": "From Middle English <em>goos</em>, from Old English <em>gōs</em>, akin to Dutch <em>gans</em> and German <em>Gans</em>. The term 'Canada' denotes its nationality, not its passport status.",
+    "image": "images/2026-06-03-goose-canada.jpg",
+    "caption": "Plate N. An exemplar of avian thicccness, esp. when observed astern.",
+    "tags": [
+      "waterfowl",
+      "avian",
+      "girth"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 9,
+    "photographer": "Ben Grant",
+    "photographerUrl": "https://unsplash.com/@ben_grantt",
+    "unsplashUrl": "https://unsplash.com/photos/brown-and-white-duck-on-water-rRtIUCTTqyE",
+    "socialCaptions": {
+      "morning": "Goose, Canada. Over 7 million migrate annually—each one a certified thiccc aviation marvel.",
+      "afternoon": "A honk heard from 2,000 feet away—prelude to the gliding mass that is Goose, Canada.",
+      "evening": "From the archives, Goose, Canada.\nReportedly blocked runway 23 for a full 15 minutes—aerodynamics meets terra firma.",
+      "reels": "Wingspan of up to 6 feet—yet somehow, it's the rear view that captivates."
+    }
+  },
+  {
     "date": "2026-06-02",
     "word": "Boeing 777X",
     "pronunciation": "BOE-ing seven-seven-X",
