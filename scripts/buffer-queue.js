@@ -84,7 +84,14 @@ async function listPosts(channelIds, statuses) {
   log(`org=${orgId}`);
 
   // Try with various status enum values
-  const statusVariants = statuses ? [statuses] : [['scheduled'], ['queue'], ['draft', 'scheduled'], ['queued']];
+  // Wave 227: allow STATUS_FILTER env to override default scan.
+  // Buffer's status enum includes: scheduled, queue, sent, errored, failed, draft.
+  const envFilter = (process.env.STATUS_FILTER || '').trim();
+  const statusVariants = statuses
+    ? [statuses]
+    : envFilter
+      ? [envFilter.split(',').map(s => s.trim()).filter(Boolean)]
+      : [['scheduled'], ['queue'], ['draft', 'scheduled'], ['queued']];
   for (const statusVal of statusVariants) {
     const q = `query Q($input: PostsInput!) {
       posts(input: $input, first: 100) {

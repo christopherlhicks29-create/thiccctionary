@@ -44,9 +44,11 @@ jobs:
             TERMS=$(python3 -c "import json; print('\\n'.join(json.load(open('data/.fire-buffer-queue.json')).get('match_terms',[])))")
             POST_ID=$(python3 -c "import json; print(json.load(open('data/.fire-buffer-queue.json')).get('post_id',''))")
             DRY=$(python3 -c "import json; print('1' if json.load(open('data/.fire-buffer-queue.json')).get('dry_run') else '')")
+            STATUS=$(python3 -c "import json; print(json.load(open('data/.fire-buffer-queue.json')).get('status_filter',''))")
             echo "action=$ACTION" >> $GITHUB_OUTPUT
             echo "post_id=$POST_ID" >> $GITHUB_OUTPUT
             echo "dry=$DRY" >> $GITHUB_OUTPUT
+            echo "status_filter=$STATUS" >> $GITHUB_OUTPUT
             { echo "match_terms<<TERMS_EOF"; echo "$TERMS"; echo "TERMS_EOF"; } >> $GITHUB_OUTPUT
           fi
 
@@ -59,6 +61,7 @@ jobs:
           MATCH_TERMS: ${{ inputs.match_terms || steps.sentinel.outputs.match_terms }}
           POST_ID: ${{ inputs.post_id || steps.sentinel.outputs.post_id }}
           DRY_RUN: ${{ (inputs.dry_run == 'true' && '1') || steps.sentinel.outputs.dry }}
+          STATUS_FILTER: ${{ steps.sentinel.outputs.status_filter }}
         run: node buffer-queue.js
 
       - name: Debug, list /tmp + force write a marker

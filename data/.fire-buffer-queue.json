@@ -1,0 +1,5 @@
+{
+  "action": "list",
+  "status_filter": "sent,errored,failed",
+  "dry_run": true
+}
