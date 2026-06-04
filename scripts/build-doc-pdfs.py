@@ -10,11 +10,23 @@ from weasyprint import HTML, CSS
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
+SIG_HTML = '''<div class="bertram-signoff">
+<p class="sig-label">Filed and Witnessed</p>
+<img class="bertram-sig" src="file://__ROOT__/images/staff/bertram-signature.png" alt="Signature of Bertram Whitmore" />
+<p class="sig-printed">Bertram Whitmore</p>
+<p class="sig-title">Founder &amp; Publisher, Thiccctionary</p>
+</div>'''
+
 DOCS = [
     ('about/documents/personnel-file', 'personnel-file.pdf', 'The Personnel File', 'Selected Grievances, Senior Cataloguer'),
     ('about/documents/amendment-1991-08', 'amendment-1991-08.pdf', 'Amendment 1991-08', 'Adoption of the Silhouette Test'),
     ('about/documents/methodology-memo-1999', 'methodology-memo-1999.pdf', 'The Methodology Memo', 'On the Catalogue\'s Continued Operation in the Digital Era'),
     ('about/documents/atlantic-giant-2009', 'atlantic-giant-2009.pdf', 'The Atlantic Giant Decision', 'On the Eligibility of Cultivated and Selectively Bred Subjects'),
+    ('about/documents/external-bodies', 'external-bodies.pdf', 'Standing Order on External Bodies', 'On Outside Classification Frameworks'),
+    ('about/documents/submissions-freeze', 'submissions-freeze.pdf', 'The 2014 Submissions Freeze Proposal', 'A Formal Recommendation (Not Adopted)'),
+    ('about/documents/liebherr-memo', 'liebherr-memo.pdf', 'The Liebherr Memo', 'Re: T 282B, A Quiet Excellence in Catalogue Form'),
+    ('about/documents/founding-charter', 'founding-charter.pdf', 'The Founding Charter', 'Filed Manhattan, 1974'),
+    ('about/style-guide', 'thiccctionary-style-guide.pdf', 'The Thiccctionary Style Guide', 'Rules, Sections, and Amendments'),
 ]
 
 PRINT_CSS = """
@@ -38,6 +50,13 @@ a { color: #2a221b; text-decoration: none; }
 .grievance { border-left: 3px solid #6b5c4d; padding: 0.4em 0 0.4em 1em; margin: 1.4em 0; page-break-inside: avoid; }
 .response { background: #f0e8d8; padding: 0.6em 1em; margin: 0.6em 0 0; border-left: 3px solid #7a8d4a; font-size: 10.5pt; }
 .status { font-family: 'Courier New', monospace; font-size: 8.5pt; letter-spacing: 0.07em; text-transform: uppercase; color: #6b5c4d; margin-top: 0.4em; }
+
+/* Wave 230i: Bertram's signature block at the bottom of every PDF */
+.bertram-signoff { margin-top: 2em; padding-top: 1.5em; border-top: 1px solid #c9b89a; page-break-inside: avoid; text-align: right; }
+.bertram-signoff .sig-label { font-family: 'Courier New', monospace; font-size: 8.5pt; letter-spacing: 0.12em; text-transform: uppercase; color: #6b5c4d; margin: 0 0 0.4em; }
+.bertram-signoff img.bertram-sig { max-width: 280px; max-height: 90px; display: inline-block; }
+.bertram-signoff .sig-printed { font-family: 'Courier New', monospace; font-size: 9.5pt; color: #2a221b; margin: 0.3em 0 0; letter-spacing: 0.04em; }
+.bertram-signoff .sig-title { font-family: 'Courier New', monospace; font-size: 8.5pt; color: #6b5c4d; letter-spacing: 0.08em; text-transform: uppercase; margin: 0.1em 0 0; }
 """
 
 def strip_for_print(html: str) -> str:
@@ -52,6 +71,12 @@ def strip_for_print(html: str) -> str:
     out = re.sub(r'<link[^>]+preconnect[^>]*>', '', out)
     # Remove the "← back" article-meta line
     out = re.sub(r'<p class="article-meta">[\s\S]*?</p>', '', out)
+    # Wave 230i: inject Bertram's signature block before </body>
+    sig = SIG_HTML.replace('__ROOT__', str(ROOT))
+    out = out.replace('</main>', '</main>' + sig, 1)
+    if '<div class="bertram-signoff"' not in out:
+        # fallback if no </main> tag
+        out = out.replace('</body>', sig + '</body>', 1)
     # Inject our print CSS at end of head
     inject = '<style>' + PRINT_CSS + '</style>'
     out = out.replace('</head>', inject + '</head>', 1)
