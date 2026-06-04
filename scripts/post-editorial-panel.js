@@ -99,7 +99,7 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
     text,
     schedulingType: 'automatic',
     mode: 'addToQueue',
-    assets: { media: [{ url: imageUrl, type: 'image' }] },
+    assets: { images: [{ url: imageUrl }] },  // Wave 230c: match post-to-buffer.js shape; 'media' is wrong, Buffer expects 'images'
     metadata: metadataForService(service),
   };
   if (DRY) {
