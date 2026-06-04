@@ -185,3 +185,20 @@ Status tracking: https://tsdr.uspto.gov/#caseNumber=99827994
 8. A "team-building lunch" was scheduled; the Senior Cataloguer is opposed in principle
 
 **Why hold this for next session:** The 5/30 cron failure + 4-day catalog gap is higher priority than another auto-generation pipeline. Build the column after foundation is fixed.
+
+
+## Rewrite "A Note from the Editors", queued 2026-06-04
+
+Christopher 2026-06-04: *"Something for later, let's rewrite the note from the editors."*
+
+Lives on:
+- `index.html` (homepage About section, h3 "A Note from the Editors")
+- `about/index.html` (full-page version, h2 "A Note from the Editors")
+
+The current copy is functional but a bit defensive (heavy on the "rules are not negotiable" framing). A rewrite should:
+- Keep the "satire of a specific cultural habit + applied to literally anything but bodies" brand promise
+- Lean into the editorial-board voice that has been working in Filed Replies and From the Boat
+- Reference the masthead cast (or at least Bertram, the publisher) as the source of the note
+- Probably shorter, drier, more institutional
+
+**Trigger to act:** when Christopher asks, or in a focused unattended session when no other editorial work is pending.
