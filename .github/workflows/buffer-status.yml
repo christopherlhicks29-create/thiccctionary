@@ -5,6 +5,13 @@ name: Buffer channel status (debug)
 
 on:
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-buffer-status'
+
+permissions:
+  contents: write
 
 jobs:
   status:
@@ -14,8 +21,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - working-directory: scripts
+      - id: dump
+        working-directory: scripts
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
           BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
-        run: node buffer-status.js
+        run: |
+          mkdir -p ../audits/buffer-status
+          STAMP=$(date -u +%Y%m%d-%H%M%S)
+          node buffer-status.js > ../audits/buffer-status/${STAMP}.txt 2>&1
+          echo "stamp=$STAMP" >> $GITHUB_OUTPUT
+      - name: Commit status dump + clear sentinel
+        if: always()
+        run: |
+          git config user.name "Buffer Status Bot"
+          git config user.email "bot@thiccctionary.com"
+          if [ -f data/.fire-buffer-status ]; then
+            git rm -f data/.fire-buffer-status || true
+          fi
+          git add audits/buffer-status/ || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Buffer status dump ${{ steps.dump.outputs.stamp }}"
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin main; then break; fi
+              sleep $((i*3))
+            done
+          fi
