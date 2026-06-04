@@ -99,9 +99,10 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
     text,
     schedulingType: 'automatic',
     mode: 'addToQueue',
-    assets: { images: [{ url: imageUrl }] },  // Wave 230c: match post-to-buffer.js shape; 'media' is wrong, Buffer expects 'images'
-    metadata: metadataForService(service),
+    assets: { images: [{ url: imageUrl }] },
   };
+  const md = metadataForService(service);
+  if (md) input.metadata = md;
   if (DRY) {
     console.log(`[DRY] would post to ${service}/${channelId}:\n  text=${text}\n  img=${imageUrl}`);
     return { ok: true, dry: true, channelId, service };
@@ -113,7 +114,13 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
   });
   const body = await res.text();
   let json = {}; try { json = JSON.parse(body); } catch (_) {}
-  return { ok: res.ok && !json.errors, status: res.status, body, channelId, service, json };
+  // Surface MutationError messages explicitly (the GraphQL union returns ok:200 with embedded error)
+  const mutErr = json?.data?.createPost?.message;
+  const ok = res.ok && !json.errors && !mutErr;
+  if (!ok) {
+    console.log(`  [post] ${service}/${channelId} FAIL body=${body.slice(0,400)}`);
+  }
+  return { ok, status: res.status, body, channelId, service, json, mutErr };
 }
 
 async function main() {
