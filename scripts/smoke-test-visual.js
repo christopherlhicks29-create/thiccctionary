@@ -55,11 +55,15 @@ function checkImages(file, html) {
   const imgRe = /<img[^>]+src=["']([^"']+)["']/g;
   let m;
   while ((m = imgRe.exec(html)) !== null) {
-    const src = m[1];
+    let src = m[1];
     if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) continue;
     if (src.startsWith('//')) continue;
     // Skip template placeholders (e.g. {{IMAGE}}, ${expr}, dynamic JS)
     if (/[{$]/.test(src)) continue;
+    // Wave 229b: strip query string + hash fragment for filesystem lookup.
+    // Cache-busting via ?v=N is valid HTML; the file on disk doesn't have the suffix.
+    src = src.split('?')[0].split('#')[0];
+    if (!src) continue;
     // Resolve relative path
     const baseDir = path.dirname(file);
     let resolved;
