@@ -64,6 +64,11 @@ function buildCaption(manifest) {
   let hook;
   if (context && punchline) hook = `${context} ${punchline}`;
   else hook = context || punchline || lines[0] || manifest.title;
+  // Wave 228: narration uses "Thicktionary" as a TTS pronunciation hack to force
+  // Onyx to say "THICK-tion-airy" correctly. That spelling MUST NOT appear in
+  // public-facing post copy. Replace with the brand-correct spelling.
+  hook = hook.replace(/Thicktionary/g, 'Thiccctionary')
+             .replace(/thicktionary/g, 'thiccctionary');
   return `${hook}\n${SITE}  #thiccctionary`;
 }
 
