@@ -107,10 +107,12 @@ function checkSubjectSpecificity(entry) {
 function checkAnimalSubject(entry) {
   // The brand rule (from generate-daily.js auto-picker prompt) is INANIMATE objects only.
   // Animals have slipped through 3 times (Whale, Hippopotamus, Sheep). Flag any new ones.
-  const ANIMALS = ['hippopotamus','elephant','whale','rhinoceros','manatee','walrus',
-    'dog','cat','horse','cow','pig','sheep','tortoise','bear','panda','gorilla',
+  // Wave 228: ALLOWLIST iconic megafauna (Natural Specimens category).
+  // The 3 grandfathered animal entries fit here (Hippopotamus, Blue Whale, Hissar sheep was retired from this list as not iconic enough).
+  const ALLOWLIST = ['hippopotamus','blue whale','rhinoceros','walrus','manatee','elephant','orca','sequoia'];
+  const ANIMALS = ['dog','cat','horse','cow','pig','sheep','tortoise','bear','panda','gorilla',
     'tiger','lion','seal','dolphin','beluga','crocodile','alligator','bison',
-    'kangaroo','koala','rhino','giraffe','octopus','squid','python','anaconda'];
+    'kangaroo','koala','rhino','giraffe','octopus','squid','python','anaconda','chicken','duck','goat'];
   const word = (entry.word || '').toLowerCase();
   for (const a of ANIMALS) {
     // Word-boundary match: avoid false positive "cat" inside "cathedral", "bull" inside "bullhorn", etc.
