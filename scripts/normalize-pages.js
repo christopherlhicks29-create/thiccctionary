@@ -29,7 +29,6 @@ const CANON_NAV_LINKS = [
   { href: '/a-z.html',             text: 'A-Z' },
   { href: '/articles/',            text: 'Articles' },
   { href: '/about/documents/',     text: 'References' },
-  { href: '/reels/',               text: 'Reels' },
   { href: '/cartoons/',            text: 'Cartoons' },
   { href: '/random.html',          text: 'Random' },
   { href: '/compare.html',         text: 'Compare' },
@@ -45,7 +44,6 @@ const CANON_FOOTER_SECTIONS = `<p class="footer-head">Sections</p>
       <a href="/a-z.html">A-Z</a>
       <a href="/articles/">Articles</a>
       <a href="/about/documents/">References</a>
-      <a href="/reels/">Reels</a>
       <a href="/cartoons/">Cartoons</a>
       <a href="/compare.html">Compare</a>
       <a href="/rate/">Rate</a>
@@ -92,7 +90,6 @@ function normalizePath(p) {
   if (p === 'api/index.html') return '/api/';
   if (p === 'embed/index.html') return '/embed/';
   if (p === 'articles/index.html') return '/articles/';
-  if (p === 'reels/index.html') return '/reels/';
   if (p === 'cartoons/index.html') return '/cartoons/';
   if (p === 'about/index.html') return '/about/';
   if (p === 'about/masthead/index.html') return '/about/masthead/';
