@@ -1,0 +1,71 @@
+{
+  "_description": "Manifest of /cartoons/ Editorial Panels for the weekly Buffer cross-post pipeline. post-editorial-panel.js picks one unposted item per run, cross-posts FB+IG with the caption, records to data/editorial-panels-posted.json.",
+  "panels": [
+    {
+      "id": "panel-01-parmigiano-wedding",
+      "image": "images/cartoons/panel-01-parmigiano-wedding.png",
+      "subject": "Parmigiano-Reggiano",
+      "caption": "A single wheel of Parmigiano-Reggiano, aged thirty-six months, weighs approximately one hundred ninety pounds.\n\nThe wedding party had requested two."
+    },
+    {
+      "id": "panel-02-atlantic-giant-pumpkin",
+      "image": "images/cartoons/panel-02-atlantic-giant-pumpkin.png",
+      "subject": "Atlantic Giant pumpkin",
+      "caption": "The 1973 grand champion at the Topsfield Fair weighed in at one thousand two hundred forty-seven pounds.\n\nSix men were required to move it from the scale to the truck."
+    },
+    {
+      "id": "panel-03-cooling-tower-photographer",
+      "image": "images/cartoons/panel-03-cooling-tower-photographer.png",
+      "subject": "Natural-draft cooling tower",
+      "caption": "A natural-draft cooling tower at full load releases approximately twenty-five thousand pounds of water vapor per minute.\n\nThe photographer below is five feet ten."
+    },
+    {
+      "id": "panel-04-sequoia-trunk",
+      "image": "images/cartoons/panel-04-sequoia-trunk.png",
+      "subject": "General Sherman sequoia",
+      "caption": "The General Sherman, calculated by volume, is the largest single-stem tree on Earth.\n\nTwenty-five feet across at the base."
+    },
+    {
+      "id": "panel-05-cathedral-bell",
+      "image": "images/cartoons/panel-05-cathedral-bell.png",
+      "subject": "Cologne Cathedral bell",
+      "caption": "The Petersglocke at Cologne Cathedral weighs twenty-four tons.\n\nIt is rung on five occasions per year."
+    },
+    {
+      "id": "panel-06-wedding-cake",
+      "image": "images/cartoons/panel-06-wedding-cake.png",
+      "subject": "Royal Wedding cake (1947)",
+      "caption": "The 1947 Royal Wedding cake weighed five hundred pounds.\n\nIt was shipped from Glasgow in seven separate crates."
+    },
+    {
+      "id": "panel-07-klencke-atlas",
+      "image": "images/cartoons/panel-07-klencke-atlas.png",
+      "subject": "Klencke Atlas",
+      "caption": "The Klencke Atlas, presented to Charles II in 1660, measures six feet tall when opened.\n\nIt is consulted twice a decade."
+    },
+    {
+      "id": "panel-08-combine-harvester",
+      "image": "images/cartoons/panel-08-combine-harvester.png",
+      "subject": "John Deere combine harvester",
+      "caption": "A modern combine harvester can clear a quarter section of wheat in a single afternoon.\n\nThe header alone weighs twelve thousand pounds."
+    },
+    {
+      "id": "panel-09-pipe-organ",
+      "image": "images/cartoons/panel-09-pipe-organ.png",
+      "subject": "Boardwalk Hall pipe organ",
+      "caption": "The Boardwalk Hall Auditorium Organ has thirty-three thousand one hundred fourteen pipes.\n\nThe longest is sixty-four feet."
+    },
+    {
+      "id": "panel-10-boeing-engine",
+      "image": "images/cartoons/panel-10-boeing-engine.png",
+      "subject": "Boeing GE90-115B jet engine",
+      "caption": "The General Electric GE90-115B has an intake fan twelve feet five inches in diameter.\n\nIt is the largest commercial jet engine in production."
+    },
+    {
+      "id": "panel-11-mining-tire",
+      "image": "images/cartoons/panel-11-mining-tire.png",
+      "subject": "Caterpillar 797F mining tire",
+      "caption": "A sixty-three-inch off-the-road tire weighs approximately twelve thousand pounds.\n\nReplacement requires a crane."
+    }
+  ]
+}
