@@ -17,6 +17,7 @@
  */
 
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -39,6 +40,21 @@ const channels = PROFILE_IDS.split(',').map(s => {
 
 if (channels.length === 0) { console.error('FATAL: no channels parsed from BUFFER_PROFILE_IDS'); process.exit(1); }
 
+
+// Flush debug log on any exit
+let __debugLog = [];
+const __origConsoleLog = console.log;
+console.log = (...args) => { __debugLog.push(args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' ')); __origConsoleLog(...args); };
+const __origConsoleError = console.error;
+console.error = (...args) => { __debugLog.push('[ERR] ' + args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' ')); __origConsoleError(...args); };
+process.on('exit', () => {
+  try {
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+    const dir = path.join(ROOT, 'audits', 'editorial-panel');
+    if (!fsSync.existsSync(dir)) fsSync.mkdirSync(dir, { recursive: true });
+    fsSync.writeFileSync(path.join(dir, `${stamp}.log`), __debugLog.join('\n') + '\n');
+  } catch (e) { __origConsoleError('[debug-log]', e.message); }
+});
 function metadataForService(service) {
   if (service === 'facebook' || service === 'facebookpage') return undefined;
   if (service === 'instagram' || service === 'instagrambusiness') return undefined;
@@ -124,6 +140,18 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
 }
 
 async function main() {
+  // Wave 230l: write a debug log no matter what, since the workflow's tee was not committing
+  const debugLog = [];
+  const log = (...args) => { const line = args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' '); console.log(line); debugLog.push(line); };
+  const writeDebugLog = async () => {
+    try {
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      const dir = path.join(ROOT, 'audits', 'editorial-panel');
+      await fs.mkdir(dir, { recursive: true });
+      await fs.writeFile(path.join(dir, `${stamp}.log`), debugLog.join('\n') + '\n');
+    } catch (e) { console.error('[debug-log] write failed:', e.message); }
+  };
+  try {
   const { panel, tracker, trackerPath, recycle } = await pickPanel();
   const imagePath = path.join(ROOT, panel.image);
   try { await fs.access(imagePath); } catch (_) {
