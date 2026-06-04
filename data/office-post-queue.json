@@ -7,7 +7,11 @@
     "topic_kind": "thiccc",
     "text": "Spent twenty minutes today trying to move a desk two feet. Just to reach the window. Gave up. Some things have already decided where they live.\n\nThe anvil entry went through on the first pass, by the way. First time in three weeks.\n\nEliza",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-06-04T19:35:57.203Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1780518819423",
