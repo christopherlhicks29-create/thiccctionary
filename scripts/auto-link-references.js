@@ -21,12 +21,12 @@ const REFS = [
     pattern: /Grievance Nos\. (\d+)(?:, (\d+))?(?:,? and (\d+))?\b/g,
     replace: (m, a, b, c) => {
       const link = n => `<a href="/about/documents/personnel-file/#grievance-${n}">${n}</a>`;
-      const parts = [link(a)];
-      if (b) parts.push(link(b));
-      if (c) parts.push(link(c));
-      if (!b && !c) return `Grievance Nos. ${parts[0]}`;
-      if (b && !c) return `Grievance Nos. ${parts[0]} and ${parts[1]}`;
-      return `Grievance Nos. ${parts[0]}, ${parts[1]}, and ${parts[2]}`;
+      // Wave 230m fix: handle (a, undefined, c) -- "Grievance Nos. X and Y" without middle comma
+      const nums = [a, b, c].filter(Boolean);
+      const linked = nums.map(link);
+      if (linked.length === 1) return `Grievance Nos. ${linked[0]}`;
+      if (linked.length === 2) return `Grievance Nos. ${linked[0]} and ${linked[1]}`;
+      return `Grievance Nos. ${linked[0]}, ${linked[1]}, and ${linked[2]}`;
     },
   },
   {
