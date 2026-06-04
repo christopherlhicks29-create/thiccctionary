@@ -1,4 +1,58 @@
 # Thiccctionary Wave Log
+## Wave 230 (2026-06-04, long autonomous unattended session)
+
+A burst of small, high-leverage QA + canon-building work after Christopher caught the F350 fabrication and went to bed:
+
+**Buffer + cross-post pipeline:**
+- 3 FB error posts in Buffer queue deleted (root cause: cartoon TTS hack 'Thicktionary' leaking into post copy). scripts/post-cartoon-to-buffer.js patched to sanitize before posting.
+- Buffer scheduled queue: clean. Buffer sent-status check + per-post error{message} querying wired into scripts/buffer-queue.js.
+- Editorial-panel cross-post pipeline scaffolded (manifest of 11 panels, picker script, weekly Sunday 17:00 UTC cron). Script still exit 2 - parked for next session diagnostic.
+
+**Cartoon + masthead overhaul:**
+- 11 editorial panels live on /cartoons/ (parmigiano, atlantic giant pumpkin, cooling tower, sequoia, cathedral bell, wedding cake, Klencke atlas, combine harvester, pipe organ, Boeing engine, mining tire). Episodes section retired; ep00/01/02 moved to drafts/retired-cartoons/.
+- Masthead now ALL photos (no video clips). Bertram + Constance portraits generated; Bart/Hugh/Spider regenerated at byline-quality. Hugh -> Hugh Drumm, Spider -> Spider Hennessy with 'nom de plume' framing.
+- Personnel File swapped Bart video -> static portrait per the photo-vs-video framework.
+- Margie portrait regenerated at late-30s after Christopher noted bio anchors her there.
+- /cartoons/ Staff Portraits + Scenes sections stripped (identity content belongs on masthead).
+- /cartoons/ Editorial Panel figcaptions stripped (caption already lives in the image).
+- Photo-vs-video framework saved to memory (feedback_photo_vs_video.md): photos for IDENTITY surfaces (masthead, personnel file, bylines, OG), videos for PERFORMANCE surfaces (social reels, cross-post pipelines, /admin/characters).
+
+**Canon expansion:**
+- 4 new grievances added to Personnel File (Nos. 51-54): methodology memo misapplication, HVAC duct noise, Junior Cataloguer footnotes with descendants, the ficus 'mascot' rebranding. Personnel File now has 15 grievances total.
+- scripts/auto-link-references.js shared library: idempotent text-to-anchor conversion for institutional canon refs. Wired into generate-mailbag.js, generate-from-the-boat.js. Personnel File has id='grievance-NN' anchors on all entries. Vol. 2 mailbag retro-linked (21 anchors).
+- Auto-linker conjoined-pattern bug ('Grievance Nos. 22 and 38' lost the second number) fixed.
+
+**Editorial-sanity 2.0:**
+- scripts/editorial-sanity.js extended with 4 more checks (was 1, now 5): subject-identity reality, photo-subject coherence, subject-specificity (Tractor Tire / Tractor mismatch), animal allowlist (only 8 iconic megafauna), human/body RED.
+- Auto-picker prompt: hard ALLOWLIST for animals (Hippo, Blue Whale, Rhinoceros, Walrus, Manatee, Elephant, Orca, Sequoia). All others hard-forbidden.
+- Hippopotamus + Blue Whale + Hissar sheep recategorized as 'Natural Specimens' (grandfathered).
+- pre-ship-check.js Rule 9 wired: runs editorial-sanity on staged entries.json.
+
+**5/31 entry fix cascade:**
+- 'Kettle, Industrial F350' fabrication caught + replaced (auto-picker hallucinated a fake product line using Ford truck designation). Tractor Tire mismatched with photo of a whole tractor; renamed to Tractor, Compact Utility.
+- Auto-picker prompt hardened against invented model numbers + animals. Critique gate has new test #8 SUBJECT-IDENTITY REALITY CHECK that rejects fabricated subjects.
+
+**PDFs:**
+- Bertram Whitmore signature image generated + wired into ALL 9 reference PDFs (was only building 4 before). signature block: divider, 'Filed and Witnessed', the image, the printed name, the title 'Founder & Publisher, Thiccctionary'.
+
+**Visual QA:**
+- styles.css: .article-prose a + .article-body a now visible (oxblood + 1px border-bottom + faint hover wash). Universal `a { color: inherit; text-decoration: none; }` reset was hiding institutional canon links on mailbag/columns.
+- 7 entry images missing .webp regenerated (Whale, Blue + 6 others - Christopher hit Whale Blue blank on /random).
+- site-health.js gained missingWebp check + missing-OG-image check now zero. Article OG cards regenerated.
+- scripts/smoke-test-visual.js strips query string + hash before disk lookup (cache-buster support).
+- /reels/ removed from normalize-pages.js canonical (was re-adding dead nav link to 60+ pages).
+- /reels/ refs swept from 60+ files.
+
+**Subject queue:**
+- Padded 14 -> 26 -> 30 with photogenic candidates. ~6 weeks of cron runway.
+
+**Memory:**
+- New: feedback_photo_vs_video, feedback_mailbag_voice_pattern, feedback_canon_must_link, project_canonical_portraits.
+- Reinforced (multiple times): feedback_the_guy ('panel-and-decide' authority), feedback_continuous_qa (visual verification step mandatory).
+
+**Catalog state:** 52 entries, latest 2026-06-03 (cron healthy). Site-health: clean. Editorial sanity: 0 RED, 1 YELLOW (grandfathered).
+
+
 ## Wave 226d cascade (2026-05-31 late evening, continued)
 After shipping Wave 226 safeguards, did a self-audit and caught/fixed three more issues without Christopher prompting:
 
