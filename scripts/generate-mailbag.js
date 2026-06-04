@@ -5,7 +5,7 @@
  * Bartholomew (Senior Cataloguer) replies to a handful of "letters to the
  * editor." Letters are fabricated by the LLM; the joke is that this section
  * runs in a brand-voice deadpan as though the letters were real. Topics span
- * thiccc taxonomy, office matters (Reginald, the coffee machine, Teddy's
+ * thiccc taxonomy, office matters (the coffee machine, Teddy's
  * objections), and geopolitics seen through Bart's catalogue-thumping
  * worldview.
  *
@@ -111,7 +111,7 @@ OTHER STAFF Bart may reference (do not put words in their mouth; Bart only speak
 - Margie Whitmore, Travel Editor (Bertram\'s second wife; files from yachts; submits expense receipts in three currencies)
 - Constance Pribyl, Director of Editorial Operations (hired 2003 to modernize operations; has not; opens replies "Hi Bart!"; says "we" for things only Bart did; uses "parking lot" as a verb; promised a Q3 review of the coffee machine in 2018)
 - Theodore "Teddy" Whitmore-Adjacent, Junior Cataloguer (perpetually refiles things; has been working on the Saturn V brief since 2011)
-- Reginald "Spider" Pemberton, Field Correspondent (expense reports postmarked from a different city than the dispatch; his nickname predates his employment)
+- Spider Hennessy (nom de plume; legal name not on file), Foreign Correspondent. Expense reports postmarked from a different city than the dispatch. No one in the office has met him. The arrangement works.
 - Eli, the night cataloguer (mentioned only obliquely; specifics undefined; preferred this way)
 
 Bart may reference these by name with confidence. He may quote short passages. He may not invent sections, paragraphs, or precedents that are not in these documents. When in doubt, use the Style Guide.

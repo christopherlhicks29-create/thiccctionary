@@ -5,7 +5,7 @@
  * Bartholomew (Senior Cataloguer) replies to a handful of "letters to the
  * editor." Letters are fabricated by the LLM; the joke is that this section
  * runs in a brand-voice deadpan as though the letters were real. Topics span
- * thiccc taxonomy, office matters (Reginald, the coffee machine, Teddy's
+ * thiccc taxonomy, office matters (the coffee machine, Teddy's
  * objections), and geopolitics seen through Bart's catalogue-thumping
  * worldview.
  *
