@@ -1863,3 +1863,18 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   padding-left: 1rem; 
   border-left: 4px solid var(--ink-soft); 
 }
+
+/* Wave 230h: visible anchors inside article body (mailbag, from-the-boat, columns).
+   Universal `a { color: inherit; text-decoration: none; }` was hiding the link affordance.
+   Make refs to canon documents visually distinct. */
+.article-prose a,
+.article-body a {
+  color: var(--oxblood);
+  border-bottom: 1px solid rgba(122, 31, 31, 0.4);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.article-prose a:hover,
+.article-body a:hover {
+  border-bottom-color: var(--oxblood);
+  background-color: rgba(122, 31, 31, 0.06);
+}
