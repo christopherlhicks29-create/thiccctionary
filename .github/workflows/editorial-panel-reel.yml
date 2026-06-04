@@ -1,0 +1,74 @@
+name: Editorial Panel cross-post (weekly)
+
+# Picks one unposted editorial panel from data/editorial-panels.json, posts
+# it as a static image to FB + IG via Buffer with its pre-written caption.
+# Recurring loop that converts the panel inventory into ongoing social rotation.
+#
+# Cadence: Sundays 17:00 UTC (offset from character-reel Saturdays 17:00 UTC).
+# Manual fire: touch data/.fire-editorial-panel and push, or workflow_dispatch.
+
+on:
+  schedule:
+    - cron: '0 17 * * 0'   # Sundays 17:00 UTC
+  workflow_dispatch:
+    inputs:
+      panel_id:
+        description: "Force a specific panel id (e.g. panel-04-sequoia-trunk). Leave empty to auto-pick."
+        type: string
+        required: false
+      dry_run:
+        description: "Don't actually POST to Buffer"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-editorial-panel'
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Resolve panel id from sentinel (if present)
+        id: sentinel
+        run: |
+          if [ -f data/.fire-editorial-panel ]; then
+            ID=$(grep -E '^[a-z0-9-]+$' data/.fire-editorial-panel | head -n 1 || true)
+            echo "panel_id=$ID" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post one editorial panel via Buffer
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          SITE_BASE_URL: https://thiccctionary.com
+          PANEL_ID: ${{ inputs.panel_id || steps.sentinel.outputs.panel_id }}
+          DRY_RUN: ${{ inputs.dry_run == true && '1' || '' }}
+        run: node scripts/post-editorial-panel.js
+
+      - name: Commit tracker update + clear sentinel
+        if: always()
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Editorial Panel Bot"
+          if [ -f data/.fire-editorial-panel ]; then
+            git rm -f data/.fire-editorial-panel || true
+          fi
+          git add data/editorial-panels-posted.json || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Editorial panel posted ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin main; then break; fi
+              sleep $((i*3))
+            done
+          fi
