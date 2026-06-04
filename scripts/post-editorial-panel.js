@@ -140,18 +140,6 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
 }
 
 async function main() {
-  // Wave 230l: write a debug log no matter what, since the workflow's tee was not committing
-  const debugLog = [];
-  const log = (...args) => { const line = args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' '); console.log(line); debugLog.push(line); };
-  const writeDebugLog = async () => {
-    try {
-      const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-      const dir = path.join(ROOT, 'audits', 'editorial-panel');
-      await fs.mkdir(dir, { recursive: true });
-      await fs.writeFile(path.join(dir, `${stamp}.log`), debugLog.join('\n') + '\n');
-    } catch (e) { console.error('[debug-log] write failed:', e.message); }
-  };
-  try {
   const { panel, tracker, trackerPath, recycle } = await pickPanel();
   const imagePath = path.join(ROOT, panel.image);
   try { await fs.access(imagePath); } catch (_) {
