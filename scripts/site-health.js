@@ -86,6 +86,7 @@ async function audit() {
     multipleH1: [],
     bannedWordsInArticles: [],
     missingOgImageFiles: [],
+    missingWebp: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -253,6 +254,27 @@ async function audit() {
     }
   }
 
+
+  // Wave 230j: missing .webp coverage. Browsers using <picture><source srcset=".webp">
+  // 404 the webp and (in some CF Pages edge cases) the whole picture element fails to
+  // render even though the .jpg fallback exists. Catch any entry whose .jpg exists
+  // but its sibling .webp does not.
+  try {
+    const entries = JSON.parse(await fs.readFile(path.join(ROOT, 'data/entries.json'), 'utf-8'));
+    for (const e of entries) {
+      const img = e.image || '';
+      if (!img.endsWith('.jpg')) continue;
+      const jpgPath = path.join(ROOT, img);
+      const webpPath = jpgPath.replace(/\.jpg$/, '.webp');
+      const fsSync = await import('node:fs');
+      if (fsSync.existsSync(jpgPath) && !fsSync.existsSync(webpPath)) {
+        issues.missingWebp.push({ date: e.date, word: e.word, jpg: img, webp: img.replace(/\.jpg$/, '.webp') });
+      }
+    }
+  } catch (err) {
+    // entries.json missing or unreadable, skip
+  }
+
   return { issues, stats };
 }
 
@@ -261,7 +283,7 @@ function formatReport({ issues, stats }) {
   const dateStr = new Date().toISOString().slice(0, 10);
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
-                      + issues.sitemapDrift.inRepoNotInSitemap.length;
+                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length;
   lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
@@ -313,6 +335,9 @@ function formatReport({ issues, stats }) {
 
   section(`Missing og:image files (${issues.missingOgImageFiles.length})`, issues.missingOgImageFiles,
     i => `\`${i.from}\` → ${i.ogImage} (file does not exist on disk)`);
+
+  section(`Missing .webp pair for entry images (${issues.missingWebp.length})`, issues.missingWebp,
+    i => `\`${i.date}\` (${i.word}): \`${i.jpg}\` exists but \`${i.webp}\` is missing. Browsers may show alt text instead of image.`);
 
   lines.push('---');
   lines.push('');
