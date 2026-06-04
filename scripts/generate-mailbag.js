@@ -145,7 +145,7 @@ async function main() {
   try { template = await fs.readFile(templatePath, 'utf8'); } catch {}
 
   // Minimal article HTML
-  const articleHtml = `<!DOCTYPE html>
+  let articleHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -237,6 +237,7 @@ ${htmlBody}
 `;
 
   const outPath = path.join(ROOT, 'articles', `${slug}.html`);
+  articleHtml = autoLink(articleHtml);
   await fs.writeFile(outPath, articleHtml, 'utf8');
   console.log(`Wrote ${outPath}`);
 
