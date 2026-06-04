@@ -97,11 +97,7 @@ async function listPosts(channelIds, statuses) {
       posts(input: $input, first: 100) {
         edges { node {
           id text dueAt status channelId
-          error
-          errorMessage
-          errorCode
-          rejectedAt
-          attachments { url type }
+          error { message code reason }
         } }
       }
     }`;
