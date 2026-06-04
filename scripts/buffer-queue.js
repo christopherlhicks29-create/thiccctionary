@@ -95,7 +95,14 @@ async function listPosts(channelIds, statuses) {
   for (const statusVal of statusVariants) {
     const q = `query Q($input: PostsInput!) {
       posts(input: $input, first: 100) {
-        edges { node { id text dueAt status channelId } }
+        edges { node {
+          id text dueAt status channelId
+          error
+          errorMessage
+          errorCode
+          rejectedAt
+          attachments { url type }
+        } }
       }
     }`;
     const vars = {
