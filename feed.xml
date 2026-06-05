@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2026 16:59:36 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 15:17:27 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Antoine Ferris Wheel</title>
+      <link>https://thiccctionary.com/entries/2026-06-05.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-05.html</guid>
+      <pubDate>Fri, 05 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A large amusement ride characterized by its prominent circular structure and multiple passenger cabins, each offering panoramic views that defy casual description when viewed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-05-antoine-ferris-wheel.jpg" type="image/jpeg" length="0" />
+      <category>amusement</category><category>rotational</category><category>grand</category>
+    </item>
     <item>
       <title>Goose, Canada</title>
       <link>https://thiccctionary.com/entries/2026-06-03.html</link>
@@ -21,6 +30,14 @@
       <description>A waterfowl of substantial rear projection, often observed with a pronounced tail section that defies casual description when viewed astern.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-03-goose-canada.jpg" type="image/jpeg" length="0" />
       <category>waterfowl</category><category>avian</category><category>girth</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 2</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-06-03.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-06-03.html</guid>
+      <pubDate>Wed, 03 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 2.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Boeing 777X</title>
