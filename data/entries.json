@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-06",
+    "word": "Savoy Cabbage",
+    "pronunciation": "/sa-VOY KA-bij/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A leafy vegetable of distinguished girth, characterized by its densely-packed, undulating leaves and a verdant hue that shifts subtly in raking light.",
+      "<em>colloq.</em> The kind of cabbage that requires a second glance and a reinforced crisper drawer."
+    ],
+    "example": "He brought a thiccc Savoy cabbage to the potluck, and suddenly the salad course had a gravitational pull.",
+    "etymology": "From the French 'chou de Savoie', referring to the Savoie region in France known for such cabbages. As if the Alps needed more body.",
+    "image": "images/2026-06-06-cabbage-savoy.jpg",
+    "caption": "Plate N. Savoy cabbage in its full botanical glory, poised for admiration.",
+    "tags": [
+      "vegetable",
+      "leafy green",
+      "culinary"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 9,
+    "photographer": "Bryam Blanco",
+    "photographerUrl": "https://unsplash.com/@bryamb",
+    "unsplashUrl": "https://unsplash.com/photos/green-and-white-leaf-plant-o3o3dq-nODE",
+    "socialCaptions": {
+      "morning": "Savoy Cabbage—born in the 16th century but maintains a robust presence on any plate. It whispers the secrets of the Savoie.",
+      "afternoon": "A single Savoy cabbage possesses 5-6 pounds of leafy persuasion. The choux de Savoie leaves no salad untouched.",
+      "evening": "From the archives, Savoy Cabbage.\nOnce a royal staple, now a culinary heavyweight. The garden's undeniable thiccc champ.",
+      "reels": "Savoy Cabbage: 12-inch diameter of leafy dominance. The green giant of your crisper."
+    }
+  },
+  {
     "date": "2026-06-05",
     "word": "Antoine Ferris Wheel",
     "pronunciation": "/an-TWAN FE-ris weel/",
