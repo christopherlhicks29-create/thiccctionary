@@ -750,10 +750,12 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 }
 
 .archive-hero p {
-  max-width: 600px;
+  max-width: 880px;
   margin: 16px auto 0;
   font-style: italic;
   color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 .archive-controls {
