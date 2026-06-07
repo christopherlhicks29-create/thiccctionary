@@ -218,7 +218,7 @@
       <h3 class="section-title">Recently Catalogued</h3>
       <a href="archive.html" class="see-all">See the full archive →</a>
     </div>
-    <div class="recents-grid" id="recents-grid">
+    <div class="recents-grid" id="recents-grid" style="opacity:0; transition:opacity 0.2s;">
       <!-- Populated from entries.json. Static fallback below. -->
       <a class="recent-card" href="#">
         <div class="recent-thumb" style="background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);"></div>
@@ -502,7 +502,12 @@
           </div>`;
         grid.appendChild(a);
       });
+      // Wave 231: fade in once populated
+      grid.style.opacity = '1';
     } catch (err) {
+      // Even on error, restore opacity so user sees the placeholder
+      const grid = document.getElementById('recents-grid');
+      if (grid) grid.style.opacity = '1';
       console.warn('No entries.json yet, showing placeholder content.', err);
     }
 

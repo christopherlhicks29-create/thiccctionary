@@ -112,7 +112,9 @@ function checkAnimalSubject(entry) {
   const ALLOWLIST = ['hippopotamus','blue whale','rhinoceros','walrus','manatee','elephant','orca','sequoia'];
   const ANIMALS = ['dog','cat','horse','cow','pig','sheep','tortoise','bear','panda','gorilla',
     'tiger','lion','seal','dolphin','beluga','crocodile','alligator','bison',
-    'kangaroo','koala','rhino','giraffe','octopus','squid','python','anaconda','chicken','duck','goat'];
+    'kangaroo','koala','rhino','giraffe','octopus','squid','python','anaconda','chicken','duck','goat','goose',
+    'swan','turkey','rabbit','squirrel','raccoon','deer','moose','elk',
+    'llama','alpaca','donkey','mule','ox','buffalo','wolf','fox','coyote','goldfish','hamster'];
   const word = (entry.word || '').toLowerCase();
   for (const a of ANIMALS) {
     // Word-boundary match: avoid false positive "cat" inside "cathedral", "bull" inside "bullhorn", etc.
