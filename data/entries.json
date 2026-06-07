@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-07",
+    "word": "Giant Watermelon, Sugar Baby",
+    "pronunciation": "/jee-uhnt WAW-ter-mel-uhn, SHOO-ger BAY-bee/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A cultivar of Citrullus lanatus known for its rotundity and deep green rind with dark stripes, often displayed with pride at county fair weigh-ins. Its posterior, viewed astern, defies casual description.",
+      "<em>colloq.</em> A picnic centerpiece masquerading as a fruit, requiring both a dedicated cutting board and an existential commitment to melon."
+    ],
+    "example": "He rolled out a thiccc Sugar Baby watermelon, and the entire barbecue lineup recalibrated its expectations. The carving station suddenly felt inadequate.",
+    "etymology": "From the Old English 'watermele,' derived from the Greek 'pepon,' meaning 'large melon.' The modern name 'Sugar Baby' emerged in the mid-20th century, a nod to its sweet disposition and substantial presence.",
+    "image": "images/2026-06-07-giant-watermelon-sugar-baby.jpg",
+    "caption": "Plate N. A thiccc exemplar of Cucurbitaceae, domestic variety.",
+    "tags": [
+      "county fair",
+      "barbecue",
+      "rotundity"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Art Rachen",
+    "photographerUrl": "https://unsplash.com/@artrachen",
+    "unsplashUrl": "https://unsplash.com/photos/watermelon-fruit-on-white-table-izi5AnlbRIA",
+    "socialCaptions": {
+      "morning": "Giant Watermelon, Sugar Baby. 10-15 lbs of pure gravitational defiance. Its rind, an unbroken legacy of ambition.",
+      "afternoon": "The 1950s welcomed the Sugar Baby—instantly transforming picnics into tactical operations. A heavyweight contender in the fruit division.",
+      "evening": "From the archives, Giant Watermelon, Sugar Baby.\nSince the Greeks coined 'pepon,' this cultivar has politely ignored moderation.",
+      "reels": "Sugar Baby Watermelon: the county fair's perennial heavyweight. Rotundity, perfected."
+    }
+  },
+  {
     "date": "2026-06-06",
     "word": "Savoy Cabbage",
     "pronunciation": "/sa-VOY KA-bij/",
