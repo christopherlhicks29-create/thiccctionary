@@ -167,8 +167,24 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
   return last;
 }
 
+async function introspectAssetInput() {
+  const q = `query { __type(name: "AssetInput") { inputFields { name type { kind name ofType { kind name ofType { kind name } } } } } }`;
+  try {
+    const res = await fetch(BUFFER_GRAPHQL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` },
+      body: JSON.stringify({ query: q }),
+    });
+    const body = await res.text();
+    console.log(`[introspect] AssetInput fields: ${body.slice(0, 800)}`);
+  } catch (e) {
+    console.log(`[introspect] failed: ${e.message}`);
+  }
+}
+
 async function main() {
   const { panel, tracker, trackerPath, recycle } = await pickPanel();
+  if (!DRY) await introspectAssetInput();
   const imagePath = path.join(ROOT, panel.image);
   try { await fs.access(imagePath); } catch (_) {
     console.error(`FATAL: panel image missing on disk: ${imagePath}`);
