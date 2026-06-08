@@ -186,6 +186,12 @@
       "image": "images/cartoons/panel-31-tanker-anchor.png",
       "subject": "Supertanker stockless anchor",
       "caption": "A modern stockless ship anchor for a 350,000-ton tanker weighs twenty-three tons.\n\nThe chain link alone weighs sixty pounds."
+    },
+    {
+      "id": "panel-32-great-pyramid",
+      "image": "images/cartoons/panel-32-great-pyramid.png",
+      "subject": "Great Pyramid of Giza",
+      "caption": "The Great Pyramid of Giza contains 2.3 million limestone blocks.\n\nEach weighs an average of two and a half tons."
     }
   ]
 }
