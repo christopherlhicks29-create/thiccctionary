@@ -56,9 +56,12 @@ process.on('exit', () => {
   } catch (e) { __origConsoleError('[debug-log]', e.message); }
 });
 function metadataForService(service) {
-  if (service === 'facebook' || service === 'facebookpage') return undefined;
-  if (service === 'instagram' || service === 'instagrambusiness') return undefined;
-  if (service === 'twitter') return undefined;
+  // Buffer's createPost requires per-service metadata declaring the post type.
+  // Absent metadata is the most likely cause of IG/FB rejecting the post
+  // (the working video cross-post always sends this). Static image = feed post.
+  if (service === 'facebook' || service === 'facebookpage') return { facebook: { type: 'post' } };
+  if (service === 'instagram' || service === 'instagrambusiness') return { instagram: { type: 'post' } };
+  if (service === 'twitter' || service === 'x') return undefined;
   return undefined;
 }
 

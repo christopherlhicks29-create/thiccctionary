@@ -29,3 +29,7 @@ data/.critique.json
 # Wave 193: higgsfield upload helper logs MUST commit
 !audits/higgsfield-upload-runs/
 !audits/higgsfield-upload-runs/**
+
+# Wave 236: editorial-panel cross-post logs MUST commit for autonomous debugging
+!audits/editorial-panel/
+!audits/editorial-panel/**

@@ -75,7 +75,8 @@ jobs:
           if [ -f data/.fire-editorial-panel ]; then
             git rm -f data/.fire-editorial-panel || true
           fi
-          git add data/editorial-panels-posted.json audits/editorial-panel/ || true
+          git add data/editorial-panels-posted.json || true
+          git add -f audits/editorial-panel/ || true
           if ! git diff --staged --quiet; then
             EXIT=${{ steps.post.outputs.exit || 'unknown' }}
             if [ "$EXIT" = "0" ]; then
