@@ -162,6 +162,30 @@
       "image": "images/cartoons/panel-27-antonov-an225.png",
       "subject": "Antonov An-225 Mriya",
       "caption": "The Antonov An-225 had six engines, twin tails, and a wingspan of two hundred ninety feet.\n\nOnly one was ever built."
+    },
+    {
+      "id": "panel-28-mount-rushmore",
+      "image": "images/cartoons/panel-28-mount-rushmore.png",
+      "subject": "Mount Rushmore",
+      "caption": "Each face on Mount Rushmore measures sixty feet from chin to crown.\n\nWorkers used dynamite for ninety percent of the carving."
+    },
+    {
+      "id": "panel-29-statue-liberty-torch",
+      "image": "images/cartoons/panel-29-statue-liberty-torch.png",
+      "subject": "Statue of Liberty torch",
+      "caption": "The Statue of Liberty's index finger measures eight feet.\n\nHer sandal is twenty-five feet long."
+    },
+    {
+      "id": "panel-30-beef-short-rib",
+      "image": "images/cartoons/panel-30-beef-short-rib.png",
+      "subject": "USDA Prime beef short rib",
+      "caption": "A USDA Prime beef plate short rib weighs between two and three pounds before cooking.\n\nThe bone is non-negotiable."
+    },
+    {
+      "id": "panel-31-tanker-anchor",
+      "image": "images/cartoons/panel-31-tanker-anchor.png",
+      "subject": "Supertanker stockless anchor",
+      "caption": "A modern stockless ship anchor for a 350,000-ton tanker weighs twenty-three tons.\n\nThe chain link alone weighs sixty pounds."
     }
   ]
 }
