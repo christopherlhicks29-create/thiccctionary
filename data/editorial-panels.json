@@ -114,6 +114,54 @@
       "image": "images/cartoons/panel-19-curling-stone.png",
       "subject": "Granite curling stone",
       "caption": "A regulation curling stone weighs forty-four pounds.\n\nIt is quarried from Ailsa Craig, an uninhabited island in the Firth of Clyde."
+    },
+    {
+      "id": "panel-20-saturn-v",
+      "image": "images/cartoons/panel-20-saturn-v.png",
+      "subject": "Saturn V rocket",
+      "caption": "The Saturn V stood three hundred sixty-three feet tall and produced seven and a half million pounds of thrust at liftoff.\n\nThe Junior Cataloguer maintains it counts as a vehicle."
+    },
+    {
+      "id": "panel-21-turbine-blade",
+      "image": "images/cartoons/panel-21-turbine-blade.png",
+      "subject": "Wind turbine blade",
+      "caption": "A modern utility-scale wind turbine blade measures one hundred ninety feet.\n\nEach blade requires a permit, an escort, and a route survey."
+    },
+    {
+      "id": "panel-22-submarine",
+      "image": "images/cartoons/panel-22-submarine.png",
+      "subject": "Ohio-class submarine",
+      "caption": "An Ohio-class ballistic missile submarine displaces eighteen thousand seven hundred fifty tons submerged.\n\nThe sail alone is forty feet tall."
+    },
+    {
+      "id": "panel-23-stonehenge",
+      "image": "images/cartoons/panel-23-stonehenge.png",
+      "subject": "Stonehenge sarsen",
+      "caption": "Each sarsen at Stonehenge weighs approximately twenty-five tons.\n\nThey were transported, by means still debated, from the Marlborough Downs."
+    },
+    {
+      "id": "panel-24-spruce-goose",
+      "image": "images/cartoons/panel-24-spruce-goose.png",
+      "subject": "Hughes H-4 Hercules (Spruce Goose)",
+      "caption": "The Hughes H-4 Hercules has a wingspan of three hundred twenty feet.\n\nIt was constructed entirely from birch and flew exactly once, for one minute, in 1947."
+    },
+    {
+      "id": "panel-25-carrier-deck",
+      "image": "images/cartoons/panel-25-carrier-deck.png",
+      "subject": "Nimitz-class aircraft carrier deck",
+      "caption": "A Nimitz-class aircraft carrier flight deck measures 1,092 feet, or four and a half acres.\n\nIt is shorter than the ship it sits on."
+    },
+    {
+      "id": "panel-26-big-ben",
+      "image": "images/cartoons/panel-26-big-ben.png",
+      "subject": "Big Ben (the Great Bell of Westminster)",
+      "caption": "The Great Bell of Westminster, more commonly known as Big Ben, weighs thirteen and a half tons.\n\nIt has been ringing since 1859."
+    },
+    {
+      "id": "panel-27-antonov-an225",
+      "image": "images/cartoons/panel-27-antonov-an225.png",
+      "subject": "Antonov An-225 Mriya",
+      "caption": "The Antonov An-225 had six engines, twin tails, and a wingspan of two hundred ninety feet.\n\nOnly one was ever built."
     }
   ]
 }
