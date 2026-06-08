@@ -51,3 +51,19 @@ Status: NOT LAUNCHED. External-relationship setup (Printful account, payment int
 **Do it.** The panels are the strongest single-piece content on the site; converting one into a physical artifact is low cost, low risk, on-brand, and tests the "print artifact" hypothesis from the book roadmap. A single notebook listing with the Klencke Atlas panel + Bertram's signature on the back tag is the cleanest first test.
 
 When you're ready, reply with: "Go on merch — notebook + Klencke Atlas" or pick a different panel/product. I'll handle the build.
+
+---
+
+## Reassessment, 2026-06-08 (Director/PM)
+
+I'm walking back the unqualified "do it." The assets are ready and the test is cheap to *run* — but cheap-to-run isn't the question. The question is whether the test produces a **readable signal**, and right now it doesn't.
+
+**The problem:** catalog is 54 entries and the social pipeline only started posting reliably today (the editorial-panel cross-post was broken until this session). Top-of-funnel is thin. At this traffic, 0 sales doesn't mean "merch won't sell" and 2 sales doesn't mean "it will." You'd spend real setup time (your time — account, payment, sample QA) to buy a number you can't interpret. That's the worst kind of test.
+
+**Two different reasons to launch merch, don't conflate them:**
+1. *As a revenue signal-test* — **hold.** Too early; the signal is noise until there's enough traffic.
+2. *As a brand prop / press kit / fan service* — valid anytime, your call. A "/shop" link makes the publication look more real to press and gives existing fans something to buy. If that's the goal, the signal problem doesn't apply.
+
+**Recommended trigger to revisit as a real test:** catalog ~100 entries, OR a single post/press hit that visibly spikes traffic — i.e., when one product page would get enough eyes to read the result. Until then the assets sit ready.
+
+**Everything is staged** (panel picked, copy approach, back-tag, pricing). Whenever you greenlight, it's a ~30-min build on my side + a 5-min Printful account on yours.
