@@ -60,7 +60,7 @@ function metadataForService(service) {
   // Absent metadata is the most likely cause of IG/FB rejecting the post
   // (the working video cross-post always sends this). Static image = feed post.
   if (service === 'facebook' || service === 'facebookpage') return { facebook: { type: 'post' } };
-  if (service === 'instagram' || service === 'instagrambusiness') return { instagram: { type: 'post' } };
+  if (service === 'instagram' || service === 'instagrambusiness') return { instagram: { type: 'post', shouldShareToFeed: true } };
   if (service === 'twitter' || service === 'x') return undefined;
   return undefined;
 }
@@ -104,8 +104,7 @@ async function headCheck(url, attempts = 10) {
   return { ok: false };
 }
 
-async function postToChannel({ channelId, text, imageUrl, service }) {
-  const mutation = `
+const MUTATION = `
     mutation CreatePost($input: CreatePostInput!) {
       createPost(input: $input) {
         ... on PostActionSuccess { post { id text dueAt } }
@@ -113,33 +112,59 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
       }
     }
   `;
+
+// Buffer's AssetInput field name for a still image is not documented in this
+// repo (only `video` has a known-working precedent). Try the singular `photo`
+// shape first (mirrors `video: { url }`), then fall back to the `photos` array
+// shape. One run resolves whichever Buffer actually accepts.
+const ASSET_SHAPES = [
+  (url) => ({ photo: { url } }),
+  (url) => ({ photos: [{ url }] }),
+];
+
+async function postOnce({ channelId, text, imageUrl, service, assets }) {
   const input = {
     channelId,
     text,
     schedulingType: 'automatic',
     mode: 'addToQueue',
-    assets: { images: [{ url: imageUrl }] },
+    assets,
   };
   const md = metadataForService(service);
   if (md) input.metadata = md;
+  const res = await fetch(BUFFER_GRAPHQL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` },
+    body: JSON.stringify({ query: MUTATION, variables: { input } }),
+  });
+  const body = await res.text();
+  let json = {}; try { json = JSON.parse(body); } catch (_) {}
+  const mutErr = json?.data?.createPost?.message;
+  const ok = res.ok && !json.errors && !mutErr;
+  return { ok, status: res.status, body, channelId, service, json, mutErr };
+}
+
+async function postToChannel({ channelId, text, imageUrl, service }) {
   if (DRY) {
     console.log(`[DRY] would post to ${service}/${channelId}:\n  text=${text}\n  img=${imageUrl}`);
     return { ok: true, dry: true, channelId, service };
   }
-  const res = await fetch(BUFFER_GRAPHQL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` },
-    body: JSON.stringify({ query: mutation, variables: { input } }),
-  });
-  const body = await res.text();
-  let json = {}; try { json = JSON.parse(body); } catch (_) {}
-  // Surface MutationError messages explicitly (the GraphQL union returns ok:200 with embedded error)
-  const mutErr = json?.data?.createPost?.message;
-  const ok = res.ok && !json.errors && !mutErr;
-  if (!ok) {
-    console.log(`  [post] ${service}/${channelId} FAIL body=${body.slice(0,400)}`);
+  let last = null;
+  for (let i = 0; i < ASSET_SHAPES.length; i++) {
+    const assets = ASSET_SHAPES[i](imageUrl);
+    const r = await postOnce({ channelId, text, imageUrl, service, assets });
+    last = r;
+    if (r.ok) {
+      if (i > 0) console.log(`  [post] ${service}/${channelId} OK with fallback asset shape #${i + 1}`);
+      return r;
+    }
+    // Only fall through to the next asset shape if the failure was specifically
+    // about the assets field. Other errors (auth, metadata) won't be fixed by it.
+    const assetShapeError = /input\.assets/.test(r.body || '') && /BAD_USER_INPUT/.test(r.body || '');
+    console.log(`  [post] ${service}/${channelId} FAIL (shape #${i + 1}) body=${(r.body || '').slice(0, 400)}`);
+    if (!assetShapeError) break;
   }
-  return { ok, status: res.status, body, channelId, service, json, mutErr };
+  return last;
 }
 
 async function main() {
