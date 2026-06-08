@@ -1,4 +1,15 @@
 # Thiccctionary Wave Log
+
+## Wave 236-237 (2026-06-08, autonomous session)
+
+**Editorial-panel-to-Buffer pipeline FIXED (was exiting 2 on every run, never posted once).**
+Two stacked bugs, both now resolved and verified end-to-end (panel-01 posted OK 200 to Twitter + Facebook + Instagram; tracker recorded all three Buffer IDs):
+- *Why we were blind:* `audits/editorial-panel/*.log` was swallowed by the `*.log` line in `.gitignore`. The workflow staged nothing, so no run ever left committed evidence. Added the `!audits/editorial-panel/**` un-ignore exception (mirrors the cartoon-runs/higgsfield exceptions) + `git add -f` in the workflow. This is what let me actually read the failures.
+- *Root-cause bug:* `assets:{images:[...]}` is invalid Buffer GraphQL. Schema introspection of `AssetInput` showed the real field is `image:{url}` (sibling of the known-good `video:{url}`). Also added the IG-required `shouldShareToFeed:true` to metadata. Twitter/FB/IG all post the image now.
+- Iterated via on-demand sentinel fires reading the now-committed logs each cycle.
+
+**A Note from the Editors rewritten** (homepage + about). Editorial-board/Publisher voice (deferred 2026-06-04 follow-up): signed Bertram Whitmore, Publisher (from the *Margaret IV*); references the cast; links the Founding Charter (canon-must-link); keeps the Costco F-450 payoff and /thiccc/ pointer; drops the defensive "rules are not negotiable" repetition. Pre-ship green.
+
 ## Wave 230 (2026-06-04, long autonomous unattended session)
 
 A burst of small, high-leverage QA + canon-building work after Christopher caught the F350 fabrication and went to bed:
