@@ -255,6 +255,16 @@
     </div>
   </section>
 
+  <!-- Wave 233: From the Art Desk rail (2 rotating editorial panels) -->
+  <section class="art-desk-rail" style="margin: 0 0 3rem; padding: 28px 24px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: rgba(244,236,220,0.4);">
+    <div style="text-align: center; margin-bottom: 22px;">
+      <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0;">From the Art Desk</p>
+      <p style="font-style: italic; font-size: 1.05rem; color: var(--ink-soft); margin: 0.5rem 0 0;">Single-panel newspaper cartoons. Iconic-mass subjects, drawn dry.</p>
+    </div>
+    <div id="art-desk-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto;"></div>
+    <p style="text-align: center; margin: 18px 0 0;"><a href="/cartoons/" style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--oxblood); border-bottom: 1px solid var(--oxblood);">See all 27 panels &rarr;</a></p>
+  </section>
+
   <!-- Wave 190: cross-promote the verdict ledger -->
   <section class="verdict-ledger-promo" style="margin: 0 0 3rem; padding: 28px 24px; border: 1px solid var(--rule); border-radius: 6px; background: rgba(139,31,31,0.03); text-align: center;">
     <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0;">The verdict ledger</p>
@@ -510,6 +520,27 @@
       if (grid) grid.style.opacity = '1';
       console.warn('No entries.json yet, showing placeholder content.', err);
     }
+
+    // Wave 233: From the Art Desk rail - 2 random editorial panels
+    try {
+      const panelRes = await fetch('data/editorial-panels.json', { cache: 'no-store' });
+      if (panelRes.ok) {
+        const panelData = await panelRes.json();
+        const panels = panelData.panels || [];
+        const grid = document.getElementById('art-desk-grid');
+        if (grid && panels.length >= 2) {
+          // Shuffle + take 2
+          const shuffled = [...panels].sort(() => Math.random() - 0.5).slice(0, 2);
+          grid.innerHTML = shuffled.map(p => `
+            <figure style="margin: 0;">
+              <a href="/cartoons/" style="display: block;">
+                <img src="/${p.image}" alt="${p.subject} editorial panel" loading="lazy" style="width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 4px; transition: transform 0.2s; background: var(--cream-deep);" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'" />
+              </a>
+            </figure>
+          `).join('');
+        }
+      }
+    } catch (e) { console.warn('art-desk rail failed:', e); }
 
     // Run the brand-voice ccc highlighter after content is in the DOM.
     highlightCcc(document.body);
