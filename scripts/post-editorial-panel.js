@@ -113,15 +113,6 @@ const MUTATION = `
     }
   `;
 
-// Buffer's AssetInput field name for a still image is not documented in this
-// repo (only `video` has a known-working precedent). Try the singular `photo`
-// shape first (mirrors `video: { url }`), then fall back to the `photos` array
-// shape. One run resolves whichever Buffer actually accepts.
-const ASSET_SHAPES = [
-  (url) => ({ photo: { url } }),
-  (url) => ({ photos: [{ url }] }),
-];
-
 async function postOnce({ channelId, text, imageUrl, service, assets }) {
   const input = {
     channelId,
@@ -149,42 +140,16 @@ async function postToChannel({ channelId, text, imageUrl, service }) {
     console.log(`[DRY] would post to ${service}/${channelId}:\n  text=${text}\n  img=${imageUrl}`);
     return { ok: true, dry: true, channelId, service };
   }
-  let last = null;
-  for (let i = 0; i < ASSET_SHAPES.length; i++) {
-    const assets = ASSET_SHAPES[i](imageUrl);
-    const r = await postOnce({ channelId, text, imageUrl, service, assets });
-    last = r;
-    if (r.ok) {
-      if (i > 0) console.log(`  [post] ${service}/${channelId} OK with fallback asset shape #${i + 1}`);
-      return r;
-    }
-    // Only fall through to the next asset shape if the failure was specifically
-    // about the assets field. Other errors (auth, metadata) won't be fixed by it.
-    const assetShapeError = /input\.assets/.test(r.body || '') && /BAD_USER_INPUT/.test(r.body || '');
-    console.log(`  [post] ${service}/${channelId} FAIL (shape #${i + 1}) body=${(r.body || '').slice(0, 400)}`);
-    if (!assetShapeError) break;
-  }
-  return last;
-}
-
-async function introspectAssetInput() {
-  const q = `query { __type(name: "AssetInput") { inputFields { name type { kind name ofType { kind name ofType { kind name } } } } } }`;
-  try {
-    const res = await fetch(BUFFER_GRAPHQL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` },
-      body: JSON.stringify({ query: q }),
-    });
-    const body = await res.text();
-    console.log(`[introspect] AssetInput fields: ${body.slice(0, 800)}`);
-  } catch (e) {
-    console.log(`[introspect] failed: ${e.message}`);
-  }
+  // Buffer's AssetInput uses `image: ImageAssetInput { url }` for still images
+  // (confirmed via schema introspection; `video` is the sibling field). The
+  // earlier `images: [...]` shape was the original exit-2 root cause.
+  const r = await postOnce({ channelId, text, imageUrl, service, assets: { image: { url: imageUrl } } });
+  if (!r.ok) console.log(`  [post] ${service}/${channelId} FAIL body=${(r.body || '').slice(0, 400)}`);
+  return r;
 }
 
 async function main() {
   const { panel, tracker, trackerPath, recycle } = await pickPanel();
-  if (!DRY) await introspectAssetInput();
   const imagePath = path.join(ROOT, panel.image);
   try { await fs.access(imagePath); } catch (_) {
     console.error(`FATAL: panel image missing on disk: ${imagePath}`);
