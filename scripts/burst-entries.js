@@ -87,6 +87,13 @@ async function main() {
         },
         timeout: 5 * 60 * 1000, // 5 min per subject ceiling
       });
+      // Wave 231-fix: generate sibling .webp for the entry image (daily.yml does this automatically; burst was missing it)
+      try {
+        const imgPath = path.join(ROOT, 'images', `${targetDate}-${subject.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.jpg`);
+        execSync(`node ${path.join(__dirname, 'jpg-to-webp.js')} '${imgPath}'`, { cwd: ROOT, stdio: 'inherit' });
+      } catch (webpErr) {
+        console.warn(`[burst] webp generation failed (non-fatal): ${webpErr.message}`);
+      }
       succeeded++;
       console.log(`[burst] OK ${subject} -> ${targetDate}`);
     } catch (e) {
