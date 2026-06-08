@@ -66,6 +66,54 @@
       "image": "images/cartoons/panel-11-mining-tire.png",
       "subject": "Caterpillar 797F mining tire",
       "caption": "A sixty-three-inch off-the-road tire weighs approximately twelve thousand pounds.\n\nReplacement requires a crane."
+    },
+    {
+      "id": "panel-12-hoover-dam",
+      "image": "images/cartoons/panel-12-hoover-dam.png",
+      "subject": "Hoover Dam",
+      "caption": "Hoover Dam contains six million six hundred thousand tons of concrete.\n\nThe construction crew of 1933 was estimated at twenty-one thousand."
+    },
+    {
+      "id": "panel-13-container-ship",
+      "image": "images/cartoons/panel-13-container-ship.png",
+      "subject": "Ever Ace container ship",
+      "caption": "The Ever Ace, classed Megamax-24, displaces two hundred thirty-five thousand tons fully loaded.\n\nShe carries twenty-four thousand of these."
+    },
+    {
+      "id": "panel-14-brisket-smoker",
+      "image": "images/cartoons/panel-14-brisket-smoker.png",
+      "subject": "USDA Prime brisket",
+      "caption": "A USDA Prime full packer brisket can exceed twenty pounds prior to trim.\n\nSome butchers will not sell one without a forklift waiver."
+    },
+    {
+      "id": "panel-15-jamon-iberico",
+      "image": "images/cartoons/panel-15-jamon-iberico.png",
+      "subject": "Jamon Iberico de Bellota",
+      "caption": "A whole jamon iberico de bellota cures for four years and weighs eighteen pounds.\n\nThe reception had requested twelve."
+    },
+    {
+      "id": "panel-16-pizza-pie",
+      "image": "images/cartoons/panel-16-pizza-pie.png",
+      "subject": "36-inch pizza pie",
+      "caption": "A thirty-six inch pizza pie weighs approximately fourteen pounds.\n\nMost restaurants require one hour notice."
+    },
+    {
+      "id": "panel-17-tower-crane",
+      "image": "images/cartoons/panel-17-tower-crane.png",
+      "subject": "Liebherr 81 K.1 tower crane",
+      "caption": "A Liebherr 81 K.1 has a thirty-six meter jib at radius.\n\nThe counterweight is calculated to seven decimal places."
+    },
+    {
+      "id": "panel-18-nebuchadnezzar-wine",
+      "image": "images/cartoons/panel-18-nebuchadnezzar-wine.png",
+      "subject": "Nebuchadnezzar wine bottle",
+      "caption": "A Nebuchadnezzar holds the equivalent of twenty standard bottles.\n\nIt is named for the king who built the Hanging Gardens."
+    },
+    {
+      "id": "panel-19-curling-stone",
+      "image": "images/cartoons/panel-19-curling-stone.png",
+      "subject": "Granite curling stone",
+      "caption": "A regulation curling stone weighs forty-four pounds.\n\nIt is quarried from Ailsa Craig, an uninhabited island in the Firth of Clyde."
     }
   ]
 }
