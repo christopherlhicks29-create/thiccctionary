@@ -1,0 +1,94 @@
+name: Higgsfield monthly credit burn
+
+# Wave 233: automate Christopher's mandate to "utilize all paid subscriptions every month."
+# Runs on the 28th of each month (~3 days before reset) and burns remaining Higgsfield
+# credits on stockpile cartoon panel generation. Outputs land in drafts/cartoons-batch-<YYYY-MM>/
+# for review at the next session.
+#
+# Cadence: 28th @ 22:00 UTC. Manual fire: touch data/.fire-higgsfield-burn and push.
+#
+# NOTE: This workflow currently scaffolds the structure. Actual Higgsfield API calls
+# require the MCP integration that runs from Claude/Anthropic side, not the GitHub runner.
+# A future implementation could call Higgsfield's HTTP API directly using a stored token
+# from secrets.HIGGSFIELD_TOKEN. For now this workflow logs intent + opens an issue
+# tagged 'monthly-burn' so the next Claude session sees it and runs the generation
+# autonomously via the MCP tools.
+
+on:
+  schedule:
+    - cron: '0 22 28 * *'   # 28th of each month, 22:00 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-higgsfield-burn'
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log burn intent
+        run: |
+          mkdir -p audits/monthly-burn
+          STAMP=$(date -u +%Y%m%d-%H%M%S)
+          MONTH=$(date -u +%Y-%m)
+          {
+            echo "# Higgsfield monthly burn intent, $MONTH"
+            echo ""
+            echo "Run timestamp: $STAMP"
+            echo ""
+            echo "This workflow ran on the scheduled monthly burn date (28th UTC)."
+            echo "Next session: check Higgsfield balance via mcp__higgsfield__balance,"
+            echo "then generate a batch of editorial panels using the prompt library"
+            echo "at drafts/cartoons/PROMPT-LIBRARY.md. Stage in drafts/cartoons-batch-${MONTH}/."
+            echo ""
+            echo "Subjects to prefer (each fresh, not yet in catalog or panels):"
+            echo "- Catalog entries that don't have a paired editorial panel yet"
+            echo "- Iconic-mass subjects from open culture (architecture, machinery, naval, food)"
+            echo ""
+            echo "Brand rules: no people-as-subject, no animals (except 8-megafauna allowlist), no fabricated model numbers."
+          } > audits/monthly-burn/${STAMP}.md
+
+      - name: Commit log + clear sentinel
+        if: always()
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Higgsfield Burn Bot"
+          if [ -f data/.fire-higgsfield-burn ]; then
+            git rm -f data/.fire-higgsfield-burn || true
+          fi
+          git add audits/monthly-burn/ || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Monthly Higgsfield burn intent logged ($(date -u +%Y-%m))"
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin main; then break; fi
+              sleep $((i*3))
+            done
+          fi
+
+      - name: Open monthly-burn issue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const month = new Date().toISOString().slice(0, 7);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Monthly Higgsfield burn, ${month}`,
+              labels: ['monthly-burn'],
+              body: `The monthly burn workflow fired on the 28th. ~3 days remain before credit reset.
+
+Next session pickup:
+1. Check balance: \`mcp__higgsfield__balance\`
+2. Generate stockpile panels until balance is low. Stage at drafts/cartoons-batch-${month}/.
+3. Triage best for promotion; retire rest.
+4. Close this issue once balance utilization >80%.`
+            });
