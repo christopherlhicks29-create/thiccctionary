@@ -1,4 +1,24 @@
 {
-  "posted": [],
-  "lastPostedAt": null
+  "posted": [
+    {
+      "id": "panel-01-parmigiano-wedding",
+      "at": "2026-06-08T23:21:00.513Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a274e5ba519c97d82393b0a"
+        },
+        {
+          "service": "facebook",
+          "id": "6a274e5b402cccd85f573636"
+        },
+        {
+          "service": "instagram",
+          "id": "6a274e5c39552caa126aeb2b"
+        }
+      ],
+      "recycle": false
+    }
+  ],
+  "lastPostedAt": "2026-06-08T23:21:00.513Z"
 }
