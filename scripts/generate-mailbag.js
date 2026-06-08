@@ -270,7 +270,7 @@ function mdToHtml(md) {
   for (let i = 0; i < lines.length; i++) {
     const ln = lines[i];
     if (/^# /.test(ln)) {
-      out.push(`<h1>${escapeHtml(ln.slice(2))}</h1>`);
+      out.push(`<h2 style="font-family: var(--font-display); font-size: 36px; margin: 2rem 0 1rem; font-weight: 700;">${escapeHtml(ln.slice(2))}</h2>`);
     } else if (/^### /.test(ln)) {
       out.push(`<h3>${escapeHtml(ln.slice(4))}</h3>`);
     } else if (/^\*([^*]+)\*$/.test(ln)) {
