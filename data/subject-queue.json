@@ -11,7 +11,7 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": [
+  "queue": [ { "subject": "Pickup Truck, Ford F-250", "query": "ford super duty pickup truck", "notes": "heavy pickup; must be a real truck not an SUV" },
     {
       "subject": "Cargo Plane, C-17 Globemaster",
       "query": "c-17 globemaster cargo plane",
