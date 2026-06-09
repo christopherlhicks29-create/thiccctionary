@@ -85,7 +85,7 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   if (mode === 'reels' && videoUrl) {
     input.assets = { video: { url: videoUrl, thumbnailUrl: thumbnailUrl || undefined } };
   } else if (imageUrl) {
-    input.assets = { images: [{ url: imageUrl }] };
+    input.assets = { image: { url: imageUrl } };
   }
   // else: text-only post (office mode), no assets attached
 
