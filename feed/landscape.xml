@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/landscape.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "landscape".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2026 00:39:57 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 21:00:33 GMT</lastBuildDate>
+    <item>
+      <title>Sequoia, General Sherman</title>
+      <link>https://thiccctionary.com/entries/2026-05-29.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-29.html</guid>
+      <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
+      <description>A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-29-sequoia-general-sherman.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>landscape</category><category>produce</category>
+    </item>
     <item>
       <title>Boulder, Glacial Erratic</title>
       <link>https://thiccctionary.com/entries/2026-05-25.html</link>
@@ -14,7 +23,16 @@
       <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
       <description>A substantial rock formation, often resting incongruously upon a landscape, relocated by ancient glacial activity, notable for its commanding presence when viewed astern in natural light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-25-boulder-glacial-erratic.jpg" type="image/jpeg" length="0" />
-      <category>geology</category><category>landscape</category><category>glacial</category>
+      <category>landscape</category>
+    </item>
+    <item>
+      <title>Tabular Iceberg, Antarctic</title>
+      <link>https://thiccctionary.com/entries/2026-05-20.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-20.html</guid>
+      <pubDate>Wed, 20 May 2026 12:00:00 GMT</pubDate>
+      <description>A colossal slab of ice, characterized by its flat top and steep sides, often mistaken for a floating geological feature. Its mass and breadth defy casual navigation, esp. when viewed in stark contrast against the horizon.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-20-tabular-iceberg-antarctic.jpg" type="image/jpeg" length="0" />
+      <category>landscape</category>
     </item>
     <item>
       <title>Spruce, Suburban</title>
@@ -23,7 +41,7 @@
       <pubDate>Sat, 09 May 2026 12:00:00 GMT</pubDate>
       <description>A mature evergreen specimen (genus Picea) cultivated as a residential or municipal landscape feature; characteristically pyramidal, with branches sweeping low to the ground in a dense conical mass.</description>
       <enclosure url="https://thiccctionary.com/images/personal/2026-05-10-spruce-suburb.jpg" type="image/jpeg" length="0" />
-      <category>botanical</category><category>landscape</category><category>evergreen</category>
+      <category>landscape</category><category>produce</category>
     </item>
   </channel>
 </rss>

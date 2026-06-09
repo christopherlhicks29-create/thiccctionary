@@ -6,7 +6,34 @@
     <atom:link href="https://thiccctionary.com/feed/vehicle.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "vehicle".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2026 00:39:57 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 21:00:33 GMT</lastBuildDate>
+    <item>
+      <title>Pickup Truck, F-250</title>
+      <link>https://thiccctionary.com/entries/2026-06-09.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-09.html</guid>
+      <pubDate>Tue, 09 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A robust vehicle of formidable mass, characterized by its dual rear wheels and a cab configuration that seems to defy the laws of aerodynamics.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-09-pickup-truck-f-250.jpg" type="image/jpeg" length="0" />
+      <category>pickup</category><category>vehicle</category><category>heavy-duty</category>
+    </item>
+    <item>
+      <title>Boeing 777X</title>
+      <link>https://thiccctionary.com/entries/2026-06-02.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-02.html</guid>
+      <pubDate>Tue, 02 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A long-haul aircraft renowned for its expansive width and fuselage curvature, especially when observed from behind in dramatic lighting.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-02-boeing-777x.jpg" type="image/jpeg" length="0" />
+      <category>natural-specimens</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Combine Harvester, John Deere</title>
+      <link>https://thiccctionary.com/entries/2026-06-01.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-01.html</guid>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A robust agricultural machine manufactured by John Deere, characterized by its substantial rear housing and impressive grain capacity, especially when viewed from behind in flattering sunlight.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-01-combine-harvester-john-deere.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>produce</category><category>vehicle</category>
+    </item>
     <item>
       <title>Tractor, Compact Utility</title>
       <link>https://thiccctionary.com/entries/2026-05-31.html</link>
@@ -14,7 +41,16 @@
       <pubDate>Sun, 31 May 2026 12:00:00 GMT</pubDate>
       <description>A four-wheeled agricultural vehicle of moderate horsepower, built low and wide for orchard work, hobby farms, and the kind of unspecified yard task that a homeowner believes requires diesel.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-31-tractor-compact-utility.jpg" type="image/jpeg" length="0" />
-      <category>agriculture</category><category>machinery</category><category>vehicle</category>
+      <category>industrial</category><category>produce</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Thiccc Boeing</title>
+      <link>https://thiccctionary.com/entries/2026-05-01.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-01.html</guid>
+      <pubDate>Fri, 01 May 2026 12:00:00 GMT</pubDate>
+      <description>A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one observed tail-on, in long-lens profile.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-01.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>vehicle</category>
     </item>
     <item>
       <title>Ram 3500, Dually</title>
@@ -23,7 +59,7 @@
       <pubDate>Wed, 29 Apr 2026 12:00:00 GMT</pubDate>
       <description>A heavy-duty pickup truck of substantial posterior breadth, distinguished by dual rear wheels per side and an aggressively flared bedside that reads as architectural; esp. one photographed in golden-hour parking-lot stillness.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-29-ram-3500-dually.jpg" type="image/jpeg" length="0" />
-      <category>truck</category><category>vehicle</category><category>heavy-duty</category>
+      <category>vehicle</category>
     </item>
     <item>
       <title>Concrete Mixer</title>
@@ -32,7 +68,7 @@
       <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
       <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
-      <category>vehicle</category><category>industrial</category><category>construction</category>
+      <category>construction</category><category>industrial</category><category>vehicle</category>
     </item>
   </channel>
 </rss>

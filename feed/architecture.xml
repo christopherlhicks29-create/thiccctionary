@@ -6,15 +6,15 @@
     <atom:link href="https://thiccctionary.com/feed/architecture.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "architecture".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2026 00:39:57 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 21:00:33 GMT</lastBuildDate>
     <item>
-      <title>Basilica, San Pedro</title>
-      <link>https://thiccctionary.com/entries/2026-04-24.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-24.html</guid>
-      <pubDate>Fri, 24 Apr 2026 12:00:00 GMT</pubDate>
-      <description>A monumental ecclesiastical structure in Vatican City, notable for its expansive nave and an apse that seems to embrace the horizon; its thiccc columns and domes defy casual description.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-04-24-basilica-san-pedro.jpg" type="image/jpeg" length="0" />
-      <category>Vatican City</category><category>architecture</category><category>ecclesiastical</category>
+      <title>Antoine Ferris Wheel</title>
+      <link>https://thiccctionary.com/entries/2026-06-05.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-05.html</guid>
+      <pubDate>Fri, 05 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A large amusement ride characterized by its prominent circular structure and multiple passenger cabins, each offering panoramic views that defy casual description when viewed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-05-antoine-ferris-wheel.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>girth</category><category>industrial</category>
     </item>
     <item>
       <title>Bell, Cathedral</title>
@@ -23,7 +23,7 @@
       <pubDate>Wed, 15 Apr 2026 12:00:00 GMT</pubDate>
       <description>A resonant structure of considerable mass, often found suspended in lofty ecclesiastical towers, its substantial profile best appreciated when viewed from a respectful distance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-15-bell-cathedral.jpg" type="image/jpeg" length="0" />
-      <category>resonance</category><category>architecture</category><category>monumental</category>
+      <category>architecture</category><category>construction</category><category>instrument</category>
     </item>
   </channel>
 </rss>
