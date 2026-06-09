@@ -12,13 +12,7 @@
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
   "queue": [
-    {
-      "subject": "Squash, Hubbard",
-      "query": "hubbard squash blue green",
-      "notes": "warty thiccc gourd"
-    },
-    {
-      "subject": "Pickup Truck, F-250",
+    {      "subject": "Pickup Truck, F-250",
       "query": "ford f-250 truck",
       "notes": "American heavy-duty"
     },
