@@ -12,10 +12,6 @@
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
   "queue": [
-    {      "subject": "Pickup Truck, F-250",
-      "query": "ford f-250 truck",
-      "notes": "American heavy-duty"
-    },
     {
       "subject": "Cargo Plane, C-17 Globemaster",
       "query": "c-17 globemaster cargo plane",

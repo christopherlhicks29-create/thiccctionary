@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Tools</title>
+    <link>https://thiccctionary.com/archive.html?tag=tools</link>
+    <atom:link href="https://thiccctionary.com/feed/tools.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "tools".</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Jun 2026 21:00:33 GMT</lastBuildDate>
+    <item>
+      <title>Anvil, Blacksmith</title>
+      <link>https://thiccctionary.com/entries/2026-05-23.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-23.html</guid>
+      <pubDate>Sat, 23 May 2026 12:00:00 GMT</pubDate>
+      <description>A dense, industrial-grade tool upon which metal is worked, characterized by its substantial mass and steadfast refusal to budge without considerable effort. Frequently sighted with a patina of history and dust, typically under raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-23-anvil-blacksmith.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>tools</category>
+    </item>
+    <item>
+      <title>Atlas Stone, Strongman</title>
+      <link>https://thiccctionary.com/entries/2026-05-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-21.html</guid>
+      <pubDate>Thu, 21 May 2026 12:00:00 GMT</pubDate>
+      <description>A spherical weight of imposing mass, employed in the sport of strongman competitions, often requiring Herculean effort to lift and maneuver. Its surface is characteristically rough, resembling a cosmic boulder that defies trivial engagement.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-21-atlas-stone-strongman.jpg" type="image/jpeg" length="0" />
+      <category>historic</category><category>tools</category>
+    </item>
+  </channel>
+</rss>

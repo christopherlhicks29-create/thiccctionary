@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Thiccctionary, Engineering</title>
-    <link>https://thiccctionary.com/archive.html?tag=engineering</link>
-    <atom:link href="https://thiccctionary.com/feed/engineering.xml" rel="self" type="application/rss+xml" />
-    <description>Thiccctionary entries tagged "engineering".</description>
+    <title>Thiccctionary, Natural-specimens</title>
+    <link>https://thiccctionary.com/archive.html?tag=natural-specimens</link>
+    <atom:link href="https://thiccctionary.com/feed/natural-specimens.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "natural-specimens".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2026 00:39:57 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 21:00:33 GMT</lastBuildDate>
     <item>
       <title>Boeing 777X</title>
       <link>https://thiccctionary.com/entries/2026-06-02.html</link>
@@ -14,7 +14,16 @@
       <pubDate>Tue, 02 Jun 2026 12:00:00 GMT</pubDate>
       <description>A long-haul aircraft renowned for its expansive width and fuselage curvature, especially when observed from behind in dramatic lighting.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-02-boeing-777x.jpg" type="image/jpeg" length="0" />
-      <category>aviation</category><category>engineering</category><category>widebody</category>
+      <category>natural-specimens</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Hippopotamus, Common</title>
+      <link>https://thiccctionary.com/entries/2026-05-30.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-30.html</guid>
+      <pubDate>Sat, 30 May 2026 12:00:00 GMT</pubDate>
+      <description>A semi-aquatic mammal whose substantial mass and low center of gravity render it a prime exemplar of thicccness in nature; especially when viewed astern, its posterior defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-30-hippopotamus-common.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Ever Given, Suez Container Ship</title>
@@ -23,7 +32,7 @@
       <pubDate>Thu, 28 May 2026 12:00:00 GMT</pubDate>
       <description>A container vessel of formidable displacement, noted for its capacity to momentarily rearrange global trade routes. Specifically, a ship whose breadth challenges traditional canal dimensions.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-28-ever-given-suez-container-ship.jpg" type="image/jpeg" length="0" />
-      <category>maritime</category><category>logistics</category><category>engineering</category>
+      <category>logistics</category><category>maritime</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Crankshaft, Marine Diesel</title>
@@ -32,7 +41,7 @@
       <pubDate>Sun, 24 May 2026 12:00:00 GMT</pubDate>
       <description>A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-24-crankshaft-marine-diesel.jpg" type="image/jpeg" length="0" />
-      <category>maritime</category><category>engineering</category><category>rotational</category>
+      <category>industrial</category><category>maritime</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Dumper Truck, Articulated</title>
@@ -41,7 +50,7 @@
       <pubDate>Wed, 13 May 2026 12:00:00 GMT</pubDate>
       <description>A robust off-road vehicle equipped with a hinged joint between the cab and the dump box, allowing for enhanced maneuverability on uneven terrain.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>heavy machinery</category><category>engineering</category>
+      <category>construction</category><category>industrial</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Bagger 288</title>
@@ -50,7 +59,7 @@
       <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
       <description>A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-10-bagger-288.jpg" type="image/jpeg" length="0" />
-      <category>machinery</category><category>mining</category><category>engineering</category>
+      <category>industrial</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Hoover Dam</title>
@@ -59,7 +68,16 @@
       <pubDate>Fri, 08 May 2026 12:00:00 GMT</pubDate>
       <description>A concrete arch-gravity dam spanning the Black Canyon of the Colorado River, completed 1936; 726 feet from foundation to crest, 660 feet of base thickness tapering to 45 feet at the crown.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-08-hoover-dam.jpg" type="image/jpeg" length="0" />
-      <category>infrastructure</category><category>engineering</category><category>dams</category>
+      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+    </item>
+    <item>
+      <title>Tarantula</title>
+      <link>https://thiccctionary.com/entries/2026-04-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-11.html</guid>
+      <pubDate>Sat, 11 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A spider of formidable girth, notably characterized by its substantial abdomen and robust leg span; often observed in repose, casting unusually expansive shadows.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-11-tarantula.jpg" type="image/jpeg" length="0" />
+      <category>natural-specimens</category>
     </item>
   </channel>
 </rss>

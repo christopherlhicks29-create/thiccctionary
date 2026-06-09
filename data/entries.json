@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-09",
+    "word": "Pickup Truck, F-250",
+    "pronunciation": "/pik-up TRUK, F-two-FIF-tee/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A robust vehicle of formidable mass, characterized by its dual rear wheels and a cab configuration that seems to defy the laws of aerodynamics.",
+      "<em>colloq.</em> A mechanical mammoth that negotiates snow-covered forest roads as if it owns the lease."
+    ],
+    "example": "He navigated the snowy backwoods in a thiccc F-250, leaving the forest to contemplate its own inadequacy.",
+    "etymology": "From Henry Ford (industrialist) + the model code denoting a heavy-duty series introduced in 1953. The numerical suffix suggests a truck as likely to regenerate as it is to conquer winter trails.",
+    "image": "images/2026-06-09-pickup-truck-f-250.jpg",
+    "caption": "Plate N., An F-250, defying the winter landscape with authority.",
+    "tags": [
+      "pickup",
+      "vehicle",
+      "heavy-duty"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 9,
+    "photoScore": 6,
+    "photographer": "Thomas Tucker",
+    "photographerUrl": "https://unsplash.com/@tents_and_tread",
+    "unsplashUrl": "https://unsplash.com/photos/a-truck-drives-down-a-snowy-forest-road-5ZQZeyEnfQY",
+    "socialCaptions": {
+      "morning": "Pickup Truck, F-250. Gross vehicle weight rating: 10,000 pounds. Gravity is simply a recommendation.",
+      "afternoon": "The F-250—Born in 1953, still hauling existential dread across county lines. #Thiccc",
+      "evening": "From the archives, Pickup Truck, F-250.\nTowing capacity: 22,800 pounds. Your neighbor's envy might require more horsepower.",
+      "reels": "The F-250: where 6.7-liter engines invite metaphysical awe."
+    }
+  },
+  {
     "date": "2026-06-07",
     "word": "Giant Watermelon, Sugar Baby",
     "pronunciation": "/jee-uhnt WAW-ter-mel-uhn, SHOO-ger BAY-bee/",
