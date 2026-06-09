@@ -199,6 +199,7 @@ ${htmlBody}
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
 </footer>
+<script defer src="/scripts/mobile-nav.js?v=66"></script>
 <script defer src="/scripts/masthead-date.js?v=1"></script>\n</body>
 </html>
 `;
