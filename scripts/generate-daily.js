@@ -209,6 +209,7 @@ CRITICAL, the photo MUST show the WHOLE subject in frame:
 - If NONE of the candidates show the full subject, pick the one with the most of it visible
 
 HARD VETOES (automatic rejection):
+- WRONG SUBJECT (most important veto): the photo must depict the ACTUAL named subject, not merely its general category. Match the SPECIFIC subject. If the subject is "Pickup Truck, F-250" the photo must be a full-size heavy-duty pickup truck, NOT an SUV, Bronco, Jeep, crossover, minivan, or a different truck class. If the subject is "Squash, Hubbard" it must be that squash variety, not a pumpkin or other gourd. If the subject names a brand or model (Boeing 747, Chesterfield sofa, John Deere combine), the photo must plausibly be that exact thing. When uncertain whether the photo shows the named subject, REJECT, a wrong-subject photo is worse than re-searching.
 - The PRIMARY SUBJECT of the photo is a person, portrait, fashion shot, body close-up, beauty/glamour. The brand is "we don't make jokes about human bodies," so a photo OF a person is wrong. A photo of a THING (truck, tomato, building, ship) where humans appear incidentally, bystanders, scale-reference, crew on a deck, is FINE as long as the THING is the focus and occupies the bulk of the frame.
 - The photo is a TOY, SCULPTURE, STATUE, FIGURINE, COSTUME, REPLICA, FAN-ART, ILLUSTRATION, or CARTOON of the subject, we want photographs of the REAL physical thing. A Transformer-the-robot statue is not an electrical transformer. A toy fire truck is not a fire truck. A pumpkin Halloween costume is not a pumpkin. If you see seams, paint chipping, plastic, weld marks where a real subject would be solid, painted-flame decals on metal, action-figure proportions, REJECT. Score below 4 / verdict "reject" applies.
 - Watermarks, text overlays, logos, captions
@@ -868,7 +869,13 @@ async function main() {
   if (chosen && chosen.rejected) {
     console.warn('Picker rejected all candidates. Retrying with photography bias.');
     const broaderQuery = `${subjectInfo.unsplashQuery} photograph`;
-    const retryCandidates = await searchUnsplash(broaderQuery);
+    let retryCandidates = [];
+    try {
+      retryCandidates = await searchUnsplash(broaderQuery);
+    } catch (e) {
+      if (!/No Unsplash results/i.test(e.message)) throw e;
+      console.warn(`Photography-bias retry returned zero Unsplash results for "${broaderQuery}".`);
+    }
     if (!retryCandidates || retryCandidates.length === 0) {
       console.log(`No results for retry query "${broaderQuery}".`);
       await bailGracefully({
