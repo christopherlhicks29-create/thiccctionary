@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jun 2026 21:00:33 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 15:48:10 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Pickup Truck, Ford F-250</title>
+      <link>https://thiccctionary.com/entries/2026-06-10.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-10.html</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A robust expression of vehicular heft, characterized by its imposing grille and the capacity to tow entire weekends. Especially notable when parked in tight urban quarters, where it seems to negotiate cobblestones with an innate diplomacy.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-10-pickup-truck-ford-f-250.jpg" type="image/jpeg" length="0" />
+      <category>pickup truck</category><category>Ford</category><category>urban landscape</category>
+    </item>
     <item>
       <title>Pickup Truck, F-250</title>
       <link>https://thiccctionary.com/entries/2026-06-09.html</link>
@@ -21,6 +30,30 @@
       <description>A robust vehicle of formidable mass, characterized by its dual rear wheels and a cab configuration that seems to defy the laws of aerodynamics.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-09-pickup-truck-f-250.jpg" type="image/jpeg" length="0" />
       <category>pickup</category><category>vehicle</category><category>heavy-duty</category>
+    </item>
+    <item>
+      <title>[Article] Chunk. A Brief and Undignified Loss of Composure.</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-09-spider-fat-bear-week-chunk.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-09-spider-fat-bear-week-chunk.html</guid>
+      <pubDate>Tue, 09 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Spider Hennessy on Fat Bear Week 2025 champion, Bear 32 &quot;Chunk&quot;, Katmai National Park. Ruling: Thiccc.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] A Floating City Files Its Paperwork</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-09-bertram-star-of-the-seas.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-09-bertram-star-of-the-seas.html</guid>
+      <pubDate>Tue, 09 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Bertram Whitmore on Star of the Seas (Royal Caribbean, Icon-class). Ruling: Thiccc.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] On Whether a 2,819-Pound Pumpkin Is Still, Strictly, a Pumpkin</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-09-bart-record-pumpkin.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-09-bart-record-pumpkin.html</guid>
+      <pubDate>Tue, 09 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Bartholomew Whitmore on 2,819 lb world-record pumpkin (Paton brothers, UK) + 2,346 lb US champion (Brandon Dawson). Ruling: Thiccc.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Giant Watermelon, Sugar Baby</title>
