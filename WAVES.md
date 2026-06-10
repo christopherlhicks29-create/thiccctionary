@@ -1,5 +1,16 @@
 # Thiccctionary Wave Log
 
+## Wave 240 (2026-06-09/10, autonomous session)
+
+**Two root-cause fixes to the daily generator (`scripts/generate-daily.js`), both tested + pre-ship green.**
+
+1. **WRONG-SUBJECT vision veto** — the image picker (`pickThiccestImage`) vetoed toys/crops/sculptures/people but never checked *subject identity*, so a Ford Bronco passed as the "Pickup Truck, F-250" entry (Unsplash had mislabeled it "truck"). Added a top hard-veto: the photo must depict the ACTUAL named subject (model/brand-specific), not just the general category; when uncertain, REJECT. A wrong-subject photo is worse than re-searching.
+2. **Crash-proof photography-bias retry** — `searchUnsplash(broaderQuery)` *throws* on zero results, so the `length === 0` bail guard right after it was dead code; the throw escaped uncaught and crashed the whole run (this is what killed daily runs #120 Jun-8 and #121 Jun-9 on the "Hubbard Squash" subject). Wrapped the call in try/catch so a no-results retry now routes to `bailGracefully()` (which pops the poison subject so it cannot block the next day). Unit-tested in isolation: no-results -> graceful bail; other errors still rethrow.
+
+Live on main as a9699bd. The earlier same-day manual fixes (re-queued F-250, force-regen, rewrote snow copy to match the real Super Duty photo, cache-busted the image refs) are covered in session memory.
+
+# Thiccctionary Wave Log
+
 ## Wave 236-237 (2026-06-08, autonomous session)
 
 **Editorial-panel-to-Buffer pipeline FIXED (was exiting 2 on every run, never posted once).**
