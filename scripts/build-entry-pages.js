@@ -376,7 +376,21 @@ export async function buildSitemap(entries) {
     })),
   ];
 
-  const all = [...staticPages, ...entryPages, ...isPages];
+  // Dynamic columns (mailbag, from-the-boat, thiccc-beat, weekly essays) are
+  // registered in data/articles.json. Pull them in so every column is indexed,
+  // not just the original hardcoded essays above.
+  let articlePages = [];
+  try {
+    const raw = await fs.readFile(path.join(ROOT, 'data', 'articles.json'), 'utf8');
+    const articles = JSON.parse(raw);
+    const known = new Set(staticPages.map(p => p.loc));
+    articlePages = articles
+      .filter(a => a && a.slug)
+      .map(a => ({ loc: `${base}/articles/${a.slug}.html`, lastmod: a.date, priority: '0.6' }))
+      .filter(p => !known.has(p.loc));
+  } catch (_) { /* no articles.json; skip */ }
+
+  const all = [...staticPages, ...entryPages, ...isPages, ...articlePages];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.map(p => `  <url>
