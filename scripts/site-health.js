@@ -87,6 +87,7 @@ async function audit() {
     bannedWordsInArticles: [],
     missingOgImageFiles: [],
     missingWebp: [],
+    navMissingMobileToggle: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -123,6 +124,15 @@ async function audit() {
       if (hasSrc && !hasAlt) {
         issues.missingAlt.push({ from: rel, src: hasSrc[1] });
       }
+    }
+
+    // Mobile-nav hamburger guard (Wave 238 bug class): any public page
+    // with <nav class="nav"> must load scripts/mobile-nav.js or the
+    // hamburger never renders on mobile. Exclude admin/ (no public nav).
+    if (/<nav\s+class=["']nav["']/.test(content)
+        && !content.includes('mobile-nav.js')
+        && !rel.startsWith('admin/')) {
+      issues.navMissingMobileToggle.push({ from: rel });
     }
 
     // 3. Invalid JSON-LD schema (skip template files with placeholder tokens)
@@ -283,7 +293,7 @@ function formatReport({ issues, stats }) {
   const dateStr = new Date().toISOString().slice(0, 10);
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
-                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length;
+                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length;
   lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
@@ -338,6 +348,9 @@ function formatReport({ issues, stats }) {
 
   section(`Missing .webp pair for entry images (${issues.missingWebp.length})`, issues.missingWebp,
     i => `\`${i.date}\` (${i.word}): \`${i.jpg}\` exists but \`${i.webp}\` is missing. Browsers may show alt text instead of image.`);
+
+  section(`Pages missing mobile-nav hamburger (${issues.navMissingMobileToggle.length})`, issues.navMissingMobileToggle,
+    i => `\`${i.from}\`: has <nav class="nav"> but does not load mobile-nav.js (hamburger will not show on mobile).`);
 
   lines.push('---');
   lines.push('');
