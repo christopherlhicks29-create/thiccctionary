@@ -163,7 +163,7 @@ async function audit() {
       if (ogImgMatch) {
         const ogUrl = ogImgMatch[3] || ogImgMatch[4];
         if (ogUrl && ogUrl.startsWith('https://thiccctionary.com/')) {
-          const ogLocal = path.join(ROOT, ogUrl.replace('https://thiccctionary.com/', ''));
+          const ogLocal = path.join(ROOT, ogUrl.replace('https://thiccctionary.com/', '').replace(/[?#].*$/, ''));
           if (!(await fileExists(ogLocal))) {
             issues.missingOgImageFiles.push({ from: rel, ogImage: ogUrl });
           }
