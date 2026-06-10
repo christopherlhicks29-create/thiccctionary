@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-10",
+    "word": "Pickup Truck, Ford F-250",
+    "pronunciation": "/ford ef-too-fif-tee/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A robust expression of vehicular heft, characterized by its imposing grille and the capacity to tow entire weekends. Especially notable when parked in tight urban quarters, where it seems to negotiate cobblestones with an innate diplomacy.",
+      "<em>colloq.</em> The vehicular equivalent of a moving company, capable of ferrying both dreams and drywall without excess ceremony."
+    ],
+    "example": "The thiccc F-250 rolled down the cobblestone street, each stone seemed to salute its passage with a subtle tremor.",
+    "etymology": "Named for the Ford Motor Company (founded by Henry Ford in 1903) and the model's numerical designation in Ford's Super Duty lineup. The '250' is a nod to a bygone era of horsepower ratings, though the real figure might surprise you.",
+    "image": "images/2026-06-10-pickup-truck-ford-f-250.jpg",
+    "caption": "Plate N. A formidable presence, viewed head-on in a scene of urban elegance.",
+    "tags": [
+      "pickup truck",
+      "Ford",
+      "urban landscape"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Muhammad Amaan",
+    "photographerUrl": "https://unsplash.com/@amaan_farooq15",
+    "unsplashUrl": "https://unsplash.com/photos/the-front-of-a-black-truck-parked-on-a-cobblestone-street-i_rWPC6wiKs",
+    "socialCaptions": {
+      "morning": "Pickup Truck, Ford F-250—engineered with a payload capacity of 4,260 pounds. This is how you take 'carrying emotional baggage' literally.",
+      "afternoon": "Equipped with a 7.3-liter V8 engine, the F-250 consumes 48 gallons per minute—of admiration. #FordF250",
+      "evening": "From the archives, Pickup Truck, Ford F-250.\nSince 1999, it has redefined parking spaces—more suggestion than requirement.",
+      "reels": "The F-250's grille—more imposing than your last performance review."
+    }
+  },
+  {
     "date": "2026-06-09",
     "word": "Pickup Truck, F-250",
     "pronunciation": "/pik-up TRUK, F-two-FIF-tee/",
