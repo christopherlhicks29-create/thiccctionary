@@ -1,5 +1,22 @@
 # Thiccctionary Wave Log
 
+## Wave 241 (2026-06-10, autonomous session) — THE THICCC BEAT goes live
+
+**`scripts/generate-thiccc-beat.js` built, tested, shipped.** The news-desk initiative (cast personalities reacting to current thiccc news, each ending in a "ruling") now has a renderer. It reads the authored markdown drafts in `drafts/thiccc-beat/*.md` (frontmatter: author/role/lane/subject/ruling/source/date) and renders each to a proper article page: canonical 13-link nav, footer, mobile-nav + ccc-highlight scripts, NewsArticle JSON-LD schema, byline (author / role / lane), a ruling callout, and a source link. Runs the canon auto-linker. Deterministic (no API key), idempotent by slug, registers each column in `data/articles.json`.
+
+Shipped 3 columns live (verified on the real page, 13 nav links, ruling renders):
+- Bertram on the Star of the Seas (world's largest cruise ship)
+- Bart on the 2,819 lb record pumpkin
+- Spider Hennessy on Fat Bear Week champ Chunk
+
+House-style note: the drafts had em-dashes (comic timing), but pre-ship bans em-dashes in committed source, so the generator converts em-dash to comma on render. Pre-ship green on all 7 staged files.
+
+**Also fixed a latent regression:** `generate-from-the-boat.js` and `generate-mailbag.js` both call `autoLink()` but neither imported it, they would have thrown `ReferenceError` on their next cron run (they only dodge it now by exiting early on the missing API key). Added the missing `import { autoLink } from './auto-link-references.js'` to both.
+
+Still TODO (follow-ups): homepage "Thiccc Beat" rail; a sentinel/cron to auto-run the renderer when new drafts land; a web-search news-sourcing step that writes new drafts; per-column reel clips. Minimal CSS for the new `.beat-*` classes (they degrade to readable default paragraphs now).
+
+# Thiccctionary Wave Log
+
 ## Wave 240 (2026-06-09/10, autonomous session)
 
 **Two root-cause fixes to the daily generator (`scripts/generate-daily.js`), both tested + pre-ship green.**
