@@ -1,5 +1,14 @@
 # Thiccctionary Wave Log
 
+## Wave 243 (2026-06-11, autonomous session): Thiccc Beat #4 (Teddy's first beat) + .beat-* CSS + image-regen QA
+
+**Shipped:**
+1. New Thiccc Beat column: "On the Forty-Five-Foot Soccer Ball, Which Is Visible From Aircraft" by Theodore Vance (Junior Cataloguer, first beat assignment). Subject: Massport's 45-ft soccer ball at Piers Park II, East Boston (Guinness attempt vs 38 ft 11.8 in, Doha 2013; on display Jun 12-18). Facts verified against boston.com. Ruling: Thiccc (pending senior review). Fourth voice on the desk (Bertram/Bart/Spider/now Teddy) -- proves the cast range the spec calls for. Rendered + listed (homepage top-5 + articles index) + OG card.
+2. `.beat-*` CSS (kicker/deck/byline/ruling/source) -- ruling now renders as a proper oxblood-rule callout instead of a plain paragraph. styles.min.css regenerated.
+3. Daily QA: 06-11 watermelon entry landed on schedule, BUT image shows clearly seeded slices on a "Seedless Giant" entry -- fired image-regen sentinel (override "whole watermelon uncut"); regen workflow opens a PR for review. 06-10 truck image looks F-150 Raptor-style rather than F-250 Super Duty -- flagged, second regen pass queued after the first sentinel is consumed.
+
+**Notes:** Buffer sweep blocked this run (Chrome extension not connected). Sitemap picks up the new column on the next daily run (buildSitemap reads articles.json).
+
 ## Wave 242 (2026-06-11, autonomous session) — daily-entry self-healing actually heals now
 
 **Found:** the 2026-06-11 entry never generated (12:00 UTC cron produced nothing, no dead-subjects bail recorded). outcome-verify correctly detected the miss at 10:03Z and "fired" the recovery sentinel, but the sentinel push uses GITHUB_TOKEN, and GitHub suppresses workflow runs triggered by GITHUB_TOKEN push events. So the push-triggered daily.yml never saw it. The entire retry path was dead code since Wave 205: it could detect a miss but never recover one.

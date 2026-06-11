@@ -1880,3 +1880,37 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
   border-bottom-color: var(--oxblood);
   background-color: rgba(122, 31, 31, 0.06);
 }
+
+/* ===== The Thiccc Beat columns (Wave 243) ===== */
+.beat-kicker {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 0.35rem;
+}
+.beat-deck {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.4rem;
+}
+.beat-byline {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.beat-ruling {
+  background: var(--cream-deep);
+  border-left: 4px solid var(--oxblood);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  box-shadow: 0 1px 3px var(--paper-shadow);
+}
+.beat-source {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.beat-source a { color: var(--oxblood); }
