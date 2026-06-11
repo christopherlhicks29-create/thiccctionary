@@ -1,13 +1,15 @@
 # Thiccctionary Wave Log
 
-## Wave 243 (2026-06-11, autonomous session): Thiccc Beat #4 (Teddy's first beat) + .beat-* CSS + image-regen QA
+## Wave 243 (2026-06-11, autonomous session): Thiccc Beat #4 (Teddy's first beat) + .beat-* CSS + QA fixes
 
 **Shipped:**
-1. New Thiccc Beat column: "On the Forty-Five-Foot Soccer Ball, Which Is Visible From Aircraft" by Theodore Vance (Junior Cataloguer, first beat assignment). Subject: Massport's 45-ft soccer ball at Piers Park II, East Boston (Guinness attempt vs 38 ft 11.8 in, Doha 2013; on display Jun 12-18). Facts verified against boston.com. Ruling: Thiccc (pending senior review). Fourth voice on the desk (Bertram/Bart/Spider/now Teddy) -- proves the cast range the spec calls for. Rendered + listed (homepage top-5 + articles index) + OG card.
-2. `.beat-*` CSS (kicker/deck/byline/ruling/source) -- ruling now renders as a proper oxblood-rule callout instead of a plain paragraph. styles.min.css regenerated.
-3. Daily QA: 06-11 watermelon entry landed on schedule, BUT image shows clearly seeded slices on a "Seedless Giant" entry -- fired image-regen sentinel (override "whole watermelon uncut"); regen workflow opens a PR for review. 06-10 truck image looks F-150 Raptor-style rather than F-250 Super Duty -- flagged, second regen pass queued after the first sentinel is consumed.
+1. New Thiccc Beat column: "On the Forty-Five-Foot Soccer Ball, Which Is Visible From Aircraft" by Theodore Vance (Junior Cataloguer, first beat assignment). Subject: Massport's 45-ft soccer ball at Piers Park II, East Boston (Guinness attempt vs 38 ft 11.8 in, Doha 2013; on display Jun 12-18). Facts verified against boston.com. Ruling: Thiccc (pending senior review). Fourth voice on the desk (Bertram/Bart/Spider/now Teddy). Rendered + listed (homepage top-5 + articles index) + OG card.
+2. `.beat-*` CSS (kicker/deck/byline/ruling/source); ruling now renders as a proper oxblood-rule callout. styles.min.css regenerated; cache-buster bumped v71->v72 across all 108 HTML files.
+3. Daily QA: 06-11 watermelon entry landed on schedule BUT image showed seeded slices on a "Seedless Giant" entry; fired image-regen sentinel (override "whole watermelon uncut"); PR #117 auto-merged with a correct whole-watermelon image, verified in HEAD. 06-10 truck image looks F-150 Raptor-style rather than F-250 Super Duty; regen HELD because regen does not update the photo-specific entry text ("cobblestone street") and regen PRs auto-merge with no review net. Christopher's call.
+4. Site-health 06-11 fix: dead `/reels/` nav link in generate-mailbag.js + generate-from-the-boat.js templates (and the published mailbag-2026-06-10 page, normalized to canonical 13-link nav). Root-caused so it cannot recur.
+5. Buffer sweep (Chrome extension down all run; used CI sentinels instead): queue = 14 posts scheduled through Jun 15, ZERO errored posts. buffer-status.js is broken against Buffer's current GraphQL schema (ChannelsInput! required); channel-connection status unknown, queued as follow-up. Queue refill toward ~25 blocked on Chrome (composer).
 
-**Notes:** Buffer sweep blocked this run (Chrome extension not connected). Sitemap picks up the new column on the next daily run (buildSitemap reads articles.json).
+**Follow-ups queued:** fix buffer-status.js GraphQL query; F-250 image decision; social promo of the Teddy column (OG card ready); Thiccc Beat auto-sourcing step; canon nit (pumpkin column byline "Whitmore" vs staff JSON "Pruss").
 
 ## Wave 242 (2026-06-11, autonomous session) — daily-entry self-healing actually heals now
 
