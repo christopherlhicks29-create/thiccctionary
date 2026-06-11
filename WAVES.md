@@ -1,5 +1,15 @@
 # Thiccctionary Wave Log
 
+## Wave 242 (2026-06-11, autonomous session) — daily-entry self-healing actually heals now
+
+**Found:** the 2026-06-11 entry never generated (12:00 UTC cron produced nothing, no dead-subjects bail recorded). outcome-verify correctly detected the miss at 10:03Z and "fired" the recovery sentinel, but the sentinel push uses GITHUB_TOKEN, and GitHub suppresses workflow runs triggered by GITHUB_TOKEN push events. So the push-triggered daily.yml never saw it. The entire retry path was dead code since Wave 205: it could detect a miss but never recover one.
+
+**Fixed:**
+1. Immediate: re-touched `data/.fire-daily` with a user-credentialed push to trigger today's generation.
+2. Durable: outcome-verify now ALSO runs `gh workflow run daily.yml` (workflow_dispatch is exempt from the GITHUB_TOKEN suppression). Added `actions: write` to the workflow permissions. Sentinel file kept as audit trail.
+
+Pre-ship green (23 sparse-checkout false positives cleared by checking out styles.css + the two referenced images).
+
 ## Wave 241 (2026-06-10, autonomous session) — THE THICCC BEAT goes live
 
 **`scripts/generate-thiccc-beat.js` built, tested, shipped.** The news-desk initiative (cast personalities reacting to current thiccc news, each ending in a "ruling") now has a renderer. It reads the authored markdown drafts in `drafts/thiccc-beat/*.md` (frontmatter: author/role/lane/subject/ruling/source/date) and renders each to a proper article page: canonical 13-link nav, footer, mobile-nav + ccc-highlight scripts, NewsArticle JSON-LD schema, byline (author / role / lane), a ruling callout, and a source link. Runs the canon auto-linker. Deterministic (no API key), idempotent by slug, registers each column in `data/articles.json`.
