@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jun 2026 15:48:10 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2026 14:41:28 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Watermelons, Seedless Giant</title>
+      <link>https://thiccctionary.com/entries/2026-06-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-11.html</guid>
+      <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A larger-than-life specimen of Citrullus lanatus, engineered to forgo the traditional reproductive encumbrances, resulting in an unbroken expanse of juicy grandeur. Best appreciated when viewed from a low angle, where its ground-level dominance becomes manifest.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-11-watermelons-seedless-giant.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>botanical</category><category>agriculture</category>
+    </item>
     <item>
       <title>Pickup Truck, Ford F-250</title>
       <link>https://thiccctionary.com/entries/2026-06-10.html</link>
@@ -21,6 +30,14 @@
       <description>A robust expression of vehicular heft, characterized by its imposing grille and the capacity to tow entire weekends. Especially notable when parked in tight urban quarters, where it seems to negotiate cobblestones with an innate diplomacy.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-10-pickup-truck-ford-f-250.jpg" type="image/jpeg" length="0" />
       <category>pickup truck</category><category>Ford</category><category>urban landscape</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 3</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-06-10.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-06-10.html</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 3.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Pickup Truck, F-250</title>

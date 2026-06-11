@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Cargo Plane, C-17 Globemaster",
-      "query": "c-17 globemaster cargo plane",
-      "notes": "massive military airlift"
-    },
-    {
       "subject": "Refrigerator, Subzero",
       "query": "sub-zero refrigerator kitchen",
       "notes": "tall built-in fridge"
