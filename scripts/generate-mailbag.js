@@ -181,7 +181,7 @@ async function main() {
     <a href="/archive.html" class="nav-link">The Archive</a>
     <a href="/a-z.html" class="nav-link">A-Z</a>
     <a href="/articles/" class="nav-link nav-link--active">Articles</a>
-    <a href="/reels/" class="nav-link">Reels</a>
+    <a href="/about/documents/" class="nav-link">References</a>
     <a href="/cartoons/" class="nav-link">Cartoons</a>
     <a href="/random.html" class="nav-link">Random</a>
     <a href="/compare.html" class="nav-link">Compare</a>
