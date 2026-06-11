@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # needed to dispatch daily.yml when the entry is missing
 
 jobs:
   verify:
@@ -72,3 +73,11 @@ jobs:
           git commit -m "outcome-verify: fire daily sentinel (missing $TODAY entry)"
           git pull --rebase origin main 2>&1 | tail -3
           git push origin main 2>&1 | tail -3
+          # 2026-06-11 fix: the sentinel push above uses GITHUB_TOKEN, and GitHub
+          # SUPPRESSES workflow runs for push events made with GITHUB_TOKEN, so it
+          # never actually re-triggered daily.yml (observed: 06-11 sentinel sat
+          # unconsumed while the entry stayed missing). workflow_dispatch is exempt
+          # from that suppression, so dispatch the daily workflow directly.
+          gh workflow run daily.yml --ref main && echo "Dispatched daily.yml via workflow_dispatch."
+        env:
+          GH_TOKEN: ${{ github.token }}
