@@ -1,1 +1,1 @@
-outcome-verify: missing entry detected at 10:03:30Z
+manual-resume: PO retrigger at 14:39:58Z (12:00 cron produced nothing; bot sentinel can't trigger)
