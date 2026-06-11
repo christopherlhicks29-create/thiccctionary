@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-11",
+    "word": "Watermelons, Seedless Giant",
+    "pronunciation": "/WAW-ter-mel-uhn, SEED-les JAHY-uhnt/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A larger-than-life specimen of Citrullus lanatus, engineered to forgo the traditional reproductive encumbrances, resulting in an unbroken expanse of juicy grandeur. Best appreciated when viewed from a low angle, where its ground-level dominance becomes manifest.",
+      "<em>colloq.</em> Produce that has outgrown the confines of the average picnic basket, requiring its own dedicated afternoon and a tarp."
+    ],
+    "example": "He hauled a thiccc seedless giant watermelon across the yard like a victorious war trophy. The neighborhood kids stared in awe, eyes wide with admiration.",
+    "etymology": "From Middle English 'watermelon,' from Old English 'water' + 'melon' (via Old French from Latin 'melopepon'), connoting a fruit of aquatic inclinations. The 'giant' prefix is more recent, first attested in American agricultural catalogs of the 20th century, when bigger was better and 'seedless' was a challenge to nature itself.",
+    "image": "images/2026-06-11-watermelons-seedless-giant.jpg",
+    "caption": "Plate N., A commanding presence on any summer table.",
+    "tags": [
+      "produce",
+      "botanical",
+      "agriculture"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Art Rachen",
+    "photographerUrl": "https://unsplash.com/@artrachen",
+    "unsplashUrl": "https://unsplash.com/photos/watermelon-fruit-on-white-table-izi5AnlbRIA",
+    "socialCaptions": {
+      "morning": "Watermelons, Seedless Giant—90 pounds of genetic ambition.\nA horticultural ode to excess.",
+      "afternoon": "In the 1990s, the seedless giant achieved peak massiveness.\nNow a thiccc legend.",
+      "evening": "From the archives, Watermelons, Seedless Giant.\nThe 1980s saw its rise, but gravity always wins.",
+      "reels": "44 pounds of uninhibited fruit.\nThiccc revolution—seedless."
+    }
+  },
+  {
     "date": "2026-06-10",
     "word": "Pickup Truck, Ford F-250",
     "pronunciation": "/ford ef-too-fif-tee/",
