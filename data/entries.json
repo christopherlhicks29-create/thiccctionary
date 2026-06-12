@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-12",
+    "word": "Cathedral, Concrete Brutalist",
+    "pronunciation": "/ka-thee-DRAL, kon-kreet BROO-tuh-list/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A monumental ecclesiastical structure characterized by its unapologetically bulky concrete forms and stark geometric lines; typically possessing a cavernous interior that suggests a sanctuary for contemplation and echoes.",
+      "<em>colloq.</em> A house of worship that refuses to blend into the urban landscape, instead asserting its presence with a dense, fortress-like demeanor that dares you to call it anything but thiccc."
+    ],
+    "example": "He stood before the thiccc brutalist cathedral as if daring its concrete mass to speak first. The silence was an architectural mic drop.",
+    "etymology": "From Latin 'cathedra' meaning 'seat,' referring to the bishop's chair, combined with 'brutalist' from French 'béton brut', meaning 'raw concrete'. Concrete, it seems, is the new holy water.",
+    "image": "images/2026-06-12-cathedral-concrete-brutalist.jpg",
+    "caption": "Plate N. A resolute example of brutalist architecture, daring the skyline to defy its mass.",
+    "tags": [
+      "architecture",
+      "brutalist",
+      "concrete"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 9,
+    "photographer": "Ricardo Gomez Angel",
+    "photographerUrl": "https://unsplash.com/@rgaleriacom",
+    "unsplashUrl": "https://unsplash.com/photos/a-building-with-a-pipe-in-the-middle-of-it-Xrv7PZDqUAo",
+    "socialCaptions": {
+      "morning": "Cathedral, Concrete Brutalist. Founded circa 1960s—when architecture decided less was more, but bigger was better. The faithful flock to its cavernous silence.",
+      "afternoon": "It stands with 10,000 cubic meters of concrete—an immovable feast for the eyes. The buttresses might call it 'home.' Cathedral, Concrete Brutalist.",
+      "evening": "From the archives, Cathedral, Concrete Brutalist.\n1965: The year it rose, defying both gravity and traditional aesthetics. A monument to the weight of modern spirituality.",
+      "reels": "Concrete as communion. Built, not born—1968."
+    }
+  },
+  {
     "date": "2026-06-11",
     "word": "Watermelons, Seedless Giant",
     "pronunciation": "/WAW-ter-mel-uhn, SEED-les JAHY-uhnt/",
