@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "MACAU, 0300\n\nBart's brother-in-law Reginald has not returned the office's calls. I can confirm only that I am not in Macau. The ferry was unspecified. The expense report was correct.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-06-12T19:28:02.451Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1781121116231",
