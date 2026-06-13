@@ -103,10 +103,39 @@ function headNoun(word) {
   if (toks.length) toks[toks.length - 1] = toks[toks.length - 1].replace(/s$/, '');
   return toks.join(' ');
 }
+// All significant tokens across the whole headword (both sides of the comma),
+// minus size qualifiers, singularized. Used for phrase-containment matching.
+function sigTokens(word) {
+  return (String(word || '').toLowerCase().match(/[a-z0-9-]+/g) || [])
+    .filter(t => !SIZE_QUALIFIERS.has(t))
+    .map(t => t.replace(/s$/, ''));
+}
+function containsSeq(arr, seq) {
+  for (let i = 0; i + seq.length <= arr.length; i++) {
+    let ok = true;
+    for (let j = 0; j < seq.length; j++) if (arr[i + j] !== seq[j]) { ok = false; break; }
+    if (ok) return true;
+  }
+  return false;
+}
+// Wave 245: returns the colliding past word if `subject` is the same subject as
+// anything in `pastWords`. Two signals: (1) identical core head noun, and (2) an
+// existing MULTI-WORD subject head appearing verbatim inside the candidate -- this
+// catches rephrasings that lead with a different noun, e.g. "Coil, Mooring Rope
+// Naval" vs the catalogued "Mooring Rope, Naval Hawser". The multi-word guard
+// avoids false positives on common single nouns (truck, stone) that legitimately
+// recur across distinct subjects.
 function subjectFamilyDup(subject, pastWords) {
   const h = headNoun(subject);
   if (!h) return null;
-  return pastWords.find(w => headNoun(w) === h) || null;
+  const subjTokens = sigTokens(subject);
+  for (const w of pastWords) {
+    const ph = headNoun(w);
+    if (!ph) continue;
+    if (ph === h) return w;
+    if (ph.includes(' ') && containsSeq(subjTokens, ph.split(' '))) return w;
+  }
+  return null;
 }
 
 async function pickSubject(usedWords) {
@@ -775,16 +804,41 @@ async function main() {
     const raw = await fs.readFile(path.join(ROOT, 'data', 'subject-queue.json'), 'utf8');
     const parsed = JSON.parse(raw);
     if (Array.isArray(parsed.queue) && parsed.queue.length > 0) {
-      const first = parsed.queue[0];
-      // Item may be a string or an object {subject, query?, notes?}
-      if (typeof first === 'string') {
-        queueOverride = first;
-      } else if (first && typeof first === 'object') {
-        queueOverride = first.subject || null;
-        queueQueryOverride = first.query || null;   // explicit Unsplash query, if author set one
+      // Wave 245: the queue/override path previously bypassed the dup guard, so a
+      // queued subject that repeats the catalog (e.g. "Coil, Mooring Rope Naval"
+      // after "Mooring Rope, Naval Hawser") would ship. Now we skip past any
+      // queue items that collide with the catalog, dropping them with a log, and
+      // pull the first clean one.
+      const queueCatalog = [...new Set([...entries.map(e => e.word), ...(replacedWord ? [replacedWord] : [])])];
+      const subjectOf = it => (typeof it === 'string') ? it : (it && it.subject) || null;
+      let remaining = [...parsed.queue];
+      let first = null;
+      while (remaining.length > 0) {
+        const candidate = remaining[0];
+        const candSubject = subjectOf(candidate);
+        const dup = candSubject ? subjectFamilyDup(candSubject, queueCatalog) : null;
+        if (dup) {
+          console.log(`Subject queue: dropping "${candSubject}" - duplicates catalogued "${dup}".`);
+          remaining = remaining.slice(1);
+          continue;
+        }
+        first = candidate;
+        break;
       }
-      queueAfterPull = { ...parsed, queue: parsed.queue.slice(1) };
-      console.log(`Subject queue: pulling "${queueOverride}" (${parsed.queue.length} item(s) before pull)`);
+      if (first !== null) {
+        if (typeof first === 'string') {
+          queueOverride = first;
+        } else if (first && typeof first === 'object') {
+          queueOverride = first.subject || null;
+          queueQueryOverride = first.query || null;   // explicit Unsplash query, if author set one
+        }
+        queueAfterPull = { ...parsed, queue: remaining.slice(1) };
+        console.log(`Subject queue: pulling "${queueOverride}" (${parsed.queue.length} item(s) before pull, ${parsed.queue.length - remaining.length} dropped as dup).`);
+      } else if (parsed.queue.length > 0) {
+        // Every queued item was a dup; drop them all and fall through to the auto-picker.
+        queueAfterPull = { ...parsed, queue: [] };
+        console.log(`Subject queue: all ${parsed.queue.length} item(s) were catalog dups; cleared queue, falling through to auto-picker.`);
+      }
     }
   } catch (e) { /* file absent or malformed, normal, just skip queue */ }
 
