@@ -65,25 +65,30 @@ jobs:
           FORCE_REGENERATE: 'true'
         run: |
           set +e
-          # Parse the sentinel line by line. Format per line:
-          #   YYYY-MM-DD
-          #   YYYY-MM-DD | Subject Here | optional unsplash query
-          # Leading-# comment lines and blanks are skipped, so a date in a
-          # comment can never be regenerated.
-          grep -vE '^[[:space:]]*#' ../data/.regen-entry | while IFS='|' read -r f1 f2 f3; do
-            D=$(echo "$f1" | tr -d '[:space:]')
+          # Read all non-comment lines into an array FIRST (mapfile), so the
+          # generator process can't consume the loop's stdin (the old
+          # `grep | while read` form let node drain the pipe and silently skip
+          # lines). Each line: "YYYY-MM-DD" or "YYYY-MM-DD | Subject | query".
+          # Comment (#) and blank lines are filtered out, so a date in a comment
+          # can never be regenerated. Every generator call gets </dev/null.
+          mapfile -t LINES < <(grep -vE '^[[:space:]]*#' ../data/.regen-entry)
+          for LINE in "${LINES[@]}"; do
+            D=$(echo "$LINE" | cut -d'|' -f1 | tr -d '[:space:]')
             case "$D" in
               [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]) ;;
               *) continue ;;
             esac
-            SUBJ=$(echo "$f2" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            SUBJ=$(echo "$LINE" | cut -s -d'|' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
             echo "=============================================="
             echo "Regenerating entry for $D ${SUBJ:+(subject override: $SUBJ)}"
             echo "=============================================="
             if [ -n "$SUBJ" ]; then
-              TARGET_DATE="$D" SUBJECT_OVERRIDE="$SUBJ" node generate-daily-with-retry.js 2>&1 | tee "/tmp/regen-$D.log"
+              # Explicit subject: call generate-daily.js DIRECTLY (the retry
+              # wrapper drops SUBJECT_OVERRIDE on retry and falls back to the
+              # auto-picker, which is what reintroduced duplicates).
+              TARGET_DATE="$D" SUBJECT_OVERRIDE="$SUBJ" node generate-daily.js </dev/null 2>&1 | tee "/tmp/regen-$D.log"
             else
-              TARGET_DATE="$D" node generate-daily-with-retry.js 2>&1 | tee "/tmp/regen-$D.log"
+              TARGET_DATE="$D" node generate-daily-with-retry.js </dev/null 2>&1 | tee "/tmp/regen-$D.log"
             fi
             echo "::notice::regen $D exit=${PIPESTATUS[0]}"
           done
