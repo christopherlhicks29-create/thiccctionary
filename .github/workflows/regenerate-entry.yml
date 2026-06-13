@@ -1,0 +1,121 @@
+name: Regenerate Entry (past date)
+
+# Force-regenerates one or more PAST-dated entries to fresh subjects.
+# Triggered by pushing data/.regen-entry whose lines are target dates
+# (YYYY-MM-DD, one per line). generate-daily.js already honors TARGET_DATE;
+# this workflow loops the dates, rebuilds ALL entry pages so prev/next nav is
+# correct for the mid-array entries, runs the editorial-sanity gate, then
+# commits straight to main (no PR). Solves the "regenerate a past entry" gap.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.regen-entry'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regen-entry
+  cancel-in-progress: false
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install libwebp-tools (for WebP variant)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
+
+      - name: Read target dates from sentinel
+        id: dates
+        run: |
+          if [ ! -s data/.regen-entry ]; then
+            echo "No data/.regen-entry sentinel or it is empty; nothing to do."
+            echo "have=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Strip comments/blank lines; keep YYYY-MM-DD tokens only.
+          DATES=$(grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' data/.regen-entry | sort -u || true)
+          if [ -z "$DATES" ]; then
+            echo "Sentinel present but contains no valid dates."
+            echo "have=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Target dates:"; echo "$DATES"
+          # newline-join -> space for the loop
+          echo "list=$(echo $DATES)" >> "$GITHUB_OUTPUT"
+          echo "have=true" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate each target date
+        if: steps.dates.outputs.have == 'true'
+        working-directory: scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          FORCE_REGENERATE: 'true'
+        run: |
+          set +e
+          for D in ${{ steps.dates.outputs.list }}; do
+            echo "=============================================="
+            echo "Regenerating entry for $D"
+            echo "=============================================="
+            TARGET_DATE="$D" node generate-daily-with-retry.js 2>&1 | tee "/tmp/regen-$D.log"
+            echo "::notice::regen $D exit=${PIPESTATUS[0]}"
+          done
+
+      - name: Rebuild all entry pages + IS pages (fix nav + sitemap)
+        if: steps.dates.outputs.have == 'true'
+        run: |
+          node scripts/build-entry-pages.js
+          node scripts/build-is-pages.js || echo "::warning::build-is-pages had a non-zero exit (non-fatal)"
+
+      - name: Editorial-sanity gate
+        if: steps.dates.outputs.have == 'true'
+        run: |
+          node scripts/editorial-sanity.js | tee /tmp/sanity.log
+          if grep -qE '[1-9][0-9]* RED' /tmp/sanity.log; then
+            echo "::error::editorial-sanity reported RED issues. Not committing."
+            exit 1
+          fi
+
+      - name: Clear sentinel + commit to main
+        if: steps.dates.outputs.have == 'true'
+        run: |
+          rm -f data/.regen-entry
+          git config user.email "actions@github.com"
+          git config user.name "Regenerate Entry (auto)"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing changed; not committing."
+            exit 0
+          fi
+          git commit -m "Regenerate past entries: ${{ steps.dates.outputs.list }}"
+          for i in 1 2 3; do
+            git pull --rebase origin main 2>&1 | tail -3 || true
+            if git push origin main 2>&1; then echo "pushed"; break; fi
+            sleep $((i*3))
+          done
+
+      - name: Always remove sentinel even on failure
+        if: always()
+        run: |
+          if [ -f data/.regen-entry ]; then
+            rm -f data/.regen-entry
+            git config user.email "actions@github.com"
+            git config user.name "Regenerate Entry (auto)"
+            git add data/.regen-entry
+            git commit -m "Clear .regen-entry sentinel (post-run cleanup)" || true
+            for i in 1 2 3; do
+              git pull --rebase origin main 2>&1 | tail -3 || true
+              if git push origin main 2>&1; then break; fi
+              sleep $((i*3))
+            done
+          fi
