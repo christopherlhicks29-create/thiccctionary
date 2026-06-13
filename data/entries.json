@@ -65,16 +65,16 @@
   },
   {
     "date": "2026-06-11",
-    "word": "Hamburger, Double-Stack",
-    "pronunciation": "/HAM-bur-ger, DUH-buhl-STAK/",
+    "word": "Hamburger, Triple-Stack",
+    "pronunciation": "/HAM-bur-ger, TRIP-uhl-STAK/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A burger configuration featuring two beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.",
-      "<em>colloq.</em> The culinary equivalent of a duplex: two stories of savory abundance refusing to be confined by a single napkin."
+      "A burger configuration featuring three beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.",
+      "<em>colloq.</em> The culinary equivalent of a triplex: three stories of savory abundance refusing to be confined by a single napkin."
     ],
-    "example": "He faced the thiccc double-stack hamburger with determination, the bun all but whispering 'carpe diem.'",
-    "etymology": "Derived from the German city of Hamburg, the birthplace of the original 'Hamburg steak', combined with the English 'double' from Middle English 'doble', denoting a pair. A linguistic full-course meal.",
-    "image": "images/2026-06-11-hamburger-double-stack.jpg",
+    "example": "He faced the thiccc triple-stack hamburger with determination, the bun all but whispering 'carpe diem.'",
+    "etymology": "Derived from the German city of Hamburg, the birthplace of the original 'Hamburg steak', combined with 'triple' from Latin 'triplus', denoting threefold. A linguistic full-course meal.",
+    "image": "images/2026-06-11-hamburger-triple-stack.jpg",
     "caption": "Plate N. A specimen whose layers defy architectural convention.",
     "tags": [
       "burger",
@@ -89,10 +89,10 @@
     "photographerUrl": "https://unsplash.com/@amir_v_ali",
     "unsplashUrl": "https://unsplash.com/photos/burger-with-patty-dish-xVKleclpof4",
     "socialCaptions": {
-      "morning": "Hamburger, Double-Stack—an architectural marvel.\nTwo patties, one mission: vertical domination.",
-      "afternoon": "The Double-Stack's gravitational pull is measurable—\nFries within a 5-inch radius never stood a chance.\n#DoubleStack",
-      "evening": "From the archives, Hamburger, Double-Stack.\nBorn in Hamburg, but it speaks fluent 'thiccc'.",
-      "reels": "Two patties, one destiny. Double-Stack."
+      "morning": "Hamburger, Triple-Stack—an architectural marvel.\nThree patties, one mission: vertical domination.",
+      "afternoon": "The Triple-Stack's gravitational pull is measurable—\nFries within a 5-inch radius never stood a chance.\n#TripleStack",
+      "evening": "From the archives, Hamburger, Triple-Stack.\nBorn in Hamburg, but it speaks fluent 'thiccc'.",
+      "reels": "Three patties, one destiny. Triple-Stack."
     }
   },
   {
