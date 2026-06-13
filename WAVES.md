@@ -1,5 +1,13 @@
 # Thiccctionary Wave Log
 
+## Wave 246 (2026-06-12, autonomous session): Missing OG card generated
+
+Generated `articles/og/mailbag-2026-06-10.png` (Filed Replies, Vol. 3). The page referenced an OG card never built when the column shipped 2026-06-10, so social shares fell back to a non-existent image. Rendered the single card via build-article-og-images.py (importlib, target slug only, to avoid churning the other deterministic cards). Verified 1200x630, on-brand cream/oxblood. Clears site-health's last real missing-og:image flag.
+
+## Wave 245 (2026-06-12, autonomous session): Fix double-<h1> on all Thiccc Beat columns
+
+site-health flagged all 4 Thiccc Beat columns with 2 <h1> tags (masthead wordmark + article headline). Every other article type (mailbag, from-the-boat) uses <h1 class="wordmark"> for the logo and <h2> for the column heading. generate-thiccc-beat.js was emitting the headline as a second <h1 class="article-headline">. Changed to <h2 class="article-headline"> (class-based styling, no CSS/cache-buster change) and regenerated all 4 columns. Fresh site-health: multiple-<h1> now 0. Fixes current and every future column.
+
 ## Wave 243 (2026-06-11, autonomous session): Thiccc Beat #4 (Teddy's first beat) + .beat-* CSS + QA fixes
 
 **Shipped:**
