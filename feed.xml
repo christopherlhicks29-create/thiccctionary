@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jun 2026 02:11:52 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 03:42:45 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -14,13 +14,13 @@
       <link>https://thiccctionary.com/</link>
     </image>
     <item>
-      <title>Sofa, Chesterfield Tufted</title>
+      <title>Bookshelf, Floor-to-Ceiling Library</title>
       <link>https://thiccctionary.com/entries/2026-06-13.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-13.html</guid>
       <pubDate>Sat, 13 Jun 2026 12:00:00 GMT</pubDate>
-      <description>A substantial seating apparatus characterized by deep button tufting and rolled arms, often extending generously in length and girth to comfortably accommodate a small book club or a herd of cats.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-06-13-sofa-chesterfield-tufted.jpg" type="image/jpeg" length="0" />
-      <category>furniture</category><category>upholstery</category><category>decor</category>
+      <description>A towering shelving unit extending from floor to ceiling, designed to support a wealth of literary knowledge and, frequently, an existential number of dust jackets.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-13-bookshelf-floor-to-ceiling-library.jpg" type="image/jpeg" length="0" />
+      <category>library</category><category>architecture</category><category>books</category>
     </item>
     <item>
       <title>Cathedral, Concrete Brutalist</title>

@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Bookshelf, Floor-to-Ceiling Library",
-      "query": "library wall bookshelf",
-      "notes": "wall of books"
-    },
-    {
       "subject": "Bell, Cathedral Bronze",
       "query": "cathedral bronze bell",
       "notes": "large church bell"
