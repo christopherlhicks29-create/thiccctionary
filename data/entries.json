@@ -1,34 +1,34 @@
 [
   {
     "date": "2026-06-13",
-    "word": "Bookshelf, Floor-to-Ceiling Library",
-    "pronunciation": "/BUK-shelf, FLOR-tu-SEE-ling LI-brer-ee/",
+    "word": "tugboat",
+    "pronunciation": "/tug-BOAT/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A towering shelving unit extending from floor to ceiling, designed to support a wealth of literary knowledge and, frequently, an existential number of dust jackets.",
-      "<em>colloq.</em> The architectural equivalent of a book lover's gravitational well, offering no escape once entered."
+      "A sturdy, compact watercraft designed for towing or pushing larger vessels, often characterized by its robust hull and unapologetic rearward girth.",
+      "<em>colloq.</em> A nautical powerhouse that displays unyielding resilience and a presence that cannot be ignored, especially when viewed astern under flattering light."
     ],
-    "example": "The librarian gazed at the thiccc floor-to-ceiling bookshelf, contemplating the layers of fiction and dust. It was a literary Everest.",
-    "etymology": "From Old English 'bōc' meaning 'book' and 'sceap' meaning 'shelf', combined with 'flōr' and 'ceiling', words that have held up better than the occasional shelf brimming with encyclopedias.",
-    "image": "images/2026-06-13-bookshelf-floor-to-ceiling-library.jpg",
-    "caption": "Plate N. A robust testament to the weight of wisdom.",
+    "example": "The harbor's red tugboat sat thiccc at the dock, its hull projecting an aura of steadfastness that eclipsed the skyline.",
+    "etymology": "From English 'tug' (to pull) + 'boat' (small vessel), first attested in 1800s maritime jargon. It may not be size that matters, but the attitude in the wake certainly does.",
+    "image": "images/2026-06-13-tugboat.jpg",
+    "caption": "Plate N. A red tugboat, docked with commanding presence.",
     "tags": [
-      "library",
-      "architecture",
-      "books"
+      "nautical",
+      "maritime",
+      "harbor"
     ],
-    "category": "Architecture & Infrastructure",
-    "bookReady": true,
-    "humorScore": 8,
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
     "photoScore": 8,
-    "photographer": "Jack Bodine",
-    "photographerUrl": "https://unsplash.com/@jackbodine",
-    "unsplashUrl": "https://unsplash.com/photos/rows-of-colorful-books-on-library-shelves-kXFg4q18IOQ",
+    "photographer": "Kathleen Culbertson",
+    "photographerUrl": "https://unsplash.com/@auntcake49",
+    "unsplashUrl": "https://unsplash.com/photos/a-red-tug-boat-docked-in-a-harbor-zcIa3RZnbX8",
     "socialCaptions": {
-      "morning": "Bookshelf, Floor-to-Ceiling Library—\na vertical monument to bibliophilia.\n14 feet tall, yet still bends under the weight of War and Peace.",
-      "afternoon": "In 1455, Gutenberg gave us the printed page.\nIn 1879, we gave ourselves the floor-to-ceiling bookshelf.\nA towering nod to human ambition.",
-      "evening": "From the archives, Bookshelf, Floor-to-Ceiling Library.\n1,000 linear feet of literary ambition.\nThe only thing taller—its unread pile.",
-      "reels": "A thousand books in one glance.\nFloor-to-Ceiling Library.\nNo short stories here."
+      "morning": "Tugboat—5,000 horsepower in a 100-foot frame.\nAn overachiever in maritime proportions.",
+      "afternoon": "With a draft of 15 feet, it kisses the harbor floor.\nA gentle giant in disguise—tugboat.",
+      "evening": "From the archives, tugboat.\nSince 1890, the unsung hero of the harbor,\nMoving giants with a whisper.",
+      "reels": "12 knots top speed.\nTugboat: sprinting by other definitions."
     }
   },
   {
