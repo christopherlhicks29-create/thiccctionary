@@ -41,6 +41,17 @@ function latestEntryDate() {
   } catch { return null; }
 }
 
+// Wave 244e: the word currently catalogued for `date` (null if none). Used to
+// detect whether a FORCE_REGENERATE actually REPLACED the entry vs. left the
+// pre-existing one in place after a critique bail.
+function entryWordFor(date) {
+  try {
+    const e = JSON.parse(fs.readFileSync(ENTRIES, 'utf8'));
+    const hit = e.find(x => x.date === date);
+    return hit ? hit.word : null;
+  } catch { return null; }
+}
+
 function queueLength() {
   try {
     const q = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'subject-queue.json'), 'utf8'));
@@ -62,6 +73,15 @@ console.log(`[retry-wrapper] queue length: ${queueLength()}`);
 // replaced. When forcing, fall through; generate-daily.js does the actual
 // splice+replace (and now avoids the subject it is replacing, Wave 244c).
 const forceRegen = process.env.FORCE_REGENERATE === 'true';
+// Snapshot the subject we're replacing so a forced regen knows it succeeded
+// only when the catalogued word for this date actually CHANGES (a critique
+// bail leaves the old entry on disk, which previously looked like success).
+const originalWord = forceRegen ? entryWordFor(targetDate) : null;
+function landed() {
+  if (latestEntryDate() !== targetDate) return false;
+  if (forceRegen && originalWord) return entryWordFor(targetDate) !== originalWord;
+  return true;
+}
 if (latestEntryDate() === targetDate && !forceRegen) {
   console.log(`[retry-wrapper] entry for ${targetDate} already exists. Nothing to do.`);
   process.exit(0);
@@ -89,12 +109,13 @@ for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     // real error. Don't retry on real errors - propagate.
     process.exit(1);
   }
-  // Did the entry actually land?
-  if (latestEntryDate() === targetDate) {
+  // Did the entry actually land? (For a forced regen, "landed" means the
+  // catalogued word changed - not merely that an entry exists for the date.)
+  if (landed()) {
     console.log(`[retry-wrapper] entry for ${targetDate} landed on attempt ${attempt}.`);
     process.exit(0);
   }
-  console.log(`[retry-wrapper] attempt ${attempt} bailed (no entry for ${targetDate} yet). Queue now has ${queueLength()} item(s).`);
+  console.log(`[retry-wrapper] attempt ${attempt} bailed (no NEW entry for ${targetDate} yet). Queue now has ${queueLength()} item(s).`);
   // With an override, retrying with the same SUBJECT_OVERRIDE would
   // just bail the same way. Override callers (batch-entries, env) want
   // exactly one attempt.
@@ -104,8 +125,8 @@ for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
   }
 }
 
-if (latestEntryDate() !== targetDate) {
-  console.log(`[retry-wrapper] exhausted ${MAX_ATTEMPTS} attempts. No entry landed for ${targetDate}.`);
+if (!landed()) {
+  console.log(`[retry-wrapper] exhausted ${MAX_ATTEMPTS} attempts. No NEW entry landed for ${targetDate}.`);
   // Exit 0 (graceful) so the workflow's "Always commit trace" still runs
   // and the existing dead-subjects log captures the failures.
   process.exit(0);
