@@ -73,8 +73,13 @@ function renderBody(body) {
 }
 
 function buildPage({ meta, headline, bodyHtml, slug }) {
-  const title = `${headline}, The Thiccc Beat`;
-  const desc = deDash(`${meta.author} on ${meta.subject}. Ruling: ${meta.ruling}. The Thiccc Beat, the desk reacts to the news.`).slice(0, 200);
+  // Wave 247: keep title <=70 and meta description <=165 (site-health SEO limits).
+  // Append the ", The Thiccc Beat" suffix only when it still fits; truncate at a
+  // word boundary rather than mid-word.
+  const clamp = (str, max) => str.length <= max ? str : str.slice(0, max).replace(/\s+\S*$/, '');
+  const titleSuffix = ', The Thiccc Beat';
+  const title = (headline + titleSuffix).length <= 70 ? headline + titleSuffix : clamp(headline, 70);
+  const desc = clamp(deDash(`${meta.author} on ${meta.subject}. Ruling: ${meta.ruling}. The Thiccc Beat, the desk reacts to the news.`), 165);
   const ogImg = `https://thiccctionary.com/articles/og/${slug}.png`;
   const url = `https://thiccctionary.com/articles/${slug}.html`;
   const schema = {
