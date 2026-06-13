@@ -43,7 +43,7 @@ jobs:
             exit 0
           fi
           # Strip comments/blank lines; keep YYYY-MM-DD tokens only.
-          DATES=$(grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' data/.regen-entry | sort -u || true)
+          DATES=$(grep -vE '^[[:space:]]*#' data/.regen-entry | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort -u || true)
           if [ -z "$DATES" ]; then
             echo "Sentinel present but contains no valid dates."
             echo "have=false" >> "$GITHUB_OUTPUT"

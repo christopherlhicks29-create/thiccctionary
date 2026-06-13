@@ -1,34 +1,34 @@
 [
   {
     "date": "2026-06-13",
-    "word": "Tarball, Bituminous",
-    "pronunciation": "/TAR-bawl, bi-TOO-mi-nus/",
+    "word": "Stove, Wood-Burning Cast Iron",
+    "pronunciation": "/wood-BURN-ing CAST i-ron STOVE/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A dense globule of petroleum residue characterized by its formidable mass and adhesive surface, frequently found resting comfortably amidst coastal aggregates.",
-      "<em>colloq.</em> The original heavyweight of the shoreline, a tarball defies both gravity and good taste in sunlit profile."
+      "A heating apparatus of substantial mass and poise, constructed from cast iron, designed for wood fuel consumption. Often found in settings with high aesthetic and thermal expectations.",
+      "<em>colloq.</em> A thermal powerhouse that refuses to budge even when the house trembles, known for its unapologetic dominance over domestic climate zones."
     ],
-    "example": "He stumbled upon a thiccc tarball lounging between the pebbles, a beached heavyweight contemplating its next move.",
-    "etymology": "From 'tar' (Middle English 'ter', from Old English 'teoru', viscous substance) + 'ball' (from Old English 'bealluc', a rounded mass). First documented in coastal clean-up logs, where it became an object of both derision and admiration.",
-    "image": "images/2026-06-13-tarball-bituminous.jpg",
-    "caption": "Plate N. A bituminous tarball in its natural habitat, embracing its own gravity.",
+    "example": "He installed a thiccc cast iron wood-burning stove in the cabin. The forest agreed to warm up to it.",
+    "etymology": "From Middle English 'stove', from Old English 'stofa', meaning heated room, combined with 'iron', from Proto-Germanic *isarnan, indicating a novel method of not letting the cold win.",
+    "image": "images/2026-06-13-stove-wood-burning-cast-iron.jpg",
+    "caption": "Plate N. The Varde wood-burning stove, poised in eternal readiness for brisk evenings.",
     "tags": [
-      "tarball",
-      "bituminous",
-      "shoreline"
+      "heating",
+      "domestic",
+      "cast iron"
     ],
-    "category": "Industrial Machinery",
-    "bookReady": true,
-    "humorScore": 8,
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 6,
     "photoScore": 8,
-    "photographer": "Alex Plesovskich",
-    "photographerUrl": "https://unsplash.com/@aples",
-    "unsplashUrl": "https://unsplash.com/photos/green-metal-machine-on-brown-hill-under-white-clouds-during-daytime-IENTzPfbbXo",
+    "photographer": "Sven Brandsma",
+    "photographerUrl": "https://unsplash.com/@seffen99",
+    "unsplashUrl": "https://unsplash.com/photos/black-fireplace-HIvxkkNPPfk",
     "socialCaptions": {
-      "morning": "Tarball, Bituminous. Formidable by nature—between 1 and 10 centimeters in diameter. A coastal heavyweight, contemplating eternal rest.",
-      "afternoon": "Rolling ashore since the dawn of oil exploration—defying beachcombers since 1869. Thiccc tarball.",
-      "evening": "From the archives, Tarball, Bituminous.\nOnce a mere speck in the ocean, now a beach-bound philosopher—pondering viscosity.",
-      "reels": "Bituminous veteran of the coast—10,000 years of geological experience. Thiccc."
+      "morning": "Stove, Wood-Burning Cast Iron.\nBorn of heat and iron—2,000°F in its belly.\nThe cabin's heart—beating since the 18th century.",
+      "afternoon": "When the mercury drops below 32°F, it engages.\nA silent truce with winter, forged in iron.\nThe ultimate fireside companion—Wood-Burning Cast Iron Stove.",
+      "evening": "From the archives, Stove, Wood-Burning Cast Iron.\nWeighing in at 300 pounds, it sits—immovable.\nThe hearth's sovereign since the days of horse-drawn carriages.",
+      "reels": "18th-century roots.\n21st-century heat.\nThicc iron legacy."
     }
   },
   {
