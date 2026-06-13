@@ -88,6 +88,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/entries/2026-06-13.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/entries/2026-06-12.html</loc>
     <lastmod>2026-06-12</lastmod>
     <priority>0.6</priority>
@@ -379,6 +384,11 @@
   </url>
   <url>
     <loc>https://thiccctionary.com/is-it-thiccc/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/is/sofa-thiccc/</loc>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -733,13 +743,19 @@
   </url>
   <url>
     <loc>https://thiccctionary.com/is/pickup-truck-vehicles-thiccc/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/is/sofa-domestic-goods-thiccc/</loc>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://thiccctionary.com/is/pumpkin-produce-thiccc/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

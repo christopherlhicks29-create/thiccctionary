@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-13",
+    "word": "Sofa, Chesterfield Tufted",
+    "pronunciation": "/chess-ter-feeld tuf-ted/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A substantial seating apparatus characterized by deep button tufting and rolled arms, often extending generously in length and girth to comfortably accommodate a small book club or a herd of cats.",
+      "<em>colloq.</em> The sofa that doesn't just sit in the living room; it presides over it, casting a shadow of distinguished thicccness."
+    ],
+    "example": "He sunk into the thiccc Chesterfield sofa, the tufted surface swallowing him whole. Even the family dog knew his place on the armrest.",
+    "etymology": "From the 4th Earl of Chesterfield, who commissioned the first of its kind in the mid-18th century. The term 'tufted' refers to the act of fastening the upholstery with buttons, because apparently, sofas need accessories too.",
+    "image": "images/2026-06-13-sofa-chesterfield-tufted.jpg",
+    "caption": "Plate N. A Chesterfield sofa, exhibiting unparalleled tufted thicccness.",
+    "tags": [
+      "furniture",
+      "upholstery",
+      "decor"
+    ],
+    "category": "Domestic Goods",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 8,
+    "photographer": "Johnny Briggs",
+    "photographerUrl": "https://unsplash.com/@johnnyboylee",
+    "unsplashUrl": "https://unsplash.com/photos/a-couch-with-yellow-pillows-Asheyr3zRLE",
+    "socialCaptions": {
+      "morning": "Sofa, Chesterfield Tufted. A loyal confidant since the 18th century—offering support to both humans and their existential crises.",
+      "afternoon": "The Chesterfield: where leather meets lineage. It has witnessed countless book clubs devolve into napping sessions. #Sofa #ChesterfieldTufted",
+      "evening": "From the archives, Sofa, Chesterfield Tufted.\nButton-tufted upholstery—because no one should face the world without a little flair.",
+      "reels": "Four rolled arms and a top-tier pedigree. Chesterfield Tufted—thiccc enough for endless debates on tea vs. coffee."
+    }
+  },
+  {
     "date": "2026-06-12",
     "word": "Cathedral, Concrete Brutalist",
     "pronunciation": "/ka-thee-DRAL, kon-kreet BROO-tuh-list/",
