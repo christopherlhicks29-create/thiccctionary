@@ -125,15 +125,27 @@ function containsSeq(arr, seq) {
 // Naval" vs the catalogued "Mooring Rope, Naval Hawser". The multi-word guard
 // avoids false positives on common single nouns (truck, stone) that legitimately
 // recur across distinct subjects.
+// Wave 251: brand-family guard. headNoun keeps model numbers ("boeing 787" vs
+// "boeing 777x"), so same-brand/different-model subjects slipped past the family
+// check and the catalog accumulated 3 Boeings and 2 Baggers. If a subject shares
+// any brand token (curated list below) with a past subject, treat it as a dup so
+// only one entry per brand ships. Curated to real leading brands only, so generic
+// shared words ("cement", "pipe") are NOT affected.
+const BRAND_FAMILIES = new Set(['boeing','airbus','bagger','ford','chevrolet','chevy','ram','dodge','toyota','caterpillar','komatsu','liebherr','tesla','frigidaire','steinway','maersk']);
+function brandTokens(s) {
+  return (String(s || '').toLowerCase().match(/[a-z0-9]+/g) || []).filter(t => BRAND_FAMILIES.has(t));
+}
 function subjectFamilyDup(subject, pastWords) {
   const h = headNoun(subject);
   if (!h) return null;
   const subjTokens = sigTokens(subject);
+  const subjBrands = new Set(brandTokens(subject));
   for (const w of pastWords) {
     const ph = headNoun(w);
     if (!ph) continue;
     if (ph === h) return w;
     if (ph.includes(' ') && containsSeq(subjTokens, ph.split(' '))) return w;
+    if (subjBrands.size && brandTokens(w).some(b => subjBrands.has(b))) return w;
   }
   return null;
 }

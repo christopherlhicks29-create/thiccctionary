@@ -11,5 +11,56 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Donut, Boston Cream",
+      "query": "boston cream donut",
+      "notes": "frame-filling food close-up; clears critique gate"
+    },
+    {
+      "subject": "Espresso Machine, Commercial",
+      "query": "commercial espresso machine",
+      "notes": "product shot, frame-filling"
+    },
+    {
+      "subject": "Accordion, Piano",
+      "query": "piano accordion",
+      "notes": "instrument, distinct from tuba/organ/drum"
+    },
+    {
+      "subject": "Cinder Block, Concrete",
+      "query": "concrete cinder block",
+      "notes": "industrial, blocky/thiccc"
+    },
+    {
+      "subject": "Jackfruit, Whole",
+      "query": "whole jackfruit",
+      "notes": "largest tree fruit; produce variety"
+    },
+    {
+      "subject": "Double Bass, Upright",
+      "query": "upright double bass",
+      "notes": "instrument; distinct from tuba"
+    },
+    {
+      "subject": "Bulldog, English",
+      "query": "english bulldog",
+      "notes": "chunky animal, frame-filling close-ups"
+    },
+    {
+      "subject": "Mattress, Pillow-Top",
+      "query": "pillow top mattress",
+      "notes": "domestic, thick/girthy"
+    },
+    {
+      "subject": "Bratwurst, Coiled",
+      "query": "coiled bratwurst sausage",
+      "notes": "food, frame-filling"
+    },
+    {
+      "subject": "Boombox, Vintage",
+      "query": "vintage boombox stereo",
+      "notes": "product shot, chunky 80s tech"
+    }
+  ]
 }

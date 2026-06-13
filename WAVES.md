@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 251 (2026-06-13, autonomous session): Brand-family dedup guard + queue refill
+
+Root-cause fixes after the duplicate cleanup exposed two gaps. (1) Brand-family guard in subjectFamilyDup (generate-daily.js): headNoun keeps model numbers, so "Boeing 787" vs "Boeing 777X" and "Bagger 293" vs "Bagger 288" evaded the family check and the catalog accumulated 3 Boeings / 2 Baggers. Added a curated BRAND_FAMILIES set; any subject sharing a brand token with a past entry is now treated as a dup. Verified it flags Boeing/Bagger families while leaving generic shared words (cement, pipe) untouched. (2) Refilled the empty subject-queue with 10 vetted, frame-filling, non-duplicate subjects across diverse categories (food, instruments, industrial, one produce, one animal), biased toward subjects that clear the critique gate. All 10 verified non-dup against the live catalog. Also hardened the regenerate-entry workflow this session: comment-stripped date parsing, mapfile + /dev/null stdin (was silently skipping lines), and direct generate-daily.js calls for explicit subject overrides.
+
 ## Wave 250 (2026-06-13, autonomous session): Headword-format guard (anti-"tugboat")
 
 Durable fix for the 2026-06-13 "tugboat" incident (a lowercase force-regen seed produced a bare lowercase single-token headword that broke catalog convention). Added a check to `shapeValidate()` in generate-daily.js: any generated headword that does not start with an uppercase character is rejected, forcing the model to retry with a proper Title Case headword. Added a title-case safety net in the fail-soft salvage block so even a 3x-retry failure ships a capitalized headword. Verified zero false positives across all 59 live entries (none start lowercase) and 7/7 guard unit cases pass. Code-only, pre-ship green. Closes P0 #1 from the 06-13 PO review.
