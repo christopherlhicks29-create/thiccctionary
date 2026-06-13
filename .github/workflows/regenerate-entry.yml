@@ -34,7 +34,7 @@ jobs:
       - name: Install libwebp-tools (for WebP variant)
         run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
 
-      - name: Read target dates from sentinel
+      - name: Validate sentinel
         id: dates
         run: |
           if [ ! -s data/.regen-entry ]; then
@@ -42,16 +42,18 @@ jobs:
             echo "have=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          # Strip comments/blank lines; keep YYYY-MM-DD tokens only.
-          DATES=$(grep -vE '^[[:space:]]*#' data/.regen-entry | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort -u || true)
-          if [ -z "$DATES" ]; then
-            echo "Sentinel present but contains no valid dates."
+          # Each non-comment line: "YYYY-MM-DD" or "YYYY-MM-DD | Subject | unsplash query".
+          # Comment lines (leading #) and blanks are ignored. We parse the file
+          # directly in the regen step so a date appearing in a comment cannot be
+          # picked up (the leading-# filter is the guard).
+          COUNT=$(grep -vE '^[[:space:]]*#' data/.regen-entry | grep -cE '^[[:space:]]*[0-9]{4}-[0-9]{2}-[0-9]{2}' || true)
+          echo "Valid date lines: $COUNT"
+          grep -vE '^[[:space:]]*#' data/.regen-entry | grep -E '^[[:space:]]*[0-9]{4}-[0-9]{2}-[0-9]{2}' || true
+          if [ "$COUNT" -eq 0 ]; then
+            echo "Sentinel present but contains no valid date lines."
             echo "have=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo "Target dates:"; echo "$DATES"
-          # newline-join -> space for the loop
-          echo "list=$(echo $DATES)" >> "$GITHUB_OUTPUT"
           echo "have=true" >> "$GITHUB_OUTPUT"
 
       - name: Regenerate each target date
@@ -63,11 +65,26 @@ jobs:
           FORCE_REGENERATE: 'true'
         run: |
           set +e
-          for D in ${{ steps.dates.outputs.list }}; do
+          # Parse the sentinel line by line. Format per line:
+          #   YYYY-MM-DD
+          #   YYYY-MM-DD | Subject Here | optional unsplash query
+          # Leading-# comment lines and blanks are skipped, so a date in a
+          # comment can never be regenerated.
+          grep -vE '^[[:space:]]*#' ../data/.regen-entry | while IFS='|' read -r f1 f2 f3; do
+            D=$(echo "$f1" | tr -d '[:space:]')
+            case "$D" in
+              [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]) ;;
+              *) continue ;;
+            esac
+            SUBJ=$(echo "$f2" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
             echo "=============================================="
-            echo "Regenerating entry for $D"
+            echo "Regenerating entry for $D ${SUBJ:+(subject override: $SUBJ)}"
             echo "=============================================="
-            TARGET_DATE="$D" node generate-daily-with-retry.js 2>&1 | tee "/tmp/regen-$D.log"
+            if [ -n "$SUBJ" ]; then
+              TARGET_DATE="$D" SUBJECT_OVERRIDE="$SUBJ" node generate-daily-with-retry.js 2>&1 | tee "/tmp/regen-$D.log"
+            else
+              TARGET_DATE="$D" node generate-daily-with-retry.js 2>&1 | tee "/tmp/regen-$D.log"
+            fi
             echo "::notice::regen $D exit=${PIPESTATUS[0]}"
           done
 
@@ -97,7 +114,7 @@ jobs:
             echo "Nothing changed; not committing."
             exit 0
           fi
-          git commit -m "Regenerate past entries: ${{ steps.dates.outputs.list }}"
+          git commit -m "Regenerate past entries (sentinel-directed)"
           for i in 1 2 3; do
             git pull --rebase origin main 2>&1 | tail -3 || true
             if git push origin main 2>&1; then echo "pushed"; break; fi
