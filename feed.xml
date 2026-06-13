@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jun 2026 21:25:56 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 21:52:12 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A heating apparatus of substantial mass and poise, constructed from cast iron, designed for wood fuel consumption. Often found in settings with high aesthetic and thermal expectations.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-13-stove-wood-burning-cast-iron.jpg" type="image/jpeg" length="0" />
       <category>heating</category><category>domestic</category><category>cast iron</category>
+    </item>
+    <item>
+      <title>[Article] I Was Sent to Cover the Football. I Filed on the Gold.</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-13-spider-world-cup-trophy.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-13-spider-world-cup-trophy.html</guid>
+      <pubDate>Sat, 13 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Spider Hennessy on The FIFA World Cup trophy vs. the Adidas Trionda match ball, 2026 World Cup. Ruling: Thiccc (the trophy); Not Thiccc (the ball).</description>
+      <category>article</category>
     </item>
     <item>
       <title>Cathedral, Concrete Brutalist</title>
