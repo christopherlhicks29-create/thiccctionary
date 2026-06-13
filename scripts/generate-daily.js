@@ -1207,6 +1207,13 @@ async function main() {
     console.log('Cleared data/.fire-daily-subject so the next run auto-picks.');
   } catch (e) { /* file absent, normal */ }
 
+  // Wave 244: clear the force-regenerate sentinel so the replacement PR lands
+  // clean and the next cron run doesn't see a stale force flag.
+  try {
+    await fs.unlink(path.join(ROOT, 'data', '.fire-daily-force'));
+    console.log('Cleared data/.fire-daily-force.');
+  } catch (e) { /* file absent, normal */ }
+
   // Persist the queue minus the pulled item, if we used one. The pull
   // happened earlier; the write happens here at the END so a script crash
   // mid-run doesn't accidentally lose the queued subject.

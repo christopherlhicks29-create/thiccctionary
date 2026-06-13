@@ -20,6 +20,7 @@ on:
     branches: [main]
     paths:
       - 'data/.fire-daily'
+      - 'data/.fire-daily-force'
 
 permissions:
   contents: write
@@ -62,6 +63,17 @@ jobs:
         id: collision
         run: |
           TODAY=$(date -u +%Y-%m-%d)
+          # Wave 244: autonomous force-regenerate lever. Pushing data/.fire-daily-force
+          # (with the dup-guard now in generate-daily.js) lets a slipped duplicate be
+          # replaced without a manual workflow_dispatch. Only honored on push events;
+          # the file is deleted by generate-daily.js so the replacement PR lands clean.
+          if [ "${{ github.event_name }}" = "push" ] && [ -f data/.fire-daily-force ]; then
+            echo "force=true" >> "$GITHUB_OUTPUT"
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::.fire-daily-force present; regenerating $TODAY even if it exists."
+            exit 0
+          fi
+          echo "force=false" >> "$GITHUB_OUTPUT"
           if node -e "
             const e = require('./data/entries.json');
             const t = '$TODAY';
@@ -93,13 +105,13 @@ jobs:
         continue-on-error: true
 
       - name: Generate today's entry
-        if: steps.collision.outputs.proceed == 'true' || inputs.force_regenerate == true
+        if: steps.collision.outputs.proceed == 'true' || inputs.force_regenerate == true || steps.collision.outputs.force == 'true'
         id: gen
         working-directory: scripts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-          FORCE_REGENERATE: ${{ inputs.force_regenerate || 'false' }}
+          FORCE_REGENERATE: ${{ (inputs.force_regenerate == true || steps.collision.outputs.force == 'true') && 'true' || 'false' }}
         run: |
           # Wave 196d: capture stdout+stderr regardless of exit code, so the
           # "Always commit trace" step below can ship the trace to main even
@@ -273,7 +285,7 @@ jobs:
       - name: Open Pull Request
         # Wave 196b: collapsed duplicate `if:` keys.
         # Wave 209b: also gate on entry_written=true (skip when graceful bail).
-        if: success() && (steps.collision.outputs.proceed == 'true' || inputs.force_regenerate == true) && steps.verify.outputs.entry_written == 'true'
+        if: success() && (steps.collision.outputs.proceed == 'true' || inputs.force_regenerate == true || steps.collision.outputs.force == 'true') && steps.verify.outputs.entry_written == 'true'
         id: open_pr
         uses: peter-evans/create-pull-request@v6
         with:
