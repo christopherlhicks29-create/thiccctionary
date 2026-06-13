@@ -35,6 +35,11 @@ const SUSPICIOUS_MODEL_TOKENS = [
 
 // Categories where the above tokens are LEGITIMATE
 const VEHICLE_LIKE_CATEGORIES = new Set([
+  // Wave 249: canonical catalog category names. The bug: the catalog uses
+  // "Vehicles & Transport" but this allowlist only had "Vehicles"/"Vehicle",
+  // so every legit model-number vehicle entry (F-250, etc.) false-flagged RED
+  // and blocked all manual entries.json pre-ship edits.
+  'Vehicles & Transport', 'Engineering Marvels',
   'Vehicles', 'Vehicle', 'Aircraft', 'Aviation', 'Ships', 'Maritime',
   'Trains', 'Heavy Machinery', 'Industrial Machinery', 'Military',
   'Construction Equipment', 'Mining',
@@ -152,6 +157,22 @@ function checkBrandVoice(entry) {
   return null;
 }
 
+// Wave 249: flag non-canonical category labels (caught "Tractor, Compact Utility"
+// filed as bare "Vehicles" instead of "Vehicles & Transport", which split the facet).
+const CANONICAL_CATEGORIES = new Set([
+  'Architecture & Infrastructure', 'Domestic Goods', 'Engineering Marvels',
+  'Foods of Substance', 'Industrial Machinery', 'Musical Instruments',
+  'Natural Specimens', 'Produce & Botanical', 'Vehicles & Transport',
+]);
+function checkCanonicalCategory(entry) {
+  const cat = entry.category || '';
+  if (!cat) return `Entry "${entry.word}" has no category.`;
+  if (!CANONICAL_CATEGORIES.has(cat)) {
+    return `Category "${cat}" is not in the canonical set - likely a near-duplicate label (e.g. "Vehicles" vs "Vehicles & Transport"). Splits the category facet.`;
+  }
+  return null;
+}
+
 async function main() {
   const args = process.argv.slice(2);
   let count = 5;
@@ -176,6 +197,7 @@ async function main() {
     const e2 = checkAnimalSubject(e);       if (e2) findings.push({sev:'YELLOW', msg:e2});
     const f = checkHumanBodySubject(e);      if (f) findings.push({sev:'RED', msg:f});
     const c = checkBrandVoice(e);              if (c) findings.push({sev:'RED', msg:c});
+    const g = checkCanonicalCategory(e);     if (g) findings.push({sev:'YELLOW', msg:g});
     if (findings.length === 0) continue;
     console.log(`## ${e.date} ${e.word} (${e.category})`);
     for (const f of findings) {
