@@ -4,6 +4,18 @@
 
 Durable fix for the 2026-06-13 "tugboat" incident (a lowercase force-regen seed produced a bare lowercase single-token headword that broke catalog convention). Added a check to `shapeValidate()` in generate-daily.js: any generated headword that does not start with an uppercase character is rejected, forcing the model to retry with a proper Title Case headword. Added a title-case safety net in the fail-soft salvage block so even a 3x-retry failure ships a capitalized headword. Verified zero false positives across all 59 live entries (none start lowercase) and 7/7 guard unit cases pass. Code-only, pre-ship green. Closes P0 #1 from the 06-13 PO review.
 
+## Wave 249 (2026-06-13, parallel session): Category label fix + editorial-sanity unblock
+
+Backfilled log entry (commit 657d0bc; the header was missing from WAVES.md). Two fixes: (1) data, 05-31 "Tractor, Compact Utility" was filed under bare "Vehicles" and is now "Vehicles & Transport" (entry page updated too); (2) editorial-sanity.js VEHICLE_LIKE_CATEGORIES was missing the canonical "Vehicles & Transport", so every legit model-number vehicle entry (F-250, etc.) false-flagged RED and blocked ALL manual entries.json pre-ship edits. Added the canonical names plus a canonical-category YELLOW check for future non-canonical labels. Catalog now 0 RED / 0 YELLOW. This clears the F-250 pre-ship block that had frozen manual catalog edits.
+
+## Wave 248 (2026-06-13, parallel session): Anti-clobber idempotent dup-replacement
+
+Backfilled log entry (commit 6b29ad3; header was missing). A sentinel-fired (.fire-daily-force) regen is autonomous dup-cleanup; it now re-checks today's entry is STILL a catalog duplicate before replacing it (REPLACE_ONLY_IF_DUP) and no-ops if a parallel run already fixed it. Kills the clobber chain that took 06-13 Chesterfield to Bookshelf to tugboat across two concurrent sessions. A human workflow_dispatch force stays unconditional. Unit-tested.
+
+## Wave 247 (2026-06-13, parallel session): Thiccc Beat SEO length caps
+
+Backfilled log entry (commit 633c2f7; header was missing). generate-thiccc-beat.js now caps column title at 70 chars and meta description at 165, clearing the site-health SEO length flags. Two existing columns re-rendered.
+
 ## Wave 246 (2026-06-12, autonomous session): Missing OG card generated
 
 Generated `articles/og/mailbag-2026-06-10.png` (Filed Replies, Vol. 3). The page referenced an OG card never built when the column shipped 2026-06-10, so social shares fell back to a non-existent image. Rendered the single card via build-article-og-images.py (importlib, target slug only, to avoid churning the other deterministic cards). Verified 1200x630, on-brand cream/oxblood. Clears site-health's last real missing-og:image flag.
