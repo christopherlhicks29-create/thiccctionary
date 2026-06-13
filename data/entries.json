@@ -1,34 +1,34 @@
 [
   {
     "date": "2026-06-13",
-    "word": "Sofa, Chesterfield Tufted",
-    "pronunciation": "/chess-ter-feeld tuf-ted/",
+    "word": "Bookshelf, Floor-to-Ceiling Library",
+    "pronunciation": "/BUK-shelf, FLOR-tu-SEE-ling LI-brer-ee/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A substantial seating apparatus characterized by deep button tufting and rolled arms, often extending generously in length and girth to comfortably accommodate a small book club or a herd of cats.",
-      "<em>colloq.</em> The sofa that doesn't just sit in the living room; it presides over it, casting a shadow of distinguished thicccness."
+      "A towering shelving unit extending from floor to ceiling, designed to support a wealth of literary knowledge and, frequently, an existential number of dust jackets.",
+      "<em>colloq.</em> The architectural equivalent of a book lover's gravitational well, offering no escape once entered."
     ],
-    "example": "He sunk into the thiccc Chesterfield sofa, the tufted surface swallowing him whole. Even the family dog knew his place on the armrest.",
-    "etymology": "From the 4th Earl of Chesterfield, who commissioned the first of its kind in the mid-18th century. The term 'tufted' refers to the act of fastening the upholstery with buttons, because apparently, sofas need accessories too.",
-    "image": "images/2026-06-13-sofa-chesterfield-tufted.jpg",
-    "caption": "Plate N. A Chesterfield sofa, exhibiting unparalleled tufted thicccness.",
+    "example": "The librarian gazed at the thiccc floor-to-ceiling bookshelf, contemplating the layers of fiction and dust. It was a literary Everest.",
+    "etymology": "From Old English 'bōc' meaning 'book' and 'sceap' meaning 'shelf', combined with 'flōr' and 'ceiling', words that have held up better than the occasional shelf brimming with encyclopedias.",
+    "image": "images/2026-06-13-bookshelf-floor-to-ceiling-library.jpg",
+    "caption": "Plate N. A robust testament to the weight of wisdom.",
     "tags": [
-      "furniture",
-      "upholstery",
-      "decor"
+      "library",
+      "architecture",
+      "books"
     ],
-    "category": "Domestic Goods",
+    "category": "Architecture & Infrastructure",
     "bookReady": true,
-    "humorScore": 9,
+    "humorScore": 8,
     "photoScore": 8,
-    "photographer": "Johnny Briggs",
-    "photographerUrl": "https://unsplash.com/@johnnyboylee",
-    "unsplashUrl": "https://unsplash.com/photos/a-couch-with-yellow-pillows-Asheyr3zRLE",
+    "photographer": "Jack Bodine",
+    "photographerUrl": "https://unsplash.com/@jackbodine",
+    "unsplashUrl": "https://unsplash.com/photos/rows-of-colorful-books-on-library-shelves-kXFg4q18IOQ",
     "socialCaptions": {
-      "morning": "Sofa, Chesterfield Tufted. A loyal confidant since the 18th century—offering support to both humans and their existential crises.",
-      "afternoon": "The Chesterfield: where leather meets lineage. It has witnessed countless book clubs devolve into napping sessions. #Sofa #ChesterfieldTufted",
-      "evening": "From the archives, Sofa, Chesterfield Tufted.\nButton-tufted upholstery—because no one should face the world without a little flair.",
-      "reels": "Four rolled arms and a top-tier pedigree. Chesterfield Tufted—thiccc enough for endless debates on tea vs. coffee."
+      "morning": "Bookshelf, Floor-to-Ceiling Library—\na vertical monument to bibliophilia.\n14 feet tall, yet still bends under the weight of War and Peace.",
+      "afternoon": "In 1455, Gutenberg gave us the printed page.\nIn 1879, we gave ourselves the floor-to-ceiling bookshelf.\nA towering nod to human ambition.",
+      "evening": "From the archives, Bookshelf, Floor-to-Ceiling Library.\n1,000 linear feet of literary ambition.\nThe only thing taller—its unread pile.",
+      "reels": "A thousand books in one glance.\nFloor-to-Ceiling Library.\nNo short stories here."
     }
   },
   {
