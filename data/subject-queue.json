@@ -11,36 +11,5 @@
     "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
     "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
   ],
-  "queue": [
-    {
-      "subject": "Beanbag Chair, Lovesac",
-      "query": "lovesac beanbag oversized",
-      "notes": "absurd oversized seating"
-    },
-    {
-      "subject": "Stone, Curling Granite",
-      "query": "curling stone granite ice",
-      "notes": "44-pound competition stone"
-    },
-    {
-      "subject": "Ladle, Industrial Foundry",
-      "query": "foundry ladle molten metal",
-      "notes": "molten-metal ladle"
-    },
-    {
-      "subject": "Cushion, Tuxedo Sofa",
-      "query": "tuxedo sofa cushion velvet",
-      "notes": "deep oversized cushion"
-    },
-    {
-      "subject": "Truck, Caterpillar 797F Mining",
-      "query": "caterpillar 797f mining truck",
-      "notes": "the haul truck (also panel-11 subject)"
-    },
-    {
-      "subject": "Tank, Sherman M4 Battle",
-      "query": "m4 sherman tank museum",
-      "notes": "iconic battle tank"
-    }
-  ]
+  "queue": []
 }

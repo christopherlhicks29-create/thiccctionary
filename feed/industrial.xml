@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/industrial.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "industrial".</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jun 2026 18:57:30 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 21:00:52 GMT</lastBuildDate>
     <item>
       <title>Antoine Ferris Wheel</title>
       <link>https://thiccctionary.com/entries/2026-06-05.html</link>
@@ -33,6 +33,15 @@
       <description>A four-wheeled agricultural vehicle of moderate horsepower, built low and wide for orchard work, hobby farms, and the kind of unspecified yard task that a homeowner believes requires diesel.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-31-tractor-compact-utility.jpg" type="image/jpeg" length="0" />
       <category>industrial</category><category>produce</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Bagger 293</title>
+      <link>https://thiccctionary.com/entries/2026-05-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-27.html</guid>
+      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
+      <description>A colossal bucket-wheel excavator of significant girth, renowned for its prodigious capacity and displacement capabilities; particularly noted for its imposing presence when viewed in full profile.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-27-bagger-293.jpg" type="image/jpeg" length="0" />
+      <category>massive</category><category>mining</category><category>industrial</category>
     </item>
     <item>
       <title>Cement Truck, BetaMax</title>
