@@ -139,7 +139,7 @@ function buildPage({ meta, headline, bodyHtml, slug }) {
 <article class="entry entry--single">
 <div class="article-prose" style="max-width: 720px; margin: 2rem auto; padding: 0 16px; line-height: 1.8;">
 <p class="article-meta"><a href="./">&larr; All articles</a> &middot; The Thiccc Beat &middot; ${escapeHtml(meta.date || '')}</p>
-<h1 class="article-headline">${escapeHtml(deDash(headline))}</h1>
+<h2 class="article-headline">${escapeHtml(deDash(headline))}</h2>
 <p class="beat-deck"><strong>${escapeHtml(meta.author)}</strong>, ${escapeHtml(meta.role || '')} &middot; <em>${escapeHtml(meta.lane || '')}</em></p>
 ${bodyHtml}
 ${sourceLink}
