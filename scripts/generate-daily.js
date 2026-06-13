@@ -1097,6 +1097,14 @@ async function main() {
         return `definitions[] contains leaked JSON key: ${JSON.stringify(d.slice(0,60))}`;
       }
     }
+    // Wave 250: headword-format guard. The 2026-06-13 "tugboat" incident: a
+    // lowercase force-regen seed produced a bare lowercase single-token headword
+    // that broke catalog convention (every entry is Title Case, usually
+    // "Noun, Qualifier" or proper-noun-forward). Reject so the model retries with
+    // a proper headword; the salvage block title-cases as a last resort.
+    if (typeof e.word === 'string' && /^[a-z]/.test(e.word.trim())) {
+      return `headword ${JSON.stringify(e.word)} is not Title Case (catalog convention requires a capitalized headword)`;
+    }
     return null;  // ok
   }
   // Wave 209: fail-soft instead of fail-hard. If 3 retries still produce
@@ -1115,6 +1123,10 @@ async function main() {
       const subj = subjectInfo.subject || 'Untitled Entry';
       entryCopy = entryCopy && typeof entryCopy === 'object' ? entryCopy : {};
       entryCopy.word = entryCopy.word || subj;
+      // Wave 250: if salvage still has a lowercase-leading headword, Title Case it.
+      if (typeof entryCopy.word === 'string' && /^[a-z]/.test(entryCopy.word.trim())) {
+        entryCopy.word = entryCopy.word.trim().replace(/\b([a-z])/g, (m,c)=>c.toUpperCase());
+      }
       entryCopy.pronunciation = entryCopy.pronunciation || `/${subj.toLowerCase().replace(/[^a-z\s]/g,'').replace(/\s+/g,' ')}/`;
       entryCopy.partOfSpeech = entryCopy.partOfSpeech || 'n.';
       // Definitions: keep only strings that DON'T look like leaked keys

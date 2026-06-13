@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 250 (2026-06-13, autonomous session): Headword-format guard (anti-"tugboat")
+
+Durable fix for the 2026-06-13 "tugboat" incident (a lowercase force-regen seed produced a bare lowercase single-token headword that broke catalog convention). Added a check to `shapeValidate()` in generate-daily.js: any generated headword that does not start with an uppercase character is rejected, forcing the model to retry with a proper Title Case headword. Added a title-case safety net in the fail-soft salvage block so even a 3x-retry failure ships a capitalized headword. Verified zero false positives across all 59 live entries (none start lowercase) and 7/7 guard unit cases pass. Code-only, pre-ship green. Closes P0 #1 from the 06-13 PO review.
+
 ## Wave 246 (2026-06-12, autonomous session): Missing OG card generated
 
 Generated `articles/og/mailbag-2026-06-10.png` (Filed Replies, Vol. 3). The page referenced an OG card never built when the column shipped 2026-06-10, so social shares fell back to a non-existent image. Rendered the single card via build-article-og-images.py (importlib, target slug only, to avoid churning the other deterministic cards). Verified 1200x630, on-brand cream/oxblood. Clears site-health's last real missing-og:image flag.
