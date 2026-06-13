@@ -55,9 +55,19 @@ console.log(`[retry-wrapper] target date: ${targetDate}`);
 console.log(`[retry-wrapper] subject override: ${haveOverride ? process.env.SUBJECT_OVERRIDE : '(none, will use queue)'}`);
 console.log(`[retry-wrapper] queue length: ${queueLength()}`);
 
-if (latestEntryDate() === targetDate) {
+// Wave 244d: honor FORCE_REGENERATE. Previously the wrapper short-circuited on
+// "entry already exists" BEFORE ever calling generate-daily.js, so every forced
+// regeneration (workflow_dispatch force_regenerate / .fire-daily-force) was a
+// silent no-op -- the reason the duplicate 6/13 Chesterfield could not be
+// replaced. When forcing, fall through; generate-daily.js does the actual
+// splice+replace (and now avoids the subject it is replacing, Wave 244c).
+const forceRegen = process.env.FORCE_REGENERATE === 'true';
+if (latestEntryDate() === targetDate && !forceRegen) {
   console.log(`[retry-wrapper] entry for ${targetDate} already exists. Nothing to do.`);
   process.exit(0);
+}
+if (forceRegen) {
+  console.log(`[retry-wrapper] FORCE_REGENERATE=true; regenerating ${targetDate} even though an entry exists.`);
 }
 
 for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
