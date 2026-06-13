@@ -750,6 +750,21 @@ async function main() {
   let replacedWord = null;
   if (existingIdx !== -1) {
     if (force) {
+      // Wave 248: anti-clobber. When a force-regen is fired specifically to clean
+      // up a DUPLICATE (REPLACE_ONLY_IF_DUP=true, set by the autonomous .fire-daily-force
+      // path), re-check that today's entry is STILL a catalog dup before replacing it.
+      // If a parallel run already replaced it with a unique subject, no-op instead of
+      // clobbering good work. (06-13 went Chesterfield->Bookshelf->tugboat because two
+      // sessions both fired dup-replacements; this makes the cleanup idempotent.)
+      if (process.env.REPLACE_ONLY_IF_DUP === 'true') {
+        const others = entries.filter((_, i) => i !== existingIdx).map(e => e.word);
+        const dupOf = subjectFamilyDup(entries[existingIdx].word, others);
+        if (!dupOf) {
+          console.log(`REPLACE_ONLY_IF_DUP: "${entries[existingIdx].word}" (${today}) is already unique - another run fixed it. No-op.`);
+          return;
+        }
+        console.log(`REPLACE_ONLY_IF_DUP: "${entries[existingIdx].word}" still collides with "${dupOf}"; replacing.`);
+      }
       replacedWord = entries[existingIdx].word;
       console.log(`Entry for ${today} already exists. FORCE_REGENERATE=true, removing it and regenerating (was: "${replacedWord}").`);
       entries.splice(existingIdx, 1);

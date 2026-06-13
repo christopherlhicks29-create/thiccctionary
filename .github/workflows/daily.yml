@@ -112,6 +112,8 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           FORCE_REGENERATE: ${{ (inputs.force_regenerate == true || steps.collision.outputs.force == 'true') && 'true' || 'false' }}
+          # Wave 248: a sentinel-fired (.fire-daily-force) regen is autonomous dup-cleanup -> only replace if today's entry is still a catalog dup, so parallel sessions can't clobber a good entry. A human workflow_dispatch force stays unconditional.
+          REPLACE_ONLY_IF_DUP: ${{ (steps.collision.outputs.force == 'true' && inputs.force_regenerate != true) && 'true' || 'false' }}
         run: |
           # Wave 196d: capture stdout+stderr regardless of exit code, so the
           # "Always commit trace" step below can ship the trace to main even
