@@ -23,7 +23,21 @@
           "id": "6a248720ba6da2e70f718801"
         }
       ]
+    },
+    {
+      "path": "videos/characters/hugh-camera-portrait.mp4",
+      "at": "2026-06-13T18:01:45.742Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a2d9b08768f4d60d56f2d16"
+        },
+        {
+          "service": "instagram",
+          "id": "6a2d9b093cd9497d55f2f646"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-06-06T20:46:24.346Z"
+  "lastPostedAt": "2026-06-13T18:01:45.742Z"
 }
