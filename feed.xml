@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jun 2026 21:17:31 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 21:19:40 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -32,13 +32,13 @@
       <category>architecture</category><category>brutalist</category><category>concrete</category>
     </item>
     <item>
-      <title>Boeing 787 Dreamliner</title>
+      <title>Hamburger, Double-Stack</title>
       <link>https://thiccctionary.com/entries/2026-06-11.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-11.html</guid>
       <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
-      <description>A widebody aircraft engineered for long-haul travel, noted for its substantial fuselage and expansive wingspan, particularly when observed from aft. Its rotundity is both functional and unapologetic.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-06-11-boeing-787-dreamliner.jpg" type="image/jpeg" length="0" />
-      <category>aviation</category><category>aircraft</category><category>engineering</category>
+      <description>A burger configuration featuring two beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-11-hamburger-double-stack.jpg" type="image/jpeg" length="0" />
+      <category>burger</category><category>culinary</category><category>layering</category>
     </item>
     <item>
       <title>[Article] On the Forty-Five-Foot Soccer Ball, Which Is Visible From Aircraft</title>

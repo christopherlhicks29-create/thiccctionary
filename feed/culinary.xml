@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/culinary.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "culinary".</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jun 2026 21:17:31 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 21:19:40 GMT</lastBuildDate>
+    <item>
+      <title>Hamburger, Double-Stack</title>
+      <link>https://thiccctionary.com/entries/2026-06-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-11.html</guid>
+      <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A burger configuration featuring two beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-11-hamburger-double-stack.jpg" type="image/jpeg" length="0" />
+      <category>burger</category><category>culinary</category><category>layering</category>
+    </item>
     <item>
       <title>Savoy Cabbage</title>
       <link>https://thiccctionary.com/entries/2026-06-06.html</link>

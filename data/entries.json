@@ -65,34 +65,34 @@
   },
   {
     "date": "2026-06-11",
-    "word": "Boeing 787 Dreamliner",
-    "pronunciation": "/BO-ing sev-en EIGHT-y sev-en DREEM-liner/",
+    "word": "Hamburger, Double-Stack",
+    "pronunciation": "/HAM-bur-ger, DUH-buhl-STAK/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A widebody aircraft engineered for long-haul travel, noted for its substantial fuselage and expansive wingspan, particularly when observed from aft. Its rotundity is both functional and unapologetic.",
-      "<em>colloq.</em> A flying fortress that occupies airspace with undeniable authority, leaving contrails of envy in its wake."
+      "A burger configuration featuring two beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.",
+      "<em>colloq.</em> The culinary equivalent of a duplex: two stories of savory abundance refusing to be confined by a single napkin."
     ],
-    "example": "The thiccc Boeing 787 rolled onto the tarmac, its silhouette redefined what it meant to be aerodynamic. The hangar was just an accessory.",
-    "etymology": "From Boeing Company (Seattle-based aircraft manufacturer, est. 1916) + the model number, 787, denoting its developmental sequence. Dreamliner for its promise of smooth, fuel-efficient horizons and the inevitable passenger daydreams about its girth.",
-    "image": "images/2026-06-11-boeing-787-dreamliner.jpg",
-    "caption": "Plate N. The Boeing 787 Dreamliner, as captured in its natural habitat.",
+    "example": "He faced the thiccc double-stack hamburger with determination, the bun all but whispering 'carpe diem.'",
+    "etymology": "Derived from the German city of Hamburg, the birthplace of the original 'Hamburg steak', combined with the English 'double' from Middle English 'doble', denoting a pair. A linguistic full-course meal.",
+    "image": "images/2026-06-11-hamburger-double-stack.jpg",
+    "caption": "Plate N. A specimen whose layers defy architectural convention.",
     "tags": [
-      "aviation",
-      "aircraft",
-      "engineering"
+      "burger",
+      "culinary",
+      "layering"
     ],
-    "category": "Vehicles & Transport",
-    "bookReady": true,
-    "humorScore": 8,
+    "category": "Foods of Substance",
+    "bookReady": null,
+    "humorScore": 7,
     "photoScore": 9,
-    "photographer": "Bornil Amin",
-    "photographerUrl": "https://unsplash.com/@bornil",
-    "unsplashUrl": "https://unsplash.com/photos/a-plane-flies-through-a-cloudy-sky-Y7F5ZRxDN6I",
+    "photographer": "amirali mirhashemian",
+    "photographerUrl": "https://unsplash.com/@amir_v_ali",
+    "unsplashUrl": "https://unsplash.com/photos/burger-with-patty-dish-xVKleclpof4",
     "socialCaptions": {
-      "morning": "Boeing 787 Dreamliner.\nRevolutionized air travel in 2009.\n248 feet of aerodynamic ambition.\nThicccness at 41,000 feet.",
-      "afternoon": "With a wingspan of 197 feet, the Boeing 787 is a masterclass in aerodynamics.\nSeats up to 296 dreamers.\nThe skies—its personal runway.\n#Dreamliner",
-      "evening": "From the archives, Boeing 787 Dreamliner.\nFirst flight: December 15, 2009.\nTook off with 56,000 pounds of thrust.\nA thiccc debut.",
-      "reels": "Boeing 787.\nEngineered to perfection.\nA fuselage of dreams."
+      "morning": "Hamburger, Double-Stack—an architectural marvel.\nTwo patties, one mission: vertical domination.",
+      "afternoon": "The Double-Stack's gravitational pull is measurable—\nFries within a 5-inch radius never stood a chance.\n#DoubleStack",
+      "evening": "From the archives, Hamburger, Double-Stack.\nBorn in Hamburg, but it speaks fluent 'thiccc'.",
+      "reels": "Two patties, one destiny. Double-Stack."
     }
   },
   {
