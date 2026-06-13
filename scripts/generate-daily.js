@@ -88,6 +88,27 @@ function pendingPrWords() {
   }
 }
 
+// Wave 244: hard near-duplicate guard. The "avoid recently used" list is a
+// SOFT instruction to the LLM and only spans 30 entries, so the catalog kept
+// re-featuring the same SUBJECT in a slightly different costume: "Sofa,
+// Chesterfield" (5/04) came back as "Sofa, Chesterfield Tufted" (6/13) because
+// 5/04 was outside the 30-entry window; "Pickup Truck, F-250" (6/09) and
+// "Pickup Truck, Ford F-250" (6/10) shipped back-to-back; three watermelons in
+// five weeks. headNoun() reduces a headword to its core noun so we can detect
+// these families and reject across the ENTIRE catalog, not just the last 30.
+const SIZE_QUALIFIERS = new Set(['big','bulky','large','round','heavy','chunky','hefty','plump','plush','thick','wide','fat','stout','sturdy','massive','huge','dense','solid','giant','common','standard','domestic','tufted']);
+function headNoun(word) {
+  const head = String(word || '').split(',')[0];
+  const toks = (head.toLowerCase().match(/[a-z0-9-]+/g) || []).filter(t => !SIZE_QUALIFIERS.has(t));
+  if (toks.length) toks[toks.length - 1] = toks[toks.length - 1].replace(/s$/, '');
+  return toks.join(' ');
+}
+function subjectFamilyDup(subject, pastWords) {
+  const h = headNoun(subject);
+  if (!h) return null;
+  return pastWords.find(w => headNoun(w) === h) || null;
+}
+
 async function pickSubject(usedWords) {
   const sysPrompt = `You suggest subjects for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS. Categories: aircraft, vehicles, ships, trains, fruit, vegetables, furniture, buildings, appliances, tools, machinery, musical instruments, packaged goods.
 
@@ -785,17 +806,26 @@ async function main() {
     const src = process.env.SUBJECT_OVERRIDE ? 'env' : (fileOverride ? 'file' : 'queue');
     console.log(`SUBJECT_OVERRIDE active: subject="${overrideSubject}" query="${simpleQuery}" (source: ${src})`);
   } else {
-    subjectInfo = await pickSubject(usedWords);
-    // Soft-collision check: if the FIRST word of the subject matches any recent
-    // first word (e.g., "Watermelon, Titan" colliding with "Watermelon, Moon and Stars"),
-    // retry once with that explicit collision called out in the avoid list.
-    const firstWord = subj => String(subj || '').split(/[,\s]+/)[0].toLowerCase();
-    const subjFirst = firstWord(subjectInfo.subject);
-    const collision = usedWords.find(w => firstWord(w) === subjFirst);
-    if (collision) {
-      console.log(`Soft-collision: "${subjectInfo.subject}" shares first word with recent "${collision}". Retrying once.`);
-      const widened = [...usedWords, subjectInfo.subject, `anything starting with "${subjFirst}"`];
-      subjectInfo = await pickSubject(widened);
+    // Wave 244: hard near-duplicate guard. Check every pick against the FULL
+    // catalog of past headwords (not just the 30 in usedWords) via headNoun().
+    // If the pick is the same subject-family as anything we've ever published,
+    // retry with the colliding family explicitly banned. Cap retries so the
+    // daily pipeline always ships something; on the rare all-collision case we
+    // accept the last pick with a loud warning rather than failing red.
+    const allPastWords = [...new Set([...entries.map(e => e.word), ...pendingWords])];
+    const MAX_DUP_RETRIES = 5;
+    let avoidDup = [...usedWords];
+    subjectInfo = await pickSubject(avoidDup);
+    for (let i = 0; i < MAX_DUP_RETRIES; i++) {
+      const dup = subjectFamilyDup(subjectInfo.subject, allPastWords);
+      if (!dup) break;
+      console.log(`Duplicate-subject guard: "${subjectInfo.subject}" is the same family as already-published "${dup}" (headNoun "${headNoun(subjectInfo.subject)}"). Retry ${i + 1}/${MAX_DUP_RETRIES}.`);
+      avoidDup = [...avoidDup, subjectInfo.subject, `anything in the "${headNoun(subjectInfo.subject)}" family (already catalogued as "${dup}")`];
+      subjectInfo = await pickSubject(avoidDup);
+    }
+    const finalDup = subjectFamilyDup(subjectInfo.subject, allPastWords);
+    if (finalDup) {
+      console.warn(`Duplicate-subject guard: exhausted ${MAX_DUP_RETRIES} retries; accepting "${subjectInfo.subject}" despite family overlap with "${finalDup}". Catalog may be saturating this family.`);
     }
   }
   console.log(`Subject: ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
