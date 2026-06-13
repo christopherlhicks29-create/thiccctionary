@@ -714,9 +714,15 @@ async function main() {
 
   const force = process.env.FORCE_REGENERATE === 'true';
   const existingIdx = entries.findIndex(e => e.date === today);
+  // Wave 244c: when force-regenerating, remember the subject we are REPLACING so
+  // the dedup guard + soft-avoid don't re-pick it (splicing it out of `entries`
+  // below otherwise blinds them, and the system prompt lists "Chesterfield Sofa"
+  // as an exemplar, so the model gravitates straight back to it).
+  let replacedWord = null;
   if (existingIdx !== -1) {
     if (force) {
-      console.log(`Entry for ${today} already exists. FORCE_REGENERATE=true, removing it and regenerating.`);
+      replacedWord = entries[existingIdx].word;
+      console.log(`Entry for ${today} already exists. FORCE_REGENERATE=true, removing it and regenerating (was: "${replacedWord}").`);
       entries.splice(existingIdx, 1);
     } else {
       console.log(`Entry for ${today} already exists. Exiting. (Set FORCE_REGENERATE=true to override.)`);
@@ -747,7 +753,7 @@ async function main() {
     }
     if (deadWords.length > 0) console.log(`Found ${deadWords.length} dead subject(s) in last 14 days; will avoid.`);
   } catch (e) { /* dir absent, normal */ }
-  const usedWords = [...new Set([...recentWords, ...pendingWords, ...deadWords])];
+  const usedWords = [...new Set([...recentWords, ...pendingWords, ...deadWords, ...(replacedWord ? [replacedWord] : [])])];
   let subjectInfo;
   // Sentinel-file override: data/.fire-daily-subject (one line: a subject string) lets
   // me steer the picker from the sandbox without needing workflow_dispatch inputs.
@@ -812,7 +818,7 @@ async function main() {
     // retry with the colliding family explicitly banned. Cap retries so the
     // daily pipeline always ships something; on the rare all-collision case we
     // accept the last pick with a loud warning rather than failing red.
-    const allPastWords = [...new Set([...entries.map(e => e.word), ...pendingWords])];
+    const allPastWords = [...new Set([...entries.map(e => e.word), ...pendingWords, ...(replacedWord ? [replacedWord] : [])])];
     const MAX_DUP_RETRIES = 5;
     let avoidDup = [...usedWords];
     subjectInfo = await pickSubject(avoidDup);
