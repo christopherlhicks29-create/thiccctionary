@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-14",
+    "word": "Donut, Boston Cream",
+    "pronunciation": "/DAW-nut, BAW-stun KREEM/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A sweet, glorious torus filled with custard and topped with a glossy chocolate glaze, notable for its unapologetic girth. Particularly majestic when viewed astern, its posterior defies casual description.",
+      "<em>colloq.</em> A confection that refuses to be unnoticed, stretching the limits of any standard pastry box without remorse."
+    ],
+    "example": "He arrived at the meeting with a box of thiccc Boston Cream donuts. The conference table immediately surrendered its agenda.",
+    "etymology": "From Middle Dutch 'doighnut', a compound of 'dough' + 'nut', and 'Boston Cream', named for the custard variant popularized in Massachusetts. The naming process clearly involved no skimping.",
+    "image": "images/2026-06-14-donut-boston-cream.jpg",
+    "caption": "Plate N., A Boston Cream donut in its natural habitat, displaying remarkable curvature.",
+    "tags": [
+      "donut",
+      "custard",
+      "pastry"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 8,
+    "photographer": "Vasanth Kumar",
+    "photographerUrl": "https://unsplash.com/@vasanthkumar333",
+    "unsplashUrl": "https://unsplash.com/photos/chocolate-frosted-donut-with-shavings-on-a-white-plate-vg1RG3P_A2M",
+    "socialCaptions": {
+      "morning": "Donut, Boston Cream—more than a breakfast treat.\nThe custard core: an architectural marvel since the 19th century.\nChocolate glaze: a protective coating against morning doubts.",
+      "afternoon": "In 1850s Massachusetts, this dessert dared to dream.\nCustard-filled, chocolate-topped—a confectionary pioneer.\nThiccc indulgence: Donut, Boston Cream.",
+      "evening": "From the archives, Donut, Boston Cream.\nA toroidal wonder since 1950—its center holds mysteries untold.\nThe chocolate glaze: a mirror to its rich past.",
+      "reels": "Boston Cream: 3 inches round, 3 ounces of defiant decadence.\nThiccc never tasted so historical."
+    }
+  },
+  {
     "date": "2026-06-13",
     "word": "Stove, Wood-Burning Cast Iron",
     "pronunciation": "/wood-BURN-ing CAST i-ron STOVE/",
