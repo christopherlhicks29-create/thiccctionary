@@ -106,19 +106,19 @@ export function findBannedTerms(entry) {
   for (const field of fieldsToScan) {
     const value = entry[field];
     const text = Array.isArray(value) ? value.join(' \n ') : (value || '');
-    const lower = text.toLowerCase();
 
     for (const word of BANNED_WORDS) {
       // Case-insensitive whole-phrase check (handles multi-word phrases)
       const w = word.toLowerCase();
       // Use word-boundary for single words; substring for phrases with spaces
-      let found = false;
-      if (w.includes(' ') || w.includes('-')) {
-        found = lower.includes(w);
-      } else {
-        const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        found = re.test(text);
-      }
+      // Boundary-aware match. Escape regex specials, then add a word boundary
+      // only at an edge that is itself a word char. This keeps multi-word
+      // phrases ("no cap") from matching inside larger words ("no captain")
+      // while still catching trailing-punctuation closers ("period.").
+      const esc = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const pre = /^\w/.test(w) ? '\\b' : '';
+      const post = /\w$/.test(w) ? '\\b' : '';
+      const found = new RegExp(`${pre}${esc}${post}`, 'i').test(text);
       if (found) violations.push({ field, term: word, kind: 'banned-word' });
     }
 
