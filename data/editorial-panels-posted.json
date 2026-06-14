@@ -18,7 +18,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-02-atlantic-giant-pumpkin",
+      "at": "2026-06-14T18:08:32.351Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a2eee1f88e56947beb8ca40"
+        },
+        {
+          "service": "facebook",
+          "id": "6a2eee1f61b0aab8c16853a1"
+        },
+        {
+          "service": "instagram",
+          "id": "6a2eee20173b697c8a93a29d"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-06-08T23:21:00.513Z"
+  "lastPostedAt": "2026-06-14T18:08:32.351Z"
 }
