@@ -530,6 +530,24 @@ async function main() {
     built++;
   }
 
+  // Wave 252: prune orphan /is/ pages whose subject is no longer in the catalog.
+  // Regenerated/renamed entries used to leave stale pages live (duplicate-content
+  // junk + broken images). Safety guard: skip if the catalog looks suspiciously
+  // small, so a bad entries.json read cannot wipe every page.
+  const validSlugs = new Set(entries.map((e) => `${e._slug}-thiccc`));
+  let pruned = 0;
+  if (entries.length >= 20) {
+    const existing = await fs.readdir(OUT_BASE).catch(() => []);
+    for (const name of existing) {
+      if (!name.endsWith('-thiccc') || validSlugs.has(name)) continue;
+      await fs.rm(path.join(OUT_BASE, name), { recursive: true, force: true });
+      console.log(`Pruned orphan /is/ page: ${name}`);
+      pruned++;
+    }
+  } else {
+    console.warn(`Skipping /is/ prune: only ${entries.length} entries (guard).`);
+  }
+
   await fs.mkdir(HUB_OUT, { recursive: true });
   await fs.writeFile(path.join(HUB_OUT, 'index.html'), renderHub(entries));
 
@@ -547,18 +565,32 @@ async function main() {
         additions.push(`  <url>\n    <loc>${url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`);
       }
     }
+    // Drop stale /is/ urls (pruned subjects) from the sitemap.
+    const validIsUrls = new Set(entries.map((e) => `${SITE}/is/${e._slug}-thiccc/`));
+    let smChanged = false;
+    sitemap = sitemap.replace(/\s*<url>(?:(?!<\/url>)[\s\S])*?<\/url>/g, (block) => {
+      const m = block.match(/<loc>([^<]+)<\/loc>/);
+      if (m && /\/is\/[^/]+-thiccc\/$/.test(m[1]) && !validIsUrls.has(m[1])) {
+        smChanged = true;
+        return '';
+      }
+      return block;
+    });
     if (additions.length > 0) {
       sitemap = sitemap.replace(/<\/urlset>\s*$/i, additions.join('\n') + '\n</urlset>\n');
-      await fs.writeFile(sitemapPath, sitemap);
+      smChanged = true;
       console.log(`Added ${additions.length} URLs to sitemap.xml`);
+    }
+    if (smChanged) {
+      await fs.writeFile(sitemapPath, sitemap);
     } else {
-      console.log('Sitemap already contained all /is/ URLs.');
+      console.log('Sitemap already in sync for /is/ URLs.');
     }
   } catch (err) {
     console.warn('Could not update sitemap.xml:', err.message);
   }
 
-  console.log(`Built ${built} /is/ pages + hub at /is-it-thiccc/.`);
+  console.log(`Built ${built} /is/ pages + hub at /is-it-thiccc/ (pruned ${pruned} orphan(s)).`);
 }
 
 main().catch((e) => {
