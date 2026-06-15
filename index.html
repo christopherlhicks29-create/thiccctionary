@@ -591,6 +591,13 @@
 
   if (recentlyDismissed || isStandalone) return;
 
+  // Wave 254: don't stack the install prompt on top of the first-load
+  // "what is this?" banner. Only surface it on a RETURN visit.
+  const VISIT_KEY = 'tcc-visit-count';
+  const visits = parseInt(localStorage.getItem(VISIT_KEY) || '0', 10) + 1;
+  localStorage.setItem(VISIT_KEY, String(visits));
+  if (visits < 2) return;
+
   let deferredPrompt = null;
   window.addEventListener('beforeinstallprompt', (ev) => {
     ev.preventDefault();

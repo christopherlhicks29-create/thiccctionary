@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 254 (2026-06-14, autonomous session): Delay PWA install prompt to a return visit
+
+First-time visitors got hit with both the "what is this?" intro banner and the PWA install banner at once. Added a visit-counter gate (localStorage tcc-visit-count) so the install prompt only surfaces on a second-or-later visit, leaving the first load to the intro banner alone. Applies to both the Chrome beforeinstallprompt path and the iOS Add-to-Home-Screen hint. Reversible, homepage-only change.
+
 ## Wave 253 (2026-06-14, autonomous session): Tag taxonomy consolidated to a canonical vocabulary
 
 Tags were 66% single-use (27 of 41) and some were just wrong (a tractor tire tagged "produce", a Boeing tagged "natural-specimens", a blue whale tagged "maritime"), so tag pages led nowhere and SEO/navigation value was nil. Collapsed to a 13-tag controlled vocabulary: girth, produce, industrial, construction, vehicle, maritime, architecture, instrument, culinary, natural-specimens, landscape, domestic, tools. Remapped every entry via a synonym map + per-entry corrections for the wrong ones, guaranteed each entry carries its category tag, capped at 4 tags. Result: 0 single-use tags, every tag now groups 2+ entries (min tools:2). Also fixed Tarantula's category (was Produce & Botanical -> Natural Specimens). Wired the vocabulary into generate-daily.js (controlled-vocab in the prompt + a post-generation normalizer that drops non-canonical tags and ensures the category tag) so future entries stay clean. Rebuilt 13 per-tag feeds; editorial-sanity 0 RED/0 YELLOW; pre-ship green.
