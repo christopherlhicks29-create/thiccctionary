@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-15",
+    "word": "Cinder Block, Concrete",
+    "pronunciation": "/SIN-der blok, KON-kreet/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A rectangular unit of precast concrete, primarily employed in the construction of load-bearing walls, characterized by its uncompromising heft and voids that suggest a robustness beyond the sum of its parts.",
+      "<em>colloq.</em> A construction staple that refuses to be moved without a full committee of planning and leverage, often seen lounging in unflattering shadows, daring architects to defy its weight."
+    ],
+    "example": "During the renovation, they unearthed a thiccc cinder block, its hulking presence stealing the show from the blueprints. The foreman called it a monument to immovability.",
+    "etymology": "From Old English 'cind' meaning 'slag, ash', and Latin 'bloc', denoting a solid mass. Originally coined as 'cinne-bloc' in Middle English masonry texts, a term no longer in circulation; the current form provides fewer excuses during site inspections.",
+    "image": "images/2026-06-15-cinder-block-concrete.jpg",
+    "caption": "Plate N. A singular cinder block, poised with gravitas on a cement stage.",
+    "tags": [
+      "industrial",
+      "construction",
+      "architecture"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 7,
+    "photographer": "after all",
+    "photographerUrl": "https://unsplash.com/@eatyoursick",
+    "unsplashUrl": "https://unsplash.com/photos/a-black-and-white-square-object-sitting-on-top-of-a-cement-ground-Dlm4uc4dViU",
+    "socialCaptions": {
+      "morning": "Cinder Block, Concrete—8x8x16 inches of precast defiance.\nHollow yet heaviest in the room.",
+      "afternoon": "In 1917, the modern cinder block emerged, forever altering construction.\nIts legacy remains—Cinder Block, Concrete.",
+      "evening": "From the archives, Cinder Block, Concrete.\nA pioneer of modular monotony since 1900.\nWitness its stoic silence.",
+      "reels": "Cinder Block: 38 pounds of reinforced minimalism.\nVoid yet substantial."
+    }
+  },
+  {
     "date": "2026-06-14",
     "word": "Donut, Boston Cream",
     "pronunciation": "/DAW-nut, BAW-stun KREEM/",
