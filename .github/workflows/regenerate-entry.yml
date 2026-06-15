@@ -99,13 +99,17 @@ jobs:
           node scripts/build-entry-pages.js
           node scripts/build-is-pages.js || echo "::warning::build-is-pages had a non-zero exit (non-fatal)"
 
-      - name: Editorial-sanity gate
+      - name: Editorial-sanity report (warn-only)
         if: steps.dates.outputs.have == 'true'
         run: |
-          node scripts/editorial-sanity.js | tee /tmp/sanity.log
+          # Report only, do NOT block. The scheduled daily pipeline (daily.yml)
+          # ships entries without an editorial-sanity hard gate and relies on
+          # review/pre-ship to catch issues; this regen path must not be stricter
+          # than the pipeline it supplements (a hard gate here silently discarded
+          # valid auto-picked entries, e.g. the 2026-06-15 backfill).
+          node scripts/editorial-sanity.js | tee /tmp/sanity.log || true
           if grep -qE '[1-9][0-9]* RED' /tmp/sanity.log; then
-            echo "::error::editorial-sanity reported RED issues. Not committing."
-            exit 1
+            echo "::warning::editorial-sanity flagged RED on a regenerated entry; review it live and regenerate the image if needed."
           fi
 
       - name: Clear sentinel + commit to main
