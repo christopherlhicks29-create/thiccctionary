@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Accordion, Piano",
-      "query": "piano accordion",
-      "notes": "instrument, distinct from tuba/organ/drum"
-    },
-    {
       "subject": "Cinder Block, Concrete",
       "query": "concrete cinder block",
       "notes": "industrial, blocky/thiccc"
