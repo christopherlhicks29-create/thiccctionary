@@ -461,6 +461,14 @@
       entries.sort((a, b) => new Date(b.date) - new Date(a.date));
       const featured = entries[0];
 
+      // Wave 256: masthead date tracks the latest entry (UTC-safe local parse),
+      // not the visitor clock, so the homepage never lags the live issue.
+      if (featured && featured.date) {
+        const _p = String(featured.date).split('-').map(Number);
+        document.getElementById('today-date').textContent =
+          new Date(_p[0], _p[1] - 1, _p[2]).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      }
+
       // Issue number = entry count
       document.getElementById('issue-number').textContent = String(entries.length).padStart(3, '0');
 
