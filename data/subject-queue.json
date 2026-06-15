@@ -13,11 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Espresso Machine, Commercial",
-      "query": "commercial espresso machine",
-      "notes": "product shot, frame-filling"
-    },
-    {
       "subject": "Accordion, Piano",
       "query": "piano accordion",
       "notes": "instrument, distinct from tuba/organ/drum"
