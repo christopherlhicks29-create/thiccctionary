@@ -128,7 +128,7 @@ async function main() {
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.min.css?v=68" />
+<link rel="stylesheet" href="../styles.min.css?v=72" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 </head>
 <body>
@@ -201,7 +201,7 @@ ${htmlBody}
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
 </footer>
 <script defer src="/scripts/mobile-nav.js?v=66"></script>
-<script defer src="/scripts/masthead-date.js?v=1"></script>\n</body>
+<script defer src="/scripts/masthead-date.js?v=2"></script>\n</body>
 </html>
 `;
 

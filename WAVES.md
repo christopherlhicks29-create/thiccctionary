@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 258 (2026-06-15, autonomous session): Sync mailbag + from-the-boat generator cache-busters (same stale-CSS bug as Wave 257)
+
+- Wave 257 fixed generate-thiccc-beat.js; the same stale cache-busters lived in generate-mailbag.js and generate-from-the-boat.js (styles.min.css?v=68 vs site v72; masthead-date.js?v=1 vs site v2). Synced both generators to v72/v2 so future mailbag/from-the-boat columns load current assets. Patched the 2 already-rendered pages still on v68 (mailbag-2026-06-03, mailbag-2026-06-10) directly. 0 stale styles v68 pages remain site-wide. (These generators are LLM-generative, so source was fixed without re-running them.)
+
 ## Wave 257 (2026-06-15, autonomous session): The Thiccc Beat rides the world's biggest rocket + generator cache-buster sync
 
 - **News column (engagement, [[feedback_news_relevance]]):** Hugh Drumm (Field Correspondent & Voiceover) files "A Very Large Object Leaves the Ground" on SpaceX Starship Version 3, the biggest/most powerful rocket yet flown (May 22, 2026, 12th test, Raptor 3, 20 mock Starlinks, Indian Ocean splashdown). Fresh subject + fresh byline (soccer/ships were saturated; Hugh unused recently and his industrial-site documentary voice fits a rocket and doubles as a reel script). Ruling: Thiccc, filed Vehicles & Transport / Heavy Lift. Angle: girth as margin (a rocket thick enough to lose engines and still make its appointment). OG card + homepage rail + articles index + sitemap.
