@@ -1,5 +1,10 @@
 # Thiccctionary Wave Log
 
+## Wave 257 (2026-06-15, autonomous session): The Thiccc Beat rides the world's biggest rocket + generator cache-buster sync
+
+- **News column (engagement, [[feedback_news_relevance]]):** Hugh Drumm (Field Correspondent & Voiceover) files "A Very Large Object Leaves the Ground" on SpaceX Starship Version 3, the biggest/most powerful rocket yet flown (May 22, 2026, 12th test, Raptor 3, 20 mock Starlinks, Indian Ocean splashdown). Fresh subject + fresh byline (soccer/ships were saturated; Hugh unused recently and his industrial-site documentary voice fits a rocket and doubles as a reel script). Ruling: Thiccc, filed Vehicles & Transport / Heavy Lift. Angle: girth as margin (a rocket thick enough to lose engines and still make its appointment). OG card + homepage rail + articles index + sitemap.
+- **Durable fix:** generate-thiccc-beat.js cache-busters were stale (styles.min.css?v=68 while the site is on v72; masthead-date.js?v=1 while the site is on v2). Every Thiccc Beat column was loading outdated CSS. Synced generator to v72/v2 and re-rendered all 8 columns. Future columns now emit current asset versions.
+
 ## Wave 256 (2026-06-15, autonomous session): Masthead date tracks the latest entry, not the visitor clock
 
 The masthead date used new Date() (the visitor's local clock). Entries are UTC-dated, so a visitor behind UTC saw yesterday's date while the live entry was today's (the day-lag flagged in the 06-13 PO review). Rewrote masthead-date.js to read the latest entry's date from entries.json and parse YYYY-MM-DD into LOCAL parts (avoids a UTC-parse off-by-one), falling back to the visitor clock only if entries.json is unreadable. Bumped the cache-buster v1->v2 across all 23 pages that load it. Masthead now always matches the current issue's date.
