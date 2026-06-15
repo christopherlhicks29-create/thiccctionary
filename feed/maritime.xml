@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/maritime.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "maritime".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
+    <item>
+      <title>Titanic, RMS</title>
+      <link>https://thiccctionary.com/entries/2026-06-10.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-10.html</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A steamship of significant breadth, particularly admired for its prodigious hull and formidable draft; often discussed in terms of its posterior, viewed astern, which defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-10-titanic-rms.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>maritime</category>
+    </item>
     <item>
       <title>Mooring Rope, Naval Hawser</title>
       <link>https://thiccctionary.com/entries/2026-06-03.html</link>
@@ -14,7 +23,7 @@
       <pubDate>Wed, 03 Jun 2026 12:00:00 GMT</pubDate>
       <description>A formidable cable of considerable girth, typically employed to anchor ships securely to their berths, its sheer mass exudes a gravitational pull of its own.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-03-mooring-rope-naval-hawser.jpg" type="image/jpeg" length="0" />
-      <category>nautical</category><category>maritime</category><category>anchor</category>
+      <category>industrial</category><category>maritime</category>
     </item>
     <item>
       <title>Ever Given, Suez Container Ship</title>
@@ -23,7 +32,7 @@
       <pubDate>Thu, 28 May 2026 12:00:00 GMT</pubDate>
       <description>A container vessel of formidable displacement, noted for its capacity to momentarily rearrange global trade routes. Specifically, a ship whose breadth challenges traditional canal dimensions.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-28-ever-given-suez-container-ship.jpg" type="image/jpeg" length="0" />
-      <category>logistics</category><category>maritime</category><category>natural-specimens</category>
+      <category>vehicle</category><category>maritime</category>
     </item>
     <item>
       <title>Crankshaft, Marine Diesel</title>
@@ -32,16 +41,7 @@
       <pubDate>Sun, 24 May 2026 12:00:00 GMT</pubDate>
       <description>A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-24-crankshaft-marine-diesel.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>maritime</category><category>natural-specimens</category>
-    </item>
-    <item>
-      <title>Whale, Blue</title>
-      <link>https://thiccctionary.com/entries/2026-05-07.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-07.html</guid>
-      <pubDate>Thu, 07 May 2026 12:00:00 GMT</pubDate>
-      <description>A marine leviathan whose girth and length transcend terrestrial metrics, often seen astern with a raking light that accentuates its oceanic immensity.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-05-07-whale-blue.jpg" type="image/jpeg" length="0" />
-      <category>maritime</category>
+      <category>industrial</category><category>maritime</category>
     </item>
     <item>
       <title>Ship, Container Maersk</title>
@@ -50,7 +50,7 @@
       <pubDate>Sat, 25 Apr 2026 12:00:00 GMT</pubDate>
       <description>A maritime vessel characterized by its extensive breadth and formidable mass, designed to transport countless containers across the world&apos;s oceans; esp. one viewed astern, where its posterior expanse defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-25-ship-container-maersk.jpg" type="image/jpeg" length="0" />
-      <category>logistics</category><category>maritime</category>
+      <category>vehicle</category><category>maritime</category>
     </item>
   </channel>
 </rss>

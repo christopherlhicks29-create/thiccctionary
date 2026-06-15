@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiccctionary, Domestic</title>
+    <link>https://thiccctionary.com/archive.html?tag=domestic</link>
+    <atom:link href="https://thiccctionary.com/feed/domestic.xml" rel="self" type="application/rss+xml" />
+    <description>Thiccctionary entries tagged "domestic".</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
+    <item>
+      <title>Stove, Wood-Burning Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-06-13.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-13.html</guid>
+      <pubDate>Sat, 13 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A heating apparatus of substantial mass and poise, constructed from cast iron, designed for wood fuel consumption. Often found in settings with high aesthetic and thermal expectations.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-13-stove-wood-burning-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category>
+    </item>
+    <item>
+      <title>Kettlebell, Competition</title>
+      <link>https://thiccctionary.com/entries/2026-05-19.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-19.html</guid>
+      <pubDate>Tue, 19 May 2026 12:00:00 GMT</pubDate>
+      <description>A spherical weight of iron or steel, characterized by a single-looped handle, used in competitive sports for its standardized mass and satisfyingly stout profile.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-19-kettlebell-competition.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category><category>girth</category>
+    </item>
+    <item>
+      <title>Sofa, Chesterfield</title>
+      <link>https://thiccctionary.com/entries/2026-05-04.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-04.html</guid>
+      <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
+      <description>A capacious upholstered seating apparatus characterized by its deep button-tufting and rolled arms; esp. one whose presence becomes a room&apos;s anchor furniture by physical fact.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-04.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category>
+    </item>
+    <item>
+      <title>Frigidaire, Side-by-Side</title>
+      <link>https://thiccctionary.com/entries/2026-05-02.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-02.html</guid>
+      <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
+      <description>A domestic paragon of capacious elegance, featuring dual chilled chambers that stand in ostentatious parallel, prepared to preserve victuals with all the subtlety of a colossus.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-02-frigidaire-side-by-side.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category><category>culinary</category>
+    </item>
+    <item>
+      <title>Thick Water</title>
+      <link>https://thiccctionary.com/entries/2026-04-14.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-14.html</guid>
+      <pubDate>Tue, 14 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A pre-thickened drinking water formulated for individuals with dysphagia, sold in nectar, honey, and pudding consistencies per the IDDSI framework. Drunk slowly. Reviewed with respect.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-14-thickened-water.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category><category>girth</category>
+    </item>
+  </channel>
+</rss>

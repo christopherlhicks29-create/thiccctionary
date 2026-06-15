@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/construction.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "construction".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
     <item>
       <title>Cement Truck, BetaMax</title>
       <link>https://thiccctionary.com/entries/2026-05-26.html</link>
@@ -14,7 +14,7 @@
       <pubDate>Tue, 26 May 2026 12:00:00 GMT</pubDate>
       <description>A cement mixer of considerable bulk, noted for its rotund drum and dedication to gravitational permanence; especially when viewed in profile, the subject&apos;s posterior challenges architectural norms.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-26-cement-truck-betamax.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>historic</category><category>industrial</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Silo, Grain Concrete</title>
@@ -23,7 +23,7 @@
       <pubDate>Fri, 22 May 2026 12:00:00 GMT</pubDate>
       <description>A towering agricultural structure characterized by its substantial cylindrical form and ability to outshine any pastoral landscape with its commanding presence.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-22-silo-grain-concrete.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>container</category><category>produce</category>
+      <category>architecture</category><category>construction</category>
     </item>
     <item>
       <title>Dumper Truck, Articulated</title>
@@ -32,7 +32,7 @@
       <pubDate>Wed, 13 May 2026 12:00:00 GMT</pubDate>
       <description>A robust off-road vehicle equipped with a hinged joint between the cab and the dump box, allowing for enhanced maneuverability on uneven terrain.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Cement Mixer, Industrial</title>
@@ -41,7 +41,7 @@
       <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
       <description>A vehicular colossus of the concrete world, characterized by its ample rotating drum and the undeniable gravitas it brings to any construction site.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-11-cement-mixer-industrial.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Hoover Dam</title>
@@ -50,7 +50,7 @@
       <pubDate>Fri, 08 May 2026 12:00:00 GMT</pubDate>
       <description>A concrete arch-gravity dam spanning the Black Canyon of the Colorado River, completed 1936; 726 feet from foundation to crest, 660 feet of base thickness tapering to 45 feet at the crown.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-08-hoover-dam.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+      <category>architecture</category><category>construction</category><category>industrial</category>
     </item>
     <item>
       <title>Concrete Mixer</title>
@@ -59,7 +59,7 @@
       <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
       <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>vehicle</category>
+      <category>industrial</category><category>construction</category><category>vehicle</category>
     </item>
     <item>
       <title>Basilica, San Pedro</title>
@@ -68,7 +68,7 @@
       <pubDate>Fri, 24 Apr 2026 12:00:00 GMT</pubDate>
       <description>A monumental ecclesiastical structure in Vatican City, notable for its expansive nave and an apse that seems to embrace the horizon; its thiccc columns and domes defy casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-24-basilica-san-pedro.jpg" type="image/jpeg" length="0" />
-      <category>construction</category>
+      <category>architecture</category><category>construction</category>
     </item>
     <item>
       <title>Bell, Cathedral</title>
@@ -78,15 +78,6 @@
       <description>A resonant structure of considerable mass, often found suspended in lofty ecclesiastical towers, its substantial profile best appreciated when viewed from a respectful distance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-15-bell-cathedral.jpg" type="image/jpeg" length="0" />
       <category>architecture</category><category>construction</category><category>instrument</category>
-    </item>
-    <item>
-      <title>Hot air balloon</title>
-      <link>https://thiccctionary.com/entries/2026-04-13.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-13.html</guid>
-      <pubDate>Mon, 13 Apr 2026 12:00:00 GMT</pubDate>
-      <description>A lighter-than-air vessel characterized by its bulbous fabric envelope and pronounced vertical displacement; esp. one observed astern, with the basket&apos;s footprint dwarfed by its own rotundity.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-04-13-hot-air-balloon.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>girth</category>
     </item>
   </channel>
 </rss>

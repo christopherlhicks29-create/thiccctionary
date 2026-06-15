@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/culinary.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "culinary".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
+    <item>
+      <title>Donut, Boston Cream</title>
+      <link>https://thiccctionary.com/entries/2026-06-14.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-14.html</guid>
+      <pubDate>Sun, 14 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A sweet, glorious torus filled with custard and topped with a glossy chocolate glaze, notable for its unapologetic girth. Particularly majestic when viewed astern, its posterior defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-14-donut-boston-cream.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category>
+    </item>
     <item>
       <title>Hamburger, Triple-Stack</title>
       <link>https://thiccctionary.com/entries/2026-06-11.html</link>
@@ -14,7 +23,7 @@
       <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
       <description>A burger configuration featuring three beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-11-hamburger-triple-stack.jpg" type="image/jpeg" length="0" />
-      <category>burger</category><category>culinary</category><category>layering</category>
+      <category>culinary</category>
     </item>
     <item>
       <title>Savoy Cabbage</title>
@@ -23,7 +32,7 @@
       <pubDate>Sat, 06 Jun 2026 12:00:00 GMT</pubDate>
       <description>A leafy vegetable of distinguished girth, characterized by its densely-packed, undulating leaves and a verdant hue that shifts subtly in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-06-cabbage-savoy.jpg" type="image/jpeg" length="0" />
-      <category>culinary</category><category>produce</category>
+      <category>produce</category><category>culinary</category>
     </item>
     <item>
       <title>Wheel, Parmigiano-Reggiano</title>
@@ -41,7 +50,7 @@
       <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
       <description>A domestic paragon of capacious elegance, featuring dual chilled chambers that stand in ostentatious parallel, prepared to preserve victuals with all the subtlety of a colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-02-frigidaire-side-by-side.jpg" type="image/jpeg" length="0" />
-      <category>appliance</category><category>culinary</category>
+      <category>domestic</category><category>culinary</category>
     </item>
     <item>
       <title>Squash, Banana</title>
@@ -50,7 +59,16 @@
       <pubDate>Tue, 21 Apr 2026 12:00:00 GMT</pubDate>
       <description>A member of the Cucurbitaceae family, characterized by an elongated shape and a robust girth, particularly when viewed in profile against contrasting backgrounds. Often found lounging in suburban kitchen fruit bowls, it demands a second glance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-21-squash-banana.jpg" type="image/jpeg" length="0" />
-      <category>culinary</category><category>produce</category>
+      <category>produce</category><category>culinary</category>
+    </item>
+    <item>
+      <title>Stack, Pancakes Diner</title>
+      <link>https://thiccctionary.com/entries/2026-04-20.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-20.html</guid>
+      <pubDate>Mon, 20 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A multi-layered assembly of pancakes, each disk contributing to a cumulative profile of impressive verticality and surface area, found predominantly in diner settings.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-20-stack-pancakes-diner.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>girth</category>
     </item>
   </channel>
 </rss>

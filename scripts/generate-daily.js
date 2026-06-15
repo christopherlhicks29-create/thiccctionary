@@ -433,7 +433,7 @@ Schema:
   "example": "ONE sentence (optionally + a short tag) using a NATURAL English form of the subject (NOT the inverted catalog headword verbatim) AND the literal word \"thiccc\" (always three c's). For headwords like \"Wheel, Parmigiano-Reggiano\" use \"wheel of Parmigiano-Reggiano\" or just \"Parmigiano-Reggiano\" in the sentence; for \"Atlas Stone, Strongman\" use \"strongman atlas stone\" or \"Atlas Stone, [adjective] variety\". Never paste the comma-inverted form into running prose. Use brand/model/proper-noun specificity. Avoid 'Replaced my X with this thiccc Y', pick a scene.",
   "etymology": "Real etymology FIRST (Latin/Greek/Middle English/Spanish/Nahuatl/etc., dated coinages, named industrialists) THEN a comedic kicker. The kicker is what makes the entry sing.",
   "caption": "Plate N., A short caption for the image, dictionary-illustration style. (N is a placeholder, leave it as 'Plate N.' literally.)",
-  "tags": ["tag1", "tag2", "tag3"],
+  "tags": ["2-4 tags from this CONTROLLED VOCABULARY ONLY (do not invent others): girth, produce, industrial, construction, vehicle, maritime, architecture, instrument, culinary, natural-specimens, landscape, domestic, tools. Choose only the ones that genuinely apply."],
   "category": "ONE OF: Vehicles & Transport | Architecture & Infrastructure | Industrial Machinery | Produce & Botanical | Foods of Substance | Domestic Goods | Engineering Marvels | Musical Instruments, pick the single best fit. This becomes the chapter the entry lives in when the catalog ships as a book."
 }`;
 
@@ -1215,6 +1215,23 @@ async function main() {
   const category = VALID_CATEGORIES.has(entryCopy.category) ? entryCopy.category : 'Uncategorized';
   if (category === 'Uncategorized' && entryCopy.category) {
     console.warn(`Model returned off-list category: "${entryCopy.category}". Marked Uncategorized.`);
+  }
+
+  // Wave 253: constrain tags to the canonical vocabulary so tag pages stay useful
+  // (every tag should group multiple entries, not become single-use junk).
+  const CANON_TAGS = new Set(['girth','produce','industrial','construction','vehicle','maritime','architecture','instrument','culinary','natural-specimens','landscape','domestic','tools']);
+  const CAT_TAG = {
+    'Vehicles & Transport':'vehicle','Architecture & Infrastructure':'architecture',
+    'Industrial Machinery':'industrial','Produce & Botanical':'produce',
+    'Foods of Substance':'culinary','Domestic Goods':'domestic',
+    'Musical Instruments':'instrument','Natural Specimens':'natural-specimens'
+  };
+  {
+    let _t = [...new Set((entryCopy.tags || []).map(x => String(x).toLowerCase().trim()).filter(x => CANON_TAGS.has(x)))];
+    const _base = CAT_TAG[category];
+    if (_base && !_t.includes(_base)) _t.unshift(_base);
+    if (_t.length === 0) _t = ['girth'];
+    entryCopy.tags = _t.slice(0, 4);
   }
 
   const entry = {

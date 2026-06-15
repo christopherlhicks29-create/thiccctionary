@@ -13,9 +13,7 @@
     "image": "images/2026-06-14-donut-boston-cream.jpg",
     "caption": "Plate N., A Boston Cream donut in its natural habitat, displaying remarkable curvature.",
     "tags": [
-      "donut",
-      "custard",
-      "pastry"
+      "culinary"
     ],
     "category": "Foods of Substance",
     "bookReady": true,
@@ -45,9 +43,7 @@
     "image": "images/2026-06-13-stove-wood-burning-cast-iron.jpg",
     "caption": "Plate N. The Varde wood-burning stove, poised in eternal readiness for brisk evenings.",
     "tags": [
-      "heating",
-      "domestic",
-      "cast iron"
+      "domestic"
     ],
     "category": "Domestic Goods",
     "bookReady": null,
@@ -77,9 +73,7 @@
     "image": "images/2026-06-12-cathedral-concrete-brutalist.jpg",
     "caption": "Plate N. A resolute example of brutalist architecture, daring the skyline to defy its mass.",
     "tags": [
-      "architecture",
-      "brutalist",
-      "concrete"
+      "architecture"
     ],
     "category": "Architecture & Infrastructure",
     "bookReady": true,
@@ -109,9 +103,7 @@
     "image": "images/2026-06-11-hamburger-triple-stack.jpg",
     "caption": "Plate N. A specimen whose layers defy architectural convention.",
     "tags": [
-      "burger",
-      "culinary",
-      "layering"
+      "culinary"
     ],
     "category": "Foods of Substance",
     "bookReady": null,
@@ -141,9 +133,8 @@
     "image": "images/2026-06-10-titanic-rms.jpg",
     "caption": "Plate N. The stern of RMS Titanic, asserting its presence in raking light.",
     "tags": [
-      "steamship",
-      "ocean liner",
-      "maritime legend"
+      "vehicle",
+      "maritime"
     ],
     "category": "Vehicles & Transport",
     "bookReady": true,
@@ -173,9 +164,7 @@
     "image": "images/2026-06-09-drum-marching-bass.jpg",
     "caption": "Plate N. A marching bass drum, viewed head-on, flaunting its expansive drumhead.",
     "tags": [
-      "percussion",
-      "marching band",
-      "bass"
+      "instrument"
     ],
     "category": "Musical Instruments",
     "bookReady": true,
@@ -205,9 +194,7 @@
     "image": "images/2026-06-07-pipe-organ-cathedral.jpg",
     "caption": "Plate N., Orgel im Erfurter Dom, an exemplar of ecclesiastical thicccness.",
     "tags": [
-      "music",
-      "cathedral",
-      "soundscape"
+      "instrument"
     ],
     "category": "Musical Instruments",
     "bookReady": true,
@@ -237,8 +224,8 @@
     "image": "images/2026-06-06-cabbage-savoy.jpg",
     "caption": "Plate N. Savoy cabbage in its full botanical glory, poised for admiration.",
     "tags": [
-      "culinary",
-      "produce"
+      "produce",
+      "culinary"
     ],
     "category": "Produce & Botanical",
     "bookReady": true,
@@ -301,9 +288,8 @@
     "image": "images/2026-06-03-mooring-rope-naval-hawser.jpg",
     "caption": "Plate N. A coiled naval hawser, its full-bodied presence unrivaled on the high seas.",
     "tags": [
-      "nautical",
-      "maritime",
-      "anchor"
+      "industrial",
+      "maritime"
     ],
     "category": "Industrial Machinery",
     "bookReady": null,
@@ -333,8 +319,8 @@
     "image": "images/2026-06-02-boeing-777x.jpg",
     "caption": "Plate N. The 777X, in all its thiccc glory, preparing for takeoff.",
     "tags": [
-      "natural-specimens",
-      "vehicle"
+      "vehicle",
+      "girth"
     ],
     "category": "Vehicles & Transport",
     "bookReady": true,
@@ -365,7 +351,6 @@
     "caption": "Plate N. A John Deere combine harvester, gloriously thiccc in its natural habitat.",
     "tags": [
       "industrial",
-      "produce",
       "vehicle"
     ],
     "category": "Industrial Machinery",
@@ -396,9 +381,8 @@
     "image": "images/2026-05-31-tractor-compact-utility.jpg",
     "caption": "Plate N. A compact utility tractor at rest. The gravel does not move beneath it.",
     "tags": [
-      "industrial",
-      "produce",
-      "vehicle"
+      "vehicle",
+      "industrial"
     ],
     "category": "Vehicles & Transport",
     "bookReady": false,
@@ -428,8 +412,8 @@
     "image": "images/2026-05-30-hippopotamus-common.jpg",
     "caption": "Plate N. The subject's posterior, viewed astern, defies casual description.",
     "tags": [
-      "girth",
-      "natural-specimens"
+      "natural-specimens",
+      "girth"
     ],
     "category": "Natural Specimens",
     "bookReady": null,
@@ -459,9 +443,9 @@
     "image": "images/2026-05-29-sequoia-general-sherman.jpg",
     "caption": "Plate N., General Sherman, viewed from an angle where the sky becomes optional.",
     "tags": [
+      "produce",
       "girth",
-      "landscape",
-      "produce"
+      "landscape"
     ],
     "category": "Produce & Botanical",
     "bookReady": true,
@@ -491,9 +475,8 @@
     "image": "images/2026-05-28-ever-given-suez-container-ship.jpg",
     "caption": "Plate N., The Ever Given unloading at port, its girth an exercise in logistical prowess.",
     "tags": [
-      "logistics",
-      "maritime",
-      "natural-specimens"
+      "vehicle",
+      "maritime"
     ],
     "category": "Vehicles & Transport",
     "bookReady": true,
@@ -523,9 +506,9 @@
     "image": "images/2026-05-27-vault-door-bank.jpg",
     "caption": "Plate N., An imposing guardian of financial secrets, seen in monochrome majesty.",
     "tags": [
-      "security",
-      "banking",
-      "rotundity"
+      "architecture",
+      "girth",
+      "industrial"
     ],
     "category": "Architecture & Infrastructure",
     "bookReady": null,
@@ -555,9 +538,8 @@
     "image": "images/2026-05-26-cement-truck-betamax.jpg",
     "caption": "Plate N., A cement truck of ample proportions, pursuing its singular purpose with unyielding resolve.",
     "tags": [
-      "construction",
-      "historic",
-      "industrial"
+      "industrial",
+      "construction"
     ],
     "category": "Industrial Machinery",
     "bookReady": true,
@@ -587,6 +569,7 @@
     "image": "images/2026-05-25-boulder-glacial-erratic.jpg",
     "caption": "Plate N. A glacial erratic, asserting geological sovereignty over a rocky beach.",
     "tags": [
+      "architecture",
       "landscape"
     ],
     "category": "Architecture & Infrastructure",
@@ -631,8 +614,7 @@
     "caption": "Plate N., Marine diesel crankshaft at rest, awaiting installation.",
     "tags": [
       "industrial",
-      "maritime",
-      "natural-specimens"
+      "maritime"
     ]
   },
   {
@@ -680,9 +662,8 @@
     "image": "images/2026-05-22-silo-grain-concrete.jpg",
     "caption": "Plate N., The immovable monolith of the rural skyline.",
     "tags": [
-      "construction",
-      "container",
-      "produce"
+      "architecture",
+      "construction"
     ],
     "category": "Architecture & Infrastructure",
     "bookReady": true,
@@ -712,7 +693,7 @@
     "image": "images/2026-05-21-atlas-stone-strongman.jpg",
     "caption": "Plate N. A collection of Atlas Stones, resting in their natural habitat, the strongman training ground.",
     "tags": [
-      "historic",
+      "industrial",
       "tools"
     ],
     "category": "Industrial Machinery",
@@ -773,6 +754,7 @@
     "image": "images/2026-05-19-kettlebell-competition.jpg",
     "caption": "Plate XXVII. The kettlebell, competition, in serene repose; its thicccness, undeniable.",
     "tags": [
+      "domestic",
       "girth"
     ],
     "category": "Domestic Goods",
@@ -893,7 +875,8 @@
     "image": "images/2026-05-15-transformer-power-generation.jpg",
     "caption": "Plate XXIII., A transformer of impressive proportions, holding court against a backdrop of suburban sprawl.",
     "tags": [
-      "girth"
+      "girth",
+      "industrial"
     ],
     "category": "Engineering Marvels",
     "bookReady": true,
@@ -953,9 +936,8 @@
     "image": "images/2026-05-13-dumper-truck-articulated.jpg",
     "caption": "Plate XXI., A thiccc articulated dumper truck demonstrating its posterior prowess on a construction site.",
     "tags": [
-      "construction",
       "industrial",
-      "natural-specimens"
+      "construction"
     ],
     "category": "Industrial Machinery",
     "bookReady": null,
@@ -985,8 +967,8 @@
     "image": "images/2026-05-11-cement-mixer-industrial.jpg",
     "caption": "Plate XX., An industrial cement mixer, its posterior viewed astern, defies casual description.",
     "tags": [
-      "construction",
-      "industrial"
+      "industrial",
+      "construction"
     ],
     "category": "Industrial Machinery",
     "bookReady": true,
@@ -1016,8 +998,7 @@
     "image": "images/2026-05-10-bagger-288.jpg",
     "caption": "Plate XIX., The Bagger 288, viewed astern, where the enormity of its posterior defies casual description.",
     "tags": [
-      "industrial",
-      "natural-specimens"
+      "industrial"
     ],
     "category": "Industrial Machinery",
     "bookReady": true,
@@ -1047,8 +1028,8 @@
     "image": "images/personal/2026-05-10-spruce-suburb.jpg",
     "caption": "Plate XVIII., A Spruce, Suburban photographed in residential profile, from the lawn it has annexed.",
     "tags": [
-      "landscape",
-      "produce"
+      "produce",
+      "landscape"
     ],
     "photographer": "The Editorial Board",
     "photographerUrl": "https://thiccctionary.com/",
@@ -1076,9 +1057,9 @@
     "image": "images/2026-05-08-hoover-dam.jpg",
     "caption": "Plate XVII., Hoover Dam, downstream face, viewed from the U.S. Route 93 bypass bridge.",
     "tags": [
+      "architecture",
       "construction",
-      "industrial",
-      "natural-specimens"
+      "industrial"
     ],
     "photographer": "Cédric Dhaenens",
     "photographerUrl": "https://unsplash.com/@cedric",
@@ -1106,7 +1087,8 @@
     "image": "images/2026-05-07-whale-blue.jpg",
     "caption": "Plate N. A blue whale exemplifying thicccness, with maritime diplomacy in the background.",
     "tags": [
-      "maritime"
+      "natural-specimens",
+      "girth"
     ],
     "category": "Natural Specimens",
     "bookReady": true,
@@ -1164,8 +1146,8 @@
     "image": "images/2026-05-05-watermelon-moon-and-stars.jpg",
     "caption": "Plate XV., A fruit that boldly carries the cosmos on its rind.",
     "tags": [
-      "girth",
-      "produce"
+      "produce",
+      "girth"
     ],
     "photographer": "Julia Mitchell",
     "photographerUrl": "https://unsplash.com/@juliamitchell13",
@@ -1193,7 +1175,7 @@
     "image": "images/2026-05-04.jpg",
     "caption": "Plate XIV., The Chesterfield: where the elegance of form meets the exuberance of thicccness.",
     "tags": [
-      "furniture"
+      "domestic"
     ],
     "photographer": "John Krach",
     "photographerUrl": "https://unsplash.com/@johnkrach",
@@ -1249,7 +1231,7 @@
     "image": "images/2026-05-02-frigidaire-side-by-side.jpg",
     "caption": "Plate XII., A sturdy sentinel of the kitchen realm, accentuated by its curve and depth.",
     "tags": [
-      "appliance",
+      "domestic",
       "culinary"
     ],
     "photographer": "Justin Wolff",
@@ -1278,8 +1260,8 @@
     "image": "images/2026-05-01.jpg",
     "caption": "Plate I., A specimen of considerable rear-end displacement.",
     "tags": [
-      "industrial",
-      "vehicle"
+      "vehicle",
+      "industrial"
     ],
     "photographer": "Nick Herasimenka",
     "photographerUrl": "https://unsplash.com/@nickhh",
@@ -1307,7 +1289,6 @@
     "image": "images/2026-04-30.jpg",
     "caption": "Plate II., Note the pronounced lower bulb.",
     "tags": [
-      "industrial",
       "produce"
     ],
     "photographer": "Jonathan Cooper",
@@ -1392,8 +1373,8 @@
     "image": "images/2026-04-27.jpg",
     "caption": "Plate V., At rest. Engine idle. Drum rotating.",
     "tags": [
-      "construction",
       "industrial",
+      "construction",
       "vehicle"
     ],
     "photographer": "Strange Happenings",
@@ -1450,7 +1431,7 @@
     "image": "images/2026-04-25-ship-container-maersk.jpg",
     "caption": "Plate V. The posterior of a Maersk container ship, viewed astern, in its natural harbor habitat.",
     "tags": [
-      "logistics",
+      "vehicle",
       "maritime"
     ],
     "category": "Vehicles & Transport",
@@ -1481,6 +1462,7 @@
     "image": "images/2026-04-24-basilica-san-pedro.jpg",
     "caption": "Plate IV. A view of the Basilica, San Pedro, showcasing its thiccc architectural grandeur.",
     "tags": [
+      "architecture",
       "construction"
     ],
     "category": "Architecture & Infrastructure",
@@ -1511,6 +1493,7 @@
     "image": "images/2026-04-23-ferris-wheel-london-eye.jpg",
     "caption": "Plate N., The London Eye in its thiccc majesty, as seen from the Thames.",
     "tags": [
+      "architecture",
       "girth"
     ],
     "category": "Architecture & Infrastructure",
@@ -1541,8 +1524,8 @@
     "image": "images/2026-04-22-reel-cable-industrial.jpg",
     "caption": "Plate III., A mighty reel in transit, its girth beyond reproach.",
     "tags": [
-      "girth",
-      "industrial"
+      "industrial",
+      "girth"
     ],
     "category": "Industrial Machinery",
     "bookReady": true,
@@ -1572,8 +1555,8 @@
     "image": "images/2026-04-21-squash-banana.jpg",
     "caption": "Plate II., Exemplary specimen of Squash, Banana, lounging with insouciant charm.",
     "tags": [
-      "culinary",
-      "produce"
+      "produce",
+      "culinary"
     ],
     "category": "Produce & Botanical",
     "bookReady": null,
@@ -1603,6 +1586,7 @@
     "image": "images/2026-04-20-stack-pancakes-diner.jpg",
     "caption": "Plate I., A towering stack of pancakes, viewed in profile, defying syrup's ambitions.",
     "tags": [
+      "culinary",
       "girth"
     ],
     "category": "Foods of Substance",
@@ -1633,6 +1617,7 @@
     "image": "images/2026-04-19-pipe-industrial-stack.jpg",
     "caption": "Plate N. Industrial stacks, their collective girth unchallenged under open skies.",
     "tags": [
+      "architecture",
       "girth",
       "industrial"
     ],
@@ -1664,7 +1649,8 @@
     "image": "images/2026-04-18-tire-tractor-rear.jpg",
     "caption": "Plate N. Rear tire of agricultural machinery, evoking the gravitas of an overworked bouncer.",
     "tags": [
-      "produce"
+      "industrial",
+      "vehicle"
     ],
     "category": "Industrial Machinery",
     "bookReady": null,
@@ -1756,6 +1742,7 @@
     "image": "images/2026-04-14-thickened-water.jpg",
     "caption": "Plate N. A glass of water thickened to nectar consistency. It holds its shape where ordinary water would have moved on.",
     "tags": [
+      "domestic",
       "girth"
     ],
     "category": "Domestic Goods",
@@ -1780,7 +1767,7 @@
     "image": "images/2026-04-13-hot-air-balloon.jpg",
     "caption": "Plate N., A skyward ascent in full thicccness.",
     "tags": [
-      "construction",
+      "vehicle",
       "girth"
     ],
     "category": "Vehicles & Transport",
@@ -1811,9 +1798,10 @@
     "image": "images/2026-04-11-tarantula.jpg",
     "caption": "Plate N. The posterior view of a Chilean Rose tarantula in contemplative repose.",
     "tags": [
-      "natural-specimens"
+      "natural-specimens",
+      "girth"
     ],
-    "category": "Produce & Botanical",
+    "category": "Natural Specimens",
     "bookReady": true,
     "humorScore": 9,
     "photoScore": 8,

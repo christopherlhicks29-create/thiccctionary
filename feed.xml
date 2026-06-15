@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -20,7 +20,7 @@
       <pubDate>Sun, 14 Jun 2026 12:00:00 GMT</pubDate>
       <description>A sweet, glorious torus filled with custard and topped with a glossy chocolate glaze, notable for its unapologetic girth. Particularly majestic when viewed astern, its posterior defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-14-donut-boston-cream.jpg" type="image/jpeg" length="0" />
-      <category>donut</category><category>custard</category><category>pastry</category>
+      <category>culinary</category>
     </item>
     <item>
       <title>[Article] I Reserved the Right to Revisit. I Am Revisiting.</title>
@@ -37,7 +37,7 @@
       <pubDate>Sat, 13 Jun 2026 12:00:00 GMT</pubDate>
       <description>A heating apparatus of substantial mass and poise, constructed from cast iron, designed for wood fuel consumption. Often found in settings with high aesthetic and thermal expectations.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-13-stove-wood-burning-cast-iron.jpg" type="image/jpeg" length="0" />
-      <category>heating</category><category>domestic</category><category>cast iron</category>
+      <category>domestic</category>
     </item>
     <item>
       <title>[Article] I Was Sent to Cover the Football. I Filed on the Gold.</title>
@@ -54,7 +54,7 @@
       <pubDate>Fri, 12 Jun 2026 12:00:00 GMT</pubDate>
       <description>A monumental ecclesiastical structure characterized by its unapologetically bulky concrete forms and stark geometric lines; typically possessing a cavernous interior that suggests a sanctuary for contemplation and echoes.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-12-cathedral-concrete-brutalist.jpg" type="image/jpeg" length="0" />
-      <category>architecture</category><category>brutalist</category><category>concrete</category>
+      <category>architecture</category>
     </item>
     <item>
       <title>Hamburger, Triple-Stack</title>
@@ -63,7 +63,7 @@
       <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
       <description>A burger configuration featuring three beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-11-hamburger-triple-stack.jpg" type="image/jpeg" length="0" />
-      <category>burger</category><category>culinary</category><category>layering</category>
+      <category>culinary</category>
     </item>
     <item>
       <title>[Article] On the Forty-Five-Foot Soccer Ball, Which Is Visible From Aircraft</title>
@@ -80,7 +80,7 @@
       <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
       <description>A steamship of significant breadth, particularly admired for its prodigious hull and formidable draft; often discussed in terms of its posterior, viewed astern, which defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-10-titanic-rms.jpg" type="image/jpeg" length="0" />
-      <category>steamship</category><category>ocean liner</category><category>maritime legend</category>
+      <category>vehicle</category><category>maritime</category>
     </item>
     <item>
       <title>[Article] Filed Replies, Vol. 3</title>
@@ -97,7 +97,7 @@
       <pubDate>Tue, 09 Jun 2026 12:00:00 GMT</pubDate>
       <description>An oversized percussion instrument, typically cylindrical, characterized by a generous drumhead diameter and substantial shell depth, producing resonant low frequencies that reverberate through parade routes.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-09-drum-marching-bass.jpg" type="image/jpeg" length="0" />
-      <category>percussion</category><category>marching band</category><category>bass</category>
+      <category>instrument</category>
     </item>
     <item>
       <title>[Article] Chunk. A Brief and Undignified Loss of Composure.</title>
@@ -130,7 +130,7 @@
       <pubDate>Sun, 07 Jun 2026 12:00:00 GMT</pubDate>
       <description>A grandiose musical apparatus housed in cathedrals, characterized by an imposing array of pipes that collectively form a soundscape of formidable depth, often viewed astern in raking light for full effect.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-07-pipe-organ-cathedral.jpg" type="image/jpeg" length="0" />
-      <category>music</category><category>cathedral</category><category>soundscape</category>
+      <category>instrument</category>
     </item>
     <item>
       <title>Savoy Cabbage</title>
@@ -139,7 +139,7 @@
       <pubDate>Sat, 06 Jun 2026 12:00:00 GMT</pubDate>
       <description>A leafy vegetable of distinguished girth, characterized by its densely-packed, undulating leaves and a verdant hue that shifts subtly in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-06-cabbage-savoy.jpg" type="image/jpeg" length="0" />
-      <category>culinary</category><category>produce</category>
+      <category>produce</category><category>culinary</category>
     </item>
     <item>
       <title>Antoine Ferris Wheel</title>
@@ -157,7 +157,7 @@
       <pubDate>Wed, 03 Jun 2026 12:00:00 GMT</pubDate>
       <description>A formidable cable of considerable girth, typically employed to anchor ships securely to their berths, its sheer mass exudes a gravitational pull of its own.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-03-mooring-rope-naval-hawser.jpg" type="image/jpeg" length="0" />
-      <category>nautical</category><category>maritime</category><category>anchor</category>
+      <category>industrial</category><category>maritime</category>
     </item>
     <item>
       <title>[Article] Filed Replies, Vol. 2</title>
@@ -174,7 +174,7 @@
       <pubDate>Tue, 02 Jun 2026 12:00:00 GMT</pubDate>
       <description>A long-haul aircraft renowned for its expansive width and fuselage curvature, especially when observed from behind in dramatic lighting.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-02-boeing-777x.jpg" type="image/jpeg" length="0" />
-      <category>natural-specimens</category><category>vehicle</category>
+      <category>vehicle</category><category>girth</category>
     </item>
     <item>
       <title>Combine Harvester, John Deere</title>
@@ -183,7 +183,7 @@
       <pubDate>Mon, 01 Jun 2026 12:00:00 GMT</pubDate>
       <description>A robust agricultural machine manufactured by John Deere, characterized by its substantial rear housing and impressive grain capacity, especially when viewed from behind in flattering sunlight.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-01-combine-harvester-john-deere.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category><category>vehicle</category>
+      <category>industrial</category><category>vehicle</category>
     </item>
     <item>
       <title>Tractor, Compact Utility</title>
@@ -192,7 +192,7 @@
       <pubDate>Sun, 31 May 2026 12:00:00 GMT</pubDate>
       <description>A four-wheeled agricultural vehicle of moderate horsepower, built low and wide for orchard work, hobby farms, and the kind of unspecified yard task that a homeowner believes requires diesel.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-31-tractor-compact-utility.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category><category>vehicle</category>
+      <category>vehicle</category><category>industrial</category>
     </item>
     <item>
       <title>Hippopotamus, Common</title>
@@ -201,7 +201,7 @@
       <pubDate>Sat, 30 May 2026 12:00:00 GMT</pubDate>
       <description>A semi-aquatic mammal whose substantial mass and low center of gravity render it a prime exemplar of thicccness in nature; especially when viewed astern, its posterior defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-30-hippopotamus-common.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>natural-specimens</category>
+      <category>natural-specimens</category><category>girth</category>
     </item>
     <item>
       <title>[Article] From the Boat, Issue 1</title>
@@ -226,7 +226,7 @@
       <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
       <description>A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-29-sequoia-general-sherman.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>landscape</category><category>produce</category>
+      <category>produce</category><category>girth</category><category>landscape</category>
     </item>
     <item>
       <title>Ever Given, Suez Container Ship</title>
@@ -235,7 +235,7 @@
       <pubDate>Thu, 28 May 2026 12:00:00 GMT</pubDate>
       <description>A container vessel of formidable displacement, noted for its capacity to momentarily rearrange global trade routes. Specifically, a ship whose breadth challenges traditional canal dimensions.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-28-ever-given-suez-container-ship.jpg" type="image/jpeg" length="0" />
-      <category>logistics</category><category>maritime</category><category>natural-specimens</category>
+      <category>vehicle</category><category>maritime</category>
     </item>
     <item>
       <title>Vault Door, Bank</title>
@@ -244,7 +244,7 @@
       <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
       <description>A security barrier of formidable rotundity, typically installed to guard the inner sanctum of financial institutions, esp. when viewed astern, in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-27-vault-door-bank.jpg" type="image/jpeg" length="0" />
-      <category>security</category><category>banking</category><category>rotundity</category>
+      <category>architecture</category><category>girth</category><category>industrial</category>
     </item>
     <item>
       <title>Cement Truck, BetaMax</title>
@@ -253,7 +253,7 @@
       <pubDate>Tue, 26 May 2026 12:00:00 GMT</pubDate>
       <description>A cement mixer of considerable bulk, noted for its rotund drum and dedication to gravitational permanence; especially when viewed in profile, the subject&apos;s posterior challenges architectural norms.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-26-cement-truck-betamax.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>historic</category><category>industrial</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Boulder, Glacial Erratic</title>
@@ -262,7 +262,7 @@
       <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
       <description>A substantial rock formation, often resting incongruously upon a landscape, relocated by ancient glacial activity, notable for its commanding presence when viewed astern in natural light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-25-boulder-glacial-erratic.jpg" type="image/jpeg" length="0" />
-      <category>landscape</category>
+      <category>architecture</category><category>landscape</category>
     </item>
     <item>
       <title>Crankshaft, Marine Diesel</title>
@@ -271,7 +271,7 @@
       <pubDate>Sun, 24 May 2026 12:00:00 GMT</pubDate>
       <description>A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-24-crankshaft-marine-diesel.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>maritime</category><category>natural-specimens</category>
+      <category>industrial</category><category>maritime</category>
     </item>
     <item>
       <title>Anvil, Blacksmith</title>
@@ -289,7 +289,7 @@
       <pubDate>Fri, 22 May 2026 12:00:00 GMT</pubDate>
       <description>A towering agricultural structure characterized by its substantial cylindrical form and ability to outshine any pastoral landscape with its commanding presence.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-22-silo-grain-concrete.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>container</category><category>produce</category>
+      <category>architecture</category><category>construction</category>
     </item>
     <item>
       <title>Atlas Stone, Strongman</title>
@@ -298,7 +298,7 @@
       <pubDate>Thu, 21 May 2026 12:00:00 GMT</pubDate>
       <description>A spherical weight of imposing mass, employed in the sport of strongman competitions, often requiring Herculean effort to lift and maneuver. Its surface is characteristically rough, resembling a cosmic boulder that defies trivial engagement.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-21-atlas-stone-strongman.jpg" type="image/jpeg" length="0" />
-      <category>historic</category><category>tools</category>
+      <category>industrial</category><category>tools</category>
     </item>
     <item>
       <title>Tabular Iceberg, Antarctic</title>
@@ -316,7 +316,7 @@
       <pubDate>Tue, 19 May 2026 12:00:00 GMT</pubDate>
       <description>A spherical weight of iron or steel, characterized by a single-looped handle, used in competitive sports for its standardized mass and satisfyingly stout profile.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-19-kettlebell-competition.jpg" type="image/jpeg" length="0" />
-      <category>girth</category>
+      <category>domestic</category><category>girth</category>
     </item>
     <item>
       <title>Cabbage, Savoy</title>
@@ -360,7 +360,7 @@
       <pubDate>Fri, 15 May 2026 12:00:00 GMT</pubDate>
       <description>A hefty apparatus in an electrical substation, distinguished by its imposing stature and multi-colored coils; esp. one viewed astern, where its girth suggests a surplus of voltage.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-15-transformer-power-generation.jpg" type="image/jpeg" length="0" />
-      <category>girth</category>
+      <category>girth</category><category>industrial</category>
     </item>
     <item>
       <title>Kettledrum, Industrial</title>
@@ -378,7 +378,7 @@
       <pubDate>Wed, 13 May 2026 12:00:00 GMT</pubDate>
       <description>A robust off-road vehicle equipped with a hinged joint between the cab and the dump box, allowing for enhanced maneuverability on uneven terrain.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Cement Mixer, Industrial</title>
@@ -387,7 +387,7 @@
       <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
       <description>A vehicular colossus of the concrete world, characterized by its ample rotating drum and the undeniable gravitas it brings to any construction site.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-11-cement-mixer-industrial.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Bagger 288</title>
@@ -396,7 +396,7 @@
       <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
       <description>A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-10-bagger-288.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>natural-specimens</category>
+      <category>industrial</category>
     </item>
     <item>
       <title>[Article] The Physics of Thiccc: Why Big Things Stay Big</title>
@@ -429,7 +429,7 @@
       <pubDate>Sat, 09 May 2026 12:00:00 GMT</pubDate>
       <description>A mature evergreen specimen (genus Picea) cultivated as a residential or municipal landscape feature; characteristically pyramidal, with branches sweeping low to the ground in a dense conical mass.</description>
       <enclosure url="https://thiccctionary.com/images/personal/2026-05-10-spruce-suburb.jpg" type="image/jpeg" length="0" />
-      <category>landscape</category><category>produce</category>
+      <category>produce</category><category>landscape</category>
     </item>
     <item>
       <title>Hoover Dam</title>
@@ -438,7 +438,7 @@
       <pubDate>Fri, 08 May 2026 12:00:00 GMT</pubDate>
       <description>A concrete arch-gravity dam spanning the Black Canyon of the Colorado River, completed 1936; 726 feet from foundation to crest, 660 feet of base thickness tapering to 45 feet at the crown.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-08-hoover-dam.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+      <category>architecture</category><category>construction</category><category>industrial</category>
     </item>
     <item>
       <title>Whale, Blue</title>
@@ -447,7 +447,7 @@
       <pubDate>Thu, 07 May 2026 12:00:00 GMT</pubDate>
       <description>A marine leviathan whose girth and length transcend terrestrial metrics, often seen astern with a raking light that accentuates its oceanic immensity.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-07-whale-blue.jpg" type="image/jpeg" length="0" />
-      <category>maritime</category>
+      <category>natural-specimens</category><category>girth</category>
     </item>
     <item>
       <title>Wheel, Parmigiano-Reggiano</title>
@@ -465,7 +465,7 @@
       <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
       <description>A cultivar of watermelon renowned for its celestial patterning of yellow spots and larger orbs set against a dark green rind, reminiscent of a night sky.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-05-watermelon-moon-and-stars.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>produce</category>
+      <category>produce</category><category>girth</category>
     </item>
     <item>
       <title>[Article] The Anatomy of a Thiccc Vehicle</title>
@@ -490,7 +490,7 @@
       <pubDate>Mon, 04 May 2026 12:00:00 GMT</pubDate>
       <description>A capacious upholstered seating apparatus characterized by its deep button-tufting and rolled arms; esp. one whose presence becomes a room&apos;s anchor furniture by physical fact.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-04.jpg" type="image/jpeg" length="0" />
-      <category>furniture</category>
+      <category>domestic</category>
     </item>
     <item>
       <title>[Article] Thiccc Things You Walk Past Every Day</title>
@@ -548,7 +548,7 @@
       <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
       <description>A domestic paragon of capacious elegance, featuring dual chilled chambers that stand in ostentatious parallel, prepared to preserve victuals with all the subtlety of a colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-02-frigidaire-side-by-side.jpg" type="image/jpeg" length="0" />
-      <category>appliance</category><category>culinary</category>
+      <category>domestic</category><category>culinary</category>
     </item>
     <item>
       <title>[Article] The Five Thiccc-est Things We&amp;rsquo;ve Catalogued (So Far)</title>
@@ -581,7 +581,7 @@
       <pubDate>Fri, 01 May 2026 12:00:00 GMT</pubDate>
       <description>A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one observed tail-on, in long-lens profile.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-01.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>vehicle</category>
+      <category>vehicle</category><category>industrial</category>
     </item>
     <item>
       <title>Avocado, Domestic</title>
@@ -590,7 +590,7 @@
       <pubDate>Thu, 30 Apr 2026 12:00:00 GMT</pubDate>
       <description>A pear-shaped fruit (Persea americana) of disproportionate top-to-bottom mass distribution, often photographed sliced for visual emphasis.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-30.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category>
+      <category>produce</category>
     </item>
     <item>
       <title>Ram 3500, Dually</title>
@@ -617,7 +617,7 @@
       <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
       <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>vehicle</category>
+      <category>industrial</category><category>construction</category><category>vehicle</category>
     </item>
     <item>
       <title>Pumpkin, Atlantic Giant</title>
@@ -635,7 +635,7 @@
       <pubDate>Sat, 25 Apr 2026 12:00:00 GMT</pubDate>
       <description>A maritime vessel characterized by its extensive breadth and formidable mass, designed to transport countless containers across the world&apos;s oceans; esp. one viewed astern, where its posterior expanse defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-25-ship-container-maersk.jpg" type="image/jpeg" length="0" />
-      <category>logistics</category><category>maritime</category>
+      <category>vehicle</category><category>maritime</category>
     </item>
     <item>
       <title>Basilica, San Pedro</title>
@@ -644,7 +644,7 @@
       <pubDate>Fri, 24 Apr 2026 12:00:00 GMT</pubDate>
       <description>A monumental ecclesiastical structure in Vatican City, notable for its expansive nave and an apse that seems to embrace the horizon; its thiccc columns and domes defy casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-24-basilica-san-pedro.jpg" type="image/jpeg" length="0" />
-      <category>construction</category>
+      <category>architecture</category><category>construction</category>
     </item>
     <item>
       <title>Ferris Wheel, London Eye</title>
@@ -653,7 +653,7 @@
       <pubDate>Thu, 23 Apr 2026 12:00:00 GMT</pubDate>
       <description>A monumental observation wheel situated on the South Bank of the River Thames, noted for its unparalleled rotundity and panoramic dominion over the skyline.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-23-ferris-wheel-london-eye.jpg" type="image/jpeg" length="0" />
-      <category>girth</category>
+      <category>architecture</category><category>girth</category>
     </item>
     <item>
       <title>Reel, Cable Industrial</title>
@@ -662,7 +662,7 @@
       <pubDate>Wed, 22 Apr 2026 12:00:00 GMT</pubDate>
       <description>A large, cylindrical apparatus used for spooling extensive lengths of cable, notable for its substantial diameter and pronounced bulk when loaded to capacity.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-22-reel-cable-industrial.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>industrial</category>
+      <category>industrial</category><category>girth</category>
     </item>
     <item>
       <title>Squash, Banana</title>
@@ -671,7 +671,7 @@
       <pubDate>Tue, 21 Apr 2026 12:00:00 GMT</pubDate>
       <description>A member of the Cucurbitaceae family, characterized by an elongated shape and a robust girth, particularly when viewed in profile against contrasting backgrounds. Often found lounging in suburban kitchen fruit bowls, it demands a second glance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-21-squash-banana.jpg" type="image/jpeg" length="0" />
-      <category>culinary</category><category>produce</category>
+      <category>produce</category><category>culinary</category>
     </item>
     <item>
       <title>Stack, Pancakes Diner</title>
@@ -680,7 +680,7 @@
       <pubDate>Mon, 20 Apr 2026 12:00:00 GMT</pubDate>
       <description>A multi-layered assembly of pancakes, each disk contributing to a cumulative profile of impressive verticality and surface area, found predominantly in diner settings.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-20-stack-pancakes-diner.jpg" type="image/jpeg" length="0" />
-      <category>girth</category>
+      <category>culinary</category><category>girth</category>
     </item>
     <item>
       <title>Pipe, Industrial Stack</title>
@@ -689,7 +689,7 @@
       <pubDate>Sun, 19 Apr 2026 12:00:00 GMT</pubDate>
       <description>A towering cylinder of engineered steel, designed for the expulsion of industrial emissions at a formidable height, often characterized by its unapologetic girth when viewed from any direction.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-19-pipe-industrial-stack.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>industrial</category>
+      <category>architecture</category><category>girth</category><category>industrial</category>
     </item>
     <item>
       <title>Tire, Tractor Rear</title>
@@ -698,7 +698,7 @@
       <pubDate>Sat, 18 Apr 2026 12:00:00 GMT</pubDate>
       <description>A formidable rubber component affixed to the rear axle of agricultural machinery, designed to convey a sense of unyielding stability and mass, particularly when observed from behind where its full breadth is undeniable.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-18-tire-tractor-rear.jpg" type="image/jpeg" length="0" />
-      <category>produce</category>
+      <category>industrial</category><category>vehicle</category>
     </item>
     <item>
       <title>Courgette, Giant Green</title>
@@ -725,7 +725,7 @@
       <pubDate>Tue, 14 Apr 2026 12:00:00 GMT</pubDate>
       <description>A pre-thickened drinking water formulated for individuals with dysphagia, sold in nectar, honey, and pudding consistencies per the IDDSI framework. Drunk slowly. Reviewed with respect.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-14-thickened-water.jpg" type="image/jpeg" length="0" />
-      <category>girth</category>
+      <category>domestic</category><category>girth</category>
     </item>
     <item>
       <title>Hot air balloon</title>
@@ -734,7 +734,7 @@
       <pubDate>Mon, 13 Apr 2026 12:00:00 GMT</pubDate>
       <description>A lighter-than-air vessel characterized by its bulbous fabric envelope and pronounced vertical displacement; esp. one observed astern, with the basket&apos;s footprint dwarfed by its own rotundity.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-13-hot-air-balloon.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>girth</category>
+      <category>vehicle</category><category>girth</category>
     </item>
     <item>
       <title>Tarantula</title>
@@ -743,7 +743,7 @@
       <pubDate>Sat, 11 Apr 2026 12:00:00 GMT</pubDate>
       <description>A spider of formidable girth, notably characterized by its substantial abdomen and robust leg span; often observed in repose, casting unusually expansive shadows.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-11-tarantula.jpg" type="image/jpeg" length="0" />
-      <category>natural-specimens</category>
+      <category>natural-specimens</category><category>girth</category>
     </item>
   </channel>
 </rss>

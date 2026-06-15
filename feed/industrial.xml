@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/industrial.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "industrial".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
     <item>
       <title>Antoine Ferris Wheel</title>
       <link>https://thiccctionary.com/entries/2026-06-05.html</link>
@@ -17,13 +17,22 @@
       <category>architecture</category><category>girth</category><category>industrial</category>
     </item>
     <item>
+      <title>Mooring Rope, Naval Hawser</title>
+      <link>https://thiccctionary.com/entries/2026-06-03.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-03.html</guid>
+      <pubDate>Wed, 03 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A formidable cable of considerable girth, typically employed to anchor ships securely to their berths, its sheer mass exudes a gravitational pull of its own.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-03-mooring-rope-naval-hawser.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>maritime</category>
+    </item>
+    <item>
       <title>Combine Harvester, John Deere</title>
       <link>https://thiccctionary.com/entries/2026-06-01.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-01.html</guid>
       <pubDate>Mon, 01 Jun 2026 12:00:00 GMT</pubDate>
       <description>A robust agricultural machine manufactured by John Deere, characterized by its substantial rear housing and impressive grain capacity, especially when viewed from behind in flattering sunlight.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-01-combine-harvester-john-deere.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category><category>vehicle</category>
+      <category>industrial</category><category>vehicle</category>
     </item>
     <item>
       <title>Tractor, Compact Utility</title>
@@ -32,7 +41,16 @@
       <pubDate>Sun, 31 May 2026 12:00:00 GMT</pubDate>
       <description>A four-wheeled agricultural vehicle of moderate horsepower, built low and wide for orchard work, hobby farms, and the kind of unspecified yard task that a homeowner believes requires diesel.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-31-tractor-compact-utility.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category><category>vehicle</category>
+      <category>vehicle</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Vault Door, Bank</title>
+      <link>https://thiccctionary.com/entries/2026-05-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-27.html</guid>
+      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
+      <description>A security barrier of formidable rotundity, typically installed to guard the inner sanctum of financial institutions, esp. when viewed astern, in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-27-vault-door-bank.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>girth</category><category>industrial</category>
     </item>
     <item>
       <title>Cement Truck, BetaMax</title>
@@ -41,7 +59,7 @@
       <pubDate>Tue, 26 May 2026 12:00:00 GMT</pubDate>
       <description>A cement mixer of considerable bulk, noted for its rotund drum and dedication to gravitational permanence; especially when viewed in profile, the subject&apos;s posterior challenges architectural norms.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-26-cement-truck-betamax.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>historic</category><category>industrial</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Crankshaft, Marine Diesel</title>
@@ -50,7 +68,7 @@
       <pubDate>Sun, 24 May 2026 12:00:00 GMT</pubDate>
       <description>A stout, elongated component of maritime propulsion systems, noted for its formidable girth and rotational authority. Particularly evident when viewed astern, in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-24-crankshaft-marine-diesel.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>maritime</category><category>natural-specimens</category>
+      <category>industrial</category><category>maritime</category>
     </item>
     <item>
       <title>Anvil, Blacksmith</title>
@@ -62,13 +80,31 @@
       <category>industrial</category><category>tools</category>
     </item>
     <item>
+      <title>Atlas Stone, Strongman</title>
+      <link>https://thiccctionary.com/entries/2026-05-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-21.html</guid>
+      <pubDate>Thu, 21 May 2026 12:00:00 GMT</pubDate>
+      <description>A spherical weight of imposing mass, employed in the sport of strongman competitions, often requiring Herculean effort to lift and maneuver. Its surface is characteristically rough, resembling a cosmic boulder that defies trivial engagement.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-21-atlas-stone-strongman.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>tools</category>
+    </item>
+    <item>
+      <title>Transformer, Power Generation</title>
+      <link>https://thiccctionary.com/entries/2026-05-15.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-15.html</guid>
+      <pubDate>Fri, 15 May 2026 12:00:00 GMT</pubDate>
+      <description>A hefty apparatus in an electrical substation, distinguished by its imposing stature and multi-colored coils; esp. one viewed astern, where its girth suggests a surplus of voltage.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-15-transformer-power-generation.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>industrial</category>
+    </item>
+    <item>
       <title>Dumper Truck, Articulated</title>
       <link>https://thiccctionary.com/entries/2026-05-13.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-13.html</guid>
       <pubDate>Wed, 13 May 2026 12:00:00 GMT</pubDate>
       <description>A robust off-road vehicle equipped with a hinged joint between the cab and the dump box, allowing for enhanced maneuverability on uneven terrain.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Cement Mixer, Industrial</title>
@@ -77,7 +113,7 @@
       <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
       <description>A vehicular colossus of the concrete world, characterized by its ample rotating drum and the undeniable gravitas it brings to any construction site.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-11-cement-mixer-industrial.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category>
+      <category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Bagger 288</title>
@@ -86,7 +122,7 @@
       <pubDate>Sun, 10 May 2026 12:00:00 GMT</pubDate>
       <description>A leviathan of earth-moving machinery, noteworthy for its massive revolving bucket wheel that shovels earth with an unhurried inevitability; esp. one observed from a distance, silhouetted against the horizon as an engineering colossus.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-10-bagger-288.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>natural-specimens</category>
+      <category>industrial</category>
     </item>
     <item>
       <title>Hoover Dam</title>
@@ -95,7 +131,7 @@
       <pubDate>Fri, 08 May 2026 12:00:00 GMT</pubDate>
       <description>A concrete arch-gravity dam spanning the Black Canyon of the Colorado River, completed 1936; 726 feet from foundation to crest, 660 feet of base thickness tapering to 45 feet at the crown.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-08-hoover-dam.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>natural-specimens</category>
+      <category>architecture</category><category>construction</category><category>industrial</category>
     </item>
     <item>
       <title>Thiccc Boeing</title>
@@ -104,16 +140,7 @@
       <pubDate>Fri, 01 May 2026 12:00:00 GMT</pubDate>
       <description>A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one observed tail-on, in long-lens profile.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-01.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>vehicle</category>
-    </item>
-    <item>
-      <title>Avocado, Domestic</title>
-      <link>https://thiccctionary.com/entries/2026-04-30.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-30.html</guid>
-      <pubDate>Thu, 30 Apr 2026 12:00:00 GMT</pubDate>
-      <description>A pear-shaped fruit (Persea americana) of disproportionate top-to-bottom mass distribution, often photographed sliced for visual emphasis.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-04-30.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category>
+      <category>vehicle</category><category>industrial</category>
     </item>
     <item>
       <title>Concrete Mixer</title>
@@ -122,7 +149,7 @@
       <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
       <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>vehicle</category>
+      <category>industrial</category><category>construction</category><category>vehicle</category>
     </item>
     <item>
       <title>Reel, Cable Industrial</title>
@@ -131,7 +158,7 @@
       <pubDate>Wed, 22 Apr 2026 12:00:00 GMT</pubDate>
       <description>A large, cylindrical apparatus used for spooling extensive lengths of cable, notable for its substantial diameter and pronounced bulk when loaded to capacity.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-22-reel-cable-industrial.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>industrial</category>
+      <category>industrial</category><category>girth</category>
     </item>
     <item>
       <title>Pipe, Industrial Stack</title>
@@ -140,7 +167,16 @@
       <pubDate>Sun, 19 Apr 2026 12:00:00 GMT</pubDate>
       <description>A towering cylinder of engineered steel, designed for the expulsion of industrial emissions at a formidable height, often characterized by its unapologetic girth when viewed from any direction.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-19-pipe-industrial-stack.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>industrial</category>
+      <category>architecture</category><category>girth</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Tire, Tractor Rear</title>
+      <link>https://thiccctionary.com/entries/2026-04-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-18.html</guid>
+      <pubDate>Sat, 18 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A formidable rubber component affixed to the rear axle of agricultural machinery, designed to convey a sense of unyielding stability and mass, particularly when observed from behind where its full breadth is undeniable.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-18-tire-tractor-rear.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>vehicle</category>
     </item>
   </channel>
 </rss>

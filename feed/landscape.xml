@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/landscape.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "landscape".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
     <item>
       <title>Sequoia, General Sherman</title>
       <link>https://thiccctionary.com/entries/2026-05-29.html</link>
@@ -14,7 +14,7 @@
       <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
       <description>A giant sequoia tree renowned for its extraordinary mass and height, particularly when viewed from ground level where the sky becomes a mere afterthought.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-29-sequoia-general-sherman.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>landscape</category><category>produce</category>
+      <category>produce</category><category>girth</category><category>landscape</category>
     </item>
     <item>
       <title>Boulder, Glacial Erratic</title>
@@ -23,7 +23,7 @@
       <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
       <description>A substantial rock formation, often resting incongruously upon a landscape, relocated by ancient glacial activity, notable for its commanding presence when viewed astern in natural light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-25-boulder-glacial-erratic.jpg" type="image/jpeg" length="0" />
-      <category>landscape</category>
+      <category>architecture</category><category>landscape</category>
     </item>
     <item>
       <title>Tabular Iceberg, Antarctic</title>
@@ -41,7 +41,7 @@
       <pubDate>Sat, 09 May 2026 12:00:00 GMT</pubDate>
       <description>A mature evergreen specimen (genus Picea) cultivated as a residential or municipal landscape feature; characteristically pyramidal, with branches sweeping low to the ground in a dense conical mass.</description>
       <enclosure url="https://thiccctionary.com/images/personal/2026-05-10-spruce-suburb.jpg" type="image/jpeg" length="0" />
-      <category>landscape</category><category>produce</category>
+      <category>produce</category><category>landscape</category>
     </item>
   </channel>
 </rss>

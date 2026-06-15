@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/vehicle.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "vehicle".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
+    <item>
+      <title>Titanic, RMS</title>
+      <link>https://thiccctionary.com/entries/2026-06-10.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-10.html</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A steamship of significant breadth, particularly admired for its prodigious hull and formidable draft; often discussed in terms of its posterior, viewed astern, which defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-10-titanic-rms.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>maritime</category>
+    </item>
     <item>
       <title>Boeing 777X</title>
       <link>https://thiccctionary.com/entries/2026-06-02.html</link>
@@ -14,7 +23,7 @@
       <pubDate>Tue, 02 Jun 2026 12:00:00 GMT</pubDate>
       <description>A long-haul aircraft renowned for its expansive width and fuselage curvature, especially when observed from behind in dramatic lighting.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-02-boeing-777x.jpg" type="image/jpeg" length="0" />
-      <category>natural-specimens</category><category>vehicle</category>
+      <category>vehicle</category><category>girth</category>
     </item>
     <item>
       <title>Combine Harvester, John Deere</title>
@@ -23,7 +32,7 @@
       <pubDate>Mon, 01 Jun 2026 12:00:00 GMT</pubDate>
       <description>A robust agricultural machine manufactured by John Deere, characterized by its substantial rear housing and impressive grain capacity, especially when viewed from behind in flattering sunlight.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-01-combine-harvester-john-deere.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category><category>vehicle</category>
+      <category>industrial</category><category>vehicle</category>
     </item>
     <item>
       <title>Tractor, Compact Utility</title>
@@ -32,7 +41,16 @@
       <pubDate>Sun, 31 May 2026 12:00:00 GMT</pubDate>
       <description>A four-wheeled agricultural vehicle of moderate horsepower, built low and wide for orchard work, hobby farms, and the kind of unspecified yard task that a homeowner believes requires diesel.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-31-tractor-compact-utility.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>produce</category><category>vehicle</category>
+      <category>vehicle</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Ever Given, Suez Container Ship</title>
+      <link>https://thiccctionary.com/entries/2026-05-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-28.html</guid>
+      <pubDate>Thu, 28 May 2026 12:00:00 GMT</pubDate>
+      <description>A container vessel of formidable displacement, noted for its capacity to momentarily rearrange global trade routes. Specifically, a ship whose breadth challenges traditional canal dimensions.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-28-ever-given-suez-container-ship.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>maritime</category>
     </item>
     <item>
       <title>Thiccc Boeing</title>
@@ -41,7 +59,7 @@
       <pubDate>Fri, 01 May 2026 12:00:00 GMT</pubDate>
       <description>A widebody aircraft whose aft fuselage exhibits significantly more curvature than its fore fuselage; esp. one observed tail-on, in long-lens profile.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-01.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>vehicle</category>
+      <category>vehicle</category><category>industrial</category>
     </item>
     <item>
       <title>Ram 3500, Dually</title>
@@ -59,7 +77,34 @@
       <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
       <description>An industrial vehicle of contemplative rotundity, characterized by a single, slowly-rotating, drum-shaped midsection.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-27.jpg" type="image/jpeg" length="0" />
-      <category>construction</category><category>industrial</category><category>vehicle</category>
+      <category>industrial</category><category>construction</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Ship, Container Maersk</title>
+      <link>https://thiccctionary.com/entries/2026-04-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-25.html</guid>
+      <pubDate>Sat, 25 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A maritime vessel characterized by its extensive breadth and formidable mass, designed to transport countless containers across the world&apos;s oceans; esp. one viewed astern, where its posterior expanse defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-25-ship-container-maersk.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>maritime</category>
+    </item>
+    <item>
+      <title>Tire, Tractor Rear</title>
+      <link>https://thiccctionary.com/entries/2026-04-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-18.html</guid>
+      <pubDate>Sat, 18 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A formidable rubber component affixed to the rear axle of agricultural machinery, designed to convey a sense of unyielding stability and mass, particularly when observed from behind where its full breadth is undeniable.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-18-tire-tractor-rear.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Hot air balloon</title>
+      <link>https://thiccctionary.com/entries/2026-04-13.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-13.html</guid>
+      <pubDate>Mon, 13 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A lighter-than-air vessel characterized by its bulbous fabric envelope and pronounced vertical displacement; esp. one observed astern, with the basket&apos;s footprint dwarfed by its own rotundity.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-13-hot-air-balloon.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>girth</category>
     </item>
   </channel>
 </rss>

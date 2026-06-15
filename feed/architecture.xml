@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/architecture.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "architecture".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 22:38:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:49 GMT</lastBuildDate>
     <item>
       <title>Cathedral, Concrete Brutalist</title>
       <link>https://thiccctionary.com/entries/2026-06-12.html</link>
@@ -14,7 +14,7 @@
       <pubDate>Fri, 12 Jun 2026 12:00:00 GMT</pubDate>
       <description>A monumental ecclesiastical structure characterized by its unapologetically bulky concrete forms and stark geometric lines; typically possessing a cavernous interior that suggests a sanctuary for contemplation and echoes.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-12-cathedral-concrete-brutalist.jpg" type="image/jpeg" length="0" />
-      <category>architecture</category><category>brutalist</category><category>concrete</category>
+      <category>architecture</category>
     </item>
     <item>
       <title>Antoine Ferris Wheel</title>
@@ -23,6 +23,69 @@
       <pubDate>Fri, 05 Jun 2026 12:00:00 GMT</pubDate>
       <description>A large amusement ride characterized by its prominent circular structure and multiple passenger cabins, each offering panoramic views that defy casual description when viewed astern in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-05-antoine-ferris-wheel.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>girth</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Vault Door, Bank</title>
+      <link>https://thiccctionary.com/entries/2026-05-27.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-27.html</guid>
+      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
+      <description>A security barrier of formidable rotundity, typically installed to guard the inner sanctum of financial institutions, esp. when viewed astern, in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-27-vault-door-bank.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>girth</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Boulder, Glacial Erratic</title>
+      <link>https://thiccctionary.com/entries/2026-05-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-25.html</guid>
+      <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
+      <description>A substantial rock formation, often resting incongruously upon a landscape, relocated by ancient glacial activity, notable for its commanding presence when viewed astern in natural light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-25-boulder-glacial-erratic.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Silo, Grain Concrete</title>
+      <link>https://thiccctionary.com/entries/2026-05-22.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-22.html</guid>
+      <pubDate>Fri, 22 May 2026 12:00:00 GMT</pubDate>
+      <description>A towering agricultural structure characterized by its substantial cylindrical form and ability to outshine any pastoral landscape with its commanding presence.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-22-silo-grain-concrete.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>construction</category>
+    </item>
+    <item>
+      <title>Hoover Dam</title>
+      <link>https://thiccctionary.com/entries/2026-05-08.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-08.html</guid>
+      <pubDate>Fri, 08 May 2026 12:00:00 GMT</pubDate>
+      <description>A concrete arch-gravity dam spanning the Black Canyon of the Colorado River, completed 1936; 726 feet from foundation to crest, 660 feet of base thickness tapering to 45 feet at the crown.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-08-hoover-dam.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>construction</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Basilica, San Pedro</title>
+      <link>https://thiccctionary.com/entries/2026-04-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-24.html</guid>
+      <pubDate>Fri, 24 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A monumental ecclesiastical structure in Vatican City, notable for its expansive nave and an apse that seems to embrace the horizon; its thiccc columns and domes defy casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-24-basilica-san-pedro.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>construction</category>
+    </item>
+    <item>
+      <title>Ferris Wheel, London Eye</title>
+      <link>https://thiccctionary.com/entries/2026-04-23.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-23.html</guid>
+      <pubDate>Thu, 23 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A monumental observation wheel situated on the South Bank of the River Thames, noted for its unparalleled rotundity and panoramic dominion over the skyline.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-23-ferris-wheel-london-eye.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>girth</category>
+    </item>
+    <item>
+      <title>Pipe, Industrial Stack</title>
+      <link>https://thiccctionary.com/entries/2026-04-19.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-19.html</guid>
+      <pubDate>Sun, 19 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A towering cylinder of engineered steel, designed for the expulsion of industrial emissions at a formidable height, often characterized by its unapologetic girth when viewed from any direction.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-19-pipe-industrial-stack.jpg" type="image/jpeg" length="0" />
       <category>architecture</category><category>girth</category><category>industrial</category>
     </item>
     <item>
