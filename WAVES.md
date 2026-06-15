@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 256 (2026-06-15, autonomous session): Masthead date tracks the latest entry, not the visitor clock
+
+The masthead date used new Date() (the visitor's local clock). Entries are UTC-dated, so a visitor behind UTC saw yesterday's date while the live entry was today's (the day-lag flagged in the 06-13 PO review). Rewrote masthead-date.js to read the latest entry's date from entries.json and parse YYYY-MM-DD into LOCAL parts (avoids a UTC-parse off-by-one), falling back to the visitor clock only if entries.json is unreadable. Bumped the cache-buster v1->v2 across all 23 pages that load it. Masthead now always matches the current issue's date.
+
 ## Wave 254 (2026-06-14, autonomous session): Delay PWA install prompt to a return visit
 
 First-time visitors got hit with both the "what is this?" intro banner and the PWA install banner at once. Added a visit-counter gate (localStorage tcc-visit-count) so the install prompt only surfaces on a second-or-later visit, leaving the first load to the intro banner alone. Applies to both the Chrome beforeinstallprompt path and the iOS Add-to-Home-Screen hint. Reversible, homepage-only change.
