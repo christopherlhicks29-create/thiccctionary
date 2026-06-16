@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Crossed 312 entries today. The notebook is full. Started a second one. Someone asked what I'm tracking and I said \"infrastructure\" and they nodded like that was normal. It is normal. The hydrant outside the pharmacy is painted the wrong shade of red.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-06-16T20:22:36.523Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1781555822062",
