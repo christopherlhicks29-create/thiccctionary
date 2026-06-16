@@ -13,16 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Jackfruit, Whole",
-      "query": "whole jackfruit",
-      "notes": "largest tree fruit; produce variety"
-    },
-    {
-      "subject": "Double Bass, Upright",
-      "query": "upright double bass",
-      "notes": "instrument; distinct from tuba"
-    },
-    {
       "subject": "Bulldog, English",
       "query": "english bulldog",
       "notes": "chunky animal, frame-filling close-ups"
