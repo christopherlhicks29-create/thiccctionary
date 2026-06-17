@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-17",
+    "word": "Bratwurst, Coiled",
+    "pronunciation": "/BRAT-wurst, koy-ld/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A spiral-shaped sausage of culinary girth, characterized by its dense and continuous form, often presented in a manner that challenges conventional plate boundaries.",
+      "<em>colloq.</em> Industrial-grade sausage that invites reconsideration of circular geometry. What one might call a meat helix of ambitious proportions."
+    ],
+    "example": "At the barbecue, he unfurled a thiccc coiled bratwurst that seemed to redefine the picnic table's perimeter. The grill was its stage.",
+    "etymology": "From German <em>bratwurst</em>, from <em>braten</em> 'to fry' + <em>wurst</em> 'sausage'. 'Coiled' added by those who like their sausage with a side of geometry.",
+    "image": "images/2026-06-17-bratwurst-coiled.jpg",
+    "caption": "Plate N., A thiccc spiral that defies the plate's edge.",
+    "tags": [
+      "girth",
+      "culinary",
+      "domestic"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "personalgraphic.com",
+    "photographerUrl": "https://unsplash.com/@personal_graphic",
+    "unsplashUrl": "https://unsplash.com/photos/a-plate-of-sausages-and-tomatoes-on-a-white-background-FuZTPFL2-V4",
+    "socialCaptions": {
+      "morning": "Bratwurst, Coiled. A geometric feat—six feet of savory spirals. The plate is merely a suggestion.",
+      "afternoon": "The coiled bratwurst, weighing in at a formidable two pounds, defies the laws of barbecue physics—Bratwurst, Coiled.",
+      "evening": "From the archives, Bratwurst, Coiled.\nA culinary Fibonacci sequence, tracing its lineage back to 14th-century Germany.",
+      "reels": "A spiral of seasoned mastery—bratwurst that dares to breach the edge of your plate."
+    }
+  },
+  {
     "date": "2026-06-16",
     "word": "Double Bass, Upright",
     "pronunciation": "duh-bul BAYSS, UP-right",
