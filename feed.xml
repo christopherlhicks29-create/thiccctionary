@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Jun 2026 00:09:51 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 02:36:43 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Bass, Upright Acoustic</title>
+      <link>https://thiccctionary.com/entries/2026-06-18.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-18.html</guid>
+      <pubDate>Thu, 18 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A stringed instrument of substantial verticality and resonant depth, characterized by a curvaceous wooden body that anchors the symphonic landscape.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-18-bass-upright-acoustic.jpg" type="image/jpeg" length="0" />
+      <category>instrument</category><category>girth</category>
+    </item>
     <item>
       <title>Bratwurst, Coiled</title>
       <link>https://thiccctionary.com/entries/2026-06-17.html</link>
@@ -21,6 +30,14 @@
       <description>A spiral-shaped sausage of culinary girth, characterized by its dense and continuous form, often presented in a manner that challenges conventional plate boundaries.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-17-bratwurst-coiled.jpg" type="image/jpeg" length="0" />
       <category>girth</category><category>culinary</category><category>domestic</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 4</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-06-17.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-06-17.html</guid>
+      <pubDate>Wed, 17 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 4.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Double Bass, Upright</title>

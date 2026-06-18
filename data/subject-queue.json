@@ -13,14 +13,24 @@
   ],
   "queue": [
     {
-      "subject": "Boombox, Vintage",
-      "query": "vintage boombox stereo",
-      "notes": "product shot, chunky 80s tech"
+      "subject": "Truck, Cement Mixer Drum",
+      "query": "concrete mixer truck drum",
+      "category": "Vehicles & Transport"
     },
     {
-      "subject": "Mattress, Pillow-Top",
-      "query": "pillow top mattress",
-      "notes": "restored after failed 06-15 force-regen (generation threw on new date)"
+      "subject": "Cello, Concert Solo",
+      "query": "cello concert performance",
+      "category": "Musical Instruments"
+    },
+    {
+      "subject": "Engine, V8 Crate",
+      "query": "V8 engine block crate",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Bulldozer, Caterpillar D11",
+      "query": "caterpillar d11 bulldozer",
+      "category": "Industrial Machinery"
     }
   ]
 }
