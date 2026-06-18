@@ -13,16 +13,6 @@
   ],
   "queue": [
     {
-      "subject": "Truck, Cement Mixer Drum",
-      "query": "concrete mixer truck drum",
-      "category": "Vehicles & Transport"
-    },
-    {
-      "subject": "Cello, Concert Solo",
-      "query": "cello concert performance",
-      "category": "Musical Instruments"
-    },
-    {
       "subject": "Engine, V8 Crate",
       "query": "V8 engine block crate",
       "category": "Industrial Machinery"
