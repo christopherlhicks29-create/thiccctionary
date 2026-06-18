@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Whitmore Reserve got a second review this week. \"Textured,\" said the concierge at the Belmond. I asked him to elaborate. He smiled. I have been thinking about the smile for four days.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-06-18T19:38:05.384Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1781724833663",
