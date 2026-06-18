@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-06-18",
+    "word": "Bass, Upright Acoustic",
+    "pronunciation": "/bays up-rahyt uh-KOO-stik/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A stringed instrument of substantial verticality and resonant depth, characterized by a curvaceous wooden body that anchors the symphonic landscape.",
+      "<em>colloq.</em> A standing monument to acoustic thicccness, often requiring both a player and a roadie for logistical navigation."
+    ],
+    "example": "He spotted a thiccc upright bass on stage, its presence suggesting the need for a wider spotlight. The sound engineer recalibrated in resignation.",
+    "etymology": "From Italian basso, meaning 'low', through the French basse, referring to the lower register. Unexpectedly, it also serves as a frequent reminder of spatial limitations backstage.",
+    "image": "images/2026-06-18-bass-upright-acoustic.jpg",
+    "caption": "Plate N. A majestic thiccc bass, poised to redefine the acoustics of any venue.",
+    "tags": [
+      "instrument",
+      "girth"
+    ],
+    "category": "Musical Instruments",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 7,
+    "photographer": "James Ertl",
+    "photographerUrl": "https://unsplash.com/@upnorth52",
+    "unsplashUrl": "https://unsplash.com/photos/a-group-of-men-playing-musical-instruments-on-stage--mtSU2Fgu4M",
+    "socialCaptions": {
+      "morning": "Bass, Upright Acoustic. Standing over 6 feet tall—commanding attention like a Victorian-era butler with perfect posture.",
+      "afternoon": "A 1930s innovation, the endpin extended its reach—yet remains curiously absent from overhead bin discussions. Thiccc.",
+      "evening": "From the archives, Bass, Upright Acoustic.\nIntroduced to jazz in the 1920s—proving once and for all that size matters in improvisation.",
+      "reels": "Four strings, 42 inches vibrating—enough to make gravity reconsider its options."
+    }
+  },
+  {
     "date": "2026-06-17",
     "word": "Bratwurst, Coiled",
     "pronunciation": "/BRAT-wurst, koy-ld/",
