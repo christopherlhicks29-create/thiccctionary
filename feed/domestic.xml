@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/domestic.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "domestic".</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:20:39 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 17:35:35 GMT</lastBuildDate>
     <item>
       <title>Bratwurst, Coiled</title>
       <link>https://thiccctionary.com/entries/2026-06-17.html</link>
@@ -24,6 +24,15 @@
       <description>A heating apparatus of substantial mass and poise, constructed from cast iron, designed for wood fuel consumption. Often found in settings with high aesthetic and thermal expectations.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-13-stove-wood-burning-cast-iron.jpg" type="image/jpeg" length="0" />
       <category>domestic</category>
+    </item>
+    <item>
+      <title>Globe, Library Floor Model</title>
+      <link>https://thiccctionary.com/entries/2026-05-26.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-26.html</guid>
+      <pubDate>Tue, 26 May 2026 12:00:00 GMT</pubDate>
+      <description>A spherical representation of Earth, often observed on library floors, notable for its substantial diameter and formidable heft, requiring a table of equally impressive foundation to remain stationary.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-26-globe-library-floor.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category><category>architecture</category>
     </item>
     <item>
       <title>Kettlebell, Competition</title>

@@ -6,16 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/produce.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "produce".</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:20:39 GMT</lastBuildDate>
-    <item>
-      <title>Titanic Pumpkin, Atlantic Giant</title>
-      <link>https://thiccctionary.com/entries/2026-06-19.html</link>
-      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-19.html</guid>
-      <pubDate>Fri, 19 Jun 2026 12:00:00 GMT</pubDate>
-      <description>A cucurbit of formidable dimensions, primarily cultivated for exhibition purposes, known for its expansive girth and vibrant hues. Esp. one whose posterior, viewed astern, defies casual description.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-06-19-titanic-pumpkin-atlantic-giant.jpg" type="image/jpeg" length="0" />
-      <category>girth</category><category>produce</category><category>natural-specimens</category>
-    </item>
+    <lastBuildDate>Fri, 19 Jun 2026 17:35:35 GMT</lastBuildDate>
     <item>
       <title>Savoy Cabbage</title>
       <link>https://thiccctionary.com/entries/2026-06-06.html</link>
@@ -42,6 +33,15 @@
       <description>A botanical heavyweight of the brassica family, renowned for its deeply crinkled leaves and substantial presence in the garden; esp. one whose verdant layers suggest a rotational symmetry best admired in morning light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-18-cabbage-savoy.jpg" type="image/jpeg" length="0" />
       <category>produce</category>
+    </item>
+    <item>
+      <title>Pumpkin, Championship Atlantic Giant</title>
+      <link>https://thiccctionary.com/entries/2026-05-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-11.html</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
+      <description>A cultivar of the pumpkin characterized by its prodigious size and vibrant coloration, often displayed at county fairs and farm markets, where it is observed with a mix of awe and logistical concern.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-11-pumpkin-championship-atlantic-giant.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>produce</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Spruce, Suburban</title>

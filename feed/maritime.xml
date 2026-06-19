@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/maritime.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "maritime".</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:20:39 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 17:35:35 GMT</lastBuildDate>
     <item>
       <title>Titanic, RMS</title>
       <link>https://thiccctionary.com/entries/2026-06-10.html</link>
@@ -15,6 +15,15 @@
       <description>A steamship of significant breadth, particularly admired for its prodigious hull and formidable draft; often discussed in terms of its posterior, viewed astern, which defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-10-titanic-rms.jpg" type="image/jpeg" length="0" />
       <category>vehicle</category><category>maritime</category>
+    </item>
+    <item>
+      <title>Cannonball, Naval</title>
+      <link>https://thiccctionary.com/entries/2026-06-05.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-05.html</guid>
+      <pubDate>Fri, 05 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A spherical projectile of significant heft, historically employed by naval artillery, characterized by a stout and unyielding exterior.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-05-cannonball-naval.jpg" type="image/jpeg" length="0" />
+      <category>maritime</category><category>industrial</category>
     </item>
     <item>
       <title>Mooring Rope, Naval Hawser</title>

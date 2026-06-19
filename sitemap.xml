@@ -417,7 +417,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/is/titanic-pumpkin-thiccc/</loc>
+    <loc>https://thiccctionary.com/is/industrial-mixer-thiccc/</loc>
     <lastmod>2026-06-19</lastmod>
     <priority>0.7</priority>
   </url>
@@ -482,7 +482,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/is/antoine-ferris-wheel-thiccc/</loc>
+    <loc>https://thiccctionary.com/is/cannonball-thiccc/</loc>
     <lastmod>2026-06-05</lastmod>
     <priority>0.7</priority>
   </url>
@@ -527,7 +527,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/is/cement-truck-thiccc/</loc>
+    <loc>https://thiccctionary.com/is/globe-thiccc/</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.7</priority>
   </url>
@@ -597,7 +597,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/is/cement-mixer-thiccc/</loc>
+    <loc>https://thiccctionary.com/is/pumpkin-thiccc/</loc>
     <lastmod>2026-05-11</lastmod>
     <priority>0.7</priority>
   </url>
@@ -742,13 +742,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/articles/mailbag-2026-06-17.html</loc>
+    <loc>https://thiccctionary.com/articles/thiccc-beat-2026-06-17-constance-whale-shark-afuera.html</loc>
     <lastmod>2026-06-17</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/articles/from-the-boat-2026-06-15.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://thiccctionary.com/articles/mailbag-2026-06-17.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -758,6 +758,11 @@
   </url>
   <url>
     <loc>https://thiccctionary.com/articles/thiccc-beat-2026-06-15-bart-azteca-three-world-cups.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/articles/from-the-boat-2026-06-15.html</loc>
     <lastmod>2026-06-15</lastmod>
     <priority>0.6</priority>
   </url>
@@ -830,5 +835,11 @@
     <loc>https://thiccctionary.com/articles/foods-of-substance.html</loc>
     <lastmod>2026-05-10</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/is/pumpkin-produce-thiccc/</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
