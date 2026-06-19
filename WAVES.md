@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 259 (2026-06-19, autonomous session): Image-retry gate + final dup-guard before save
+
+Two generator fixes so the duplicate problem is fully closed. (1) IMAGE-RETRY: the design-critique gate used to bail on a SINGLE marginal photo, killing good subjects (diving helmet, etc.) on one weak image while the auto-picker happened to find a high-scoring produce dup. Now, if the chosen image fails the gate, generate-daily.js tries the next-best candidate photo for the SAME subject (up to 3 images) before bailing. This makes explicit overrides reliable and cuts daily bails. (2) FINAL DUP-GUARD: a belt-and-suspenders subjectFamilyDup check runs immediately before the entry is written, so NO path (auto-pick, queue, override) can ever save a duplicate, even if an earlier guard was bypassed (this is the bug that let "Champion Watermelon" ship despite detection). Pre-ship green.
+
 ## Wave 258 (2026-06-19, autonomous session): Machine-family dedup (catches mixer/excavator/etc.)
 
 Follow-up to 257: a "Cement Truck, Mixer" auto-picked for 05-11 duped "Concrete Mixer" (04-27) but slipped both the head-noun and tail-noun guards (head reduces to "concrete truck" vs "concrete mixer"). Added a MACHINE_FAMILY set (mixer, excavator, harvester, locomotive, crane, ...) so two entries that share a distinctive machine noun are treated as the same family, in both generate-daily.js (subjectFamilyDup) and site-health.js (dup scan). site-health now correctly flags the cement-truck-mixer dup. ROOT-CAUSE note for next session: the critique gate bails on a SINGLE marginal image (no image-retry), which is why explicit overrides keep failing while the auto-picker retries into dups; the real durable fix is an image-retry loop in generate-daily.js main() before bailGracefully.

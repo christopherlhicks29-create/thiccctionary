@@ -1065,6 +1065,32 @@ async function main() {
     critique = { score: null, verdict: 'unknown', critique: `Critique unavailable: ${e.message}` };
   }
 
+  // Wave 259: image-retry. A good subject should not die on one weak photo.
+  // If the chosen image fails the design gate, try the next-best candidate image
+  // for the SAME subject (up to 3 images) before the gate below decides to bail.
+  {
+    const gateFails = (c) => c && (c.verdict === 'reject' || (typeof c.score === 'number' && c.score < 5) || (typeof c.subjectPercentEstimate === 'number' && c.subjectPercentEstimate < 25));
+    const tried = new Set([chosen && chosen.fullUrl]);
+    let imgTries = 1;
+    while (gateFails(critique) && imgTries < 3 && Array.isArray(candidates)) {
+      const remaining = candidates.filter(c => c && !tried.has(c.fullUrl));
+      if (remaining.length === 0) break;
+      console.log(`[image-retry] image ${imgTries} scored ${critique.score} / subjectPct ${critique.subjectPercentEstimate}; trying another photo for "${subjectInfo.subject}" (${remaining.length} candidates left).`);
+      const alt = await pickThiccestImage(subjectInfo.subject, remaining);
+      if (!alt || alt.rejected) break;
+      chosen = alt; tried.add(chosen.fullUrl);
+      await downloadImage(chosen, filename);
+      try { const { execSync } = await import('node:child_process'); execSync(`node scripts/jpg-to-webp.js images/${filename}`, { cwd: ROOT, stdio: 'inherit' }); } catch (e) { console.warn(`WebP regen failed (non-fatal): ${e.message}`); }
+      try {
+        const cp = critiqueChosenImage(subjectInfo.subject, chosen);
+        const tp = new Promise((_, reject) => setTimeout(() => reject(new Error('critique timeout')), 20000));
+        critique = await Promise.race([cp, tp]);
+      } catch (e) { critique = { score: null, verdict: 'unknown', critique: `Critique unavailable: ${e.message}` }; }
+      imgTries++;
+    }
+    if (!gateFails(critique) && imgTries > 1) console.log(`[image-retry] an alternative photo passed the gate on try ${imgTries}.`);
+  }
+
   // Critique acts as a GATE for the worst failures. Anything that explicitly
   // says 'reject' or scores below 4 OR mentions people gets the workflow to
   // exit non-zero, leaving no PR. Subtle issues still surface in the PR body
@@ -1298,6 +1324,15 @@ async function main() {
   // blind unshift. The burst-fill tool (Wave 165) writes past-dated entries
   // and blind-unshifting put them at index 0, pushing today out of position
   // and breaking the homepage + previous/next nav + the next daily cron.
+  // Wave 259: final belt-and-suspenders dup guard. Whatever path produced this
+  // subject (auto-pick, queue, override), NEVER write a duplicate to the catalog.
+  // `entries` already excludes the same-date entry being replaced.
+  {
+    const lastDup = subjectFamilyDup(entry.word, entries.map(e => e.word));
+    if (lastDup) {
+      await bailGracefully({ reason: `final dup-guard: "${entry.word}" duplicates catalogued "${lastDup}"`, subject: entry.word, queueAfterPull });
+    }
+  }
   let insertAt = entries.findIndex(e => e.date < entry.date);
   if (insertAt === -1) insertAt = entries.length;
   entries.splice(insertAt, 0, entry);
