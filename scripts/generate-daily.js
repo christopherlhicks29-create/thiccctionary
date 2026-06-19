@@ -103,6 +103,10 @@ const SUBJECT_SYNONYMS = { cement: 'concrete', couch: 'sofa', settee: 'sofa', lo
 // Wave 257: core nouns too generic to imply "same family" by tail-match alone
 // (a Parmigiano cheese WHEEL is not a Ferris WHEEL). The tail-noun guard skips these.
 const GENERIC_TAILS = new Set(['wheel','ball','box','case','machine','set','stand','holder','unit','model']);
+// Wave 258: distinctive machine/object nouns where sharing the noun means same
+// family even when heads differ ("Cement Truck, Mixer" vs "Concrete Mixer").
+const MACHINE_FAMILY = new Set(['mixer','excavator','harvester','locomotive','dredger','bulldozer','forklift','backhoe','zamboni','escalator','crane']);
+function machineFamilyToken(s){return (String(s||'').toLowerCase().match(/[a-z]+/g)||[]).find(t=>MACHINE_FAMILY.has(t))||null;}
 function headNoun(word) {
   const head = String(word || '').split(',')[0];
   const toks = (head.toLowerCase().match(/[a-z0-9-]+/g) || [])
@@ -154,6 +158,7 @@ function subjectFamilyDup(subject, pastWords) {
     if (ph === h) return w;
     if (ph.includes(' ') && containsSeq(subjTokens, ph.split(' '))) return w;
     if (subjBrands.size && brandTokens(w).some(b => subjBrands.has(b))) return w;
+    { const mf = machineFamilyToken(subject); if (mf && machineFamilyToken(w) === mf) return w; }
     // Wave 257: tail-noun guard. A single-token core noun that is the TAIL of a
     // multi-token head is the same family ("pumpkin" vs "titanic pumpkin",
     // "bass" vs "double bass", "mixer" vs "industrial mixer"), unless the shared

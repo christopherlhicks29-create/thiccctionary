@@ -31,10 +31,12 @@ const CHECK_MODE = process.argv.includes('--check');
 const SH_SIZE = new Set(['big','bulky','large','round','heavy','chunky','hefty','plump','plush','thick','wide','fat','stout','sturdy','massive','huge','dense','solid','giant','common','standard','domestic','tufted']);
 const SH_SYN = { cement:'concrete', couch:'sofa', settee:'sofa', lorry:'truck', plane:'aircraft', airplane:'aircraft' };
 const SH_GENERIC_TAILS = new Set(['wheel','ball','box','case','machine','set','stand','holder','unit','model']);
+const SH_MACHINE = new Set(['mixer','excavator','harvester','locomotive','dredger','bulldozer','forklift','backhoe','zamboni','escalator','crane']);
+function shMachine(s){return (String(s||'').toLowerCase().match(/[a-z]+/g)||[]).find(t=>SH_MACHINE.has(t))||null;}
 const SH_BRANDS = new Set(['boeing','airbus','bagger','ford','chevrolet','chevy','ram','dodge','toyota','caterpillar','komatsu','liebherr','tesla','frigidaire','steinway','maersk']);
 function shHeadNoun(word){const head=String(word||'').split(',')[0];const toks=(head.toLowerCase().match(/[a-z0-9-]+/g)||[]).filter(t=>!SH_SIZE.has(t)).map(t=>SH_SYN[t]||t);if(toks.length)toks[toks.length-1]=toks[toks.length-1].replace(/s$/,'');return toks.join(' ');}
 function shBrandTokens(s){return (String(s||'').toLowerCase().match(/[a-z0-9]+/g)||[]).filter(t=>SH_BRANDS.has(t));}
-function shDup(a,b){const h=shHeadNoun(a),ph=shHeadNoun(b);if(!h||!ph)return false;if(h===ph)return true;const ht=h.split(' '),pt=ph.split(' ');if(ht.length===1&&pt.length>1&&pt[pt.length-1]===h&&!SH_GENERIC_TAILS.has(h))return true;if(pt.length===1&&ht.length>1&&ht[ht.length-1]===ph&&!SH_GENERIC_TAILS.has(ph))return true;const ab=new Set(shBrandTokens(a));if(ab.size&&shBrandTokens(b).some(x=>ab.has(x)))return true;return false;}
+function shDup(a,b){const h=shHeadNoun(a),ph=shHeadNoun(b);if(!h||!ph)return false;if(h===ph)return true;const ht=h.split(' '),pt=ph.split(' ');if(ht.length===1&&pt.length>1&&pt[pt.length-1]===h&&!SH_GENERIC_TAILS.has(h))return true;if(pt.length===1&&ht.length>1&&ht[ht.length-1]===ph&&!SH_GENERIC_TAILS.has(ph))return true;const ab=new Set(shBrandTokens(a));if(ab.size&&shBrandTokens(b).some(x=>ab.has(x)))return true;const mf=shMachine(a);if(mf&&shMachine(b)===mf)return true;return false;}
 
 async function walkHtml(dir, out = []) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
