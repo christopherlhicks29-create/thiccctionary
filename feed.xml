@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 17:35:35 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 17:41:26 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -14,13 +14,13 @@
       <link>https://thiccctionary.com/</link>
     </image>
     <item>
-      <title>Industrial Mixer, Horizontal</title>
+      <title>Typewriter, Vintage</title>
       <link>https://thiccctionary.com/entries/2026-06-19.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-19.html</guid>
       <pubDate>Fri, 19 Jun 2026 12:00:00 GMT</pubDate>
-      <description>A mechanical powerhouse of formidable girth, designed for the homogenization of industrial-scale mixtures. Often observed with companion ladder for scale and access, because mere mortals need assistance to reach its dizzying apex.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-06-19-industrial-mixer-horizontal.jpg" type="image/jpeg" length="0" />
-      <category>industrial</category><category>tools</category><category>architecture</category>
+      <description>A mechanical writing device from a bygone era, characterized by its sturdy, cast-iron frame and clack of proud keys, often repurposed today as atmospheric lighting fixtures.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-19-typewriter-vintage.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category><category>tools</category><category>instrument</category>
     </item>
     <item>
       <title>Cello, Concert Solo</title>
@@ -218,13 +218,13 @@
       <category>instrument</category>
     </item>
     <item>
-      <title>Savoy Cabbage</title>
+      <title>Fire Hydrant</title>
       <link>https://thiccctionary.com/entries/2026-06-06.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-06.html</guid>
       <pubDate>Sat, 06 Jun 2026 12:00:00 GMT</pubDate>
-      <description>A leafy vegetable of distinguished girth, characterized by its densely-packed, undulating leaves and a verdant hue that shifts subtly in raking light.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-06-06-cabbage-savoy.jpg" type="image/jpeg" length="0" />
-      <category>produce</category><category>culinary</category>
+      <description>An outdoor fixture of conspicuous girth, typically found along urban sidewalks, designed for high-volume water discharge in emergency situations; particularly striking when viewed astern, defying casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-06-fire-hydrant.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>girth</category><category>construction</category><category>domestic</category>
     </item>
     <item>
       <title>Cannonball, Naval</title>

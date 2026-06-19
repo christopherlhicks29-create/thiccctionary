@@ -1,34 +1,34 @@
 [
   {
     "date": "2026-06-19",
-    "word": "Industrial Mixer, Horizontal",
-    "pronunciation": "/in-DUS-tree-uhl MIX-er, hor-i-ZON-tal/",
+    "word": "Typewriter, Vintage",
+    "pronunciation": "/TY-prai-ter, VIN-tij/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A mechanical powerhouse of formidable girth, designed for the homogenization of industrial-scale mixtures. Often observed with companion ladder for scale and access, because mere mortals need assistance to reach its dizzying apex.",
-      "<em>colloq.</em> A machine that treats its workspace like a sovereign domain, refusing to budge once installed. The reason OSHA mandates clear egress routes."
+      "A mechanical writing device from a bygone era, characterized by its sturdy, cast-iron frame and clack of proud keys, often repurposed today as atmospheric lighting fixtures.",
+      "<em>colloq.</em> An artisanal keyboard with a footprint that refuses to share desk space without a fight."
     ],
-    "example": "The factory floor housed a thiccc horizontal industrial mixer so imposing that the night shift crew held meetings on its shadowed flank.",
-    "etymology": "From Latin <em>industria</em> (diligence) + English <em>mixer</em> (a device that blends). First attested in early 20th-century manufacturing catalogs, where it was suggested that only the stoutest walls need apply.",
-    "image": "images/2026-06-19-industrial-mixer-horizontal.jpg",
-    "caption": "Plate N., Monument of mechanical might, viewed astern.",
+    "example": "It sat on his desk, a thiccc vintage typewriter, casting shadows like a miniature Art Deco skyscraper.",
+    "etymology": "From Latin <em>typus</em> (impression, pattern) + <em>scriptor</em> (writer). First coined in English in the late 19th century, when 'word processor' meant something else entirely.",
+    "image": "images/2026-06-19-typewriter-vintage.jpg",
+    "caption": "Plate N. A vintage typewriter, exuding the heft of a bygone literary ambition.",
     "tags": [
-      "industrial",
+      "domestic",
       "tools",
-      "architecture"
+      "instrument"
     ],
-    "category": "Industrial Machinery",
-    "bookReady": true,
-    "humorScore": 8,
-    "photoScore": 8,
-    "photographer": "Michael Schreiber",
-    "photographerUrl": "https://unsplash.com/@schreibmich",
-    "unsplashUrl": "https://unsplash.com/photos/a-large-metal-object-with-a-ladder-ou_UWwQduvw",
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 6,
+    "photographer": "Johnny Briggs",
+    "photographerUrl": "https://unsplash.com/@johnnyboylee",
+    "unsplashUrl": "https://unsplash.com/photos/black-typewriter-on-brown-wooden-table-yMEIS5_dEwk",
     "socialCaptions": {
-      "morning": "Industrial Mixer, Horizontal—capable of 20 tons per batch. Mere mortals: bring a ladder.",
-      "afternoon": "Born circa 1920. Turns ingredients into unity—by force. Thiccc.",
-      "evening": "From the archives, Industrial Mixer, Horizontal.\nFirst catalogued in 1919. Diligence in steel form.",
-      "reels": "200 horsepower—just to stir. Thiccc efficiency."
+      "morning": "Typewriter, Vintage—where each keypress is a commitment.\nForty-four keys, infinite possibilities.\nThis isn't delete; it's liquid paper.",
+      "afternoon": "In 1873, Sholes & Glidden made sure your thoughts were heavy.\nEach letter a thiccc manifestation of intent.\nMeet your muse—Typewriter, Vintage.",
+      "evening": "From the archives, Typewriter, Vintage.\nThe original portable office—20 pounds of productivity.\nComes with its own soundtrack: clack, ding, return.",
+      "reels": "QWERTY's iron debut.\nStill the loudest in the room."
     }
   },
   {
@@ -370,33 +370,35 @@
   },
   {
     "date": "2026-06-06",
-    "word": "Savoy Cabbage",
-    "pronunciation": "/sa-VOY KA-bij/",
+    "word": "Fire Hydrant",
+    "pronunciation": "/FYE-er HY-drant/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A leafy vegetable of distinguished girth, characterized by its densely-packed, undulating leaves and a verdant hue that shifts subtly in raking light.",
-      "<em>colloq.</em> The kind of cabbage that requires a second glance and a reinforced crisper drawer."
+      "An outdoor fixture of conspicuous girth, typically found along urban sidewalks, designed for high-volume water discharge in emergency situations; particularly striking when viewed astern, defying casual description.",
+      "<em>colloq.</em> Street furniture that refuses to go unnoticed, asserting its presence with unapologetic rotundity."
     ],
-    "example": "He brought a thiccc Savoy cabbage to the potluck, and suddenly the salad course had a gravitational pull.",
-    "etymology": "From the French 'chou de Savoie', referring to the Savoie region in France known for such cabbages. As if the Alps needed more body.",
-    "image": "images/2026-06-06-cabbage-savoy.jpg",
-    "caption": "Plate N. Savoy cabbage in its full botanical glory, poised for admiration.",
+    "example": "The kids gathered around the thiccc fire hydrant as it spewed water like a fountain in a suburban block party. The cul-de-sac had never looked more festive.",
+    "etymology": "From the Greek 'pyr' meaning 'fire' and 'hydor' meaning 'water', a functional juxtaposition. Originally coined in 1801 when someone said, 'We need these to be even more conspicuous.'",
+    "image": "images/2026-06-06-fire-hydrant.jpg",
+    "caption": "Plate N. A fire hydrant, its posterior viewed astern in raking light.",
     "tags": [
-      "produce",
-      "culinary"
+      "architecture",
+      "girth",
+      "construction",
+      "domestic"
     ],
-    "category": "Produce & Botanical",
+    "category": "Architecture & Infrastructure",
     "bookReady": true,
-    "humorScore": 9,
+    "humorScore": 8,
     "photoScore": 9,
-    "photographer": "Bryam Blanco",
-    "photographerUrl": "https://unsplash.com/@bryamb",
-    "unsplashUrl": "https://unsplash.com/photos/green-and-white-leaf-plant-o3o3dq-nODE",
+    "photographer": "Paolo Gregotti",
+    "photographerUrl": "https://unsplash.com/@paolo_gregotti",
+    "unsplashUrl": "https://unsplash.com/photos/a-red-fire-hydrant-ABY3n6SiD_U",
     "socialCaptions": {
-      "morning": "Savoy Cabbage—born in the 16th century but maintains a robust presence on any plate. It whispers the secrets of the Savoie.",
-      "afternoon": "A single Savoy cabbage possesses 5-6 pounds of leafy persuasion. The choux de Savoie leaves no salad untouched.",
-      "evening": "From the archives, Savoy Cabbage.\nOnce a royal staple, now a culinary heavyweight. The garden's undeniable thiccc champ.",
-      "reels": "Savoy Cabbage: 12-inch diameter of leafy dominance. The green giant of your crisper."
+      "morning": "Fire Hydrant—standing at precisely 29 inches in height.\nA titan among ankle-biters.\nPrepared to unleash 1,500 gallons per minute, if provoked.",
+      "afternoon": "The fire hydrant: a 19th-century innovation.\nThe only street feature legally required to keep its cool.\nHydrant.",
+      "evening": "From the archives, Fire Hydrant.\nFirst patented in 1801—a monument to functional flamboyance.\nOften mistaken for a modern art installation.",
+      "reels": "Painted red for visibility.\nOr perhaps, it's just shy.\nHydrant life."
     }
   },
   {
