@@ -1,0 +1,49 @@
+name: Thiccc Beat (render staged drafts)
+
+# Renders every drafts/thiccc-beat/*.md to a live article page.
+# Deterministic and idempotent (no API key). Manual dispatch or new-draft push.
+
+on:
+  workflow_dispatch:
+    push:
+        branches: [main]
+            paths:
+                  - 'data/.fire-thiccc-beat'
+                        - 'drafts/thiccc-beat/**'
+
+                        permissions:
+                          contents: write
+
+                          jobs:
+                            render:
+                                runs-on: ubuntu-latest
+                                    steps:
+                                          - uses: actions/checkout@v4
+                                                - uses: actions/setup-node@v4
+                                                        with:
+                                                                  node-version: '20'
+                                                                        - name: Render Thiccc Beat drafts
+                                                                                run: node scripts/generate-thiccc-beat.js
+                                                                                      - name: Regenerate article listings
+                                                                                              run: node scripts/regenerate-article-listings.js
+                                                                                                    - name: Commit and push
+                                                                                                            run: |
+                                                                                                                      git config user.email "actions@github.com"
+                                                                                                                                git config user.name "Thiccc Beat (auto)"
+                                                                                                                                          git add articles/ data/articles.json 2>/dev/null || true
+                                                                                                                                                    if ! git diff --staged --quiet; then
+                                                                                                                                                                git commit -m "Thiccc Beat (auto) $(date -u +%Y-%m-%d)"
+                                                                                                                                                                            git pull --rebase origin main || true
+                                                                                                                                                                                        git push origin main
+                                                                                                                                                                                                  fi
+                                                                                                                                                                                                        - name: Cleanup fire sentinel
+                                                                                                                                                                                                                if: github.event_name == 'push'
+                                                                                                                                                                                                                        run: |
+                                                                                                                                                                                                                                  if [ -f data/.fire-thiccc-beat ]; then
+                                                                                                                                                                                                                                              rm data/.fire-thiccc-beat
+                                                                                                                                                                                                                                                          git add data/.fire-thiccc-beat
+                                                                                                                                                                                                                                                                      git commit -m "Cleanup thiccc-beat sentinel"
+                                                                                                                                                                                                                                                                                  git pull --rebase origin main || true
+                                                                                                                                                                                                                                                                                              git push origin main || true
+                                                                                                                                                                                                                                                                                                        fi
+                                                                                                                                                                                                                                                                                                        
