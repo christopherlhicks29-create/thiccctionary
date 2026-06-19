@@ -26,6 +26,16 @@ const SITE = 'https://thiccctionary.com';
 
 const CHECK_MODE = process.argv.includes('--check');
 
+// Wave 257: duplicate-entry detection (mirrors generate-daily.js subjectFamilyDup)
+// so the catalog can never quietly accumulate two entries for the same subject.
+const SH_SIZE = new Set(['big','bulky','large','round','heavy','chunky','hefty','plump','plush','thick','wide','fat','stout','sturdy','massive','huge','dense','solid','giant','common','standard','domestic','tufted']);
+const SH_SYN = { cement:'concrete', couch:'sofa', settee:'sofa', lorry:'truck', plane:'aircraft', airplane:'aircraft' };
+const SH_GENERIC_TAILS = new Set(['wheel','ball','box','case','machine','set','stand','holder','unit','model']);
+const SH_BRANDS = new Set(['boeing','airbus','bagger','ford','chevrolet','chevy','ram','dodge','toyota','caterpillar','komatsu','liebherr','tesla','frigidaire','steinway','maersk']);
+function shHeadNoun(word){const head=String(word||'').split(',')[0];const toks=(head.toLowerCase().match(/[a-z0-9-]+/g)||[]).filter(t=>!SH_SIZE.has(t)).map(t=>SH_SYN[t]||t);if(toks.length)toks[toks.length-1]=toks[toks.length-1].replace(/s$/,'');return toks.join(' ');}
+function shBrandTokens(s){return (String(s||'').toLowerCase().match(/[a-z0-9]+/g)||[]).filter(t=>SH_BRANDS.has(t));}
+function shDup(a,b){const h=shHeadNoun(a),ph=shHeadNoun(b);if(!h||!ph)return false;if(h===ph)return true;const ht=h.split(' '),pt=ph.split(' ');if(ht.length===1&&pt.length>1&&pt[pt.length-1]===h&&!SH_GENERIC_TAILS.has(h))return true;if(pt.length===1&&ht.length>1&&ht[ht.length-1]===ph&&!SH_GENERIC_TAILS.has(ph))return true;const ab=new Set(shBrandTokens(a));if(ab.size&&shBrandTokens(b).some(x=>ab.has(x)))return true;return false;}
+
 async function walkHtml(dir, out = []) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   for (const e of entries) {
@@ -88,6 +98,7 @@ async function audit() {
     missingOgImageFiles: [],
     missingWebp: [],
     navMissingMobileToggle: [],
+    duplicateEntries: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -285,6 +296,20 @@ async function audit() {
     // entries.json missing or unreadable, skip
   }
 
+  // Duplicate-entry scan (Wave 257): flag any two entries that are the same subject family.
+  try {
+    const ents = JSON.parse(await fs.readFile(path.join(ROOT, 'data/entries.json'), 'utf-8'));
+    const seen = new Set();
+    for (let i = 0; i < ents.length; i++) {
+      for (let j = i + 1; j < ents.length; j++) {
+        if (shDup(ents[i].word, ents[j].word)) {
+          const key = [ents[i].word, ents[j].word].sort().join(' | ');
+          if (!seen.has(key)) { seen.add(key); issues.duplicateEntries.push({ a: `${ents[i].date} ${ents[i].word}`, b: `${ents[j].date} ${ents[j].word}` }); }
+        }
+      }
+    }
+  } catch (err) { /* entries.json unreadable, skip */ }
+
   return { issues, stats };
 }
 
@@ -293,7 +318,7 @@ function formatReport({ issues, stats }) {
   const dateStr = new Date().toISOString().slice(0, 10);
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
-                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length;
+                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length;
   lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
@@ -346,6 +371,8 @@ function formatReport({ issues, stats }) {
   section(`Missing og:image files (${issues.missingOgImageFiles.length})`, issues.missingOgImageFiles,
     i => `\`${i.from}\` → ${i.ogImage} (file does not exist on disk)`);
 
+  section(`Duplicate entries (same subject family) (${issues.duplicateEntries.length})`, issues.duplicateEntries,
+    i => `\`${i.a}\` duplicates \`${i.b}\` (same subject family).`);
   section(`Missing .webp pair for entry images (${issues.missingWebp.length})`, issues.missingWebp,
     i => `\`${i.date}\` (${i.word}): \`${i.jpg}\` exists but \`${i.webp}\` is missing. Browsers may show alt text instead of image.`);
 

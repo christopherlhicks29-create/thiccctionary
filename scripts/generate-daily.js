@@ -97,9 +97,17 @@ function pendingPrWords() {
 // five weeks. headNoun() reduces a headword to its core noun so we can detect
 // these families and reject across the ENTIRE catalog, not just the last 30.
 const SIZE_QUALIFIERS = new Set(['big','bulky','large','round','heavy','chunky','hefty','plump','plush','thick','wide','fat','stout','sturdy','massive','huge','dense','solid','giant','common','standard','domestic','tufted']);
+// Wave 257: same-object synonyms collapse to one canonical token so "Cement
+// Mixer" and "Concrete Mixer" dedupe against each other.
+const SUBJECT_SYNONYMS = { cement: 'concrete', couch: 'sofa', settee: 'sofa', lorry: 'truck', plane: 'aircraft', airplane: 'aircraft' };
+// Wave 257: core nouns too generic to imply "same family" by tail-match alone
+// (a Parmigiano cheese WHEEL is not a Ferris WHEEL). The tail-noun guard skips these.
+const GENERIC_TAILS = new Set(['wheel','ball','box','case','machine','set','stand','holder','unit','model']);
 function headNoun(word) {
   const head = String(word || '').split(',')[0];
-  const toks = (head.toLowerCase().match(/[a-z0-9-]+/g) || []).filter(t => !SIZE_QUALIFIERS.has(t));
+  const toks = (head.toLowerCase().match(/[a-z0-9-]+/g) || [])
+    .filter(t => !SIZE_QUALIFIERS.has(t))
+    .map(t => SUBJECT_SYNONYMS[t] || t);
   if (toks.length) toks[toks.length - 1] = toks[toks.length - 1].replace(/s$/, '');
   return toks.join(' ');
 }
@@ -146,6 +154,14 @@ function subjectFamilyDup(subject, pastWords) {
     if (ph === h) return w;
     if (ph.includes(' ') && containsSeq(subjTokens, ph.split(' '))) return w;
     if (subjBrands.size && brandTokens(w).some(b => subjBrands.has(b))) return w;
+    // Wave 257: tail-noun guard. A single-token core noun that is the TAIL of a
+    // multi-token head is the same family ("pumpkin" vs "titanic pumpkin",
+    // "bass" vs "double bass", "mixer" vs "industrial mixer"), unless the shared
+    // tail is too generic (see GENERIC_TAILS). Two multi-token heads are left
+    // alone ("cement truck" vs "dumper truck" stay distinct).
+    const ht = h.split(' '), pt = ph.split(' ');
+    if (ht.length === 1 && pt.length > 1 && pt[pt.length - 1] === h && !GENERIC_TAILS.has(h)) return w;
+    if (pt.length === 1 && ht.length > 1 && ht[ht.length - 1] === ph && !GENERIC_TAILS.has(ph)) return w;
   }
   return null;
 }
@@ -912,7 +928,11 @@ async function main() {
     }
     const finalDup = subjectFamilyDup(subjectInfo.subject, allPastWords);
     if (finalDup) {
-      console.warn(`Duplicate-subject guard: exhausted ${MAX_DUP_RETRIES} retries; accepting "${subjectInfo.subject}" despite family overlap with "${finalDup}". Catalog may be saturating this family.`);
+      // Wave 257: do NOT ship a known duplicate. Previously this force-accepted
+      // the dup after exhausting retries (that is how a 2nd "Pumpkin, Atlantic
+      // Giant" got in). Bail instead, so the retry-wrapper / next cron fills the
+      // day with a clean subject rather than the catalog accumulating a dup.
+      await bailGracefully({ reason: `dup-guard: "${subjectInfo.subject}" duplicates catalogued "${finalDup}" after ${MAX_DUP_RETRIES} retries`, subject: subjectInfo.subject, queueAfterPull });
     }
   }
   console.log(`Subject: ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
