@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-19",
+    "word": "Titanic Pumpkin, Atlantic Giant",
+    "pronunciation": "ty-TAN-ik PUM-pkin, at-LAN-tik JY-uhnt",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A cucurbit of formidable dimensions, primarily cultivated for exhibition purposes, known for its expansive girth and vibrant hues. Esp. one whose posterior, viewed astern, defies casual description.",
+      "<em>colloq.</em> A farmer's magnum opus: the pumpkin that made the wheelbarrow a non-negotiable accessory."
+    ],
+    "example": "He proudly displayed his thiccc Atlantic Giant pumpkin at the county fair. The forklift rental was just the beginning.",
+    "etymology": "From Middle English 'pompion', from Old French 'pompon', from Latin 'peponem', from Greek 'pepon', meaning 'ripe'. Ironically, the term 'giant' is an understatement in this context.",
+    "image": "images/2026-06-19-titanic-pumpkin-atlantic-giant.jpg",
+    "caption": "Plate N. A gathering of Atlantic Giant pumpkins in their natural habitat, clearly not to be trifled with.",
+    "tags": [
+      "girth",
+      "produce",
+      "natural-specimens"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Diane Helentjaris",
+    "photographerUrl": "https://unsplash.com/@dhelentjaris",
+    "unsplashUrl": "https://unsplash.com/photos/a-pile-of-pumpkins-sitting-on-top-of-a-pile-of-hay-0xC7USjBI-Y",
+    "socialCaptions": {
+      "morning": "Titanic Pumpkin, Atlantic Giant.\n1,200 pounds of enigmatic orange mass.\nThis is not your average jack-o'-lantern.",
+      "afternoon": "In 2020, the record-holding Atlantic Giant\nweighed in at 2,624.6 pounds.\nAn impressive feat for any gourd—Titanic Pumpkin.",
+      "evening": "From the archives, Titanic Pumpkin, Atlantic Giant.\nCultivated for show, yet too large for pie.\nThe pumpkin patch's heavyweight champion.",
+      "reels": "A 500 square foot leaf canopy—\nThe Titanic Pumpkin casts its own weather."
+    }
+  },
+  {
     "date": "2026-06-18",
     "word": "Cello, Concert Solo",
     "pronunciation": "/CHEL-oh, KON-sert SOH-loh/",
