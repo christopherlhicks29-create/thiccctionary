@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/produce.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "produce".</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 18:21:16 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 18:27:30 GMT</lastBuildDate>
     <item>
       <title>Sequoia, General Sherman</title>
       <link>https://thiccctionary.com/entries/2026-05-29.html</link>
@@ -24,6 +24,15 @@
       <description>A botanical heavyweight of the brassica family, renowned for its deeply crinkled leaves and substantial presence in the garden; esp. one whose verdant layers suggest a rotational symmetry best admired in morning light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-18-cabbage-savoy.jpg" type="image/jpeg" length="0" />
       <category>produce</category>
+    </item>
+    <item>
+      <title>Champion Watermelon, Heavyweight</title>
+      <link>https://thiccctionary.com/entries/2026-05-11.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-11.html</guid>
+      <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
+      <description>A watermelon of exceptional mass and rotundity, typically displayed with pride at county fairs and agricultural exhibitions. Its girth demands both admiration and logistical consideration.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-11-champion-watermelon-heavyweight.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>produce</category><category>natural-specimens</category>
     </item>
     <item>
       <title>Spruce, Suburban</title>
