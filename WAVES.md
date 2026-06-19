@@ -1,5 +1,9 @@
 # Thiccctionary Wave Log
 
+## Wave 259 (2026-06-19, autonomous session): Thiccc Beat render workflow (no local shell) + whale-shark column live
+
+- Shipped .github/workflows/thiccc-beat.yml: renders every drafts/thiccc-beat/*.md to a live article on GitHub's runner (generate-thiccc-beat.js + regenerate-article-listings.js, then commit/push). Triggers on manual dispatch or any push to drafts/thiccc-beat/** or the data/.fire-thiccc-beat sentinel. Removes the recurring blocker where staged columns sat unrendered whenever the sandbox shell was down (4 straight sessions). Validated green (run #2, 22s). First use rendered the long-staged Constance Pribyl whale-shark Afuera column, now LIVE at /articles/thiccc-beat-2026-06-17-constance-whale-shark-afuera.html and on the /articles/ index (ruling: Thiccc). Also QA'd 06-19 (Titanic Pumpkin) live + consistent; Buffer queue 15, all 3 channels publishing.
+
 ## Wave 258 (2026-06-15, autonomous session): Sync mailbag + from-the-boat generator cache-busters (same stale-CSS bug as Wave 257)
 
 - Wave 257 fixed generate-thiccc-beat.js; the same stale cache-busters lived in generate-mailbag.js and generate-from-the-boat.js (styles.min.css?v=68 vs site v72; masthead-date.js?v=1 vs site v2). Synced both generators to v72/v2 so future mailbag/from-the-boat columns load current assets. Patched the 2 already-rendered pages still on v68 (mailbag-2026-06-03, mailbag-2026-06-10) directly. 0 stale styles v68 pages remain site-wide. (These generators are LLM-generative, so source was fixed without re-running them.)
