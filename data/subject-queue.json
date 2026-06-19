@@ -13,14 +13,29 @@
   ],
   "queue": [
     {
-      "subject": "Engine, V8 Crate",
-      "query": "V8 engine block crate",
-      "category": "Industrial Machinery"
+      "subject": "Lobster, Maine",
+      "query": "maine lobster whole",
+      "category": "Other"
     },
     {
-      "subject": "Bulldozer, Caterpillar D11",
-      "query": "caterpillar d11 bulldozer",
-      "category": "Industrial Machinery"
+      "subject": "Crockpot, Slow Cooker Oval",
+      "query": "oval slow cooker crockpot",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Iceberg, Arctic",
+      "query": "iceberg arctic ocean",
+      "category": "Other"
+    },
+    {
+      "subject": "Beam, Steel I-Beam",
+      "query": "steel I-beam construction",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Steam Locomotive, Big Boy",
+      "query": "big boy locomotive 4014",
+      "category": "Vehicles & Transport"
     }
   ]
 }
