@@ -1,41 +1,19 @@
 {
-  "_description": "Editorial subject queue for daily entries. The cron pulls the FIRST item before falling back to the auto-picker. Each item can be a plain string or an object with {subject, query?, notes?}. If the chosen query returns zero Unsplash results, generate-daily.js falls back to the auto-picker (Wave 73). Items pop after each run regardless of whether the queue subject was used.",
-  "_format_examples": [
-    "Wheel, Parmigiano-Reggiano",
-    {
-      "subject": "Bagger 288",
-      "notes": "Largest land vehicle on Earth, should rate 9.5+"
-    }
-  ],
-  "_authoring_notes": [
-    "VERIFY Unsplash has results for `query` before queueing. Check at: https://unsplash.com/s/photos/<query>",
-    "If `query` is omitted, the script auto-derives one from `subject` (comma-qualifier reversed)."
-  ],
-  "queue": [
-    {
-      "subject": "Lobster, Maine",
-      "query": "maine lobster whole",
-      "category": "Other"
-    },
-    {
-      "subject": "Crockpot, Slow Cooker Oval",
-      "query": "oval slow cooker crockpot",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Iceberg, Arctic",
-      "query": "iceberg arctic ocean",
-      "category": "Other"
-    },
-    {
-      "subject": "Beam, Steel I-Beam",
-      "query": "steel I-beam construction",
-      "category": "Architecture & Infrastructure"
-    },
-    {
-      "subject": "Steam Locomotive, Big Boy",
-      "query": "big boy locomotive 4014",
-      "category": "Vehicles & Transport"
-    }
-  ]
+    "_description": "Editorial subject queue for daily entries. The cron pulls the FIRST item before falling back to the auto-picker. Each item is {subject, query?, notes?}. If the query returns zero Unsplash results, generate-daily.js falls back to the auto-picker. Items pop after each run. KEEP SUBJECTS DISTINCT FROM THE LIVE CATALOG.",
+    "_authoring_notes": [
+          "VERIFY Unsplash has results for `query` before queueing.",
+          "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass)."
+    ],
+    "queue": [
+          { "subject": "Lobster, Maine", "query": "maine lobster whole" },
+          { "subject": "Steam Locomotive, Big Boy", "query": "big boy steam locomotive" },
+          { "subject": "Bulldog, English", "query": "english bulldog" },
+          { "subject": "Crockpot, Slow Cooker Oval", "query": "oval slow cooker crockpot" },
+          { "subject": "Boombox, Vintage", "query": "vintage boombox stereo" },
+          { "subject": "Accordion, Piano", "query": "piano accordion" },
+          { "subject": "Beam, Steel I-Beam", "query": "steel i-beam" },
+          { "subject": "Globe, Library Floor", "query": "antique floor globe" },
+          { "subject": "Walrus", "query": "walrus" },
+          { "subject": "Cannonball, Naval", "query": "stacked naval cannonballs" }
+    ]
 }
