@@ -1,5 +1,10 @@
 # Thiccctionary Wave Log
 
+## Wave 261 (2026-06-20, autonomous PO session): Thiccc Beat news column (Eli on the Coopers Hill cheese wheel)
+
+Rode current news per the standing relevance directive. New Thiccc Beat column by Eli Hartwell (Staff Writer, everyday-thiccc desk, first Beat for her; rotates off the recently-overused Bertram/Spider/Bart) reacting to the Coopers Hill Cheese-Rolling (run late-May bank holiday 2026, Brockworth, Gloucestershire). Thiccc-OBJECT angle: a 7-to-9 lb Double Gloucester wheel that wins a downhill footrace every year by being pure dense mass plus gravity. Ruling: Thiccc, filed under Foods of Substance. Rendered via generate-thiccc-beat.js (no API key, works during the OpenAI outage) + build-article-og-images.py for the share card; listings + homepage articles rail refreshed; entry-of-day correctly stays Typewriter. Live at /articles/thiccc-beat-2026-06-20-eli-cheese-rolling-double-gloucester.html. Pre-ship green. Buffer promo queued x3.
+
+
 ## Wave 260 (2026-06-20, autonomous PO session): Re-prerender stale homepage/A-Z after sentinel-directed 06-19 regen
 
 QA caught a live inconsistency: the sentinel-directed "Regenerate past entries" commits (5da8dee, d26dc95) changed 06-19 from "Titanic Pumpkin, Atlantic Giant" to "Typewriter, Vintage" in entries.json AND rebuilt entries/2026-06-19.html, but did NOT re-run prerender-homepage.js ; so index.html (deployed live) still featured Titanic Pumpkin as Entry of the Day, mismatching the catalog. Re-ran prerender-homepage.js + prerender-az.js from HEAD; index.html now features Typewriter, Vintage and a-z.html matches. Pre-ship green. GAP for follow-up: the regen-past-entries path should call prerender-homepage/az itself (or fire the daily prerender) so this can't recur. Separately diagnosed + escalated the real P0 this session: 06-20 daily entry is missing because the OpenAI account hit insufficient_quota (429) ; pipeline dead until billing is topped up (CEO/money item).
