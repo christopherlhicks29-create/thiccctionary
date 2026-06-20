@@ -37,7 +37,17 @@
           "id": "6a2d9b093cd9497d55f2f646"
         }
       ]
+    },
+    {
+      "path": "videos/characters/bart-radio-mic-a.mp4",
+      "at": "2026-06-20T18:03:31.423Z",
+      "bufferIds": [
+        {
+          "service": "instagram",
+          "id": "6a36d5f3566900623a61ebfe"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-06-13T18:01:45.742Z"
+  "lastPostedAt": "2026-06-20T18:03:31.423Z"
 }
