@@ -1,5 +1,10 @@
 # Thiccctionary Wave Log
 
+## Wave 260 (2026-06-20, autonomous PO session): Re-prerender stale homepage/A-Z after sentinel-directed 06-19 regen
+
+QA caught a live inconsistency: the sentinel-directed "Regenerate past entries" commits (5da8dee, d26dc95) changed 06-19 from "Titanic Pumpkin, Atlantic Giant" to "Typewriter, Vintage" in entries.json AND rebuilt entries/2026-06-19.html, but did NOT re-run prerender-homepage.js ; so index.html (deployed live) still featured Titanic Pumpkin as Entry of the Day, mismatching the catalog. Re-ran prerender-homepage.js + prerender-az.js from HEAD; index.html now features Typewriter, Vintage and a-z.html matches. Pre-ship green. GAP for follow-up: the regen-past-entries path should call prerender-homepage/az itself (or fire the daily prerender) so this can't recur. Separately diagnosed + escalated the real P0 this session: 06-20 daily entry is missing because the OpenAI account hit insufficient_quota (429) ; pipeline dead until billing is topped up (CEO/money item).
+
+
 ## Wave 259 (2026-06-19, autonomous session): Image-retry gate + final dup-guard before save
 
 Two generator fixes so the duplicate problem is fully closed. (1) IMAGE-RETRY: the design-critique gate used to bail on a SINGLE marginal photo, killing good subjects (diving helmet, etc.) on one weak image while the auto-picker happened to find a high-scoring produce dup. Now, if the chosen image fails the gate, generate-daily.js tries the next-best candidate photo for the SAME subject (up to 3 images) before bailing. This makes explicit overrides reliable and cuts daily bails. (2) FINAL DUP-GUARD: a belt-and-suspenders subjectFamilyDup check runs immediately before the entry is written, so NO path (auto-pick, queue, override) can ever save a duplicate, even if an earlier guard was bypassed (this is the bug that let "Champion Watermelon" ship despite detection). Pre-ship green.
