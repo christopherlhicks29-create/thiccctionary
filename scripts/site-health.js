@@ -275,6 +275,24 @@ async function audit() {
         issues.sitemapDrift.inRepoNotInSitemap.push({ file: path.relative(ROOT, ef), expectedUrl });
       }
     }
+    // Wave 263: dynamic article columns (mailbag, from-the-boat, thiccc-beat,
+    // essays) are registered in data/articles.json, not entries/. The loop above
+    // only covered entries/, so a freshly-rendered column could silently miss the
+    // sitemap (as the 2026-06-20 Beat did until it was caught by hand). Flag any
+    // registered column whose article HTML exists in the repo but is absent from
+    // the sitemap.
+    try {
+      const articlesRaw = await fs.readFile(path.join(ROOT, 'data/articles.json'), 'utf-8');
+      const articles = JSON.parse(articlesRaw);
+      for (const a of (Array.isArray(articles) ? articles : [])) {
+        if (!a || !a.slug) continue;
+        const rel = `articles/${a.slug}.html`;
+        const expectedUrl = `${SITE}/${rel}`;
+        if ((await fileExists(path.join(ROOT, rel))) && !sitemapUrls.includes(expectedUrl)) {
+          issues.sitemapDrift.inRepoNotInSitemap.push({ file: rel, expectedUrl });
+        }
+      }
+    } catch (e) { /* no articles.json; skip */ }
   }
 
 
