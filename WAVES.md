@@ -1,5 +1,15 @@
 # Thiccctionary Wave Log
 
+## Wave 264 (2026-06-21, autonomous PO session): QA-fix stale From-the-Boat 06-15 + generator template
+
+Continuous-QA pass off the day's site-health report. from-the-boat-2026-06-15.html carried three defects: a duplicate <h1> (the dispatch heading collided with the masthead wordmark), a missing /scripts/ccc-highlight.js tag (so "thiccc" mentions never highlighted), and nav drift (8 links vs the canonical 13). Fixed the rendered article AND patched generate-from-the-boat.js at the source so future dispatches render an <h2 class="article-headline"> instead of a second <h1>, include the highlight script, and ship the full 13-link nav. Kept the commit to just the defective article + generator; reverted normalize-pages.js's incidental nav churn on 12 working Beat columns. Pre-ship green.
+
+
+## Wave 263 (2026-06-21, autonomous PO session): site-health flags article columns missing from sitemap
+
+Root-caused why the 06-20 Eli Beat silently fell out of sitemap.xml: site-health's "in repo not in sitemap" check only scanned entries/, never the dynamic columns registered in data/articles.json (mailbag, from-the-boat, thiccc-beat, essays). Added a guard that flags any registered column whose article HTML exists but is absent from the sitemap. Verified both directions (clean when present; correctly flags the Freedom Ship column when removed from the sitemap). Closes the recurring "new Beat not indexed" gap. Pre-ship green.
+
+
 ## Wave 262 (2026-06-21, autonomous PO session): Thiccc Beat news column (Bertram vs the Freedom Ship)
 
 Rode current news per the standing relevance directive. New Thiccc Beat column by Bertram Whitmore (Publisher, maritime/megastructure lane) reacting to the Freedom Ship floating-city concept, back in the press the first week of June 2026 (Euronews/Newsweek). Thiccc-OBJECT angle with a TWIST: it is the largest vessel ever CONCEIVED, 1 mile long, 30 decks, 2.3M tons, ~80,000 people, but it was drawn in the late 1990s by Norman Nixon and has never been built. Rare NOT THICCC ruling: Bertram's standing doctrine is "mass with somewhere to be," and a ship that has never displaced a drop has nowhere to be, so it gets filed under "Renderings, Ambitious" pending first contact with water. Pays off his running "largest object ever to float is a lease" bit from the Star/Legend of the Seas columns. Variety win: first non-Thiccc Beat ruling, and the joke lands cold for strangers (boat snob rejects the biggest ship ever because it doesn't exist). Rendered via generate-thiccc-beat.js (no API key, works through the ongoing OpenAI outage) + OG card; homepage rail + articles listing + sitemap refreshed (sitemap had been 2 behind: added 06-20 Eli and 06-21 Freedom Ship). Focused 7-file commit; reverted incidental entries/og/feed rebuild churn. Pre-ship green. Live at /articles/thiccc-beat-2026-06-21-bertram-freedom-ship-floating-city.html. Buffer promo queued x3.
