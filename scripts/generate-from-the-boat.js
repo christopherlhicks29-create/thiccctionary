@@ -147,11 +147,16 @@ async function main() {
     <a href="/" class="nav-link">Today's Entry</a>
     <a href="/archive.html" class="nav-link">The Archive</a>
     <a href="/a-z.html" class="nav-link">A-Z</a>
-    <a href="/articles/" class="nav-link nav-link--active">Articles</a>
+    <a href="/articles/" class="nav-link">Articles</a>
     <a href="/about/documents/" class="nav-link">References</a>
     <a href="/cartoons/" class="nav-link">Cartoons</a>
     <a href="/random.html" class="nav-link">Random</a>
     <a href="/compare.html" class="nav-link">Compare</a>
+    <a href="/rate/" class="nav-link">Rate</a>
+    <a href="/api/" class="nav-link">API</a>
+    <a href="/submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="/about/masthead/" class="nav-link">The Editors</a>
+    <a href="/about/" class="nav-link">About</a>
   </nav>
 </header>
 <main id="main-content">
@@ -200,6 +205,7 @@ ${htmlBody}
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
 </footer>
+<script defer src="/scripts/ccc-highlight.js?v=2"></script>
 <script defer src="/scripts/mobile-nav.js?v=66"></script>
 <script defer src="/scripts/masthead-date.js?v=2"></script>\n</body>
 </html>
@@ -239,7 +245,9 @@ function mdToHtml(md) {
   for (let i = 0; i < lines.length; i++) {
     const ln = lines[i];
     if (/^# /.test(ln)) {
-      out.push(`<h1>${escapeHtml(ln.slice(2))}</h1>`);
+      // The masthead wordmark is already the page <h1>; the dispatch heading must
+      // be an <h2> or the page ends up with two <h1>s (site-health flags this).
+      out.push(`<h2 class="article-headline">${escapeHtml(ln.slice(2))}</h2>`);
     } else if (/^### /.test(ln)) {
       out.push(`<h3>${escapeHtml(ln.slice(4))}</h3>`);
     } else if (/^\*([^*]+)\*$/.test(ln)) {
