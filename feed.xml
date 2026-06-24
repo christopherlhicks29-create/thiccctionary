@@ -6,13 +6,29 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jun 2026 00:40:05 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 20:19:19 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] Heavy Is Not Thiccc. The Drum, However, Is.</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-24-bart-heaviest-asphalt-roller.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-24-bart-heaviest-asphalt-roller.html</guid>
+      <pubDate>Wed, 24 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Bartholomew Whitmore on the Dynapac CC7000 VI, debuted at CONEXPO-CON/AGG 2026 as the world&apos;s heaviest asphalt roller, ~15 tonnes operating weight, 1,400 mm drum. Ruling: Thiccc, on the drum and the drum alone.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 5</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-06-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-06-24.html</guid>
+      <pubDate>Wed, 24 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 5.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>[Article] The Only Object on This Desk That Leaves Its Girth Behind</title>
       <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-23-hugh-patyegarang-tunnel-boring-machine.html</link>
