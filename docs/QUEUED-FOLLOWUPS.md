@@ -202,3 +202,11 @@ The current copy is functional but a bit defensive (heavy on the "rules are not 
 - Probably shorter, drier, more institutional
 
 **Trigger to act:** when Christopher asks, or in a focused unattended session when no other editorial work is pending.
+
+## Durable fix: auto-add registered articles to sitemap.xml (surface: recurring "new column not indexed")
+
+**State (2026-06-24, Wave 266):** Every time a Thiccc Beat / mailbag / from-the-boat column ships, its URL has to be added to sitemap.xml BY HAND. Wave 263 added a site-health.js guard that FLAGS the gap (it caught the 06-24 mailbag this run), but the fix is still manual. Today I hand-inserted both the 06-24 mailbag and the 06-24 asphalt-roller Beat.
+
+**Durable fix:** make sitemap upkeep automatic. Safest approach is a small idempotent step in `regenerate-article-listings.js` (which already reads data/articles.json) that, for every registered article whose HTML exists, inserts a `<url>` block into sitemap.xml if absent, append-only, never reorder/dedupe existing entries, match the existing `<loc>/<lastmod>/<priority>` shape (priority 0.6 for columns). Verify it's a no-op when the sitemap is already complete, and that it doesn't touch entry/IS pages.
+
+**Why deferred (not shipped this run):** unattended session; a sitemap-mutating script needs careful edge-case testing (duplicate guards, ordering) before it runs autonomously. The site-health flag already prevents silent misses, so the manual fix is reliably prompted each run. Ship the auto-fix when shell + attention are both available.
