@@ -75,6 +75,7 @@ for (const f of allFiles) {
   if (f.endsWith('pre-ship-check.js')) continue; // self-reference; this file defines the rule
   if (f.startsWith('audits/')) continue; // audit reports legitimately quote em-dash content they flag
   if (f === 'data/entries.json' || f === 'data/articles.json') continue; // catalog content: em-dashes are intentional brand voice (see feedback_brand_voice); editorial-sanity.js owns catalog em-dash policy
+  if (f.startsWith('drafts/')) continue; // editorial column SOURCES (Thiccc Beat, mailbag, from-the-boat, cartoons): em-dashes are intentional brand voice (feedback_brand_voice) and the renderer strips them from published HTML, so they never reach the live catalog
   if (!fs.existsSync(f)) continue;
   // Only scan LINES I'm adding/modifying, not the whole file. WAVES.md and
   // similar historical logs have pre-Wave-114 em-dashes that are frozen
