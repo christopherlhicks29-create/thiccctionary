@@ -1,0 +1,82 @@
+name: Inject Handcrafted Entry
+
+# OpenAI-free manual daily entry. Write data/.inject-entry.json (copy + an
+# unsplashQuery) and push it. This workflow fetches a real Unsplash photo with
+# the repo's UNSPLASH_ACCESS_KEY, assembles the entry, inserts it into the
+# catalog, rebuilds the homepage / A-Z / per-entry pages / "Is X thiccc?" SEO
+# pages, and commits to main. Used when the OpenAI quota is down and the daily
+# cron can't write copy.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.inject-entry.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-cron
+  cancel-in-progress: false
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Inject the handcrafted entry
+        working-directory: scripts
+        env:
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        run: node inject-entry.js
+
+      - name: Prerender homepage
+        working-directory: scripts
+        run: node prerender-homepage.js
+        continue-on-error: true
+
+      - name: Prerender A-Z page
+        working-directory: scripts
+        run: node prerender-az.js
+        continue-on-error: true
+
+      - name: Rebuild per-entry pages + sitemap
+        working-directory: scripts
+        run: node build-entry-pages.js
+        continue-on-error: true
+
+      - name: Build "Is X thiccc?" SEO pages
+        working-directory: scripts
+        run: node build-is-pages.js
+        continue-on-error: true
+
+      - name: Commit + push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Inject entry (auto)"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to commit (sentinel may have been a no-op)."
+          else
+            git commit -m "Inject handcrafted daily entry (OpenAI-free fallback)"
+            for i in 1 2 3; do
+              git pull --rebase origin main 2>&1 | tail -3 || true
+              if git push origin main 2>&1; then echo "pushed"; break; fi
+              sleep $((i*3))
+            done
+          fi
