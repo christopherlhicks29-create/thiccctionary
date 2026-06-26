@@ -27,6 +27,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { validateEntry } from './banned-words.js';
+import { openaiChat } from './openai-with-fallback.js';
 
 // Wave 142c: write any uncaught exception to disk so we can debug failed runs without
 // trawling GitHub Actions log archives.
@@ -231,7 +232,7 @@ Schema:
   "category": "one of: aircraft, vehicle, fruit, vegetable, furniture, building, appliance, tool, machinery, instrument, other"
 }`;
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+  const res = await openaiChat({
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
     body: JSON.stringify({
@@ -318,7 +319,7 @@ Output JSON only:
   "reason": "one short sentence on why this photo is the thiccest"
 }`;
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+  const res = await openaiChat({
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
     body: JSON.stringify({
@@ -463,7 +464,7 @@ Schema:
   let lastErr;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      const res = await openaiChat({
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
         body: JSON.stringify({
@@ -534,7 +535,7 @@ Evaluate this entry's humor.
 }`;
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await openaiChat({
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
       body: JSON.stringify({
@@ -606,7 +607,7 @@ Evaluate this image and output JSON:
 }`;
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await openaiChat({
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
       body: JSON.stringify({
@@ -684,7 +685,7 @@ Notes:
 - "reels" shortest; no URL (Reels strip links).`;
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await openaiChat({
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
       body: JSON.stringify({
