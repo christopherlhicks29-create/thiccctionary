@@ -88,6 +88,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/entries/2026-06-26.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/entries/2026-06-19.html</loc>
     <lastmod>2026-06-19</lastmod>
     <priority>0.6</priority>
@@ -417,6 +422,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/is/forklift-thiccc/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/is/typewriter-thiccc/</loc>
     <lastmod>2026-06-19</lastmod>
     <priority>0.7</priority>
@@ -742,12 +752,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thiccctionary.com/articles/mailbag-2026-06-24.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://thiccctionary.com/articles/thiccc-beat-2026-06-26-margie-widest-wildlife-crossing.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thiccctionary.com/articles/thiccc-beat-2026-06-24-bart-heaviest-asphalt-roller.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/articles/mailbag-2026-06-24.html</loc>
     <lastmod>2026-06-24</lastmod>
     <priority>0.6</priority>
   </url>
