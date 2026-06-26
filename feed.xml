@@ -6,13 +6,21 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jun 2026 20:19:19 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 20:21:26 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] They Built a Bridge as Wide as It Is Long, and the Animals Will Never Know</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-26-margie-widest-wildlife-crossing.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-26-margie-widest-wildlife-crossing.html</guid>
+      <pubDate>Fri, 26 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Margaret Whitmore-Hessian on the Wallis Annenberg Wildlife Crossing over the 101 freeway near Agoura Hills, the world&apos;s largest wildlife crossing, roughly 200 feet long and 165 feet wide, ~$114M, opening this fall 2026. Ruling: Thiccc, and ruled so from the top.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>[Article] Heavy Is Not Thiccc. The Drum, However, Is.</title>
       <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-24-bart-heaviest-asphalt-roller.html</link>
