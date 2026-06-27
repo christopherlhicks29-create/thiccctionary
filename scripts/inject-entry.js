@@ -13,6 +13,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -101,6 +102,13 @@ async function main() {
   const filename = `${today}-${slug}.jpg`;
   await downloadImage(chosen, filename);
   console.log(`Saved image: images/${filename}`);
+  // Generate the WebP sibling so the page never falls back to alt text
+  // (the daily cron path does this; the manual inject path historically did not).
+  try {
+    execSync(`node ${path.join(__dirname, 'jpg-to-webp.js')} "${path.join(IMAGES_DIR, filename)}"`, { stdio: 'inherit' });
+  } catch (e) {
+    console.warn(`[inject-entry] webp generation failed (non-fatal): ${e.message}`);
+  }
 
   const category = VALID_CATEGORIES.has(sentinel.category) ? sentinel.category : 'Uncategorized';
   let tags = [...new Set((sentinel.tags || []).map(x => String(x).toLowerCase().trim()).filter(x => CANON_TAGS.has(x)))];
