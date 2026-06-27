@@ -6,21 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Forklift, Heavy Container",
-      "query": "container handler forklift port",
-      "category": "Industrial Machinery"
-    },
-    {
-      "subject": "Container, Shipping 40-Foot",
-      "query": "40 foot shipping container",
-      "category": "Industrial Machinery"
-    },
-    {
-      "subject": "Roast, Pork Shoulder Boston Butt",
-      "query": "boston butt pork shoulder roast",
-      "category": "Foods of Substance"
-    },
-    {
       "subject": "Iceberg, Arctic",
       "query": "iceberg arctic ocean",
       "category": "Other"
