@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-27",
+    "word": "Generator, Diesel-Powered",
+    "pronunciation": "je-nuh-RAY-tur, DEE-zul POW-urd",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "An industrial workhorse known for its squat, formidable stance, designed to keep the lights on and the party going come what may. Esp. one viewed astern, in raking light.",
+      "<em>colloq.</em> The reason your uncle's garage has a reinforced floor."
+    ],
+    "example": "He marveled at the thiccc diesel generator dominating the construction site. The crane operator had to navigate around it like a barge.",
+    "etymology": "From Latin <em>generare</em>, meaning 'to produce', combined with Rudolf Diesel (inventor, 1858-1913). The power output is inversely proportional to its ability to fit through a standard doorway.",
+    "image": "images/2026-06-27-generator-diesel-powered.jpg",
+    "caption": "Plate N. A diesel-powered generator, asserting its presence amidst lesser machinery.",
+    "tags": [
+      "industrial",
+      "construction",
+      "tools"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Tomasz Zielonka",
+    "photographerUrl": "https://unsplash.com/@tzielonka",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-machine-is-sitting-on-the-ground-F2n-WbjEa8Y",
+    "socialCaptions": {
+      "morning": "Generator, Diesel-Powered—\nThe unsung hero of every blackout.\nOperates at 1800 RPM, refusing to be silenced.",
+      "afternoon": "When the grid falters, it hums at 60 Hertz.\nA steadfast performer in adversity—\nDiesel-Powered, Generator.",
+      "evening": "From the archives, Generator, Diesel-Powered.\nA 1,000-pound enigma, thriving since 1893.\nRudolf Diesel would approve.",
+      "reels": "13,000 watts of pure resolve.\nIts squat silhouette is a monument to necessity."
+    }
+  },
+  {
     "date": "2026-06-26",
     "word": "Forklift, Heavy Container",
     "pronunciation": "/FORK-lift, HEV-ee kuhn-TAY-ner/",
