@@ -47,7 +47,21 @@
           "id": "6a36d5f3566900623a61ebfe"
         }
       ]
+    },
+    {
+      "path": "videos/characters/bart-folder-refusal.mp4",
+      "at": "2026-06-27T17:52:56.411Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a400df768e970d736263060"
+        },
+        {
+          "service": "instagram",
+          "id": "6a400df808ab52e3fdf8f4e9"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-06-20T18:03:31.423Z"
+  "lastPostedAt": "2026-06-27T17:52:56.411Z"
 }
