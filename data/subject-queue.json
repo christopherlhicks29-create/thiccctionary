@@ -6,14 +6,29 @@
   ],
   "queue": [
     {
-      "subject": "Iceberg, Arctic",
-      "query": "iceberg arctic ocean",
+      "subject": "Column, Doric Greek",
+      "query": "doric column greek temple",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Boot, Steel-Toe Work",
+      "query": "steel toe work boot leather",
       "category": "Other"
     },
     {
-      "subject": "Tank, Sherman M4",
-      "query": "sherman m4 tank world war",
-      "category": "Vehicles & Transport"
+      "subject": "Boiler, Steam Locomotive",
+      "query": "steam locomotive boiler",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Burger, Quadruple Stack",
+      "query": "quadruple stack burger",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Door, Bank Vault Round",
+      "query": "round bank vault door",
+      "category": "Architecture & Infrastructure"
     }
   ]
 }
