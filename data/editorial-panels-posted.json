@@ -56,7 +56,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-04-sequoia-trunk",
+      "at": "2026-06-28T17:59:55.540Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a41611a0a2e7f6ea3453eea"
+        },
+        {
+          "service": "facebook",
+          "id": "6a41611a5564163c87056875"
+        },
+        {
+          "service": "instagram",
+          "id": "6a41611b5564163c87056898"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-06-21T18:15:31.088Z"
+  "lastPostedAt": "2026-06-28T17:59:55.541Z"
 }
