@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-06-28",
+    "word": "Tank, Sherman M4",
+    "pronunciation": "/SHER-man em-FOUR/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A World War II era armored vehicle distinguished by its robust girth and prominent turret, often admired from a respectful distance.",
+      "<em>colloq.</em> The vehicular equivalent of a heavyweight champ, refusing to yield to lesser road warriors."
+    ],
+    "example": "When the thiccc Sherman M4 rolled into the museum exhibit, the floor plan had to accommodate its commanding presence. The snack bar became a forward operating base.",
+    "etymology": "Named after Union General William Tecumseh Sherman, known for his relentless campaigns during the American Civil War. Just like its namesake, the tank leaves an impression wherever it treads.",
+    "image": "images/2026-06-28-tank-sherman-m4.jpg",
+    "caption": "Plate N., The Sherman M4, a timeless testament to mechanized majesty.",
+    "tags": [
+      "vehicle",
+      "industrial"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 4,
+    "photoScore": 8,
+    "photographer": "Library of Congress",
+    "photographerUrl": "https://unsplash.com/@libraryofcongress",
+    "unsplashUrl": "https://unsplash.com/photos/goliaths-of-modern-warfare-these-men-make-up-the-crew-of-one-of-americans-most-modern-tanks-8YpGGUx1Mk8",
+    "socialCaptions": {
+      "morning": "Tank, Sherman M4—carried 75mm main gun.\nPreferred method of persuasion: ballistic diplomacy.",
+      "afternoon": "With 49,234 units produced, the Sherman M4\noutnumbered its enemies by sheer persistence.\nCall it a numerical inevitability. #ShermanM4",
+      "evening": "From the archives, Tank, Sherman M4.\nDebut in 1942—America's thiccc diplomat,\nfluent in the language of steel.",
+      "reels": "Five-man crew, 30-ton tank.\nSpace was a luxury—thiccc was standard."
+    }
+  },
+  {
     "date": "2026-06-27",
     "word": "Generator, Diesel-Powered",
     "pronunciation": "je-nuh-RAY-tur, DEE-zul POW-urd",
