@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 02:17:19 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 17:57:03 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A World War II era armored vehicle distinguished by its robust girth and prominent turret, often admired from a respectful distance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-28-tank-sherman-m4.jpg" type="image/jpeg" length="0" />
       <category>vehicle</category><category>industrial</category>
+    </item>
+    <item>
+      <title>[Article] The Heaviest Pumpkin on Earth Also Holds the World Record for Girth</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-28-eli-heaviest-pumpkin-muggle.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-28-eli-heaviest-pumpkin-muggle.html</guid>
+      <pubDate>Sun, 28 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Eli Hartwell on &quot;Muggle,&quot; the heaviest pumpkin ever recorded, grown by twin brothers Ian and Stuart Paton of the UK and weighed at 1,278.8 kg (2,819 lb 4 oz) at the Wargrave Nursery Giant Vegetable Weigh-off on 6 October 2025, the same specimen that also holds the Guinness World Record for largest pumpkin by circumference at 649.8 cm (21 ft 3.8 in) of stem-to-blossom girth. Ruling: Thiccc, and entered as the far end of the ruler.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Generator, Diesel-Powered</title>
