@@ -1,6 +1,6 @@
 # Site Health Auto-Fix Log, 2026-06-28
 
-Operated against: health-autofix-2026-06-21.md
+Operated against: health-autofix-2026-06-28.md
 
 0 fixes applied, 0 skipped.
 
