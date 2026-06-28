@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Notebook is at 312. Someone asked if I was okay. I said I was counting. They said counting what. I said the city. They left.\n\nThe hydrant outside is still cream. It counts.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-06-28T18:40:40.340Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1782585711091",
