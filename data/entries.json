@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-06-29",
+    "word": "Column, Doric Greek",
+    "pronunciation": "/KAH-lum DOR-ik GREEK/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A structural pillar of disciplined stoutness, characterized by its fluted shaft and austere capital, often observed in ancient temples where its presence remains unchallenged.",
+      "<em>colloq.</em> Architectural classics that refuse to blend into the Parthenon of history; they stand, commanding the skyline with timeless girth."
+    ],
+    "example": "As the tour group rounded the acropolis, a thiccc Doric column came into view, defying mere mortal scale and offering no apologies to the sky.",
+    "etymology": "From Greek <em>dōrikos</em>, pertaining to the Doric people, + Latin <em>columna</em>, a pillar or support. Initially intended to be a capital idea.",
+    "image": "images/2026-06-29-column-doric-greek.jpg",
+    "caption": "Plate N. The Doric column: standing firm against time and modernism.",
+    "tags": [
+      "architecture",
+      "construction",
+      "landscape"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 4,
+    "photoScore": 9,
+    "photographer": "Ivan Bassis",
+    "photographerUrl": "https://unsplash.com/@ibas65",
+    "unsplashUrl": "https://unsplash.com/photos/ancient-greek-temple-ruins-against-a-clear-blue-sky-9aY0O4Rbchc",
+    "socialCaptions": {
+      "morning": "Column, Doric Greek. Austerity in stone since 600 BCE. Fluted elegance, never fluted excess.",
+      "afternoon": "Sixteen drums stacked—a thiccc demonstration of ancient Greek geometry. Doric Greek, indeed.",
+      "evening": "From the archives, Column, Doric Greek.\nHolding up the sky since the Parthenon was a blueprint.",
+      "reels": "Stands at 20 feet. Supports temples, and bewilderment. Thiccc authority."
+    }
+  },
+  {
     "date": "2026-06-28",
     "word": "Tank, Sherman M4",
     "pronunciation": "/SHER-man em-FOUR/",
