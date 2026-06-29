@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Started a third notebook. Someone asked what happened to the second one. I said it was full. They asked full of what. I said hydrants. They went back to their desk without another word.\n\n312 and counting.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-06-29T19:19:59.198Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1782672037891",
