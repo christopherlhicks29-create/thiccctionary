@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Jun 2026 03:58:43 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 22:07:20 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A structural pillar of disciplined stoutness, characterized by its fluted shaft and austere capital, often observed in ancient temples where its presence remains unchallenged.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-29-column-doric-greek.jpg" type="image/jpeg" length="0" />
       <category>architecture</category><category>construction</category><category>landscape</category>
+    </item>
+    <item>
+      <title>[Article] The Widest Ship Ever Built Is Mostly an Empty Slot on Purpose</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-06-29-spider-widest-ship-pioneering-spirit.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-06-29-spider-widest-ship-pioneering-spirit.html</guid>
+      <pubDate>Mon, 29 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Spider Hennessy on the Pioneering Spirit, Allseas&apos; twin-hulled heavy-lift vessel and the world&apos;s largest ship by gross tonnage (403,342 GT), 382 m long and 123.75 m wide, the heaviest vehicle ever built, whose split hull carries an open slot it uses to straddle and lift entire offshore platforms in one piece. Ruling: Thiccc, and the cleanest case of girth-with-intention the desk has filed.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Tank, Sherman M4</title>
