@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Jun 2026 22:07:20 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 02:12:05 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Boiler, Steam Locomotive</title>
+      <link>https://thiccctionary.com/entries/2026-06-30.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-30.html</guid>
+      <pubDate>Tue, 30 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A large cylindrical vessel designed to generate steam for the propulsion of a locomotive, notable for its substantial thermal expansion and formidable girth.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-30-boiler-steam-locomotive.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>vehicle</category>
+    </item>
     <item>
       <title>Column, Doric Greek</title>
       <link>https://thiccctionary.com/entries/2026-06-29.html</link>

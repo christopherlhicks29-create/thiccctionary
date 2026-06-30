@@ -6,16 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Boot, Steel-Toe Work",
-      "query": "steel toe work boot leather",
-      "category": "Other"
-    },
-    {
-      "subject": "Boiler, Steam Locomotive",
-      "query": "steam locomotive boiler",
-      "category": "Industrial Machinery"
-    },
-    {
       "subject": "Burger, Quadruple Stack",
       "query": "quadruple stack burger",
       "category": "Foods of Substance"
