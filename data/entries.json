@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-06-30",
+    "word": "Boiler, Steam Locomotive",
+    "pronunciation": "/BOY-lur, STEEM loh-kuh-MOH-tiv/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A large cylindrical vessel designed to generate steam for the propulsion of a locomotive, notable for its substantial thermal expansion and formidable girth.",
+      "<em>colloq.</em> The quintessential powerhouse of rail heritage, flaunting a level of rotundity that dares lesser machinery to even stand close."
+    ],
+    "example": "He marveled at the thiccc steam locomotive boiler, its generous diameter casting shade on the entire platform.",
+    "etymology": "From Latin <em>boilire</em> (to bubble or boil) + Latin <em>locomotivus</em> (causing motion), which once suggested elegance in motion. Nowadays, it suggests a certain unapologetic bulk.",
+    "image": "images/2026-06-30-boiler-steam-locomotive.jpg",
+    "caption": "Plate N. The steam locomotive boiler, viewed from the rear, defies casual description, its girth a monument to industrial prowess.",
+    "tags": [
+      "industrial",
+      "vehicle"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Olle August",
+    "photographerUrl": "https://unsplash.com/@olwambo65",
+    "unsplashUrl": "https://unsplash.com/photos/a-black-and-red-train-traveling-down-train-tracks-4MdgmJnrrQQ",
+    "socialCaptions": {
+      "morning": "Boiler, Steam Locomotive. Two hundred psi of pure potential.\nDoubts about its thiccc presence—immediately evaporated.",
+      "afternoon": "When the boiler speaks, pistons listen.\nA mere 6,000 gallons of water—transformed.\nSteam Locomotive Boiler.",
+      "evening": "From the archives, Boiler, Steam Locomotive.\nBorn in the 19th century, still outsizing modern engines.\nA legacy of thiccc dimensions.",
+      "reels": "1830s innovation, still dominating tracks.\nA thiccc testament to steam power."
+    }
+  },
+  {
     "date": "2026-06-29",
     "word": "Column, Doric Greek",
     "pronunciation": "/KAH-lum DOR-ik GREEK/",
