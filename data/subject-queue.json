@@ -6,14 +6,24 @@
   ],
   "queue": [
     {
-      "subject": "Burger, Quadruple Stack",
-      "query": "quadruple stack burger",
-      "category": "Foods of Substance"
+      "subject": "Beam, Steel I-Beam",
+      "query": "steel I-beam construction",
+      "category": "Architecture & Infrastructure"
     },
     {
-      "subject": "Door, Bank Vault Round",
-      "query": "round bank vault door",
-      "category": "Architecture & Infrastructure"
+      "subject": "Refrigerator, Commercial",
+      "query": "commercial walk-in refrigerator",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Bulldozer, Caterpillar D11",
+      "query": "caterpillar d11 bulldozer",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Mattress, Pillow-Top King",
+      "query": "king mattress pillowtop",
+      "category": "Domestic Goods"
     }
   ]
 }
