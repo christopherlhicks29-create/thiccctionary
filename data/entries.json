@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-07-01",
+    "word": "Anchor, Stockless",
+    "pronunciation": "AN-kur, stok-les",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A substantial maritime device designed to secure a vessel by embedding itself into the seabed without the aid of a stock; particularly noted for its massive flukes and commanding presence when viewed astern in raking light.",
+      "<em>colloq.</em> A maritime heavyweight that refuses to drift with the tide, lest it disturb the serenity of a harbor's afternoon nap."
+    ],
+    "example": "The cruise ship boasted a thiccc stockless anchor that seemed to hold the ocean in place. The harbor's tranquility was non-negotiable.",
+    "etymology": "From Middle English <em>anker</em>, derived from Latin <em>ancora</em>, ultimately from Greek <em>ankura</em>. Designed for vessels that prefer their moorings as steadfast as their buffets.",
+    "image": "images/2026-07-01-anchor-stockless.jpg",
+    "caption": "Plate N. A stockless anchor, exhibiting its noble girth in repose.",
+    "tags": [
+      "maritime",
+      "industrial"
+    ],
+    "category": "Engineering Marvels",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Haberdoedas",
+    "photographerUrl": "https://unsplash.com/@haberdoedas",
+    "unsplashUrl": "https://unsplash.com/photos/a-boats-anchor-and-rope-are-resting-l9EOhsdkynQ",
+    "socialCaptions": {
+      "morning": "Anchor, Stockless — 10,000 pounds of maritime conviction.\nWhen the ocean whispers, it listens not.",
+      "afternoon": "In 1821, Robert Hall designed the first stockless anchor.\nAn invention to leave the tides speechless.\nAnchor, Stockless.",
+      "evening": "From the archives, Anchor, Stockless.\nForged to grapple with Poseidon himself.\nFlukes as wide as intentions.",
+      "reels": "Since 1894 — keeping ships and secrets grounded.\nAnchor, Stockless."
+    }
+  },
+  {
     "date": "2026-06-30",
     "word": "Boiler, Steam Locomotive",
     "pronunciation": "/BOY-lur, STEEM loh-kuh-MOH-tiv/",
