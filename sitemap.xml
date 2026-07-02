@@ -88,6 +88,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/entries/2026-07-02.html</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/entries/2026-07-01.html</loc>
     <lastmod>2026-07-01</lastmod>
     <priority>0.6</priority>
@@ -447,6 +452,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thiccctionary.com/is/beam-thiccc/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thiccctionary.com/is/anchor-thiccc/</loc>
     <lastmod>2026-07-01</lastmod>
     <priority>0.7</priority>
@@ -800,6 +810,16 @@
     <loc>https://thiccctionary.com/is/tarantula-thiccc/</loc>
     <lastmod>2026-04-11</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/articles/mailbag-2026-07-01.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thiccctionary.com/articles/from-the-boat-2026-07-01.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thiccctionary.com/articles/thiccc-beat-2026-06-29-spider-widest-ship-pioneering-spirit.html</loc>

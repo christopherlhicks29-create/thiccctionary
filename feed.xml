@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jul 2026 02:55:55 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 02:08:11 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Beam, Steel I-Beam</title>
+      <link>https://thiccctionary.com/entries/2026-07-02.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-02.html</guid>
+      <pubDate>Thu, 02 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A structural member of unapologetic heft, typically employed in bridges and buildings, characterized by its cross-sectional shape resembling the letter &apos;I&apos;. Esp. notable when viewed from a distance, where its thicccness defies casual description.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-02-beam-steel-i-beam.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>architecture</category><category>construction</category>
+    </item>
     <item>
       <title>Anchor, Stockless</title>
       <link>https://thiccctionary.com/entries/2026-07-01.html</link>
@@ -21,6 +30,22 @@
       <description>A substantial maritime device designed to secure a vessel by embedding itself into the seabed without the aid of a stock; particularly noted for its massive flukes and commanding presence when viewed astern in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-01-anchor-stockless.jpg" type="image/jpeg" length="0" />
       <category>maritime</category><category>industrial</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 6</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-07-01.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-07-01.html</guid>
+      <pubDate>Wed, 01 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 6.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] From the Boat, Issue 3</title>
+      <link>https://thiccctionary.com/articles/from-the-boat-2026-07-01.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/from-the-boat-2026-07-01.html</guid>
+      <pubDate>Wed, 01 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Bertram Whitmore, Publisher, writes from the Margaret IV. Vol. 3.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Boiler, Steam Locomotive</title>
