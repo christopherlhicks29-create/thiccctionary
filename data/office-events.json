@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1783018511056",
+      "date": "2026-07-02",
+      "byline_id": "eli",
+      "summary": "Eliza posted about Typewriter, Vintage: \"Somebody left a typewriter on the break room counter. Not plugged in. Just there. Three people asked...\""
+    },
+    {
       "id": "auto-1782933365450",
       "date": "2026-07-01",
       "byline_id": "eli",
@@ -274,12 +280,6 @@
       "date": "2026-05-17",
       "byline_id": "margie",
       "summary": "Margaret posted about margie-monaco: \"Phillipa Reuss-Fontaine says Monaco is not for everyone. I agree: it is for those who file. Six week...\""
-    },
-    {
-      "id": "auto-1778991382145",
-      "date": "2026-05-17",
-      "byline_id": "eli",
-      "summary": "Eliza posted about Kettledrum, Industrial: \"Timpani entry approved. This writer notes the shell diameter exceeds the cataloguer's usual comfort ...\""
     }
   ]
 }
