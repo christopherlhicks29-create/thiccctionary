@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-02",
+    "word": "Beam, Steel I-Beam",
+    "pronunciation": "/steel eye-beem/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A structural member of unapologetic heft, typically employed in bridges and buildings, characterized by its cross-sectional shape resembling the letter 'I'. Esp. notable when viewed from a distance, where its thicccness defies casual description.",
+      "<em>colloq.</em> An industrial stalwart that won't budge for your basement renovation fantasies. Made to support, not negotiate."
+    ],
+    "example": "The thiccc steel I-beam under the bridge held its ground like a sentinel, daring gravity to try again.",
+    "etymology": "From the Old English 'beam', meaning 'tree' or 'post', referring to a sturdy support structure. Reinvented in steel, because sometimes wood just doesn't cut it.",
+    "image": "images/2026-07-02-beam-steel-i-beam.jpg",
+    "caption": "Plate N., Thiccc steel I-beams under a bridge, embodying unapologetic strength.",
+    "tags": [
+      "industrial",
+      "architecture",
+      "construction"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Vsevolod",
+    "photographerUrl": "https://unsplash.com/@s3vr",
+    "unsplashUrl": "https://unsplash.com/photos/the-underside-of-a-bridge-with-blue-metal-beams-5Kqa80scwv4",
+    "socialCaptions": {
+      "morning": "Beam, Steel I-Beam. Introduced in 1849. 100x the strength of wood—because timber's just not trying hard enough.",
+      "afternoon": "Weighing in at up to 80 pounds per foot, the I-Beam stands unyielding. An ironclad paradox of effortless heaviness and structural grace—#IBeam.",
+      "evening": "From the archives, Beam, Steel I-Beam.\nFirst rolled at the Montour Iron Works. A cross-section so thiccc, it’s the letter 'I' with a steel resolve.",
+      "reels": "Supporting skyscrapers since 1850. Thiccc in all the right places."
+    }
+  },
+  {
     "date": "2026-07-01",
     "word": "Anchor, Stockless",
     "pronunciation": "AN-kur, stok-les",
