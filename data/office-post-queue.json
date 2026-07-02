@@ -7,7 +7,11 @@
     "topic_kind": "thiccc",
     "text": "Somebody left a typewriter on the break room counter. Not plugged in. Just there. Three people asked if it was \"decor.\" It weighs more than my commute. Some things announce themselves by staying put.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-02T18:55:15.054Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1782933365449",
