@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 01:52:53 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 15:35:57 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A generous sleep surface characterized by its multi-layered cushioning and substantial overall depth, particularly dominant in master bedroom settings.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-03-mattress-pillow-top-king.jpg" type="image/jpeg" length="0" />
       <category>domestic</category><category>girth</category>
+    </item>
+    <item>
+      <title>[Article] 851,000 of Anything Constitutes a Filing</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-07-03-constance-851000-fireworks-record.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-07-03-constance-851000-fireworks-record.html</guid>
+      <pubDate>Fri, 03 Jul 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Constance Pribyl on the July 4, 2026 fireworks display over Washington, D.C., in which technicians from the pyrotechnics firm Pyrotecnico intend to discharge approximately 851,000 fireworks in about 40 minutes, an attempt on the Guinness World Record of 810,904 set in the Philippines in 2016. Ruling: Provisionally Thiccc, pending verified count.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Beam, Steel I-Beam</title>
