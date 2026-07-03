@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to Luca's tonight. Ordered the rigatoni. Have ordered the rigatoni for eleven years. The waiter asked if I wanted to hear the specials. I said no. He nodded. We understood each other.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-03T18:44:57.562Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783096744411",
