@@ -48,26 +48,51 @@ function weightedPick(items, weightKey = 'weight') {
   return items[items.length - 1];
 }
 
-function pickByline(staff) {
+function pickByline(staff, recentPosts = []) {
   // Social weight distribution: same as social-byline picker in post-to-buffer.js
   // Eli 35, Teddy 25, Bart 20, Margie 12, Spider 8 (no "unsigned" here, these
   // are explicitly character posts).
   const dist = { eli: 35, teddy: 25, bart: 20, margie: 12, spider: 8 };
   const ov = (process.env.BYLINE_OVERRIDE || '').trim().toLowerCase();
   if (ov && staff.staff.find(x => x.id === ov)) return staff.staff.find(x => x.id === ov);
-  const weighted = staff.staff.map(s => ({ ...s, weight: dist[s.id] || 1 }));
+  // Wave 274a: only members with a `voice` profile are pickable (bertram and
+  // constance have no social voice block; the old weight-1 fallback could pick
+  // them and build a "You are undefined" prompt).
+  // Wave 274b: rotation damping. A byline used in the last 2 posts keeps 15%
+  // of its weight; last 5 posts, 40%. Kills eli-streaks (4 of the 6 posts in
+  // late June were Eli despite a 35% nominal weight).
+  const recent2 = new Set(recentPosts.slice(0, 2).map(x => x.byline_id));
+  const recent5 = new Set(recentPosts.slice(0, 5).map(x => x.byline_id));
+  const weighted = staff.staff.filter(s => s.voice).map(s => {
+    let w = dist[s.id] || 1;
+    if (recent2.has(s.id)) w *= 0.15;
+    else if (recent5.has(s.id)) w *= 0.4;
+    return { ...s, weight: w };
+  });
   return weightedPick(weighted);
 }
 
 function pickTopic(byline, events, entries, recentPosts) {
   const kind = (process.env.TOPIC_KIND || 'either').toLowerCase();
-  if (kind === 'reply' || (kind === 'either' && Math.random() < 0.3)) {
+  if (kind === 'reply' || (kind === 'either' && Math.random() < 0.25)) {
     const cutoff = new Date(Date.now() - 14 * 86400000).toISOString();
     const eligible = (recentPosts || []).filter(p => p.byline_id && p.byline_id !== byline.id && p.created >= cutoff && p.text);
     if (eligible.length > 0) {
       const target = eligible[Math.floor(Math.random() * eligible.length)];
       console.log('[office] reply target: ' + target.byline_id + ' from ' + target.created.slice(0,10));
       return { kind: 'reply', target };
+    }
+  }
+  // Wave 274: personal lane. Off-duty, life-outside-the-catalogue posts.
+  // Christopher 2026-07-03: "more social media posts that are more personal
+  // from the employees." Lanes live on each staff member (personal_lanes in
+  // data/editorial-staff.json) so they stay canon-consistent.
+  if (kind === 'personal' || (kind === 'either' && Math.random() < 0.45)) {
+    const lanes = byline.personal_lanes || [];
+    if (lanes.length > 0) {
+      const lane = lanes[Math.floor(Math.random() * lanes.length)];
+      console.log('[office] personal lane: ' + lane);
+      return { kind: 'personal', lane };
     }
   }
   const eligibleBits = events.running_bits.filter(b => !b.characters || b.characters.includes(byline.id));
@@ -224,6 +249,17 @@ function buildUserPrompt(topic, byline, allStaff) {
       '- Be funny. The whole point is the dynamic between you.\n\n' +
       'End with your signature.';
   }
+  if (topic.kind === 'personal') {
+    return 'Write a PERSONAL, off-duty social post. Not about the office, not about a catalogue subject. About YOUR life outside work, in your voice.\n\n' +
+      'YOUR LANE FOR THIS POST: ' + topic.lane + '\n\n' +
+      'Rules:\n' +
+      '1. First person. One specific moment from your day or week: a place, a time, one concrete detail.\n' +
+      '2. Your relationship to size/mass/scale may leak in sideways (it always does), but the post is about YOUR LIFE, not an object. No ruling, no filing, no catalogue verdict.\n' +
+      '3. The reader should feel they caught you off the clock. If the post could run as a catalogue caption, throw it out.\n' +
+      '4. It must land for a stranger who has never seen Thiccctionary and knows none of your colleagues.\n' +
+      '5. Less than or equal to ' + MAX_LEN + ' chars TOTAL with signature.\n\n' +
+      'End with your signature.';
+  }
   if (topic.kind === 'office') {
     return `Write a social post about this office event/running bit:
 
@@ -317,7 +353,7 @@ async function extendEvents(events, post, byline, topic) {
     id: `auto-${Date.now()}`,
     date: new Date().toISOString().slice(0, 10),
     byline_id: byline.id,
-    summary: byline.name.split(' ')[0] + ' posted about ' + (topic.kind === 'office' ? topic.bit.id : topic.kind === 'reply' ? ('reply to ' + topic.target.byline_id) : topic.entry?.word) + ': "' + post.slice(0, 100) + '..."',
+    summary: byline.name.split(' ')[0] + ' posted about ' + (topic.kind === 'office' ? topic.bit.id : topic.kind === 'reply' ? ('reply to ' + topic.target.byline_id) : topic.kind === 'personal' ? ('personal life: ' + topic.lane.slice(0, 60)) : topic.entry?.word) + ': "' + post.slice(0, 100) + '..."',
   };
   events.auto_extensions = events.auto_extensions || [];
   events.auto_extensions.unshift(newEntry);
@@ -335,7 +371,7 @@ async function main() {
     const raw = await fs.readFile(QUEUE_PATH, 'utf8');
     recentPosts = JSON.parse(raw).slice(0, 30);
   } catch (e) { /* queue not present yet */ }
-  const byline = pickByline(staff);
+  const byline = pickByline(staff, recentPosts);
   const topic = pickTopic(byline, events, entries, recentPosts);
   console.log(`[office] byline=${byline.id} topic=${topic.kind}`);
 
@@ -391,7 +427,7 @@ async function main() {
     ts: new Date().toISOString(),
     byline: byline.id,
     topic_kind: topic.kind,
-    topic_id: topic.kind === 'office' ? topic.bit.id : topic.kind === 'reply' ? ('reply-to-' + topic.target.byline_id) : topic.entry?.date,
+    topic_id: topic.kind === 'office' ? topic.bit.id : topic.kind === 'reply' ? ('reply-to-' + topic.target.byline_id) : topic.kind === 'personal' ? ('personal-' + topic.lane.slice(0, 40).replace(/\s+/g, '-')) : topic.entry?.date,
     best_score: bestScore,
     passed,
     draft: bestDraft,

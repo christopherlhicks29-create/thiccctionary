@@ -1,13 +1,17 @@
-name: Office Post, staff social (random ~0.7/day, 7/10 quality gate)
+name: Office Post, staff social (2 slots/day ~85%, 7/10 quality gate)
 
 # Wave 118: extra social post bylined by an editorial staff member, on top of
-# the existing 3x/day cadence. Topic is either an office running bit or a
-# recent thiccc subject. Claude writes, gpt-4o rates 0-10. ≥7 publishes, <7
-# silently skips. Cron fires daily at 17:30 UTC with a 70% random gate.
+# the existing 3x/day cadence. Topic is an office running bit, a personal
+# off-duty lane (Wave 274), a reply, or a recent thiccc subject. Claude
+# writes, rater scores 0-10. ≥7 publishes, <7 silently skips.
+# Wave 274: two daily slots (17:30 + 21:15 UTC, midday + late-afternoon ET)
+# with an 85% random gate each. Christopher 2026-07-03: "need more social
+# media posts that are more personal from the employees."
 
 on:
   schedule:
     - cron: '30 17 * * *'
+    - cron: '15 21 * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -15,11 +19,11 @@ on:
       - 'data/.fire-office'
     inputs:
       byline_override:
-        description: "Force a byline: eli|teddy|bart|margie|spider"
+        description: "Force a byline: eli|teddy|bart|margie|spider|hugh"
         type: string
         required: false
       topic_kind:
-        description: "Topic kind: office|thiccc|either"
+        description: "Topic kind: office|thiccc|personal|reply|either"
         type: string
         required: false
         default: either
@@ -54,7 +58,7 @@ jobs:
             echo "Parsed sentinel: byline=$BYLINE topic=$TOPIC"
           fi
 
-      - name: Random cadence gate (~70%)
+      - name: Random cadence gate (~85%)
         id: gate
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "push" ]; then
@@ -63,11 +67,11 @@ jobs:
             exit 0
           fi
           ROLL=$((RANDOM % 100))
-          if [ "$ROLL" -lt 70 ]; then
-            echo "rolled $ROLL < 70, proceeding"
+          if [ "$ROLL" -lt 85 ]; then
+            echo "rolled $ROLL < 85, proceeding"
             echo "proceed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "rolled $ROLL >= 70, skipping today"
+            echo "rolled $ROLL >= 85, skipping this slot"
             echo "proceed=false" >> "$GITHUB_OUTPUT"
           fi
 
