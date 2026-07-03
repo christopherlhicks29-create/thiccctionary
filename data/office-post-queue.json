@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Replaced the bathroom tap washer this morning. Correct washer, correct wrench, no leaks. Took eleven minutes. The previous owner had used the wrong size for what I estimate was a decade.\n\nSome things are simply done right or not done.\n\nBartholomew",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-03T16:39:06.728Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783096542038",
