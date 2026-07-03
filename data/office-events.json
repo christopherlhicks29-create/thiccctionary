@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1783096744413",
+      "date": "2026-07-03",
+      "byline_id": "bart",
+      "summary": "Bartholomew posted about personal life: a home repair performed correctly, alone, with the proper to: \"Replaced the bathroom tap washer this morning. Correct washer, correct wrench, no leaks. Took eleven...\""
+    },
+    {
       "id": "auto-1783096542040",
       "date": "2026-07-03",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-05-17",
       "byline_id": "spider",
       "summary": "\"Spider\" posted about spider-dispatches: \"JAIPUR, INDIA\n\nThe chai is good. The light is wrong for photography but correct for thinking. Someon...\""
-    },
-    {
-      "id": "auto-1778992031284",
-      "date": "2026-05-17",
-      "byline_id": "bart",
-      "summary": "Bartholomew posted about girth-quarterly: \"Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That w...\""
     }
   ]
 }
