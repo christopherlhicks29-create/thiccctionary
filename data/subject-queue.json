@@ -4,21 +4,5 @@
     "VERIFY Unsplash has results for `query` before queueing.",
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass)."
   ],
-  "queue": [
-    {
-      "subject": "Refrigerator, Commercial",
-      "query": "commercial walk-in refrigerator",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Bulldozer, Caterpillar D11",
-      "query": "caterpillar d11 bulldozer",
-      "category": "Industrial Machinery"
-    },
-    {
-      "subject": "Mattress, Pillow-Top King",
-      "query": "king mattress pillowtop",
-      "category": "Domestic Goods"
-    }
-  ]
+  "queue": []
 }

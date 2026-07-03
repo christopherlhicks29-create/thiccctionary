@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jul 2026 02:08:11 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 01:52:53 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Mattress, Pillow-Top King</title>
+      <link>https://thiccctionary.com/entries/2026-07-03.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-03.html</guid>
+      <pubDate>Fri, 03 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A generous sleep surface characterized by its multi-layered cushioning and substantial overall depth, particularly dominant in master bedroom settings.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-03-mattress-pillow-top-king.jpg" type="image/jpeg" length="0" />
+      <category>domestic</category><category>girth</category>
+    </item>
     <item>
       <title>Beam, Steel I-Beam</title>
       <link>https://thiccctionary.com/entries/2026-07-02.html</link>
