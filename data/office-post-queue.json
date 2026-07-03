@@ -7,7 +7,11 @@
     "topic_kind": "thiccc",
     "text": "Recorded the pillow-top entry this morning. The script called for a pause after \"dominant.\" I held it for four seconds. The booth absorbed it. I ate a lozenge. I did the second take. The pause was correct both times.\n\nHugh",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-03T22:17:02.904Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783104294374",
