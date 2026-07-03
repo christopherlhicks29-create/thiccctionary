@@ -7,6 +7,7 @@
 - **Cadence (the "more" fix):** office-post.yml gains a second daily slot (21:15 UTC) and the random gate goes 70% -> 85%. Expected throughput ~0.4/day -> ~1.4/day before quality skips.
 - **Rotation damping:** byline used in last 2 posts keeps 15% of its weight, last 5 posts 40%. Also fixed a latent bug: roster members without a `voice` profile (bertram, constance) could be weight-1 picked and produce a "You are undefined" prompt; now filtered.
 - **Verification:** node --check both scripts, JSON revalidated, pre-ship GREEN (228 HTML smoke-checked). First personal-lane post fired via data/.fire-office sentinel on push.
+- **274b follow-up (same session):** first live fires exposed a rater-calibration mismatch: the comedy rubric scores joke density, so quiet personal posts failed at 5-6 (two Bart drafts withheld, correctly, by the gate). Patched the rater with a personal-lane calibration block (judge on concrete detail + sideways character + resonant ending + stranger test; penalize vagueness, not quietness) and fixed the rater's topic label (personal posts were mislabeled as empty thiccc subjects). Gate unchanged at 7. Result: 2 personal posts published day one, Teddy (natural-history museum, 7/10) and Bart (tap washer, 7/10), both Buffer-confirmed to X.
 
 
 ## Wave 273 (2026-07-03, autonomous PO session): The Thiccc Beat issues its first PROVISIONAL ruling, on the 851,000-firework world-record attempt, the night before it happens
