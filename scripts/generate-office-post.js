@@ -316,12 +316,14 @@ Be tough. Reject easily. Specific anchors:
 - Wave 195 penalty (-2 from base score): same signature phrase ("the catalogue, properly understood", "this writer notes", "one submits") appearing in the post WHEN it ALSO appears in the writer\'s recent corpus shown in the prompt. Tics should rotate, not repeat.
 - Wave 195 penalty (-1 from base score): parallel "I am not X. I am simply Y." used twice OR posts of 3+ short flat-affect declarations in a row. Need rhythm variation.
 
+- Wave 274 calibration for PERSONAL (off-duty) posts: these are deliberately quieter. Judge on (a) one concrete specific detail, (b) character revealed sideways, (c) an ending that resonates rather than punchlines, (d) works for a total stranger. A quiet post with a precise detail and a true-feeling ending is a 7-8 even without a laugh line. Do NOT penalize a personal post for low joke density; DO penalize vagueness, sentimentality, or a detail that could belong to anyone.
+
 Return JSON: {"score": 0-10, "verdict": "publish" or "reject", "reasons": ["specific reason 1", "specific reason 2"]}
 
 Verdict is "publish" only if score >= ${QUALITY_THRESHOLD}.`;
 
   const user = `BYLINE: ${byline.name} (${byline.title})
-TOPIC: ${topic.kind === 'office' ? 'office event: ' + topic.bit.summary : 'thiccc subject: ' + (topic.entry?.word || '')}
+TOPIC: ${topic.kind === 'office' ? 'office event: ' + topic.bit.summary : topic.kind === 'personal' ? 'PERSONAL off-duty post, lane: ' + topic.lane : topic.kind === 'reply' ? 'reply to a colleague' : 'thiccc subject: ' + (topic.entry?.word || '')}
 
 DRAFT POST:
 """
