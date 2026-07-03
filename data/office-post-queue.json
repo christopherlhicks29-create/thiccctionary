@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to the natural history museum today, just to look. Stood in front of the blue whale skeleton for longer than was probably normal. The placard said 89 feet. I just kept nodding, like it had said something wise.\n\nTheodore",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-03T16:35:44.526Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783018511055",
