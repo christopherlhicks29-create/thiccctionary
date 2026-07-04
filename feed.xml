@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jul 2026 02:01:45 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 17:45:19 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A towering succulent native to the Sonoran Desert, renowned for its expansive girth and impressive stature; often observed with reverence from a safe distance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-04-cactus-saguaro.jpg" type="image/jpeg" length="0" />
       <category>produce</category><category>girth</category><category>landscape</category><category>natural-specimens</category>
+    </item>
+    <item>
+      <title>[Article] A Coin So Heavy It Can Only Be Wide</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-07-04-bart-heaviest-silver-coin.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-07-04-bart-heaviest-silver-coin.html</guid>
+      <pubDate>Sat, 04 Jul 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Bartholomew Whitmore on the World&apos;s Heaviest Silver Coin, a 2,500 troy ounce .9999 fine silver coin commemorating the 250th anniversary of the Declaration of Independence, certified by Guinness World Records on July 1, 2026 in Austin, Texas, minted by Sunshine Minting for Texas Precious Metals. Ruling: Thiccc, on the geometry the weight proves.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Mattress, Pillow-Top King</title>

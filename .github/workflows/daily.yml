@@ -7,7 +7,7 @@ name: Daily Thiccc, Generate Draft PR
 # Merge the PR (one tap on GitHub mobile) to publish.
 on:
   schedule:
-    - cron: '0 12 * * *'   # 12:00 UTC daily = 6am MDT (May-Nov) / 5am MST (Nov-Mar). Wave 199b: Christopher 2026-05-23 wanted 6am MST. GitHub Actions cron is UTC-only (no DST). 12:00 UTC is 6am wall-clock during DST (most of the year) and drifts to 5am MST in winter.
+    - cron: '7 12 * * *'   # 12:07 UTC daily ~= 6am MDT (May-Nov) / 5am MST (Nov-Mar). Wave 199b: Christopher 2026-05-23 wanted 6am MST. GitHub Actions cron is UTC-only (no DST). Wave 275: moved off the top of the hour (was '0 12') because GitHub delays/drops scheduled runs in congested slots; the 12:00 run was silently skipped 07-03 AND 07-04, leaving entries to land hours late via the outcome-verify sentinel. :07 is off-peak.
   workflow_dispatch:
     inputs:
       force_regenerate:
