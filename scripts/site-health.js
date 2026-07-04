@@ -208,8 +208,12 @@ async function audit() {
       const contentMatch = tag.match(/content=("([^"]*)"|'([^']*)')/);
       if (contentMatch) {
         const desc = contentMatch[2] !== undefined ? contentMatch[2] : contentMatch[3];
-        if (desc.length > 170) {
-          issues.longDescriptions.push({ from: rel, length: desc.length });
+        // Wave 275: measure the DECODED length. Generators clamp the human-readable
+        // string; entity encoding (&quot; = 6 chars) inflated the raw length and
+        // false-positived pages whose real description was within limits.
+        const decoded = desc.replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'");
+        if (decoded.length > 170) {
+          issues.longDescriptions.push({ from: rel, length: decoded.length });
         }
       }
     }
