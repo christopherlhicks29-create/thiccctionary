@@ -25,6 +25,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write   # Wave 275c: dispatch post-on-merge after bot auto-merge (bot merges don't emit workflow-triggering events)
 
 # Wave 168: prevent two daily runs racing each other. When the original
 # 13:00 UTC cron fails, the failure-handler retries it - if BOTH eventually
@@ -328,4 +329,28 @@ jobs:
           PR=${{ steps.open_pr.outputs.pull-request-number }}
           echo "Auto-merging admin-fired PR #$PR..."
           gh pr merge "$PR" --squash --auto --delete-branch --repo "$GITHUB_REPOSITORY" || gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY" || echo "::warning::auto-merge failed"
+
+      # Wave 275c: the auto-merge above is performed with GITHUB_TOKEN, and GitHub
+      # deliberately does not fire workflow triggers for events caused by GITHUB_TOKEN.
+      # So post-on-merge.yml's pull_request:closed trigger NEVER fires for bot-merged
+      # daily PRs, and the day's social posts silently skip (observed 2026-07-04:
+      # Cactus entry live on site, zero Buffer posts). Fix: wait for the merge to
+      # land, then dispatch post-on-merge explicitly.
+      - name: Fire social pipeline after bot merge (Wave 275c)
+        if: success() && steps.open_pr.outputs.pull-request-number && steps.entry.outputs.crit_verdict != 'reject'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR=${{ steps.open_pr.outputs.pull-request-number }}
+          for i in $(seq 1 18); do
+            STATE=$(gh pr view "$PR" --json state -q .state --repo "$GITHUB_REPOSITORY" 2>/dev/null || echo UNKNOWN)
+            [ "$STATE" = "MERGED" ] && break
+            echo "PR #$PR state=$STATE, waiting ($i/18)..."
+            sleep 10
+          done
+          if [ "$STATE" = "MERGED" ]; then
+            gh workflow run post-on-merge.yml --repo "$GITHUB_REPOSITORY" && echo "post-on-merge dispatched."
+          else
+            echo "::warning::PR #$PR not merged after 3 min; social pipeline NOT fired. If merged manually later, the pull_request event will fire it."
+          fi
 
