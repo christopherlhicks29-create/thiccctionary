@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Lunch in Antibes with Gilles Marceaux, who restores pipe organs for a living. He described one in Lyon as \"shy.\" I asked what he meant. He said the bellows were undersized. We sat with that for a while.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-04T18:29:44.105Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783117019970",
