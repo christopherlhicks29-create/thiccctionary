@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-07-04",
+    "word": "Cactus, Saguaro",
+    "pronunciation": "/sa-GWA-ro/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A towering succulent native to the Sonoran Desert, renowned for its expansive girth and impressive stature; often observed with reverence from a safe distance.",
+      "<em>colloq.</em> A desert heavyweight that quietly monopolizes the horizon, unfazed by time or tourists."
+    ],
+    "example": "That saguaro is so thiccc it casts a shadow big enough for a family reunion. Don't forget the sunscreen.",
+    "etymology": "From Spanish <em>saguaro</em>, possibly derived from the Pima language. Its massive growth is considered a slow-motion mic drop in the plant world.",
+    "image": "images/2026-07-04-cactus-saguaro.jpg",
+    "caption": "Plate N., A saguaro cactus of substantial bearing, framed by Arizona's clear blue skies.",
+    "tags": [
+      "produce",
+      "girth",
+      "landscape",
+      "natural-specimens"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": null,
+    "humorScore": 5,
+    "photoScore": 9,
+    "photographer": "Danielle",
+    "photographerUrl": "https://unsplash.com/@dborisoff",
+    "unsplashUrl": "https://unsplash.com/photos/green-cactus-plant-in-closeup-photography-CbLqcLRtlR4",
+    "socialCaptions": {
+      "morning": "Cactus, Saguaro—arms raised in slow-motion triumph.\nEighty feet tall, 150-year training montage.\nThiccc, without even trying.",
+      "afternoon": "Photosynthesis champion, weighs over two tons—\nProving that patience and sunlight create legends.\nCactus, Saguaro.",
+      "evening": "From the archives, Cactus, Saguaro.\nU.S. National Monument since 1933—\nStanding ovation for nature's statue.",
+      "reels": "One inch per year, 40 million-year plan.\nSaguaro: Thiccc, with a side of patience."
+    }
+  },
+  {
     "date": "2026-07-03",
     "word": "Mattress, Pillow-Top King",
     "pronunciation": "/MAD-res, PI-low-top KING/",
