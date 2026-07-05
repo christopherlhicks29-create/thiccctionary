@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/tools.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "tools".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
     <item>
       <title>Generator, Diesel-Powered</title>
       <link>https://thiccctionary.com/entries/2026-06-27.html</link>
@@ -51,6 +51,15 @@
       <description>A spherical weight of imposing mass, employed in the sport of strongman competitions, often requiring Herculean effort to lift and maneuver. Its surface is characteristically rough, resembling a cosmic boulder that defies trivial engagement.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-21-atlas-stone-strongman.jpg" type="image/jpeg" length="0" />
       <category>industrial</category><category>tools</category>
+    </item>
+    <item>
+      <title>Teapot, Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-05-12.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-12.html</guid>
+      <pubDate>Tue, 12 May 2026 12:00:00 GMT</pubDate>
+      <description>A vessel of formidable heft and undeniable presence, typically fashioned from cast iron and favored by tea enthusiasts with a penchant for endurance brewing.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-12-teapot-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category><category>tools</category>
     </item>
   </channel>
 </rss>

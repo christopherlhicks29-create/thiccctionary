@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/produce.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "produce".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
     <item>
       <title>Cactus, Saguaro</title>
       <link>https://thiccctionary.com/entries/2026-07-04.html</link>
@@ -23,6 +23,15 @@
       <pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate>
       <description>A tree of extraordinary girth and presence, native to the African savanna, revered for its strikingly thick trunk and formidable stature; often described as the elephantine elder of the arboreal world.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-23-baobab-african.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Tree Stump, Old Growth</title>
+      <link>https://thiccctionary.com/entries/2026-06-22.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-22.html</guid>
+      <pubDate>Mon, 22 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A residual column of wood, typically broad and expansive, representing the former majesty of a once towering tree; esp. one whose diameter approaches the width of a small sedan.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-22-tree-stump-old-growth.jpg" type="image/jpeg" length="0" />
       <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
     <item>
@@ -123,6 +132,15 @@
       <description>A specimen of the Cucurbita pepo species displaying astonishing lateral expansion, often challenging the structural integrity of standard garden beds.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-16-courgette-giant-green.jpg" type="image/jpeg" length="0" />
       <category>produce</category>
+    </item>
+    <item>
+      <title>Hay Bale, Round</title>
+      <link>https://thiccctionary.com/entries/2026-04-12.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-12.html</guid>
+      <pubDate>Sun, 12 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cylindrical agricultural assemblage characterized by its hefty diameter and dense constitution, often observed astern in pastoral vistas.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-12-hay-bale-round.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
   </channel>
 </rss>

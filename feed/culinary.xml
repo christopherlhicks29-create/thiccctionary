@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/culinary.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "culinary".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
     <item>
       <title>Cheesecake, New York</title>
       <link>https://thiccctionary.com/entries/2026-06-20.html</link>
@@ -44,6 +44,15 @@
       <category>culinary</category>
     </item>
     <item>
+      <title>Bagel, Everything</title>
+      <link>https://thiccctionary.com/entries/2026-06-08.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-08.html</guid>
+      <pubDate>Mon, 08 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A circular bread product adorned with a generous and heterogeneous array of toppings, identifiable by its buoyant midsection and robust crust thickness when viewed in cross-section.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-08-bagel-everything.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>culinary</category><category>domestic</category>
+    </item>
+    <item>
       <title>Barrel, Oak Bourbon</title>
       <link>https://thiccctionary.com/entries/2026-06-04.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-04.html</guid>
@@ -51,6 +60,15 @@
       <description>A cylindrical wooden container, traditionally used for aging whiskey, known for its substantial girth and the rich patina it develops over time.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-04-barrel-oak-bourbon.jpg" type="image/jpeg" length="0" />
       <category>girth</category><category>industrial</category><category>culinary</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Teapot, Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-05-12.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-12.html</guid>
+      <pubDate>Tue, 12 May 2026 12:00:00 GMT</pubDate>
+      <description>A vessel of formidable heft and undeniable presence, typically fashioned from cast iron and favored by tea enthusiasts with a penchant for endurance brewing.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-12-teapot-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category><category>tools</category>
     </item>
     <item>
       <title>Wheel, Parmigiano-Reggiano</title>
