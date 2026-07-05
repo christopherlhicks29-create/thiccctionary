@@ -363,7 +363,7 @@ async function downloadImage(photo, filename) {
 }
 
 // ---------- 5. Generate the satirical entry ----------
-async function generateEntry(subject, photo) {
+async function generateEntry(subject, photo, hint = '') {
   const sysPrompt = `You write entries for "Thiccctionary", a satirical daily dictionary of THICK INANIMATE OBJECTS. Tone: scholarly dictionary register × dry comedy × internet vernacular. Keep it tasteful, the joke is applying body-positive thirst language to objects, never to people. NEVER reference humans, anatomy, or body parts in your output. Light HTML (<em>) allowed inside strings. Output strict JSON only.
 
 VOICE TARGETS, match these patterns:
@@ -441,6 +441,7 @@ AVOID, these patterns are dead on arrival:
 - INVERTED HEADWORD IN PROSE (Wave 196c, Christopher 2026-05-21): the headword in entries.json is stored in alphabetical-inverted form ("Atlas Stone, Strongman"; "Wheel, Parmigiano-Reggiano"; "Tuba, Contrabass"). NEVER paste that comma-inverted form into the example sentence. BAD: "He hoisted the thiccc Atlas Stone, Strongman with a grunt..." (reads as if "Strongman" is the person's name). GOOD: "He hoisted a thiccc Atlas Stone, the strongman-comp variety, with a grunt..." or "He hoisted a thiccc strongman atlas stone..." or just "He hoisted a thiccc Atlas Stone...". The qualifier becomes an adjective/aside or gets dropped; it never sits in the sentence as if it were the proper-noun form.`;
 
   const userPrompt = `Today's subject: "${subject}"
+${hint ? `\nFEEDBACK ON A PREVIOUS ATTEMPT (apply it, but NEVER echo any of this feedback text into any output field, especially not "word"):${hint}\n` : ''}
 
 The photo we chose: ${photo.description ? `"${photo.description}"` : '(no caption available)'}, by ${photo.photographer} on Unsplash.
 
@@ -1226,7 +1227,7 @@ async function main() {
     const violationList = bwCheck.violations.map(v => `"${v.term}" in ${v.field}`).join(', ');
     console.log(`Banned-words attempt ${bwAttempt}/3 rejected (${violationList}). Retrying...`);
     const bwHint = ` BANNED-WORDS HINT: previous output contained these forbidden terms: ${violationList}. Replace them with object-language (girth, rotundity, displacement, wheelbase, drum diameter, bedside flare). Reject body-coded metaphors entirely.`;
-    entryCopy = await generateEntry(subjectInfo.subject + bwHint, chosen);
+    entryCopy = await generateEntry(subjectInfo.subject, chosen, bwHint);
   }
 
   // Step 5a: humor critique. If the entry scores poorly, regenerate ONCE.
@@ -1242,7 +1243,7 @@ async function main() {
       console.log('Humor below threshold. Regenerating once with feedback.');
       const retryHint = ` REGEN HINT: previous attempt scored ${humorCheck.score}/10, weakest part was ${humorCheck.weakest_part}. Feedback: ${humorCheck.feedback}. Push HARDER on specificity, scene, and punchline tag.`;
       try {
-        entryCopy = await generateEntry(subjectInfo.subject + retryHint, chosen);
+        entryCopy = await generateEntry(subjectInfo.subject, chosen, retryHint);
         humorCheck = await critiqueEntryHumor(entryCopy);
         console.log(`Humor retry: score=${humorCheck.score}/10, verdict=${humorCheck.verdict}`);
       } catch (e) {
@@ -1288,7 +1289,7 @@ async function main() {
 
   const entry = {
     date: today,
-    word: entryCopy.word,
+    word: String(entryCopy.word || '').replace(/\s*(REGEN HINT|BANNED-WORDS HINT):[\s\S]*$/, '').trim(),
     pronunciation: entryCopy.pronunciation,
     partOfSpeech: entryCopy.partOfSpeech,
     definitions: entryCopy.definitions,
