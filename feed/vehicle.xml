@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/vehicle.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "vehicle".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:57:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
     <item>
       <title>Boiler, Steam Locomotive</title>
       <link>https://thiccctionary.com/entries/2026-06-30.html</link>
@@ -33,6 +33,15 @@
       <description>A port-grade lifting machine built to hoist freight containers two and three high, distinguished by a cast counterweight so substantial the front forks read as a courtesy.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-26-forklift-heavy-container.jpg" type="image/jpeg" length="0" />
       <category>industrial</category><category>vehicle</category><category>tools</category>
+    </item>
+    <item>
+      <title>Bulldozer, Crawler</title>
+      <link>https://thiccctionary.com/entries/2026-06-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-24.html</guid>
+      <pubDate>Wed, 24 Jun 2026 12:00:00 GMT</pubDate>
+      <description>An earth-moving leviathan, characterized by its substantial posterior and continuous track grip, esp. when observed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-24-bulldozer-crawler.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>construction</category><category>vehicle</category>
     </item>
     <item>
       <title>Titanic, RMS</title>

@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/produce.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "produce".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:57:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
     <item>
       <title>Cactus, Saguaro</title>
       <link>https://thiccctionary.com/entries/2026-07-04.html</link>
@@ -15,6 +15,15 @@
       <description>A towering succulent native to the Sonoran Desert, renowned for its expansive girth and impressive stature; often observed with reverence from a safe distance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-04-cactus-saguaro.jpg" type="image/jpeg" length="0" />
       <category>produce</category><category>girth</category><category>landscape</category><category>natural-specimens</category>
+    </item>
+    <item>
+      <title>Baobab, African</title>
+      <link>https://thiccctionary.com/entries/2026-06-23.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-23.html</guid>
+      <pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A tree of extraordinary girth and presence, native to the African savanna, revered for its strikingly thick trunk and formidable stature; often described as the elephantine elder of the arboreal world.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-23-baobab-african.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
     <item>
       <title>Sequoia, General Sherman</title>

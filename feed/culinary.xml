@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/culinary.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "culinary".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:57:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
+    <item>
+      <title>Cheesecake, New York</title>
+      <link>https://thiccctionary.com/entries/2026-06-20.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-20.html</guid>
+      <pubDate>Sat, 20 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A dessert of substantial density, often baked to achieve a firm yet yielding texture; particularly noted for the application of a fruit topping that does not compromise its structural integrity.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-20-cheesecake-new-york.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>girth</category>
+    </item>
     <item>
       <title>Bratwurst, Coiled</title>
       <link>https://thiccctionary.com/entries/2026-06-17.html</link>
@@ -33,6 +42,15 @@
       <description>A burger configuration featuring three beef patties layered with cheese and condiments, renowned for its formidable verticality and gravitational pull on adjacent fries.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-11-hamburger-triple-stack.jpg" type="image/jpeg" length="0" />
       <category>culinary</category>
+    </item>
+    <item>
+      <title>Barrel, Oak Bourbon</title>
+      <link>https://thiccctionary.com/entries/2026-06-04.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-04.html</guid>
+      <pubDate>Thu, 04 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A cylindrical wooden container, traditionally used for aging whiskey, known for its substantial girth and the rich patina it develops over time.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-04-barrel-oak-bourbon.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>industrial</category><category>culinary</category><category>landscape</category>
     </item>
     <item>
       <title>Wheel, Parmigiano-Reggiano</title>
