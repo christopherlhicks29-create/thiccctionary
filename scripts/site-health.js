@@ -101,6 +101,7 @@ async function audit() {
     missingWebp: [],
     navMissingMobileToggle: [],
     duplicateEntries: [],
+    missingDates: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -334,6 +335,23 @@ async function audit() {
     }
   } catch (err) { /* entries.json unreadable, skip */ }
 
+  // Wave 279: calendar-gap check. Every date between the oldest entry and
+  // YESTERDAY (today's may legitimately not exist before the cron) must have
+  // an entry. Missed dailies used to vanish silently - a six-day hole
+  // (2026-06-20..25, the OpenAI quota outage) sat unnoticed until the CEO
+  // spotted it in the archive. Now every gap shows up in the weekly report.
+  try {
+    const ents = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'entries.json'), 'utf8'));
+    const have = new Set(ents.map(e => e.date));
+    const dates = [...have].sort();
+    const oldest = dates[0];
+    const yesterday = new Date(Date.now() - 24 * 3600 * 1000).toISOString().slice(0, 10);
+    for (let d = new Date(oldest + 'T12:00:00Z'); d.toISOString().slice(0, 10) <= yesterday; d.setUTCDate(d.getUTCDate() + 1)) {
+      const iso = d.toISOString().slice(0, 10);
+      if (!have.has(iso)) issues.missingDates.push({ date: iso });
+    }
+  } catch (err) { /* entries.json unreadable, skip */ }
+
   return { issues, stats };
 }
 
@@ -342,7 +360,7 @@ function formatReport({ issues, stats }) {
   const dateStr = new Date().toISOString().slice(0, 10);
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
-                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length;
+                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length + issues.missingDates.length;
   lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
@@ -402,6 +420,9 @@ function formatReport({ issues, stats }) {
 
   section(`Pages missing mobile-nav hamburger (${issues.navMissingMobileToggle.length})`, issues.navMissingMobileToggle,
     i => `\`${i.from}\`: has <nav class="nav"> but does not load mobile-nav.js (hamburger will not show on mobile).`);
+
+  section(`Missing daily entries, calendar gaps (${issues.missingDates.length})`, issues.missingDates,
+    i => `\`${i.date}\` has no catalog entry. Backfill via data/.fire-batch-entries.json (subjects + dates arrays).`);
 
   lines.push('---');
   lines.push('');

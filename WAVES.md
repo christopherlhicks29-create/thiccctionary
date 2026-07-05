@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 279 (2026-07-05): the two leaks Christopher caught can no longer go unnoticed, detection is now wired to remediation
+
+- **Why the Bratwurst survived:** the weekly image-audit DID flag it on 06-29 (critic: "does not depict a coiled bratwurst... sausages on a plate with tomato slices") but scheduled runs only auto-queued the single worst image per week, and Bratwurst was 5th in a 14-deep failure backlog. Detection worked; remediation was throttled below the failure rate.
+- **Fix 1, drain faster:** image-audit now queues the worst N in ONE regen run (comma-separated dates; blank override so each entry re-picks on its own word via the tuned prompt), and the weekly cron default went 1 -> 4. Next Monday run (tomorrow 03:00 UTC) starts draining the backlog four at a time.
+- **Fix 2, gaps can't hide:** site-health.js now has a calendar-gap check, every date from the oldest entry through yesterday must exist in entries.json; verified it flags exactly the 11 known gaps. Missed dailies now appear in every weekly health report instead of vanishing.
+- **Remaining known-bad images (06-29 audit, worst first):** Reel Cable, Banana Cavendish, Crankshaft, Tire Tractor, Bratwurst (regen in flight), Double Bass, Tuba, Bagger 288, Pancakes, Tank Sherman, Cinder Block, Mooring Rope, Whale Blue, Combine. The audit cron will drain these at 4/week; fire .fire-image-regen.json manually to go faster.
+
 ## Wave 278 (2026-07-05, CEO-flagged QA): archive dates were off by one; Bratwurst image regen fired; 11-date catalog backfill fired
 
 - **Off-by-one dates (Christopher catch):** archive.html and the homepage "Recently Catalogued" rail parsed entry dates with `new Date("YYYY-MM-DD")`, which is UTC midnight, so every card rendered one day early in Denver (Bratwurst 06-17 displayed as "Jun 16"). Both now parse as local noon. This also explains why the "wrong" dates he reported were shifted from the repo's.

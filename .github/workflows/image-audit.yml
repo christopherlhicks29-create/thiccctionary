@@ -41,7 +41,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AUDIT_LIMIT: ${{ inputs.audit_limit || '' }}
-          AUTO_QUEUE_TOP: ${{ inputs.auto_queue_top || '1' }}
+          AUTO_QUEUE_TOP: ${{ inputs.auto_queue_top || '4' }}
         run: node scripts/image-audit.js
 
       - name: Commit results
