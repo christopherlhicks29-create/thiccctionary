@@ -447,6 +447,14 @@ function filterChannelsForMode(channels, mode) {
     // Reels only work on FB and IG. Skip Twitter.
     const keep = new Set(['facebook', 'facebookpage', 'instagram', 'instagrambusiness']);
     filtered = filtered.filter(c => keep.has(c.service));
+    // Wave 280: SKIP_INSTAGRAM=true posts the reel to FB only. Used when
+    // re-firing a reel whose IG copy already published (e.g. FB-side media
+    // failure) so IG doesn't get a duplicate.
+    if (process.env.SKIP_INSTAGRAM === 'true') {
+      const ig = new Set(['instagram', 'instagrambusiness']);
+      filtered = filtered.filter(c => !ig.has(c.service));
+      console.log('SKIP_INSTAGRAM=true, reel goes to FB only.');
+    }
   }
   // SKIP_FACEBOOK=true tells Buffer to skip FB channels, used when the
   // direct-FB Graph API script is handling FB. Reels mode still goes

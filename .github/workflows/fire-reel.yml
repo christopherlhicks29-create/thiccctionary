@@ -50,6 +50,7 @@ jobs:
             DATE="${{ inputs.date }}"
           elif [ -f data/.fire-reel ]; then
             DATE=$(grep -v '^#' data/.fire-reel | grep -v '^$' | head -n 1 | awk '{print $1}')
+            SKIP_IG=$(grep -v '^#' data/.fire-reel | grep -v '^$' | head -n 1 | awk '{print $2}')
           elif [ -f data/.fire-reel-latest ]; then
             DATE=$(node -e "const e=require('./data/entries.json'); console.log(e[0].date)")
           fi
@@ -67,6 +68,8 @@ jobs:
           fi
           echo "Cross-posting Reel for $DATE"
           echo "date=$DATE" >> $GITHUB_OUTPUT
+          # Wave 280: optional 2nd field "skip_instagram" in data/.fire-reel posts FB only
+          if [ "$SKIP_IG" = "skip_instagram" ]; then echo "skip_instagram=true" >> $GITHUB_OUTPUT; else echo "skip_instagram=false" >> $GITHUB_OUTPUT; fi
 
       - name: Wait for Cloudflare Pages deploy (so videos/<date>.mp4 is reachable)
         # post-to-buffer.js does a HEAD check on the video URL before posting;
@@ -101,6 +104,7 @@ jobs:
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: reels
           TARGET_DATE: ${{ steps.target.outputs.date }}
+          SKIP_INSTAGRAM: ${{ steps.target.outputs.skip_instagram }}
         run: node post-to-buffer.js
 
       - name: Clear sentinel files
