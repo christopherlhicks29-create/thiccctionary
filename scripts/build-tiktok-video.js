@@ -135,7 +135,7 @@ async function main() {
     '-map', '[v]', '-map', '1:a',
     '-r', '30',
     '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '20',
-    '-c:a', 'aac', '-b:a', '192k',
+    '-c:a', 'aac', '-b:a', '192k', '-ar', '44100', '-ac', '2',  // Wave 280: FB Reels rejects the TTS-native 24kHz mono; IG tolerates it. Resample so both accept.
     '-shortest',
     '-movflags', '+faststart',
     videoPath,

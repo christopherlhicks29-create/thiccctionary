@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 280 (2026-07-05): FB Reel rejections root-caused, the audio was the problem
+
+- **Symptom:** FB Reels intermittently failed in Buffer with "unable to process the media" (Jun 16, Jun 29, Jul 4 Cactus) while the identical MP4 published fine to IG Reels.
+- **Root cause:** the reel builder muxes the OpenAI TTS voiceover (natively 24 kHz mono) into the MP4 without resampling. Facebook's Reel processor rejects sub-44.1kHz audio; Instagram tolerates it. Video specs were never the issue (1080x1920 H.264 30fps, compliant).
+- **Fix:** build-tiktok-video.js now encodes audio at 44.1 kHz stereo. The Cactus reel MP4 was repaired in place (video stream untouched, audio resampled) and re-posted to FB manually. Tomorrow's daily reel is the unattended verification.
+
 ## Wave 279 (2026-07-05): the two leaks Christopher caught can no longer go unnoticed, detection is now wired to remediation
 
 - **Why the Bratwurst survived:** the weekly image-audit DID flag it on 06-29 (critic: "does not depict a coiled bratwurst... sausages on a plate with tomato slices") but scheduled runs only auto-queued the single worst image per week, and Bratwurst was 5th in a 14-deep failure backlog. Detection worked; remediation was throttled below the failure rate.
