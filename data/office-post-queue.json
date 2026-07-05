@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1783289700743",
+    "created": "2026-07-05T22:15:00.743Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Went to the harbor this morning. Container ship coming in, moving slower than seems possible for something that size. Stood there longer than I planned. No notes. Just watched.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1783189782462",
     "created": "2026-07-04T18:29:42.462Z",
     "byline_id": "margie",

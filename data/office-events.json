@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1783289700746",
+      "date": "2026-07-05",
+      "byline_id": "bart",
+      "summary": "Bartholomew posted about personal life: the harbor; you still go look at ships on Sundays: \"Went to the harbor this morning. Container ship coming in, moving slower than seems possible for som...\""
+    },
+    {
       "id": "auto-1783189782464",
       "date": "2026-07-04",
       "byline_id": "margie",
@@ -274,12 +280,6 @@
       "date": "2026-05-17",
       "byline_id": "bart",
       "summary": "Bartholomew posted about spider-brother-in-law: \"Reginald has not returned the calls. He has not returned the postcard. He has not, to my knowledge, ...\""
-    },
-    {
-      "id": "auto-1778992881667",
-      "date": "2026-05-17",
-      "byline_id": "bart",
-      "summary": "Bartholomew posted about Wheel, Parmigiano-Reggiano: \"Parmigiano-Reggiano wheel: 84 lbs, 18 months minimum, legally regulated curvature. The catalogue, pr...\""
     }
   ]
 }
