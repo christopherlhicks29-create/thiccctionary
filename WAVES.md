@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 276 (2026-07-05, autonomous PO session): retry-hint text leaked into a live entry title; scrubbed and guarded at the generator
+
+- **The bug ([[feedback_continuous_qa]], [[feedback_daily_qa_cadence]]):** today's Eiffel Tower entry shipped with the humor-critique retry feedback embedded in the `word` field, so the live page title ran 496 characters ("Eiffel Tower, Iron Lady REGEN HINT: previous attempt scored 5/10..."), and the leak propagated to index.html, a-z.html, feed.xml, and the /is/ page. Mechanism: on a sub-6 humor score, generate-daily.js re-calls generateEntry() with `subject + " REGEN HINT: ..."`, and the model echoed the entire augmented subject back as `word`. The same echo risk existed on the shape-retry ("HINT:") and banned-words-retry ("BANNED-WORDS HINT:") paths.
+- **The fix:** (1) data: entries.json word restored to "Eiffel Tower, Iron Lady"; (2) rebuilt entry page, homepage, a-z, RSS + per-tag feeds, /is/ pages — repo-wide grep for "REGEN HINT" in HTML/XML now zero; (3) generator: new guard before Step 6 truncates `word` at any `HINT:` marker and warns, closing all three retry paths at once. Pre-ship green (20 staged files, 0 RED).
+- **Context:** entry itself was generated at 01:56 UTC by the outcome-verify sentinel (not the 12:07 cron), via PR #155. Humor retry fired because attempt one scored 5/10 — the retry loop did its job on quality; it just spilled its notes into the byline.
+
+
 ## Wave 275b/c (2026-07-04, same session): silent-skip of daily social posts root-caused and fixed at the source
 
 - **275c, the big one ([[feedback_continuous_qa]]):** today's Cactus entry was live on the site with ZERO Buffer posts (no 8:22 AM sends; first Sent item of the day was an archive post). Root cause: Wave 209's auto-merge uses GITHUB_TOKEN, and GitHub emits no workflow-triggering events for GITHUB_TOKEN actions, so post-on-merge's pull_request:closed trigger never fires for bot-merged daily PRs. Every sentinel/auto-merged day silently skipped socials; human-merged days worked, which is why it looked intermittent. Fixed: daily.yml waits for the merge then dispatches post-on-merge explicitly (actions:write), post-on-merge accepts workflow_dispatch. Today's posts recovered by hand: fired data/.fire-buffer, then Publish-Now'd the Cactus X + FB dailies (Sent 328 -> 330, both verified).

@@ -1255,6 +1255,19 @@ async function main() {
     console.warn('Humor critique outer catch, shipping without humor check:', e.message);
   }
 
+  // Wave 276: strip retry-hint echo from the word field. generateEntry() is fed
+  // "<subject> REGEN HINT: ..." (also "HINT:" / "BANNED-WORDS HINT:") on retries,
+  // and the model occasionally echoes the entire augmented subject back as `word`
+  // (observed live 2026-07-05: Eiffel Tower entry shipped with a 496-char title).
+  // The subject itself never legitimately contains "HINT:", so truncate at it.
+  if (entryCopy.word) {
+    const cleaned = String(entryCopy.word).replace(/\s*(?:REGEN\s+|BANNED-WORDS\s+)?HINT:[\s\S]*$/, '').trim();
+    if (cleaned && cleaned !== entryCopy.word) {
+      console.warn(`Word field contained retry-hint echo; truncated to "${cleaned}".`);
+      entryCopy.word = cleaned;
+    }
+  }
+
   // Step 6: assemble + save
   // Validate the model's category against our fixed list, if it returned
   // something off-list, mark as 'Uncategorized' and let Christopher fix
