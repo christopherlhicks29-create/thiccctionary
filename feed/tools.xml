@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/tools.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "tools".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 17:21:09 GMT</lastBuildDate>
     <item>
       <title>Generator, Diesel-Powered</title>
       <link>https://thiccctionary.com/entries/2026-06-27.html</link>
@@ -24,6 +24,15 @@
       <description>A port-grade lifting machine built to hoist freight containers two and three high, distinguished by a cast counterweight so substantial the front forks read as a courtesy.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-26-forklift-heavy-container.jpg" type="image/jpeg" length="0" />
       <category>industrial</category><category>vehicle</category><category>tools</category>
+    </item>
+    <item>
+      <title>Skillet, Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-06-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-21.html</guid>
+      <pubDate>Sun, 21 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A culinary vessel of formidable heft and enduring thermal capabilities, noted for its ability to retain and evenly distribute heat across its ample surface area.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-21-skillet-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category><category>tools</category>
     </item>
     <item>
       <title>Typewriter, Vintage</title>
