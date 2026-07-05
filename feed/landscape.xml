@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/landscape.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "landscape".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
     <item>
       <title>Eiffel Tower, Iron Lady</title>
       <link>https://thiccctionary.com/entries/2026-07-05.html</link>
@@ -41,6 +41,15 @@
       <pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate>
       <description>A tree of extraordinary girth and presence, native to the African savanna, revered for its strikingly thick trunk and formidable stature; often described as the elephantine elder of the arboreal world.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-23-baobab-african.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Tree Stump, Old Growth</title>
+      <link>https://thiccctionary.com/entries/2026-06-22.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-22.html</guid>
+      <pubDate>Mon, 22 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A residual column of wood, typically broad and expansive, representing the former majesty of a once towering tree; esp. one whose diameter approaches the width of a small sedan.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-22-tree-stump-old-growth.jpg" type="image/jpeg" length="0" />
       <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
     <item>
@@ -96,6 +105,15 @@
       <description>An aquatic rodent of considerable bulk, often found languidly dominating its habitat. Esp. formidable when viewed astern, under the raking light of late afternoon.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-17-capybara-greater.jpg" type="image/jpeg" length="0" />
       <category>girth</category><category>natural-specimens</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Hay Bale, Round</title>
+      <link>https://thiccctionary.com/entries/2026-04-12.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-12.html</guid>
+      <pubDate>Sun, 12 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cylindrical agricultural assemblage characterized by its hefty diameter and dense constitution, often observed astern in pastoral vistas.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-12-hay-bale-round.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
   </channel>
 </rss>

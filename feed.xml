@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -217,6 +217,15 @@
       <pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate>
       <description>The Thiccc Beat: Hugh Drumm on Patyegarang, the largest tunnel boring machine in the southern hemisphere, 15.7 metres in diameter, 4,350 tonnes, assembled entirely underground and breaking ground under Sydney Harbour in June 2026 on the Western Harbour Tunnel project. Ruling: Thiccc.</description>
       <category>article</category>
+    </item>
+    <item>
+      <title>Tree Stump, Old Growth</title>
+      <link>https://thiccctionary.com/entries/2026-06-22.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-22.html</guid>
+      <pubDate>Mon, 22 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A residual column of wood, typically broad and expansive, representing the former majesty of a once towering tree; esp. one whose diameter approaches the width of a small sedan.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-22-tree-stump-old-growth.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
     <item>
       <title>[Article] The Heaviest Vessel That Has Never Displaced a Drop</title>
@@ -437,6 +446,15 @@
       <pubDate>Tue, 09 Jun 2026 12:00:00 GMT</pubDate>
       <description>The Thiccc Beat: Bartholomew Whitmore on 2,819 lb world-record pumpkin (Paton brothers, UK) + 2,346 lb US champion (Brandon Dawson). Ruling: Thiccc.</description>
       <category>article</category>
+    </item>
+    <item>
+      <title>Bagel, Everything</title>
+      <link>https://thiccctionary.com/entries/2026-06-08.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-08.html</guid>
+      <pubDate>Mon, 08 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A circular bread product adorned with a generous and heterogeneous array of toppings, identifiable by its buoyant midsection and robust crust thickness when viewed in cross-section.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-08-bagel-everything.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>culinary</category><category>domestic</category>
     </item>
     <item>
       <title>Pipe Organ, Cathedral</title>
@@ -703,6 +721,15 @@
       <description>A robust off-road vehicle equipped with a hinged joint between the cab and the dump box, allowing for enhanced maneuverability on uneven terrain.</description>
       <enclosure url="https://thiccctionary.com/images/2026-05-13-dumper-truck-articulated.jpg" type="image/jpeg" length="0" />
       <category>industrial</category><category>construction</category>
+    </item>
+    <item>
+      <title>Teapot, Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-05-12.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-05-12.html</guid>
+      <pubDate>Tue, 12 May 2026 12:00:00 GMT</pubDate>
+      <description>A vessel of formidable heft and undeniable presence, typically fashioned from cast iron and favored by tea enthusiasts with a penchant for endurance brewing.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-05-12-teapot-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category><category>tools</category>
     </item>
     <item>
       <title>Champion Watermelon, Heavyweight</title>
@@ -1068,6 +1095,15 @@
       <description>A lighter-than-air vessel characterized by its bulbous fabric envelope and pronounced vertical displacement; esp. one observed astern, with the basket&apos;s footprint dwarfed by its own rotundity.</description>
       <enclosure url="https://thiccctionary.com/images/2026-04-13-hot-air-balloon.jpg" type="image/jpeg" length="0" />
       <category>vehicle</category><category>girth</category>
+    </item>
+    <item>
+      <title>Hay Bale, Round</title>
+      <link>https://thiccctionary.com/entries/2026-04-12.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-04-12.html</guid>
+      <pubDate>Sun, 12 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A cylindrical agricultural assemblage characterized by its hefty diameter and dense constitution, often observed astern in pastoral vistas.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-04-12-hay-bale-round.jpg" type="image/jpeg" length="0" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
     <item>
       <title>Tarantula</title>
