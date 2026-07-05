@@ -1,5 +1,13 @@
 # Thiccctionary Wave Log
 
+## Wave 276 + 276b (2026-07-05): critique feedback shipped as the live headword; leak scrubbed, all three retry paths sealed
+
+- **The bug ([[feedback_continuous_qa]], [[feedback_daily_qa_cadence]]):** today's Eiffel Tower entry went live with the humor-critique retry feedback embedded in the `word` field, a 496-character page title reading "Eiffel Tower, Iron Lady REGEN HINT: previous attempt scored 5/10...", propagated to homepage, a-z, entry page, OG/JSON-LD, feeds, and the /is/ page. Mechanism: retry hints were glued onto the subject string, and the entry prompt pastes the subject verbatim into `word`, so the model echoed the whole thing back.
+- **Wave 276 (two sessions converged on this within minutes; fixes merged):** all 10 affected files cleaned (24 occurrences), REGEN + BANNED-WORDS hints moved to a separate prompt section the model is told never to echo, plus two layers of hard sanitizer on `word` (post-generation truncation at any "HINT:" marker, and again at assembly). Pre-ship green.
+- **Wave 276b:** the shape-retry path (malformed-JSON hint) was still concatenating onto the subject; now uses the same separate-hint argument. All three retry paths are structurally incapable of leaking critique text into output fields.
+- **Pipeline note:** the entry was generated at 01:56 UTC by the outcome-verify sentinel (not the 12:07 cron) via PR #155, so Wave 275c's post-on-merge dispatch had its first unattended test on this run; Buffer verification in session notes.
+
+
 ## Wave 276 (2026-07-05, autonomous PO session): retry-hint text leaked into a live entry title; scrubbed and guarded at the generator
 
 - **The bug ([[feedback_continuous_qa]], [[feedback_daily_qa_cadence]]):** today's Eiffel Tower entry shipped with the humor-critique retry feedback embedded in the `word` field, so the live page title ran 496 characters ("Eiffel Tower, Iron Lady REGEN HINT: previous attempt scored 5/10..."), and the leak propagated to index.html, a-z.html, feed.xml, and the /is/ page. Mechanism: on a sub-6 humor score, generate-daily.js re-calls generateEntry() with `subject + " REGEN HINT: ..."`, and the model echoed the entire augmented subject back as `word`. The same echo risk existed on the shape-retry ("HINT:") and banned-words-retry ("BANNED-WORDS HINT:") paths.

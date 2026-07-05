@@ -1208,7 +1208,7 @@ async function main() {
       break;
     }
     console.log(`Shape attempt ${shapeAttempt}/3 rejected: ${err}. Retrying with hint.`);
-    entryCopy = await generateEntry(subjectInfo.subject + ` HINT: previous attempt produced malformed JSON (${err}). Output MUST be valid JSON with separate top-level keys for definitions, example, etymology, caption, tags, category. Do NOT put example/etymology/etc inside the definitions array.`, chosen);
+    entryCopy = await generateEntry(subjectInfo.subject, chosen, ` HINT: previous attempt produced malformed JSON (${err}). Output MUST be valid JSON with separate top-level keys for definitions, example, etymology, caption, tags, category. Do NOT put example/etymology/etc inside the definitions array.`);
   }
 
   // Step 5-bw: banned-words filter (Wave 42). Reject and retry up to 3 times if output
