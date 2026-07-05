@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 17:21:09 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -226,6 +226,15 @@
       <description>A residual column of wood, typically broad and expansive, representing the former majesty of a once towering tree; esp. one whose diameter approaches the width of a small sedan.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-22-tree-stump-old-growth.jpg" type="image/jpeg" length="0" />
       <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Skillet, Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-06-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-21.html</guid>
+      <pubDate>Sun, 21 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A culinary vessel of formidable heft and enduring thermal capabilities, noted for its ability to retain and evenly distribute heat across its ample surface area.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-21-skillet-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category><category>tools</category>
     </item>
     <item>
       <title>[Article] The Heaviest Vessel That Has Never Displaced a Drop</title>

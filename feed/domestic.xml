@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/domestic.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "domestic".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 16:38:09 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 17:21:09 GMT</lastBuildDate>
     <item>
       <title>Mattress, Pillow-Top King</title>
       <link>https://thiccctionary.com/entries/2026-07-03.html</link>
@@ -15,6 +15,15 @@
       <description>A generous sleep surface characterized by its multi-layered cushioning and substantial overall depth, particularly dominant in master bedroom settings.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-03-mattress-pillow-top-king.jpg" type="image/jpeg" length="0" />
       <category>domestic</category><category>girth</category>
+    </item>
+    <item>
+      <title>Skillet, Cast Iron</title>
+      <link>https://thiccctionary.com/entries/2026-06-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-21.html</guid>
+      <pubDate>Sun, 21 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A culinary vessel of formidable heft and enduring thermal capabilities, noted for its ability to retain and evenly distribute heat across its ample surface area.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-21-skillet-cast-iron.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category><category>tools</category>
     </item>
     <item>
       <title>Typewriter, Vintage</title>
