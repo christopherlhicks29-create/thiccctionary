@@ -87,10 +87,18 @@ async function main() {
         },
         timeout: 5 * 60 * 1000, // 5 min per subject ceiling
       });
-      // Wave 231-fix: generate sibling .webp for the entry image (daily.yml does this automatically; burst was missing it)
+      // Wave 231-fix + Wave 281: generate sibling .webp for the entry image.
+      // Read the REAL image path from entries.json for this date; deriving the
+      // filename from the subject silently missed every file (word-slug != subject-slug),
+      // which shipped 10 backfill entries with no webp pairs on 2026-07-05.
       try {
-        const imgPath = path.join(ROOT, 'images', `${targetDate}-${subject.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.jpg`);
-        execSync(`node ${path.join(__dirname, 'jpg-to-webp.js')} '${imgPath}'`, { cwd: ROOT, stdio: 'inherit' });
+        const after = JSON.parse(await fs.readFile(ENTRIES_PATH, 'utf8'));
+        const rec = after.find(e => e.date === targetDate);
+        if (rec && rec.image) {
+          execSync(`node ${path.join(__dirname, 'jpg-to-webp.js')} '${path.join(ROOT, rec.image)}'`, { cwd: ROOT, stdio: 'inherit' });
+        } else {
+          console.warn(`[burst] no entry record found for ${targetDate}; skipping webp.`);
+        }
       } catch (webpErr) {
         console.warn(`[burst] webp generation failed (non-fatal): ${webpErr.message}`);
       }
@@ -101,6 +109,14 @@ async function main() {
       console.warn(`[burst] FAIL ${subject} (${e.message ? e.message.slice(0,120) : 'unknown'})`);
       // Don't break - keep trying the next subject
     }
+  }
+
+  // Wave 281: burst creates entries but never built their /is/ SEO pages, leaving
+  // broken "Is it thiccc?" links on every backfilled entry page. Build them now.
+  try {
+    execSync(`node ${path.join(__dirname, 'build-is-pages.js')}`, { cwd: __dirname, stdio: 'inherit' });
+  } catch (e) {
+    console.warn(`[burst] build-is-pages failed (non-fatal): ${e.message}`);
   }
 
   // Clear sentinel - workflow will commit

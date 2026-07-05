@@ -102,6 +102,10 @@ async function audit() {
     navMissingMobileToggle: [],
     duplicateEntries: [],
     missingDates: [],
+    grievanceOrder: [],
+    duplicateFigures: [],
+    rawPathParentheticals: [],
+    llmArtifacts: [],
   };
   let stats = { filesScanned: 0, linksChecked: 0, imagesChecked: 0, schemaBlocks: 0 };
 
@@ -335,6 +339,57 @@ async function audit() {
     }
   } catch (err) { /* entries.json unreadable, skip */ }
 
+  // Wave 281: page-integrity checks for bug classes Christopher caught live on 2026-07-05.
+  try {
+    for (const file of htmlFiles) {
+      const rel = path.relative(ROOT, file);
+      if (rel.startsWith('admin')) continue;
+      const html = await fs.readFile(file, 'utf8');
+
+      // (a) same image URL appearing in 2+ <figure>/<img> tags on one page
+      // (entry pages legitimately repeat via <picture> webp pairs; count unique <img> tags only)
+      // On the personnel file, an illustration may legitimately recur across DIFFERENT
+      // grievances (running gags); the bug class is the same figure twice within ONE
+      // grievance. Scope that page's check per grievance block.
+      let scanHtml = html;
+      if (rel.includes('personnel-file')) {
+        scanHtml = '';
+        for (const g of html.split('<div class="grievance"').slice(1)) {
+          const srcs = [...g.matchAll(/<img[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
+          const seen = new Set();
+          for (const u of srcs) {
+            if (seen.has(u)) issues.duplicateFigures.push({ from: rel, src: u, count: 2 });
+            seen.add(u);
+          }
+        }
+      }
+      const imgSrcs = rel.includes('personnel-file') ? [] : [...scanHtml.matchAll(/<img[^>]*\bsrc="([^"]+)"/g)].map(m => m[1])
+        .filter(u => !u.includes('logo') && !u.includes('/staff/') && !u.startsWith('data:'));
+      const counts = {};
+      for (const u of imgSrcs) counts[u] = (counts[u] || 0) + 1;
+      for (const [u, n] of Object.entries(counts)) {
+        if (n > 1) issues.duplicateFigures.push({ from: rel, src: u, count: n });
+      }
+
+      // (b) linked term followed by a literal site-internal path parenthetical
+      for (const m of html.matchAll(/<\/a>\s*\((\/[a-z0-9][a-z0-9\/-]*\/?)\)/g)) {
+        issues.rawPathParentheticals.push({ from: rel, path: m[1] });
+      }
+
+      // (c) LLM-internal artifacts that must never render
+      for (const term of ['REGEN HINT', 'BANNED-WORDS HINT', '[object Object]', '>undefined<', '>NaN<']) {
+        if (html.includes(term)) issues.llmArtifacts.push({ from: rel, term });
+      }
+    }
+
+    // (d) personnel file grievances must be strictly descending by number
+    const pf = await fs.readFile(path.join(ROOT, 'about', 'documents', 'personnel-file', 'index.html'), 'utf8');
+    const nums = [...pf.matchAll(/class="grv-num">No\. (\d+)</g)].map(m => parseInt(m[1], 10));
+    for (let i = 1; i < nums.length; i++) {
+      if (nums[i] >= nums[i-1]) issues.grievanceOrder.push({ pair: `No. ${nums[i-1]} is followed by No. ${nums[i]}` });
+    }
+  } catch (err) { /* skip on read errors */ }
+
   // Wave 279: calendar-gap check. Every date between the oldest entry and
   // YESTERDAY (today's may legitimately not exist before the cron) must have
   // an entry. Missed dailies used to vanish silently - a six-day hole
@@ -360,7 +415,7 @@ function formatReport({ issues, stats }) {
   const dateStr = new Date().toISOString().slice(0, 10);
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
-                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length + issues.missingDates.length;
+                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length + issues.missingDates.length + issues.grievanceOrder.length + issues.duplicateFigures.length + issues.rawPathParentheticals.length + issues.llmArtifacts.length;
   lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
@@ -420,6 +475,18 @@ function formatReport({ issues, stats }) {
 
   section(`Pages missing mobile-nav hamburger (${issues.navMissingMobileToggle.length})`, issues.navMissingMobileToggle,
     i => `\`${i.from}\`: has <nav class="nav"> but does not load mobile-nav.js (hamburger will not show on mobile).`);
+
+  section(`Grievances out of numerical order (${issues.grievanceOrder.length})`, issues.grievanceOrder,
+    i => `${i.pair} (must be strictly descending, newest first).`);
+
+  section(`Same image repeated on one page (${issues.duplicateFigures.length})`, issues.duplicateFigures,
+    i => `\`${i.from}\`: ${i.src} appears ${i.count} times.`);
+
+  section(`Literal URL parenthetical after a link (${issues.rawPathParentheticals.length})`, issues.rawPathParentheticals,
+    i => `\`${i.from}\`: (${i.path}) renders as plain text next to its own link.`);
+
+  section(`LLM/internal artifacts in rendered HTML (${issues.llmArtifacts.length})`, issues.llmArtifacts,
+    i => `\`${i.from}\`: contains "${i.term}".`);
 
   section(`Missing daily entries, calendar gaps (${issues.missingDates.length})`, issues.missingDates,
     i => `\`${i.date}\` has no catalog entry. Backfill via data/.fire-batch-entries.json (subjects + dates arrays).`);

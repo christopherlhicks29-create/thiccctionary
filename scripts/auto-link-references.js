@@ -60,7 +60,13 @@ export function autoLink(html) {
     }
     parts[i] = chunk;
   }
-  return parts.join('');
+  let joined = parts.join('');
+  // Wave 281: LLM drafts sometimes write "the Founding Charter (/about/documents/founding-charter/)"
+  // in prose. Once the name is linked, the parenthetical raw path is redundant and renders
+  // as literal text on the live page (caught by Christopher, mailbag 2026-07-01). Strip any
+  // site-internal path parenthetical that immediately follows a closing anchor.
+  joined = joined.replace(/<\/a>\s*\((\/[a-z0-9][a-z0-9\/-]*\/?)\)/g, '</a>');
+  return joined;
 }
 
 async function main() {

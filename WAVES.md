@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 281 (2026-07-05, CEO-flagged x3): personnel file repaired, linker sealed, backfill defects fixed, and the page-integrity net widened
+
+- **Personnel File (Christopher catches, both fixed + guarded):** five grievances rendered their illustration twice (Nos. 14, 49, 51, 53, 54), and the log ran out of order (50, 51..54 ascending, then 49 descending). Repaired: every grievance now has one figure and the file reads strictly newest-first (57 down to 14). The coffee-machine art still appears on both coffee grievances, that is the running gag, not a bug.
+- **Raw URL in prose (Christopher catch #3):** mailbag 2026-07-01 rendered "Founding Charter (/about/documents/founding-charter/)" with the path as literal text. Fixed the article; auto-link-references.js now strips any site-internal path parenthetical immediately following an anchor it created, so LLM drafts that cite paths in prose can't leak them again.
+- **Backfill defects (found by the widened sweep, fixed at source):** the 10 new backfill entries shipped with no /is/ SEO pages (10 broken links + 10 sitemap misses) and no .webp pairs. Cause 1: burst-entries.js never ran build-is-pages (now does). Cause 2: its webp step derived the filename from the subject instead of reading the entry's actual image path (now reads entries.json). All 10 /is/ pages + webp pairs generated; a-z and homepage re-prerendered.
+- **Site-health grew four permanent checks** so every bug class caught today stays caught: grievance numerical order, duplicate figure within one grievance (page-level for all other pages), literal URL parentheticals after links, and LLM/internal artifact strings in rendered HTML. Full audit now reads 3 issues: the two known catalog dups (CEO decision) and the 06-21 gap, for which a round-3 backfill (Skillet, Cast Iron) fires with this commit.
+
 ## Wave 280 (2026-07-05): FB Reel rejections root-caused, the audio was the problem
 
 - **Symptom:** FB Reels intermittently failed in Buffer with "unable to process the media" (Jun 16, Jun 29, Jul 4 Cactus) while the identical MP4 published fine to IG Reels.
