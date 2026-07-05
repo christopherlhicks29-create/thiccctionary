@@ -6,14 +6,34 @@
   ],
   "queue": [
     {
-      "subject": "Container, Shipping 40-Foot",
-      "query": "40 foot shipping container",
-      "category": "Industrial Machinery"
-    },
-    {
       "subject": "Pizza, Detroit Square",
       "query": "detroit square pan pizza",
       "category": "Foods of Substance"
+    },
+    {
+      "subject": "Garbage Truck, Front-Loader",
+      "query": "front loader garbage truck",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Stone, Megalith Standing",
+      "query": "megalith standing stone",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Bread, Sourdough Round",
+      "query": "sourdough round loaf bread",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Chair, Beanbag Oversized",
+      "query": "oversized beanbag chair",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Helmet, Astronaut",
+      "query": "astronaut helmet white spacesuit",
+      "category": "Other"
     }
   ]
 }

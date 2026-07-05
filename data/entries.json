@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-05",
+    "word": "Eiffel Tower, Iron Lady REGEN HINT: previous attempt scored 5/10, weakest part was definitions. Feedback: The entry falls into several anti-patterns with phrases like 'monumental presence' and 'Parisian girth and grace,' which dilute the humor. The example sentence lacks a punchline tag, ending on a flat note. The etymology has a decent kicker, but the overall entry needs more specificity and surprise to elevate the humor.. Push HARDER on specificity, scene, and punchline tag.",
+    "pronunciation": "/EYE-fuhl TOW-er/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A wrought iron structure of unparalleled posterior breadth, famed for its steadfast refusal to be anything but thiccc; often admired astern against a tumultuous sky.",
+      "<em>colloq.</em> A Parisian landmark that sets the standard for broad-based elegance, defying the Seine's attempts at subtlety."
+    ],
+    "example": "He gazed at the Eiffel Tower, thiccc and unapologetic, as it held its ground against the gray clouds. Tourists recalibrated their cameras in awe.",
+    "etymology": "From Gustave Eiffel (French engineer, b. 1832, d. 1923) + tower (Middle English < Old English torr, from Latin turris). A structure that needs no introduction, because it introduces itself.",
+    "image": "images/2026-07-05-eiffel-tower-iron-lady.jpg",
+    "caption": "Plate N. The Iron Lady defending her domain beneath a stormy Parisian sky.",
+    "tags": [
+      "architecture",
+      "construction",
+      "landscape"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "🇸🇮 Janko Ferlič",
+    "photographerUrl": "https://unsplash.com/@itfeelslikefilm",
+    "unsplashUrl": "https://unsplash.com/photos/eiffel-tower-under-gray-cloudy-sky-hjkQbtGHdDY",
+    "socialCaptions": {
+      "morning": "Eiffel Tower. 7,300 metric tons of iron-laden elegance. Paris merely hopes to keep up.",
+      "afternoon": "The Eiffel Tower—completed in 1889. A thiccc statement of iron will, standing resolute amid the Parisian skyline.",
+      "evening": "From the archives, the Eiffel Tower once faced critical reviews at the 1889 World's Fair. Undeterred, it remains thiccc, unyielding, and unapologetically iconic.",
+      "reels": "1,665 steps—her personal fitness routine. She's been climbing since 1889. #Thiccc"
+    }
+  },
+  {
     "date": "2026-07-04",
     "word": "Cactus, Saguaro",
     "pronunciation": "/sa-GWA-ro/",
