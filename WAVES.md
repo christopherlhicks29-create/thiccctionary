@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 277 (2026-07-05): homepage editorial-desk rail can no longer go stale after a Beat ships
+
+- **Root cause pair ([[feedback_continuous_qa]]):** the rail went stale 06-28 through 07-04 for two stacked reasons. (1) generate-thiccc-beat.js never invoked regenerate-article-listings.js, so manual/local Beat runs updated articles.json but not the rail. (2) Yesterday's workflow patch added the regen step to thiccc-beat.yml, but the commit step only staged `articles/ data/articles.json`, while the regen writes root `index.html`, so the rail update was generated and then silently dropped at commit.
+- **Fix:** the generator now spawns regenerate-article-listings.js itself after rendering (covers manual runs), and the workflow stages `index.html` (covers the auto path). Verified end-to-end locally: 19 columns rendered, "Updated index.html with 5 articles." Pre-ship green.
+
+
 ## Wave 276 + 276b (2026-07-05): critique feedback shipped as the live headword; leak scrubbed, all three retry paths sealed
 
 - **The bug ([[feedback_continuous_qa]], [[feedback_daily_qa_cadence]]):** today's Eiffel Tower entry went live with the humor-critique retry feedback embedded in the `word` field, a 496-character page title reading "Eiffel Tower, Iron Lady REGEN HINT: previous attempt scored 5/10...", propagated to homepage, a-z, entry page, OG/JSON-LD, feeds, and the /is/ page. Mechanism: retry hints were glued onto the subject string, and the entry prompt pastes the subject verbatim into `word`, so the model echoed the whole thing back.

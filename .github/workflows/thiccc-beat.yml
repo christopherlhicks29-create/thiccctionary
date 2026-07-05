@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "Thiccc Beat (auto)"
-          git add articles/ data/articles.json 2>/dev/null || true
+          git add articles/ data/articles.json index.html 2>/dev/null || true
           if ! git diff --staged --quiet; then
             git commit -m "Thiccc Beat (auto) $(date -u +%Y-%m-%d)"
             git pull --rebase origin main || true

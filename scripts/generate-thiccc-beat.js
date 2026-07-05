@@ -235,6 +235,13 @@ async function main() {
   articles.sort((a, b) => String(b.date).localeCompare(String(a.date)));
   await fs.writeFile(articlesJsonPath, JSON.stringify(articles, null, 2) + '\n');
   console.log(`[thiccc-beat] rendered ${rendered.length} column(s); articles.json updated.`);
+
+  // Wave 277: the homepage editorial-desk rail (index.html) and articles/index.html
+  // are rendered from articles.json by regenerate-article-listings.js. That step was
+  // easy to forget on manual runs (rail went stale 06-28 -> 07-04), so run it here.
+  const { spawnSync } = await import('node:child_process');
+  const regen = spawnSync(process.execPath, [path.join(__dirname, 'regenerate-article-listings.js')], { stdio: 'inherit' });
+  if (regen.status !== 0) console.warn('[thiccc-beat] regenerate-article-listings failed; homepage rail may be stale.');
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
