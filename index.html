@@ -511,7 +511,7 @@
         a.innerHTML = `
           <div class="recent-thumb" style="background-image: url('${e.image}'); background-size: cover; background-position: center;"></div>
           <div class="recent-meta">
-            <span class="recent-date">${new Date(e.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+            <span class="recent-date">${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
             <h4 class="recent-word">${e.word}</h4>
             <p class="recent-snip">${e.definitions[0].replace(/<[^>]+>/g, '').slice(0, 70)}…</p>
           </div>`;

@@ -208,7 +208,7 @@ function highlightCcc(root) {
       const a = document.createElement('a');
       a.className = 'recent-card';
       a.href = `entries/${e.date}.html`;
-      const dateStr = new Date(e.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const dateStr = new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       a.innerHTML = `
         <div class="recent-thumb" ${e.image ? `style="background-image: url('${e.image}'); background-size: cover; background-position: center;"` : `style="background: linear-gradient(135deg, #d4a574, #7a1f1f);"`}></div>
         <div class="recent-meta">

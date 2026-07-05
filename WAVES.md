@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 278 (2026-07-05, CEO-flagged QA): archive dates were off by one; Bratwurst image regen fired; 11-date catalog backfill fired
+
+- **Off-by-one dates (Christopher catch):** archive.html and the homepage "Recently Catalogued" rail parsed entry dates with `new Date("YYYY-MM-DD")`, which is UTC midnight, so every card rendered one day early in Denver (Bratwurst 06-17 displayed as "Jun 16"). Both now parse as local noon. This also explains why the "wrong" dates he reported were shifted from the repo's.
+- **Bratwurst, Coiled (06-17) image:** live photo was a plate of grilled link sausages with tomato garnish, not a coil. Fired .fire-image-regen.json (query "sausage coil") through the tuned vision-pick pipeline; PR auto-merges.
+- **Catalog backfill:** 11 calendar gaps found (04-12, 04-17, 05-12, 06-04, 06-08, and the 06-20..06-25 six-day hole). Fired .fire-batch-entries.json with 11 fresh subjects (Walrus, Capybara, Galapagos Tortoise, Bourbon Barrel, Bavarian Pretzel, NY Cheesecake, Dutch Oven, Harbor Bollard, Baobab, Crawler Bulldozer, Water Tower), each run through the full generate-daily quality gate on its missing date. PR auto-merges; verify count next session.
+- **Buffer cleanup (IG reconnected by Christopher):** retried and published the entire IG error pile (6 posts: Silo, Hippo, girth promo, Globe, Cactus reel, concrete mixer); deleted the three long-stuck FB failed cards (Jun 16 Reel, Jun 29 Reel, Sherman). Remaining: FB Cactus Reel still fails FB media processing on retry while its IG twin published fine, so the FB Reel media path needs investigation.
+
 ## Wave 277 (2026-07-05): homepage editorial-desk rail can no longer go stale after a Beat ships
 
 - **Root cause pair ([[feedback_continuous_qa]]):** the rail went stale 06-28 through 07-04 for two stacked reasons. (1) generate-thiccc-beat.js never invoked regenerate-article-listings.js, so manual/local Beat runs updated articles.json but not the rail. (2) Yesterday's workflow patch added the regen step to thiccc-beat.yml, but the commit step only staged `articles/ data/articles.json`, while the regen writes root `index.html`, so the rail update was generated and then silently dropped at commit.
