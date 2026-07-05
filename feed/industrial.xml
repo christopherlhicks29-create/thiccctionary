@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/industrial.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "industrial".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:57:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
     <item>
       <title>Beam, Steel I-Beam</title>
       <link>https://thiccctionary.com/entries/2026-07-02.html</link>
@@ -62,6 +62,24 @@
       <category>industrial</category><category>vehicle</category><category>tools</category>
     </item>
     <item>
+      <title>Water Tower, Municipal Steel</title>
+      <link>https://thiccctionary.com/entries/2026-06-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-25.html</guid>
+      <pubDate>Thu, 25 Jun 2026 12:00:00 GMT</pubDate>
+      <description>An elevated storage structure for potable water, characterized by its substantial girth and top-heavy silhouette, often nestled within urban landscapes like a sentinel of hydration.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-25-water-tower-municipal-steel.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>industrial</category><category>construction</category>
+    </item>
+    <item>
+      <title>Bulldozer, Crawler</title>
+      <link>https://thiccctionary.com/entries/2026-06-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-24.html</guid>
+      <pubDate>Wed, 24 Jun 2026 12:00:00 GMT</pubDate>
+      <description>An earth-moving leviathan, characterized by its substantial posterior and continuous track grip, esp. when observed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-24-bulldozer-crawler.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>construction</category><category>vehicle</category>
+    </item>
+    <item>
       <title>Cinder Block, Concrete</title>
       <link>https://thiccctionary.com/entries/2026-06-15.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-15.html</guid>
@@ -78,6 +96,15 @@
       <description>A spherical projectile of significant heft, historically employed by naval artillery, characterized by a stout and unyielding exterior.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-05-cannonball-naval.jpg" type="image/jpeg" length="0" />
       <category>maritime</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Barrel, Oak Bourbon</title>
+      <link>https://thiccctionary.com/entries/2026-06-04.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-04.html</guid>
+      <pubDate>Thu, 04 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A cylindrical wooden container, traditionally used for aging whiskey, known for its substantial girth and the rich patina it develops over time.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-04-barrel-oak-bourbon.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>industrial</category><category>culinary</category><category>landscape</category>
     </item>
     <item>
       <title>Mooring Rope, Naval Hawser</title>

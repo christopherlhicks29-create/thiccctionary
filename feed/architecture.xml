@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/architecture.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "architecture".</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:57:18 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 16:34:04 GMT</lastBuildDate>
     <item>
       <title>Eiffel Tower, Iron Lady</title>
       <link>https://thiccctionary.com/entries/2026-07-05.html</link>
@@ -33,6 +33,15 @@
       <description>A structural pillar of disciplined stoutness, characterized by its fluted shaft and austere capital, often observed in ancient temples where its presence remains unchallenged.</description>
       <enclosure url="https://thiccctionary.com/images/2026-06-29-column-doric-greek.jpg" type="image/jpeg" length="0" />
       <category>architecture</category><category>construction</category><category>landscape</category>
+    </item>
+    <item>
+      <title>Water Tower, Municipal Steel</title>
+      <link>https://thiccctionary.com/entries/2026-06-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-06-25.html</guid>
+      <pubDate>Thu, 25 Jun 2026 12:00:00 GMT</pubDate>
+      <description>An elevated storage structure for potable water, characterized by its substantial girth and top-heavy silhouette, often nestled within urban landscapes like a sentinel of hydration.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-06-25-water-tower-municipal-steel.jpg" type="image/jpeg" length="0" />
+      <category>architecture</category><category>industrial</category><category>construction</category>
     </item>
     <item>
       <title>Cinder Block, Concrete</title>
