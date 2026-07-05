@@ -75,7 +75,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-05-cathedral-bell",
+      "at": "2026-07-05T17:56:53.549Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a4a9ae4b3f33d21402f5c0c"
+        },
+        {
+          "service": "facebook",
+          "id": "6a4a9ae4b3f33d21402f5c2f"
+        },
+        {
+          "service": "instagram",
+          "id": "6a4a9ae59dd66bf2fd59068f"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-06-28T17:59:55.541Z"
+  "lastPostedAt": "2026-07-05T17:56:53.549Z"
 }
