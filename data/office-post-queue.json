@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Moved the armchair three inches left. Now the lamp works. The chair and the dresser are still not speaking. I'm staying out of it.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-06T22:39:48.557Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783365164068",
