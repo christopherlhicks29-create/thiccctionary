@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 17:21:09 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 07:01:36 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Ball, Medicine Gym</title>
+      <link>https://thiccctionary.com/entries/2026-07-06.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-06.html</guid>
+      <pubDate>Mon, 06 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A spherical instrument of significant density and heft, commonly employed in exercise routines to enhance muscular endurance and coordination. Typically observed in a state of restful contemplation on gym floors.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-06-ball-medicine-gym.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>tools</category><category>industrial</category>
+    </item>
     <item>
       <title>Eiffel Tower, Iron Lady</title>
       <link>https://thiccctionary.com/entries/2026-07-05.html</link>
