@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Counted six hydrants on the walk in. The notebook is at 318 now. Someone asked why I sit by the window. I said \"light.\" The real answer is sightlines.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-06T19:12:47.793Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783289700743",
