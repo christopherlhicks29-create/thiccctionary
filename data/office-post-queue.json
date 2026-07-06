@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1783377584746",
+    "created": "2026-07-06T22:39:44.746Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "personal",
+    "text": "Moved the armchair three inches left. Now the lamp works. The chair and the dresser are still not speaking. I'm staying out of it.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1783365164068",
     "created": "2026-07-06T19:12:44.068Z",
     "byline_id": "eli",
