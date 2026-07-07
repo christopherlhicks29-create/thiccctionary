@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-07",
+    "word": "Bread, Sourdough Round",
+    "pronunciation": "sor-dough ROUND",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A leavened bakery product of notable circumference, characterized by its robust crust and chewy interior, usually presented as a complete spherical unit; esp. one that, when viewed in profile, casts a shadow of considerable ambition.",
+      "<em>colloq.</em> Industrial-grade bread that refuses to fit in any standard bread box without asserting its dominance."
+    ],
+    "example": "She set down a thiccc sourdough round at the picnic, and suddenly the table felt inadequately supported.",
+    "etymology": "From Old English 'breād', referring to a piece of bread, and from Middle English 'sour' plus 'dough', referring to the fermentation process used in its creation. The word 'round' speaks for itself, like this loaf.",
+    "image": "images/2026-07-07-bread-sourdough-round.jpg",
+    "caption": "Plate N., A sourdough round demonstrating gravitational influence over its immediate surroundings.",
+    "tags": [
+      "girth",
+      "culinary",
+      "domestic"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 9,
+    "photographer": "Patty Greco",
+    "photographerUrl": "https://unsplash.com/@pattygreco",
+    "unsplashUrl": "https://unsplash.com/photos/a-black-plate-topped-with-a-cake-covered-in-powdered-sugar-IWy4NSq9QRA",
+    "socialCaptions": {
+      "morning": "Bread, Sourdough Round—\n25,000 years of fermentation fine-tuned to a perfect sphere.\nApproximately 8 inches in diameter, it looms.\nA shadow on the breakfast table with gravitas.",
+      "afternoon": "The sourdough's crust: a tactile ode to tectonic plates.\nBaked at 450°F, it emerges like a volcanic relic.\nSourdough Round.",
+      "evening": "From the archives, Bread, Sourdough Round.\nAn 18-hour rise, an eternity of patience.\nA chewy interior that contemplates its existence.",
+      "reels": "2,000 calories per loaf—\nA dense meditation on sustenance."
+    }
+  },
+  {
     "date": "2026-07-06",
     "word": "Ball, Medicine Gym",
     "pronunciation": "/MED-i-sin Gym/",

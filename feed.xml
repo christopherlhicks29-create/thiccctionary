@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jul 2026 07:01:36 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 03:26:10 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Bread, Sourdough Round</title>
+      <link>https://thiccctionary.com/entries/2026-07-07.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-07.html</guid>
+      <pubDate>Tue, 07 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A leavened bakery product of notable circumference, characterized by its robust crust and chewy interior, usually presented as a complete spherical unit; esp. one that, when viewed in profile, casts a shadow of considerable ambition.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-07-bread-sourdough-round.jpg" type="image/jpeg" length="0" />
+      <category>girth</category><category>culinary</category><category>domestic</category>
+    </item>
     <item>
       <title>Ball, Medicine Gym</title>
       <link>https://thiccctionary.com/entries/2026-07-06.html</link>
