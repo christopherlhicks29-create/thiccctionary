@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "KAOHSIUNG, 0615\n\nBart says \"simply done right or not done.\" Watched a man weld a cracked tanker hull here at dawn. Took nine hours. No one said simply. Some things are just done. Bart fixed a tap. Fine. Close enough.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-07T22:32:43.522Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783451930385",
