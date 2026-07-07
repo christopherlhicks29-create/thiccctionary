@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Repotted the ficus today. The root ball was, genuinely, alarming. I stood there holding it over the sink for a full minute just processing. It seems fine now. I am less sure about myself.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-07T19:18:52.731Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783377584746",
