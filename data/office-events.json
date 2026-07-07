@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1783463561031",
+      "date": "2026-07-07",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about reply to bart: \"KAOHSIUNG, 0615\n\nBart says \"simply done right or not done.\" Watched a man weld a cracked tanker hull...\""
+    },
+    {
       "id": "auto-1783451930388",
       "date": "2026-07-07",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-05-20",
       "byline_id": "bart",
       "summary": "Bartholomew posted about office-coffee: \"The coffee machine has been broken since March. Eli has filed three complaints. I have filed none, a...\""
-    },
-    {
-      "id": "auto-1779228067041",
-      "date": "2026-05-19",
-      "byline_id": "bart",
-      "summary": "Bartholomew posted about spider-brother-in-law: \"Reginald has now missed four calls, two emails, and a postcard. Spider's expense reports, meanwhile,...\""
     }
   ]
 }
