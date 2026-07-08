@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-08",
+    "word": "Beet, Sugar",
+    "pronunciation": "/bee-t, SHOO-gur/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "An agricultural staple known for its considerable rotundity, the sugar beet exhibits a girthy profile that draws the eye in any produce aisle.",
+      "<em>colloq.</em> A root vegetable that takes its dietary responsibilities seriously, refusing to be upstaged by lesser greens."
+    ],
+    "example": "On the farmer's market display, the thiccc sugar beet sat like an anchor tenant, redefining the concept of 'locally grown'.",
+    "etymology": "From Middle English 'bete', from Latin 'beta', referring to a plant with a swollen root. The sugar variety is the one that graduated from root school with honors.",
+    "image": "images/2026-07-08-beet-sugar.jpg",
+    "caption": "Plate N. A group of red and green specimens, illustrating the unapologetic girth of the sugar beet.",
+    "tags": [
+      "girth",
+      "produce",
+      "natural-specimens"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 7,
+    "photographer": "Don Ricardo",
+    "photographerUrl": "https://unsplash.com/@donricardo",
+    "unsplashUrl": "https://unsplash.com/photos/a-group-of-red-and-green-vegetables-sAMDYIoxAqI",
+    "socialCaptions": {
+      "morning": "Beet, Sugar—rooted in history since 1747.\nA thiccc powerhouse of sucrose.\nThe Enlightenment's sweetest achievement.",
+      "afternoon": "Napoleon's secret weapon: the sugar beet.\n1806, a blockade—Europe's thiccc response.\nThe beet endures.",
+      "evening": "From the archives, Beet, Sugar.\nEach one a 1-2 kilogram marvel.\nLocal farmers call them 'sweet boulders'.",
+      "reels": "1840: Germany's thiccc innovation.\nThe world never looked back."
+    }
+  },
+  {
     "date": "2026-07-07",
     "word": "Bread, Sourdough Round",
     "pronunciation": "sor-dough ROUND",
