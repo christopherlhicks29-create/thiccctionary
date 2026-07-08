@@ -6,9 +6,19 @@
   ],
   "queue": [
     {
-      "subject": "Truck, Cement Mixer Drum",
-      "query": "concrete mixer truck drum",
+      "subject": "Steam Locomotive, Big Boy",
+      "query": "big boy locomotive 4014",
       "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Stew, Cast Iron Dutch",
+      "query": "dutch oven stew cast iron",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Lobster, Maine",
+      "query": "maine lobster whole",
+      "category": "Other"
     }
   ]
 }
