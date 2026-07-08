@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Arrived in Monaco Tuesday. Rodrigo at the Belmond has a wheel of Époisses he is refusing to cut until Thursday. I am waiting. The publication has been in continuous operation since Uncle Bertram founded it, and we have always known how to be patient.\n\nMargaret",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-08T22:18:26.704Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783536772295",
