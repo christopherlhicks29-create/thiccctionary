@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "SHEFFIELD, 0230\n\nFoundry shift just ended. Eight men, orange with iron dust, not one of them asked my name. Perfect. The ferry back is unspecified. The expense report is already drafted. Immaculate.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-09T22:44:44.970Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783623965178",
