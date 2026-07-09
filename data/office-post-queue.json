@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Memo returned to the Junior Cataloguer this morning. Objection #47. He has now cited Cicero in the margins. Cicero. The Saturn V is a rocket. It does not convey passengers to a destination. It conveys them to the void.\n\nThat is not a vehicle. That is a threat.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-09T19:06:08.347Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783549103947",
