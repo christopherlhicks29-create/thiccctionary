@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-07-09",
+    "word": "Dumper, Off-Highway",
+    "pronunciation": "/DUMP-er, awf-HY-way/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A colossus of industrial machinery, engineered for massive earthmoving tasks, defined by an expansive, unapologetic rear end that rivals the horizon itself when viewed astern.",
+      "<em>colloq.</em> What you get when a sand dune dreams of joining the workforce."
+    ],
+    "example": "The beachgoers paused as a thiccc off-highway dumper rolled by, its silhouette a majestic interruption to the seascape.",
+    "etymology": "Derived from the Old English 'dūmpa' meaning 'to fall suddenly,' combined with 'highway' from Middle English 'heye wey,' referring to a major road. The etymology suggests a detour from subtlety.",
+    "image": "images/2026-07-09-dumper-off-highway.jpg",
+    "caption": "Plate N., An off-highway dumper, its grand rear aspect captured in grayscale on a coastal job site.",
+    "tags": [
+      "industrial",
+      "construction",
+      "vehicle",
+      "maritime"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Jesse Plum",
+    "photographerUrl": "https://unsplash.com/@jesseplum01",
+    "unsplashUrl": "https://unsplash.com/photos/grayscale-photo-of-truck-on-beach-9ooO5z97lJ4",
+    "socialCaptions": {
+      "morning": "Dumper, Off-Highway. 400 tons of unapologetic presence.\nIts sole purpose: reshaping landscapes and expectations.",
+      "afternoon": "In 1973, the first CAT 797 appeared—offering 4000 horsepower of unrivaled momentum.\nA true Dumper, Off-Highway.",
+      "evening": "From the archives, Dumper, Off-Highway.\nA rear end that commands respect—50 feet across, demanding its own horizon.",
+      "reels": "35 mph top speed.\nA thiccc sprint, industrial style."
+    }
+  },
+  {
     "date": "2026-07-08",
     "word": "Beet, Sugar",
     "pronunciation": "/bee-t, SHOO-gur/",
