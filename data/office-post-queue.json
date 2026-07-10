@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Notebook hit 319 this morning before I took my coat off. The one on Carver St. has been repainted. I filed it under \"suspicious.\" Nobody in this office has asked why I keep a notebook. Smart of them.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-10T18:55:26.377Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783637082319",
