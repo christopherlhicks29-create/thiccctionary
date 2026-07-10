@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 285 (2026-07-10): Thiccc Beat - the heaviest garlic on record is a leek (Eli, identity-fraud ruling)
+
+- **Story (Guinness news desk, pub. 06 Jul):** Graham Barratt of Gloucestershire got a 1.75 kg, 19-cm-diameter "garlic" certified 25 June at Wargrave Nursery - and the specimen is elephant garlic, Allium ampeloprasum, botanically a leek. 35x a store bulb; 4-5x normal even for its own species; grower knew from a 20 cm stem circumference; siege by moles, deer, and one large rabbit.
+- **Column:** Eli, everyday-thiccc desk. Ruling: "Thiccc, under an assumed name," filed under Produce with a new Aliases cross-reference. Continuity earned, not forced: Wargrave is the same venue that weighed Muggle (2-for-2 on certified girth), and the stem-as-witness argument enters the produce corollary to Bart's coin doctrine (girth above ground admissible as evidence of girth below).
+- **Guinness watch:** the 851k DC fireworks record is STILL uncertified (application under review per Guinness; "pyrotechnic effects" vs "fireworks detonated" definitional gap is open) - Constance's follow-up stays queued, and that definitional dispute is her material when it lands.
+
 ## Wave 284 (2026-07-10): FB Reel rejections persist after the audio fix - host-swap experiment fired
 
 - **Finding (Buffer sweep):** all 3 FB Reels since Wave 280 failed with the same "unable to process the media" error (Cactus re-fire Jul 6 8:40, Jul 6 11:22 daily, Jul 7 Sourdough) while their IG twins published. The 44.1 kHz audio fix did NOT resolve FB; the Wave 280 diagnosis was wrong or incomplete.
