@@ -2,6 +2,20 @@
 
 Things deferred from prior sessions that should be revisited at the right time. I (Claude) will surface these when the trigger condition matches.
 
+## FB Reel rejections - host-swap experiment ALSO failed, needs run logs
+
+**State (2026-07-10):** every FB Reel since the Wave 280 audio fix still fails ("unable to process the media") while IG twins publish. Ruled out: file specs (H.264/AAC 44.1k stereo/faststart, 1.8MB) and browser reachability. Wave 284 added REEL_VIDEO_BASE + a .fire-reel 3rd field and re-fired Jul 7 FB-only from jsDelivr - BOTH runs failed (runs 29110632242, 29111303629, escalated to issue). Cold-CDN-cache theory disproved by the second failure.
+
+**Next:** read those two run logs (Actions pages wedged Chrome this session; ask Christopher to paste the failing step output, or retry Actions in a fresh session). If the failure is Buffer's API rejecting the create call, the experiment never reached FB and the URL theory is untested. Consider: Buffer support ticket, or scheduling FB reels natively via Meta. The 3 dead failed cards were deleted from the queue; tomorrow's daily reel (site-hosted, default path) is the ongoing FB-side signal.
+
+---
+
+## Weekly Field Report quality gate failing repeatedly - 26 open issues piling up
+
+**Found 2026-07-10:** the issues tab has ~26 open, dominated by "Weekly Field Report: quality gate failed for <date>" (07-09, 07-03, 07-02, 07-01, 06-30, 06-27...). Two problems: (a) the weekly-field-report generator's quality gate keeps failing - either the gate is miscalibrated or the generator's drafts regressed; (b) the issue-sweeper isn't closing resolved/duplicate reports, so the pile grows. Triage next session: read one issue body, run the generator locally, fix gate or generator, and teach the sweeper to dedupe this class.
+
+---
+
 ## Thickened Water 2026-04-14 image - needs manual subject_override regen
 
 **Current state (2026-07-10, Wave 283):** audit scores it 1/10 (image shows ocean waves). Excluded from the automated worst-4 batch because the literal word "Thickened Water" returns junk on Unsplash, and batch mode can't carry a per-date override.
