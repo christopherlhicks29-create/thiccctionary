@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 284 (2026-07-10): FB Reel rejections persist after the audio fix - host-swap experiment fired
+
+- **Finding (Buffer sweep):** all 3 FB Reels since Wave 280 failed with the same "unable to process the media" error (Cactus re-fire Jul 6 8:40, Jul 6 11:22 daily, Jul 7 Sourdough) while their IG twins published. The 44.1 kHz audio fix did NOT resolve FB; the Wave 280 diagnosis was wrong or incomplete.
+- **Ruled out this session:** file specs (ffprobe: H.264 High 1080x1920 30fps yuv420p, AAC 44.1k stereo, 18s, 1.8MB, +faststart already in the builder) and plain reachability (MP4 streams fine in a browser). Remaining suspect: Meta's server-side fetcher being challenged/blocked on the primary host when it ingests the FB Reel URL - IG uses a different upload path through Buffer, which would explain the split.
+- **Experiment:** post-to-buffer.js now honors REEL_VIDEO_BASE (alternate video host for reels), .fire-reel sentinel gained an optional 3rd field for it, and the Jul 7 Sourdough reel was re-fired FB-only serving the identical MP4 from jsDelivr (CF-free path, proper video/mp4 content type). Publishes = hosting confirmed as root cause, make jsDelivr the default reel host. Fails = host isn't the variable either; next step is Buffer support ticket / native FB scheduling for reels.
+- **Also:** the 3 dead FB Reel cards deleted from the Buffer queue after captions were noted (regenerable; reels re-firable by sentinel).
+
 ## Wave 283 (2026-07-10): image-regen pipeline unjammed - a stranded queue file starved the weekly drain for 17 days
 
 - **Symptom:** zero automated image fixes since Wave 279 shipped the batched weekly drain; the 07-06 Monday audit found 19 failing images but queued nothing.

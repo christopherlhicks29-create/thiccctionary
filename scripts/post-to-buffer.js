@@ -612,7 +612,13 @@ async function main() {
   // Don't double-prefix absolute URLs.
   const isAbsolute = /^https?:\/\//i.test(entry.image || '');
   const imageUrl = isAbsolute ? entry.image : `${baseUrl}/${entry.image}`;
-  const videoUrl = mode === 'reels' ? `${baseUrl}/videos/${entry.date}.mp4` : null;
+  // Wave 284: REEL_VIDEO_BASE lets a re-fire serve the MP4 from an alternate
+  // host (e.g. jsDelivr over the repo). Diagnostic for FB's "media URL is
+  // unreachable" rejections: files are spec-compliant (H.264/AAC 44.1k/faststart)
+  // and browser-reachable, so the remaining suspect is Meta's fetcher being
+  // challenged on the primary host. IG untouched (it publishes fine either way).
+  const videoBase = (process.env.REEL_VIDEO_BASE || baseUrl).replace(/\/$/, '');
+  const videoUrl = mode === 'reels' ? `${videoBase}/videos/${entry.date}.mp4` : null;
   const thumbnailUrl = mode === 'reels' ? imageUrl : null;
 
   // Wave 208 Layer B: pre-post critic for all image-bearing modes. Evening was
