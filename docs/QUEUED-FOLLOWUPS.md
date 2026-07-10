@@ -10,6 +10,14 @@ Things deferred from prior sessions that should be revisited at the right time. 
 
 ---
 
+## Homepage static prerender: masthead date + Recently Catalogued rail frozen at May 1
+
+**Found 2026-07-10 (origin fetch, no JS):** the served index.html shows "Friday, May 1, 2026 / Iss. 091" in the masthead and Apr 27-30 entries (href="#") in Recently Catalogued. Client JS replaces both, so browser users see current data - but crawlers/no-JS see a 2-month-old paper. Entry-of-the-day and the articles rail ARE current (Wave 277 fix holding), so this is the one remaining static section pair.
+
+**Fix:** make the daily build prerender these two sections the same way the articles rail is prerendered (bake real dates + last-4 entries with real hrefs). Verify with a plain curl afterward.
+
+---
+
 ## LLM-per-entry social captions, SHIPPED 2026-05-16 (Wave 98)
 
 `generate-daily.js` now calls `generateSocialCaptions(entry)` after the entry is built and stores the result on `entry.socialCaptions.{morning,afternoon,evening,reels}`. Non-blocking, if the LLM step fails for any reason, post-to-buffer.js falls back to the Wave 87 templated captions. Uses gpt-4o with explicit voice exemplars (Bagger, Spruce, Hoover Dam) baked into the system prompt. Every new daily entry from this point forward ships with 4 bespoke entry-specific captions referencing real subject specifics.
