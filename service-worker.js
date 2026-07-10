@@ -15,7 +15,7 @@
  * entry page is worse than waiting on the network).
  */
 
-const VERSION = 'v4-2026-05-17';
+const VERSION = 'v5-2026-07-10';
 const SHELL_CACHE = `thiccctionary-shell-${VERSION}`;
 const RUNTIME_CACHE = `thiccctionary-runtime-${VERSION}`;
 const OFFLINE_URL = '/404.html';
@@ -58,9 +58,14 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // entries.json: stale-while-revalidate (instant from cache, background refresh)
-  if (url.pathname === '/data/entries.json') {
-    event.respondWith(staleWhileRevalidate(req));
+  // Wave 282: /data/*.json is network-first, NOT stale-while-revalidate.
+  // SWR meant every visit rendered the catalog as of the PREVIOUS visit -
+  // a reader returning after 5 days saw a 5-day-old archive and concluded
+  // the site had stopped posting (CEO report, 2026-07-10). Network-first
+  // keeps offline support (cache fallback) without ever showing stale data
+  // when the network is available.
+  if (url.pathname.startsWith('/data/') && url.pathname.endsWith('.json')) {
+    event.respondWith(networkFirstJson(req));
     return;
   }
 
@@ -102,6 +107,18 @@ async function cacheFirst(req) {
   } catch (e) {
     // Network failed and no cache - return a 404-equivalent
     return new Response('Offline', { status: 503, statusText: 'Offline' });
+  }
+}
+
+async function networkFirstJson(req) {
+  const cache = await caches.open(RUNTIME_CACHE);
+  try {
+    const res = await fetch(req);
+    if (res.ok) cache.put(req, res.clone()).catch(() => {});
+    return res;
+  } catch (e) {
+    const cached = await cache.match(req);
+    return cached || new Response('Offline', { status: 503 });
   }
 }
 

@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 282 (2026-07-10): the site never stopped posting, the service worker made it look like it had
+
+- **CEO report:** "There hasn't been a website post since 5 July." The catalog was actually current (Jul 6 Medicine Ball, Jul 7 Sourdough, Jul 8 Sugar Beet, Jul 9 Off-Highway Dumper, Jul 10 Tower Crane, all cron-generated and live at the origin). The stale view was client-side.
+- **Root cause:** the PWA service worker served /data/entries.json stale-while-revalidate, so every visit rendered the catalog as cached at the reader's PREVIOUS visit. Return after five days, see a five-day-old archive. This also retroactively explains the recurring "stale-first-load" homepage reports (watchdogs 07-03/04/05) that were blamed on the CDN edge.
+- **Fix:** /data/*.json is now network-first with cache fallback (offline reads still work, fresh data whenever the network is up), SW VERSION bumped v4 -> v5 so clients replace the old worker on their next visit (service-worker.js ships with no-cache headers, so pickup is immediate).
+- **Also:** confirmed the daily pipeline is fully self-driving on GitHub Actions - five consecutive unattended days generated, merged, socialed, and deployed with zero human or Claude involvement. The 275c social fix held all five days.
+
 ## Wave 281 (2026-07-05, CEO-flagged x3): personnel file repaired, linker sealed, backfill defects fixed, and the page-integrity net widened
 
 - **Personnel File (Christopher catches, both fixed + guarded):** five grievances rendered their illustration twice (Nos. 14, 49, 51, 53, 54), and the log ran out of order (50, 51..54 ascending, then 49 descending). Repaired: every grievance now has one figure and the file reads strictly newest-first (57 down to 14). The coffee-machine art still appears on both coffee grievances, that is the running gag, not a bug.
