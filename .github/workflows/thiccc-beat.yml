@@ -24,6 +24,14 @@ jobs:
           node-version: '20'
       - name: Render Thiccc Beat drafts
         run: node scripts/generate-thiccc-beat.js
+      # Wave 285b: the renderer points og:image at articles/og/<slug>.png but
+      # never built the card - every new Beat shipped with a broken OG image
+      # until a manual build-article-og-images.py run caught up (same class as
+      # Wave 246/281). Build it in the same run that creates the article.
+      - name: Build OG cards for new articles
+        run: |
+          pip install pillow --quiet
+          python3 scripts/build-article-og-images.py
       - name: Regenerate article listings
         run: node scripts/regenerate-article-listings.js
       - name: Commit and push
