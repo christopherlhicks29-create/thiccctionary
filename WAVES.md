@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 288 (2026-07-10, CEO direction): HR versus Jon becomes a permanent institution, and the document finally exists
+
+- **"Where is the document Jon produces?"** It exists now: /about/documents/position-description-circulation/, the 1974-form position description, filed at hire in 2004, unrevised since 1978. Eleven duties; ten concern newsstand returns; Section 11 (delivery animals) "specifies no ceiling on fitness." Every section cited anywhere on the site (4, 4(c), 7, 9, 11) now resolves to a real anchor, per the canon-must-link rule. The transcription note preserves the gag: taken from the carbon in the green cabinet; Jon still holds the only clean copy. The Director's and Jon's counts of the duties differ by one; neither will produce their arithmetic.
+- **"HR should keep trying to add to Jon's role but Jon refuses":** now a machine. generate-alignment-minute.js + alignment-minute.yml convene a new meeting monthly (5th, 15:00 UTC, sentinel-fireable): HR proposes a fresh expansion, Jon produces the document, the proposal fails on its own terms, Constance spins it warmly, the intro counters (#align-count, #align-minutes) tick up. Recent-proposal dedupe reads the newest five minutes. Sentinel fired with this push, so No. 12 lands today as the engine's proof run.
+- **Cross-links shipped:** minutes page section citations, masthead bio, References index card (fourth in the cabinet), and the minutes closer updated: "the position description has since been transcribed from the carbon."
+
 ## Wave 287 + 287b (2026-07-10, CEO direction): Jon's alignment minutes get their own file
 
 - **287b (CEO refinement):** Christopher ruled the records should be separately kept files. The combined-cabinet layout was reverted same-day: the Personnel File is Bart's grievance log again (with a one-line pointer to the new file, 'as is proper'), and the minutes moved to their own reference document at /about/documents/role-scope-alignment/ (anchors #alignment-01..11 preserved on the new page). The References index gained its own card; the two files note they are not cross-referenced 'at the request of both subjects.'

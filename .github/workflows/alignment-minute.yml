@@ -1,0 +1,61 @@
+name: Personnel File alignment minute (monthly)
+
+# Wave 288: monthly HR attempt on Jon's role.
+# HR proposes a role expansion; Jon produces the document. Inserted into
+# about/documents/role-scope-alignment/index.html.
+# Cron Tuesdays 14:00 UTC. Also fireable via admin sentinel data/.fire-alignment-minute.
+
+on:
+  schedule:
+    - cron: '0 15 5 * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/.fire-alignment-minute'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate alignment minute
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-alignment-minute.js
+
+      - name: Regenerate PDF
+        run: |
+          pip install weasyprint --break-system-packages --quiet
+          python3 scripts/build-doc-pdfs.py
+
+      - name: Commit + push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Constance (auto)"
+          git add about/documents/role-scope-alignment/ 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Role-Scope Alignment: HR tries again $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
+
+      - name: Cleanup fire sentinel
+        if: github.event_name == 'push'
+        run: |
+          if [ -f data/.fire-alignment-minute ]; then
+            rm data/.fire-alignment-minute
+            git add data/.fire-alignment-minute
+            git commit -m "Cleanup alignment sentinel" || true
+            git pull --rebase origin main || true
+            git push origin main || true
+          fi
