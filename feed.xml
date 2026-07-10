@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jul 2026 01:51:18 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 17:39:20 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A towering fixture of engineering prowess, designed to reach vertiginous heights while supporting substantial loads; especially when viewed against a skyline, its silhouette exemplifies thiccc industrial elegance.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-10-crane-tower-construction.jpg" type="image/jpeg" length="0" />
       <category>industrial</category><category>construction</category><category>architecture</category>
+    </item>
+    <item>
+      <title>[Article] The Heaviest Garlic on Record Is Not, Technically, Garlic</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-07-10-eli-heaviest-garlic-elephant.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-07-10-eli-heaviest-garlic-elephant.html</guid>
+      <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Eli Hartwell on the heaviest garlic bulb on record, a 1.75 kg (3 lb 13.7 oz) specimen with a 19 cm (7.5 in) diameter grown by Graham Barratt of Gloucestershire, UK, assessed 25 June 2026 at Wargrave Nursery Plant Centre, which is botanically not garlic at all but elephant garlic (Allium ampeloprasum), a species of leek. Ruling: Thiccc, under an assumed name.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Dumper, Off-Highway</title>
