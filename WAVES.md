@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 287 (2026-07-10, CEO direction): the Personnel File becomes a cabinet, and Jon's alignment meetings get their minutes
+
+- **Christopher's questions:** should the Personnel File cover more than one employee, and where are the records of Jon's role-scope alignment meetings? Both answered by shipping: the page is now the institutional file cabinet. File One: the Senior Cataloguer's grievance log (unchanged, 18 transcribed). File Two: Minutes of Role-Scope Alignment, Jon, Nos. 1-11 (2004-2026), newly transcribed with anchors (#alignment-01 through -11) so future columns can cite them per the canon-must-link rule.
+- **The minutes:** eleven convenings, cumulative meeting time 61 minutes, alignment pending. Highlights: No. 7 (2018), a consultant's expanded PD read in silence for eleven minutes and withdrawn; No. 8 (2019), no meeting, entered out of cadence by the Director after Jon single-handedly saved the 1974-1989 archive from the June flood under Section 7 and refused the commendation because accepting it is not in the PD; No. 9 (2022), the Form 12-B surname meeting, two minutes, HR lists the field as "in progress" since 2004.
+- **Also fixed:** the References index described the Personnel File as "seven entries transcribed" (stale since ~May); now describes both open files. Known drift, queued: personnel-file.pdf is a static 31 KB file from the seven-entry era and needs regenerating.
+
 ## Wave 286 (2026-07-10, CEO direction): the masthead gains a Circulation Manager
 
 - **New cast member, Jon (Christopher's brief: ~50, thin runner's build, does nothing at work, races burros, occasionally steps up, will not exceed the position description).** Role chosen to make the trait structural: **Circulation Manager** of a publication with no print circulation. The job is complete on arrival; his weekly report ("Circulation: 0. Steady. -Jon") has never been wrong; and Section 11 of his position description, "the maintenance of delivery animals," unrepealed since 1978, is how a man keeps two racing burros (Registrar and Addendum) in competitive condition on company time. HR lists no surname; Form 12-B would collect one; filing Form 12-B is not among his duties.

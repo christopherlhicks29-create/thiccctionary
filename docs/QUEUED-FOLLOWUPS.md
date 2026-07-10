@@ -240,3 +240,12 @@ The current copy is functional but a bit defensive (heavy on the "rules are not 
 **Durable fix:** make sitemap upkeep automatic. Safest approach is a small idempotent step in `regenerate-article-listings.js` (which already reads data/articles.json) that, for every registered article whose HTML exists, inserts a `<url>` block into sitemap.xml if absent, append-only, never reorder/dedupe existing entries, match the existing `<loc>/<lastmod>/<priority>` shape (priority 0.6 for columns). Verify it's a no-op when the sitemap is already complete, and that it doesn't touch entry/IS pages.
 
 **Why deferred (not shipped this run):** unattended session; a sitemap-mutating script needs careful edge-case testing (duplicate guards, ordering) before it runs autonomously. The site-health flag already prevents silent misses, so the manual fix is reliably prompted each run. Ship the auto-fix when shell + attention are both available.
+
+
+## Reference-document PDFs drift from their pages
+
+**Observed 2026-07-10 (Wave 287):** about/documents/personnel-file/personnel-file.pdf is a static file from the seven-grievance era; the page now holds 18 grievances + 11 alignment minutes. Other doc PDFs likely drift the same way as pages evolve.
+
+**Fix when picked up:** generate the PDFs from the live pages in the build (headless render or a doc-to-pdf script), or regenerate manually after material page changes and add a site-health check comparing PDF mtime/size against page changes.
+
+**Trigger:** any session touching the reference documents, or if Christopher mentions the PDFs.
