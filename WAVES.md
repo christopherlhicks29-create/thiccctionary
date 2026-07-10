@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 283 (2026-07-10): image-regen pipeline unjammed - a stranded queue file starved the weekly drain for 17 days
+
+- **Symptom:** zero automated image fixes since Wave 279 shipped the batched weekly drain; the 07-06 Monday audit found 19 failing images but queued nothing.
+- **Root cause (two-part):** regen-on-push.yml opens its PR with NO auto-merge (unlike regenerate-images.yml, which has one - the Bratwurst path). The queue-file deletion only exists on the PR branch, so an unmerged PR leaves data/regen-queue.json stranded on main. A 06-23 Thickened Water queue item sat there ever since, and image-audit.js's "already exists, not overwriting" guard turned one stuck item into a full pipeline stall.
+- **Fix:** (1) regen-on-push.yml now auto-merges its PR (squash, delete-branch), mirroring the regenerate-images.yml step; (2) image-audit.js stamps queues with queued_at and overwrites any queue older than 6 days (or unstamped), so a stranded file can never starve the drain again; (3) fresh worst-4 batch queued with this commit (Banana 05-03 1/10, Crankshaft 05-24, Reel Cable 04-22, Mattress 07-03) - fires regen-on-push under the new auto-merge.
+- **Deliberately excluded:** Thickened Water 2026-04-14 (audit score 1/10) - its literal word gives Unsplash nothing to find; needs a manual subject_override pass, logged in QUEUED-FOLLOWUPS.
+
 ## Wave 282 (2026-07-10): the site never stopped posting, the service worker made it look like it had
 
 - **CEO report:** "There hasn't been a website post since 5 July." The catalog was actually current (Jul 6 Medicine Ball, Jul 7 Sourdough, Jul 8 Sugar Beet, Jul 9 Off-Highway Dumper, Jul 10 Tower Crane, all cron-generated and live at the origin). The stale view was client-side.

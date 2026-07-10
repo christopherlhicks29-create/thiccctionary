@@ -76,6 +76,7 @@ jobs:
 
       - name: Open Pull Request
         if: steps.check.outputs.skip != 'true' && steps.queue.outputs.dates != ''
+        id: open_pr
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Regenerate image for ${{ steps.queue.outputs.dates }} (queued via push)"
@@ -92,3 +93,16 @@ jobs:
             Review the new image. If it's good, merge. If not, close this PR and queue another with a different `subject_override`.
 
             **To merge:** Squash and merge.
+
+      # Wave 282: without auto-merge, these PRs sat unmerged, the queue-file
+      # deletion never reached main, and image-audit refused to queue anything
+      # new for weeks (stale queue from 06-23 blocked drains while backlog hit 19).
+      # Mirrors the auto-merge step in regenerate-images.yml (the sentinel path).
+      - name: Auto-merge (autonomous queue, no human in loop)
+        if: success() && steps.check.outputs.skip != 'true' && steps.open_pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR=${{ steps.open_pr.outputs.pull-request-number }}
+          echo "Auto-merging autonomous regen PR #$PR..."
+          gh pr merge "$PR" --squash --auto --delete-branch --repo "$GITHUB_REPOSITORY" || gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY" || echo "::warning::auto-merge failed"

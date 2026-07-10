@@ -122,6 +122,17 @@ async function main() {
     const queuePath = path.join(ROOT, 'data', 'regen-queue.json');
     let existingQueue = null;
     try { existingQueue = JSON.parse(await fs.readFile(queuePath, 'utf8')); } catch {}
+    // Wave 282: a queue file stranded on main (unmerged consumer PR) blocked
+    // every subsequent audit from queueing - treat queues older than 6 days
+    // (or with no queued_at stamp at all) as stale and overwrite them.
+    if (existingQueue) {
+      const STALE_MS = 6 * 24 * 3600 * 1000;
+      const age = existingQueue.queued_at ? (Date.now() - Date.parse(existingQueue.queued_at)) : Infinity;
+      if (!(age < STALE_MS)) {
+        console.log(`[image-audit] existing regen-queue.json is stale (queued_at=${existingQueue.queued_at || 'missing'}). Overwriting.`);
+        existingQueue = null;
+      }
+    }
     if (existingQueue) {
       console.log(`[image-audit] regen-queue.json already exists. Not overwriting. Top failures:`);
       topN.forEach(r => console.log(`  - ${r.date} ${r.word} (score=${r.score}, photo=${r.photoSubject})`));
@@ -135,10 +146,12 @@ async function main() {
       // a week and the CEO caught it on the live site before the queue reached it.
       const worst = topN[0];
       const queue = topN.length === 1 ? {
+        queued_at: new Date().toISOString(),
         dates: worst.date,
         subject_override: `${worst.word} clear isolated subject focused on the actual ${worst.word.split(',')[0].trim()}, NOT a generic photo, NOT a workshop, NOT a person dominating frame`,
         reason: `Wave 212 image-audit: current image actually depicts "${worst.photoSubject || 'unknown'}". Critic score ${worst.score}/10, subject%=${worst.subjectPct}.`,
       } : {
+        queued_at: new Date().toISOString(),
         dates: topN.map(r => r.date).join(','),
         subject_override: '',
         reason: `Wave 212 image-audit batch (worst ${topN.length}): ` + topN.map(r => `${r.date} ${r.word} (score ${r.score}, depicts "${r.photoSubject || 'unknown'}")`).join('; '),
