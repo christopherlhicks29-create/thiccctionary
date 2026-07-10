@@ -2,6 +2,14 @@
 
 Things deferred from prior sessions that should be revisited at the right time. I (Claude) will surface these when the trigger condition matches.
 
+## Thickened Water 2026-04-14 image - needs manual subject_override regen
+
+**Current state (2026-07-10, Wave 283):** audit scores it 1/10 (image shows ocean waves). Excluded from the automated worst-4 batch because the literal word "Thickened Water" returns junk on Unsplash, and batch mode can't carry a per-date override.
+
+**How to fix (any session, fully autonomous):** write data/.fire-image-regen.json for date 2026-04-14 with a hand-picked subject_override. Candidates to test: "glass of water with spoon dysphagia", "gel water cup", "viscous liquid pouring closeup". If Unsplash has nothing usable, consider text-regen to a more photographable subject instead.
+
+---
+
 ## LLM-per-entry social captions, SHIPPED 2026-05-16 (Wave 98)
 
 `generate-daily.js` now calls `generateSocialCaptions(entry)` after the entry is built and stores the result on `entry.socialCaptions.{morning,afternoon,evening,reels}`. Non-blocking, if the LLM step fails for any reason, post-to-buffer.js falls back to the Wave 87 templated captions. Uses gpt-4o with explicit voice exemplars (Bagger, Spruce, Hoover Dam) baked into the system prompt. Every new daily entry from this point forward ships with 4 bespoke entry-specific captions referencing real subject specifics.
