@@ -39,6 +39,7 @@ const REFS = [
   { pattern: /Amendment 1991-08\b/g, replace: '<a href="/about/documents/amendment-1991-08/">Amendment 1991-08</a>' },
   // Wave 290: the Jon canon (CEO rule: every referenced document links)
   { pattern: /Commendation 2019-03\b/g, replace: '<a href="/about/documents/commendation-2019-03/">Commendation 2019-03</a>' },
+  { pattern: /Workplace Concern Form\b(?! 2026)/g, replace: '<a href="/about/documents/workplace-concern-2026-07/">Workplace Concern Form</a>' },
   { pattern: /Form 12-B\b/g, replace: '<a href="/about/documents/form-12-b/">Form 12-B</a>' },
   { pattern: /Role-Scope Alignment No\. (\d+)\b/g, replace: (m, n) => `<a href="/about/documents/role-scope-alignment/#alignment-${String(n).padStart(2, '0')}">Role-Scope Alignment No. ${n}</a>` },
   { pattern: /\bposition description\b/g, replace: '<a href="/about/documents/position-description-circulation/">position description</a>' },
