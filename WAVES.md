@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 289 (2026-07-10, CEO direction): Form 12-B enters the record, uncompleted
+
+- **"Where is Form 12-B that Jon filled out?"** He never filled it out; that is why HR has no surname. But the form itself is now an exhibit at /about/documents/form-12-b/: a facsimile of the 2004 issuance, the only copy ever returned, blank except Given Name ("Jon") and a margin annotation in ink: "Completion of this form is not among the duties enumerated in my position description. -Jon." (The period after the given name is original.)
+- **Record of Issuance, eleven rows, 2004-2026:** the certified envelope that came back empty (2010), the copy left on the loading dock weighted down with a horseshoe (2012), the URGENT envelope (2018; "the word URGENT does not appear in the position description"), the PDF that could not be delivered because the Circulation Manager does not maintain an electronic address (2020), and the 2026 envelope last seen in Registrar's possession at Fairplay, contents unverified.
+- Cross-linked from the masthead bio, Role-Scope Alignment No. 9, and a References index card. Closer: "The form remains available from Human Resources. Human Resources remains available to receive it."
+
 ## Wave 288 (2026-07-10, CEO direction): HR versus Jon becomes a permanent institution, and the document finally exists
 
 - **"Where is the document Jon produces?"** It exists now: /about/documents/position-description-circulation/, the 1974-form position description, filed at hire in 2004, unrevised since 1978. Eleven duties; ten concern newsstand returns; Section 11 (delivery animals) "specifies no ceiling on fitness." Every section cited anywhere on the site (4, 4(c), 7, 9, 11) now resolves to a real anchor, per the canon-must-link rule. The transcription note preserves the gag: taken from the carbon in the green cabinet; Jon still holds the only clean copy. The Director's and Jon's counts of the duties differ by one; neither will produce their arithmetic.
