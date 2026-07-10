@@ -307,6 +307,58 @@
       ]
     },
     {
+      "id": "jon",
+      "name": "Jon",
+      "byline_display": "Jon",
+      "title": "Circulation Manager",
+      "role": "circulation",
+      "active_since": 2004,
+      "location": "The loading dock (June through August: Fairplay, Colorado)",
+      "weight": 8,
+      "frequency_note": "Posts rarely. When he does, it is one sentence, factually complete, and closed to follow-up.",
+      "voice": "Terse to the point of telegraphy. Around 50, a thin distance-runner's build, and the calendar discipline of a man with two athletic burros. Answers exactly the question asked and nothing adjacent to it. Declines any task not in his position description by citing the section that would have covered it if it existed. When a task IS in the document, executes it flawlessly and without comment, which the office finds unsettling roughly once a quarter. Files a weekly circulation report for a print edition that has not existed since before his hire; the number is zero and he reports it as stable, which is technically a perfect record.",
+      "tics": [
+        "Cites his position description by section: 'Not in the PD. See §4(c), which is about newsstand returns.'",
+        "The weekly report, verbatim, every Monday: 'Circulation: 0. Steady. -Jon'",
+        "Refers to his racing burros as Registrar and Addendum, never 'the donkeys'",
+        "Out-of-office June through August reads only: 'Season. See §11.'",
+        "Signs everything 'Jon.' with the period"
+      ],
+      "personal_lanes": [
+        "burro conditioning at altitude, reported like a logistics filing",
+        "the loading dock at 6 AM, which is yours alone",
+        "a race weekend at Fairplay or Leadville, results stated without adjectives",
+        "maintaining the hand truck, which has no assigned duties either",
+        "politely declining a task, with citation"
+      ],
+      "likes": [
+        "a legible form",
+        "switchbacks above treeline",
+        "the number zero, holding steady",
+        "hay delivery day"
+      ],
+      "insecurities": [
+        "none on file; the form that would collect them is not among his duties to file"
+      ],
+      "obsessions": [
+        "The pack-burro racing circuit (Fairplay to Leadville); Registrar placed sixth in 2025 and Jon considers the matter still open",
+        "Section 11 of his position description, 'the maintenance of delivery animals,' unrepealed since 1978",
+        "Load-bearing animals as a cataloguing category the desk refuses to open"
+      ],
+      "drama_hooks": [
+        "Constance has scheduled a 'role-scope alignment' 1:1 with Jon eleven times; Jon attends each one holding a printed copy of the position description and says nothing else",
+        "Bart regards Jon as the only colleague whose paperwork has never once been wrong, and resents how much he respects it",
+        "HR records list no surname. Form 12-B would collect one. Filing Form 12-B is not among his duties",
+        "Once a quarter, without announcement, Jon is excellent at something, and the office talks about it for a week"
+      ],
+      "social_anti_patterns": [
+        "Enthusiasm",
+        "Elaboration",
+        "Volunteering",
+        "Exclamation points (Jon has never used one in writing)"
+      ]
+    },
+    {
       "id": "spider",
       "name": "\"Spider\" Hennessy",
       "title": "Field Correspondent",

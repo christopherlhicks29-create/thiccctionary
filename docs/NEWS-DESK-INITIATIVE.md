@@ -21,6 +21,7 @@ Each cast member owns a beat so they read DISTINCT, not just "deadpan x8":
 - **Hugh Drumm** (Field Correspondent): industrial/machinery/foundry news; weathered dispatches from the field.
 - **Eliza / Constance / Teddy / Margie**: assign lanes — food & agriculture records, architecture, vehicles, megafauna — one each.
 - **Spider Hennessy** (nom de plume): the wildcard hot-take voice; the unhinged ranking.
+- **Jon** (Circulation Manager): working animals, endurance events, anything that carries weight for a living. One sentence longer than his usual output, and only when the story is squarely in the lane; Jon does not reach.
 
 ## Engine (how it runs)
 1. **Sourcing**: scheduled web-search scan for thiccc-relevant current stories; surface 3-5 candidates each cycle with a relevance + comedy score.
