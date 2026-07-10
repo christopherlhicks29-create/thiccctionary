@@ -37,6 +37,11 @@ const REFS = [
   { pattern: /Atlantic Giant Decision of (March )?2009\b/g, replace: '<a href="/about/documents/atlantic-giant-2009/">Atlantic Giant Decision of $12009</a>' },
   { pattern: /\bAtlantic Giant Decision\b(?![ ]of)/g, replace: '<a href="/about/documents/atlantic-giant-2009/">Atlantic Giant Decision</a>' },
   { pattern: /Amendment 1991-08\b/g, replace: '<a href="/about/documents/amendment-1991-08/">Amendment 1991-08</a>' },
+  // Wave 290: the Jon canon (CEO rule: every referenced document links)
+  { pattern: /Commendation 2019-03\b/g, replace: '<a href="/about/documents/commendation-2019-03/">Commendation 2019-03</a>' },
+  { pattern: /Form 12-B\b/g, replace: '<a href="/about/documents/form-12-b/">Form 12-B</a>' },
+  { pattern: /Role-Scope Alignment No\. (\d+)\b/g, replace: (m, n) => `<a href="/about/documents/role-scope-alignment/#alignment-${String(n).padStart(2, '0')}">Role-Scope Alignment No. ${n}</a>` },
+  { pattern: /\bposition description\b/g, replace: '<a href="/about/documents/position-description-circulation/">position description</a>' },
   { pattern: /2014 Submissions Freeze Proposal\b/g, replace: '<a href="/about/documents/submissions-freeze/">2014 Submissions Freeze Proposal</a>' },
   { pattern: /Submissions Freeze Proposal\b/g, replace: '<a href="/about/documents/submissions-freeze/">Submissions Freeze Proposal</a>' },
   { pattern: /Standing Order on External Bodies\b/g, replace: '<a href="/about/documents/external-bodies/">Standing Order on External Bodies</a>' },

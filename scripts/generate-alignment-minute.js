@@ -14,6 +14,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { autoLink } from './auto-link-references.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -96,8 +97,11 @@ ${recent.map(h => '- ' + h).join('\n')}
 
 Also already tried in older minutes: reimagining circulation for a digital-first landscape; newsletter ownership; a consultant's expanded position description; stretch goals; quarterly cadence. Pick something NEW. Output ONLY the HTML block.`;
 
-  const html = (await callClaude(SYSTEM_PROMPT, userPrompt)).trim()
+  let html = (await callClaude(SYSTEM_PROMPT, userPrompt)).trim()
     .replace(/—/g, ', ').replace(/–/g, '-');
+  // Wave 290: every referenced document must link (CEO rule). The linker
+  // skips text already inside anchors, so the LLM's own section links survive.
+  html = autoLink(html);
   if (!html.startsWith('<div class="grievance"') || !html.endsWith('</div>')) {
     console.error('LLM output failed format check; first 200 chars:', html.slice(0, 200));
     process.exit(1);

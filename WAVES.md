@@ -1,5 +1,10 @@
 # Thiccctionary Wave Log
 
+## Wave 290 (2026-07-10, CEO rule made mechanical): every referenced document on the Jon pages now links, and always will
+
+- **The rule:** whenever a document is referenced, it links (Christopher, on the alignment-minutes page). Applied three ways: (1) built the last missing referenced document, Commendation 2019-03, as its own exhibit (the certificate with the blank acceptance line; "acceptance is not among the recipient's duties to file"); (2) swept the alignment-minutes, Form 12-B, and position-description pages so zero references to position description / Form 12-B / Commendation 2019-03 remain unlinked; (3) taught auto-link-references.js the four Jon canon targets (Form 12-B, Commendation 2019-03, position description, Role-Scope Alignment No. N anchors) and wired autoLink into generate-alignment-minute.js, so every FUTURE auto-generated minute links its citations without anyone remembering to.
+- **Also:** the alignment-minute engine is PROVEN, No. 12 landed unattended (HR proposed a Modernization Steering Committee seat; Jon indicated Section 9; "Warrant Outstanding"). Root causes of the two failed proof runs: an inherited PDF-rebuild step and an invalid model string (4-5 vs 4-6), both fixed.
+
 ## Wave 289 (2026-07-10, CEO direction): Form 12-B enters the record, uncompleted
 
 - **"Where is Form 12-B that Jon filled out?"** He never filled it out; that is why HR has no surname. But the form itself is now an exhibit at /about/documents/form-12-b/: a facsimile of the 2004 issuance, the only copy ever returned, blank except Given Name ("Jon") and a margin annotation in ink: "Completion of this form is not among the duties enumerated in my position description. -Jon." (The period after the given name is original.)
