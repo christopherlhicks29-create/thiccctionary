@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-10",
+    "word": "Crane, Tower Construction",
+    "pronunciation": "/krayn, TOW-er kun-STRUK-shun/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A towering fixture of engineering prowess, designed to reach vertiginous heights while supporting substantial loads; especially when viewed against a skyline, its silhouette exemplifies thiccc industrial elegance.",
+      "<em>colloq.</em> The giraffe of the construction world: tall, unyielding, and not shy about its presence."
+    ],
+    "example": "The thiccc tower crane loomed over the Hamburg skyline, asserting its dominance like a skyscraper with commitment issues.",
+    "etymology": "From Middle English 'cran,' related to Old Norse 'krani,' meaning 'crane (bird),' drawing on the avian analogy for its height and reach. Much like the bird, it takes flight in slow motion.",
+    "image": "images/2026-07-10-crane-tower-construction.jpg",
+    "caption": "Plate N. A tower crane in its natural habitat, surveying the urban jungle.",
+    "tags": [
+      "industrial",
+      "construction",
+      "architecture"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 9,
+    "photographer": "Pablo Heimplatz",
+    "photographerUrl": "https://unsplash.com/@pabloheimplatz",
+    "unsplashUrl": "https://unsplash.com/photos/a-bunch-of-cranes-that-are-standing-in-the-air-t4Ot1iDE0hQ",
+    "socialCaptions": {
+      "morning": "Crane, Tower Construction—capable of lifting up to 20 tons while maintaining its dignity. \nNot a single feather ruffled.",
+      "afternoon": "In 1908, the first steel-framed tower crane rose in Germany. \nIt has yet to come down—Crane, Tower Construction.",
+      "evening": "From the archives, Crane, Tower Construction.\nReaching 265 feet into the air—eclipsing even the tallest of ambitions.",
+      "reels": "Cranes: 360° rotation, infinite patience. \nA thiccc marvel in any skyline."
+    }
+  },
+  {
     "date": "2026-07-09",
     "word": "Dumper, Off-Highway",
     "pronunciation": "/DUMP-er, awf-HY-way/",
