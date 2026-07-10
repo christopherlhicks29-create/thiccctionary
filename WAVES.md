@@ -1,6 +1,8 @@
 # Thiccctionary Wave Log
 
-## Wave 287 (2026-07-10, CEO direction): the Personnel File becomes a cabinet, and Jon's alignment meetings get their minutes
+## Wave 287 + 287b (2026-07-10, CEO direction): Jon's alignment minutes get their own file
+
+- **287b (CEO refinement):** Christopher ruled the records should be separately kept files. The combined-cabinet layout was reverted same-day: the Personnel File is Bart's grievance log again (with a one-line pointer to the new file, 'as is proper'), and the minutes moved to their own reference document at /about/documents/role-scope-alignment/ (anchors #alignment-01..11 preserved on the new page). The References index gained its own card; the two files note they are not cross-referenced 'at the request of both subjects.'
 
 - **Christopher's questions:** should the Personnel File cover more than one employee, and where are the records of Jon's role-scope alignment meetings? Both answered by shipping: the page is now the institutional file cabinet. File One: the Senior Cataloguer's grievance log (unchanged, 18 transcribed). File Two: Minutes of Role-Scope Alignment, Jon, Nos. 1-11 (2004-2026), newly transcribed with anchors (#alignment-01 through -11) so future columns can cite them per the canon-must-link rule.
 - **The minutes:** eleven convenings, cumulative meeting time 61 minutes, alignment pending. Highlights: No. 7 (2018), a consultant's expanded PD read in silence for eleven minutes and withdrawn; No. 8 (2019), no meeting, entered out of cadence by the Director after Jon single-handedly saved the 1974-1989 archive from the June flood under Section 7 and refused the commendation because accepting it is not in the PD; No. 9 (2022), the Form 12-B surname meeting, two minutes, HR lists the field as "in progress" since 2004.
