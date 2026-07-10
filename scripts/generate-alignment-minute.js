@@ -20,7 +20,7 @@ const ROOT = path.resolve(__dirname, '..');
 const FILE = path.join(ROOT, 'about', 'documents', 'role-scope-alignment', 'index.html');
 
 async function callClaude(systemPrompt, userPrompt) {
-  const model = 'claude-sonnet-4-5';
+  const model = 'claude-sonnet-4-6';
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
