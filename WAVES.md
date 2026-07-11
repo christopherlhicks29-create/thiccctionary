@@ -1,5 +1,28 @@
 # Thiccctionary Wave Log
 
+## Wave 297 (2026-07-11, autonomous): FB Reels ROOT CAUSE FOUND AND FIXED after 3+ weeks
+
+- Buffer's createPost API now hard-rejects video.thumbnailUrl ("Invalid post input: Video thumbnailUrl is not supported"). Every FB reel since mid-June died on this; IG survived via its separate daily path. post-to-buffer.js no longer sends thumbnailUrl (networks never accepted custom thumbnails anyway; default = first frame).
+- PROOF: re-fired 2026-07-11 FB-only reel post-fix; Buffer accepted it and the Reel card sits queued on The Thiccctionary FB channel (11:04 AM slot). Verify it renders on FB after publish next run.
+- (Committed in git as "Wave 293" before the numbering collision with the parallel CEO-session Wave 291 was noticed; renumbered here, same precedent as Wave 286.)
+
+## Wave 296 (2026-07-11, autonomous): homepage static prerender unfrozen (was May 1 forever)
+
+- prerender-homepage.js updated featured entry + issue number but never the masthead date or the Recently Catalogued rail, so crawlers and no-JS readers saw "Friday, May 1, 2026" and Apr 28-30 rail cards for ten weeks while client JS masked it.
+- Now prerenders the featured entry's date and the 8 newest rail cards (markup mirrors the client-side renderer exactly) and drops the opacity:0 that hid the rail from no-JS readers. Verified locally: "Saturday, July 11, 2026" + fresh cards. (git label "Wave 292".)
+
+## Wave 295 (2026-07-11, autonomous): failure pipeline made self-diagnosing
+
+- failure-handler.yml now persists the failed-run log tail to audits/failed-runs/<date>-run-<id>-attempt-<n>.md on EVERY failed attempt, before the auto-retry (sentinel-fired workflows clear their sentinel in attempt 1's cleanup, so attempt 2's log is always the useless "could not resolve date" - attempt 1 holds the truth). This is how Wave 297's root cause was finally read after weeks of unreadable Actions pages.
+- Also: gh issue create was silently failing forever because the ci-failure label never existed and the error was swallowed by "|| echo warning" - label now auto-created. (git labels "Wave 291/291b".)
+
+## Wave 294 (2026-07-11, autonomous): Field Report generator crash fix + issue-pile triage (26 issues explained)
+
+- All 26 open "Weekly Field Report: quality gate failed" issues were ONE bug: readAndPopRolloutQueue() in generate-weekly-article.js called require() inside an ES module - ReferenceError on every run since ~05-17. Not a quality problem; the generator never wrote a word for 8 weeks. Fixed with fsSync import.
+- weekly-article.yml: failure-issue step no longer fires on cadence-skip days (gen-step skipped meant empty exit output, which != '0').
+- issue-sweeper.yml: stale-close now actually covers quality-gate-fail (header promised it, implementation only swept ci-failure - that is why the pile never drained); workflow_run trigger name fixed ("Field Report, Auto-Publish (3x/week random)" not the old name). The 25 stale issues will auto-close on the next 6-hourly sweep; #164 closes when the next report publishes or ages out.
+- Proof run fired via data/.fire-weekly. (git label "Wave 291".)
+
 ## Wave 291 (2026-07-10, CEO direction): the first completed Workplace Concern Form in company history, and it is about memes
 
 - **Christopher's brief:** an employee named Joe files a complaint accusing Jon of meme harvesting during work hours and of constantly sending him memes (drawn from life). Shipped as its own instrument at /about/documents/workplace-concern-2026-07/, which pays off a 2024 setup: Constance offered Bart a Workplace Concern Form in Grievance No. 47 and he declined on principle, so Joe's is the only completed specimen in the records.
