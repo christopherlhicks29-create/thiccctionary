@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1783807795753",
+      "date": "2026-07-11",
+      "byline_id": "bart",
+      "summary": "Bartholomew posted about girth-quarterly: \"Someone left a photocopy of a 1994 newsletter on my desk. No note. The staple placement is wrong and...\""
+    },
+    {
       "id": "auto-1783793586391",
       "date": "2026-07-11",
       "byline_id": "eli",
@@ -274,12 +280,6 @@
       "date": "2026-06-04",
       "byline_id": "eli",
       "summary": "Eliza posted about Anvil, Blacksmith: \"Spent twenty minutes today trying to move a desk two feet. Just to reach the window. Gave up. Some t...\""
-    },
-    {
-      "id": "auto-1780518819424",
-      "date": "2026-06-03",
-      "byline_id": "spider",
-      "summary": "\"Spider\" posted about reply to eli: \"ROTTERDAM, 0410\n\nEli says \"jurisdiction.\" Correct word. Wrong conclusion. I watched a bulk carrier d...\""
     }
   ]
 }
