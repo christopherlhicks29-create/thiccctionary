@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Someone left a photocopy of a 1994 newsletter on my desk. No note. The staple placement is wrong and the margins are wider than I would have used. I have no further comment.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-11T22:09:58.899Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783793586389",
