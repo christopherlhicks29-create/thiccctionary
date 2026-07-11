@@ -39,6 +39,33 @@ jobs:
           echo "html_url=${{ github.event.workflow_run.html_url }}" >> $GITHUB_OUTPUT
           echo "Failed: ${{ github.event.workflow_run.name }} attempt ${{ github.event.workflow_run.run_attempt }}"
 
+      - name: Persist failed-log detail (every failed attempt)
+        # Wave 291b: capture on EVERY failure, not just attempt >= 2. For
+        # sentinel-fired workflows the auto-retry re-runs AFTER the sentinel
+        # was cleared, so attempt 2's log is a useless "could not resolve
+        # date" - attempt 1 holds the real error. One file per attempt.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LOG_TAIL=$(gh run view "${{ steps.inspect.outputs.run_id }}" --log-failed --repo "$GITHUB_REPOSITORY" 2>&1 | tail -80 || echo "(could not fetch logs)")
+          mkdir -p audits/failed-runs
+          DETAIL="audits/failed-runs/$(date -u +%Y-%m-%d)-run-${{ steps.inspect.outputs.run_id }}-attempt-${{ steps.inspect.outputs.attempt }}.md"
+          {
+            echo "# Failed run detail: ${{ steps.inspect.outputs.wf_name }}"
+            echo ""
+            echo "Run: ${{ steps.inspect.outputs.html_url }} (attempt ${{ steps.inspect.outputs.attempt }})"
+            echo ""
+            echo '```'
+            echo "$LOG_TAIL"
+            echo '```'
+          } > "$DETAIL"
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          git pull --rebase origin main || true
+          git add "$DETAIL"
+          git commit -m "Failed-run detail: ${{ steps.inspect.outputs.wf_name }} run ${{ steps.inspect.outputs.run_id }} attempt ${{ steps.inspect.outputs.attempt }}" || echo "Nothing to commit"
+          git push origin HEAD:main || echo "::warning::Detail push failed (race)"
+
       - name: First failure, retry failed jobs
         if: ${{ github.event.workflow_run.run_attempt < 2 }}
         env:
@@ -52,25 +79,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LOG_TAIL=$(gh run view "${{ steps.inspect.outputs.run_id }}" --log-failed --repo "$GITHUB_REPOSITORY" 2>&1 | tail -80 || echo "(could not fetch logs)")
-          # Wave 291: persist the failed-log tail into the repo. Issues can
-          # silently fail to create (missing label), and Actions run pages
-          # are unreadable from some QA sessions. audits/ is always readable.
-          mkdir -p audits/failed-runs
-          DETAIL="audits/failed-runs/$(date -u +%Y-%m-%d)-run-${{ steps.inspect.outputs.run_id }}.md"
-          {
-            echo "# Failed run detail: ${{ steps.inspect.outputs.wf_name }}"
-            echo ""
-            echo "Run: ${{ steps.inspect.outputs.html_url }} (attempt ${{ steps.inspect.outputs.attempt }})"
-            echo ""
-            echo '```'
-            echo "$LOG_TAIL"
-            echo '```'
-          } > "$DETAIL"
-          git config user.name "Thiccctionary Editorial Board"
-          git config user.email "bot@thiccctionary.com"
-          git add "$DETAIL"
-          git commit -m "Failed-run detail: ${{ steps.inspect.outputs.wf_name }} run ${{ steps.inspect.outputs.run_id }}" || echo "Nothing to commit"
-          git push origin HEAD:main || echo "::warning::Detail push failed (race)"
           # Wave 291: label must exist or gh issue create fails silently
           gh label create ci-failure --repo "$GITHUB_REPOSITORY" --description "Auto-escalated CI failure" --color D93F0B 2>/dev/null || true
           BODY_FILE=$(mktemp)
