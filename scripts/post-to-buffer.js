@@ -83,7 +83,12 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
   };
 
   if (mode === 'reels' && videoUrl) {
-    input.assets = { video: { url: videoUrl, thumbnailUrl: thumbnailUrl || undefined } };
+    // Wave 293: Buffer's createPost now REJECTS video.thumbnailUrl outright
+    // ("Invalid post input: Video thumbnailUrl is not supported"). This was
+    // the entire FB-Reels failure since mid-June. Networks never accepted
+    // custom thumbnails anyway; thumbnail selection is metadata.thumbnailOffset
+    // (IG/TikTok/Pinterest only), which we leave at default (first frame).
+    input.assets = { video: { url: videoUrl } };
   } else if (imageUrl) {
     input.assets = { image: { url: imageUrl } };
   }
