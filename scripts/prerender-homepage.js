@@ -123,6 +123,32 @@ async function main() {
   // issue number (entry count, zero-padded)
   out = replaceById(out, 'issue-number', String(entries.length).padStart(3, '0'));
 
+  // Wave 291: masthead date. Was frozen at the hand-written May 1 static text
+  // forever (JS masked it for browsers; crawlers and no-JS saw a stale paper).
+  const dateText = new Date(f.date + 'T12:00:00Z').toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+  });
+  out = replaceById(out, 'today-date', esc(dateText));
+
+  // Wave 291: Recently Catalogued rail. Mirrors the client-side card markup in
+  // index.html exactly (entries 1..8 after the featured entry).
+  const cardHTML = sorted.slice(1, 9).map(e => {
+    const snip = String(e.definitions?.[0] || '').replace(/<[^>]+>/g, '').slice(0, 70);
+    const d = new Date(e.date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    return `<a class="recent-card" href="entries/${esc(e.date)}.html">
+        <div class="recent-thumb" style="background-image: url('${esc(e.image)}'); background-size: cover; background-position: center;"></div>
+        <div class="recent-meta">
+          <span class="recent-date">${d}</span>
+          <h4 class="recent-word">${esc(e.word)}</h4>
+          <p class="recent-snip">${esc(snip)}\u2026</p>
+        </div>
+      </a>`;
+  }).join('\n      ');
+  out = replaceById(out, 'recents-grid', '\n      ' + cardHTML + '\n    ');
+  // The rail was hidden at opacity:0 until JS populated it - with fresh
+  // prerendered cards there is nothing to hide from no-JS readers.
+  out = out.replace('id="recents-grid" style="opacity:0', 'id="recents-grid" style="opacity:1');
+
   await fs.writeFile(INDEX, out, 'utf8');
   console.log(`[prerender] index.html updated, ${out.length} bytes`);
 }
