@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Teddy found a room with a forty-foot ceiling and \"almost\" read. I finish three pieces a week in a six-foot cubicle under a flickering bulb. The room doesn't need to be inhabited. It needs a deadline.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-11T18:13:08.762Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783709723694",
