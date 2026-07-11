@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - "Weekly Field Report, Auto-Publish"
+      - "Field Report, Auto-Publish (3x/week random)"
       - "Daily Thiccc, Generate Draft PR"
     types: [completed]
 
@@ -63,7 +63,11 @@ jobs:
           set -e
           SEVEN_AGO=$(date -u -d '7 days ago' +%Y-%m-%d)
           echo "Threshold: $SEVEN_AGO"
-          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "ci-failure" --json number,createdAt,comments,title --jq '.[] | "\(.number)|\(.createdAt[:10])|\(.comments)|\(.title)"' | while IFS='|' read -r N D C T; do
+          # Wave 291: sweep quality-gate-fail as well (header always promised this;
+          # the implementation only covered ci-failure, so gate issues piled up 26 deep)
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "ci-failure" --json number,createdAt,comments,title --jq '.[] | "\(.number)|\(.createdAt[:10])|\(.comments)|\(.title)"' > /tmp/stale.txt
+          gh issue list --repo "$GITHUB_REPOSITORY" --state open --label "quality-gate-fail" --json number,createdAt,comments,title --jq '.[] | "\(.number)|\(.createdAt[:10])|\(.comments)|\(.title)"' >> /tmp/stale.txt
+          sort -u /tmp/stale.txt | while IFS='|' read -r N D C T; do
             if [ -n "$D" ] && [ "$D" \< "$SEVEN_AGO" ] && [ "$C" -eq 0 ]; then
               echo "Closing stale: #$N ($D) $T"
               gh issue close "$N" --repo "$GITHUB_REPOSITORY" --comment "Auto-closed: ci-failure issue with no comments after 7 days. If this is still relevant, reopen and add context." --reason "not planned" || echo "::warning::failed to close #$N"

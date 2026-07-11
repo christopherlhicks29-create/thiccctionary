@@ -112,7 +112,9 @@ jobs:
           git push origin main
 
       - name: On failure open issue
-        if: steps.gen.outputs.exit != '0'
+        # Wave 291: require proceed==true so cadence-skip days (gen step skipped,
+        # empty exit output) don't try to read a nonexistent /tmp/gen.log and fail red.
+        if: steps.gate.outputs.proceed == 'true' && steps.gen.outputs.exit != '0'
         uses: actions/github-script@v7
         env:
           TARGET_DATE: ${{ steps.target.outputs.date }}

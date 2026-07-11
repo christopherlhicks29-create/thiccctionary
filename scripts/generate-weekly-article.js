@@ -7,6 +7,7 @@
  */
 
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
@@ -142,15 +143,15 @@ async function buildCorpusMemory(byline, allArticles, articlesDir) {
 }
 
 function readAndPopRolloutQueue() {
-  const fs = require('node:fs');
+  // Wave 291: this is an ES module; require() crashed every run since ~05-17.
   const queuePath = path.join(ROOT, 'data', 'rollout-queue.json');
   let data;
-  try { data = JSON.parse(fs.readFileSync(queuePath, 'utf8')); }
+  try { data = JSON.parse(fsSync.readFileSync(queuePath, 'utf8')); }
   catch (e) { return null; }
   if (!data || !Array.isArray(data.queue) || data.queue.length === 0) return null;
   const next = data.queue.shift();
   // Write back the depleted queue
-  fs.writeFileSync(queuePath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+  fsSync.writeFileSync(queuePath, JSON.stringify(data, null, 2) + '\n', 'utf8');
   return next;
 }
 

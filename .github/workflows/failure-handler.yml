@@ -52,6 +52,27 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LOG_TAIL=$(gh run view "${{ steps.inspect.outputs.run_id }}" --log-failed --repo "$GITHUB_REPOSITORY" 2>&1 | tail -80 || echo "(could not fetch logs)")
+          # Wave 291: persist the failed-log tail into the repo. Issues can
+          # silently fail to create (missing label), and Actions run pages
+          # are unreadable from some QA sessions. audits/ is always readable.
+          mkdir -p audits/failed-runs
+          DETAIL="audits/failed-runs/$(date -u +%Y-%m-%d)-run-${{ steps.inspect.outputs.run_id }}.md"
+          {
+            echo "# Failed run detail: ${{ steps.inspect.outputs.wf_name }}"
+            echo ""
+            echo "Run: ${{ steps.inspect.outputs.html_url }} (attempt ${{ steps.inspect.outputs.attempt }})"
+            echo ""
+            echo '```'
+            echo "$LOG_TAIL"
+            echo '```'
+          } > "$DETAIL"
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          git add "$DETAIL"
+          git commit -m "Failed-run detail: ${{ steps.inspect.outputs.wf_name }} run ${{ steps.inspect.outputs.run_id }}" || echo "Nothing to commit"
+          git push origin HEAD:main || echo "::warning::Detail push failed (race)"
+          # Wave 291: label must exist or gh issue create fails silently
+          gh label create ci-failure --repo "$GITHUB_REPOSITORY" --description "Auto-escalated CI failure" --color D93F0B 2>/dev/null || true
           BODY_FILE=$(mktemp)
           {
             echo "A workflow failed twice in a row. Failure-handler escalating."
