@@ -6,16 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Stone, Megalith Standing",
-      "query": "megalith standing stone",
-      "category": "Architecture & Infrastructure"
-    },
-    {
-      "subject": "Brick, Firebrick Furnace",
-      "query": "firebrick refractory furnace",
-      "category": "Architecture & Infrastructure"
-    },
-    {
       "subject": "Trophy, Stanley Cup",
       "query": "stanley cup trophy hockey",
       "category": "Other"
