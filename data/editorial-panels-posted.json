@@ -94,7 +94,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-06-wedding-cake",
+      "at": "2026-07-12T17:53:25.484Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a53d494f1ceb04066973a37"
+        },
+        {
+          "service": "facebook",
+          "id": "6a53d4945f9decadd297ab22"
+        },
+        {
+          "service": "instagram",
+          "id": "6a53d49500357d0bb6665588"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-07-05T17:56:53.549Z"
+  "lastPostedAt": "2026-07-12T17:53:25.484Z"
 }
