@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-07-12",
+    "word": "Brick, Firebrick Furnace",
+    "pronunciation": "/FIR-brik FUR-niss/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A specially designed refractory brick, robust in thermal resilience, used to line high-temperature enclosures such as furnaces and kilns; esp. one perceived as gravitationally significant when viewed astern in raking light.",
+      "<em>colloq.</em> The cornerstone's overachieving cousin that insists on being the star of the masonry show, even when the walls just want to blend in."
+    ],
+    "example": "In the village bakery, the thiccc firebrick furnace basked in its own heat, making even the sourdoughs feel underdressed.",
+    "etymology": "From Middle English 'brik', from Middle French 'brique', derived from Old Dutch 'brikke', meaning 'broken'. This one clearly hit the gym.",
+    "image": "images/2026-07-12-brick-firebrick-furnace.jpg",
+    "caption": "Plate N. A firebrick furnace, steadfastly supporting ambitions and bread alike.",
+    "tags": [
+      "industrial",
+      "architecture",
+      "culinary",
+      "construction"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 8,
+    "photographer": "Snap Wander",
+    "photographerUrl": "https://unsplash.com/@passimage",
+    "unsplashUrl": "https://unsplash.com/photos/a-brick-building-with-a-door-gqL_ewzSNOQ",
+    "socialCaptions": {
+      "morning": "Brick, Firebrick Furnace. Born to withstand 1,800°F. \nThe sourdoughs? They just loaf around.",
+      "afternoon": "The firebrick furnace—first documented in the 15th century. \nStill hotter than your average timeline. #Brick",
+      "evening": "From the archives, Brick, Firebrick Furnace.\nA medieval artisan's answer to modern thermal stress testing.",
+      "reels": "Firebrick Furnace: where even the flames ask for shade."
+    }
+  },
+  {
     "date": "2026-07-11",
     "word": "Pillow, Down European",
     "pronunciation": "PIL-oh, down yoo-ro-PEE-an",
