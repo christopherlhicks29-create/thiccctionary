@@ -1,55 +1,22 @@
 {
-  "generated_at": "2026-07-06T07:17:00.510Z",
-  "scanned": 87,
-  "passed": 68,
-  "failed": 19,
+  "generated_at": "2026-07-13T06:20:14.333Z",
+  "scanned": 94,
+  "passed": 76,
+  "failed": 18,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 25
   },
   "failures": [
     {
-      "date": "2026-05-03",
-      "word": "Banana, Cavendish",
-      "imageUrl": "https://thiccctionary.com/images/2026-05-03-banana-cavendish.jpg",
-      "score": 1,
-      "subjectPct": 20,
-      "verdict": "reject",
-      "photoSubject": "close-up of a decaying surface with ants",
-      "critique": "The image does not depict Cavendish bananas as described. Instead, it shows a close-up of a decaying surface with ants, which is not relevant to the subject. The subject is not prominent, occupying less than 25% of the frame, and the focus is unclear. This image does not fit the brand's requirement for a clear representation of the subject.",
-      "passed": false
-    },
-    {
       "date": "2026-05-24",
       "word": "Crankshaft, Marine Diesel",
       "imageUrl": "https://thiccctionary.com/images/2026-05-24-crankshaft-marine-diesel.jpg",
       "score": 2,
-      "subjectPct": 20,
-      "verdict": "reject",
-      "photoSubject": "industrial machinery in a workshop setting",
-      "critique": "The photo depicts a large piece of industrial machinery, but the crankshaft is not clearly identifiable as the primary subject. The machinery occupies a small portion of the frame, and the surrounding environment is cluttered, making it difficult to focus on the crankshaft itself. The image lacks the clarity and focus needed to serve as a documentary plate for a marine diesel crankshaft.",
-      "passed": false
-    },
-    {
-      "date": "2026-04-22",
-      "word": "Reel, Cable Industrial",
-      "imageUrl": "https://thiccctionary.com/images/2026-04-22-reel-cable-industrial.jpg",
-      "score": 2,
-      "subjectPct": 20,
-      "verdict": "reject",
-      "photoSubject": "yellow industrial hoses connected to a building",
-      "critique": "The photo depicts yellow industrial hoses, not a cable reel. The hoses are prominent but not the primary subject. The image includes several distractions, such as people and vehicles, which detract from the focus on the hoses. The subject occupies less than 25% of the frame, making it unsuitable for the intended catalog entry. The framing and clutter prevent it from being a strong representation of a cable reel.",
-      "passed": false
-    },
-    {
-      "date": "2026-07-03",
-      "word": "Mattress, Pillow-Top King",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-03-mattress-pillow-top-king.jpg",
-      "score": 2,
       "subjectPct": 30,
       "verdict": "reject",
-      "photoSubject": "man transporting mattresses on a tricycle",
-      "critique": "The photo primarily depicts a person transporting multiple mattresses on a tricycle, rather than focusing on a single 'Pillow-Top King' mattress. The subject of interest, the mattress, is not prominent enough, occupying only about 30% of the frame. The presence of the person and the urban background adds clutter, distracting from the intended focus on the mattress itself. This image does not meet the criteria for a clear, focused depiction of the subject.",
+      "photoSubject": "industrial machinery in a workshop setting",
+      "critique": "The photo depicts a large piece of industrial machinery, but it is not clearly identifiable as a marine diesel crankshaft. The framing includes a lot of surrounding elements, making the subject unclear and cluttered. The crankshaft itself is not the focal point, occupying less than 40% of the frame, which diminishes its prominence. The image does not fit the brand's style as it appears more like a documentary shot rather than a marketing render.",
       "passed": false
     },
     {
@@ -59,19 +26,8 @@
       "score": 3,
       "subjectPct": 20,
       "verdict": "reject",
-      "photoSubject": "tractor in a workshop setting",
-      "critique": "The image primarily depicts a tractor within a workshop environment, with the rear tire being only a part of the scene. The tire does not dominate the frame, occupying less than 25% of the area, which makes it difficult to identify the subject as the tire itself. The presence of other machinery and workshop elements adds clutter, detracting from the tire as the focal point. The framing does not center the tire, and the overall composition resembles a documentary style rather than a focused marketing render.",
-      "passed": false
-    },
-    {
-      "date": "2026-06-28",
-      "word": "Tank, Sherman M4",
-      "imageUrl": "https://thiccctionary.com/images/2026-06-28-tank-sherman-m4.jpg",
-      "score": 3,
-      "subjectPct": 30,
-      "verdict": "reject",
-      "photoSubject": "crew members inside a Sherman M4 tank",
-      "critique": "The photo primarily focuses on the crew members inside the Sherman M4 tank rather than the tank itself. The tank is not fully visible, and the presence of people makes it more of a portrait than a documentary image of the tank. The framing does not center the tank as the main subject, and the tank occupies less than 40% of the frame, which limits its effectiveness as a representation of the Sherman M4. The image does not fit the brand's focus on inanimate objects.",
+      "photoSubject": "tractor in a workshop",
+      "critique": "The photo primarily depicts a tractor within a workshop setting, with the rear tire being just one component of the scene. The tire occupies a small portion of the frame, making it difficult to identify as the main subject. Additionally, the cluttered environment and presence of other machinery distract from the focus on the tire. The image does not fit the brand's documentary style, as it lacks the necessary emphasis on the tire itself.",
       "passed": false
     },
     {
@@ -81,19 +37,8 @@
       "score": 3,
       "subjectPct": 30,
       "verdict": "reject",
-      "photoSubject": "a jazz quintet with double basses",
-      "critique": "The photo primarily depicts a jazz quintet, with multiple musicians and instruments visible, rather than focusing solely on the upright double bass. The double basses occupy a significant portion of the frame but are not the clear focal point due to the presence of the musicians. The image is cluttered with multiple elements, making it difficult to identify the double bass as the primary subject. The framing includes people, which disqualifies it for this context.",
-      "passed": false
-    },
-    {
-      "date": "2026-06-01",
-      "word": "Combine Harvester, John Deere",
-      "imageUrl": "https://thiccctionary.com/images/2026-06-01-combine-harvester-john-deere.jpg",
-      "score": 3,
-      "subjectPct": 30,
-      "verdict": "reject",
-      "photoSubject": "a person operating a combine harvester",
-      "critique": "The photo primarily depicts a person operating a combine harvester, which disqualifies it as the focus is not solely on the machine. The harvester occupies less than 40% of the frame, and the presence of the person shifts the focus away from the intended subject. Additionally, the background is somewhat cluttered with vegetation, which detracts from the prominence of the harvester itself.",
+      "photoSubject": "musicians playing double basses in an orchestra",
+      "critique": "The photo primarily depicts musicians playing double basses rather than focusing on the double bass itself. The instruments are not the clear focal point, as the musicians and the setting draw significant attention. The double basses occupy less than 40% of the frame, and the presence of multiple people makes it difficult to identify the subject as solely the double bass. The image lacks the clarity and focus needed for a dictionary entry centered on the instrument.",
       "passed": false
     },
     {
@@ -104,7 +49,7 @@
       "subjectPct": 30,
       "verdict": "reject",
       "photoSubject": "a person holding a contrabass tuba",
-      "critique": "The photo primarily focuses on a person holding the contrabass tuba, rather than the instrument itself. The tuba does not occupy enough of the frame to be the clear subject, and the presence of the person distracts from the intended focus. Additionally, the framing does not capture the entire silhouette of the tuba, making it difficult to appreciate its form. The image lacks the clarity and focus needed for a documentary-style representation of the contrabass tuba.",
+      "critique": "The photo primarily features a person holding a contrabass tuba, with the instrument itself not occupying a significant portion of the frame. The presence of the person and other background elements distracts from the tuba being the focal point. Additionally, the framing does not allow for a clear view of the entire instrument, which affects its suitability for a dictionary entry focused solely on the contrabass tuba.",
       "passed": false
     },
     {
@@ -115,29 +60,40 @@
       "subjectPct": 30,
       "verdict": "reject",
       "photoSubject": "an industrial structure with a crane",
-      "critique": "The photo does not prominently feature the Bagger 288 as the main subject. The structure occupies only about 30% of the frame, and the image lacks the clarity needed to identify the subject as the Bagger 288 without prior context. Additionally, the framing includes significant background elements that distract from the subject, making it unsuitable for the intended catalog entry.",
+      "critique": "The photo does not clearly depict the Bagger 288 as the primary subject, with the crane and industrial structure occupying a significant portion of the frame. The subject is not prominent enough, and the composition includes distracting elements like the building and sky. The image lacks the documentary style suitable for a marketing render, and the subject is not easily identifiable as the Bagger 288 without context.",
       "passed": false
     },
     {
-      "date": "2026-04-20",
-      "word": "Stack, Pancakes Diner",
-      "imageUrl": "https://thiccctionary.com/images/2026-04-20-stack-pancakes-diner.jpg",
-      "score": 3,
-      "subjectPct": 30,
-      "verdict": "reject",
-      "photoSubject": "a large array of pancakes laid out in a pattern",
-      "critique": "The image does not depict a single stack of pancakes as suggested, but rather a large array of pancakes laid out in a pattern. The subject is not centered or clearly defined, leading to confusion about the primary focus. The pancakes occupy around 30% of the frame, which is insufficient for the subject prominence required. Additionally, the image lacks the documentary or marketing quality expected for a Thiccctionary entry.",
-      "passed": false
-    },
-    {
-      "date": "2026-05-06",
-      "word": "Wheel, Parmigiano-Reggiano",
-      "imageUrl": "https://thiccctionary.com/images/2026-05-06.jpg",
+      "date": "2026-07-13",
+      "word": "Trophy, Stanley Cup",
+      "imageUrl": "https://thiccctionary.com/images/2026-07-13-trophy-stanley-cup.jpg",
       "score": 4,
       "subjectPct": 20,
       "verdict": "reject",
-      "photoSubject": "stacks of Parmigiano-Reggiano wheels in a storage room",
-      "critique": "The photo captures numerous Parmigiano-Reggiano wheels stacked in a storage room, but the individual wheel is not the primary focus. The image is cluttered with many wheels, making it difficult to identify a single wheel as the subject. The framing includes too much of the surrounding environment, reducing the prominence of any one wheel. This does not fit the intended subject of a singular wheel, and the subject occupies less than 25% of the frame.",
+      "photoSubject": "a display case with a trophy and a background image",
+      "critique": "The photo features a display case containing a trophy, but the trophy itself occupies a small portion of the frame, making it difficult to identify as the primary subject. The background image and surrounding elements create clutter, detracting from the focus on the trophy. The overall composition does not align well with the intended subject of 'Trophy, Stanley Cup,' as the trophy is not prominently featured.",
+      "passed": false
+    },
+    {
+      "date": "2026-06-04",
+      "word": "Barrel, Oak Bourbon",
+      "imageUrl": "https://thiccctionary.com/images/2026-06-04-barrel-oak-bourbon.jpg",
+      "score": 4,
+      "subjectPct": 20,
+      "verdict": "reject",
+      "photoSubject": "a large barrel on a cart in a grassy field",
+      "critique": "The photo depicts a large barrel mounted on a cart, situated in a grassy field. While the barrel is clearly visible, it occupies a small portion of the frame, making it less prominent as the primary subject. The surrounding landscape distracts from the barrel itself, and the image does not fit the typical documentary or marketing style expected for a product like an oak bourbon barrel. The subject's silhouette is complete, but the overall framing and subject prominence are insufficient for the intended purpose.",
+      "passed": false
+    },
+    {
+      "date": "2026-07-09",
+      "word": "Dumper, Off-Highway",
+      "imageUrl": "https://thiccctionary.com/images/2026-07-09-dumper-off-highway.jpg",
+      "score": 4,
+      "subjectPct": 30,
+      "verdict": "reject",
+      "photoSubject": "a front view of a truck on a coastal job site",
+      "critique": "The photo captures a truck prominently, but it does not clearly depict an off-highway dumper as the main subject. The truck occupies about 30% of the frame, and the presence of a person and the coastal background adds distractions. The grayscale adds a documentary feel, but the framing and subject prominence do not align well with the intended focus on an off-highway dumper.",
       "passed": false
     },
     {
@@ -147,19 +103,63 @@
       "score": 4,
       "subjectPct": 30,
       "verdict": "reject",
-      "photoSubject": "steel I-beams under a bridge",
-      "critique": "The photo captures steel I-beams as part of a bridge structure, but the beams themselves are not the primary focus. The image includes a large portion of the bridge and sky, reducing the prominence of the I-beams. The framing does not isolate the beams sufficiently, and the overall composition appears more like a scenic shot rather than a focused depiction of the beams. This makes it unsuitable for a dictionary entry specifically about steel I-beams.",
+      "photoSubject": "steel beams under a bridge",
+      "critique": "The photo captures steel beams under a bridge, but the beams themselves do not dominate the frame, occupying only about 30% of it. The image is more about the bridge structure as a whole rather than focusing on the I-beams specifically. Additionally, the beams are not centered, and the overall composition includes distractions such as the sky and other bridge elements. This makes it unsuitable for a focused entry on 'Steel I-Beam.'",
       "passed": false
     },
     {
-      "date": "2026-06-15",
-      "word": "Cinder Block, Concrete",
-      "imageUrl": "https://thiccctionary.com/images/2026-06-15-cinder-block-concrete.jpg",
+      "date": "2026-06-30",
+      "word": "Boiler, Steam Locomotive",
+      "imageUrl": "https://thiccctionary.com/images/2026-06-30-boiler-steam-locomotive.jpg",
       "score": 4,
       "subjectPct": 30,
       "verdict": "reject",
-      "photoSubject": "a single cinder block on a cement surface",
-      "critique": "The photo captures a cinder block on a cement surface, but the framing and angle make it difficult to immediately identify as a cinder block. The subject occupies about 30% of the frame, which is below the threshold for prominence. The image lacks clarity and focus on the cinder block itself, making it less suitable for a dictionary entry where the object should be immediately recognizable. The surrounding elements, like the grass and texture, add clutter and distract from the primary subject.",
+      "photoSubject": "steam locomotive in motion",
+      "critique": "The photo captures a steam locomotive in motion, but the focus is not specifically on the boiler. The locomotive occupies about 30% of the frame, with surrounding scenery and steam taking up significant space. The subject is not centered enough to allow for a natural crop that highlights the boiler specifically. Additionally, the image has a documentary feel rather than a marketing render, which may not fit the brand's style.",
+      "passed": false
+    },
+    {
+      "date": "2026-06-29",
+      "word": "Column, Doric Greek",
+      "imageUrl": "https://thiccctionary.com/images/2026-06-29-column-doric-greek.jpg",
+      "score": 4,
+      "subjectPct": 30,
+      "verdict": "reject",
+      "photoSubject": "ancient Greek temple with Doric columns",
+      "critique": "The photo captures an ancient Greek temple featuring Doric columns, but the columns are part of a larger structure, making them less prominent. The temple occupies a significant portion of the frame, but the focus is on the entire building rather than individual columns. The image is clear and well-framed, but it doesn't isolate the Doric column as the primary subject, which is necessary for this context.",
+      "passed": false
+    },
+    {
+      "date": "2026-06-28",
+      "word": "Tank, Sherman M4",
+      "imageUrl": "https://thiccctionary.com/images/2026-06-28-tank-sherman-m4.jpg",
+      "score": 4,
+      "subjectPct": 30,
+      "verdict": "reject",
+      "photoSubject": "crew members inside a Sherman M4 tank",
+      "critique": "The photo primarily focuses on the crew members inside the Sherman M4 tank, rather than the tank itself. The tank's silhouette is incomplete, and the framing centers more on the individuals, which distracts from the intended subject. The subject occupies less than 40% of the frame, making it difficult to identify the tank as the main focus without context. This image does not fit the brand's documentary style due to the emphasis on the people rather than the machinery.",
+      "passed": false
+    },
+    {
+      "date": "2026-06-03",
+      "word": "Mooring Rope, Naval Hawser",
+      "imageUrl": "https://thiccctionary.com/images/2026-06-03-mooring-rope-naval-hawser.jpg",
+      "score": 4,
+      "subjectPct": 30,
+      "verdict": "reject",
+      "photoSubject": "ropes coiled around bollards on a boat",
+      "critique": "The photo captures ropes coiled around bollards on a boat, but the ropes themselves do not dominate the frame. The image includes significant background elements that distract from the subject, and the ropes occupy less than 40% of the frame. The focus is split between the ropes and the boat's deck, making it difficult to identify the subject as a naval hawser without context. The framing and composition do not align well with the intended subject focus.",
+      "passed": false
+    },
+    {
+      "date": "2026-06-01",
+      "word": "Combine Harvester, John Deere",
+      "imageUrl": "https://thiccctionary.com/images/2026-06-01-combine-harvester-john-deere.jpg",
+      "score": 4,
+      "subjectPct": 30,
+      "verdict": "reject",
+      "photoSubject": "a person operating a combine harvester",
+      "critique": "The photo primarily focuses on a person operating the combine harvester, which disqualifies it due to the presence of a person as the main subject. Additionally, the combine harvester occupies less than 40% of the frame, making it difficult to identify as the primary subject. The background is somewhat cluttered with vegetation, which detracts from the focus on the machinery. Overall, the image does not meet the criteria for a clear depiction of a 'John Deere combine harvester.'",
       "passed": false
     },
     {
@@ -169,41 +169,19 @@
       "score": 4,
       "subjectPct": 30,
       "verdict": "reject",
-      "photoSubject": "a whale partially submerged in the ocean",
-      "critique": "The photo captures a blue whale partially submerged, but the whale does not dominate the frame, occupying only about 30% of it. The boat in the background adds clutter and distracts from the whale as the focal point. The silhouette of the whale is incomplete, making it difficult to appreciate its full form. Overall, the image lacks the prominence and clarity needed for a strong entry.",
+      "photoSubject": "a whale partially visible in the ocean",
+      "critique": "The photo captures a blue whale, but only a portion of its back is visible, making it difficult to identify as the primary subject. The whale occupies less than 40% of the frame, and the presence of a boat in the background distracts from the whale's prominence. The image lacks the clarity and focus needed to highlight the whale's thicccness effectively.",
       "passed": false
     },
     {
-      "date": "2026-04-17",
-      "word": "Capybara, Greater",
-      "imageUrl": "https://thiccctionary.com/images/2026-04-17-capybara-greater.jpg",
+      "date": "2026-05-06",
+      "word": "Wheel, Parmigiano-Reggiano",
+      "imageUrl": "https://thiccctionary.com/images/2026-05-06.jpg",
       "score": 4,
       "subjectPct": 30,
       "verdict": "reject",
-      "photoSubject": "capybara swimming in water",
-      "critique": "The photo captures a capybara swimming, but the subject occupies only about 30% of the frame, which limits its prominence. The capybara is partially obscured by the water and surrounding branches, making it difficult to clearly identify the subject. The framing is off-center, and the image contains distractions like the branches and leaves, which detract from the focus on the capybara. Overall, the image does not meet the criteria for a clear and focused depiction of the subject.",
-      "passed": false
-    },
-    {
-      "date": "2026-06-30",
-      "word": "Boiler, Steam Locomotive",
-      "imageUrl": "https://thiccctionary.com/images/2026-06-30-boiler-steam-locomotive.jpg",
-      "score": 4,
-      "subjectPct": 35,
-      "verdict": "reject",
-      "photoSubject": "steam locomotive in motion",
-      "critique": "The photo captures a steam locomotive in motion, but the focus is on the entire train rather than specifically on the boiler. The locomotive occupies a significant portion of the frame, but the boiler itself is not prominently featured or isolated. The image includes surrounding scenery and steam, which adds to the visual interest but detracts from the specific focus on the boiler. The subject does not meet the criteria for a clear depiction of a 'Boiler, Steam Locomotive' as required.",
-      "passed": false
-    },
-    {
-      "date": "2026-06-23",
-      "word": "Baobab, African",
-      "imageUrl": "https://thiccctionary.com/images/2026-06-23-baobab-african.jpg",
-      "score": 4,
-      "subjectPct": 35,
-      "verdict": "reject",
-      "photoSubject": "tree trunk and branches",
-      "critique": "The photo captures a portion of a tree trunk and branches, but it lacks the iconic silhouette of a baobab tree, making it difficult to identify the subject as a baobab without context. The framing is tight, and the subject occupies only about 35% of the frame, with the rest filled by foliage. This reduces the prominence of the baobab as the primary subject. The image appears more like a nature shot rather than a clear documentary or marketing render of a baobab tree.",
+      "photoSubject": "stacks of Parmigiano-Reggiano wheels in a storage room",
+      "critique": "The image captures numerous Parmigiano-Reggiano wheels stacked in a storage room, but no single wheel is the focal point. The subject is not centered, and the clutter of multiple wheels detracts from identifying a specific wheel as the subject. The composition resembles a documentary rather than a marketing render, and the primary subject occupies less than 40% of the frame, making it unsuitable for the intended entry.",
       "passed": false
     },
     {
@@ -213,8 +191,19 @@
       "score": 4,
       "subjectPct": 35,
       "verdict": "reject",
-      "photoSubject": "a container ship docked at a port",
-      "critique": "The photo depicts a container ship docked at a port, but the framing includes significant surrounding elements such as cranes and other ships, which distract from the ship itself. The ship occupies less than 40% of the frame, and the focus is not solely on the Maersk ship, making it unsuitable for a dedicated entry. The image lacks the clear, isolated focus needed for a 'Ship, Container Maersk' entry.",
+      "photoSubject": "a container ship docked at a terminal",
+      "critique": "The photo features a container ship docked at a terminal, but the ship occupies less than 40% of the frame, with significant visual competition from the cranes and surrounding infrastructure. The framing is slightly off-center, and the image includes a lot of clutter, which detracts from the ship being the clear focal point. The photo appears more like a documentary shot rather than a marketing render, which affects its brand fit for the Thiccctionary.",
+      "passed": false
+    },
+    {
+      "date": "2026-04-20",
+      "word": "Stack, Pancakes Diner",
+      "imageUrl": "https://thiccctionary.com/images/2026-04-20-stack-pancakes-diner.jpg",
+      "score": 4,
+      "subjectPct": 70,
+      "verdict": "reject",
+      "photoSubject": "a close-up of overlapping pancakes",
+      "critique": "The image focuses on a close-up of overlapping pancakes rather than a towering stack. While the pancakes are prominent and fill the frame, the composition does not match the description of a 'towering stack.' The lack of verticality and syrup interaction diminishes the intended subject's impact, making it unsuitable for the entry.",
       "passed": false
     }
   ]
