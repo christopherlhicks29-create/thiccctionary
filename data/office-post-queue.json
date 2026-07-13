@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Sat next to Heloise Tamberlain at dinner in Cannes. She restores antique safes. I asked how heavy the largest one was. She said \"unknowably.\" I have been turning that word over for three days.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-13T18:53:40.672Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1783880079230",
