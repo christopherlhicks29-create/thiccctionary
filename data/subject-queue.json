@@ -6,14 +6,34 @@
   ],
   "queue": [
     {
-      "subject": "Trophy, Stanley Cup",
-      "query": "stanley cup trophy hockey",
-      "category": "Other"
-    },
-    {
       "subject": "Refrigerator, Commercial",
       "query": "commercial walk-in refrigerator",
       "category": "Domestic Goods"
+    },
+    {
+      "subject": "Lobster, Maine",
+      "query": "maine lobster whole",
+      "category": "Other"
+    },
+    {
+      "subject": "Bag, Punching Heavy",
+      "query": "heavy punching bag gym",
+      "category": "Sports & Recreation"
+    },
+    {
+      "subject": "Roll, Hay Round Bale",
+      "query": "round hay bale rolled field",
+      "category": "Produce & Botanical"
+    },
+    {
+      "subject": "Stone, Megalith Standing",
+      "query": "megalith standing stone",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Helmet, Astronaut",
+      "query": "astronaut helmet white spacesuit",
+      "category": "Other"
     }
   ]
 }

@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-07-13",
+    "word": "Trophy, Stanley Cup",
+    "pronunciation": "/STAN-lee cup/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A championship trophy of prodigious magnitude, renowned for its imposing height and tiered design, traditionally awarded in professional hockey. Its presence in the trophy case is less a display and more a gravitational center.",
+      "<em>colloq.</em> The heavyweight of the trophy world: a gleaming monument to victory that refuses to be ignored, even from its climate-controlled enclosure."
+    ],
+    "example": "He stood in awe before the thiccc Stanley Cup, its metallic girth mirrored in the glass like a silver monolith. The trophy case seemed like an afterthought.",
+    "etymology": "Named after Lord Stanley of Preston, Governor General of Canada, who first presented it in 1893. The only trophy that doubles as a mobile party centerpiece.",
+    "image": "images/2026-07-13-trophy-stanley-cup.jpg",
+    "caption": "Plate N., A trophy in repose, contemplating its next public appearance.",
+    "tags": [
+      "girth",
+      "architecture"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 6,
+    "photographer": "Amaury TRAVER",
+    "photographerUrl": "https://unsplash.com/@beyondreality",
+    "unsplashUrl": "https://unsplash.com/photos/a-picture-of-a-hockey-trophy-in-a-case-4NjkwAKBdJg",
+    "socialCaptions": {
+      "morning": "Trophy, Stanley Cup—34.5 inches tall and 34.5 pounds of pure hockey heritage. Designed for hoisting, not holding.",
+      "afternoon": "Carved with 2,400 names, yet still demands respect from even the most seasoned of skaters. Stanley Cup.",
+      "evening": "From the archives, Trophy, Stanley Cup.\nFirst lifted in 1893, it now tours the globe as a metallic ambassador of icy glory.",
+      "reels": "Reigning since 1893—Stanley Cup. The only trophy with its own travel itinerary."
+    }
+  },
+  {
     "date": "2026-07-12",
     "word": "Brick, Firebrick Furnace",
     "pronunciation": "/FIR-brik FUR-niss/",
