@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/vehicle.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "vehicle".</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Jul 2026 01:45:15 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 01:22:26 GMT</lastBuildDate>
+    <item>
+      <title>Helmet, Astronaut</title>
+      <link>https://thiccctionary.com/entries/2026-07-14.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-14.html</guid>
+      <pubDate>Tue, 14 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A spherical enclosure of considerable heft, designed to shield the noggin of spacefarers from the harsh void, characterized by reflective surfaces that catch the eye of museum-goers with a glint of otherworldly allure.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-14-helmet-astronaut.jpg" type="image/jpeg" length="0" />
+      <category>industrial</category><category>vehicle</category>
+    </item>
     <item>
       <title>Dumper, Off-Highway</title>
       <link>https://thiccctionary.com/entries/2026-07-09.html</link>
