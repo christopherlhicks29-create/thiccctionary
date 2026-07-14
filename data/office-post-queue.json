@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1784054144748",
+    "created": "2026-07-14T18:35:44.748Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "office",
+    "text": "Someone left a photocopy of a 1994 newsletter on my desk. No note. The staple placement is wrong and the margins are wider than I would have used. I have no further comment.\n\nBartholomew",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1783968818401",
     "created": "2026-07-13T18:53:38.401Z",
     "byline_id": "margie",
