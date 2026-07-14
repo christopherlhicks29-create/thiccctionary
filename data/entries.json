@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-07-14",
+    "word": "Helmet, Astronaut",
+    "pronunciation": "/HEL-mit, AS-tro-naut/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A spherical enclosure of considerable heft, designed to shield the noggin of spacefarers from the harsh void, characterized by reflective surfaces that catch the eye of museum-goers with a glint of otherworldly allure.",
+      "<em>colloq.</em> What you'd get if a goldfish bowl had ambitions of interstellar travel."
+    ],
+    "example": "He marveled at the astronaut helmet, so thiccc it seemed to have its own gravitational pull. The gift shop realigned around it.",
+    "etymology": "From Greek 'helme' (protection) + 'naut' (sailor), first attested in astronautical contexts in the mid-20th century. The etymology suggests a lineage of bold protection, with a side of cosmic flair.",
+    "image": "images/2026-07-14-helmet-astronaut.jpg",
+    "caption": "Plate N., The subject's posterior, viewed astern, defies casual description.",
+    "tags": [
+      "industrial",
+      "vehicle"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 9,
+    "photographer": "Bernd 📷 Dittrich",
+    "photographerUrl": "https://unsplash.com/@hdbernd",
+    "unsplashUrl": "https://unsplash.com/photos/a-person-in-a-space-suit-qFy6XHPyk5A",
+    "socialCaptions": {
+      "morning": "Helmet, Astronaut. 12 layers of protection—against space, time, and amateur museum photographers.",
+      "afternoon": "Reflective visor: a 24-karat view of the unknown. Shines brighter than a gift shop trinket—Helmet, Astronaut.",
+      "evening": "From the archives, Helmet, Astronaut.\nFirst donned in 1961. Still more stylish than your uncle's fishing hat.",
+      "reels": "Helmet, Astronaut. 6 pounds on Earth. In space? Weightless—thiccc, yet ethereal."
+    }
+  },
+  {
     "date": "2026-07-13",
     "word": "Trophy, Stanley Cup",
     "pronunciation": "/STAN-lee cup/",
