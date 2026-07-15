@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-15",
+    "word": "Roll, Cinnamon Bun Oversized",
+    "pronunciation": "/SIN-uh-min bun OH-ver-syzd/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A culinary creation of astonishing depth, characterized by a warm spiral of dough that exceeds standard plate dimensions; esp. one observed astern, in raking light.",
+      "<em>colloq.</em> The gravitational center of any bakery display, defying shelving conventions with unapologetic bulk."
+    ],
+    "example": "The bakery unveiled a thiccc cinnamon roll, and the display case promptly recalibrated its supports.",
+    "etymology": "From Old French 'cinnamome', meaning 'cinnamon', combined with 'roll', a Middle English term for 'rolled object'. Excessiveness, it seems, is baked right in.",
+    "image": "images/2026-07-15-roll-cinnamon-bun-oversized.jpg",
+    "caption": "Plate N. A cinnamon roll of uncommon breadth, viewed with reverence.",
+    "tags": [
+      "girth",
+      "culinary",
+      "domestic"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Sergio Arze",
+    "photographerUrl": "https://unsplash.com/@sergich",
+    "unsplashUrl": "https://unsplash.com/photos/six-cupcakes-bnsBhO9fLYk",
+    "socialCaptions": {
+      "morning": "Roll, Cinnamon Bun Oversized—where gravitational pull meets breakfast.\nForty-five square inches of spiral ambition.",
+      "afternoon": "A morning's worth of dough, unspooled into a 9-inch diameter delight.\nThe pan simply sighed.\n#RollCinnamonBunOversized",
+      "evening": "From the archives, Roll, Cinnamon Bun Oversized.\nFirst sighted in 2021, it remains a gravitational anomaly for pastry lovers.",
+      "reels": "A 7-ounce marvel of dough and spice.\nGlaze, the only appropriate attire."
+    }
+  },
+  {
     "date": "2026-07-14",
     "word": "Helmet, Astronaut",
     "pronunciation": "/HEL-mit, AS-tro-naut/",

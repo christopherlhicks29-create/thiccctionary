@@ -4,5 +4,26 @@
     "VERIFY Unsplash has results for `query` before queueing.",
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass)."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Cake, Wedding Three-Tier",
+      "query": "three tier wedding cake",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Pizza, Detroit Square",
+      "query": "detroit square pan pizza",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Stew, Cast Iron Dutch",
+      "query": "dutch oven stew cast iron",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Boot, Snow Pack Insulated",
+      "query": "snow pack boot insulated",
+      "category": "Other"
+    }
+  ]
 }
