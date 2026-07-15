@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Woman on the F train this morning, asleep against the window, holding her coffee upright. Perfect vertical. For six stops. I kept watching instead of reading. Some things you just don't want to explain away.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-15T22:15:04.127Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1784067253758",
