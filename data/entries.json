@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-16",
+    "word": "Cake, Wedding Three-Tier",
+    "pronunciation": "/kayk, WED-ing three-TEER/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A confectionary monument of stacked indulgence, typically composed of three graduated layers, each encased in fondant and supported by internal engineering. Esp. one viewed in raking light, where shadows deepen its architectural intrigue.",
+      "<em>colloq.</em> The skyscraper of desserts, refusing to yield under the weight of matrimonial expectation."
+    ],
+    "example": "The reception halted as the newlyweds approached their thiccc three-tier wedding cake. It was a crowd-control masterpiece.",
+    "etymology": "From Old Norse 'kaka' (cake), merging with Middle English 'weddung' (wedding), which itself derived from 'weddian' (to pledge). Originally more concerned with vows than vanilla.",
+    "image": "images/2026-07-16-cake-wedding-three-tier.jpg",
+    "caption": "Plate N. A three-tier wedding cake, ascending to comedic heights.",
+    "tags": [
+      "culinary",
+      "architecture",
+      "domestic"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Quilia",
+    "photographerUrl": "https://unsplash.com/@heyquilia",
+    "unsplashUrl": "https://unsplash.com/photos/3-layer-fondant-cake-CeKaBzyvxxI",
+    "socialCaptions": {
+      "morning": "Cake, Wedding Three-Tier—an edible skyscraper.\nEngineered to withstand knife and fork.\nArchitecturally delicious.",
+      "afternoon": "In 1840, Queen Victoria's wedding cake weighed over 300 pounds.\nToday's three-tier marvels\nBalance sugar and spectacle—Cake, Wedding Three-Tier.",
+      "evening": "From the archives, Cake, Wedding Three-Tier.\nGroom's cake was once the thiccc cousin.\nTradition now demands tiers of grandeur.",
+      "reels": "12 inches per tier.\nAn exercise in confectionary ambition."
+    }
+  },
+  {
     "date": "2026-07-15",
     "word": "Roll, Cinnamon Bun Oversized",
     "pronunciation": "/SIN-uh-min bun OH-ver-syzd/",
