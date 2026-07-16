@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Fourteen months. I have submitted seven briefs, sourced three engineering manuals, and conjugated \"vehere\" in four tenses. Bart's total written response: six words. I am beginning to suspect the objection is not etymological.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-16T22:16:54.457Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1784153700767",
