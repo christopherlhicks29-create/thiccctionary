@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jul 2026 01:18:15 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 01:28:06 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Cake, Wedding Three-Tier</title>
+      <link>https://thiccctionary.com/entries/2026-07-16.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-16.html</guid>
+      <pubDate>Thu, 16 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A confectionary monument of stacked indulgence, typically composed of three graduated layers, each encased in fondant and supported by internal engineering. Esp. one viewed in raking light, where shadows deepen its architectural intrigue.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-16-cake-wedding-three-tier.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>architecture</category><category>domestic</category>
+    </item>
     <item>
       <title>Roll, Cinnamon Bun Oversized</title>
       <link>https://thiccctionary.com/entries/2026-07-15.html</link>
@@ -21,6 +30,22 @@
       <description>A culinary creation of astonishing depth, characterized by a warm spiral of dough that exceeds standard plate dimensions; esp. one observed astern, in raking light.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-15-roll-cinnamon-bun-oversized.jpg" type="image/jpeg" length="0" />
       <category>girth</category><category>culinary</category><category>domestic</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 8</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-07-15.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-07-15.html</guid>
+      <pubDate>Wed, 15 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 8.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] From the Boat, Issue 4</title>
+      <link>https://thiccctionary.com/articles/from-the-boat-2026-07-15.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/from-the-boat-2026-07-15.html</guid>
+      <pubDate>Wed, 15 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Bertram Whitmore, Publisher, writes from the Margaret IV. Vol. 4.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Helmet, Astronaut</title>
