@@ -37,7 +37,7 @@ d.line([(W*0.20, rule_y), (W*0.80, rule_y)], fill=INK, width=2)
 
 # Subtitle
 font_sub = ImageFont.truetype(SERIF_ITALIC, 44)
-sub = "A daily reference for thick objects."
+sub = "A daily reference for thiccc things."
 bbox = d.textbbox((0, 0), sub, font=font_sub)
 sw = bbox[2] - bbox[0]
 d.text(((W - sw) // 2 - bbox[0], 360), sub, font=font_sub, fill=INK)
