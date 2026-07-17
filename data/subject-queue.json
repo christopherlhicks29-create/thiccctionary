@@ -6,16 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Pizza, Detroit Square",
-      "query": "detroit square pan pizza",
-      "category": "Foods of Substance"
-    },
-    {
-      "subject": "Stew, Cast Iron Dutch",
-      "query": "dutch oven stew cast iron",
-      "category": "Foods of Substance"
-    },
-    {
       "subject": "Boot, Snow Pack Insulated",
       "query": "snow pack boot insulated",
       "category": "Other"
