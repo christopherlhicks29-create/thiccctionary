@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-17",
+    "word": "Honeydew, Giant",
+    "pronunciation": "/HUH-nee-doo, JY-unt/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A melon of considerable diameter and heft, often found lounging in the produce section with an air of unhurried grandeur; esp. one whose mass challenges the structural integrity of standard countertops.",
+      "<em>colloq.</em> An overachieving fruit that refuses to be relegated to mere snack status, demanding center-stage in fruit salads and picnic tables alike."
+    ],
+    "example": "At the county fair, he picked up a thiccc giant honeydew and the scale groaned in protest. The judges immediately reached for backup ribbons.",
+    "etymology": "From Middle English <em>hony</em> (sweet) + <em>dew</em> (moisture), originally a poetic term for nectar, co-opted by melon enthusiasts. Because sometimes size makes its own rules.",
+    "image": "images/2026-07-17-honeydew-giant.jpg",
+    "caption": "Plate N. Two diminutive predecessors overshadowed by their larger kin.",
+    "tags": [
+      "girth",
+      "produce",
+      "natural-specimens"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 7,
+    "photographer": "nilufar nattaq",
+    "photographerUrl": "https://unsplash.com/@nillufar",
+    "unsplashUrl": "https://unsplash.com/photos/two-small-ribbed-melons-stacked-on-a-green-surface-u9R3HXyKVEU",
+    "socialCaptions": {
+      "morning": "Honeydew, Giant.\nApproximately 15 pounds of melon majesty.\nA countertop's greatest adversary.",
+      "afternoon": "The honeydew's circumference rivals the Great Wall—\neven history bends to its will.\nHoneydew, Giant.",
+      "evening": "From the archives, Honeydew, Giant.\nDebuted in 1920s fruit markets—\na heavyweight in the produce pantheon.",
+      "reels": "A melon of mythic proportions—\nits mass speaks volumes."
+    }
+  },
+  {
     "date": "2026-07-16",
     "word": "Cake, Wedding Three-Tier",
     "pronunciation": "/kayk, WED-ing three-TEER/",
