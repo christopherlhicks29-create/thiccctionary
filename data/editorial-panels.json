@@ -192,6 +192,24 @@
       "image": "images/cartoons/panel-32-great-pyramid.png",
       "subject": "Great Pyramid of Giza",
       "caption": "The Great Pyramid of Giza contains 2.3 million limestone blocks.\n\nEach weighs an average of two and a half tons."
+    },
+    {
+      "id": "panel-33-bagger-288",
+      "image": "images/cartoons/panel-33-bagger-288.png",
+      "subject": "Bagger 288 bucket-wheel excavator",
+      "caption": "The Bagger 288 bucket-wheel excavator weighs thirteen thousand five hundred tons and moves under its own power.\n\nIts top speed is one third of a mile per hour."
+    },
+    {
+      "id": "panel-34-bluefin-tuna",
+      "image": "images/cartoons/panel-34-bluefin-tuna.png",
+      "subject": "Record bluefin tuna",
+      "caption": "The 2019 Toyosu auction record was set by a 612-pound bluefin tuna.\n\nIt sold for three million one hundred thousand dollars."
+    },
+    {
+      "id": "panel-35-uluru",
+      "image": "images/cartoons/panel-35-uluru.png",
+      "subject": "Uluru",
+      "caption": "Uluru rises one thousand one hundred forty-one feet above the desert floor.\n\nGeologists estimate the rock continues for a further mile and a half below it."
     }
   ]
 }
