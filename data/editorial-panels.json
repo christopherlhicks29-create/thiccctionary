@@ -210,6 +210,96 @@
       "image": "images/cartoons/panel-35-uluru.png",
       "subject": "Uluru",
       "caption": "Uluru rises one thousand one hundred forty-one feet above the desert floor.\n\nGeologists estimate the rock continues for a further mile and a half below it."
+    },
+    {
+      "id": "panel-36-heidelberg-tun",
+      "image": "images/cartoons/panel-36-heidelberg-tun.png",
+      "subject": "Heidelberg Tun",
+      "caption": "The Heidelberg Tun, completed in 1751, holds fifty-eight thousand gallons.\n\nA dance floor was built on top."
+    },
+    {
+      "id": "panel-37-big-muskie-bucket",
+      "image": "images/cartoons/panel-37-big-muskie-bucket.png",
+      "subject": "Big Muskie dragline bucket",
+      "caption": "The bucket of the Big Muskie dragline held two hundred twenty cubic yards.\n\nIt now serves as a picnic shelter in Ohio."
+    },
+    {
+      "id": "panel-38-crawler-transporter",
+      "image": "images/cartoons/panel-38-crawler-transporter.png",
+      "subject": "NASA crawler-transporter",
+      "caption": "NASA's crawler-transporter weighs six million pounds unloaded.\n\nTop speed with a rocket aboard is one mile per hour."
+    },
+    {
+      "id": "panel-39-whitechapel-fatberg",
+      "image": "images/cartoons/panel-39-whitechapel-fatberg.png",
+      "subject": "Whitechapel fatberg",
+      "caption": "The Whitechapel fatberg weighed one hundred forty-three tons.\n\nIts removal took nine weeks."
+    },
+    {
+      "id": "panel-40-cawker-twine-ball",
+      "image": "images/cartoons/panel-40-cawker-twine-ball.png",
+      "subject": "Cawker City ball of twine",
+      "caption": "The Cawker City ball of twine weighs more than ten tons.\n\nVisitors are permitted to add twine."
+    },
+    {
+      "id": "panel-41-lego-x-wing",
+      "image": "images/cartoons/panel-41-lego-x-wing.png",
+      "subject": "Full-scale LEGO X-wing",
+      "caption": "The largest LEGO model ever built was a full-scale X-wing starfighter.\n\nIt required five million three hundred thirty-five thousand two hundred bricks."
+    },
+    {
+      "id": "panel-42-ain-dubai",
+      "image": "images/cartoons/panel-42-ain-dubai.png",
+      "subject": "Ain Dubai observation wheel",
+      "caption": "Ain Dubai stands eight hundred twenty feet tall.\n\nIts wheel contains more steel than the Eiffel Tower."
+    },
+    {
+      "id": "panel-43-blue-whale-heart",
+      "image": "images/cartoons/panel-43-blue-whale-heart.png",
+      "subject": "Blue whale heart",
+      "caption": "The heart of a blue whale weighs approximately four hundred pounds.\n\nIt beats as few as two times per minute during a dive."
+    },
+    {
+      "id": "panel-44-iceberg-b15",
+      "image": "images/cartoons/panel-44-iceberg-b15.png",
+      "subject": "Iceberg B-15",
+      "caption": "Iceberg B-15 measured four thousand two hundred square miles when it calved in 2000.\n\nIt was larger than Jamaica."
+    },
+    {
+      "id": "panel-45-hand-of-faith-nugget",
+      "image": "images/cartoons/panel-45-hand-of-faith-nugget.png",
+      "subject": "Hand of Faith gold nugget",
+      "caption": "The Hand of Faith nugget weighs sixty-one pounds.\n\nIt was found in 1980 with a metal detector, twelve inches below the surface."
+    },
+    {
+      "id": "panel-46-cms-detector",
+      "image": "images/cartoons/panel-46-cms-detector.png",
+      "subject": "CMS detector at CERN",
+      "caption": "The CMS detector at CERN weighs fourteen thousand tons.\n\nIt is heavier than the Eiffel Tower."
+    },
+    {
+      "id": "panel-47-leshan-buddha",
+      "image": "images/cartoons/panel-47-leshan-buddha.png",
+      "subject": "Leshan Giant Buddha",
+      "caption": "The Leshan Giant Buddha stands two hundred thirty-three feet tall.\n\nEach ear is twenty-three feet long."
+    },
+    {
+      "id": "panel-48-airbus-a380",
+      "image": "images/cartoons/panel-48-airbus-a380.png",
+      "subject": "Airbus A380",
+      "caption": "The Airbus A380 has a maximum takeoff weight of one point two million pounds.\n\nIt is certified to carry eight hundred fifty-three passengers."
+    },
+    {
+      "id": "panel-49-ball-of-paint",
+      "image": "images/cartoons/panel-49-ball-of-paint.png",
+      "subject": "Alexandria ball of paint",
+      "caption": "A baseball in Alexandria, Indiana has received more than twenty-five thousand coats of paint.\n\nIt weighs approximately two and a half tons."
+    },
+    {
+      "id": "panel-50-toi-gold-bar",
+      "image": "images/cartoons/panel-50-toi-gold-bar.png",
+      "subject": "World's largest gold bar",
+      "caption": "The world's largest gold bar weighs five hundred fifty-one pounds.\n\nIt was cast in Japan in 2005."
     }
   ]
 }
