@@ -200,7 +200,15 @@ async function main() {
       }
       // New convention: include slug so old URLs stop resolving on revert.
       const slug = String(entry.word).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
-      const filename = `${entry.date}-${slug}.jpg`;
+      let filename = `${entry.date}-${slug}.jpg`;
+      // Wave 301: if the regen would reuse the exact same filename, the CDN edge
+      // keeps serving the old bytes (observed 2026-07-18 on the 07-15 entry).
+      // Suffix a short version stamp so the entry HTML points at a fresh URL.
+      const prevPath = entry.image ? entry.image.replace(/^\.?\//, '') : null;
+      if (prevPath === `images/${filename}`) {
+        const stamp = Date.now().toString(36).slice(-4);
+        filename = `${entry.date}-${slug}-${stamp}.jpg`;
+      }
       await downloadImage(chosen, filename);
       console.log(`  Saved new image: images/${filename}`);
 
