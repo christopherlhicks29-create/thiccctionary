@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 299 (2026-07-17, session): 15-panel stockpile before credit reset
+
+- Panels 36-50 live: Heidelberg Tun, Big Muskie bucket, NASA crawler, Whitechapel fatberg, Cawker twine ball, LEGO X-wing, Ain Dubai, blue whale heart, Iceberg B-15, Hand of Faith nugget, CMS detector, Leshan Buddha, A380, Alexandria ball of paint, Toi gold bar. Bank now 50 (~10 months of Sunday cross-posts).
+- Context: Higgsfield credits reset on the 19th monthly with no rollover (~990 were about to expire). Christopher chose panel stockpile from the burn options. 32 credits spent incl. one caption-fix regen (Heidelberg "wine. wine." dupe caught in QA).
+- Plus Annual downgrade deferred: prepaid year, downgrades only apply at term end. Revisit before renewal.
+
 ## Wave 298 (2026-07-17, session): First new editorial panels since May 31 + OG share-card fix
 
 - Panels 33-35 shipped to /cartoons/ and the weekly cross-post manifest: Bagger 288 bucket-wheel excavator, 2019 Toyosu record bluefin, Uluru. House style held (aged-newsprint clipping, typewriter caption, dry stat). 6 Higgsfield credits.
