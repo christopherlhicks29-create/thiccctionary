@@ -77,7 +77,7 @@
       "id": "panel-13-container-ship",
       "image": "images/cartoons/panel-13-container-ship.png",
       "subject": "Ever Ace container ship",
-      "caption": "The Ever Ace, classed Megamax-24, displaces two hundred thirty-five thousand tons fully loaded.\n\nShe carries twenty-four thousand of these."
+      "caption": "The Ever Ace displaces two hundred thirty-five thousand tons fully loaded.\n\nShe carries twenty-four thousand of these."
     },
     {
       "id": "panel-14-brisket-smoker",
@@ -101,7 +101,7 @@
       "id": "panel-17-tower-crane",
       "image": "images/cartoons/panel-17-tower-crane.png",
       "subject": "Liebherr 81 K.1 tower crane",
-      "caption": "A Liebherr 81 K.1 has a thirty-six meter jib at radius.\n\nThe counterweight is calculated to seven decimal places."
+      "caption": "A Liebherr 81 K.1 has a thirty-six meter jib.\n\nIts counterweight is calculated to seven decimal places."
     },
     {
       "id": "panel-18-nebuchadnezzar-wine",
