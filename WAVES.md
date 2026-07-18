@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 298 (2026-07-17, session): First new editorial panels since May 31 + OG share-card fix
+
+- Panels 33-35 shipped to /cartoons/ and the weekly cross-post manifest: Bagger 288 bucket-wheel excavator, 2019 Toyosu record bluefin, Uluru. House style held (aged-newsprint clipping, typewriter caption, dry stat). 6 Higgsfield credits.
+- Earlier same session: og-default.png share card said "thick objects"; regenerated to the canonical "thiccc things" tagline and verified live.
+- Utilization audit finding: Higgsfield balance ~998 credits with 11 days left in cycle; monthly-burn workflow (28th) has never produced output because no session reads its reminder issue. Fix shipped separately: recurring scheduled task now fires an actual generation session monthly on the 26th.
+
 ## Wave 297 (2026-07-11, autonomous): FB Reels ROOT CAUSE FOUND AND FIXED after 3+ weeks
 
 - Buffer's createPost API now hard-rejects video.thumbnailUrl ("Invalid post input: Video thumbnailUrl is not supported"). Every FB reel since mid-June died on this; IG survived via its separate daily path. post-to-buffer.js no longer sends thumbnailUrl (networks never accepted custom thumbnails anyway; default = first frame).
