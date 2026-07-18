@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Waves 300-302 (2026-07-18, session): cartoons overhauled end to end + two root-cause fixes
+
+- Wave 300: plate captions ("Plate N. Subject.") added under all cartoons — page previously had zero selectable text per panel.
+- Wave 301 root causes from Christopher's catches: (1) image regens reused the same filename so the CDN edge served stale bytes — regens now version-stamp filenames (proven: cinnamon bun fix live on second pass); (2) image critic scored subject match but never SIZE — new GIRTH TEST caps score at 4 for normal-scale photos.
+- Wave 302: /cartoons/ rebuilt as thumbnail grid + lightbox viewer (~100MB page → ~1.3MB initial); 14 flat-style panels regenerated into the standard aged-clipping style; 4 caption-render failures caught in QA and regenerated; gallery URLs cache-busted (?v=302).
+- New standing automation: DAILY QA sweep scheduled task (trig_01Gs1wFLrpwXVKPrKuau2heY, 13:04 UTC daily) — entry image girth check, style drift, Buffer sweep, workflow health, autonomous fixes.
+
 ## Wave 299 (2026-07-17, session): 15-panel stockpile before credit reset
 
 - Panels 36-50 live: Heidelberg Tun, Big Muskie bucket, NASA crawler, Whitechapel fatberg, Cawker twine ball, LEGO X-wing, Ain Dubai, blue whale heart, Iceberg B-15, Hand of Faith nugget, CMS detector, Leshan Buddha, A380, Alexandria ball of paint, Toi gold bar. Bank now 50 (~10 months of Sunday cross-posts).
