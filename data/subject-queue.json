@@ -6,9 +6,29 @@
   ],
   "queue": [
     {
-      "subject": "Boot, Snow Pack Insulated",
-      "query": "snow pack boot insulated",
-      "category": "Other"
+      "subject": "Sundae, Banana Split",
+      "query": "banana split sundae ice cream",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Chair, Beanbag Oversized",
+      "query": "oversized beanbag chair",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Crockpot, Slow Cooker Oval",
+      "query": "oval slow cooker crockpot",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Engine, V8 Crate",
+      "query": "V8 engine block crate",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Refrigerator, Commercial",
+      "query": "commercial walk-in refrigerator",
+      "category": "Domestic Goods"
     }
   ]
 }

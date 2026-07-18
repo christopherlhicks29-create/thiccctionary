@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-07-18",
+    "word": "Boot, Snow Pack Insulated",
+    "pronunciation": "/boot, snoh pak in-SUH-lay-ted/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A sturdy winter footwear option designed for maximum thermal insulation and substantial ground presence, noted for its thick rubber sole and quilted upper section.",
+      "<em>colloq.</em> Footwear that refuses to sink into snowdrifts, providing non-negotiable traction and warmth in equal measure."
+    ],
+    "example": "He strapped into a pair of thiccc snow boots, the kind that turn a tree stump into a fashion statement. The forest trail bowed in respect.",
+    "etymology": "From Middle English 'bote,' from Old French 'bote,' of Germanic origin. The 'snow pack' bit was added to ensure no one mistakenly wore them to a summer barbecue.",
+    "image": "images/2026-07-18-boot-snow-pack-insulated.jpg",
+    "caption": "Plate N. A pair of sturdy winter boots demonstrating their defiance of winter's chill atop a rustic perch.",
+    "tags": [
+      "domestic",
+      "tools"
+    ],
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 8,
+    "photoScore": 6,
+    "photographer": "Nitin Shivaprasad",
+    "photographerUrl": "https://unsplash.com/@nitinbs",
+    "unsplashUrl": "https://unsplash.com/photos/a-pair-of-shoes-sitting-on-top-of-a-tree-stump-_01UDYZrQL4",
+    "socialCaptions": {
+      "morning": "Boot, Snow Pack Insulated—standing 12 inches tall, a towering sentinel against the elements. The path may freeze, but the boot remains resolute.",
+      "afternoon": "Crafted with 400 grams of Thinsulate, this boot raises the thermostat of winter walks. Stay warm, remain grounded—Boot, Snow Pack Insulated.",
+      "evening": "From the archives, Boot, Snow Pack Insulated.\nDebuted in 1985, it has since marched over 100,000 miles of snowy terrain. The cold is merely a suggestion.",
+      "reels": "The secret? A sole 1.5 inches thick. Winter trembles at its approach."
+    }
+  },
+  {
     "date": "2026-07-17",
     "word": "Honeydew, Giant",
     "pronunciation": "/HUH-nee-doo, JY-unt/",
