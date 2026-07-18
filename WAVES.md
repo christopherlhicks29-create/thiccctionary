@@ -1,5 +1,11 @@
 # Thiccctionary Wave Log
 
+## Wave 303 (2026-07-18) - A-Z page polish + stale image refs
+- a-z.html: added the masthead-top strip (The Index / Every Headword - A to Z) so the page header matches every other page. Reported by Christopher.
+- a-z.html: dek paragraph now actually centered. Inline margin override was killing the stylesheet auto-centering of the 880px block.
+- Rebuilt /is/roll-thiccc/, homepage, and all feeds: they still referenced the pre-rename cinnamon-bun jpg (deleted in Wave 301 cache-buster rename), so the /is/ page had a broken image and og:image. Caught by pre-ship.
+- Lesson filed: a filename-stamping regen MUST be followed by build-is-pages + prerender-homepage + build-rss in the same run.
+
 ## Waves 300-302 (2026-07-18, session): cartoons overhauled end to end + two root-cause fixes
 
 - Wave 300: plate captions ("Plate N. Subject.") added under all cartoons - page previously had zero selectable text per panel.
