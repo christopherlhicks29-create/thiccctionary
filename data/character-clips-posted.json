@@ -85,7 +85,21 @@
           "id": "6a5280b9c4b9e094ad023454"
         }
       ]
+    },
+    {
+      "path": "videos/characters/hugh-industrial-call-back.mp4",
+      "at": "2026-07-18T17:44:18.389Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a5bbb71dd7b7a0aa4cf9c47"
+        },
+        {
+          "service": "instagram",
+          "id": "6a5bbb7228877c7768b46d6c"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-07-11T17:43:21.282Z"
+  "lastPostedAt": "2026-07-18T17:44:18.389Z"
 }
