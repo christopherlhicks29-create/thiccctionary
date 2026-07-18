@@ -1,5 +1,0 @@
-{
-  "dates": "2026-07-15",
-  "subject_override": "giant cinnamon roll",
-  "reason": "Second pass with Wave 301 cache-buster: first regen (PR #180) replaced bytes at the same URL and the edge kept serving the old photo. This run writes a version-stamped filename so the fresh pick actually shows."
-}
