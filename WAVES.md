@@ -1,5 +1,10 @@
 # Thiccctionary Wave Log
 
+## Waves 307-308 (2026-07-18) - Jon's debut column + grouped articles index
+- Wave 307: THE THICCC BEAT, Jon (Circulation Manager) files his first column: the world's largest paper airplane (Pisa, 20.04 m wingspan, 28.49 kg, flew 59 m, Guinness 06-25). Ruling: Not Thiccc. Circulation noted. The paper record went to the paper man. Canon links to the penny-farthing floor and the coin weight-testimony rulings. Live + OG card + sitemap + feeds. Promo queued to X and FB with the article OG card.
+- Wave 308: /articles/ index now grouped by series (The Thiccc Beat 21 / Filed Replies 8 / From the Boat 4 / Features 14) instead of a flat 47-item list. Implemented in regenerate-article-listings.js so every generator inherits it.
+- Fireworks Guinness check: WaPo 07-06 says still TBD. Constance follow-up stays parked.
+
 ## Waves 304-306 (2026-07-18) - FB REELS ACTUALLY FIXED (host-level root cause, proven live)
 - ROOT CAUSE, PROVEN: Facebook's media fetcher cannot pull MP4s from thiccctionary.com (Cloudflare challenges Meta's crawler). Every FB reel Jul 11-18 died with "unable to process media". Same cake MP4, re-fired from jsDelivr, PUBLISHED to Facebook within minutes (fb.com/reel/3295757830631080). Retry with the site URL failed instantly (negative control). Files themselves are spec-perfect (H.264 High 1080x1920/30, AAC 44.1k, faststart).
 - Wave 306: post-to-buffer.js reels default video host is now jsDelivr over the repo. REEL_VIDEO_BASE still overrides.
