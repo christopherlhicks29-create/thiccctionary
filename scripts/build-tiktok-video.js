@@ -117,14 +117,30 @@ async function main() {
   const FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf';
   const FONT_ITALIC = '/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf';
 
-  // Combine headword + (n.) into one drawtext, single-call avoids overlap bugs
-  const headwordLine = escFFText(`${entry.word} (n.)`);
+  // Wave 304: platform-safe layout. FB/IG reels crop ~9% off each side on
+  // tall phones and overlay UI on roughly the bottom 420px, so every text
+  // element must live inside x 120..960 and above y 1500. The headword is
+  // sized to fit instead of fixed at 70 (long titles like "Cake, Wedding
+  // Three-Tier (n.)" used to overflow the frame and clip on both sides).
+  const headwordRaw = `${entry.word} (n.)`;
+  // DejaVu Serif Bold averages ~0.63em advance per char.
+  const fitFont = (text, maxWidth, cap) =>
+    Math.min(cap, Math.floor(maxWidth / (0.63 * text.length)));
+  let headwordText = headwordRaw;
+  let headFS = fitFont(headwordText, 840, 64);
+  if (headFS < 34) {           // extremely long title: drop the (n.) suffix
+    headwordText = entry.word;
+    headFS = Math.max(30, fitFont(headwordText, 840, 64));
+  }
+  const headwordLine = escFFText(headwordText);
+  // Image scaled to 920 wide (not 1080) so it clears the side crop, seated
+  // between the title block and the wordmark band.
   const filterParts = [
-    `[0:v]scale=1080:-1:force_original_aspect_ratio=decrease,pad=1080:1920:0:(1920-ih)/2:color=${CREAM}[bg]`,
-    `[bg]drawtext=fontfile=${FONT}:text='${headwordLine}':fontcolor=${INK}:fontsize=70:x=(w-text_w)/2:y=240[h1]`,
-    `[h1]drawbox=x=194:y=350:w=692:h=3:color=${INK}:t=fill[h2]`,
-    `[h2]drawtext=fontfile=${FONT}:text='thiccc':fontcolor=${INK}:fontsize=220:x=(w-text_w)/2:y=1540:enable='gte(t,2)'[h3]`,
-    `[h3]drawtext=fontfile=${FONT_ITALIC}:text='thiccctionary.com':fontcolor=${OXBLOOD}:fontsize=38:x=(w-text_w)/2:y=h-90[v]`,
+    `[0:v]scale=920:840:force_original_aspect_ratio=decrease,pad=1080:1920:(1080-iw)/2:420:color=${CREAM}[bg]`,
+    `[bg]drawtext=fontfile=${FONT}:text='${headwordLine}':fontcolor=${INK}:fontsize=${headFS}:x=(w-text_w)/2:y=210[h1]`,
+    `[h1]drawbox=x=194:y=310:w=692:h=3:color=${INK}:t=fill[h2]`,
+    `[h2]drawtext=fontfile=${FONT_ITALIC}:text='thiccctionary.com':fontcolor=${OXBLOOD}:fontsize=36:x=(w-text_w)/2:y=346[h3]`,
+    `[h3]drawtext=fontfile=${FONT}:text='thiccc':fontcolor=${INK}:fontsize=160:x=(w-text_w)/2:y=1310:enable='gte(t,2)'[v]`,
   ];
 
   const ffArgs = [
