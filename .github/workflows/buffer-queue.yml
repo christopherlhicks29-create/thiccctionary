@@ -111,5 +111,9 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Wave 131: buffer queue ${{ inputs.action || steps.sentinel.outputs.action }} run"
             git pull --rebase origin main || true
-            git push origin main
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin main; then break; fi
+              sleep $((i*3))
+            done
           fi
