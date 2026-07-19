@@ -109,7 +109,27 @@ jobs:
           TARGET_DATE: ${{ steps.target.outputs.date }}
           SKIP_INSTAGRAM: ${{ steps.target.outputs.skip_instagram }}
           REEL_VIDEO_BASE: ${{ steps.target.outputs.video_base }}
-        run: node post-to-buffer.js
+        run: |
+          set -o pipefail
+          node post-to-buffer.js 2>&1 | tee /tmp/reel-post.log
+
+      - name: Save post log to audits
+        if: always()
+        run: |
+          mkdir -p audits/reel-fires
+          DEST="audits/reel-fires/${{ steps.target.outputs.date }}-run-${{ github.run_id }}.log"
+          cp /tmp/reel-post.log "$DEST" 2>/dev/null || echo "(no log produced)" > "$DEST"
+          git config user.name "Thiccctionary Editorial Board"
+          git config user.email "bot@thiccctionary.com"
+          git add "$DEST"
+          if ! git diff --staged --quiet; then
+            git commit -m "Reel fire log for ${{ steps.target.outputs.date }} (run ${{ github.run_id }})"
+            for i in 1 2 3; do
+              git pull --rebase origin main || true
+              if git push origin HEAD:main; then break; fi
+              sleep $((i*3))
+            done
+          fi
 
       - name: Clear sentinel files
         # Always clean up sentinels so a failed Buffer post doesn't leave a
