@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jul 2026 23:35:20 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 01:29:20 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Sundae, Banana Split</title>
+      <link>https://thiccctionary.com/entries/2026-07-19.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-19.html</guid>
+      <pubDate>Sun, 19 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A decadent dessert of substantial dimensions, characterized by a trio of scoops nestled between halves of a ripe banana, often further adorned with sauces, nuts, and cherries; esp. one whose toppings exhibit gravitational defiance in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-19-sundae-banana-split.jpg" type="image/jpeg" length="0" />
+      <category>culinary</category><category>domestic</category>
+    </item>
     <item>
       <title>Boot, Snow Pack Insulated</title>
       <link>https://thiccctionary.com/entries/2026-07-18.html</link>

@@ -6,11 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Sundae, Banana Split",
-      "query": "banana split sundae ice cream",
-      "category": "Foods of Substance"
-    },
-    {
       "subject": "Chair, Beanbag Oversized",
       "query": "oversized beanbag chair",
       "category": "Domestic Goods"
