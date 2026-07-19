@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 307 (2026-07-19, session): reel text safe-zones
+
+- Christopher's phone screenshot of the cake reel showed the headword clipped on both sides and the "thiccc" wordmark buried under Facebook's bottom UI.
+- Root causes: fixed 70px title font overflows 1080px on long headwords; FB/IG crop roughly 9 percent per side on tall phones and overlay UI on the bottom ~420px.
+- build-tiktok-video.js: headword now sized to fit 840px (drops the "(n.)" suffix when still long), site URL moved up under the title rule, image bounded to 920x840, wordmark 220 to 160px and lifted to y=1310, fully above the UI zone.
+- Verified with local ffmpeg frame renders plus a simulated tall-phone crop and UI band. First live validation: next daily reel.
+
 ## Waves 307-308 (2026-07-18) - Jon's debut column + grouped articles index
 - Wave 307: THE THICCC BEAT, Jon (Circulation Manager) files his first column: the world's largest paper airplane (Pisa, 20.04 m wingspan, 28.49 kg, flew 59 m, Guinness 06-25). Ruling: Not Thiccc. Circulation noted. The paper record went to the paper man. Canon links to the penny-farthing floor and the coin weight-testimony rulings. Live + OG card + sitemap + feeds. Promo queued to X and FB with the article OG card.
 - Wave 308: /articles/ index now grouped by series (The Thiccc Beat 21 / Filed Replies 8 / From the Boat 4 / Features 14) instead of a flat 47-item list. Implemented in regenerate-article-listings.js so every generator inherits it.
