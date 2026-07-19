@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Waves 304-306 (2026-07-18) - FB REELS ACTUALLY FIXED (host-level root cause, proven live)
+- ROOT CAUSE, PROVEN: Facebook's media fetcher cannot pull MP4s from thiccctionary.com (Cloudflare challenges Meta's crawler). Every FB reel Jul 11-18 died with "unable to process media". Same cake MP4, re-fired from jsDelivr, PUBLISHED to Facebook within minutes (fb.com/reel/3295757830631080). Retry with the site URL failed instantly (negative control). Files themselves are spec-perfect (H.264 High 1080x1920/30, AAC 44.1k, faststart).
+- Wave 306: post-to-buffer.js reels default video host is now jsDelivr over the repo. REEL_VIDEO_BASE still overrides.
+- Wave 305: fire-reel.yml now tees post-to-buffer output to audits/reel-fires/. Needed because the 07-18 re-fire skipped silently (green run, no post, no log). Suspected: critic gate with the new girth cap on a normal-sized snow boot. Logs will tell next time.
+- Wave 304: five workflows (site-health, alignment-minute, article-comments, buffer-queue, character-art) had bare git push that loses reports to push races. All now pull-rebase-retry x3. Tonight's site-health report was lost to exactly this.
+- KNOWN LOSS QUEUED: tomorrow 6:04 AM FB+IG reels were queued before Wave 306 and still carry the site URL. FB one will red-banner one last time. IG one is the IG datapoint.
+
 ## Wave 303 (2026-07-18) - A-Z page polish + stale image refs
 - a-z.html: added the masthead-top strip (The Index / Every Headword - A to Z) so the page header matches every other page. Reported by Christopher.
 - a-z.html: dek paragraph now actually centered. Inline margin override was killing the stylesheet auto-centering of the 880px block.
