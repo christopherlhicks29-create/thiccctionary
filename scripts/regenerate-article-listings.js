@@ -90,8 +90,25 @@ async function main() {
   await fs.writeFile(HOMEPAGE_PATH, homepage);
   console.log(`Updated ${path.relative(ROOT, HOMEPAGE_PATH)} with ${topN.length} articles.`);
 
-  // 2. Articles listing: all articles
-  const listingHtml = articles.map(listingCard).join('\n\n');
+  // 2. Articles listing: grouped by series (Wave 308). Order: the recurring
+  // desks first (newest-first within each), then the one-off features.
+  const SERIES = [
+    { key: 'thiccc-beat', heading: 'The Thiccc Beat', blurb: 'The news desk. The cast reacts to certified girth in the wild, and rules on it.' },
+    { key: 'mailbag', heading: 'Filed Replies', blurb: 'The mailbag. Correspondence is answered in the order it should have been sent.' },
+    { key: 'from-the-boat', heading: 'From the Boat', blurb: 'Dispatches filed from the water, where most large objects eventually end up.' },
+    { key: null, heading: 'Features', blurb: 'Standalone scholarship from the editorial desk.' },
+  ];
+  const bySeries = k => articles.filter(a => (k === null ? !SERIES.some(s2 => s2.key && (a.type || a.series) === s2.key) : (a.type || a.series) === k));
+  const sections = SERIES.map(s2 => {
+    const items = bySeries(s2.key);
+    if (items.length === 0) return '';
+    return `    <section class="article-series">
+      <h2 class="section-title" style="margin-top: 2.5rem;">${s2.heading}</h2>
+      <p style="font-style: italic; opacity: 0.75; margin: 0.25rem 0 0.5rem;">${s2.blurb} ${items.length} ${items.length === 1 ? 'article' : 'articles'}.</p>
+${items.map(listingCard).join('\n\n')}
+    </section>`;
+  }).filter(Boolean);
+  const listingHtml = sections.join('\n\n');
   let listing = await fs.readFile(LISTING_PATH, 'utf8');
   listing = replaceBetweenSentinels(
     listing,
