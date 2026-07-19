@@ -113,7 +113,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-07-klencke-atlas",
+      "at": "2026-07-19T17:51:59.166Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a5d0ebea53093480224172a"
+        },
+        {
+          "service": "facebook",
+          "id": "6a5d0ebe0424e7e331e11a49"
+        },
+        {
+          "service": "instagram",
+          "id": "6a5d0ebf0c7e6b6fdcda1502"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-07-12T17:53:25.484Z"
+  "lastPostedAt": "2026-07-19T17:51:59.166Z"
 }
