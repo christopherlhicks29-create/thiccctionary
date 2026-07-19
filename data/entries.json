@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-07-19",
+    "word": "Sundae, Banana Split",
+    "pronunciation": "/sun-day, buh-NAN-uh split/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A decadent dessert of substantial dimensions, characterized by a trio of scoops nestled between halves of a ripe banana, often further adorned with sauces, nuts, and cherries; esp. one whose toppings exhibit gravitational defiance in raking light.",
+      "<em>colloq.</em> A dish so laden with embellishments that its foundation becomes a mere suggestion."
+    ],
+    "example": "She presented a thiccc banana split that defied the saucer's very purpose. The ice cream scoops had no time for restraint.",
+    "etymology": "From banana (a tropical fruit) + split, past participle of splitten (Middle English, 'to cleave'), illustrating the division of the banana, which makes it sound like a diplomatic incident.",
+    "image": "images/2026-07-19-sundae-banana-split.jpg",
+    "caption": "Plate N. A majestic dessert, viewed in its overindulgent glory.",
+    "tags": [
+      "culinary",
+      "domestic"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": null,
+    "humorScore": 8,
+    "photoScore": 6,
+    "photographer": "Flavio Shibata",
+    "photographerUrl": "https://unsplash.com/@shibataskaterock2018",
+    "unsplashUrl": "https://unsplash.com/photos/chocolate-parfait-on-saucer-z_eoi3ppf5U",
+    "socialCaptions": {
+      "morning": "Sundae, Banana Split. July 25, 1904—first assembled in Ohio.\nThe banana has been keeping secrets ever since.",
+      "afternoon": "Three scoops, two bananas, one saucer—gravity optional.\nSundae, Banana Split.",
+      "evening": "From the archives, Sundae, Banana Split.\nToppings exceed 5,000 calories per serving—physics professors remain perplexed.",
+      "reels": "1907. First recorded cherry topping.\nA tradition of excess begins."
+    }
+  },
+  {
     "date": "2026-07-18",
     "word": "Boot, Snow Pack Insulated",
     "pronunciation": "/boot, snoh pak in-SUH-lay-ted/",
