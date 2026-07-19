@@ -622,7 +622,14 @@ async function main() {
   // unreachable" rejections: files are spec-compliant (H.264/AAC 44.1k/faststart)
   // and browser-reachable, so the remaining suspect is Meta's fetcher being
   // challenged on the primary host. IG untouched (it publishes fine either way).
-  const videoBase = (process.env.REEL_VIDEO_BASE || baseUrl).replace(/\/$/, '');
+  // Wave 306 (2026-07-18): DEFAULT host is now jsDelivr-over-the-repo, not the
+  // site. PROVEN root cause of every FB reel failure Jul 11-18: Facebook's
+  // media fetcher cannot retrieve MP4s from thiccctionary.com (Cloudflare
+  // challenges Meta's crawler), while the identical file served from jsDelivr
+  // published successfully (fb.com/reel/3295757830631080, 2026-07-18). Files
+  // are on main before any reels step runs, so @main always resolves.
+  const JSDELIVR_BASE = 'https://cdn.jsdelivr.net/gh/christopherlhicks29-create/thiccctionary@main';
+  const videoBase = (process.env.REEL_VIDEO_BASE || JSDELIVR_BASE).replace(/\/$/, '');
   const videoUrl = mode === 'reels' ? `${videoBase}/videos/${entry.date}.mp4` : null;
   const thumbnailUrl = mode === 'reels' ? imageUrl : null;
 
