@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Replaced the shower curtain this afternoon. The new one is wider than the old one by four inches. I gathered the excess at one end. It hangs correctly now. The bathroom sounds different.\n\nHugh",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-20T19:11:50.787Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1784499038157",
