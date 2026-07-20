@@ -6,11 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Chair, Beanbag Oversized",
-      "query": "oversized beanbag chair",
-      "category": "Domestic Goods"
-    },
-    {
       "subject": "Crockpot, Slow Cooker Oval",
       "query": "oval slow cooker crockpot",
       "category": "Domestic Goods"
