@@ -33,6 +33,7 @@ const CANON_NAV_LINKS = [
   { href: '/random.html',          text: 'Random' },
   { href: '/compare.html',         text: 'Compare' },
   { href: '/rate/',                text: 'Rate' },
+  { href: '/guess/',               text: 'Guess' },
   { href: '/api/',                 text: 'API' },
   { href: '/submit.html',          text: 'Submit a Thiccc' },
   { href: '/about/masthead/',      text: 'The Editors' },
@@ -47,6 +48,7 @@ const CANON_FOOTER_SECTIONS = `<p class="footer-head">Sections</p>
       <a href="/cartoons/">Cartoons</a>
       <a href="/compare.html">Compare</a>
       <a href="/rate/">Rate</a>
+      <a href="/guess/">Guess</a>
       <a href="/submit.html">Submit</a>
       <a href="/embed/">Embed</a>
       <a href="/about/">About</a>
@@ -87,6 +89,7 @@ function normalizePath(p) {
   // Map physical paths to canonical URLs for matching the active link
   if (p === 'index.html') return '/';
   if (p === 'rate/index.html') return '/rate/';
+  if (p === 'guess/index.html') return '/guess/';
   if (p === 'api/index.html') return '/api/';
   if (p === 'embed/index.html') return '/embed/';
   if (p === 'articles/index.html') return '/articles/';

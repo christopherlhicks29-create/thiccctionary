@@ -353,6 +353,7 @@ export async function buildSitemap(entries) {
     { loc: `${base}/press/`, priority: '0.5' },
     { loc: `${base}/submit.html`, priority: '0.5' },
     { loc: `${base}/embed/`, priority: '0.4' },
+    { loc: `${base}/guess/`, priority: '0.7', lastmod: '2026-07-20' },
   ];
   const entryPages = entries.map(e => ({
     loc: `${base}/entries/${e.date}.html`,

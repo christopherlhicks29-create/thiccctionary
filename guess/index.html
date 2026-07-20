@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guess the Thiccc, A Daily Puzzle · Thiccctionary</title>
+<meta name="description" content="One catalogued entry a day, hidden behind the fog. Guess the subject before you run out of tries. Strictly things, never people." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="canonical" href="https://thiccctionary.com/guess/" />
+<meta name="theme-color" content="#f5e8c7" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Thiccctionary" />
+<meta property="og:title" content="Guess the Thiccc, A Daily Puzzle" />
+<meta property="og:description" content="One catalogued entry a day, hidden behind the fog. Guess the subject before you run out of tries." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiccctionary.com/guess/" />
+<meta property="og:image" content="https://thiccctionary.com/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@thiccctionary" />
+<meta name="twitter:image" content="https://thiccctionary.com/og-default.png" />
+<link rel="alternate" type="application/rss+xml" title="Thiccctionary RSS Feed" href="https://thiccctionary.com/feed.xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.min.css?v=72" />
+<style>
+  #guess-photo-wrap {
+    position: relative;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #ccc;
+  }
+  #guess-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: blur(16px) saturate(0.7);
+    transform: scale(1.08);
+    transition: filter 0.6s ease, transform 0.6s ease;
+  }
+  #guess-photo-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 40px rgba(26,20,16,0.25);
+  }
+  .guess-pips {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  .guess-pip {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid var(--oxblood);
+    background: transparent;
+  }
+  .guess-pip--used { background: var(--oxblood); }
+  .guess-pip--win { background: #2f6b3a; border-color: #2f6b3a; }
+  .guess-hints {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1.5rem 0;
+  }
+  .guess-hint {
+    border-left: 3px solid var(--rule);
+    padding: 0.4rem 0 0.4rem 0.9rem;
+    opacity: 0.35;
+    font-size: 0.95rem;
+  }
+  .guess-hint--unlocked {
+    border-left-color: var(--oxblood);
+    opacity: 1;
+  }
+  .guess-hint-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    display: block;
+    margin-bottom: 2px;
+  }
+  #guess-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+  #guess-input {
+    flex: 1;
+    padding: 0.7rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+  }
+  #guess-feedback {
+    min-height: 1.4em;
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+  #guess-feedback.is-wrong { color: var(--oxblood); }
+  #guess-feedback.is-right { color: #2f6b3a; }
+  .guess-share-grid {
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    margin: 0.75rem 0;
+  }
+  #guess-streak-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-top: 0.5rem;
+  }
+  #guess-streak-bar strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--oxblood);
+    letter-spacing: 0;
+  }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="meta-line">A Daily Puzzle</span>
+    <span class="meta-line meta-line--right">One Entry, Hidden In Fog</span>
+  </div>
+  <h1 class="wordmark" aria-label="Thiccctionary">
+    <a href="../" class="wordmark-link" aria-label="Thiccctionary, home">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
+    </a>
+  </h1>
+  <nav class="nav">
+    <a href="/" class="nav-link">Today's Entry</a>
+    <a href="/archive.html" class="nav-link">The Archive</a>
+    <a href="/a-z.html" class="nav-link">A-Z</a>
+    <a href="/articles/" class="nav-link">Articles</a>
+    <a href="/about/documents/" class="nav-link">References</a>
+    <a href="/cartoons/" class="nav-link">Cartoons</a>
+    <a href="/random.html" class="nav-link">Random</a>
+    <a href="/compare.html" class="nav-link">Compare</a>
+    <a href="/rate/" class="nav-link">Rate</a>
+    <a href="/guess/" class="nav-link nav-link--active">Guess</a>
+    <a href="/api/" class="nav-link">API</a>
+    <a href="/submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="/about/masthead/" class="nav-link">The Editors</a>
+    <a href="/about/" class="nav-link">About</a>
+  </nav>
+</header>
+
+<main id="main-content" style="max-width: 640px; margin: 3rem auto 4rem; padding: 0 1.5rem;">
+
+  <section style="text-align: center; margin-bottom: 2rem;">
+    <div class="entry-stamp" id="guess-issue-stamp">Guess No. &mdash;</div>
+    <h2 class="entry-word" style="margin-top: 0.25rem;">Guess the Thiccc</h2>
+    <p style="font-style: italic; opacity: 0.75; max-width: 480px; margin: 0.75rem auto 0;">One catalogued entry, pulled from the archive and hidden behind the fog. Five tries. A hint clears with every miss. Strictly things, never people.</p>
+  </section>
+
+  <div id="guess-loading" style="text-align: center; opacity: 0.6; font-family: var(--font-mono); font-size: 0.85rem;">Loading today's plate&hellip;</div>
+
+  <div id="guess-app" hidden>
+
+    <div id="guess-photo-wrap">
+      <img id="guess-photo" src="" alt="Today's puzzle, obscured" />
+    </div>
+
+    <div class="guess-pips" id="guess-pips"></div>
+
+    <form id="guess-form" autocomplete="off">
+      <input id="guess-input" type="text" placeholder="What is it?" maxlength="60" />
+      <button type="submit" class="share-btn">Guess</button>
+    </form>
+    <div id="guess-feedback"></div>
+
+    <div class="guess-hints" id="guess-hints">
+      <div class="guess-hint" data-hint="0"><span class="guess-hint-label">Hint 1 &middot; Pronunciation</span><span class="guess-hint-text">Locked until your first miss.</span></div>
+      <div class="guess-hint" data-hint="1"><span class="guess-hint-label">Hint 2 &middot; Filed Under</span><span class="guess-hint-text">Locked.</span></div>
+      <div class="guess-hint" data-hint="2"><span class="guess-hint-label">Hint 3 &middot; Definition</span><span class="guess-hint-text">Locked.</span></div>
+      <div class="guess-hint" data-hint="3"><span class="guess-hint-label">Hint 4 &middot; The Fog Clears</span><span class="guess-hint-text">Locked.</span></div>
+    </div>
+
+    <div id="guess-result" hidden style="margin-top: 1.5rem; border-left: 4px solid var(--oxblood); padding: 1.25rem 1.5rem; background: rgba(245,232,199,0.35); border-radius: 4px;">
+      <p id="guess-result-verdict" style="margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood);"></p>
+      <p id="guess-result-word" style="margin: 0.4rem 0 0; font-size: 1.35rem; font-family: var(--font-display); font-weight: 600;"></p>
+      <p id="guess-result-credit" style="margin: 0.35rem 0 0; opacity: 0.6; font-size: 0.85rem;"></p>
+      <div class="guess-share-grid" id="guess-share-grid"></div>
+      <div id="guess-streak-bar"></div>
+      <div style="display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap;">
+        <button type="button" id="guess-share-btn" class="share-btn">Copy result</button>
+        <a id="guess-entry-link" href="#" class="share-btn share-btn--secondary">Read the full entry</a>
+      </div>
+    </div>
+
+  </div>
+
+  <section style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);">
+    <details>
+      <summary style="cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--oxblood);">How this works</summary>
+      <p style="margin-top: 0.75rem;">A new plate is pulled from the archive once a day, always at least a week removed from anything currently featured, so today's homepage entry can't spoil it. You get five guesses. Every miss burns off some of the fog and unlocks one more clue, in order: pronunciation, filing category, the first definition, then the image clears entirely. One attempt per day; come back tomorrow for the next plate.</p>
+    </details>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <p class="footer-wordmark">Thiccctionary<span style="font-size:0.55em; vertical-align:super; margin-left:2px; opacity:0.7;">TM</span></p>
+      <p class="footer-tag">Documenting girth, since 2026.</p>
+    </div>
+    <div>
+      <p class="footer-head">Sections</p>
+      <a href="/archive.html">Archive</a>
+      <a href="/a-z.html">A-Z</a>
+      <a href="/articles/">Articles</a>
+      <a href="/about/documents/">References</a>
+      <a href="/cartoons/">Cartoons</a>
+      <a href="/compare.html">Compare</a>
+      <a href="/rate/">Rate</a>
+      <a href="/guess/">Guess</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/embed/">Embed</a>
+      <a href="/about/">About</a>
+      <a href="https://buymeacoffee.com/Thiccctionary" target="_blank" rel="noopener">Tip jar</a>
+    </div>
+    <div>
+      <p class="footer-head">Follow</p>
+      <a href="https://x.com/thiccctionary" target="_blank" rel="noopener">X &middot; @thiccctionary</a>
+      <a href="https://www.facebook.com/Thiccctionary/" target="_blank" rel="noopener">Facebook &middot; /Thiccctionary</a>
+      <a href="https://www.instagram.com/ogthiccctionary/" target="_blank" rel="noopener">Instagram &middot; @ogthiccctionary</a>
+      <a href="https://www.tiktok.com/@thethiccctionary" target="_blank" rel="noopener">TikTok &middot; @thethiccctionary</a>
+      <a href="/follow/">All handles &rarr;</a>
+    </div>
+    <div>
+      <p class="footer-head">Legal</p>
+      <a href="/legal/terms.html">Terms</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/press/">Press kit</a>
+      <a href="mailto:admin@thiccctionary.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "thiccc-guess-v1";
+  var MAX_TRIES = 5;
+  var LAG_DAYS = 7;
+  var BLUR_SCHEDULE = [16, 10, 6, 3, 0]; // blur applied BEFORE guess N (0-indexed by tries used so far)
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { streak: 0, maxStreak: 0, lastWinPuzzle: null, lastPlayed: null };
+      return JSON.parse(raw);
+    } catch (e) {
+      return { streak: 0, maxStreak: 0, lastWinPuzzle: null, lastPlayed: null };
+    }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function normalize(s) {
+    return String(s || "")
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function headPhrase(word) {
+    return String(word || "").split(",")[0].trim();
+  }
+
+  var STOP = ["the", "a", "an", "of", "and"];
+
+  function tokens(s) {
+    return normalize(s).split(" ").filter(function (t) { return t && STOP.indexOf(t) === -1; });
+  }
+
+  function levenshtein(a, b) {
+    var m = a.length, n = b.length;
+    if (m === 0) return n;
+    if (n === 0) return m;
+    var prev = [];
+    for (var j = 0; j <= n; j++) prev[j] = j;
+    for (var i = 1; i <= m; i++) {
+      var cur = [i];
+      for (var k = 1; k <= n; k++) {
+        var cost = a[i - 1] === b[k - 1] ? 0 : 1;
+        cur[k] = Math.min(prev[k] + 1, cur[k - 1] + 1, prev[k - 1] + cost);
+      }
+      prev = cur;
+    }
+    return prev[n];
+  }
+
+  function isMatch(guess, entry) {
+    var g = normalize(guess);
+    if (!g) return false;
+    var full = normalize(entry.word);
+    var head = normalize(headPhrase(entry.word));
+    if (g === full || g === head) return true;
+    var headToks = tokens(headPhrase(entry.word)).filter(function (t) { return t.length >= 3; });
+    var gToks = tokens(guess);
+    for (var i = 0; i < gToks.length; i++) {
+      for (var j = 0; j < headToks.length; j++) {
+        if (gToks[i] === headToks[j]) return true;
+        if (gToks[i].length >= 4 && headToks[j].length >= 4 && levenshtein(gToks[i], headToks[j]) <= 1) return true;
+      }
+    }
+    return false;
+  }
+
+  function pickPuzzle(entries) {
+    var sorted = entries.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    var n = sorted.length;
+    var first = new Date(sorted[0].date + "T00:00:00Z").getTime();
+    var now = new Date();
+    var todayUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    var daysSinceFirst = Math.round((todayUTC - first) / 86400000);
+    var raw = daysSinceFirst - LAG_DAYS;
+    var puzzleNumber = raw < 0 ? 1 : raw + 1;
+    var index = raw < 0 ? 0 : ((raw % n) + n) % n;
+    return { entry: sorted[index], puzzleNumber: puzzleNumber };
+  }
+
+  function buildShareGrid(tries, won) {
+    var squares = [];
+    var wrongCount = won ? tries - 1 : MAX_TRIES;
+    for (var i = 0; i < wrongCount; i++) squares.push("\u{1F7EB}"); // brown square
+    if (won) squares.push("\u{1F7E9}"); // green square
+    while (squares.length < MAX_TRIES) squares.push("⬜"); // white square
+    return squares.join("");
+  }
+
+  function renderHint(index, html) {
+    var el = document.querySelector('.guess-hint[data-hint="' + index + '"]');
+    if (!el) return;
+    el.classList.add("guess-hint--unlocked");
+    el.querySelector(".guess-hint-text").innerHTML = html;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("/data/entries.json", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (entries) { init(entries); })
+      .catch(function () {
+        document.getElementById("guess-loading").textContent = "Couldn't load today's plate. Try refreshing.";
+      });
+  });
+
+  function init(entries) {
+    var picked = pickPuzzle(entries);
+    var entry = picked.entry;
+    var puzzleNumber = picked.puzzleNumber;
+
+    document.getElementById("guess-loading").hidden = true;
+    document.getElementById("guess-app").hidden = false;
+    document.getElementById("guess-issue-stamp").textContent = "Guess No. " + puzzleNumber;
+
+    var photo = document.getElementById("guess-photo");
+    photo.src = "/" + entry.image;
+
+    var pipsEl = document.getElementById("guess-pips");
+    for (var p = 0; p < MAX_TRIES; p++) {
+      var pip = document.createElement("span");
+      pip.className = "guess-pip";
+      pip.dataset.pip = p;
+      pipsEl.appendChild(pip);
+    }
+
+    var state = loadState();
+    var tries = 0;
+    var finished = false;
+
+    function markPips(usedCount, won) {
+      var pips = pipsEl.querySelectorAll(".guess-pip");
+      for (var i = 0; i < pips.length; i++) {
+        pips[i].classList.remove("guess-pip--used", "guess-pip--win");
+        if (i < usedCount - 1) pips[i].classList.add("guess-pip--used");
+        else if (i === usedCount - 1) pips[i].classList.add(won ? "guess-pip--win" : "guess-pip--used");
+      }
+    }
+
+    function applyBlur(usedCount) {
+      var idx = Math.min(usedCount, BLUR_SCHEDULE.length - 1);
+      photo.style.filter = "blur(" + BLUR_SCHEDULE[idx] + "px) saturate(" + (idx >= BLUR_SCHEDULE.length - 1 ? 1 : 0.7) + ")";
+      if (idx >= BLUR_SCHEDULE.length - 1) photo.style.transform = "scale(1)";
+    }
+
+    function unlockHintsUpTo(usedCount) {
+      if (usedCount >= 1) renderHint(0, entry.pronunciation + " &middot; " + (entry.partOfSpeech || ""));
+      if (usedCount >= 2) renderHint(1, "Filed under <strong>" + (entry.category || "Uncategorized") + "</strong>" + (entry.tags && entry.tags.length ? " &middot; " + entry.tags.join(", ") : ""));
+      if (usedCount >= 3) renderHint(2, (entry.definitions && entry.definitions[0]) || "No definition on file.");
+      if (usedCount >= 4) renderHint(3, "The fog has cleared. Look closely.");
+    }
+
+    function finish(won, triesUsed, isReplay) {
+      finished = true;
+      document.getElementById("guess-form").querySelector("input").disabled = true;
+      document.getElementById("guess-form").querySelector("button").disabled = true;
+      applyBlur(BLUR_SCHEDULE.length - 1);
+      unlockHintsUpTo(4);
+
+      var resultEl = document.getElementById("guess-result");
+      resultEl.hidden = false;
+      document.getElementById("guess-result-verdict").textContent = won ? "Verdict: Correct" : "Verdict: Missed";
+      document.getElementById("guess-result-word").textContent = entry.word;
+      document.getElementById("guess-result-credit").textContent = entry.photographer ? ("Photo by " + entry.photographer + " on Unsplash") : "";
+      document.getElementById("guess-entry-link").href = "/entries/" + entry.date + ".html";
+
+      var grid = buildShareGrid(triesUsed, won);
+      document.getElementById("guess-share-grid").textContent = grid;
+
+      // streak bookkeeping, only on first completion, never on a replay/reload
+      // of an already-finished puzzle (otherwise every page reload would think
+      // "last win" is the puzzle we just re-rendered and reset the streak to 1).
+      if (!isReplay) {
+        if (won) {
+          if (state.lastWinPuzzle === puzzleNumber - 1) state.streak = (state.streak || 0) + 1;
+          else state.streak = 1;
+          state.lastWinPuzzle = puzzleNumber;
+          state.maxStreak = Math.max(state.maxStreak || 0, state.streak);
+        } else {
+          state.streak = 0;
+        }
+        state.lastPlayed = { puzzleNumber: puzzleNumber, result: won ? "win" : "lose", tries: triesUsed };
+        saveState(state);
+      }
+
+      document.getElementById("guess-streak-bar").innerHTML =
+        '<div><strong>' + (state.streak || 0) + '</strong>Streak</div>' +
+        '<div><strong>' + (state.maxStreak || 0) + '</strong>Best</div>';
+
+      var shareBtn = document.getElementById("guess-share-btn");
+      shareBtn.onclick = function () {
+        var text = "Thiccctionary Guess #" + puzzleNumber + "\n" + grid + " (" + (won ? triesUsed : "X") + "/" + MAX_TRIES + ")\nhttps://thiccctionary.com/guess/";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            shareBtn.textContent = "Copied!";
+            setTimeout(function () { shareBtn.textContent = "Copy result"; }, 1800);
+          });
+        }
+      };
+    }
+
+    // Already played today?
+    if (state.lastPlayed && state.lastPlayed.puzzleNumber === puzzleNumber) {
+      tries = state.lastPlayed.tries;
+      markPips(tries, state.lastPlayed.result === "win");
+      applyBlur(tries);
+      unlockHintsUpTo(tries >= MAX_TRIES ? 4 : tries);
+      document.getElementById("guess-feedback").textContent = "You already played today's plate.";
+      finish(state.lastPlayed.result === "win", tries, true);
+      return;
+    }
+
+    applyBlur(0);
+
+    document.getElementById("guess-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (finished) return;
+      var input = document.getElementById("guess-input");
+      var guess = input.value.trim();
+      if (!guess) return;
+
+      var feedback = document.getElementById("guess-feedback");
+
+      if (isMatch(guess, entry)) {
+        tries += 1;
+        markPips(tries, true);
+        feedback.className = "is-right";
+        feedback.textContent = "Correct.";
+        input.value = "";
+        finish(true, tries, false);
+        return;
+      }
+
+      tries += 1;
+      markPips(tries, false);
+      applyBlur(tries);
+      unlockHintsUpTo(tries);
+      input.value = "";
+
+      if (tries >= MAX_TRIES) {
+        feedback.className = "is-wrong";
+        feedback.textContent = "Out of tries.";
+        finish(false, tries, false);
+      } else {
+        feedback.className = "is-wrong";
+        feedback.textContent = "Not quite, " + (MAX_TRIES - tries) + " tries left.";
+      }
+    });
+  }
+})();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
+</script>
+<script defer src="/scripts/mobile-nav.js?v=66"></script>
+<script defer src="/scripts/ccc-highlight.js?v=2"></script>
+<script defer src="/scripts/subscribed-state.js?v=1"></script>
+</body>
+</html>

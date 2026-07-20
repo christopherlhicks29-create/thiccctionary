@@ -153,6 +153,7 @@ async function main() {
     <a href="/random.html" class="nav-link">Random</a>
     <a href="/compare.html" class="nav-link">Compare</a>
     <a href="/rate/" class="nav-link">Rate</a>
+    <a href="/guess/" class="nav-link">Guess</a>
     <a href="/api/" class="nav-link">API</a>
     <a href="/submit.html" class="nav-link">Submit a Thiccc</a>
     <a href="/about/masthead/" class="nav-link">The Editors</a>
