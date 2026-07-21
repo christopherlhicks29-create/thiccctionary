@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Roommate asked what I do for work again. Tried to explain. He nodded slowly, the way people nod when they are already planning their next sentence. \"So. Like. Yelp?\" Sure. Like Yelp.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-21T18:47:51.869Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1784574708343",
