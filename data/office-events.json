@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1784671991517",
+      "date": "2026-07-21",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about personal life: the local weather, wildlife, or informant: \"MAGADAN, 0340\n\nSeagull on the dock. Enormous. Just watching me eat my bread. Neither of us moved for...\""
+    },
+    {
       "id": "auto-1784659668376",
       "date": "2026-07-21",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-07-01",
       "byline_id": "eli",
       "summary": "Eliza posted about reply to spider: \"Spider thinks Bart \"knows something.\" This writer has sat across from Bart every Tuesday for eight m...\""
-    },
-    {
-      "id": "auto-1782760796042",
-      "date": "2026-06-29",
-      "byline_id": "eli",
-      "summary": "Eliza posted about eli-window: \"Started a third notebook. Someone asked what happened to the second one. I said it was full. They as...\""
     }
   ]
 }
