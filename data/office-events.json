@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1784659668376",
+      "date": "2026-07-21",
+      "byline_id": "teddy",
+      "summary": "Theodore posted about personal life: your college group chat, where your career is a running topi: \"Roommate asked what I do for work again. Tried to explain. He nodded slowly, the way people nod when...\""
+    },
+    {
       "id": "auto-1784574708345",
       "date": "2026-07-20",
       "byline_id": "hugh",
@@ -274,12 +280,6 @@
       "date": "2026-06-29",
       "byline_id": "eli",
       "summary": "Eliza posted about eli-window: \"Started a third notebook. Someone asked what happened to the second one. I said it was full. They as...\""
-    },
-    {
-      "id": "auto-1782672037893",
-      "date": "2026-06-28",
-      "byline_id": "eli",
-      "summary": "Eliza posted about eli-window: \"Notebook is at 312. Someone asked if I was okay. I said I was counting. They said counting what. I s...\""
     }
   ]
 }
