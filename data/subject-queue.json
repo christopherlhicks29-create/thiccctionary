@@ -6,16 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Crockpot, Slow Cooker Oval",
-      "query": "oval slow cooker crockpot",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Engine, V8 Crate",
-      "query": "V8 engine block crate",
-      "category": "Industrial Machinery"
-    },
-    {
       "subject": "Refrigerator, Commercial",
       "query": "commercial walk-in refrigerator",
       "category": "Domestic Goods"
