@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-22",
+    "word": "Kettle, Cast Iron Tea",
+    "pronunciation": "/ket-uhl, kast EYE-urn tee/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A stout vessel of notable durability and heft, often found in rustic kitchens or tea ceremonies, distinguished by its formidable mass and heat retention properties.",
+      "<em>colloq.</em> The tea-making equivalent of a freight train: unyielding, substantial, and more at home warming up the entire room than just the water."
+    ],
+    "example": "The cast iron tea kettle sat thiccc on the wooden counter, its presence alone reducing the need for a centerpiece.",
+    "etymology": "From Middle English 'ketel', akin to Old Norse 'ketill' (boiler) and Latin 'catillus' (little saucepan). The 'thiccc' descriptor emerged much later, with the advent of internet vernacular appreciating unapologetic robustness.",
+    "image": "images/2026-07-22-kettle-cast-iron-tea.jpg",
+    "caption": "Plate N., A cast iron tea kettle exuding warmth and weight.",
+    "tags": [
+      "domestic",
+      "culinary",
+      "tools"
+    ],
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Fedor",
+    "photographerUrl": "https://unsplash.com/@fmdevice",
+    "unsplashUrl": "https://unsplash.com/photos/black-teapot-on-wooden-surface-V8DRhQ8YoZs",
+    "socialCaptions": {
+      "morning": "Kettle, Cast Iron Tea.\nA 4-pound titan of thermal inertia.\nYour tea's best friend—or worst enemy.",
+      "afternoon": "In 1700s Europe, this kettle could've been\nmistaken for a fortress cornerstone.\nIndomitable—Kettle, Cast Iron Tea.",
+      "evening": "From the archives, Kettle, Cast Iron Tea.\nResiding in Japanese tea ceremonies since the Edo period.\nThe tea, it whispers, is secondary.",
+      "reels": "1,500°F melting point.\nThe stove asks permission first."
+    }
+  },
+  {
     "date": "2026-07-21",
     "word": "Engine, V8 Crate",
     "pronunciation": "/EN-jin, VEE-ate KRAYT/",
