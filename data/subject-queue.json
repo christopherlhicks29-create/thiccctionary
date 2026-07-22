@@ -6,8 +6,23 @@
   ],
   "queue": [
     {
-      "subject": "Refrigerator, Commercial",
-      "query": "commercial walk-in refrigerator",
+      "subject": "Bass, Upright Acoustic",
+      "query": "upright bass acoustic jazz",
+      "category": "Musical Instruments"
+    },
+    {
+      "subject": "Bag, Punching Heavy",
+      "query": "heavy punching bag gym",
+      "category": "Sports & Recreation"
+    },
+    {
+      "subject": "Container, Shipping 40-Foot",
+      "query": "40 foot shipping container",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Whisk, Industrial Mixer",
+      "query": "industrial stand mixer whisk attachment",
       "category": "Domestic Goods"
     }
   ]
