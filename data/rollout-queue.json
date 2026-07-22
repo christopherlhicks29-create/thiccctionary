@@ -3,11 +3,6 @@
   "version": 1,
   "queue": [
     {
-      "byline": "teddy",
-      "phase": "1",
-      "theme_hint": "aerospace or modern machinery; flowery but sincere"
-    },
-    {
       "byline": "bart",
       "phase": "1",
       "theme_hint": "an edge-case classification dispute (is X thiccc? roman-numeraled sections)"
