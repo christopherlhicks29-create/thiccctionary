@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Called mom. She asked what I write about. I said scale. She said \"like fish?\" I said no. She said \"like weighing yourself?\" I said sort of. She said \"that sounds made up.\" It does, honestly.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-22T22:17:15.552Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1784671991516",
