@@ -1,5 +1,13 @@
 # Queued Follow-ups
 
+## Duplicate-subject entries flagged by site-health.js (editorial call, Christopher's)
+
+**Found 2026-07-23** via the weekly site-health audit's "Duplicate entries" check:
+
+- `2026-06-02 Boeing 777X` vs `2026-05-01 Thiccc Boeing` — checked both full entries side by side. These ARE a real duplicate, not just same-category variety: both definitions are literally "aircraft aft fuselage looks thicc viewed from behind," same joke, same premise, just a different specific aircraft named. Recommend: not mine to merge/delete unilaterally since both are already-published URLs (referenced in past newsletters/social posts — deleting breaks those links). Options for Christopher: (a) leave both, add a "See also" cross-link so it reads as an intentional callback rather than an accidental repeat, (b) leave as-is, it's a big catalog and one repeat joke isn't a crisis, (c) redirect one to the other (breaks the older post's specificity). Leaning (a) if asked, but this is his call.
+- `2026-05-11 Champion Watermelon, Heavyweight` vs `2026-05-05 Watermelon, Moon and Stars` — checked both. These are NOT actually duplicates: one is about a heavyweight-mass cultivar (contest/scale angle), the other about a distinctly-patterned cultivar (celestial spotting angle). Different real subjects, same parent fruit — same pattern as having separate African/Asian elephant entries. site-health.js's duplicate check is same-subject-family (both "watermelon"), which is too coarse here. No action needed on the entries; maybe worth tightening the site-health duplicate heuristic later so it doesn't flag legitimate same-category variety.
+
+
 Things deferred from prior sessions that should be revisited at the right time. I (Claude) will surface these when the trigger condition matches.
 
 ## FB Reel rejections - host-swap experiment ALSO failed, needs run logs
@@ -93,11 +101,22 @@ Sentinel pushed with `subject_override: "single ripe banana close up macro food 
 
 ---
 
-## Cloudflare Analytics install
+## Cloudflare Analytics install — RESOLVED, already live
 
-**Current state:** Not installed. Site has zero baseline traffic data.
+**Found 2026-07-23:** contrary to the note below, Web Analytics IS installed and collecting real data — 400 visits over the last 21 days, Core Web Vitals breakdown by page, all visible in the admin@thiccctionary.com Cloudflare account (Analytics → Web analytics). No action needed. (Leaving the stale note below for history/context only — someone must have installed it between 07-10 and now without logging it here.)
 
-**When to revisit:** Christopher's first available 5-min window. The walkthrough is queued.
+~~**Current state:** Not installed. Site has zero baseline traffic data.~~
+~~**When to revisit:** Christopher's first available 5-min window. The walkthrough is queued.~~
+
+---
+
+## Archive page CLS (footer jumps 0.366) — found via the now-live Web Analytics
+
+**Found 2026-07-23**, using the Web Analytics data above: Core Web Vitals overall are good (LCP 76% good, INP 100% good) except CLS, and `/archive` is the one page scoring 100% Poor. Cloudflare's Debug View pins it to one element: `html>body>footer.footer`, CLS 0.366 (threshold for "good" is <0.1).
+
+**Root cause (confirmed via archive.html source):** `#archive-grid` starts empty in the static HTML and is populated client-side by `render()` in archive.html's inline script — it fetches entries.json and injects ~193 `.recent-card` divs after page load. Because the grid has no reserved height beforehand, the sudden ~193-card injection pushes everything below it (the footer) down in one jump — classic CLS from unreserved dynamic content.
+
+**Fix (not yet shipped — see push-access blocker note in project_session_2026_07_23.md):** give `#archive-grid` a `min-height` (or render skeleton/placeholder cards) sized to roughly the expected content height before the real cards inject, so the footer doesn't jump. Exact value will need a bit of trial against the real card/row height at typical viewport widths.
 
 ---
 
