@@ -14,6 +14,7 @@ import fs from 'node:fs/promises';
 import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assignSlugs } from './lib/is-slug.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -363,15 +364,17 @@ export async function buildSitemap(entries) {
 
   // Wave 190: /is/<slug>-thiccc/ landing pages (programmatic SEO)
   // and the hub at /is-it-thiccc/.
-  function isSlug(word) {
-    let primary = String(word).split(',')[0].trim().toLowerCase();
-    primary = primary.replace(/^thiccc\s+/, '');
-    return primary.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-  }
+  // Slug assignment (including collision disambiguation) is shared with
+  // build-is-pages.js via lib/is-slug.js, so this list always matches what
+  // that script actually writes to disk under is/ (see Wave 190c/252 postmortem:
+  // a locally-duplicated, non-disambiguating slug function here used to let
+  // the sitemap list a URL that didn't match the real, disambiguated file on
+  // disk whenever two entries shared a first word).
+  assignSlugs(entries);
   const isPages = [
     { loc: `${base}/is-it-thiccc/`, priority: '0.7' },
     ...entries.map(e => ({
-      loc: `${base}/is/${isSlug(e.word)}-thiccc/`,
+      loc: `${base}/is/${e._slug}-thiccc/`,
       lastmod: e.date,
       priority: '0.7',
     })),

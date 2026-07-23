@@ -27,6 +27,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assignSlugs } from './lib/is-slug.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -52,36 +53,6 @@ function trimText(s, max) {
   s = stripHtml(s).replace(/\s+/g, ' ').trim();
   if (s.length <= max) return s;
   return s.slice(0, max - 1).replace(/\s\S*$/, '') + '...';
-}
-
-function slugify(word) {
-  let primary = String(word).split(',')[0].trim().toLowerCase();
-  // Strip a leading "thiccc " prefix from quirky early entries (e.g. "Thiccc Boeing")
-  primary = primary.replace(/^thiccc\s+/, '');
-  return primary
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function categoryToken(category) {
-  if (!category) return '';
-  return String(category).split('&')[0].trim().toLowerCase().replace(/\s+/g, '-');
-}
-
-function assignSlugs(entries) {
-  const used = new Map();
-  for (const e of entries) {
-    let s = slugify(e.word);
-    if (!s) s = `entry-${e.date}`;
-    if (used.has(s)) {
-      const cat = categoryToken(e.category);
-      const alt = cat ? `${s}-${cat}` : `${s}-${e.date}`;
-      s = used.has(alt) ? `${s}-${e.date}` : alt;
-    }
-    used.set(s, e);
-    e._slug = s;
-  }
-  return entries;
 }
 
 function articleFor(word) {
