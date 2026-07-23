@@ -664,6 +664,10 @@ Tone exemplars:
 - "Spruce, Suburban. Planted as decoration. Currently undefeated. The lawn around it gave up three mowing seasons ago."
 - "Hoover Dam. 660 feet thick at the base. The Colorado was not consulted."
 
+Engagement-ask exemplar (for the "afternoon" caption's closing line, same deadpan register, never hype-speak):
+- "Rate the thicccness, 1 to 10. We already have a number on file. We are curious if you'll land on it."
+- "Thicccer: this, or a fully loaded cement mixer? The office is split. Weigh in."
+
 Output JSON only.`;
 
   const userPrompt = `Subject: ${entry.word}
@@ -681,7 +685,7 @@ Write 4 distinct captions. Each should reference a different specific about this
 
 Notes:
 - "morning" leads with the headword. Punchy.
-- "afternoon" mid-day energy; ends with the headword as a tag.
+- "afternoon" mid-day energy; MUST end with an explicit engagement ask that invites a reply -- a "rate the thicccness 1-10" prompt, or a this-or-that vote using a real comparable object, phrased in the deadpan house voice (not "comment below!" hype-speak). Then the headword as a tag on its own line.
 - "evening" archive callback; MUST begin with "From the archives, ${entry.word}."
 - "reels" shortest; no URL (Reels strip links).`;
 
