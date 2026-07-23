@@ -311,8 +311,8 @@ function fitToX(prefix, body, suffix) {
 // pool freely; just keep entries deadpan, short, and on-brand.
 const PUNCHLINES = [
   'We had to add a third c.',
-  'Look at her.',
-  "Don't tell us it isn't a body.",
+  'Look at that.',
+  "Don't tell us it isn't thiccc.",
   'Some objects request space. This one took it.',
   "There's haul. And then there's haunch.",
   'Built for capacity. Engineered with intent.',
@@ -340,6 +340,25 @@ function pickPunchline(entry, mode) {
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = ((h << 5) - h + seed.charCodeAt(i)) | 0;
   return PUNCHLINES[Math.abs(h) % PUNCHLINES.length];
+}
+
+// 2026-07-23: engagement-ask pool for the afternoon fallback template, mirroring
+// the "MUST end with an explicit engagement ask" rule added to the primary
+// AI-generated caption path in generate-daily.js. Same deadpan register, no
+// hype-speak ("comment below!" etc.) -- this only fires on days the AI
+// caption step errors out and post-to-buffer.js falls back to templates.
+const ENGAGEMENT_ASKS = [
+  'Rate the thicccness, 1 to 10.',
+  "Thicccer than yesterday's entry, or not. Your call.",
+  'File your objection below, if you have one.',
+  'A 10 is rare. Convince us this is one.',
+];
+
+function pickEngagementAsk(entry) {
+  const seed = (entry.date || '') + ':engagement';
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = ((h << 5) - h + seed.charCodeAt(i)) | 0;
+  return ENGAGEMENT_ASKS[Math.abs(h) % ENGAGEMENT_ASKS.length];
 }
 
 // Observation-voice templates with punchline pool. Each variant pairs entry
@@ -387,9 +406,11 @@ async function buildText(entry, mode, baseUrl) {
   const punch = pickPunchline(entry, mode);
 
   if (mode === 'afternoon') {
-    // Example + punchline + word tag.
+    // Example + punchline + word tag + engagement ask (2026-07-23: mirrors
+    // the AI-generated caption path's mandatory engagement close).
     const body = example || def0;
-    const suffix = `\n\n${punch}\n\nThat's ${entry.word.toLowerCase()}.\n${entryUrl}\n\n#thiccctionary`;
+    const ask = pickEngagementAsk(entry);
+    const suffix = `\n\n${punch}\n\nThat's ${entry.word.toLowerCase()}. ${ask}\n${entryUrl}\n\n#thiccctionary`;
     return fitToX('', body, suffix);
   }
 
