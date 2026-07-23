@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Jul 2026 04:58:51 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 11:00:53 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Thiccc Hummer H1</title>
+      <link>https://thiccctionary.com/entries/2026-07-23.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-23.html</guid>
+      <pubDate>Thu, 23 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A civilian off-road vehicle of substantial girth, distinguished by its formidable width and military pedigree; esp. one parked in urban environments where it occupies space with unapologetic authority.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-23-thiccc-hummer-h1.jpg" type="image/jpeg" length="0" />
+      <category>vehicle</category><category>industrial</category><category>girth</category>
+    </item>
     <item>
       <title>Kettle, Cast Iron Tea</title>
       <link>https://thiccctionary.com/entries/2026-07-22.html</link>
@@ -21,6 +30,14 @@
       <description>A stout vessel of notable durability and heft, often found in rustic kitchens or tea ceremonies, distinguished by its formidable mass and heat retention properties.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-22-kettle-cast-iron-tea.jpg" type="image/jpeg" length="0" />
       <category>domestic</category><category>culinary</category><category>tools</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 9</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-07-22.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-07-22.html</guid>
+      <pubDate>Wed, 22 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 9.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Engine, V8 Crate</title>
