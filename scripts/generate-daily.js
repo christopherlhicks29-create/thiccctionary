@@ -1300,6 +1300,25 @@ async function main() {
     entryCopy.tags = _t.slice(0, 4);
   }
 
+  // Wave 307 (2026-07-23, found by Christopher spotting a bad Hummer entry):
+  // the prompt tells the model to write the caption as literally "Plate N.,"
+  // with N as a placeholder meant to be swapped for a real plate number by a
+  // later step -- but that step never existed, so most entries shipped with
+  // the literal string "Plate N." visible under the photo. Fix: replace it
+  // here with the entry's actual chronological plate number (existing
+  // entries + 1 = this one), rendered as a roman numeral to match the
+  // earliest hand-authored entries' style.
+  function toRomanNumeral(num) {
+    const vals = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+    let n = num, out = '';
+    for (const [v, sym] of vals) { while (n >= v) { out += sym; n -= v; } }
+    return out;
+  }
+  if (typeof entryCopy.caption === 'string') {
+    const plateNumber = entries.length + 1;
+    entryCopy.caption = entryCopy.caption.replace(/^Plate\s+N\.,?/, `Plate ${toRomanNumeral(plateNumber)}.,`);
+  }
+
   const entry = {
     date: today,
     word: String(entryCopy.word || '').replace(/\s*(REGEN HINT|BANNED-WORDS HINT):[\s\S]*$/, '').trim(),
