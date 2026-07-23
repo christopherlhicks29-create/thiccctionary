@@ -1,5 +1,11 @@
 # Queued Follow-ups
 
+## "Plate N." caption bug — backfill decision (editorial call, Christopher's)
+
+**Found 2026-07-23** (Christopher spotted it live: "Why does it say 'Plate N' under the images?"). Root cause: `generate-daily.js`'s prompt told the model to write the caption as literally `"Plate N.,"` with N as a placeholder meant to be swapped for a real plate number by a later step — that step never existed, so **78 of 104 published entries** shipped with the literal string "Plate N." visible under the photo. Fixed at the source (commit `12648b7`): new entries now get a real roman-numeral plate number computed from `entries.length + 1`.
+
+**Not fixed:** the 78 already-published entries still say "Plate N." verbatim (confirmed still live on `entries/2026-04-12.html`, for instance). Backfilling them isn't a pure mechanical fix — plate numbers need to reflect final chronological order, and some historical entries were generated out of date-order (via `burst-entries.js` backfills), so a naive `index+1` pass would produce numbers that don't match publish-date order. This needs an editorial call: renumber all 78 by corrected date order (one-time script, safe but touches many files), or leave the historical run as-is and only guarantee correctness going forward. Flagging for Christopher rather than guessing.
+
 ## Duplicate-subject entries flagged by site-health.js (editorial call, Christopher's)
 
 **Found 2026-07-23** via the weekly site-health audit's "Duplicate entries" check:
@@ -110,13 +116,13 @@ Sentinel pushed with `subject_override: "single ripe banana close up macro food 
 
 ---
 
-## Archive page CLS (footer jumps 0.366) — found via the now-live Web Analytics
+## Archive page CLS (footer jumps 0.366), SHIPPED 2026-07-23
 
 **Found 2026-07-23**, using the Web Analytics data above: Core Web Vitals overall are good (LCP 76% good, INP 100% good) except CLS, and `/archive` is the one page scoring 100% Poor. Cloudflare's Debug View pins it to one element: `html>body>footer.footer`, CLS 0.366 (threshold for "good" is <0.1).
 
 **Root cause (confirmed via archive.html source):** `#archive-grid` starts empty in the static HTML and is populated client-side by `render()` in archive.html's inline script — it fetches entries.json and injects ~193 `.recent-card` divs after page load. Because the grid has no reserved height beforehand, the sudden ~193-card injection pushes everything below it (the footer) down in one jump — classic CLS from unreserved dynamic content.
 
-**Fix (not yet shipped — see push-access blocker note in project_session_2026_07_23.md):** give `#archive-grid` a `min-height` (or render skeleton/placeholder cards) sized to roughly the expected content height before the real cards inject, so the footer doesn't jump. Exact value will need a bit of trial against the real card/row height at typical viewport widths.
+**Fix (shipped, commit `fe8f52a`):** `#archive-grid` now ships 12 skeleton placeholder `.recent-card--skeleton` divs in the static HTML (matching real card dimensions) so the grid isn't empty on first paint; `render()` still swaps in the real cards once entries.json resolves. Styling added to `styles.css`/`styles.min.css`. Not yet re-measured in Web Analytics (CLS data lags a few days) — worth a follow-up check next time Web Analytics is open to confirm it actually dropped out of "100% Poor."
 
 ---
 
