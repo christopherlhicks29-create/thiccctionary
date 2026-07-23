@@ -9,7 +9,7 @@ Reads data/articles.json. Outputs to articles/og/<slug>.png.
 Run: python3 scripts/build-article-og-images.py
 """
 from PIL import Image, ImageDraw, ImageFont
-import json, os, textwrap
+import json, os, textwrap, zlib
 
 CREAM = (244, 236, 220)
 CREAM_DEEP = (235, 224, 200)
@@ -53,8 +53,11 @@ def render_card(slug, title, description):
     d = ImageDraw.Draw(img)
 
     # Subtle grain — performant version (~2000 pixels)
+    # NOTE: use a stable hash (zlib.crc32), not the builtin hash(), which is
+    # salted per-process (PYTHONHASHSEED) and was making every regen of an
+    # unchanged slug produce a different noise pattern — pure git diff noise.
     import random
-    random.seed(hash(slug))
+    random.seed(zlib.crc32(slug.encode()))
     for _ in range(2000):
         x = random.randint(0, W-1); y = random.randint(0, H-1)
         d.point((x, y), fill=(60, 30, 15, 4) if False else CREAM_DEEP)
