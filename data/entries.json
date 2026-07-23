@@ -1,17 +1,17 @@
 [
   {
     "date": "2026-07-23",
-    "word": "Hummer H1, Limousine",
-    "pronunciation": "/hum-mer H-one, LIM-uh-zeen/",
+    "word": "Hummer H2, Limousine",
+    "pronunciation": "/hum-mer H-too, LIM-uh-zeen/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A civilian Hummer H1 subjected to a mid-body stretch by an aftermarket coachbuilder, granting it a second passenger cabin between the front seats and the rear axle; esp. one finished in gloss paint and deployed for weddings, proms, and Strip nightlife.",
-      "<em>colloq.</em> The Hummer H1, having decided that one imposing silhouette wasn't a full evening's work."
+      "A Hummer H2 subjected to a mid-body stretch by an aftermarket coachbuilder, granting it a second passenger cabin between the front seats and the rear axle; esp. one finished in gloss paint and deployed for weddings, proms, and Strip nightlife.",
+      "<em>colloq.</em> The Hummer H2, having decided that one imposing hood scoop was not a full evening's work."
     ],
-    "example": "The limo Hummer H1 idled outside the casino, and traffic simply rearranged itself around it.",
-    "etymology": "From the AM General Corporation, which produced the original military Humvee (High Mobility Multipurpose Wheeled Vehicle) and later its civilian variant, the Hummer H1. The stretch itself is the work of aftermarket limousine coachbuilders, who began lengthening H1s for the livery trade not long after the civilian model launched; here, the thiccc is measured lengthwise, not just in width.",
+    "example": "The limo Hummer H2 idled outside the casino, and traffic simply rearranged itself around it.",
+    "etymology": "From General Motors, which built the Hummer H2 on the GMT800 platform it shares with the Chevrolet Tahoe and Suburban; unlike the mechanically distinct, low-volume H1, that shared platform made the H2 cheap and common enough for limousine coachbuilders to stretch by the dozen. Vegas fleets lean on the H2 specifically for this reason: the thiccc here is measured lengthwise, not just in width.",
     "image": "images/2026-07-23-thiccc-hummer-h1.jpg",
-    "caption": "Plate CIV. The Hummer H1, granted an intermission's worth of extra chassis, working a Vegas night shift.",
+    "caption": "Plate CIV. The Hummer H2, granted an intermission's worth of extra chassis, working a Vegas night shift.",
     "tags": [
       "vehicle",
       "industrial",
@@ -25,10 +25,10 @@
     "photographerUrl": "https://unsplash.com/@josephsintum",
     "unsplashUrl": "https://unsplash.com/photos/a-red-truck-parked-on-the-side-of-a-street-9ROEGHDEO74",
     "socialCaptions": {
-      "morning": "Hummer H1 Limousine: the civilian H1, stretched.\nA second passenger cabin grafted in behind the front seats.\nThiccc, measured lengthwise this time.",
-      "afternoon": "Same H1 grille. A whole extra act behind it.\nCoachbuilt for the livery trade, not the trailhead.\nTag: Hummer H1 Limousine.",
-      "evening": "From the archives, the Hummer H1 Limousine.\nMilitary pedigree, wedding-season second career.\nThe Strip never stood a chance.",
-      "reels": "AM General built the H1.\nSomeone else built the rest of it.\nHummer H1 Limousine."
+      "morning": "Hummer H2 Limousine: the consumer Hummer, stretched.\nA second passenger cabin grafted in behind the front seats.\nThiccc, measured lengthwise this time.",
+      "afternoon": "Same H2 hood scoop. A whole extra act behind it.\nCoachbuilt for the livery trade, not the trailhead.\nTag: Hummer H2 Limousine.",
+      "evening": "From the archives, the Hummer H2 Limousine.\nSuburban-platform bones, wedding-season second career.\nThe Strip never stood a chance.",
+      "reels": "GM built the H2 to be common.\nSomeone else built the rest of it.\nHummer H2 Limousine."
     }
   },
   {
