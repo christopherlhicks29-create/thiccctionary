@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-23",
+    "word": "Thiccc Hummer H1",
+    "pronunciation": "/thik hum-mer H-one/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A civilian off-road vehicle of substantial girth, distinguished by its formidable width and military pedigree; esp. one parked in urban environments where it occupies space with unapologetic authority.",
+      "<em>colloq.</em> What you'd get if a tank decided to take a leisurely spin through a suburban neighborhood, fully expecting brunch afterward."
+    ],
+    "example": "He cruised down the boulevard in a thiccc Hummer H1, the streetlights bowed in acknowledgment.",
+    "etymology": "From the AM General Corporation, which produced the original military Humvee (High Mobility Multipurpose Wheeled Vehicle) and later its civilian variant, the Hummer H1. The added c's represent the vehicle's unapologetic displacement.",
+    "image": "images/2026-07-23-thiccc-hummer-h1.jpg",
+    "caption": "Plate N. The Hummer H1, viewed astern, challenges the concept of a parking spot.",
+    "tags": [
+      "vehicle",
+      "industrial",
+      "girth"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 6,
+    "photographer": "Joseph Sintum",
+    "photographerUrl": "https://unsplash.com/@josephsintum",
+    "unsplashUrl": "https://unsplash.com/photos/a-red-truck-parked-on-the-side-of-a-street-9ROEGHDEO74",
+    "socialCaptions": {
+      "morning": "Thiccc Hummer H1—born from the Humvee's rib.\n6.5-liter diesel engine since 1992.\nA boulevard's breadth in one vehicle.",
+      "afternoon": "Occupying lanes since 1992 with an 86.5-inch width.\nTurning radius: 26.5 feet of commitment.\nTag: Thiccc Hummer H1.",
+      "evening": "From the archives, Thiccc Hummer H1.\nA 16-inch ground clearance laughed at speed bumps.\nUrban environments never stood a chance.",
+      "reels": "AM General's brainchild—Hummer H1.\nMilitary origins, civilian swagger.\nThiccc by design."
+    }
+  },
+  {
     "date": "2026-07-22",
     "word": "Kettle, Cast Iron Tea",
     "pronunciation": "/ket-uhl, kast EYE-urn tee/",
