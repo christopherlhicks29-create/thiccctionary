@@ -509,7 +509,15 @@ const BANNED_PHRASES = [
   /\bquiet power\b/i,
   /\binvites engagement\b/i,
   /\u2014/, // EM-DASH, Christopher banned 2026-05-17, no exceptions
-  /\b, \b/,
+  // Wave 307 (2026-07-23): removed `/\b, \b/` here. It was meant to catch some
+  // specific comma-splice pattern, but as written it matches ANY comma
+  // followed by a space between word characters -- i.e. almost every ordinary
+  // comma in prose. Since every draft has commas, this silently failed 100%
+  // of Weekly Field Report runs for weeks (32 open "quality gate failed"
+  // issues on GitHub, all four Claude-call attempts always tripping this one
+  // rule). The comma-splice/rhythm concern is already covered by the LLM
+  // critic's "Three-short-clause rhythm" check below, so removing this is
+  // not a coverage gap.
   /\bsonic signature\b/i,
   /\bauditory realm\b/i,
   /\bauditory reflection\b/i,
