@@ -792,6 +792,16 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 @media (max-width: 900px) { .archive-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .archive-grid { grid-template-columns: 1fr; } }
 
+/* Wave 307 (2026-07-23): skeleton placeholders shown before entries.json
+   resolves, so #archive-grid isn't empty on first paint -- see archive.html. */
+.recent-card--skeleton .recent-thumb { background: var(--cream-deep); box-shadow: none; }
+.recent-card--skeleton .recent-date,
+.recent-card--skeleton .recent-word,
+.recent-card--skeleton .recent-snip { background: var(--cream-deep); color: transparent; border-radius: 3px; }
+.recent-card--skeleton .recent-date { display: inline-block; width: 60px; }
+.recent-card--skeleton .recent-word { display: block; width: 70%; height: 22px; }
+.recent-card--skeleton .recent-snip { display: block; width: 100%; height: 32px; }
+
 /* ==========================================================================
    404 + GENERIC CONTENT PAGES (submit, etc.)
    ========================================================================== */

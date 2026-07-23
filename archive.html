@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.min.css?v=71" />
+<link rel="stylesheet" href="styles.min.css?v=73" />
 
 <meta name="theme-color" content="#f5e8c7" />
 <meta property="og:locale" content="en_US" />
@@ -94,7 +94,28 @@
   </div>
 
   <div class="archive-grid" id="archive-grid">
-    <!-- populated by JS -->
+    <!-- Skeleton placeholders (Wave 307, 2026-07-23): render() below replaces
+         these via grid.innerHTML = '' the moment entries.json resolves, but
+         until then this reserves roughly the first few rows' worth of height
+         so the footer doesn't jump down once ~104 real cards inject -- this
+         page was scoring 100% Poor CLS (0.366) in Cloudflare Web Analytics,
+         entirely from that jump. 12 placeholders ~= 4 rows at 3 columns,
+         enough to cover the initial viewport on first paint. Not a perfect
+         match to the final ~35-row height (that would need this page wired
+         into the daily build so the count tracks entries.json), but it
+         absorbs the shift that actually falls inside the visible fold. -->
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
+    <div class="recent-card recent-card--skeleton" aria-hidden="true"><div class="recent-thumb"></div><div class="recent-meta"><span class="recent-date">&nbsp;</span><h4 class="recent-word">&nbsp;</h4><p class="recent-snip">&nbsp;</p></div></div>
   </div>
 
   <!-- Wave 220d: From the Personnel File teaser -->

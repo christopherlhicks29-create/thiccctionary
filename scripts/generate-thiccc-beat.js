@@ -108,7 +108,7 @@ function buildPage({ meta, headline, bodyHtml, slug }) {
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.min.css?v=72" />
+<link rel="stylesheet" href="../styles.min.css?v=73" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
