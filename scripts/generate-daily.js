@@ -687,7 +687,7 @@ Notes:
 - "morning" leads with the headword. Punchy.
 - "afternoon" mid-day energy; MUST end with an explicit engagement ask that invites a reply -- a "rate the thicccness 1-10" prompt, or a this-or-that vote using a real comparable object, phrased in the deadpan house voice (not "comment below!" hype-speak). Then the headword as a tag on its own line.
 - "evening" archive callback; MUST begin with "From the archives, ${entry.word}."
-- "reels" shortest; no URL (Reels strip links).`;
+- "reels" shortest; no URL (Reels strip links); MUST end with a plain-text mention pointing to the site's daily guessing game, deadpan house voice, e.g. "New round of Guess the Thiccc, every day. Link in bio." (a reason to come back tomorrow, not a dead link to today's static entry).`;
 
   try {
     const res = await openaiChat({

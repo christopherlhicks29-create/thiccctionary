@@ -423,8 +423,14 @@ async function buildText(entry, mode, baseUrl) {
   }
 
   if (mode === 'reels') {
+    // 2026-07-23: was "Full entry on thiccctionary.com" -- a plain-text URL
+    // Reels/TikTok don't render as a link, so it wasted caption space for a
+    // dead click. Reels are the actual reach asset (per docs/SOCIAL-STRATEGY.md);
+    // the CTA should point somewhere with a reason to come back daily, not a
+    // static entry page. New round of the site's own daily guessing game
+    // fits that, phrased as the standard "link in bio" Reels convention.
     const lead = example || def0;
-    return `${lead}\n\n${punch}\n\n${entry.word}.${sig}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
+    return `${lead}\n\n${punch}\n\n${entry.word}.${sig}\n\nNew round of Guess the Thiccc, every day. Link in bio.\n\n#thiccctionary #wordoftheday`;
   }
 
   // morning, rotate 4 chassis by day-of-year. Each one is a clearly distinct
