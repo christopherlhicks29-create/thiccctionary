@@ -327,6 +327,14 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     html = html.replaceAll(`{{${key}}}`, value);
   }
 
+  // Bug fix (2026-07-24): the template's own documentation block (the "Tokens
+  // (replaced by scripts/generate-daily.js...)" comment) was being emitted into
+  // every published page -- 2.3 KB of internal scaffolding on all 106 entries,
+  // ~8% of each page's bytes, with the entry's definition and example repeated
+  // inside it. Strip it from the built output; it stays in _template.html where
+  // it is actually useful.
+  html = html.replace(/^(<!DOCTYPE html>\s*)<!--[\s\S]*?-->\s*/i, '$1');
+
   const outPath = path.join(OUT_DIR, `${entry.date}.html`);
   await fs.writeFile(outPath, html);
   return outPath;
