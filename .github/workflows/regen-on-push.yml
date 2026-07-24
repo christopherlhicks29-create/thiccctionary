@@ -29,7 +29,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Verify queue file exists
         id: check
@@ -44,7 +44,7 @@ jobs:
 
       - name: Set up Node 20
         if: steps.check.outputs.skip != 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
 
@@ -77,7 +77,7 @@ jobs:
       - name: Open Pull Request
         if: steps.check.outputs.skip != 'true' && steps.queue.outputs.dates != ''
         id: open_pr
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "Regenerate image for ${{ steps.queue.outputs.dates }} (queued via push)"
           branch: regen-on-push/${{ github.run_id }}

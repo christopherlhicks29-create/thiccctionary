@@ -26,13 +26,13 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: Check out main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Set up Node 20
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
 
@@ -56,7 +56,7 @@ jobs:
       - name: Open Pull Request
         id: open_pr
         if: success()
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "Catalog burst: backfill entries"
           branch: burst-entries/${{ github.run_id }}
