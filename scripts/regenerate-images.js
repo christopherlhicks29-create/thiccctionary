@@ -146,6 +146,13 @@ async function main() {
 
   let succeeded = 0;
   let failed = 0;
+  // Bug fix (2026-07-24): "no Unsplash results" and "critic rejected every
+  // candidate" are NORMAL no-op outcomes -- the quality gate did its job and
+  // declined to swap in a worse photo. They used to count as `failed`, so the
+  // job exited 1, which auto-escalated a CI-failure GitHub issue every time
+  // (that is what issues #184 and #195 actually are). Track them separately so
+  // only genuine errors (network/API/exception) fail the run.
+  let skipped = 0;
 
   for (const entry of toProcess) {
     console.log(`\n--- ${entry.date}: ${entry.word} ---`);
@@ -160,7 +167,7 @@ async function main() {
       }
       if (candidates.length === 0) {
         console.log(`  No Unsplash results -- skipping.`);
-        failed++;
+        skipped++;
         continue;
       }
 
@@ -195,7 +202,7 @@ async function main() {
       }
       if (!chosen) {
         console.log('  No candidate passed the critic gate. Skipping this entry.');
-        failed++;
+        skipped++;
         continue;
       }
       // New convention: include slug so old URLs stop resolving on revert.
@@ -292,7 +299,11 @@ async function main() {
     }
   }
 
-  console.log(`\nDone. ${succeeded} succeeded, ${failed} failed (out of ${toProcess.length}).`);
+  console.log(`\nDone. ${succeeded} succeeded, ${skipped} skipped (quality gate), ${failed} failed (out of ${toProcess.length}).`);
+  if (succeeded === 0 && skipped > 0 && failed === 0) {
+    console.log('No entry was updated: the critic declined every candidate. That is a clean');
+    console.log('no-op, not a failure -- rerun with a different SUBJECT_OVERRIDE query.');
+  }
   if (failed > 0 && succeeded === 0) {
     process.exit(1);
   }
