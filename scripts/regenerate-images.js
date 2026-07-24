@@ -247,9 +247,20 @@ async function main() {
   console.log('\nRebuilding entry HTML pages...');
   for (const entry of toProcess) {
     try {
-      const updated = entries.find(e => e.date === entry.date);
+      const idx = entries.findIndex(e => e.date === entry.date);
+      const updated = idx !== -1 ? entries[idx] : null;
       if (updated) {
-        await buildEntryPage(updated);
+        // Bug fix (2026-07-24): this used to call buildEntryPage(updated) with
+        // only one argument, so prev/next/allEntries all defaulted to null --
+        // buildEntryPage() then silently rendered an empty prev/next nav AND
+        // an empty "Related entries" section on every page this workflow ever
+        // touched (confirmed across all prior regenerate-images runs). Mirror
+        // the same prev/next math build-entry-pages.js's own driver uses:
+        // entries.json is sorted newest-first, so "next" (newer) = entries[i-1]
+        // and "prev" (older) = entries[i+1].
+        const next = idx > 0 ? entries[idx - 1] : null;
+        const prev = idx < entries.length - 1 ? entries[idx + 1] : null;
+        await buildEntryPage(updated, prev, next, entries);
         console.log(`  Rebuilt entries/${entry.date}.html`);
       }
     } catch (err) {
