@@ -6,9 +6,19 @@
   ],
   "queue": [
     {
-      "subject": "Whisk, Industrial Mixer",
-      "query": "industrial stand mixer whisk attachment",
-      "category": "Domestic Goods"
+      "subject": "Rock, Plymouth",
+      "query": "plymouth rock memorial",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Loaf, Meatloaf",
+      "query": "meatloaf homemade plate",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Onion, Walla Walla",
+      "query": "large walla walla onion",
+      "category": "Produce & Botanical"
     }
   ]
 }
