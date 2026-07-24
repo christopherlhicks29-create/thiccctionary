@@ -223,10 +223,16 @@ async function main() {
       // stale file so the repo doesn't accumulate orphans.
       const previousImage = entry.image && entry.image !== `images/${filename}` ? entry.image.replace(/^\.?\//, '') : null;
       if (previousImage && previousImage !== `images/${filename}`) {
-        try {
-          await fs.unlink(path.join(ROOT, previousImage));
-          console.log(`  Removed stale image: ${previousImage}`);
-        } catch (e) { /* file already absent, fine */ }
+        // Bug fix (2026-07-24): this only unlinked the stale .jpg and left the
+        // matching .webp behind, so every version-stamped regen orphaned a WebP
+        // in the repo (confirmed: 2026-05-23-anvil-blacksmith.webp survived its
+        // own regen). Remove both siblings.
+        for (const stale of [previousImage, previousImage.replace(/\.jpe?g$/i, '.webp')]) {
+          try {
+            await fs.unlink(path.join(ROOT, stale));
+            console.log(`  Removed stale image: ${stale}`);
+          } catch (e) { /* file already absent, fine */ }
+        }
       }
 
       entry.image = `images/${filename}`;
@@ -269,6 +275,22 @@ async function main() {
   }
   await buildSitemap(entries);
   console.log('  Sitemap rebuilt.');
+
+  // Bug fix (2026-07-24): the homepage and the /is/<word>-thiccc/ pages embed
+  // the same image src as the entry page, but this script only ever rebuilt
+  // entries/*.html -- so after any regen they kept pointing at the old
+  // filename and smoke-test-visual.js failed with img-missing. Observed twice
+  // in one day (2026-07-24 mango, 2026-05-23 anvil). Rebuild them here so the
+  // workflow's PR is self-consistent instead of needing a manual follow-up.
+  const { execSync } = await import('node:child_process');
+  for (const script of ['prerender-homepage.js', 'build-is-pages.js']) {
+    try {
+      execSync(`node scripts/${script}`, { cwd: ROOT, stdio: 'inherit' });
+      console.log(`  Rebuilt via ${script}`);
+    } catch (e) {
+      console.warn(`  ${script} failed (non-fatal): ${e.message}`);
+    }
+  }
 
   console.log(`\nDone. ${succeeded} succeeded, ${failed} failed (out of ${toProcess.length}).`);
   if (failed > 0 && succeeded === 0) {
