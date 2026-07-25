@@ -1,6 +1,0 @@
-{
-  "dates": "2026-05-02,2026-05-10,2026-05-21,2026-05-24,2026-05-26,2026-06-27,2026-07-06,2026-07-17",
-  "subject_override": "",
-  "hold": true,
-  "why": "Wave 309 re-dispatch of the Wave 306b batch. 306b consumed its sentinel and then produced nothing observable -- no PR branch, no log, no way to tell a total failure from a clean no-op. This run carries the Wave 309 run-log publisher, so whatever happens it writes audits/regen-last-run.md to the ci-regen-log branch with a per-entry outcome and, on error, the actual exception message. hold=true keeps any PR open for a look at the pictures before merge. Eight confirmed wrong-subject photos: Frigidaire (kitchen wide shot, fridge cropped at frame edge), Bagger 288 (colliery gantry), Atlas Stone (naval cannonballs), Crankshaft (unidentifiable pump), Globe (small desk globe at f/1.8), Generator (same pump as 05-24), Medicine Ball (same cannonballs as 05-21), Honeydew (two undersized cantaloupes)."
-}
