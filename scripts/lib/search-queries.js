@@ -15,6 +15,21 @@
  * all derived from the headword. Nothing here is a per-entry hand-written
  * query: SUBJECT_OVERRIDE remains the escape hatch for the cases where the
  * headword genuinely is not the subject.
+ *
+ * Wave 326. The override used to short-circuit the ladder to exactly one rung,
+ * on the reasoning that "if a human named the subject, guessing past it is not
+ * help." That reasoning cost a whole run: the 2026-07-25 Frigidaire reshoot was
+ * fired with "stainless steel side by side refrigerator", Unsplash returned 0
+ * photos for that exact phrase, and the run ended there -- one query, no
+ * fallback, no candidates, nothing for the critic to judge.
+ *
+ * The reasoning was also written when the quality gate was weak. Before Wave 325
+ * the gate re-read a percentage the model had volunteered, so a broad query that
+ * surfaced a loosely-related photo could actually ship it, and keeping the query
+ * narrow was doing part of the gate's job. The gate now measures prominence from
+ * a bounding box in JS. That makes broadening safe: a wider query cannot ship a
+ * worse photo, it can only hand the critic more candidates to reject. Query
+ * breadth is a recall knob; the gate is the precision knob. They were tangled.
  */
 
 const THICCC = /\bthicc+(c+|er|est)?\b/gi;
@@ -28,18 +43,32 @@ const clean = (s) => String(s || '').replace(THICCC, '').replace(/\s+/g, ' ').tr
  *                                   "Marine Diesel Crankshaft",
  *                                   "Crankshaft"]
  *
- * An override short-circuits the ladder entirely: if a human named the subject,
- * guessing past it is not help.
+ * An override goes in FRONT of that ladder rather than replacing it. The
+ * operator's phrase is tried first because it is the best description we have;
+ * the headword rungs stay behind it so a phrase stock photography has never
+ * heard of degrades into something searchable instead of into zero results.
+ *
+ *   word "Frigidaire, Side-by-Side", override "stainless steel side by side
+ *   refrigerator" -> ["stainless steel side by side refrigerator",
+ *                     "Frigidaire, Side-by-Side",
+ *                     "Side-by-Side Frigidaire",
+ *                     "Frigidaire"]
+ *
+ * An override may also carry its own rungs, pipe-separated, for the cases where
+ * the headword is no help at all and the operator knows the broader term:
+ *
+ *   "timpani orchestra|timpani|orchestral drum"
+ *
+ * Every rung is still just a query. Nothing here decides what ships.
  */
 export function queryLadder(word, override = '') {
-  const ov = clean(override);
-  if (ov) return [ov];
-
   const out = [];
   const push = (q) => {
     const c = clean(q);
     if (c && c.length > 1 && !out.includes(c)) out.push(c);
   };
+
+  for (const rung of String(override || '').split('|')) push(rung);
 
   const raw = String(word || '').trim();
   push(raw);

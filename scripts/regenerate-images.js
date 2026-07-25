@@ -10,8 +10,12 @@
  *   - OPENAI_API_KEY
  *   - UNSPLASH_ACCESS_KEY
  *   - DATES (optional)            comma-separated YYYY-MM-DD dates. Default: every entry except today.
- *   - SUBJECT_OVERRIDE (optional) hand-pick a search query for these dates instead of entry.word.
+ *   - SUBJECT_OVERRIDE (optional) hand-picked search query to try FIRST for these dates.
  *                                  Useful when entry.word returns wrong-subject Unsplash results.
+ *                                  As of Wave 326 it leads the ladder rather than replacing it, so
+ *                                  a phrase that returns zero photos falls back to the headword
+ *                                  rungs instead of ending the run. Pipe-separate to supply several
+ *                                  rungs of your own: "timpani orchestra|timpani|orchestral drum".
  */
 
 import fs from 'node:fs/promises';
@@ -226,7 +230,7 @@ async function main() {
   const override = (process.env.SUBJECT_OVERRIDE || '').trim();
   RUN_LOG.override = override;
   if (override) {
-    console.log(`SUBJECT_OVERRIDE active: using "${override}" as search query for all selected dates.`);
+    console.log(`SUBJECT_OVERRIDE active: "${override}" leads the query ladder for all selected dates (headword rungs remain behind it as fallbacks; pipe-separate to supply your own rungs).`);
   }
 
   let succeeded = 0;

@@ -12,7 +12,7 @@ on:
         type: string
         default: "all-except-today"
       subject_override:
-        description: "Optional. Hand-picked Unsplash search query for these dates (use when entry.word returns wrong-subject results, e.g. 'beefsteak tomato' for Heritage Tomato). Leave blank to use the entry's own word."
+        description: "Optional. Hand-picked Unsplash query tried FIRST for these dates (e.g. 'beefsteak tomato' for Heritage Tomato). Since Wave 326 it leads the ladder rather than replacing it, so a phrase returning zero photos falls back to the headword instead of ending the run. Pipe-separate for several rungs: 'timpani orchestra|timpani'. Blank = use the entry's own word."
         type: string
         default: ""
   push:

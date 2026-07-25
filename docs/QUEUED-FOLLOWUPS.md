@@ -71,11 +71,26 @@ The threshold stayed at 25 deliberately. Changing the measurement and the
 threshold in the same wave would make it impossible to tell which one did the
 work. Revisit the number after a few runs against real boxes.
 
+**Wave 326 (2026-07-25).** The first run against the measured gate never
+reached the gate. `stainless steel side by side refrigerator` returned zero
+Unsplash photos, and an override used to short-circuit the query ladder to
+exactly that one rung, so the run ended in `no-results` and the critic judged
+nothing. The override now leads the ladder instead of replacing it: the
+operator's phrase is tried first, the headword rungs stay behind it. Search
+breadth and gate strictness had been tangled -- keeping the query narrow was
+doing part of the gate's job back when the gate re-read a number the model had
+volunteered. Wave 325 made the gate real, so a wider query can no longer ship a
+worse photo, only hand the critic more candidates to reject. An override may
+also carry its own rungs, pipe-separated (`timpani orchestra|timpani|orchestral
+drum`), which is what the "else" entries in the table below were already saying
+in prose. Covered by `scripts/test-search-queries.js`; `pre-ship-check.js` now
+finds test suites by listing `scripts/` rather than naming each one.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
-| 2026-05-02 | Frigidaire, Side-by-Side | **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. Re-fire only after Wave 325 is live, and drop "kitchen" from the query, which is what invited a kitchen | `stainless steel side by side refrigerator` |
-| 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia`, else `gel water cup`, else `viscous liquid pouring closeup` |
+| 2026-05-02 | Frigidaire, Side-by-Side | **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. **Re-fired Wave 325b: zero Unsplash results, so the measured gate was never exercised.** The five-word override was too specific for the library and, at the time, an override replaced the ladder rather than leading it. Wave 326 fixes that; re-fire with a ladder | `side by side refrigerator\|stainless steel refrigerator\|refrigerator` |
+| 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia\|gel water cup\|viscous liquid pouring closeup` |
 | 2026-05-26 | Globe, Library Floor Model | **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate | `standing floor globe library` |
 | 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |
 | 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval | `medicine ball gym weight` |

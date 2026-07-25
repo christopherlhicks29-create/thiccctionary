@@ -315,17 +315,30 @@ if (allFiles.some(f => f === 'data/entries.json')) {
   }
 }
 
-// Wave 325, Rule 10: the image-critic unit tests. Runs unconditionally rather
-// than only when image-critic.js is staged, because the failure this guards
-// against is a pure function quietly changing shape under an edit somewhere
-// else, and a test that only runs when you touch the file under test cannot
-// see that. It is pure arithmetic with no network and no key; it costs
-// milliseconds.
-try {
+// Wave 325, Rule 10: the unit tests. Runs unconditionally rather than only when
+// the file under test is staged, because the failure this guards against is a
+// pure function quietly changing shape under an edit somewhere else, and a test
+// that only runs when you touch the file under test cannot see that. These are
+// pure functions with no network and no key; they cost milliseconds.
+//
+// Wave 326: the suite is the directory listing, not a hand-typed array. Adding
+// scripts/test-search-queries.js required no edit here, and the next test file
+// will not either. A list of tests maintained in a second place is the same
+// drift bug this checker exists to catch.
+{
   const { execSync } = await import('node:child_process');
-  execSync('node scripts/test-image-critic.js', { stdio: 'inherit' });
-} catch (e) {
-  fail('scripts/image-critic.js', 'critic-unit-tests', 'scripts/test-image-critic.js reported failures (see output above)');
+  const { readdirSync } = await import('node:fs');
+  const suites = readdirSync('scripts').filter((f) => /^test-.*\.js$/.test(f)).sort();
+  if (suites.length === 0) {
+    fail('scripts/', 'unit-tests', 'no scripts/test-*.js found -- the suite cannot have gone to zero on purpose');
+  }
+  for (const suite of suites) {
+    try {
+      execSync(`node scripts/${suite}`, { stdio: 'inherit' });
+    } catch (e) {
+      fail(`scripts/${suite}`, 'unit-tests', `scripts/${suite} reported failures (see output above)`);
+    }
+  }
 }
 
 // Report
