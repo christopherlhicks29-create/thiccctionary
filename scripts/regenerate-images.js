@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 import { writeEntries } from './lib/entries-io.js';
-import { queryLadder } from './lib/search-queries.js';
+import { queryLadder, gatherCandidates } from './lib/search-queries.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -96,6 +96,26 @@ async function writeRunLog() {
 // timeout either. A request that has not answered inside its budget is a
 // failure we can name, not a wait to be endured.
 const NET = { search: 30_000, vision: 90_000, download: 60_000, ping: 15_000 };
+
+/**
+ * Wave 328c. Two numbers that were previously implicit and, between them,
+ * decided how much of the library ever reached the critic.
+ *
+ * MIN_POOL is when to stop walking the query ladder. It used to be "one", in
+ * effect: the loop broke on the first rung returning a non-empty array, so six
+ * wrong photographs ended the search.
+ *
+ * MAX_ATTEMPTS was hard-coded 3, against pools of up to 30. The picker is also
+ * shown only the first 12 remaining candidates, so three attempts meant the
+ * critic never saw past roughly the first fifteen photographs no matter how
+ * many were found. Five is a compromise: each attempt costs a pick call plus a
+ * critique call, and the failure being guarded against -- a run that finds the
+ * right photo at position 16 and reports "critic-rejected" -- is expensive in a
+ * different currency, a whole four-minute round trip and an operator's guess at
+ * a new query.
+ */
+const MIN_POOL = 15;
+const MAX_ATTEMPTS = 5;
 
 /** fetch() with a deadline, and an error message that says which call died. */
 async function fetchDeadline(url, opts, ms, label) {
@@ -254,20 +274,18 @@ async function main() {
       // because of it. The ladder de-inverts, then falls back to the head noun.
       const ladder = queryLadder(entry.word, override);
       const primaryQuery = ladder[0];
-      let candidates = [];
-      let usedQuery = primaryQuery;
-      for (const q of ladder) {
-        candidates = await searchUnsplash(q);
-        console.log(`  Searched "${q}" -> ${candidates.length} results.`);
-        if (candidates.length) { usedQuery = q; break; }
-      }
+      // Wave 328c: accumulate down the ladder instead of stopping at the first
+      // rung that returns anything. See the docblock in lib/search-queries.js.
+      let { candidates, queriesUsed } = await gatherCandidates(
+        ladder, searchUnsplash, { minPool: MIN_POOL, log: (m) => console.log(m) });
+      const usedQuery = queriesUsed.join(' + ') || primaryQuery;
       if (candidates.length === 0) {
         console.log(`  No Unsplash results for any of ${ladder.length} quer(y/ies) -- skipping.`);
         logRow(entry.date, entry.word, 'no-results', `tried ${ladder.map(q => `"${q}"`).join(', ')}, all returned 0 photos`);
         skipped++;
         continue;
       }
-      if (usedQuery !== primaryQuery) console.log(`  Fell back to "${usedQuery}".`);
+      if (usedQuery !== primaryQuery) console.log(`  Pool built from "${usedQuery}".`);
       // Wave 306: exclude photos other entries already use. `spentPhotos` is
       // rebuilt per entry from the catalog minus this entry, so a regen that
       // ends up re-choosing its own current photo is still allowed -- the point
@@ -282,7 +300,7 @@ async function main() {
       // Wave 204: critic gate. Up to 3 picks from this candidate set; reject any
       // that fail the subject-prominence test (score>=7, subject>=25%% of frame).
       const tried = new Set();
-      for (let attempt = 1; attempt <= 3 && !chosen; attempt++) {
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS && !chosen; attempt++) {
         const remaining = candidates.filter((_, i) => !tried.has(i));
         if (remaining.length === 0) {
           console.log('  All candidates exhausted by critic; giving up on this entry.');
@@ -300,7 +318,7 @@ async function main() {
         if (passesGate(c, GATES.regen)) {
           chosen = candidate;
           critique = c;
-          if (c) console.log(`  Critic PASS (attempt ${attempt}/3): ${formatCritique(c)}`);
+          if (c) console.log(`  Critic PASS (attempt ${attempt}/${MAX_ATTEMPTS}): ${formatCritique(c)}`);
         } else {
           // Wave 321: name the identity failure explicitly. A run log reading
           // only "score=4" invites another query tweak; one reading
@@ -308,13 +326,13 @@ async function main() {
           // Wave 325 adds the stranger's answer, which is the line that would
           // have caught the Frigidaire-that-was-a-kitchen on sight.
           lastReject = formatCritique(c);
-          console.log(`  Critic REJECT (attempt ${attempt}/3): ${lastReject}. Trying next.`);
+          console.log(`  Critic REJECT (attempt ${attempt}/${MAX_ATTEMPTS}): ${lastReject}. Trying next.`);
         }
       }
       if (!chosen) {
         console.log('  No candidate passed the critic gate. Skipping this entry.');
         logRow(entry.date, entry.word, 'critic-rejected',
-          `${candidates.length} candidates, 3 attempts, last verdict: ${lastReject}`);
+          `${candidates.length} candidates, ${Math.min(tried.size, MAX_ATTEMPTS)} attempts, last verdict: ${lastReject}`);
         skipped++;
         continue;
       }

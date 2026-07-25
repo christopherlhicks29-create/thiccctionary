@@ -87,3 +87,56 @@ export function queryLadder(word, override = '') {
 
   return out;
 }
+
+/**
+ * Walk the ladder and ACCUMULATE candidates rather than stopping at the first
+ * rung that returns anything.
+ *
+ * Wave 328c. The caller used to break out of the ladder the moment a rung
+ * returned a non-empty array. That treats "returned something" as "returned
+ * something useful", and the Medicine Ball reshoot showed the difference: the
+ * rung "vintage leather medicine ball" returned 6 photos, none of them a
+ * medicine ball, and because 6 > 0 the run never tried "leather medicine ball",
+ * which had returned 29 the firing before. A narrow rung that answers badly
+ * starved the pool of a broad rung that answers well, purely by being first.
+ *
+ * This is the Wave 326 mistake one layer down. The ladder was built as a
+ * zero-results fallback chain, so its exit condition asks about recall; but by
+ * the time it is used, the question being asked of it is about precision, and
+ * six wrong photographs are worth the same as none. Ladder order still means
+ * preference -- earlier rungs enter the pool first and the picker sees them
+ * first -- but a thin first rung no longer ends the search.
+ *
+ * Stops as soon as the pool reaches `minPool`, so the common case where rung
+ * one returns a full page of 30 still costs exactly one API call.
+ *
+ * `search` is injected so this is testable without a network or a key.
+ */
+export async function gatherCandidates(ladder, search, opts = {}) {
+  const minPool = typeof opts.minPool === 'number' ? opts.minPool : 15;
+  const log = opts.log || (() => {});
+  const candidates = [];
+  const seen = new Set();
+  const queriesUsed = [];
+
+  for (const q of ladder) {
+    const hits = (await search(q)) || [];
+    log(`  Searched "${q}" -> ${hits.length} results.`);
+    let added = 0;
+    for (const h of hits) {
+      if (!h) continue;
+      // A candidate with no id cannot be de-duplicated, so keep it rather than
+      // silently dropping it; the critic is the thing that decides, not this.
+      if (h.id != null) {
+        if (seen.has(h.id)) continue;
+        seen.add(h.id);
+      }
+      candidates.push(h);
+      added++;
+    }
+    if (added) queriesUsed.push(q);
+    if (candidates.length >= minPool) break;
+  }
+
+  return { candidates, queriesUsed };
+}
