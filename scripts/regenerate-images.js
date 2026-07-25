@@ -84,11 +84,30 @@ async function writeRunLog() {
   }
 }
 
+// Wave 310: every network call gets a deadline. The Wave 309b run sat in the
+// "Regenerate images" step for 45+ minutes with eight entries to do and never
+// produced a log, because a hung fetch has no natural end and the job had no
+// timeout either. A request that has not answered inside its budget is a
+// failure we can name, not a wait to be endured.
+const NET = { search: 30_000, vision: 90_000, download: 60_000, ping: 15_000 };
+
+/** fetch() with a deadline, and an error message that says which call died. */
+async function fetchDeadline(url, opts, ms, label) {
+  try {
+    return await fetch(url, { ...opts, signal: AbortSignal.timeout(ms) });
+  } catch (e) {
+    if (e && (e.name === 'TimeoutError' || e.name === 'AbortError')) {
+      throw new Error(`${label} timed out after ${ms / 1000}s`);
+    }
+    throw new Error(`${label} failed: ${e.message}`);
+  }
+}
+
 async function searchUnsplash(query) {
   const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=30&orientation=landscape&content_filter=high`;
-  const res = await fetch(url, {
+  const res = await fetchDeadline(url, {
     headers: { 'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
-  });
+  }, NET.search, `Unsplash search "${query}"`);
   if (!res.ok) throw new Error(`Unsplash search failed for "${query}": ${res.status}`);
   const data = await res.json();
   return data.results.map(r => ({
@@ -141,7 +160,7 @@ Output JSON only:
   "reason": "one short sentence on why this photo is the thiccest"
 }`;
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+  const res = await fetchDeadline('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
     body: JSON.stringify({
@@ -153,7 +172,7 @@ Output JSON only:
       response_format: { type: 'json_object' },
       temperature: 0.4,
     }),
-  });
+  }, NET.vision, 'OpenAI vision pick');
   if (!res.ok) throw new Error(`Vision pick failed: ${res.status} ${await res.text()}`);
   const data = await res.json();
   const result = JSON.parse(data.choices[0].message.content);
@@ -163,14 +182,14 @@ Output JSON only:
 }
 
 async function downloadImage(photo, filename) {
-  const res = await fetch(photo.fullUrl);
+  const res = await fetchDeadline(photo.fullUrl, {}, NET.download, 'Image download');
   if (!res.ok) throw new Error(`Image download failed: ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   await fs.mkdir(IMAGES_DIR, { recursive: true });
   await fs.writeFile(path.join(IMAGES_DIR, filename), buf);
-  await fetch(photo.downloadLocation, {
+  await fetchDeadline(photo.downloadLocation, {
     headers: { 'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
-  }).catch(() => {});
+  }, NET.ping, 'Unsplash download ping').catch(() => {});
 }
 
 async function main() {
@@ -330,6 +349,9 @@ async function main() {
       failed++;
     }
 
+    // Wave 310: flush after every entry, not just at the end. If the job is
+    // killed mid-run the file on disk still names how far we got.
+    await writeRunLog();
     await new Promise(r => setTimeout(r, 1500));
   }
 

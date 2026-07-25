@@ -27,6 +27,13 @@ permissions:
 jobs:
   regenerate:
     runs-on: ubuntu-latest
+    # Wave 310: the Wave 309b run consumed its sentinel and then sat in the
+    # regenerate step for 45+ minutes on eight entries. With no job timeout the
+    # default is six hours of a run that will never finish and never report.
+    # Eight entries at three vision attempts each is a few minutes; twenty is
+    # generous. A job that overruns it fails loudly and the always() step below
+    # publishes however far it got.
+    timeout-minutes: 20
     steps:
       - name: Check out the repo
         uses: actions/checkout@v5
@@ -85,12 +92,25 @@ jobs:
       - name: Publish run log (always)
         if: always()
         run: |
-          if [ ! -f audits/regen-last-run.md ]; then
-            echo "no run log written; the step died before the script started"
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Wave 310: no log file used to mean publish nothing, which is the
+          # same silence this step exists to end. Write a stub instead, so the
+          # branch always answers "did the script start?"
+          if [ ! -f audits/regen-last-run.md ]; then
+            mkdir -p audits
+            {
+              echo "# Last image-regen run"
+              echo
+              echo "**The script wrote no log.** It died before or during startup, or the"
+              echo "job was killed before it could flush one."
+              echo
+              echo "- **Run:** ${{ github.run_id }}"
+              echo "- **Job status at publish time:** ${{ job.status }}"
+              echo "- **Dates requested:** \`${{ steps.sentinel.outputs.dates }}\`"
+              echo "- **Published:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            } > audits/regen-last-run.md
+          fi
           git add -f audits/regen-last-run.md
           git commit -o audits/regen-last-run.md \
             -m "Regen run log ${{ github.run_id }}" || echo "nothing to commit"
