@@ -1,0 +1,15 @@
+{
+  "_comment": "Site-wide settings that are not content. Read by scripts/sync-analytics.js and anything else that needs a fact about the site rather than about an entry. Adding a key here is cheaper than adding an env var to five workflows.",
+
+  "analytics": {
+    "provider": "cloudflare",
+    "cloudflareToken": "",
+    "_howToFill": "Cloudflare dashboard -> Web Analytics -> the thiccctionary.com site -> Manage site. The JS snippet it shows contains data-cf-beacon='{\"token\": \"...\"}'. Paste that token string here, commit, and the next pipeline run puts the beacon on every page in the sitemap plus 404.html. Cookieless and privacy-first, so no consent banner is needed. Until this is filled in, scripts/sync-analytics.js does nothing."
+  },
+
+  "verification": {
+    "_comment": "Search Console and friends. Each value is the bare content= string from the provider's meta-tag verification method, not the whole tag. Empty means not configured and nothing is injected.",
+    "google": "",
+    "bing": ""
+  }
+}

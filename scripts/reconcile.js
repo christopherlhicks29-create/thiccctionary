@@ -2,11 +2,12 @@
 /**
  * reconcile.js - Wave 320
  *
- * Seventeen reconcilers have to run, in order, after anything writes content.
+ * Eighteen reconcilers have to run, in order, after anything writes content.
  * Until now that order was written out as seventeen YAML steps in daily.yml,
  * and again in from-the-boat.yml, and again in mailbag.yml, and again in
  * thiccc-beat.yml -- and *not* in regenerate-images.yml, which had two of the
- * seventeen.
+ * seventeen. (Eighteen now. That is the point: the count changes and no
+ * workflow has to be edited.)
  *
  * That omission shipped a broken page. PR #208 renamed two photographs
  * (images/2026-05-24-crankshaft-marine-diesel.jpg became ...-z3j9.jpg), updated
@@ -27,7 +28,7 @@
  *
  * A failing step does not stop the chain. That matches the continue-on-error
  * the YAML steps carried: one reconciler falling over should not cost the run
- * the other sixteen. Failures are collected and reported at the end.
+ * the others. Failures are collected and reported at the end.
  *
  * Usage: node scripts/reconcile.js [--strict] [--only <substr>] [--list]
  *   --strict  exit 1 if any step failed (default exits 0, as the YAML did)
@@ -67,6 +68,7 @@ const STEPS = [
   ['subscribe',      'node', ['scripts/sync-subscribe.js'],           'Subscribe block on every sitemap page'],
   ['social-cards',   'node', ['scripts/sync-social-cards.js'],        'Complete share cards'],
   ['og-dimensions',  'node', ['scripts/sync-og-dimensions.js'],       'og:image dimensions, measured'],
+  ['analytics',     'node', ['scripts/sync-analytics.js'],       'Analytics beacon + search verification (no-op until configured)'],
   ['webp',           'node', ['scripts/sync-webp.js'],                'WebP derivatives'],
 ];
 
@@ -92,7 +94,7 @@ for (const [id, cmd, args, desc] of chain) {
   const r = spawnSync(cmd, args, { cwd: ROOT, stdio: 'inherit' });
   const code = r.status;
   if (r.error || code !== 0) {
-    // Not fatal, deliberately: sixteen working reconcilers should not be lost
+    // Not fatal, deliberately: the working reconcilers should not be lost
     // to one broken one. The summary below is what a run gets judged on.
     failed.push(`${id} (${r.error ? r.error.code || r.error.message : `exit ${code}`})`);
     console.log(`--- [reconcile] ${id} FAILED, continuing.`);
