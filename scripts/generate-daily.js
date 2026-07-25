@@ -1174,6 +1174,23 @@ async function main() {
     if (typeof e.word === 'string' && /^[a-z]/.test(e.word.trim())) {
       return `headword ${JSON.stringify(e.word)} is not Title Case (catalog convention requires a capitalized headword)`;
     }
+    // Wave 304b: the body must actually name the thing. A definition that reads
+    // "An agricultural staple known for its considerable rotundity" and never
+    // says "beet" reads fine to a human who just saw the headword, and reads to
+    // a crawler as a page about nothing in particular -- the one on-page signal
+    // tying the URL to the query is the noun appearing in the prose.
+    //
+    // All 106 existing entries pass this, so it is drift insurance, not a fix.
+    // Deliberately loose: any token of 4+ characters from the headword, allowing
+    // a trailing plural, counted across every definition plus the example.
+    {
+      const norm = (x) => String(x || '').toLowerCase().replace(/[^a-z ]/g, ' ');
+      const tokens = norm(e.word).split(/\s+/).filter(t => t.length > 3);
+      const body = norm([...(e.definitions || []), e.example].join(' '));
+      if (tokens.length && !tokens.some(t => body.includes(t) || body.includes(t.replace(/s$/, '')))) {
+        return `neither definitions[] nor example ever names the headword ${JSON.stringify(e.word)}`;
+      }
+    }
     return null;  // ok
   }
   // Wave 209: fail-soft instead of fail-hard. If 3 retries still produce
