@@ -43,6 +43,14 @@ const NAV = [
  * @param {string} [o.extraCss] raw CSS for a <style> block
  * @param {object[]} [o.jsonLd] array of JSON-LD objects
  */
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { ogDimsTags } from './image-size.js';
+
+// Wave 311: og:image dimensions are measured from the file, not typed. See
+// lib/image-size.js for why 1200x630 was wrong on 221 pages.
+const CHROME_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+
 export function head({ title, description, canonical, ogTitle, image, extraCss = '', jsonLd = [] }) {
   const img = image || `${SITE}/og-default.png`;
   const ogT = ogTitle || title;
@@ -62,9 +70,7 @@ export function head({ title, description, canonical, ogTitle, image, extraCss =
 <meta property="og:description" content="${escapeHtml(description)}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="${canonical}" />
-<meta property="og:image" content="${img}" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image" content="${img}" />${ogDimsTags(img, CHROME_ROOT)}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@thiccctionary" />

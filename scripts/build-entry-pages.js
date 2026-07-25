@@ -16,6 +16,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { syncSitemap } from './sync-sitemap.js';
 import { CATEGORIES } from './build-category-pages.js';
+import { ogDimsTags } from './lib/image-size.js'; // Wave 311: measure, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -373,6 +374,9 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     IMAGE_WEBP: imageUrlForPage(entry).replace(/\.jpg$/i, '.webp'),
     OG_IMAGE: imageUrlForOg(entry),
     OG_IMAGE_ENC: encodeURIComponent(imageUrlForOg(entry)),
+    // Wave 311: measured from the image, not typed. Entry photos are 1080x1140,
+    // not the 1200x630 the template used to claim for every one of them.
+    OG_IMAGE_DIMS: ogDimsTags(imageUrlForOg(entry), ROOT),
     PIN_TEXT: (() => {
       const def = stripHtml(entry.definitions[0]);
       let trimmed = def;

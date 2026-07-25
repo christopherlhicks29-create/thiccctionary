@@ -28,6 +28,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assignSlugs } from './lib/is-slug.js';
+import { ogDimsTags } from './lib/image-size.js'; // Wave 311: measure, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -166,9 +167,7 @@ function renderPage(entry) {
 <meta property="og:description" content="${escapeHtml(description)}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="${pageUrl}" />
-<meta property="og:image" content="${escapeHtml(ogImage)}" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image" content="${escapeHtml(ogImage)}" />${ogDimsTags(ogImage, ROOT)}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@thiccctionary" />
@@ -377,9 +376,7 @@ function renderHub(entries) {
 <meta property="og:description" content="The Thiccctionary's ledger of official rulings on what is and isn't thiccc. ${sorted.length} verdicts and counting." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="${canonical}" />
-<meta property="og:image" content="${SITE}/og-default.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image" content="${SITE}/og-default.png" />${ogDimsTags(`${SITE}/og-default.png`, ROOT)}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@thiccctionary" />
