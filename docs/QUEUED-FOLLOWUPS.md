@@ -131,18 +131,38 @@ Data so far, measured against my own eyeball on the rendered crop:
 | Frigidaire 2026-05-02 | 40 | ~32 | +8 |
 | Globe 2026-05-26 | 35 | ~37 | -2 |
 | Thick Water 2026-04-14 | 30 | ~20 | +10 |
+| Kettle 2026-07-22 | 25 | ~9 | +16 |
 
-Three points, worst error ten. Compare the volunteered numbers this replaced,
-which were out by thirty-five on the Frigidaire alone. Two of three run high,
-which is not yet a pattern but is the direction to watch: the Thick Water box
-looks like it took in the hand holding the glass as well as the glass, and
-"box the object, not what is holding it" is a prompt problem rather than a
-threshold problem.
+Four points, worst error sixteen, three of four running high. The suspicion
+logged after Thick Water is now confirmed by a second, larger case, and it is
+no longer a hunch: **the box swallows whatever the subject is resting on or
+held by.** The kettle occupies roughly a quarter of the width and a third of
+the height, about nine percent of the frame. Twenty-five is almost exactly the
+area of the kettle *plus the stove drum beneath it*, which runs to the bottom
+edge. The Thick Water box took in the hand the same way.
+
+That makes the Kettle the first entry to pass on measurement error rather than
+on prominence: it cleared `minSubjectPct: 25` at exactly 25, and its true
+prominence is well under the bar. Kept anyway, because it is a correct cast
+iron kettle, in focus, unambiguously the visual subject of the frame, and it
+ends a duplicate. But the number that admitted it was wrong.
+
+Wave 328 fixes the prompt rather than the threshold. Criterion 8 said "box the
+object, not the scene it sits in" and said nothing about what holds it up, so
+the model was not being asked for the wrong thing, it was being asked for an
+underspecified thing. It now names the exclusions -- stove, stand, table,
+pedestal, cart, packaging, mount, hand -- and says explicitly that a support
+named in the search wording ("kettle on a stove") is still not part of the
+subject. That last clause matters because we write those queries ourselves:
+Wave 327d/e established that naming a room invites the room, and this is the
+same failure one step in. Naming the mount invites the mount.
 
 Do not move the threshold on this. Every one of these passed, so the sample is
 made entirely of photographs the gate liked, and nothing has yet been rejected
 on prominence for the rejection to be judged wrong. A number tuned on its own
-successes is the same mistake as a critic grading its own arithmetic.
+successes is the same mistake as a critic grading its own arithmetic. Tuning it
+now would also be tuning against a measurement bias we have just fixed -- the
+next few reshoots are the first honest read on the deltas.
 
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
@@ -150,8 +170,8 @@ successes is the same mistake as a critic grading its own arithmetic.
 | 2026-05-02 | Frigidaire, Side-by-Side | **RESOLVED Wave 327b**, on the fourth firing. The photo is a genuine side-by-side -- two full-height vertical doors, dispenser in the left one -- standing centred and floor-to-ceiling in an otherwise empty hallway. Measured 40%; eyeballing the crop puts it near 32%, so the measurement tracks reality within single digits where the volunteered numbers were out by thirty-five. Stranger sees "a refrigerator in a kitchen", which is the first time that line has agreed with the headword. History: **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. **Re-fired Wave 325b: zero Unsplash results, so the measured gate was never exercised.** The five-word override was too specific for the library and, at the time, an override replaced the ladder rather than leading it. Wave 326 fixed that. **Re-fired Wave 326b: replaced, critic score 8.** The ladder found photos on rung one and the run completed, but the photograph is a real-estate listing shot of a white kitchen, refrigerator about an eighth of the frame, and Unsplash calls it a *french door* refrigerator, which is not a side-by-side. It passed because the prominence gate had a hole (Wave 327). Kept, because it beats the cut-off-at-the-edge photo it replaced. Re-fire against the closed gate, and lean on the configuration word so a french-door does not qualify | `side-by-side refrigerator two doors\|side by side refrigerator\|refrigerator` |
 | 2026-04-14 | Thick Water | **RESOLVED Wave 327d.** Was ocean waves, audit 1/10. Now a hand holding a glass mug of opaque viscous liquid with a spoon standing in it, and the mug is printed `H2O`. Unsplash files it as milk; the mark on the glass is what makes it land. A hand in frame is allowed under criterion 5 -- the rule is no jokes about bodies, not no humans visible -- and the composition centres the glass. Measured 30 against an eyeball of about 20 on the glass alone, so the box probably took in the hand | `thickened water in a clear cup with spoon\|glass of thick liquid held in hand\|glass of water` |
 | 2026-05-26 | Globe, Library Floor Model | **RESOLVED Wave 327c.** A genuine antique floor globe on a turned wooden stand, in focus and filling the left half of the frame, a second one behind it in the dark. Measured 35 against an eyeball of about 37. Second data point on the measured gate and the second time it has landed within single digits of the picture. History: **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate. Wave 322b fixed the identity; the framing stayed marginal, globe roughly a quarter of the frame with bookcases dominating. **Re-fired Wave 327c** as the first case whose recorded failure is prominence rather than identity, which makes it the cleanest read on whether the measured gate rejects on framing alone. Note "library" is dropped from every rung: naming the room is what invited the room, exactly as "kitchen" did on the Frigidaire | `antique floor standing globe on stand\|large world globe on wooden stand\|floor globe` |
-| 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |
-| 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval | `medicine ball gym weight` |
+| 2026-07-22 | Kettle, Cast Iron Tea | **RESOLVED Wave 328.** A dark cast iron kettle with a bail handle and a spout, sitting on a rusted outdoor stove drum against a stone wall. It is a kettle and not the teapot it used to duplicate, which was the whole bar. Measured 25 against an eyeball of about 9, the largest overshoot recorded and the case that produced the Wave 328 prompt fix -- the box took in the stove. Passed the gate on a number that was wrong; kept because the photograph is right | `cast iron whistling kettle on a stove\|cast iron kettle\|whistling kettle` |
+| 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval. **FIRED Wave 328.** "Gym" is dropped from every rung under the Wave 327d/e rule, and no rung names a rack, stand or hand under the new Wave 328 clause: this is the first reshoot fired against the tightened criterion 8, so its delta is the first honest measurement in the table. Criterion 0 already names this exact confusion -- "a cannonball is not a medicine ball" -- so identity should hold; prominence is the thing to watch | `leather medicine ball weighted\|medicine ball\|weighted exercise ball` |
 | 2026-05-14 | Kettledrum, Industrial | Parked from an earlier audit | `timpani orchestra` |
 | 2026-07-17 | Honeydew, Giant | Replacement rejected; needs a scale reference in frame or it reads as an ordinary melon | `honeydew melon held in hands` |
 
