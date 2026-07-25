@@ -235,6 +235,30 @@ estimation task. Until one of those lands, `minSubjectPct: 25` stays where it
 is, because a threshold calibrated against a measurement this biased is a
 threshold calibrated against nothing.
 
+**Two parked overrides were re-proposed on 2026-07-26 and are declined. Do not
+fire either.** They are the pre-fix wordings that Waves 327d/e and 328 exist to
+undo, and both entries are now resolved with correct photographs.
+
+- `2026-05-14 Kettledrum` with `timpani orchestra`. "Orchestra" is the context
+  word Wave 328f deliberately dropped from the lead rung, and dropping it is
+  what landed the current correct plate. Re-adding it invites the orchestra in
+  place of the drum, exactly as "kitchen" did on the Frigidaire. Worse, the gate
+  does not protect against this failure: a context-dominant photograph is what
+  passed at score 8 on the Frigidaire, which is the whole reason Wave 327
+  existed. Firing this is a live regression risk on a plate that is right.
+- `2026-07-22 Kettle` with `whistling stovetop kettle`. "Stovetop" names the
+  stove, which criterion 8 lists by hand as an exclusion and which is the object
+  that produced the +16 measurement overshoot on this very entry. The entry has
+  no outstanding photograph complaint -- it is a correct cast iron kettle and it
+  ended a duplicate with the teapot. The only open issue is measurement bias,
+  which no reshoot can fix. Pure downside.
+
+No substitute rung was fired for the Kettledrum either. Its one remaining
+complaint is a crowded frame, and the only rungs that would address it are the
+ones Wave 328f already used, so a re-fire draws from the same pool and returns
+the same photograph. The Medicine Ball rule applies: at some point this stops
+being a search problem.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
