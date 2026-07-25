@@ -1,10 +1,10 @@
 # Queued Follow-ups
 
-## "Plate N." caption bug — backfill decision (editorial call, Christopher's)
+## "Plate N." caption bug, RESOLVED Wave 314
 
-**Found 2026-07-23** (Christopher spotted it live: "Why does it say 'Plate N' under the images?"). Root cause: `generate-daily.js`'s prompt told the model to write the caption as literally `"Plate N.,"` with N as a placeholder meant to be swapped for a real plate number by a later step — that step never existed, so **78 of 104 published entries** shipped with the literal string "Plate N." visible under the photo. Fixed at the source (commit `12648b7`): new entries now get a real roman-numeral plate number computed from `entries.length + 1`.
+**Found 2026-07-23** (Christopher spotted it live: "Why does it say 'Plate N' under the images?"). `generate-daily.js` told the model to write the caption as literally `"Plate N.,"` with N a placeholder for a step that never existed, so 76 of 106 published entries shipped the placeholder visible under the photo.
 
-**Not fixed:** the 78 already-published entries still say "Plate N." verbatim (confirmed still live on `entries/2026-04-12.html`, for instance). Backfilling them isn't a pure mechanical fix — plate numbers need to reflect final chronological order, and some historical entries were generated out of date-order (via `burst-entries.js` backfills), so a naive `index+1` pass would produce numbers that don't match publish-date order. This needs an editorial call: renumber all 78 by corrected date order (one-time script, safe but touches many files), or leave the historical run as-is and only guarantee correctness going forward. Flagging for Christopher rather than guessing.
+**The editorial call this note asked for turned out not to be one.** The worry was that some entries were backfilled out of date order, so a naive `index+1` would mismatch publish order. `scripts/lib/plate.js` derives the number from the entry's position in *date-ascending* order, which is the right answer regardless of the order entries were written in. `scripts/sync-plate-numbers.js` (Wave 314) reconciles every stored caption against it, and renumbers rather than only filling blanks, so inserting an entry mid-archive renumbers what follows instead of leaving two Plate LXI's. It also covers article figcaptions, whose plate number is the number of the entry whose photograph the figure shows -- read from the `<img src>` filename, not typed. It runs in the chain (`scripts/reconcile.js`, step 1) on every content build. Nothing to decide; closed.
 
 ## Duplicate-subject entries flagged by site-health.js (editorial call, Christopher's)
 
@@ -30,19 +30,42 @@ Things deferred from prior sessions that should be revisited at the right time. 
 
 ---
 
-## Thickened Water 2026-04-14 image - needs manual subject_override regen
+## Image reshoot queue (one sentinel at a time)
 
-**Current state (2026-07-10, Wave 283):** audit scores it 1/10 (image shows ocean waves). Excluded from the automated worst-4 batch because the literal word "Thickened Water" returns junk on Unsplash, and batch mode can't carry a per-date override.
+The mechanism: write `data/.fire-image-regen.json` with `dates` and a
+`subject_override`, commit, push. `regenerate-images.yml` fires on that path,
+opens a PR, auto-merges, and deletes the sentinel. Since Wave 320 that workflow
+runs the full reconciler chain, so a renamed photograph no longer leaves the
+category hubs pointing at a file that is gone.
 
-**How to fix (any session, fully autonomous):** write data/.fire-image-regen.json for date 2026-04-14 with a hand-picked subject_override. Candidates to test: "glass of water with spoon dysphagia", "gel water cup", "viscous liquid pouring closeup". If Unsplash has nothing usable, consider text-regen to a more photographable subject instead.
+The override exists because the headword is not always the subject. Wave 315's
+query ladder de-inverts "Crankshaft, Marine Diesel" into "Marine Diesel
+Crankshaft" and falls back to "Crankshaft", which rescued two of the three
+entries that had previously been unshootable. It cannot rescue an entry whose
+headword is a brand nobody photographs, or one where the photograph found is of
+the wrong thing rather than of nothing.
+
+One sentinel per push. Batch mode cannot carry a per-date override, so a batch
+of dates all share one query and most of them get the wrong photograph.
+
+| Date | Entry | Problem | Override to try |
+| --- | --- | --- | --- |
+| 2026-05-24 | Crankshaft, Marine Diesel | **FIRED Wave 320.** Wave 319's replacement is a steam turbine rotor on trestles, not a crankshaft | `crankshaft engine` |
+| 2026-05-02 | Frigidaire, Side-by-Side | All three ladder rungs returned 0 photos. Unsplash has no "Frigidaire" -- it is a brand, and the ladder cannot invent the generic noun | `side by side refrigerator stainless steel kitchen` |
+| 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia`, else `gel water cup`, else `viscous liquid pouring closeup` |
+| 2026-05-26 | Globe, Library Floor Model | Entry says floor model; both photos to date are desk globes. Either override or rename the entry to match what is photographable | `standing floor globe library` |
+| 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |
+| 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval | `medicine ball gym weight` |
+| 2026-05-14 | Kettledrum, Industrial | Parked from an earlier audit | `timpani orchestra` |
+| 2026-07-17 | Honeydew, Giant | Replacement rejected; needs a scale reference in frame or it reads as an ordinary melon | `honeydew melon held in hands` |
 
 ---
 
-## Homepage static prerender: masthead date + Recently Catalogued rail frozen at May 1
+## Homepage static prerender frozen at May 1, RESOLVED
 
-**Found 2026-07-10 (origin fetch, no JS):** the served index.html shows "Friday, May 1, 2026 / Iss. 091" in the masthead and Apr 27-30 entries (href="#") in Recently Catalogued. Client JS replaces both, so browser users see current data - but crawlers/no-JS see a 2-month-old paper. Entry-of-the-day and the articles rail ARE current (Wave 277 fix holding), so this is the one remaining static section pair.
+**Found 2026-07-10:** the served index.html showed "Friday, May 1, 2026 / Iss. 091" and Apr 27-30 entries with `href="#"` in Recently Catalogued. Client JS replaced both, so browsers were fine and crawlers saw a two-month-old paper.
 
-**Fix:** make the daily build prerender these two sections the same way the articles rail is prerendered (bake real dates + last-4 entries with real hrefs). Verify with a plain curl afterward.
+**Verified fixed 2026-07-25:** index.html now ships `Iss. 106` / `Saturday, July 25, 2026` in the masthead and four real hrefs (2026-07-24 back to 2026-07-21) in Recently Catalogued. `prerender-homepage.js` runs in the chain (`scripts/reconcile.js`, step 4) on every content build, so it cannot refreeze. Closed.
 
 ---
 
@@ -258,13 +281,11 @@ The current copy is functional but a bit defensive (heavy on the "rules are not 
 
 **Trigger to act:** when Christopher asks, or in a focused unattended session when no other editorial work is pending.
 
-## Durable fix: auto-add registered articles to sitemap.xml (surface: recurring "new column not indexed")
+## Auto-add registered articles to sitemap.xml, SHIPPED Wave 303/303b
 
-**State (2026-06-24, Wave 266):** Every time a Thiccc Beat / mailbag / from-the-boat column ships, its URL has to be added to sitemap.xml BY HAND. Wave 263 added a site-health.js guard that FLAGS the gap (it caught the 06-24 mailbag this run), but the fix is still manual. Today I hand-inserted both the 06-24 mailbag and the 06-24 asphalt-roller Beat.
+**Was:** every new column's URL had to be added to sitemap.xml by hand; Wave 263's site-health guard flagged the gap but did not close it.
 
-**Durable fix:** make sitemap upkeep automatic. Safest approach is a small idempotent step in `regenerate-article-listings.js` (which already reads data/articles.json) that, for every registered article whose HTML exists, inserts a `<url>` block into sitemap.xml if absent, append-only, never reorder/dedupe existing entries, match the existing `<loc>/<lastmod>/<priority>` shape (priority 0.6 for columns). Verify it's a no-op when the sitemap is already complete, and that it doesn't touch entry/IS pages.
-
-**Why deferred (not shipped this run):** unattended session; a sitemap-mutating script needs careful edge-case testing (duplicate guards, ordering) before it runs autonomously. The site-health flag already prevents silent misses, so the manual fix is reliably prompted each run. Ship the auto-fix when shell + attention are both available.
+**Now:** `scripts/sync-sitemap.js` is the single owner of sitemap.xml. It guarantees a `<url>` for every entry in entries.json, every article in articles.json and every page on the static allowlist, drops everything on the exclude list, and never removes a URL it does not own. Wave 303b removed the competing hardcoded 20-page rewrite in `build-entry-pages.js` that had been silently reverting it. Wave 316 added noindex detection, so a page declaring `robots: noindex` is excluded rather than listed and ignored. It runs in the chain (`scripts/reconcile.js`, step 10) and supports `--check` for CI. Closed.
 
 
 ## Reference-document PDFs drift from their pages
