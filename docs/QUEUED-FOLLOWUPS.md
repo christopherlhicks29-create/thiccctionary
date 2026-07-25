@@ -122,17 +122,26 @@ Wave 325.
 
 Open question the queue should now answer over the next few reshoots: whether
 `minSubjectPct: 25` is still the right threshold. It was set against numbers a
-model volunteered and it has never once been tested against a measured one. The
-Frigidaire measured 40 against an eyeball of roughly 32, so measured numbers
-appear to run a little generous but not wildly so. Do not move the number on
-one data point.
+model volunteered and it has never once been tested against a measured one.
+
+Data so far, measured against my own eyeball on the rendered crop:
+
+| Entry | Measured | Eyeballed | Delta |
+| --- | --- | --- | --- |
+| Frigidaire 2026-05-02 | 40 | ~32 | +8 |
+| Globe 2026-05-26 | 35 | ~37 | -2 |
+
+Two points, both within single digits, no consistent direction. Compare the
+old volunteered numbers, which were out by thirty-five on the Frigidaire alone.
+Leave the threshold at 25 until something actually gets rejected on prominence
+and the rejection looks wrong. Nothing has yet.
 
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
 | 2026-05-02 | Frigidaire, Side-by-Side | **RESOLVED Wave 327b**, on the fourth firing. The photo is a genuine side-by-side -- two full-height vertical doors, dispenser in the left one -- standing centred and floor-to-ceiling in an otherwise empty hallway. Measured 40%; eyeballing the crop puts it near 32%, so the measurement tracks reality within single digits where the volunteered numbers were out by thirty-five. Stranger sees "a refrigerator in a kitchen", which is the first time that line has agreed with the headword. History: **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. **Re-fired Wave 325b: zero Unsplash results, so the measured gate was never exercised.** The five-word override was too specific for the library and, at the time, an override replaced the ladder rather than leading it. Wave 326 fixed that. **Re-fired Wave 326b: replaced, critic score 8.** The ladder found photos on rung one and the run completed, but the photograph is a real-estate listing shot of a white kitchen, refrigerator about an eighth of the frame, and Unsplash calls it a *french door* refrigerator, which is not a side-by-side. It passed because the prominence gate had a hole (Wave 327). Kept, because it beats the cut-off-at-the-edge photo it replaced. Re-fire against the closed gate, and lean on the configuration word so a french-door does not qualify | `side-by-side refrigerator two doors\|side by side refrigerator\|refrigerator` |
 | 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia\|gel water cup\|viscous liquid pouring closeup` |
-| 2026-05-26 | Globe, Library Floor Model | **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate. Wave 322b fixed the identity; the framing stayed marginal, globe roughly a quarter of the frame with bookcases dominating. **Re-fired Wave 327c** as the first case whose recorded failure is prominence rather than identity, which makes it the cleanest read on whether the measured gate rejects on framing alone. Note "library" is dropped from every rung: naming the room is what invited the room, exactly as "kitchen" did on the Frigidaire | `antique floor standing globe on stand\|large world globe on wooden stand\|floor globe` |
+| 2026-05-26 | Globe, Library Floor Model | **RESOLVED Wave 327c.** A genuine antique floor globe on a turned wooden stand, in focus and filling the left half of the frame, a second one behind it in the dark. Measured 35 against an eyeball of about 37. Second data point on the measured gate and the second time it has landed within single digits of the picture. History: **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate. Wave 322b fixed the identity; the framing stayed marginal, globe roughly a quarter of the frame with bookcases dominating. **Re-fired Wave 327c** as the first case whose recorded failure is prominence rather than identity, which makes it the cleanest read on whether the measured gate rejects on framing alone. Note "library" is dropped from every rung: naming the room is what invited the room, exactly as "kitchen" did on the Frigidaire | `antique floor standing globe on stand\|large world globe on wooden stand\|floor globe` |
 | 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |
 | 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval | `medicine ball gym weight` |
 | 2026-05-14 | Kettledrum, Industrial | Parked from an earlier audit | `timpani orchestra` |
