@@ -54,10 +54,27 @@ below: a desk globe, a teapot standing in for a kettle and a cannonball
 standing in for a medicine ball are all photographs of the wrong object that
 score well on composition, which is exactly what used to get through.
 
+Wave 325 closes the sibling hole. `isSubject` asks whether the object is in the
+frame; nothing was reliably asking whether it was *the photograph*. The critic
+used to answer that with a volunteered `subjectPercentEstimate`, apply its own
+"under 25% is a reject" rule to its own number, and hand both to a gate that
+re-read the number and called it verification. It ran generous every time it
+was checked. The critic now returns a bounding box and the area is computed in
+code (`withMeasuredProminence()`), so the reject threshold is measured rather
+than asserted. It also has to answer, in writing, what an uncaptioned viewer
+would say the photo is of -- the line that reads "a modern kitchen" under an
+entry titled Frigidaire. That answer is logged on both pass and reject, so a
+future regression is visible in `audits/regen-last-run.md` without opening the
+image.
+
+The threshold stayed at 25 deliberately. Changing the measurement and the
+threshold in the same wave would make it impossible to tell which one did the
+work. Revisit the number after a few runs against real boxes.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
-| 2026-05-02 | Frigidaire, Side-by-Side | All three ladder rungs returned 0 photos. Unsplash has no "Frigidaire" -- it is a brand, and the ladder cannot invent the generic noun | `side by side refrigerator stainless steel kitchen` |
+| 2026-05-02 | Frigidaire, Side-by-Side | **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. Re-fire only after Wave 325 is live, and drop "kitchen" from the query, which is what invited a kitchen | `stainless steel side by side refrigerator` |
 | 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia`, else `gel water cup`, else `viscous liquid pouring closeup` |
 | 2026-05-26 | Globe, Library Floor Model | **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate | `standing floor globe library` |
 | 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |

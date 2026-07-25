@@ -315,6 +315,19 @@ if (allFiles.some(f => f === 'data/entries.json')) {
   }
 }
 
+// Wave 325, Rule 10: the image-critic unit tests. Runs unconditionally rather
+// than only when image-critic.js is staged, because the failure this guards
+// against is a pure function quietly changing shape under an edit somewhere
+// else, and a test that only runs when you touch the file under test cannot
+// see that. It is pure arithmetic with no network and no key; it costs
+// milliseconds.
+try {
+  const { execSync } = await import('node:child_process');
+  execSync('node scripts/test-image-critic.js', { stdio: 'inherit' });
+} catch (e) {
+  fail('scripts/image-critic.js', 'critic-unit-tests', 'scripts/test-image-critic.js reported failures (see output above)');
+}
+
 // Report
 console.log(`[preship] checked ${allFiles.length} file(s) in ${mode} mode`);
 if (failures.length === 0) {

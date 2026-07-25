@@ -2,8 +2,14 @@
  * image-critic.js - the one image critic.
  *
  * critiqueImage({ subject, imageUrl, photoDescription, photographer })
- *   -> { isSubject, score, verdict, subjectPercentEstimate, photoSubject, critique }
+ *   -> { isSubject, score, verdict, subjectPercentEstimate, photoSubject,
+ *        strangerGuess, subjectBox, subjectPercentClaimed, critique }
  *   -> null if OPENAI_API_KEY is missing or the call fails outright.
+ *
+ * subjectPercentEstimate keeps its name but is no longer an estimate: as of
+ * Wave 325 it is computed from subjectBox, and subjectPercentClaimed carries
+ * whatever the model would have said. Four callers read the field and none of
+ * them had to change. See withMeasuredProminence() below for why.
  *
  * Wave 204 extracted this from generate-daily.js "so regenerate-images.js and
  * post-to-buffer.js can use the same gate." generate-daily.js then kept its own
@@ -44,7 +50,7 @@ const SYS_PROMPT = `You are a design reviewer for "Thiccctionary," a satirical d
 
 7. GIRTH TEST (Wave 301, tuned 303). Every entry celebrates an object that is thiccc FOR ITS KIND: unusually large, heavily loaded, over-abundant, or imposing relative to a typical example. Judge girth relative to the subject's own category, not absolute size: a fully loaded banana split overflowing its boat IS thiccc; a single modest scoop is not. A photo of six standard cinnamon rolls in cupcake liners is NOT acceptable for 'Roll, Cinnamon Bun Oversized'. Disqualifying cues are ones that betray a modest, restrained, or subdivided example (cupcake liners, dainty portions, a small specimen of a normally large object). If the subject reads as a modest example of its kind, score ceiling is 4. Do NOT penalize a generously loaded or fully realized example merely because the object category is small.
 
-8. SUBJECT-PROMINENCE TEST (Wave 200, Christopher 2026-05-23 'the latest post is more of a blacksmith than an anvil'). Estimate the percent of frame area the SUBJECT itself occupies. If < 40%, score ceiling is 5. If < 25%, score ceiling is 3 (auto-reject). A 'blacksmith hammering an anvil' photo where the anvil is 20% of the frame and a person fills 60% is NOT an acceptable pick for an entry titled 'Anvil.' It is a photo of a blacksmith. Stranger test: would someone seeing this with NO CAPTION identify the subject as the cataloged thing? If they'd guess 'blacksmith' or 'workshop' instead of 'anvil', score it down.
+8. SUBJECT-PROMINENCE TEST (Wave 200, Christopher 2026-05-23 'the latest post is more of a blacksmith than an anvil'; re-cut Wave 325). Do NOT estimate a percentage. Instead, draw a tight bounding box around the SUBJECT ITSELF and report it as "subjectBox": [x0, y0, x1, y1] in normalized 0-1 coordinates, origin top-left. Box the object, not the scene it sits in: for "Anvil" box the anvil, not the forge; for "Frigidaire" box the refrigerator, not the kitchen. If the subject is partly out of frame, box only the visible part. The area is computed from your box downstream, so a loose box that swallows the room reads as a false prominence claim. Stranger test, which you must also answer: someone shown this photo with NO CAPTION, asked "what is this a picture of," gives one short answer. Report it verbatim as "strangerGuess". If the honest answer is 'a modern kitchen' and the entry is 'Frigidaire, Side-by-Side', say 'a modern kitchen'. Do not launder the guess toward the subject to help the photo pass.
 
 9. SUBJECT-IDENTITY REALITY CHECK (Wave 226, post 5/31 'Industrial F350 kettle' incident). The subject string itself must be a REAL, plausibly-verifiable product designation, not a fabrication. RED FLAGS to auto-reject (verdict 'reject', score <= 3) regardless of how good the photo looks:
    - Model number borrowed from one product category and stuck onto another. Examples: "F350 kettle" (F350 = Ford truck), "Boeing 747 sofa", "M1 toaster", "Saturn V coffee pot". Vehicle/aircraft/military model numbers do not belong on kitchen, furniture, appliance, or animal subjects. If the subject combines a vehicle/aircraft/military model number with a non-vehicle category, REJECT.
@@ -53,6 +59,52 @@ const SYS_PROMPT = `You are a design reviewer for "Thiccctionary," a satirical d
    If the subject fails this check, say so explicitly in the critique paragraph and set verdict='reject'.
 
 Score 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
+
+/**
+ * Wave 325. subjectPercentEstimate used to be a number the model volunteered,
+ * and criterion 8's "under 25% is an auto-reject" was a rule the same model was
+ * asked to apply to its own number, in the same breath, before anything in code
+ * saw either. passesGate() then re-read that number and called it verification.
+ * It was not. It was one claim, read twice.
+ *
+ * The estimate ran generous every time it was checked against the picture. The
+ * anvil that was really a blacksmith. The floor globe that was really a pair of
+ * bookcases. And on 2026-07-25 a "Frigidaire, Side-by-Side" reshoot that came
+ * back as an Unsplash photo captioned "modern kitchen with island and bar
+ * stools" -- refrigerator at the left edge, part of it outside the crop, about
+ * a ninth of the frame. Score 7, passed, shipped, replaced a better photograph.
+ *
+ * So stop asking for the arithmetic. Ask for a bounding box, which is
+ * localisation rather than estimation and which vision models are much better
+ * at, and compute the area here where the model cannot round it up. Same field
+ * name on the way out, so all five consumers get the measured number without
+ * being edited -- one writer, five readers, which is the shape this codebase
+ * keeps having to relearn.
+ *
+ * A response with no usable box keeps whatever subjectPercentEstimate it came
+ * with, so an older critic, or the Anthropic fallback on a bad day, degrades to
+ * exactly the previous behaviour instead of to an exception.
+ */
+export function withMeasuredProminence(c) {
+  if (!c || typeof c !== 'object') return c;
+  const b = c.subjectBox;
+  if (!Array.isArray(b) || b.length !== 4 || b.some((n) => typeof n !== 'number' || !isFinite(n))) return c;
+  // Tolerate either corner order and boxes that spill past the frame edge; a
+  // subject cropped by the frame is common and is not a malformed answer.
+  const x0 = Math.max(0, Math.min(b[0], b[2]));
+  const x1 = Math.min(1, Math.max(b[0], b[2]));
+  const y0 = Math.max(0, Math.min(b[1], b[3]));
+  const y1 = Math.min(1, Math.max(b[1], b[3]));
+  const w = x1 - x0, h = y1 - y0;
+  if (!(w > 0 && h > 0)) return c;
+  const measured = Math.round(w * h * 100);
+  return {
+    ...c,
+    subjectPercentEstimate: measured,
+    subjectPercentClaimed: c.subjectPercentEstimate,  // kept for the audit trail
+    subjectPercentMeasured: measured,
+  };
+}
 
 export async function critiqueImage({ subject, imageUrl, photoDescription, photographer }) {
   if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
@@ -67,9 +119,10 @@ Output JSON:
   "isSubject": <true if the photo positively shows the named object, false if it shows something else>,
   "score": <1-10>,
   "verdict": "ship" | "needs-review" | "reject",
-  "subjectPercentEstimate": <integer 0-100, what percent of the image area the actual subject thing occupies. 60-90 is healthy; <40 means a person or background is dominant>,
+  "subjectBox": [<x0>, <y0>, <x1>, <y1>],
+  "strangerGuess": "what an uncaptioned viewer would say this photo is of, in a few words",
   "photoSubject": "one short clause describing what the photo ACTUALLY depicts, be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
-  "critique": "one paragraph explaining the score, what's good, what's weak. If isSubject is false, name what the photo shows instead. If subjectPercentEstimate is < 40, EXPLAIN what is dominating the frame."
+  "critique": "one paragraph explaining the score, what's good, what's weak. If isSubject is false, name what the photo shows instead. If the subject box is small, EXPLAIN what is dominating the frame."
 }`;
 
   try {
@@ -98,7 +151,8 @@ Output JSON:
     const data = await res.json();
     // extractJson because the Anthropic fallback has no response_format and
     // will occasionally wrap its object in a fenced block.
-    return JSON.parse(extractJson(data.choices[0].message.content));
+    const c = JSON.parse(extractJson(data.choices[0].message.content));
+    return withMeasuredProminence(c);
   } catch (e) {
     console.warn(`[image-critic] errored: ${e.message}`);
     return null;

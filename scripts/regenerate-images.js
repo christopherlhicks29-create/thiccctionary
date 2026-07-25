@@ -296,12 +296,14 @@ async function main() {
         if (passesGate(c, GATES.regen)) {
           chosen = candidate;
           critique = c;
-          if (c) console.log(`  Critic PASS (attempt ${attempt}/3): score=${c.score}, subject%=${c.subjectPercentEstimate}`);
+          if (c) console.log(`  Critic PASS (attempt ${attempt}/3): score=${c.score}, subject%=${c.subjectPercentEstimate}${c.subjectPercentClaimed != null ? ` measured (claimed ${c.subjectPercentClaimed})` : ''}, stranger sees "${c.strangerGuess ?? 'n/a'}"`);
         } else {
           // Wave 321: name the identity failure explicitly. A run log reading
           // only "score=4" invites another query tweak; one reading
           // "not the subject" says the query was fine and the photo was not.
-          lastReject = `${c?.isSubject === false ? 'NOT THE SUBJECT, ' : ''}score=${c?.score}, subject%=${c?.subjectPercentEstimate}, saw "${c?.photoSubject}"`;
+          // Wave 325 adds the stranger's answer, which is the line that would
+          // have caught the Frigidaire-that-was-a-kitchen on sight.
+          lastReject = `${c?.isSubject === false ? 'NOT THE SUBJECT, ' : ''}score=${c?.score}, subject%=${c?.subjectPercentEstimate}, saw "${c?.photoSubject}", stranger sees "${c?.strangerGuess ?? 'n/a'}"`;
           console.log(`  Critic REJECT (attempt ${attempt}/3): ${lastReject}. Trying next.`);
         }
       }
