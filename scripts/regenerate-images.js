@@ -26,6 +26,64 @@ const ROOT = path.resolve(__dirname, '..');
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 const IMAGES_DIR = path.join(ROOT, 'images');
 
+/**
+ * Wave 309: leave evidence in the repo, because the Actions log is unreadable
+ * from where the agent lives.
+ *
+ * Wave 306b dispatched a regen of eight wrong-subject photos. The sentinel was
+ * consumed, so the workflow definitely ran. No PR branch ever appeared, and
+ * that single fact is consistent with at least four different outcomes:
+ * the critic declined all eight, Unsplash 401'd on a dead key, OpenAI ran out
+ * of credit, or the script threw somewhere else. `process.exit(1)` on
+ * (failed > 0 && succeeded === 0) skips the "Open Pull Request" step, so a
+ * total failure and a total no-op are indistinguishable from outside -- both
+ * are silence. Twenty minutes of polling `git branch -r` cannot tell them
+ * apart, and neither can any amount of reasoning.
+ *
+ * So the run now writes down what happened. audits/regen-last-run.md is
+ * committed by the workflow with `if: always()`, which means it survives the
+ * non-zero exit that hides everything else. One `git fetch` and the answer is
+ * in the repo.
+ */
+const RUN_LOG = { dates: '', override: '', fatal: null, rows: [] };
+
+function logRow(date, word, outcome, detail) {
+  RUN_LOG.rows.push({ date, word, outcome, detail: detail || '' });
+}
+
+async function writeRunLog() {
+  const counts = RUN_LOG.rows.reduce((a, r) => (a[r.outcome] = (a[r.outcome] || 0) + 1, a), {});
+  const summary = Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(', ') || 'nothing processed';
+  const lines = [
+    '# Last image-regen run',
+    '',
+    'Written by scripts/regenerate-images.js and committed by the workflow with',
+    '`if: always()`, so it exists even when the run exits non-zero and opens no PR.',
+    '',
+    `- **Run:** ${process.env.GITHUB_RUN_ID ? `[${process.env.GITHUB_RUN_ID}](https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID})` : 'local'}`,
+    `- **Dates requested:** \`${RUN_LOG.dates || '(none)'}\``,
+    `- **Subject override:** \`${RUN_LOG.override || '(none)'}\``,
+    `- **Result:** ${summary}`,
+    '',
+  ];
+  if (RUN_LOG.fatal) {
+    lines.push('## Fatal error', '', '```', String(RUN_LOG.fatal).slice(0, 4000), '```', '');
+  }
+  lines.push('| Date | Word | Outcome | Detail |', '| --- | --- | --- | --- |');
+  for (const r of RUN_LOG.rows) {
+    const cell = v => String(v).replace(/\|/g, '\\|').replace(/\n/g, ' ').slice(0, 300);
+    lines.push(`| ${r.date} | ${cell(r.word)} | **${r.outcome}** | ${cell(r.detail)} |`);
+  }
+  lines.push('');
+  try {
+    await fs.mkdir(path.join(ROOT, 'audits'), { recursive: true });
+    await fs.writeFile(path.join(ROOT, 'audits', 'regen-last-run.md'), lines.join('\n'));
+    console.log('Wrote audits/regen-last-run.md');
+  } catch (e) {
+    console.error('Could not write run log:', e.message);
+  }
+}
+
 async function searchUnsplash(query) {
   const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=30&orientation=landscape&content_filter=high`;
   const res = await fetch(url, {
@@ -137,10 +195,15 @@ async function main() {
 
   if (toProcess.length === 0) {
     console.log('Nothing to process.');
+    RUN_LOG.dates = datesInput;
+    RUN_LOG.fatal = `No entry matched DATES="${datesInput}". Nothing ran.`;
+    await writeRunLog();
     return;
   }
 
+  RUN_LOG.dates = datesInput;
   const override = (process.env.SUBJECT_OVERRIDE || '').trim();
+  RUN_LOG.override = override;
   if (override) {
     console.log(`SUBJECT_OVERRIDE active: using "${override}" as search query for all selected dates.`);
   }
@@ -168,6 +231,7 @@ async function main() {
       }
       if (candidates.length === 0) {
         console.log(`  No Unsplash results -- skipping.`);
+        logRow(entry.date, entry.word, 'no-results', `query "${primaryQuery}" returned 0 photos`);
         skipped++;
         continue;
       }
@@ -181,6 +245,7 @@ async function main() {
       const subjectForVision = override || entry.word;
       let chosen = null;
       let critique = null;
+      let lastReject = 'none recorded';
       // Wave 204: critic gate. Up to 3 picks from this candidate set; reject any
       // that fail the subject-prominence test (score>=7, subject>=25%% of frame).
       const tried = new Set();
@@ -204,11 +269,14 @@ async function main() {
           critique = c;
           if (c) console.log(`  Critic PASS (attempt ${attempt}/3): score=${c.score}, subject%=${c.subjectPercentEstimate}`);
         } else {
-          console.log(`  Critic REJECT (attempt ${attempt}/3): score=${c?.score}, subject%=${c?.subjectPercentEstimate}, "${c?.photoSubject}". Trying next.`);
+          lastReject = `score=${c?.score}, subject%=${c?.subjectPercentEstimate}, saw "${c?.photoSubject}"`;
+          console.log(`  Critic REJECT (attempt ${attempt}/3): ${lastReject}. Trying next.`);
         }
       }
       if (!chosen) {
         console.log('  No candidate passed the critic gate. Skipping this entry.');
+        logRow(entry.date, entry.word, 'critic-rejected',
+          `${candidates.length} candidates, 3 attempts, last verdict: ${lastReject}`);
         skipped++;
         continue;
       }
@@ -253,9 +321,12 @@ async function main() {
       entry.photographer = chosen.photographer;
       entry.photographerUrl = chosen.photographerUrl;
       entry.unsplashUrl = chosen.unsplashUrl;
+      logRow(entry.date, entry.word, 'replaced',
+        `images/${filename} <- ${chosen.unsplashUrl} (critic score=${critique?.score})`);
       succeeded++;
     } catch (err) {
       console.error(`  FAILED: ${err.message}`);
+      logRow(entry.date, entry.word, 'error', err.message);
       failed++;
     }
 
@@ -311,9 +382,18 @@ async function main() {
     console.log('No entry was updated: the critic declined every candidate. That is a clean');
     console.log('no-op, not a failure -- rerun with a different SUBJECT_OVERRIDE query.');
   }
+  await writeRunLog();
   if (failed > 0 && succeeded === 0) {
     process.exit(1);
   }
 }
 
-main().catch(err => { console.error(err); process.exit(1); });
+main().catch(async err => {
+  // A throw outside the per-entry try -- entries.json unreadable, a bad DATES
+  // value, an exception in the post-processing rebuild -- used to leave nothing
+  // behind at all. Record it, then fail as before.
+  console.error(err);
+  RUN_LOG.fatal = err && err.stack ? err.stack : err;
+  await writeRunLog();
+  process.exit(1);
+});

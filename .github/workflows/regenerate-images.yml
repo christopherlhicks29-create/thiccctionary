@@ -75,6 +75,28 @@ jobs:
           SUBJECT_OVERRIDE: ${{ inputs.subject_override || steps.sentinel.outputs.subject_override }}
         run: node regenerate-images.js
 
+      # Wave 309: publish the run log no matter what. The regen step exits 1
+      # when every entry errors, which skips every step below it including the
+      # PR -- so a total failure and a clean no-op both look like silence from
+      # outside. `if: always()` plus a force-push to a fixed branch means the
+      # answer is one `git fetch` away. Fixed branch, not one per run, so this
+      # never accumulates refs; force-push, so it never needs a rebase against
+      # a main that the sentinel step just moved.
+      - name: Publish run log (always)
+        if: always()
+        run: |
+          if [ ! -f audits/regen-last-run.md ]; then
+            echo "no run log written; the step died before the script started"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f audits/regen-last-run.md
+          git commit -o audits/regen-last-run.md \
+            -m "Regen run log ${{ github.run_id }}" || echo "nothing to commit"
+          git push -f origin HEAD:refs/heads/ci-regen-log
+          echo "log at: https://github.com/${{ github.repository }}/blob/ci-regen-log/audits/regen-last-run.md"
+
       - name: Sync WebP derivatives (Wave 305)
         run: node scripts/sync-webp.js
         continue-on-error: true
