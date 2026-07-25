@@ -10,7 +10,7 @@
  *
  * Run: node scripts/test-caption.js
  */
-import { captionFromSubject, writeCaption } from './lib/caption.js';
+import { captionFromSubject, writeCaption, ungroundedWords } from './lib/caption.js';
 import { withPlateNumber } from './lib/plate.js';
 
 let failed = 0;
@@ -94,6 +94,57 @@ check('nothing to describe at all returns null rather than throwing',
 // The whole point: null must reach the caller as "keep what is there".
 check('null is distinguishable from an empty caption',
   (await writeCaption({ word: 'X', chat: dead(500) })) === '', false);
+
+// --- Wave 329b: the model may re-say the evidence in the house voice, and may
+// not furnish the frame. Regression anchor is the real caption that shipped on
+// 2026-07-17 under a melon photographed on a bare grey sweep.
+const HONEYDEW_EVIDENCE = 'Honeydew, Giant a whole honeydew melon round brown fruit placed on white surface';
+
+check('the platter that was not there is named as invention',
+  ungroundedWords('Plate N., A sizeable honeydew melon posed with confidence on an elaborate silver serving platter, for grandeur.', HONEYDEW_EVIDENCE),
+  ['elaborate', 'silver', 'serving', 'platter']);
+check('house-voice rhetoric is not invention',
+  ungroundedWords('Plate N., A honeydew melon of considerable girth, in majestic repose.', HONEYDEW_EVIDENCE), []);
+check('a word taken straight from the evidence is grounded',
+  ungroundedWords('Plate N., A brown fruit on a white surface.', HONEYDEW_EVIDENCE), []);
+check('plural and participle forms still match their evidence stem',
+  ungroundedWords('Plate N., Copper timpani drums, standing.', 'a real pair of copper timpani drum'), []);
+check('two-letter words are structure, not claims',
+  ungroundedWords('Plate N., Melon.', HONEYDEW_EVIDENCE), []);
+check('an empty caption invents nothing', ungroundedWords('', HONEYDEW_EVIDENCE), []);
+
+check('an ungrounded model caption is refused and the flat one shipped instead',
+  await writeCaption({
+    word: 'Honeydew, Giant', photoSubject: 'a whole honeydew melon',
+    photoDescription: 'round brown fruit placed on white surface',
+    chat: reply('Plate N., A sizeable honeydew melon on an elaborate silver serving platter.'),
+  }),
+  'Plate N., Whole honeydew melon.');
+
+check('a grounded model caption in the house voice survives the same filter',
+  await writeCaption({
+    word: 'Honeydew, Giant', photoSubject: 'a whole honeydew melon',
+    photoDescription: 'round brown fruit placed on white surface',
+    chat: reply('Plate N., A honeydew melon of considerable girth, in majestic repose.'),
+  }),
+  'Plate N., A honeydew melon of considerable girth, in majestic repose.');
+
+// The refusal has to reach the audit file. A rejection nobody can read is the
+// Wave 327 defect again: full evidence for the thing that failed, none for the
+// thing that shipped.
+const notes = [];
+await writeCaption({
+  word: 'Honeydew, Giant', photoSubject: 'a whole honeydew melon', notes,
+  chat: reply('Plate N., A melon upon a silver platter.'),
+});
+check('the caller is told which words were invented',
+  notes.some((n) => n.includes('silver') && n.includes('platter')), true);
+
+// The deterministic layer is the critic's own words and must never be second-
+// guessed by this filter -- it is the last caption we have.
+check('the flat fallback is never itself refused as ungrounded',
+  await writeCaption({ word: 'X', photoSubject: 'a real high-voltage transformer', chat: dead(500) }),
+  'Plate N., High-voltage transformer.');
 
 console.log(failed ? `\n${failed} check(s) FAILED` : '\nall checks passed.');
 process.exit(failed ? 1 : 0);

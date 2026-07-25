@@ -134,6 +134,7 @@ Data so far, measured against my own eyeball on the rendered crop:
 | Kettle 2026-07-22 | 25 | ~9 | +16 |
 | Medicine Ball 2026-07-06 | 40 | ~32 | +8 |
 | Kettledrum 2026-05-14 | 40 | ~22 | +18 |
+| Honeydew 2026-07-17 | 49 | ~35 | +14 |
 
 Four points, worst error sixteen, three of four running high. The suspicion
 logged after Thick Water is now confirmed by a second, larger case, and it is
@@ -214,6 +215,26 @@ from a subject sliced by it.** Tightening to zero would reject the many good
 compositions where a subject legitimately fills its frame, which is the Wave
 209b failure again. Logged as a note, not an action.
 
+**Wave 329's Honeydew is the row that breaks the explanation.** Measured 49,
+eyeballed about 35 on the box, delta +14. What makes it worth more than another
+tally mark is the photograph: one pale melon on a bare grey sweep. No stove, no
+stand, no table, no hand, no packaging -- **nothing in the frame for the box to
+swallow.** The "the box takes in whatever holds the subject up" theory, which
+Kettle and Thick Water and Kettledrum all supported, cannot explain this one. So
+that theory is at best partial and at worst a coincidence of three photographs
+that all happened to contain furniture. Seven rows now: +8, -2, +10, +16, +8,
++18, +14. Six of seven high, mean about +10, and the errors do not sort by
+whether there is anything to over-include.
+
+The honest reading is duller and worse: **the critic simply estimates a generous
+box, and prompt language has now failed twice to change that.** The next attempt
+should stop asking better and start asking differently -- two boxes, the object
+and its support, so code can subtract; or a coarse grid ("which of these 16
+cells does the object occupy") which is a counting task rather than an
+estimation task. Until one of those lands, `minSubjectPct: 25` stays where it
+is, because a threshold calibrated against a measurement this biased is a
+threshold calibrated against nothing.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
@@ -223,7 +244,7 @@ compositions where a subject legitimately fills its frame, which is the Wave
 | 2026-07-22 | Kettle, Cast Iron Tea | **RESOLVED Wave 328.** A dark cast iron kettle with a bail handle and a spout, sitting on a rusted outdoor stove drum against a stone wall. It is a kettle and not the teapot it used to duplicate, which was the whole bar. Measured 25 against an eyeball of about 9, the largest overshoot recorded and the case that produced the Wave 328 prompt fix -- the box took in the stove. Passed the gate on a number that was wrong; kept because the photograph is right | `cast iron whistling kettle on a stove\|cast iron kettle\|whistling kettle` |
 | 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval. **FIRED Wave 328.** "Gym" is dropped from every rung under the Wave 327d/e rule, and no rung names a rack, stand or hand under the new Wave 328 clause: this is the first reshoot fired against the tightened criterion 8, so its delta is the first honest measurement in the table. Criterion 0 already names this exact confusion -- "a cannonball is not a medicine ball" -- so identity should hold; prominence is the thing to watch. **Result: critic-rejected, 29 candidates, 3 attempts, no replacement.** Last verdict score=1, "NOT THE SUBJECT", saw "a person balancing on a medicine ball". The library's answer to "medicine ball" is fitness-lifestyle stock with a human as the composition, which criterion 5 disqualifies. Nothing was shipped, which is the gate working: the old duplicate is still in place and no wrong plate went out. **Re-fired Wave 328b** on rungs that describe the object as an object and never as equipment in use. **Also critic-rejected**, and this one is the useful failure: the pool collapsed from 29 candidates to 6, and the last verdict was a firefighter helmet badge. "Vintage leather" found leather, not medicine balls. Crucially the run never tried the broad rung behind it, because the ladder stopped at the first rung returning anything and 6 is not zero -- which is the defect Wave 328c fixes. **Re-fired Wave 328c** against the accumulating ladder and a five-attempt window. **Rejected a third time, but the run itself proves the fix**: 34 candidates where the same lead rung gave 6, and 5 attempts where the cap gave 3. The last verdict also changed character -- "a modern exercise medicine ball on a wooden box", subject%=16 -- so the critic found the object and rejected the composition, where the first two firings could not find the object at all. That is a near-miss on vocabulary, not an empty library. **Re-fired Wave 328d** on the trade names a photographer actually files these under. Note the photo this entry currently carries is a stack of iron cannonballs at a fort wall: it is not merely a duplicate, it is the exact criterion-0 failure the critic prompt names by hand ("a cannonball is not a medicine ball"), and it belongs to 2026-06-05 Cannonball, Naval on the merits. **If 328d fails this stops being a search problem.** The recommendation then is editorial and belongs to Chris: either the entry keeps a knowingly wrong plate, or the headword changes to something stock photography has ("Slam Ball" / "Wall Ball" are photographed as objects; "Medicine Ball, Gym" is photographed as an activity). **328d replaced it, and the vocabulary hypothesis was right**: leading on "slam ball" found a real slam ball at score 7, subject 40%. The plate is kept because it is the right object and the cannonballs were the wrong one, and criterion 0 says in as many words that a beautiful photo of the wrong object is the worse outcome. It is still not a good plate: the ball is cut off at the top and right and a purple dumbbell sits in sharp focus across the foreground. That is what produced Wave 328e. **Re-fired Wave 328e** on the same ladder, which is not another vocabulary guess -- the vocabulary is solved -- but the first production test of the completeness gate, which should reject this exact photograph and dig further into the pool. **It did, and nothing better was behind it**: 30 candidates, 5 attempts, all rejected, last verdict a man playing basketball at 6%. So the cut-off slam ball stands, which is the fallback working as designed -- the gate declined to trade a right-object-badly-framed for a wrong-object-well-framed. **CLOSED with a caveat.** The duplicate with Cannonball, Naval is gone and the criterion-0 identity failure is gone; what remains is a composition complaint, which is a smaller defect than either, and five firings is enough. Anyone reopening this should change the headword rather than the query | `slam ball\|wall ball\|medicine ball` |
 | 2026-05-14 | Kettledrum, Industrial | **RESOLVED Wave 328f**, with caveats worth reading. The plate now carries a genuine pair of copper timpani against a brick wall, score 8, and the stranger line agrees with the headword for only the second time on record. Dropping "orchestra" from the lead rung worked exactly as Wave 327d/e predicted -- it is a context word in the way "kitchen", "library" and "gym" were, and every one of those invited the context in instead of the object. Two caveats. The frame is crowded: music stands, microphone stands, a cymbal and a speaker cabinet share it, so this is a photograph of drums in a room rather than a plate of a drum. And the measurement is the worst in the calibration table, 40 against an eyeball of 22, because the box took in the timpani stands that criterion 8 names by hand as an exclusion. Kept because identity is right and identity outranks framing (criterion 0). Anyone reopening this wants a studio-isolated timpani, which the library may simply not have | `copper timpani drum\|timpani\|orchestral kettledrum` |
-| 2026-07-17 | Honeydew, Giant | Replacement rejected; needs a scale reference in frame or it reads as an ordinary melon. **Override reworded Wave 329 before firing.** The stored phrase was `honeydew melon held in hands`, which names a hand -- the exact word Wave 328's criterion 8 added to its exclusion list, and the exact composition that got three consecutive Medicine Ball firings rejected ("a person balancing on a medicine ball"). Asking for hands to solve the scale problem invites the fitness-lifestyle stock that has no object in it. A narrow lead rung is safe now that Wave 328c accumulates the ladder instead of stopping at the first rung that returns anything, so the melon leads and the bare head noun sits behind it | `giant honeydew melon\|whole honeydew melon\|honeydew melon` |
+| 2026-07-17 | Honeydew, Giant | **RESOLVED Wave 329.** One pale honeydew, centred on a bare grey sweep, score 7, subject 49%, stranger sees "a honeydew melon". The rewording worked on the first firing. The original complaint -- "needs a scale reference or it reads as an ordinary melon" -- is not solved and is not solvable this way: there is no scale reference in the frame, so it does read as an ordinary melon, and every query that asks for one invites a person into the shot. Accepted as the better trade, because the entry's own definition supplies the scale joke in words and the plate only has to supply a melon. This entry is also the seventh calibration row and the one that broke the measurement theory (above), and the entry whose caption exposed Wave 329b. History: **Override reworded Wave 329 before firing.** The stored phrase was `honeydew melon held in hands`, which names a hand -- the exact word Wave 328's criterion 8 added to its exclusion list, and the exact composition that got three consecutive Medicine Ball firings rejected ("a person balancing on a medicine ball"). Asking for hands to solve the scale problem invites the fitness-lifestyle stock that has no object in it. A narrow lead rung is safe now that Wave 328c accumulates the ladder instead of stopping at the first rung that returns anything, so the melon leads and the bare head noun sits behind it | `giant honeydew melon\|whole honeydew melon\|honeydew melon` |
 
 ---
 
@@ -277,6 +298,53 @@ Frigidaire, Atlas Stone, Kettle, Mango, Meatloaf). The 6 stay on the list and
 clear themselves automatically the next time they are reshot. A 60% false
 positive rate is fine when the list is finite, ordered, and shrinks on its own;
 a repeatable audit producing a suspect list beats a one-off finding.
+
+### Wave 329b: the fix shipped a lie on its first outing
+
+The Honeydew reshoot was fired in the same commit as Wave 329, so it doubled as
+the first production test of the caption rewrite. The audit row carried the
+`recaptioned` clause exactly as designed. The caption it carried was:
+
+> Plate XCVIII., A sizeable honeydew melon posed with confidence on an elaborate
+> silver serving platter, for grandeur.
+
+There is no platter. There is no silver. The photograph is one melon on a bare
+grey sweep, and the evidence the model was handed said "a whole honeydew melon"
+and "round brown fruit placed on white surface". It furnished the room anyway.
+
+**So Wave 329 traded a stale caption for an invented one.** Same defect class --
+prose describing a photograph the reader cannot see -- with the cause moved one
+step. Worth stating plainly rather than filing as a tweak, because the wave that
+existed to stop captions lying about photographs shipped a caption lying about a
+photograph, and it did so on attempt one.
+
+The first instinct was to add "do not invent detail" to the system prompt. That
+is the identical move to adding "stand" to criterion 8's exclusion list two
+sections up, which had just been written up as *not working*. The repo's own
+rule: ask the model for what it does well, and do the checking in code.
+
+What it does well is voice. What it cannot be trusted with is the contents of a
+frame it has never seen. So `ungroundedWords()` holds the model to re-saying, in
+the house voice, only things already in evidence -- the headword, the critic's
+`photoSubject`, Unsplash's description. Every other content word must come from
+a fixed lexicon of voice and function words: posture, scale, rhetoric, grammar,
+and deliberately no nouns about the world. "in majestic repose" survives.
+"silver serving platter" does not. The refused attempt is pushed into a `notes`
+array the caller puts in the audit row, so a human can see that a caption
+shipped flat *because* the model tried to invent, which is a different event
+from the model getting it right.
+
+The check fails safe by construction, and that asymmetry is the design: a voice
+word missing from the lexicon costs one dry caption, an ungrounded noun costs a
+lie under a photograph. The lexicon is meant to reject more than it strictly
+must. The prompt was tightened too, but as belt to the code's braces, not as the
+fix. The deterministic fallback is exempt -- it is the critic's own sentence
+with an article trimmed, so it is grounded by construction and filtering it
+could only ever cost us the last caption we have.
+
+The shipped Honeydew caption is corrected on disk. 28 checks in
+`scripts/test-caption.js`, with the real bad caption pinned as the regression
+anchor.
 
 ---
 

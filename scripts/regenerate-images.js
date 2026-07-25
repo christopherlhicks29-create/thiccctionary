@@ -390,15 +390,24 @@ async function main() {
       // block and has already succeeded by the time we get here. A caption
       // failure must cost the caption, not the replacement.
       let captionNote = '';
+      const captionNotes = [];
       try {
         const written = await writeCaption({
           word: entry.word,
           photoSubject: critique && critique.photoSubject,
           photoDescription: chosen.description,
+          notes: captionNotes,
         });
         if (written) {
           entry.caption = withPlateNumber(written, plateNumberFor(entry, entries));
           captionNote = `, recaptioned "${entry.caption}"`;
+          // Wave 329b: a caption that shipped only because the model's attempt
+          // was refused is a different event from one the model got right, and
+          // the audit file is the only place a human can see the difference.
+          // Wave 327's rule: log the shipped thing as thoroughly as the rejected
+          // one.
+          const invention = captionNotes.find((n) => n.startsWith('refused '));
+          if (invention) captionNote += ` [model attempt refused as ungrounded: ${invention.slice(8)}]`;
         } else {
           // Both layers refused. Say so in the run log rather than in a console
           // line nobody can read: a stale caption is the exact defect this wave
