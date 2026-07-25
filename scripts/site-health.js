@@ -19,6 +19,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateEntry } from './banned-words.js';
+import { photoId } from './lib/used-photos.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -29,7 +30,7 @@ const CHECK_MODE = process.argv.includes('--check');
 // Wave 257: duplicate-entry detection (mirrors generate-daily.js subjectFamilyDup)
 // so the catalog can never quietly accumulate two entries for the same subject.
 const SH_SIZE = new Set(['big','bulky','large','round','heavy','chunky','hefty','plump','plush','thick','wide','fat','stout','sturdy','massive','huge','dense','solid','giant','common','standard','domestic','tufted']);
-const SH_SYN = { cement:'concrete', couch:'sofa', settee:'sofa', lorry:'truck', plane:'aircraft', airplane:'aircraft' };
+const SH_SYN = { cement:'concrete', couch:'sofa', settee:'sofa', lorry:'truck', plane:'aircraft', airplane:'aircraft', kettle:'teapot' };
 const SH_GENERIC_TAILS = new Set(['wheel','ball','box','case','machine','set','stand','holder','unit','model']);
 const SH_MACHINE = new Set(['mixer','excavator','harvester','locomotive','dredger','bulldozer','forklift','backhoe','zamboni','escalator','crane']);
 function shMachine(s){return (String(s||'').toLowerCase().match(/[a-z]+/g)||[]).find(t=>SH_MACHINE.has(t))||null;}
@@ -101,6 +102,7 @@ async function audit() {
     missingWebp: [],
     navMissingMobileToggle: [],
     duplicateEntries: [],
+    duplicatePhotos: [],
     missingDates: [],
     grievanceOrder: [],
     duplicateFigures: [],
@@ -357,6 +359,34 @@ async function audit() {
     }
   } catch (err) { /* entries.json unreadable, skip */ }
 
+  // Wave 306: duplicate-PHOTO scan. Distinct from the duplicate-entry scan
+  // above: "Atlas Stone", "Cannonball" and "Medicine Ball" are three legitimate
+  // subjects that the subject-family guard correctly waves through, and all
+  // three shipped the same Unsplash photograph. Invisible when an image only
+  // appeared once per page; obvious now that /category/ hubs put twenty
+  // thumbnails in a grid. generate-daily/regenerate-images/inject-entry now
+  // filter used photos at selection time, so this is here to catch anything
+  // that arrives by a path those three do not own (hand-edited entries.json,
+  // a future generator, a restored backup).
+  try {
+    const ents = JSON.parse(await fs.readFile(path.join(ROOT, 'data/entries.json'), 'utf-8'));
+    const byPhoto = new Map();
+    for (const e of ents) {
+      const id = photoId(e.unsplashUrl);
+      if (!id) continue;
+      if (!byPhoto.has(id)) byPhoto.set(id, []);
+      byPhoto.get(id).push(e);
+    }
+    for (const [id, group] of byPhoto) {
+      if (group.length < 2) continue;
+      issues.duplicatePhotos.push({
+        id,
+        url: group[0].unsplashUrl,
+        entries: group.map(e => `${e.date} ${e.word}`).sort(),
+      });
+    }
+  } catch (err) { /* entries.json unreadable, skip */ }
+
   // Wave 281: page-integrity checks for bug classes Christopher caught live on 2026-07-05.
   try {
     for (const file of htmlFiles) {
@@ -433,7 +463,7 @@ function formatReport({ issues, stats }) {
   const dateStr = new Date().toISOString().slice(0, 10);
   const totalIssues = issues.brokenLinks.length + issues.missingAlt.length + issues.badSchema.length
                       + issues.missingOg.length + issues.sitemapDrift.inSitemapNotInRepo.length
-                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length + issues.missingDates.length + issues.grievanceOrder.length + issues.duplicateFigures.length + issues.rawPathParentheticals.length + issues.llmArtifacts.length;
+                      + issues.sitemapDrift.inRepoNotInSitemap.length + issues.missingWebp.length + issues.navMissingMobileToggle.length + issues.duplicateEntries.length + issues.duplicatePhotos.length + issues.missingDates.length + issues.grievanceOrder.length + issues.duplicateFigures.length + issues.rawPathParentheticals.length + issues.llmArtifacts.length;
   lines.push(`# Site Health Audit, ${dateStr}`);
   lines.push('');
   lines.push(`**Status:** ${totalIssues === 0 ? '✅ Clean' : `⚠️ ${totalIssues} issue${totalIssues === 1 ? '' : 's'} found`}`);
@@ -488,6 +518,9 @@ function formatReport({ issues, stats }) {
 
   section(`Duplicate entries (same subject family) (${issues.duplicateEntries.length})`, issues.duplicateEntries,
     i => `\`${i.a}\` duplicates \`${i.b}\` (same subject family).`);
+  section(`Entries sharing one photograph (${issues.duplicatePhotos.length})`, issues.duplicatePhotos,
+    i => `${i.entries.length} entries share [${i.id}](${i.url}): ${i.entries.map(e => `\`${e}\``).join(', ')}. All but one need a new photo.`);
+
   section(`Missing .webp pair for entry images (${issues.missingWebp.length})`, issues.missingWebp,
     i => `\`${i.date}\` (${i.word}): \`${i.jpg}\` exists but \`${i.webp}\` is missing. Browsers may show alt text instead of image.`);
 

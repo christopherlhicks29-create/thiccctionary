@@ -19,6 +19,7 @@ import path from 'node:path';
 import { critiqueImage, passesGate, GATES } from './image-critic.js';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
+import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -170,6 +171,12 @@ async function main() {
         skipped++;
         continue;
       }
+      // Wave 306: exclude photos other entries already use. `spentPhotos` is
+      // rebuilt per entry from the catalog minus this entry, so a regen that
+      // ends up re-choosing its own current photo is still allowed -- the point
+      // is to stop it stealing a NEIGHBOUR's.
+      const spentPhotos = usedPhotoIds(entries.filter(e => e.date !== entry.date));
+      candidates = filterUsedPhotos(candidates, spentPhotos, m => console.log('  ' + m));
 
       const subjectForVision = override || entry.word;
       let chosen = null;

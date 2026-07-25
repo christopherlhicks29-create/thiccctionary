@@ -15,6 +15,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -94,7 +95,10 @@ async function main() {
   }
 
   console.log(`Injecting handcrafted entry "${sentinel.word}" for ${today} (query: "${query}")`);
-  const candidates = await searchUnsplash(query);
+  // Wave 306: this path takes candidates[0] with no vision picker, so it is the
+  // likeliest of the three to hand a second entry a photo the catalog already
+  // owns. Filter before indexing, not after.
+  const candidates = filterUsedPhotos(await searchUnsplash(query), usedPhotoIds(entries));
   const chosen = candidates[0];
   console.log(`Chosen photo by ${chosen.photographer}: ${chosen.unsplashUrl}`);
 

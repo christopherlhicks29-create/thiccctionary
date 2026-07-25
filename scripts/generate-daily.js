@@ -28,6 +28,7 @@ import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { validateEntry } from './banned-words.js';
 import { openaiChat } from './openai-with-fallback.js';
+import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 
 // Wave 142c: write any uncaught exception to disk so we can debug failed runs without
 // trawling GitHub Actions log archives.
@@ -100,7 +101,11 @@ function pendingPrWords() {
 const SIZE_QUALIFIERS = new Set(['big','bulky','large','round','heavy','chunky','hefty','plump','plush','thick','wide','fat','stout','sturdy','massive','huge','dense','solid','giant','common','standard','domestic','tufted']);
 // Wave 257: same-object synonyms collapse to one canonical token so "Cement
 // Mixer" and "Concrete Mixer" dedupe against each other.
-const SUBJECT_SYNONYMS = { cement: 'concrete', couch: 'sofa', settee: 'sofa', lorry: 'truck', plane: 'aircraft', airplane: 'aircraft' };
+// Wave 306: kettle -> teapot. "Teapot, Cast Iron" (05-12) and "Kettle, Cast
+// Iron Tea" (07-22) are the same object, and they proved it by picking the same
+// photograph. Single-token "kettledrum" and "kettlebell" are unaffected -- the
+// map keys on whole tokens, not prefixes.
+const SUBJECT_SYNONYMS = { cement: 'concrete', couch: 'sofa', settee: 'sofa', lorry: 'truck', plane: 'aircraft', airplane: 'aircraft', kettle: 'teapot' };
 // Wave 257: core nouns too generic to imply "same family" by tail-match alone
 // (a Parmigiano cheese WHEEL is not a Ferris WHEEL). The tail-noun guard skips these.
 const GENERIC_TAILS = new Set(['wheel','ball','box','case','machine','set','stand','holder','unit','model']);
@@ -961,6 +966,10 @@ async function main() {
   // we've verified has Unsplash photos. As a last resort the script still
   // throws, but that's a 4-deep failure, not a 1-deep one.
   let candidates;
+  // Wave 306: every Unsplash photo the catalog has already spent. Computed once
+  // from `entries`, which at this point excludes the entry being force-replaced,
+  // so a regen is free to re-pick its own photo if that photo was fine.
+  const spentPhotos = usedPhotoIds(entries);
   let avoidNow = [...usedWords];
   let attempts = 0;
   const MAX_FALLBACK_ATTEMPTS = 3;
@@ -968,6 +977,8 @@ async function main() {
     try {
       candidates = await searchUnsplash(subjectInfo.unsplashQuery);
       console.log(`Found ${candidates.length} candidate photos.`);
+      // Wave 306: a photo another entry already uses is not a candidate.
+      candidates = filterUsedPhotos(candidates, spentPhotos);
       break;
     } catch (e) {
       if (!/No Unsplash results/i.test(e.message)) throw e;
@@ -998,6 +1009,7 @@ async function main() {
         subjectInfo = { subject: pick.subject, unsplashQuery: pick.unsplashQuery, category: 'other' };
         candidates = await searchUnsplash(subjectInfo.unsplashQuery);
         console.log(`Found ${candidates.length} candidate photos.`);
+        candidates = filterUsedPhotos(candidates, spentPhotos);
         break;
       }
       avoidNow.push(subjectInfo.subject);
@@ -1020,6 +1032,7 @@ async function main() {
     let retryCandidates = [];
     try {
       retryCandidates = await searchUnsplash(broaderQuery);
+      retryCandidates = filterUsedPhotos(retryCandidates, spentPhotos);
     } catch (e) {
       if (!/No Unsplash results/i.test(e.message)) throw e;
       console.warn(`Photography-bias retry returned zero Unsplash results for "${broaderQuery}".`);
