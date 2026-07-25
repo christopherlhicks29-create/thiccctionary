@@ -108,11 +108,32 @@ export function withMeasuredProminence(c) {
   const w = x1 - x0, h = y1 - y0;
   if (!(w > 0 && h > 0)) return c;
   const measured = Math.round(w * h * 100);
+  // Wave 328e. Prominence and completeness are different failures and only one
+  // of them was being measured -- worse, the measured one REWARDS the other.
+  // The 2026-07-06 Medicine Ball replacement is a close-up of a slam ball that
+  // runs off the top and right edges of the frame, and it measured 40%, high,
+  // precisely BECAUSE it is cropped. Criterion 1 asks for the whole silhouette
+  // and was being graded only by the score, which came back exactly 7 against a
+  // gate of 7.
+  //
+  // The box already contains the answer. A box that reaches the frame edge on
+  // two or more sides is a subject the frame has cut off. Same move as Wave 325:
+  // do not ask the model to apply the rule, ask it for the thing it localises
+  // well and do the arithmetic here. Counted from the UNCLAMPED box so that a
+  // box spilling past the edge counts as touching it, which is what it means.
+  const E = 0.005;
+  const edges = [
+    Math.min(b[0], b[2]) <= E,
+    Math.min(b[1], b[3]) <= E,
+    Math.max(b[0], b[2]) >= 1 - E,
+    Math.max(b[1], b[3]) >= 1 - E,
+  ].filter(Boolean).length;
   return {
     ...c,
     subjectPercentEstimate: measured,
     subjectPercentClaimed: c.subjectPercentEstimate,  // kept for the audit trail
     subjectPercentMeasured: measured,
+    subjectEdgeTouches: edges,
   };
 }
 
@@ -172,7 +193,15 @@ Output JSON:
 // Default gates used by callers. Tunable here so all consumers stay in sync.
 export const GATES = {
   generate:  { minScore: 7, minSubjectPct: 25 },  // strict: net-new image
-  regen:     { minScore: 7, minSubjectPct: 25 },  // strict: replacing a bad one
+  // maxEdgeTouches (Wave 328e): how many frame edges the subject box may reach
+  // before the subject counts as cut off. Set ONLY on `regen`, which is the one
+  // gate whose rejection is genuinely free: it keeps the photograph already
+  // published and costs a retry. `daily` has nothing to fall back to, and
+  // `throwback` looks like it can afford it but cannot -- post-to-buffer.js
+  // treats a throwback failure as "skip the social post entirely", so tightening
+  // it would suppress posts for every already-published tight crop. That is the
+  // Wave 209b failure with a different label on it.
+  regen:     { minScore: 7, minSubjectPct: 25, maxEdgeTouches: 1 },  // strict: replacing a bad one
   throwback: { minScore: 6, minSubjectPct: 25 },  // looser: image already shipped
   // Wave 209b deliberately runs the daily looser than `generate`: the strict
   // gate was bailing on 5+ consecutive days. Score-5 ships with needsReview.
@@ -212,6 +241,15 @@ export function passesGate(critique, gate) {
     if (typeof pct !== 'number') return typeof critique.score !== 'number';
     if (pct < gate.minSubjectPct) return false;
   }
+  // Wave 328e: completeness. See withMeasuredProminence() for why the box is
+  // the right place to read this from. Deliberately NOT fail-closed the way
+  // prominence is: an absent count means no usable box, and the prominence
+  // check above has already dealt with that case for every gate that cares.
+  // Adding a second rejection on the same missing field would only change which
+  // reason gets logged.
+  if (typeof gate.maxEdgeTouches === 'number'
+    && typeof critique.subjectEdgeTouches === 'number'
+    && critique.subjectEdgeTouches > gate.maxEdgeTouches) return false;
   if (critique.verdict === 'reject') return false;
   return true;
 }
@@ -227,12 +265,35 @@ export function passesGate(critique, gate) {
  * would later need to audit. Both paths call this now, so they cannot drift
  * apart again.
  */
+/**
+ * A gate, written out in words, derived from the gate object.
+ *
+ * Wave 328e. audits/image-audit/*.md described the gate with a hand-written
+ * sentence naming two of its fields. Adding a third field would have left the
+ * report confidently stating a rule that was no longer the rule. Every field a
+ * gate can carry is named here, so the sentence cannot fall behind the object.
+ */
+export function describeGate(gate) {
+  if (!gate) return 'no gate';
+  const bits = [];
+  if (typeof gate.minScore === 'number') bits.push(`score >= ${gate.minScore}`);
+  if (typeof gate.minSubjectPct === 'number') bits.push(`subject% >= ${gate.minSubjectPct}`);
+  if (typeof gate.maxEdgeTouches === 'number') {
+    bits.push(`subject box touches <= ${gate.maxEdgeTouches} frame edge${gate.maxEdgeTouches === 1 ? '' : 's'}`);
+  }
+  bits.push('identity confirmed', 'verdict not "reject"');
+  return bits.join(' AND ');
+}
+
 export function formatCritique(c) {
   if (!c) return 'no critique (critic unavailable)';
   const bits = [`score=${c.score}`];
   const pct = c.subjectPercentEstimate;
   bits.push(`subject%=${typeof pct === 'number' ? pct : 'UNMEASURED'}${
     typeof c.subjectPercentClaimed === 'number' ? ` measured (claimed ${c.subjectPercentClaimed})` : ''}`);
+  if (typeof c.subjectEdgeTouches === 'number' && c.subjectEdgeTouches > 1) {
+    bits.push(`CUT OFF on ${c.subjectEdgeTouches} edges`);
+  }
   if (c.isSubject === false) bits.push('NOT THE SUBJECT');
   bits.push(`saw "${c.photoSubject ?? 'n/a'}"`);
   bits.push(`stranger sees "${c.strangerGuess ?? 'n/a'}"`);

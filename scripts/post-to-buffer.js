@@ -39,7 +39,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
 import { contextFor as bibleContextFor } from './lib/office-bible.js';
-import { critiqueImage, passesGate, GATES } from './image-critic.js';
+import { critiqueImage, passesGate, GATES, formatCritique } from './image-critic.js';
 
 const BUFFER_GRAPHQL = 'https://api.buffer.com/';
 
@@ -294,10 +294,13 @@ async function pickEntry(entries, mode, baseUrl) {
         photoDescription: cand.caption,
       });
       if (passesGate(c, GATES.throwback)) {
-        if (c) console.log(`Throwback PASS: ${cand.date} ${cand.word} (score=${c.score}, subj%=${c.subjectPercentEstimate})`);
+        if (c) console.log(`Throwback PASS: ${cand.date} ${cand.word} (${formatCritique(c)})`);
         return cand;
       }
-      console.log(`Throwback REJECT: ${cand.date} ${cand.word} (score=${c?.score}, subj%=${c?.subjectPercentEstimate}, "${c?.photoSubject}"). Trying next.`);
+      // Wave 328e: one formatter for both rows, same reason as Wave 327 gave for
+      // the regen log -- a pass row and a reject row written by hand drift, and
+      // the shipped one is always the thinner of the two.
+      console.log(`Throwback REJECT: ${cand.date} ${cand.word} (${formatCritique(c)}). Trying next.`);
     }
     console.log('Throwback: all 4 candidates failed critic. Falling back to most recent entry.');
     return entries[0];
@@ -837,7 +840,7 @@ async function main() {
         photoDescription: entry.caption,
       });
       if (!passesGate(c, GATES.throwback)) {
-        console.log(`[critic-gate] skipping ${mode} post for ${entry.date} ${entry.word}: image fails subject-prominence test (score=${c?.score}, subj%=${c?.subjectPercentEstimate}, "${c?.photoSubject}").`);
+        console.log(`[critic-gate] skipping ${mode} post for ${entry.date} ${entry.word}: image fails the throwback gate (${formatCritique(c)}).`);
         // Append to remediation queue so admin sees it
         try {
           const remPath = path.join(ROOT, 'data', 'social-remediation-queue.json');

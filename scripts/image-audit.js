@@ -20,7 +20,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { critiqueImage, passesGate, GATES } from './image-critic.js';
+import { critiqueImage, passesGate, GATES, describeGate } from './image-critic.js';
 
 const ROOT = process.cwd();
 const today = new Date().toISOString().slice(0, 10);
@@ -83,7 +83,11 @@ async function main() {
     `**Passed:** ${results.length - failed.length}`,
     `**Failed:** ${failed.length}`,
     ``,
-    `Gate: score >= ${GATES.throwback.minScore} AND subject% >= ${GATES.throwback.minSubjectPct}.`,
+    // Wave 328e: derived, not typed. This line named two gate fields by hand,
+    // so the day a third was added -- and one was, on the commit that changed
+    // this -- the report would have gone on stating the old rule as though it
+    // were the rule in force. Same shape as every other drift bug here.
+    `Gate: ${describeGate(GATES.throwback)}.`,
     ``,
   ];
   if (failed.length > 0) {
