@@ -28,6 +28,10 @@
 import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { footerGrid } from './lib/chrome.js';
+
+/** The one canonical footer, rendered once, for the drift counts below. */
+const FOOTER_CANON = footerGrid();
 
 const args = process.argv.slice(2);
 const mode = args.includes('--working') ? 'working' : 'staged';
@@ -214,9 +218,21 @@ for (const f of allFiles) {
 // + 13 Sections + 5 Follow + 4 Legal links + the ccc-highlight script tag.
 // Wave 304b: 12 -> 13, the /category/ hub.
 const CANON_NAV_COUNT = 14;
-const CANON_SECTIONS_COUNT = 13;
-const CANON_FOLLOW_COUNT = 5;
-const CANON_LEGAL_COUNT = 4;
+
+// Wave 308: the three footer-column counts used to be hand-typed constants,
+// and retiring the TikTok link made every one of the 315 pages fail this gate
+// against a number nobody had remembered to change. Derive them from
+// lib/chrome.js instead -- the same footerGrid() that sync-footer-links.js
+// reconciles the tree against -- so the canon has exactly one home. Adding or
+// removing a footer link is now a one-line edit that the gate follows.
+const canonFooter = (head) => {
+  const mt = FOOTER_CANON.match(new RegExp(`<p class="footer-head">${head}</p>([\\s\\S]*?)</div>`));
+  if (!mt) throw new Error(`pre-ship-check: no "${head}" column in lib/chrome.js footerGrid()`);
+  return (mt[1].match(/<a /g) || []).length;
+};
+const CANON_SECTIONS_COUNT = canonFooter('Sections');
+const CANON_FOLLOW_COUNT = canonFooter('Follow');
+const CANON_LEGAL_COUNT = canonFooter('Legal');
 const PAGE_SKIP_RE = /^(admin\/|embed\/today\.html|embed\/[a-z0-9-]+\.html|og-image-generator\.html|profile-image-generator\.html|entries\/_template\.html|.*\.LATEST)$/;
 for (const f of allFiles) {
   if (!f.endsWith('.html')) continue;

@@ -9,11 +9,16 @@ name: Build TikTok Bundle (manual-upload prep)
 #   2. push to data/.fire-tiktok-bundle (manual sentinel with date)
 #   3. workflow_dispatch with date input
 
+# Wave 308: the TikTok channel is retired. This used to fire automatically on
+# every videos/<date>.mp4 push, i.e. once a day, producing an upload bundle
+# nobody was ever going to hand-upload. The generated MP4 itself is still worth
+# building -- post-to-buffer.js publishes it as an Instagram Reel -- so
+# build-tiktok.yml is untouched. Only the bundle step is now manual-only, kept
+# rather than deleted so the channel can be restarted with one dispatch.
 on:
   push:
     branches: [main]
     paths:
-      - 'videos/*.mp4'
       - 'data/.fire-tiktok-bundle'
   workflow_dispatch:
     inputs:

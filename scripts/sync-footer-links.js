@@ -23,7 +23,12 @@ import { footerGrid } from './lib/chrome.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
-const SKIP_DIRS = new Set(['node_modules', '.git', '.github', 'scripts', 'admin', 'api', 'v']);
+// Wave 308: 'api' and 'v' came off this list. Each holds exactly one public
+// HTML page with a full footer, and skipping them meant both had silently
+// missed the /category/ hub since Wave 304b -- caught only because retiring
+// the TikTok link finally pulled every page into the staged pre-ship check.
+// A directory belongs here only if it contains no page a reader can reach.
+const SKIP_DIRS = new Set(['node_modules', '.git', '.github', 'scripts', 'admin']);
 
 /**
  * Each rule inserts `link` immediately after `after` in the footer, but only if
@@ -36,6 +41,32 @@ const RULES = [
     link: '<a href="/category/">Categories</a>',
   },
 ];
+
+/**
+ * Wave 308: links that must NOT appear anywhere on the site.
+ *
+ * The TikTok channel is retired. Removing it from the six generators is not
+ * enough on its own: the site has 314 already-built HTML files, and any
+ * generator or hand-written page that is added later and copy-pastes an old
+ * footer brings the dead link back. RULES is insert-only by design, so a
+ * retired link needs its own mechanism.
+ *
+ * Each entry deletes the whole line the substring sits on, which is how every
+ * footer link in this codebase is formatted (one anchor per line). Idempotent:
+ * once the line is gone there is nothing left to match.
+ */
+const PURGE = [
+  'https://www.tiktok.com/@thethiccctionary',
+];
+
+/** Delete every line containing any PURGE substring. */
+function purgeRetiredLinks(html) {
+  if (!PURGE.some(p => html.includes(p))) return html;
+  return html
+    .split('\n')
+    .filter(line => !PURGE.some(p => line.includes(p)))
+    .join('\n');
+}
 
 async function walk(dir, out = []) {
   for (const d of await fs.readdir(dir, { withFileTypes: true })) {
@@ -87,7 +118,7 @@ function replaceStubFooter(html) {
 }
 
 export function syncFooter(html) {
-  let out = replaceStubFooter(html);
+  let out = purgeRetiredLinks(replaceStubFooter(html));
   for (const r of RULES) {
     if (out.includes(`href="${r.href}"`)) continue;
     const i = out.indexOf(r.after);
