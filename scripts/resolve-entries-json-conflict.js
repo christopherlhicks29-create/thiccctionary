@@ -22,6 +22,7 @@
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { writeEntriesSync } from './lib/entries-io.js';
 
 const TEXT_FIELDS = ['word', 'pronunciation', 'partOfSpeech', 'definitions', 'example', 'etymology'];
 const IMAGE_FIELDS = ['caption', 'tags', 'image', 'photographer'];
@@ -107,7 +108,7 @@ function main() {
   if (!resolved) {
     process.exit(1);
   }
-  fs.writeFileSync('data/entries.json', JSON.stringify(resolved, null, 2) + '\n');
+  writeEntriesSync('data/entries.json', resolved);
   console.log(`Resolved data/entries.json (${resolved.length} entries) using ${branch} ownership rules.`);
 }
 

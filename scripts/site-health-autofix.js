@@ -14,6 +14,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { writeEntries } from './lib/entries-io.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -131,7 +132,7 @@ async function fixBannedWordsInEntries(report, fixes) {
     fixes.push({ kind: 'banned-word', date, field, from: phrase, to: replacement });
   }
   if (changed) {
-    await fs.writeFile(entriesPath, JSON.stringify(entries, null, 2) + '\n', 'utf8');
+    await writeEntries(entriesPath, entries);
   }
 }
 

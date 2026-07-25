@@ -66,6 +66,11 @@ jobs:
           python3 scripts/build-entry-og-images.py
         continue-on-error: true
 
+      - name: Reconcile plate numbers (Wave 314)
+        working-directory: scripts
+        run: node sync-plate-numbers.js
+        continue-on-error: true
+
       - name: Rebuild per-entry pages + sitemap
         working-directory: scripts
         run: node build-entry-pages.js

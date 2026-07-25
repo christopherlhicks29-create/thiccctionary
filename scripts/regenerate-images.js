@@ -20,6 +20,7 @@ import { critiqueImage, passesGate, GATES } from './image-critic.js';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
+import { writeEntries } from './lib/entries-io.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -355,7 +356,7 @@ async function main() {
     await new Promise(r => setTimeout(r, 1500));
   }
 
-  await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
+  await writeEntries(ENTRIES_PATH, entries);
 
   console.log('\nRebuilding entry HTML pages...');
   for (const entry of toProcess) {

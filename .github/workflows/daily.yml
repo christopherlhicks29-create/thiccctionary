@@ -245,6 +245,15 @@ jobs:
       # machine chose which 47% of each entry the world saw. This composes the
       # crop. It has to run before the entry pages are rebuilt, because
       # ogCardUrl falls back to the raw photo when no card exists on disk.
+      # Wave 314: 76 of 106 captions read "Plate N." -- the literal template
+      # placeholder -- under the photograph. The number is the entry's
+      # chronological position, so it is derived here rather than typed. Must
+      # run before the entry pages are built, or the pages render the old text.
+      - name: Reconcile plate numbers (Wave 314)
+        working-directory: scripts
+        run: node sync-plate-numbers.js
+        continue-on-error: true
+
       - name: Build entry OG cards (Wave 312)
         run: |
           pip install pillow --quiet --break-system-packages || pip install pillow --quiet
@@ -297,6 +306,10 @@ jobs:
       - name: Sync footer links (Wave 304b)
         working-directory: scripts
         run: node sync-footer-links.js
+        continue-on-error: true
+      - name: Point articles at their own OG cards (Wave 314)
+        working-directory: scripts
+        run: node sync-article-og.js
         continue-on-error: true
       - name: Reconcile og:image dimensions (Wave 311b)
         working-directory: scripts

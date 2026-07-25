@@ -36,6 +36,11 @@ jobs:
         working-directory: scripts
         run: npm install
 
+      - name: Reconcile plate numbers (Wave 314)
+        working-directory: scripts
+        run: node sync-plate-numbers.js
+        continue-on-error: true
+
       - name: Rebuild all entry pages
         working-directory: scripts
         env:
@@ -46,7 +51,7 @@ jobs:
         run: |
           git config user.name "Thiccctionary Editorial Board"
           git config user.email "bot@thiccctionary.com"
-          git add entries/*.html sitemap.xml feed.xml || true
+          git add entries/*.html sitemap.xml feed.xml data/entries.json articles/*.html || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0

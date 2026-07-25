@@ -16,6 +16,7 @@ import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
+import { writeEntries } from './lib/entries-io.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -147,7 +148,7 @@ async function main() {
   let insertAt = entries.findIndex(e => e.date < entry.date);
   if (insertAt === -1) insertAt = entries.length;
   entries.splice(insertAt, 0, entry);
-  await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
+  await writeEntries(ENTRIES_PATH, entries);
   console.log(`Inserted at index ${insertAt}. entries.json now has ${entries.length} entries.`);
 
   await fs.rm(SENTINEL_PATH, { force: true });

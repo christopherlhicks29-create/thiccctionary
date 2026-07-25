@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { buildRssFeed } from './build-rss.js';
 import { validateEntry } from './banned-words.js';
+import { writeEntries } from './lib/entries-io.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -56,7 +57,10 @@ The photo we chose: ${photo.description ? `"${photo.description}"` : '(no captio
 
 Write the dictionary entry. Reference the actual photo loosely but don't get specific about details you can't verify.
 
-Schema:
+Schema (the caption is asked for to keep the shape familiar to the model, but it
+is discarded: Wave 147 gave every image-side field to regenerate-images.js, so
+this script writes text fields only. Don't chase the "Plate N." below -- it
+never reaches disk from here):
 {
   "word": "${subject}",
   "pronunciation": "/sim-pul re-SPEL-ing/",
@@ -159,7 +163,7 @@ async function main() {
     await new Promise(r => setTimeout(r, 1500));
   }
 
-  await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
+  await writeEntries(ENTRIES_PATH, entries);
 
   console.log('\nRebuilding entry HTML pages...');
   for (const entry of toProcess) {

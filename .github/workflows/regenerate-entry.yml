@@ -107,6 +107,7 @@ jobs:
       - name: Rebuild all entry pages + IS pages (fix nav + sitemap)
         if: steps.dates.outputs.have == 'true'
         run: |
+          node scripts/sync-plate-numbers.js || echo "::warning::sync-plate-numbers had a non-zero exit (non-fatal)"
           node scripts/build-entry-pages.js
           node scripts/build-is-pages.js || echo "::warning::build-is-pages had a non-zero exit (non-fatal)"
 

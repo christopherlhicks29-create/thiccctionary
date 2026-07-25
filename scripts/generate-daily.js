@@ -25,6 +25,8 @@ import fs from 'node:fs/promises';
 import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { writeEntries } from './lib/entries-io.js';
+import { withPlateNumber } from './lib/plate.js';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { validateEntry } from './banned-words.js';
 import { openaiChat } from './openai-with-fallback.js';
@@ -1338,19 +1340,16 @@ async function main() {
   // the prompt tells the model to write the caption as literally "Plate N.,"
   // with N as a placeholder meant to be swapped for a real plate number by a
   // later step -- but that step never existed, so most entries shipped with
-  // the literal string "Plate N." visible under the photo. Fix: replace it
-  // here with the entry's actual chronological plate number (existing
-  // entries + 1 = this one), rendered as a roman numeral to match the
-  // earliest hand-authored entries' style.
-  function toRomanNumeral(num) {
-    const vals = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
-    let n = num, out = '';
-    for (const [v, sym] of vals) { while (n >= v) { out += sym; n -= v; } }
-    return out;
-  }
+  // the literal string "Plate N." visible under the photo.
+  //
+  // Wave 314: the numeral converter this used lived here, in build-entry-pages
+  // and nowhere else -- three copies, which is how the Sources line and the
+  // caption came to disagree. It lives in lib/plate.js now. This is also no
+  // longer a match on the literal "N": withPlateNumber replaces whatever prefix
+  // is there, so a caption the model numbered itself is corrected rather than
+  // kept. Today's entry is the last one chronologically, hence length + 1.
   if (typeof entryCopy.caption === 'string') {
-    const plateNumber = entries.length + 1;
-    entryCopy.caption = entryCopy.caption.replace(/^Plate\s+N\.,?/, `Plate ${toRomanNumeral(plateNumber)}.,`);
+    entryCopy.caption = withPlateNumber(entryCopy.caption, entries.length + 1);
   }
 
   const entry = {
@@ -1404,7 +1403,7 @@ async function main() {
   let insertAt = entries.findIndex(e => e.date < entry.date);
   if (insertAt === -1) insertAt = entries.length;
   entries.splice(insertAt, 0, entry);
-  await fs.writeFile(ENTRIES_PATH, JSON.stringify(entries, null, 2));
+  await writeEntries(ENTRIES_PATH, entries);
   console.log(`Saved entry: ${entry.word}`);
 
   // Write critique to a side-channel file so the GH Actions workflow can pick it up

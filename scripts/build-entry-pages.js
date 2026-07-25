@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { syncSitemap } from './sync-sitemap.js';
 import { CATEGORIES } from './build-category-pages.js';
 import { ogDimsTags, ogCardUrl } from './lib/image-size.js'; // Wave 311: measure, don't type
+import { toRomanNumeral, plateNumberFor, stripPlatePrefix } from './lib/plate.js'; // Wave 314: derive, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -65,11 +66,10 @@ function entryDescription(entry) {
 // picture. The caption is a real description of the plate; reuse it, minus the
 // "Plate IV." archival prefix which is site furniture, not image content.
 function imageAltFor(entry) {
-  const cap = stripHtml(entry.caption || '').replace(/\s+/g, ' ').trim()
-    // Captions open with an archival plate number that is site furniture, not
-    // image content. Real values seen on disk: "Plate IV.", "Plate 12.",
-    // "Plate N." -- so match any short token, not just roman numerals.
-    .replace(/^Plate\s+[^.]{1,10}\.,?\s*/i, '');
+  // The plate prefix is site furniture, not image content, so it comes off for
+  // alt text. The pattern used to be inlined here; it is lib/plate.js's now,
+  // because the same prefix is parsed in four places and they must agree.
+  const cap = stripPlatePrefix(stripHtml(entry.caption || '').replace(/\s+/g, ' ').trim());
   const word = stripHtml(entry.word || '').trim();
   if (cap.length >= 15) return cap.length > 125 ? cap.slice(0, 125).replace(/\s\S*$/, '') : cap;
   return word ? `${word}, catalogued as thiccc` : 'A thiccc subject';
@@ -235,23 +235,15 @@ function isSlugFor(word) {
   return primary.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-// 2026-07-25: mirrors generate-daily.js's caption numbering. The Sources line
-// used to hardcode the literal string "plate N." on every entry page (same
-// placeholder-leak class as the caption bug fixed 2026-07-23, missed then
-// because it lives in a different template).
-function toRomanNumeral(num) {
-  const vals = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
-  let n = num, out = '';
-  for (const [v, sym] of vals) { while (n >= v) { out += sym; n -= v; } }
-  return out;
-}
-
-// Plate number = 1-based chronological position (entries.json is newest-first).
+// The Sources line cites the plate by number. It used to derive that number
+// here, from `allEntries.length - i`, which is only correct while entries.json
+// happens to be stored newest-first -- a storage detail, not a guarantee. Wave
+// 314 moved the derivation to lib/plate.js, which sorts by date and therefore
+// gives the same answer whatever order the file arrives in, and gives the same
+// answer as the caption because the caption asks the same function.
 function plateLabelFor(entry, allEntries) {
-  if (Array.isArray(allEntries)) {
-    const i = allEntries.findIndex(e => e.date === entry.date);
-    if (i !== -1) return `plate ${toRomanNumeral(allEntries.length - i)}`;
-  }
+  const num = plateNumberFor(entry, allEntries);
+  if (num) return `plate ${toRomanNumeral(num)}`;
   // Fallback: reuse the numeral already rendered into the caption.
   const m = typeof entry.caption === 'string' && entry.caption.match(/^Plate\s+([IVXLCDM]+)\.,?/);
   return m ? `plate ${m[1]}` : null;

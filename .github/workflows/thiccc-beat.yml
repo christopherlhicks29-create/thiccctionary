@@ -49,6 +49,12 @@ jobs:
       - name: Sync footer links (Wave 304b)
         run: node scripts/sync-footer-links.js
         continue-on-error: true
+      - name: Reconcile plate numbers (Wave 314)
+        run: node scripts/sync-plate-numbers.js
+        continue-on-error: true
+      - name: Point articles at their own OG cards (Wave 314)
+        run: node scripts/sync-article-og.js
+        continue-on-error: true
       - name: Reconcile og:image dimensions (Wave 311b)
         run: node scripts/sync-og-dimensions.js
         continue-on-error: true
