@@ -14,7 +14,7 @@ import fs from 'node:fs/promises';
 import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { assignSlugs } from './lib/is-slug.js';
+import { syncSitemap } from './sync-sitemap.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -23,7 +23,6 @@ const SITE = process.env.SITE_BASE_URL || 'https://thiccctionary.com';
 const ENTRIES_PATH = path.join(ROOT, 'data', 'entries.json');
 const TEMPLATE_PATH = path.join(ROOT, 'entries', '_template.html');
 const OUT_DIR = path.join(ROOT, 'entries');
-const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 
 function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -33,10 +32,45 @@ function stripHtml(s) {
   return String(s || '').replace(/<[^>]+>/g, '');
 }
 
+// Wave 303: hard-sliced at 155 and appended an ellipsis, so descriptions ended
+// mid-clause in the SERP ("...noted for its massive flukes and commanding…").
+// Prefer the last complete sentence that fits; fall back to a word boundary.
 function trimDescription(text, max = 155) {
   text = stripHtml(text).replace(/\s+/g, ' ').trim();
   if (text.length <= max) return text;
-  return text.slice(0, max - 1).replace(/\s\S*$/, '') + '…';
+  const window = text.slice(0, max);
+  const lastStop = Math.max(window.lastIndexOf('. '), window.lastIndexOf('? '), window.lastIndexOf('! '));
+  if (lastStop > max * 0.5) return window.slice(0, lastStop + 1).trim();
+  return window.replace(/\s\S*$/, '').replace(/[\s,;:]+$/, '') + '\u2026';
+}
+
+// Wave 303: the meta description led with the definition and never named the
+// thing being defined, so the SERP snippet for "stockless anchor" opened with
+// "A substantial maritime device designed to..." with the term nowhere in it.
+// Lead with the headword, the way a dictionary result should.
+function entryDescription(entry) {
+  const word = stripHtml(entry.word || '').trim();
+  const def = stripHtml(entry.definitions[0] || '').replace(/\s+/g, ' ').trim();
+  if (!word) return trimDescription(def);
+  const lead = `${word}: `;
+  // Don't repeat the word if the definition already opens with it.
+  if (def.toLowerCase().startsWith(word.toLowerCase())) return trimDescription(def);
+  return lead + trimDescription(def, Math.max(60, 155 - lead.length));
+}
+
+// Wave 303: every entry image shipped alt="{{WORD}}" -- accurate but useless to
+// image search and to a screen reader, since it describes nothing about the
+// picture. The caption is a real description of the plate; reuse it, minus the
+// "Plate IV." archival prefix which is site furniture, not image content.
+function imageAltFor(entry) {
+  const cap = stripHtml(entry.caption || '').replace(/\s+/g, ' ').trim()
+    // Captions open with an archival plate number that is site furniture, not
+    // image content. Real values seen on disk: "Plate IV.", "Plate 12.",
+    // "Plate N." -- so match any short token, not just roman numerals.
+    .replace(/^Plate\s+[^.]{1,10}\.,?\s*/i, '');
+  const word = stripHtml(entry.word || '').trim();
+  if (cap.length >= 15) return cap.length > 125 ? cap.slice(0, 125).replace(/\s\S*$/, '') : cap;
+  return word ? `${word}, catalogued as thiccc` : 'A thiccc subject';
 }
 
 function humanDate(iso) {
@@ -239,7 +273,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
   const def2Block = entry.definitions[1]
     ? `<li><strong>2.</strong> ${entry.definitions[1]}</li>`
     : '';
-  const description = trimDescription(entry.definitions[0]);
+  const description = entryDescription(entry);
 
   // Build schema.org JSON-LD for this entry: DefinedTerm + Article + BreadcrumbList
   const jsonld = JSON.stringify({
@@ -329,6 +363,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
       return escapeHtml(`${entry.word}, a Thiccctionary entry. ${trimmed}`);
     })(),
     CAPTION: escapeHtml(entry.caption || ''),
+    IMAGE_ALT: escapeHtml(imageAltFor(entry)),
     CREDIT_HTML: renderCredit(entry),
     TAGS_HTML: renderTags(entry.tags),
     DATE: entry.date,
@@ -364,78 +399,20 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
   return outPath;
 }
 
-export async function buildSitemap(entries) {
-  const base = SITE.replace(/\/$/, '');
-  const staticPages = [
-    { loc: `${base}/`, priority: '1.0' },
-    { loc: `${base}/thiccc/`, priority: '0.9', lastmod: '2026-05-09' },
-    { loc: `${base}/archive.html`, priority: '0.8' },
-    { loc: `${base}/articles/`, priority: '0.7' },
-    { loc: `${base}/articles/the-five-thicccest-things.html`, priority: '0.7', lastmod: '2026-05-02' },
-    { loc: `${base}/articles/what-counts-as-thiccc.html`, priority: '0.7', lastmod: '2026-05-02' },
-    { loc: `${base}/articles/history-of-thiccc.html`, priority: '0.7', lastmod: '2026-05-02' },
-    { loc: `${base}/articles/field-guide-spotting-thiccc.html`, priority: '0.7', lastmod: '2026-05-03' },
-    { loc: `${base}/articles/cement-trucks-original-thiccc.html`, priority: '0.7', lastmod: '2026-05-03' },
-    { loc: `${base}/articles/industrial-scale-thiccc.html`, priority: '0.7', lastmod: '2026-05-04' },
-    { loc: `${base}/articles/taxonomy-thiccc-architecture.html`, priority: '0.7', lastmod: '2026-05-04' },
-    { loc: `${base}/articles/everyday-sidewalk-thiccc.html`, priority: '0.7', lastmod: '2026-05-04' },
-    { loc: `${base}/articles/concrete-material-study.html`, priority: '0.7', lastmod: '2026-05-05' },
-    { loc: `${base}/articles/anatomy-thiccc-vehicle.html`, priority: '0.7', lastmod: '2026-05-05' },
-    { loc: `${base}/legal/terms.html`, priority: '0.3' },
-    { loc: `${base}/legal/privacy.html`, priority: '0.3' },
-    { loc: `${base}/press/`, priority: '0.5' },
-    { loc: `${base}/submit.html`, priority: '0.5' },
-    { loc: `${base}/embed/`, priority: '0.4' },
-    { loc: `${base}/guess/`, priority: '0.7', lastmod: '2026-07-20' },
-  ];
-  const entryPages = entries.map(e => ({
-    loc: `${base}/entries/${e.date}.html`,
-    lastmod: e.date,
-    priority: '0.6',
-  }));
-
-  // Wave 190: /is/<slug>-thiccc/ landing pages (programmatic SEO)
-  // and the hub at /is-it-thiccc/.
-  // Slug assignment (including collision disambiguation) is shared with
-  // build-is-pages.js via lib/is-slug.js, so this list always matches what
-  // that script actually writes to disk under is/ (see Wave 190c/252 postmortem:
-  // a locally-duplicated, non-disambiguating slug function here used to let
-  // the sitemap list a URL that didn't match the real, disambiguated file on
-  // disk whenever two entries shared a first word).
-  assignSlugs(entries);
-  const isPages = [
-    { loc: `${base}/is-it-thiccc/`, priority: '0.7' },
-    ...entries.map(e => ({
-      loc: `${base}/is/${e._slug}-thiccc/`,
-      lastmod: e.date,
-      priority: '0.7',
-    })),
-  ];
-
-  // Dynamic columns (mailbag, from-the-boat, thiccc-beat, weekly essays) are
-  // registered in data/articles.json. Pull them in so every column is indexed,
-  // not just the original hardcoded essays above.
-  let articlePages = [];
-  try {
-    const raw = await fs.readFile(path.join(ROOT, 'data', 'articles.json'), 'utf8');
-    const articles = JSON.parse(raw);
-    const known = new Set(staticPages.map(p => p.loc));
-    articlePages = articles
-      .filter(a => a && a.slug)
-      .map(a => ({ loc: `${base}/articles/${a.slug}.html`, lastmod: a.date, priority: '0.6' }))
-      .filter(p => !known.has(p.loc));
-  } catch (_) { /* no articles.json; skip */ }
-
-  const all = [...staticPages, ...entryPages, ...isPages, ...articlePages];
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${all.map(p => `  <url>
-    <loc>${p.loc}</loc>
-${p.lastmod ? `    <lastmod>${p.lastmod}</lastmod>\n` : ''}    <priority>${p.priority}</priority>
-  </url>`).join('\n')}
-</urlset>
-`;
-  await fs.writeFile(SITEMAP_PATH, xml);
+/**
+ * Wave 303b: this used to rewrite sitemap.xml from scratch on every call, from
+ * a hardcoded 20-page staticPages array plus a locally-computed list of all 106
+ * /is/ URLs. Four scripts call it (generate-daily, regenerate-images,
+ * regenerate-text, and the CLI below), so any one of them silently reverted the
+ * Wave 303 sitemap work: it re-added the /is/ pages that now canonical to their
+ * parent entry, and dropped the 13 static pages the reconciler had added.
+ *
+ * scripts/sync-sitemap.js is now the single owner. This stays exported so the
+ * three callers keep working; the `entries` argument is ignored because the
+ * reconciler reads data/entries.json itself.
+ */
+export async function buildSitemap(_entries) {
+  await syncSitemap({ quiet: true });
 }
 
 // CLI mode
