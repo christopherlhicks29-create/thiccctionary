@@ -26,7 +26,12 @@ function walkHtml(dir) {
     let st;
     try { st = fs.statSync(p); } catch { continue; }
     if (st.isDirectory()) {
-      if (['.git','node_modules','audits','outreach','prints','tiktok-ready','dist','build','.github'].includes(name)) continue;
+      // Wave 311: 'prints' came off this list. It holds one public page that is
+      // in the sitemap, and skipping it meant the smoke test never once looked
+      // at a file that had been serving 4,320 NUL bytes since the day it was
+      // created. Same lesson as sync-footer-links' SKIP_DIRS in Wave 308: a
+      // directory belongs here only if it contains no page a reader can reach.
+      if (['.git','node_modules','audits','outreach','tiktok-ready','dist','build','.github'].includes(name)) continue;
       out.push(...walkHtml(p));
     } else if (name.endsWith('.html') && !name.endsWith('.LATEST')) {
       out.push(p);
@@ -97,6 +102,26 @@ function getStylesheet() {
   return styleCache;
 }
 
+// Wave 311: prints/index.html was born with 4,320 NUL bytes glued to the end
+// of a perfectly valid document, and served them to every visitor for its whole
+// life. Nothing caught it because every check here reads the file as UTF-8 and
+// then looks at the markup -- and the markup was fine. A byte-level check is
+// the only one that sees this, so it has to be its own check.
+function checkBytes(file) {
+  const buf = fs.readFileSync(file);
+  const nul = buf.indexOf(0);
+  if (nul !== -1) {
+    const count = buf.reduce((n, b) => n + (b === 0 ? 1 : 0), 0);
+    fail(file, 'nul-bytes',
+      `contains ${count} NUL byte(s), first at offset ${nul}. The file is ` +
+      `corrupt past that point; strip the padding and re-check whatever wrote it.`);
+  }
+  // A UTF-8 BOM ahead of <!DOCTYPE breaks some crawlers' doctype sniffing.
+  if (buf[0] === 0xEF && buf[1] === 0xBB && buf[2] === 0xBF) {
+    fail(file, 'bom', 'starts with a UTF-8 BOM; strip it.');
+  }
+}
+
 function checkFooterVisibility(file, html) {
   if (!html.includes('class="copyright"')) return;
   const css = getStylesheet();
@@ -125,6 +150,7 @@ const files = walkHtml(ROOT);
 console.log(`[smoke] checking ${files.length} HTML files`);
 for (const f of files) {
   const html = fs.readFileSync(f, 'utf8');
+  checkBytes(f);
   checkDoubleQuotes(f, html);
   checkImages(f, html);
   checkFooterVisibility(f, html);
