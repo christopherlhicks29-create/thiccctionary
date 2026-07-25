@@ -51,7 +51,7 @@ export const CATEGORIES = {
   'Industrial Machinery': {
     slug: 'industrial-machinery',
     heading: 'Industrial Machinery',
-    title: 'Thiccc Industrial Machinery: Rollers, Presses and Boring Machines',
+    title: 'Thiccc Industrial Machinery: Rollers and Presses',
     description: 'Rollers, presses, excavators and boring machines catalogued for girth rather than tonnage, from the Thiccctionary.',
     intro: `Industrial equipment is the section where the editorial standard is tested hardest, because industry produces a great many objects that are merely heavy. Heavy is not thiccc. A crane is enormous and almost entirely absent. What qualifies here is the machine whose working mass sits in one continuous body: the drum, the flywheel, the cutting head. Tonnage is a specification. Girth is a silhouette.`,
   },
@@ -65,7 +65,7 @@ export const CATEGORIES = {
   'Domestic Goods': {
     slug: 'domestic-goods',
     heading: 'Domestic Goods',
-    title: 'Thiccc Domestic Goods: Household Objects of Unusual Girth',
+    title: 'Thiccc Domestic Goods: Oversized Household Objects',
     description: 'Armchairs, mugs, cookware and other household objects catalogued for girth, from the Thiccctionary.',
     intro: `The domestic section is where the reader is most likely to encounter a catalogued subject in person, which imposes a discipline the rest of the archive escapes. Nobody will check our figure for a tunnel boring machine. Everybody owns a mug. An object earns its place here by being wider than its function strictly demands and by having been chosen, deliberately, on that basis.`,
   },
@@ -86,14 +86,14 @@ export const CATEGORIES = {
   'Musical Instruments': {
     slug: 'musical-instruments',
     heading: 'Musical Instruments',
-    title: 'Thiccc Musical Instruments: Resonating Bodies of Unusual Girth',
+    title: 'Thiccc Musical Instruments: Resonating Bodies',
     description: 'Double basses, tubas, kettledrums and other instruments catalogued for the girth of the resonating body, from the Thiccctionary.',
     intro: `Instruments are the only objects in the catalogue where girth is functionally load-bearing on the output. A larger body moves more air and produces a lower note; the width is the sound. This is the one section where the editors can point at a subject and say the girth is doing something audible, which is more than can be said for most of the archive.`,
   },
   'Engineering Marvels': {
     slug: 'engineering-marvels',
     heading: 'Engineering Marvels',
-    title: 'Thiccc Engineering: Structures Built Wider Than Necessary',
+    title: 'Thiccc Engineering: Built Wider Than Necessary',
     description: 'Singular engineering works catalogued for girth, from the Thiccctionary.',
     intro: `A small section, deliberately. "Marvel" is a word the editors distrust and admit sparingly. What lands here are the one-off works that do not sit comfortably in machinery or infrastructure: singular objects, built once, at a scale that made the width a headline rather than a footnote.`,
   },
@@ -105,6 +105,29 @@ export const CATEGORIES = {
     intro: `Nothing in this section was designed, budgeted, or specified. These subjects arrived at their proportions without a meeting. The editors find this section restful for that reason and note that it contains, per entry, the least controversy of any category in the archive.`,
   },
 };
+
+/**
+ * Wave 305: the rendered <title> is `${cat.title} · Thiccctionary`, and that
+ * suffix is 16 characters that are easy to forget when writing a title that
+ * looks fine on its own. Four of the nine categories shipped over the 70-char
+ * budget on day one and the weekly health audit is what caught it.
+ *
+ * Fail the build instead. A category page is worth having only for search, so
+ * a category page with a truncated SERP title is most of the way to pointless,
+ * and this is cheaper to fix at the moment someone adds the tenth category
+ * than a week later in an audit nobody reads.
+ */
+const TITLE_SUFFIX = ' · Thiccctionary';
+const TITLE_BUDGET = 70;
+for (const [name, cat] of Object.entries(CATEGORIES)) {
+  const full = cat.title + TITLE_SUFFIX;
+  if (full.length > TITLE_BUDGET) {
+    throw new Error(
+      `[categories] title for "${name}" renders ${full.length} chars, budget is ${TITLE_BUDGET}: ` +
+      `"${full}". Shorten CATEGORIES["${name}"].title by ${full.length - TITLE_BUDGET}.`
+    );
+  }
+}
 
 function trimDef(s, max = 150) {
   const t = stripHtml(s).replace(/\s+/g, ' ').trim();

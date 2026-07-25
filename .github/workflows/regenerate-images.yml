@@ -73,6 +73,10 @@ jobs:
           SUBJECT_OVERRIDE: ${{ inputs.subject_override || steps.sentinel.outputs.subject_override }}
         run: node regenerate-images.js
 
+      - name: Sync WebP derivatives (Wave 305)
+        run: node scripts/sync-webp.js
+        continue-on-error: true
+
       - name: Open Pull Request
         id: open_pr
         uses: peter-evans/create-pull-request@v8

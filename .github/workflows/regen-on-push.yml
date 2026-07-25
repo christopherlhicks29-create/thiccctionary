@@ -48,6 +48,14 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install libwebp-tools (Wave 305)
+        if: steps.check.outputs.skip != 'true'
+        # This step's absence is what shipped a broken <picture> on 2026-07-25:
+        # regenerate-images.js wrote the new JPEG, jpg-to-webp.js found no
+        # converter, the caller logged "non-fatal", and the page went out
+        # pointing <source srcset> at a WebP that was never created.
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
+
       - name: Read queue inputs
         if: steps.check.outputs.skip != 'true'
         id: queue
@@ -69,6 +77,11 @@ jobs:
           DATES: ${{ steps.queue.outputs.dates }}
           SUBJECT_OVERRIDE: ${{ steps.queue.outputs.override }}
         run: node regenerate-images.js
+
+      - name: Sync WebP derivatives (Wave 305)
+        if: steps.check.outputs.skip != 'true'
+        run: node scripts/sync-webp.js
+        continue-on-error: true
 
       - name: Remove queue file (so this doesn't re-fire)
         if: steps.check.outputs.skip != 'true'

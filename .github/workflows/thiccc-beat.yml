@@ -49,6 +49,9 @@ jobs:
       - name: Sync footer links (Wave 304b)
         run: node scripts/sync-footer-links.js
         continue-on-error: true
+      - name: Sync WebP derivatives (Wave 305)
+        run: node scripts/sync-webp.js
+        continue-on-error: true
       - name: Commit and push
         run: |
           git config user.email "actions@github.com"

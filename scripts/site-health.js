@@ -201,9 +201,27 @@ async function audit() {
     }
 
     // 4c. Title length (Google truncates at ~60 chars on desktop)
+    //
+    // Wave 305: two thresholds, because this check had two jobs and was only
+    // doing one of them well.
+    //
+    // On a templated page a long <title> is an accident -- boilerplate nobody
+    // counted, e.g. the category hubs shipping "Thiccc Industrial Machinery:
+    // Rollers, Presses and Boring Machines - Thiccctionary". Trimming that
+    // costs nothing, so 70 stands.
+    //
+    // On an article the <title> IS the headline, written to be read. A long
+    // title is not a ranking penalty; Google truncates the display and moves
+    // on. Cutting a Thiccc Beat headline to fit a SERP pixel width would
+    // damage the only thing on the page doing any persuading. Every Beat
+    // headline runs 76-81 chars, so at 70 this section reported seven
+    // permanent failures every week -- and a check that always fires is a
+    // check everyone learns to scroll past. 95 still catches a headline that
+    // has genuinely run away.
     const titleMatch = content.match(/<title>([^<]*)<\/title>/);
-    if (titleMatch && titleMatch[1].length > 70) {
-      issues.longTitles.push({ from: rel, length: titleMatch[1].length, title: titleMatch[1] });
+    const titleLimit = rel.startsWith('articles/') ? 95 : 70;
+    if (titleMatch && titleMatch[1].length > titleLimit) {
+      issues.longTitles.push({ from: rel, length: titleMatch[1].length, title: titleMatch[1], limit: titleLimit });
     }
 
     // 4d. Meta description length (Google truncates at ~160 chars)
@@ -453,8 +471,8 @@ function formatReport({ issues, stats }) {
   section(`Broken same-page anchors (${issues.brokenAnchors.length})`, issues.brokenAnchors,
     i => `\`${i.from}\` → \`#${i.anchor}\` (no element with this id on the page)`);
 
-  section(`Page titles >70 chars (${issues.longTitles.length})`, issues.longTitles,
-    i => `\`${i.from}\`, ${i.length} chars`);
+  section(`Page titles over budget, 70 chars, 95 for articles (${issues.longTitles.length})`, issues.longTitles,
+    i => `\`${i.from}\`, ${i.length} chars (limit ${i.limit})`);
 
   section(`Meta descriptions >170 chars (${issues.longDescriptions.length})`, issues.longDescriptions,
     i => `\`${i.from}\`, ${i.length} chars`);

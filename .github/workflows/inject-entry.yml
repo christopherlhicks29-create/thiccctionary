@@ -65,6 +65,15 @@ jobs:
         run: node build-is-pages.js
         continue-on-error: true
 
+      - name: Install libwebp-tools (Wave 305)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
+        continue-on-error: true
+
+      - name: Sync WebP derivatives (Wave 305)
+        working-directory: scripts
+        run: node sync-webp.js
+        continue-on-error: true
+
       - name: Commit + push
         run: |
           git config user.email "actions@github.com"
