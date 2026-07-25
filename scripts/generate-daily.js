@@ -30,6 +30,7 @@ import { withPlateNumber } from './lib/plate.js';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { validateEntry } from './banned-words.js';
 import { openaiChat } from './openai-with-fallback.js';
+import { critiqueImage, passesGate, GATES } from './image-critic.js';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 
 // Wave 142c: write any uncaught exception to disk so we can debug failed runs without
@@ -570,79 +571,29 @@ Evaluate this entry's humor.
 }
 
 // ---------- 5b. Design critique (post-pick QA) ----------
-// Runs after the image is selected, before the PR opens. Asks GPT-4o vision
-// to evaluate whether the chosen photo actually works on the live site:
-// silhouette completeness, framing, brand-fit, whether anything will be cropped
-// in the layout. Returns a score (1-10) and a short critique string.
+// Runs after the image is selected, before the PR opens. Wave 321: this used to
+// carry its own 800-line copy of the critic prompt. Wave 204 had already
+// extracted a shared one into image-critic.js "so regenerate-images.js and
+// post-to-buffer.js can use the same gate," and this file simply never switched
+// over -- so for a hundred waves the entry that gets written and the entry that
+// gets its photo replaced were judged by two different, diverging rubrics. The
+// shared prompt now carries the union of both. What stays here is the contract
+// the caller below depends on: never null, and one log line.
 async function critiqueChosenImage(subject, photo) {
-  const sysPrompt = `You are a design reviewer for "Thiccctionary," a satirical daily dictionary of thiccc inanimate objects. You evaluate the chosen photo for a daily entry against these criteria:
-
-1. SILHOUETTE COMPLETENESS, is the WHOLE subject visible? (rear-three-quarter, side-profile, full-frame views work; tight crops fail)
-2. FRAMING, is the subject centered enough that a 4:3 or natural-aspect crop preserves it?
-3. BRAND FIT, does the photo look like a documentary / dictionary plate, or a marketing render? (Documentary good, marketing bad)
-4. CLUTTER, is the subject clearly the focal point, or surrounded by distractions?
-5. PRIMARY-SUBJECT TEST, what is the photo OF? If the answer is a person (portrait, fashion, beauty, body close-up), DISQUALIFY, the brand never makes jokes about human bodies. If the answer is the actual subject thing (truck, tomato, instrument, building) and humans appear incidentally as bystanders / scale reference / crew / players holding the instrument, that's FINE. The rule is "no jokes about bodies," not "no humans visible."
-
-6. REAL VS REPRESENTATION TEST, is this a photo of the ACTUAL subject, or a depiction of it? Things that count as DEPICTION and must be REJECTED (verdict "reject", score < 4): toys, sculptures, statues, figurines, costumes, replicas, fan art, illustrations, cartoons, action figures, model versions, 3D renders. Example: if the subject is "Transformer, Power Generation" (an electrical transformer) and the photo shows a Transformer-the-robot statue, REJECT. If the subject is "Pumpkin, Atlantic Giant" and the photo shows a person in a pumpkin costume, REJECT. If the subject is "Concrete Mixer" and the photo shows a toy concrete mixer, REJECT. Tells to watch for: visible seams, plastic surfaces, action-figure proportions, painted decals where real metal would be, weld marks at joints implying a built sculpture not a real machine, anything that reads as "made by an artist to look like X" rather than "is X."
-
-For musical instruments specifically: a photo of a tuba being PLAYED by someone is a photo of the tuba (subject = instrument, person is incidental). A photo of a brass-band marching is also of the instruments. Reject only if the COMPOSITION centers a person's face/body.
-
-7. SUBJECT-PROMINENCE TEST (Wave 200, Christopher 2026-05-23 'the latest post is more of a blacksmith than an anvil'). Estimate what percentage of the visible image area the SUBJECT itself occupies. Two-step test:
-   - Score must reflect prominence: if the subject occupies < 40% of the frame, score ceiling is 5. If < 25%, score ceiling is 3 (auto-reject).
-   - A 'blacksmith hammering an anvil' photo where the anvil is 20% of the frame and a person fills 60% is NOT an acceptable pick for an entry titled 'Anvil.' It is a photo of a blacksmith. Reject.
-   - Tests to apply mentally: would a stranger seeing this photo with NO CAPTION immediately identify the subject as the thing we cataloged? If they'd guess 'blacksmith' or 'workshop' instead of 'anvil', score it down.
-
-8. SUBJECT-IDENTITY REALITY CHECK (Wave 226, post 5/31 'Industrial F350 kettle' incident). The subject string itself must be a REAL, plausibly-verifiable product designation, not a fabrication. RED FLAGS to auto-reject (verdict 'reject', score <= 3) regardless of how good the photo looks:
-   - Model number borrowed from one product category and stuck onto another. Examples: "F350 kettle" (F350 = Ford truck), "Boeing 747 sofa", "M1 toaster", "Saturn V coffee pot". Vehicle/aircraft/military model numbers do not belong on kitchen, furniture, appliance, or animal subjects. If the subject combines a vehicle/aircraft/military model number with a non-vehicle/aircraft category, REJECT.
-   - Made-up product line that does not exist outside this entry. If the photo description contains a normal generic product (e.g. "stainless steel cooking pot") but the subject claims a specific manufacturer model that does not appear in the photo's metadata, treat as fabricated unless you personally recognize the model as real.
-   - Subject contains an obvious LLM-hallucination tell: random alphanumeric strings (KX-9000, ProMax-3500) on otherwise generic objects.
-   If the subject passes the reality check, no action required. If it fails, the critique should say so explicitly in the critique paragraph and set verdict='reject'.
-
-Score the photo from 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
-
-  const userPrompt = `Subject: ${subject}
-Photo description: ${photo.description || '(no caption available)'}
-Photographer: ${photo.photographer}
-Photo URL: ${photo.fullUrl}
-
-Evaluate this image and output JSON:
-{
-  "score": <1-10>,
-  "verdict": "ship" | "needs-review" | "reject",
-  "subjectPercentEstimate": <integer 0-100, what percent of the image area the actual subject thing occupies. 60-90 is healthy; <40 means a person or background is dominant>,
-  "photoSubject": "one short clause describing what the photo ACTUALLY depicts, be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
-  "critique": "one paragraph explaining the score, what's good, what's weak. If subjectPercentEstimate is < 40, EXPLAIN what is dominating the frame instead."
-}`;
-
-  try {
-    const res = await openaiChat({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        messages: [
-          { role: 'system', content: sysPrompt },
-          { role: 'user', content: [
-            { type: 'text', text: userPrompt },
-            { type: 'image_url', image_url: { url: photo.fullUrl, detail: 'high' } }
-          ]}
-        ],
-        response_format: { type: 'json_object' },
-        temperature: 0.3,
-      }),
-    });
-    if (!res.ok) {
-      console.warn(`Design critique skipped: ${res.status}`);
-      return { score: null, verdict: 'unknown', critique: 'Critique step failed (non-blocking).' };
-    }
-    const data = await res.json();
-    const c = JSON.parse(data.choices[0].message.content);
-    console.log(`Design critique: score=${c.score}/10, verdict=${c.verdict}`);
-    return c;
-  } catch (e) {
-    console.warn(`Design critique error: ${e.message}`);
-    return { score: null, verdict: 'unknown', critique: 'Critique step errored (non-blocking).' };
+  const c = await critiqueImage({
+    subject,
+    imageUrl: photo.fullUrl,
+    photoDescription: photo.description,
+    photographer: photo.photographer,
+  });
+  if (!c) {
+    // Non-null on failure, deliberately: the gate below reads c.verdict and
+    // c.score, and a null here would read as "no objection" twice over.
+    console.warn('Design critique unavailable (non-blocking).');
+    return { score: null, verdict: 'unknown', critique: 'Critique step failed (non-blocking).' };
   }
+  console.log(`Design critique: score=${c.score}/10, verdict=${c.verdict}${c.isSubject === false ? ', NOT THE SUBJECT' : ''}`);
+  return c;
 }
 
 
@@ -1090,7 +1041,10 @@ async function main() {
   // If the chosen image fails the design gate, try the next-best candidate image
   // for the SAME subject (up to 3 images) before the gate below decides to bail.
   {
-    const gateFails = (c) => c && (c.verdict === 'reject' || (typeof c.score === 'number' && c.score < 5) || (typeof c.subjectPercentEstimate === 'number' && c.subjectPercentEstimate < 25));
+    // Wave 321: one gate, from image-critic.js. This threshold set was written
+    // out here and again forty lines below, which is how the retry loop and the
+    // bail check could have disagreed about what "acceptable" means.
+    const gateFails = (c) => !passesGate(c, GATES.daily);
     const tried = new Set([chosen && chosen.fullUrl]);
     let imgTries = 1;
     while (gateFails(critique) && imgTries < 3 && Array.isArray(candidates)) {
@@ -1119,13 +1073,9 @@ async function main() {
   // Wave 209b: lowered critic threshold 7 -> 5. Critic was bailing on too many
   // entries, blocking 5+ days of dailies (2026-05-25 to 5-29). Score-5 ships
   // with needsReview=true; subject-prominence < 25 still rejects (true insults).
-  if (critique && (
-    critique.verdict === 'reject' ||
-    (typeof critique.score === 'number' && critique.score < 5) ||
-    (typeof critique.subjectPercentEstimate === 'number' && critique.subjectPercentEstimate < 25)
-  )) {
+  if (!passesGate(critique, GATES.daily)) {
     console.log('GATE: critique flagged the image as unacceptable. Skipping before PR.');
-    console.log('  score:', critique.score, ' verdict:', critique.verdict, ' subjectPct:', critique.subjectPercentEstimate);
+    console.log('  score:', critique.score, ' verdict:', critique.verdict, ' subjectPct:', critique.subjectPercentEstimate, ' isSubject:', critique.isSubject);
     console.log('  critique:', critique.critique);
     // Wave 200: append to picker-rejections.jsonl so future picker runs learn
     // from this failure. The picker reads the last 20 rejection records and
@@ -1141,6 +1091,7 @@ async function main() {
         photoUrl: chosen.fullUrl,
         photoDescription: chosen.description || null,
         criticScore: critique.score,
+        criticIsSubject: critique.isSubject ?? null,
         criticPhotoSubject: critique.photoSubject || null,
         criticReason: critique.critique || null,
         subjectPercentEstimate: critique.subjectPercentEstimate ?? null,

@@ -1,30 +1,61 @@
 /**
- * Wave 204: shared image critic. Extracted from generate-daily.js so
- * regenerate-images.js and post-to-buffer.js (evening throwback) can use
- * the same subject-prominence gate.
+ * image-critic.js - the one image critic.
  *
  * critiqueImage({ subject, imageUrl, photoDescription, photographer })
- *   -> { score, verdict, subjectPercentEstimate, photoSubject, critique }
+ *   -> { isSubject, score, verdict, subjectPercentEstimate, photoSubject, critique }
+ *   -> null if OPENAI_API_KEY is missing or the call fails outright.
  *
- * If OPENAI_API_KEY missing or call fails, returns null (caller decides
- * whether to ship or skip). Always non-blocking by design.
+ * Wave 204 extracted this from generate-daily.js "so regenerate-images.js and
+ * post-to-buffer.js can use the same gate." generate-daily.js then kept its own
+ * copy anyway, and for a hundred waves there have been two critics with two
+ * prompts drifting apart: this one grew the GIRTH TEST and never got the Wave
+ * 226 fabricated-model-number check; that one got the fabrication check and
+ * never got girth. That one also got the Anthropic fallback wrapper, while this
+ * one was still calling fetch() straight at OpenAI -- so an OpenAI quota outage
+ * silently disabled the regen critic and, because passesGate(null) returns
+ * true, left the gate wide open at exactly the moment the pipeline was already
+ * degraded. Wave 321 merges them. There is one prompt now, and it goes through
+ * openaiChat() like everything else.
+ *
+ * Wave 321 also adds criterion 0. The eight criteria that were here graded
+ * composition and never asked whether the photograph was of the thing the entry
+ * names. So "Crankshaft, Marine Diesel" was shipped a steam turbine rotor
+ * (score 7) and then, on the retry, an engine block (score 7). Both are large,
+ * centred, uncluttered, documentary-looking, real, imposing and fill the frame
+ * -- every criterion passed, because none of them was identity. isSubject is a
+ * hard structural field so passesGate() can enforce it in code rather than
+ * hoping a composite score reflects it. Two wasted regen runs on one entry is
+ * what the missing question cost; the same blind spot is why a desk globe sits
+ * on "Globe, Library Floor Model".
  */
+import { openaiChat, extractJson } from './openai-with-fallback.js';
 
 const SYS_PROMPT = `You are a design reviewer for "Thiccctionary," a satirical daily dictionary of thiccc inanimate objects. Evaluate the chosen photo against these criteria:
 
-1. SILHOUETTE COMPLETENESS, is the WHOLE subject visible?
-2. FRAMING, is the subject centered enough that a natural crop preserves it?
-3. BRAND FIT, does the photo look like a documentary plate, or a marketing render?
-4. CLUTTER, is the subject clearly the focal point, or surrounded by distractions?
-5. PRIMARY-SUBJECT TEST, what is the photo OF? If the answer is a person (portrait, fashion, beauty), DISQUALIFY.
-6. REAL VS REPRESENTATION, reject toys, sculptures, statues, costumes, replicas, fan art, action figures.
-7. GIRTH TEST (Wave 301, tuned 303). Every entry celebrates an object that is thiccc FOR ITS KIND: unusually large, heavily loaded, over-abundant, or imposing relative to a typical example. Judge girth relative to the subject's own category, not absolute size: a fully loaded banana split overflowing its boat IS thiccc; a single modest scoop is not. A photo of six standard cinnamon rolls in cupcake liners is NOT acceptable for 'Roll, Cinnamon Bun Oversized'. Disqualifying cues are ones that betray a modest, restrained, or subdivided example (cupcake liners, dainty portions, a small specimen of a normally large object). If the subject reads as a modest example of its kind, score ceiling is 4. Do NOT penalize a generously loaded or fully realized example merely because the object category is small.
-8. SUBJECT-PROMINENCE TEST (Wave 200). Estimate the percent of frame area the SUBJECT itself occupies. If < 40%, score ceiling is 5. If < 25%, score ceiling is 3 (auto-reject). A 'blacksmith hammering an anvil' photo where the anvil is 20% of the frame is NOT an acceptable pick for an entry titled 'Anvil.' Stranger test: would someone seeing this with NO CAPTION identify the subject as the cataloged thing? If they'd guess 'blacksmith' or 'workshop' instead of 'anvil', score it down.
+0. IDENTITY TEST (Wave 321). THIS ONE OVERRIDES EVERY OTHER CRITERION. Is the photo OF THE NAMED OBJECT? Not of its neighbour, not of the assembly it belongs to, not of the room it lives in, not of a different member of the same family. Subjects are written in dictionary inversion, "Head Noun, Qualifier": in "Crankshaft, Marine Diesel" the object is a CRANKSHAFT and "Marine Diesel" only says which kind. The photo must show the head noun. An engine block is not a crankshaft. A turbine rotor is not a crankshaft. A desk globe is not a floor globe. A teapot is not a kettle. A cannonball is not a medicine ball. If you cannot positively identify the named object in the frame, set "isSubject": false and score 1, no matter how well composed, well lit, documentary, imposing or on-brand the photograph is. A beautiful photo of the wrong object is worse than no replacement at all, because it ships. When genuinely uncertain whether the object shown is the named one, answer false: a rejection costs one retry, a false accept puts a wrong plate in front of every reader.
 
-Score 1 (unusable) to 10 (perfect). Output JSON only.`;
+1. SILHOUETTE COMPLETENESS, is the WHOLE subject visible? (rear-three-quarter, side-profile, full-frame views work; tight crops fail)
+2. FRAMING, is the subject centered enough that a 4:3 or natural-aspect crop preserves it?
+3. BRAND FIT, does the photo look like a documentary / dictionary plate, or a marketing render? (Documentary good, marketing bad)
+4. CLUTTER, is the subject clearly the focal point, or surrounded by distractions?
+5. PRIMARY-SUBJECT TEST, what is the photo OF? If the answer is a person (portrait, fashion, beauty, body close-up), DISQUALIFY, the brand never makes jokes about human bodies. If the answer is the actual subject thing (truck, tomato, instrument, building) and humans appear incidentally as bystanders / scale reference / crew / players holding the instrument, that's FINE. The rule is "no jokes about bodies," not "no humans visible." For musical instruments specifically: a photo of a tuba being PLAYED by someone is a photo of the tuba, and a marching brass band is a photo of the instruments. Reject only if the COMPOSITION centers a person's face or body.
+
+6. REAL VS REPRESENTATION TEST, is this a photo of the ACTUAL subject, or a depiction of it? Things that count as DEPICTION and must be REJECTED (verdict "reject", score < 4): toys, sculptures, statues, figurines, costumes, replicas, fan art, illustrations, cartoons, action figures, model versions, 3D renders. Example: if the subject is "Transformer, Power Generation" (an electrical transformer) and the photo shows a Transformer-the-robot statue, REJECT. If the subject is "Pumpkin, Atlantic Giant" and the photo shows a person in a pumpkin costume, REJECT. If the subject is "Concrete Mixer" and the photo shows a toy concrete mixer, REJECT. Tells to watch for: visible seams, plastic surfaces, action-figure proportions, painted decals where real metal would be, weld marks at joints implying a built sculpture not a real machine, anything that reads as "made by an artist to look like X" rather than "is X."
+
+7. GIRTH TEST (Wave 301, tuned 303). Every entry celebrates an object that is thiccc FOR ITS KIND: unusually large, heavily loaded, over-abundant, or imposing relative to a typical example. Judge girth relative to the subject's own category, not absolute size: a fully loaded banana split overflowing its boat IS thiccc; a single modest scoop is not. A photo of six standard cinnamon rolls in cupcake liners is NOT acceptable for 'Roll, Cinnamon Bun Oversized'. Disqualifying cues are ones that betray a modest, restrained, or subdivided example (cupcake liners, dainty portions, a small specimen of a normally large object). If the subject reads as a modest example of its kind, score ceiling is 4. Do NOT penalize a generously loaded or fully realized example merely because the object category is small.
+
+8. SUBJECT-PROMINENCE TEST (Wave 200, Christopher 2026-05-23 'the latest post is more of a blacksmith than an anvil'). Estimate the percent of frame area the SUBJECT itself occupies. If < 40%, score ceiling is 5. If < 25%, score ceiling is 3 (auto-reject). A 'blacksmith hammering an anvil' photo where the anvil is 20% of the frame and a person fills 60% is NOT an acceptable pick for an entry titled 'Anvil.' It is a photo of a blacksmith. Stranger test: would someone seeing this with NO CAPTION identify the subject as the cataloged thing? If they'd guess 'blacksmith' or 'workshop' instead of 'anvil', score it down.
+
+9. SUBJECT-IDENTITY REALITY CHECK (Wave 226, post 5/31 'Industrial F350 kettle' incident). The subject string itself must be a REAL, plausibly-verifiable product designation, not a fabrication. RED FLAGS to auto-reject (verdict 'reject', score <= 3) regardless of how good the photo looks:
+   - Model number borrowed from one product category and stuck onto another. Examples: "F350 kettle" (F350 = Ford truck), "Boeing 747 sofa", "M1 toaster", "Saturn V coffee pot". Vehicle/aircraft/military model numbers do not belong on kitchen, furniture, appliance, or animal subjects. If the subject combines a vehicle/aircraft/military model number with a non-vehicle category, REJECT.
+   - Made-up product line that does not exist outside this entry. If the photo description contains a normal generic product (e.g. "stainless steel cooking pot") but the subject claims a specific manufacturer model that does not appear in the photo's metadata, treat as fabricated unless you personally recognize the model as real.
+   - An obvious LLM-hallucination tell: random alphanumeric strings (KX-9000, ProMax-3500) on otherwise generic objects.
+   If the subject fails this check, say so explicitly in the critique paragraph and set verdict='reject'.
+
+Score 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON only.`;
 
 export async function critiqueImage({ subject, imageUrl, photoDescription, photographer }) {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
     return null;
   }
   const userPrompt = `Subject: ${subject}
@@ -33,15 +64,18 @@ ${photographer ? `Photographer: ${photographer}\n` : ''}Photo URL: ${imageUrl}
 
 Output JSON:
 {
+  "isSubject": <true if the photo positively shows the named object, false if it shows something else>,
   "score": <1-10>,
   "verdict": "ship" | "needs-review" | "reject",
-  "subjectPercentEstimate": <integer 0-100>,
-  "photoSubject": "one short clause describing what the photo ACTUALLY depicts",
-  "critique": "one paragraph"
+  "subjectPercentEstimate": <integer 0-100, what percent of the image area the actual subject thing occupies. 60-90 is healthy; <40 means a person or background is dominant>,
+  "photoSubject": "one short clause describing what the photo ACTUALLY depicts, be specific. e.g. 'a real high-voltage electrical substation transformer' or 'a Transformer-the-robot sculpture made of car parts' or 'a 4-foot toy concrete mixer on a child's playmat'",
+  "critique": "one paragraph explaining the score, what's good, what's weak. If isSubject is false, name what the photo shows instead. If subjectPercentEstimate is < 40, EXPLAIN what is dominating the frame."
 }`;
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    // openaiChat, not fetch: an OpenAI quota outage must not silently disable
+    // the gate. It falls back to Anthropic and returns the same shape.
+    const res = await openaiChat({
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` },
       body: JSON.stringify({
@@ -58,11 +92,13 @@ Output JSON:
       }),
     });
     if (!res.ok) {
-      console.warn(`[image-critic] OpenAI returned ${res.status}, returning null`);
+      console.warn(`[image-critic] chat returned ${res.status}, returning null`);
       return null;
     }
     const data = await res.json();
-    return JSON.parse(data.choices[0].message.content);
+    // extractJson because the Anthropic fallback has no response_format and
+    // will occasionally wrap its object in a fenced block.
+    return JSON.parse(extractJson(data.choices[0].message.content));
   } catch (e) {
     console.warn(`[image-critic] errored: ${e.message}`);
     return null;
@@ -74,10 +110,17 @@ export const GATES = {
   generate:  { minScore: 7, minSubjectPct: 25 },  // strict: net-new image
   regen:     { minScore: 7, minSubjectPct: 25 },  // strict: replacing a bad one
   throwback: { minScore: 6, minSubjectPct: 25 },  // looser: image already shipped
+  // Wave 209b deliberately runs the daily looser than `generate`: the strict
+  // gate was bailing on 5+ consecutive days. Score-5 ships with needsReview.
+  daily:     { minScore: 5, minSubjectPct: 25 },
 };
 
 export function passesGate(critique, gate) {
   if (!critique) return true;  // critic unavailable, don't block
+  // Wave 321: identity is not a matter of degree. A photo of the wrong object
+  // fails outright, whatever it scored on composition. Checked with === false
+  // so a critic response that predates this field behaves exactly as before.
+  if (critique.isSubject === false) return false;
   if (typeof critique.score === 'number' && critique.score < gate.minScore) return false;
   if (typeof critique.subjectPercentEstimate === 'number' && critique.subjectPercentEstimate < gate.minSubjectPct) return false;
   if (critique.verdict === 'reject') return false;

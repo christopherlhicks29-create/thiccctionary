@@ -298,7 +298,10 @@ async function main() {
           critique = c;
           if (c) console.log(`  Critic PASS (attempt ${attempt}/3): score=${c.score}, subject%=${c.subjectPercentEstimate}`);
         } else {
-          lastReject = `score=${c?.score}, subject%=${c?.subjectPercentEstimate}, saw "${c?.photoSubject}"`;
+          // Wave 321: name the identity failure explicitly. A run log reading
+          // only "score=4" invites another query tweak; one reading
+          // "not the subject" says the query was fine and the photo was not.
+          lastReject = `${c?.isSubject === false ? 'NOT THE SUBJECT, ' : ''}score=${c?.score}, subject%=${c?.subjectPercentEstimate}, saw "${c?.photoSubject}"`;
           console.log(`  Critic REJECT (attempt ${attempt}/3): ${lastReject}. Trying next.`);
         }
       }
@@ -351,7 +354,7 @@ async function main() {
       entry.photographerUrl = chosen.photographerUrl;
       entry.unsplashUrl = chosen.unsplashUrl;
       logRow(entry.date, entry.word, 'replaced',
-        `images/${filename} <- ${chosen.unsplashUrl} (critic score=${critique?.score})`);
+        `images/${filename} <- ${chosen.unsplashUrl} (critic score=${critique?.score}, saw "${critique?.photoSubject ?? 'n/a'}")`);
       succeeded++;
     } catch (err) {
       console.error(`  FAILED: ${err.message}`);
