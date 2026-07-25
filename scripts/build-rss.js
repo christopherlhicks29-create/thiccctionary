@@ -7,6 +7,7 @@
  */
 
 import fs from 'node:fs/promises';
+import { statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -28,10 +29,32 @@ function rfc822(dateStr) {
   return d.toUTCString();
 }
 
+// Wave 303: enclosures shipped with length="0", which is invalid RSS -- some
+// aggregators drop the enclosure outright. Resolve the real byte size off
+// disk. Also guards the disambiguation race: if the daily pipeline renamed
+// the image after entries.json was written (e.g. slug collision adds a -4l9c
+// suffix), the declared path won't exist, and we fall back to the default
+// rather than shipping a 404 into the feed.
+function enclosureFor(relPath) {
+  const rel = String(relPath || '').replace(/^\.?\//, '');
+  const fallback = { url: `${SITE}/og-default.png`, type: 'image/png', length: 0 };
+  if (!rel) return fallback;
+  let size = 0;
+  try {
+    size = statSync(path.join(ROOT, rel)).size;
+  } catch {
+    console.warn(`[rss] image not on disk, falling back to og-default: ${rel}`);
+    return fallback;
+  }
+  const ext = path.extname(rel).toLowerCase();
+  const type = ext === '.png' ? 'image/png' : ext === '.webp' ? 'image/webp' : 'image/jpeg';
+  return { url: `${SITE}/${rel}`, type, length: size };
+}
+
 function entryItem(e) {
   const url = `${SITE}/entries/${e.date}.html`;
   const desc = stripHtml(e.definitions[0]);
-  const imageUrl = e.image ? `${SITE}/${e.image.replace(/^\.?\//, '')}` : `${SITE}/og-default.png`;
+  const enc = enclosureFor(e.image);
   const tags = (e.tags || []).map(t => `<category>${escapeXml(t)}</category>`).join('');
   return `    <item>
       <title>${escapeXml(e.word)}</title>
@@ -39,7 +62,7 @@ function entryItem(e) {
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${rfc822(e.date)}</pubDate>
       <description>${escapeXml(desc)}</description>
-      <enclosure url="${imageUrl}" type="image/jpeg" length="0" />
+      <enclosure url="${enc.url}" type="${enc.type}" length="${enc.length}" />
       ${tags}
     </item>`;
 }

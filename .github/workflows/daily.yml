@@ -255,6 +255,11 @@ jobs:
         run: node build-is-pages.js
         continue-on-error: true
 
+      - name: Normalize article <head> blocks (Wave 303)
+        working-directory: scripts
+        run: node normalize-article-heads.js
+        continue-on-error: true
+
       - name: Build vertical Reel video
         working-directory: scripts
         env:

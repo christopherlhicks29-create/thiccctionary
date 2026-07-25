@@ -193,7 +193,15 @@ async function main() {
   const fixes = [];
   await fixBrokenLinks(report, fixes);
   await fixBannedWordsInEntries(report, fixes);
-  await fixLongPageTitles(report, fixes);
+  // Wave 303: DISABLED. This "fix" was hard-truncating titles at a word
+  // boundary and writing the fragment back to disk, producing shipped titles
+  // like "The Largest Bicycle Ever Built Is Also, One Regrets to Report, the"
+  // and "Girth in Service of Purpose: The thiccc Thing That, Thiccctionary".
+  // Search engines already truncate long titles in the SERP with an ellipsis
+  // and keep the source intact, which is strictly better than mangling it.
+  // Do not re-enable without a rewrite that shortens semantically.
+  // await fixLongPageTitles(report, fixes);
+  void fixLongPageTitles;
 
   console.log(`\n[autofix] ${fixes.length} fix attempts:`);
   for (const f of fixes) {

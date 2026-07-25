@@ -617,6 +617,21 @@ function filterChannelsForMode(channels, mode) {
       console.log('SKIP_INSTAGRAM=true, reel goes to FB only.');
     }
   }
+  // Wave 303: Facebook feed posts are dead weight. 141 of them have earned
+  // ~0 impressions -- a cold FB Page has no organic discovery surface, so
+  // feed posts only reach existing followers, of which there are ~none.
+  // Reels DO get distribution, so the page keeps its daily reel and stops
+  // being a link-spam feed. Set FB_FEED_POSTS=true to restore the old
+  // behaviour (e.g. if the page ever gets an audience worth posting to).
+  if (mode !== 'reels' && process.env.FB_FEED_POSTS !== 'true') {
+    const fb = new Set(['facebook', 'facebookpage']);
+    const before = filtered.length;
+    filtered = filtered.filter(c => !fb.has(c.service));
+    if (filtered.length !== before) {
+      console.log(`Wave 303: skipping FB for mode=${mode} (feed posts disabled; reels still ship). Set FB_FEED_POSTS=true to re-enable.`);
+    }
+  }
+
   // SKIP_FACEBOOK=true tells Buffer to skip FB channels, used when the
   // direct-FB Graph API script is handling FB. Reels mode still goes
   // through Buffer for FB (no direct-FB Reels support yet).
