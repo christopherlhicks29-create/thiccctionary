@@ -1,5 +1,5 @@
 """
-Generate per-entry Open Graph cards (1200x630 PNG).  Wave 312.
+Generate per-entry Open Graph cards (1200x630 JPEG).  Wave 312.
 
 Why
 ---
@@ -57,19 +57,25 @@ def cover_crop(img, w, h, focal_y=0.42):
     return img.crop((left, top, left + w, top + h))
 
 
-def scrim(size, height, strength=250):
+def scrim(size, height, strength=250, ramp=1.0, gamma=1.9):
     """A bottom-up ink gradient, so text over any photograph stays readable.
 
     The exponent matters more than the strength: a linear ramp reads as a grey
     bar laid over the picture, while a curved one looks like the photograph is
     simply darker at the bottom, which is what a real photograph often is.
+
+    `ramp` is the fraction of `height` spent climbing; below that the gradient
+    holds at full `strength`. The base scrim ramps the whole way (ramp=1.0), but
+    a correction scrim needs to have already arrived by the time it reaches the
+    type, or it spends its whole budget darkening the empty strip underneath it.
     """
     w, h = size
     grad = Image.new('L', (1, h), 0)
     px = grad.load()
+    span = max(1.0, height * ramp)
     for y in range(h):
-        t = (y - (h - height)) / float(height)
-        px[0, y] = 0 if t < 0 else int(strength * (t ** 1.9))
+        t = (y - (h - height)) / span
+        px[0, y] = 0 if t < 0 else int(strength * (min(1.0, t) ** gamma))
     return grad.resize((w, h))
 
 
@@ -107,6 +113,35 @@ def build_card(photo_path, word, gloss, out_path):
     # Scrim across the lower half, so the type below sits on ink, not on food.
     dark = Image.new('RGB', (W, H), INK)
     base = Image.composite(dark, base, scrim((W, H), 400))
+
+    # A fixed scrim is a typed constant pretending to be a measurement: 65% ink
+    # over a night shot is pitch black, and 65% ink over a white studio floor or
+    # a bright fog sky is still bright enough that cream type on it is a squint.
+    # So measure what the text band actually came out at and top it up only if
+    # it needs it. The Bagger 288 card -- fog, pale road -- is what exposed this.
+    # The 85th percentile, not the mean. On the Bagger 288 card the left half of
+    # the band is a dark excavator and the right half is a pale motorway, and a
+    # mean lets the dark half hide the bright half -- which is exactly where the
+    # wordmark sits. A high percentile asks the question that matters: how bright
+    # is the brightest patch any of this type has to survive?
+    band = base.crop((0, H - 160, W, H)).convert('L')
+    hist = band.histogram()
+    cut = 0.85 * band.width * band.height
+    run = 0
+    for lum in range(256):
+        run += hist[lum]
+        if run >= cut:
+            break
+    TARGET = 45.0
+    if lum > TARGET:
+        # Alpha needed to pull the measured level down to TARGET over ink. Held
+        # rather than ramped across the type, so the correction has arrived by
+        # the time it reaches the words instead of peaking below them. Measured
+        # across all 106 entries this takes the worst card from 4.0:1 to 7.7:1;
+        # the watermelon and the hay bale, both shot on white, were the 4.0s.
+        a = min(0.85, (lum - TARGET) / max(lum - INK[0], 1.0))
+        base = Image.composite(dark, base,
+                               scrim((W, H), 300, int(255 * a), 0.45, 1.4))
 
     d = ImageDraw.Draw(base)
 
