@@ -1,0 +1,5 @@
+{
+  "dates": "2026-05-02,2026-05-21,2026-05-24",
+  "subject_override": "",
+  "note": "Wave 319: the three entries Unsplash could never find. Wave 315 added a query ladder that de-inverts the headword, so 'Crankshaft, Marine Diesel' now also tries 'Marine Diesel Crankshaft' and then 'Crankshaft'. No override on purpose: this is the test of whether the ladder does the work an override used to. Atlas Stone doubles as one of three entries sharing a single photograph."
+}
