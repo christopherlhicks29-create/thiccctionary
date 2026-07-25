@@ -167,6 +167,7 @@ ${sourceLink}
       <a href="/cartoons/">Cartoons</a>
       <a href="/compare.html">Compare</a>
       <a href="/rate/">Rate</a>
+      <a href="/guess/">Guess</a>
       <a href="/submit.html">Submit</a>
       <a href="/embed/">Embed</a>
       <a href="/about/">About</a>
