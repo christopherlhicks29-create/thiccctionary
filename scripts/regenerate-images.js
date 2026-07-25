@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 import { writeEntries } from './lib/entries-io.js';
+import { queryLadder } from './lib/search-queries.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -241,20 +242,28 @@ async function main() {
   for (const entry of toProcess) {
     console.log(`\n--- ${entry.date}: ${entry.word} ---`);
     try {
-      const cleanedQuery = entry.word.replace(/\bthicc+(c+|er|est)?\b/gi, '').replace(/\s+/g, ' ').trim();
-      const primaryQuery = override || entry.word;
-      let candidates = await searchUnsplash(primaryQuery);
-      console.log(`  Searched "${primaryQuery}" -> ${candidates.length} results.`);
-      if (candidates.length === 0 && !override && cleanedQuery && cleanedQuery !== entry.word) {
-        console.log(`  Retrying with cleaned query "${cleanedQuery}".`);
-        candidates = await searchUnsplash(cleanedQuery);
+      // Wave 314: the only fallback used to be "strip the word thiccc", which
+      // does nothing for a headword that never contained it. 96 of 106
+      // headwords are written in dictionary inversion ("Crankshaft, Marine
+      // Diesel"), which is the right form for an archive and an unsearchable
+      // one for a photo library -- three entries could not be reshot at all
+      // because of it. The ladder de-inverts, then falls back to the head noun.
+      const ladder = queryLadder(entry.word, override);
+      const primaryQuery = ladder[0];
+      let candidates = [];
+      let usedQuery = primaryQuery;
+      for (const q of ladder) {
+        candidates = await searchUnsplash(q);
+        console.log(`  Searched "${q}" -> ${candidates.length} results.`);
+        if (candidates.length) { usedQuery = q; break; }
       }
       if (candidates.length === 0) {
-        console.log(`  No Unsplash results -- skipping.`);
-        logRow(entry.date, entry.word, 'no-results', `query "${primaryQuery}" returned 0 photos`);
+        console.log(`  No Unsplash results for any of ${ladder.length} quer(y/ies) -- skipping.`);
+        logRow(entry.date, entry.word, 'no-results', `tried ${ladder.map(q => `"${q}"`).join(', ')}, all returned 0 photos`);
         skipped++;
         continue;
       }
+      if (usedQuery !== primaryQuery) console.log(`  Fell back to "${usedQuery}".`);
       // Wave 306: exclude photos other entries already use. `spentPhotos` is
       // rebuilt per entry from the catalog minus this entry, so a regen that
       // ends up re-choosing its own current photo is still allowed -- the point
