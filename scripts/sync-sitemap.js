@@ -65,6 +65,7 @@ const STATIC = [
   ['/submit.html', '0.5'],
   ['/embed/', '0.4'],
   ['/press/', '0.5'],
+  ['/category/', '0.7'],
   ['/legal/terms.html', '0.3'],
   ['/legal/privacy.html', '0.3'],
 ];
@@ -149,6 +150,20 @@ export async function syncSitemap({ check = false, quiet = false } = {}) {
     if (present.has(loc)) continue;
     if (!(await exists(`entries/${e.date}.html`))) continue;
     additions.push(urlBlock(loc, '0.6', e.date));
+    added.push(loc);
+  }
+
+  // --- category hubs --------------------------------------------------------
+  // Wave 304b: discovered from disk rather than listed, so adding a category to
+  // build-category-pages.js does not silently leave it out of the sitemap.
+  let catDirs = [];
+  try { catDirs = await fs.readdir(path.join(ROOT, 'category'), { withFileTypes: true }); } catch {}
+  for (const d of catDirs) {
+    if (!d.isDirectory()) continue;
+    const loc = `${SITE}/category/${d.name}/`;
+    if (present.has(loc)) continue;
+    if (!(await exists(`category/${d.name}/index.html`))) continue;
+    additions.push(urlBlock(loc, '0.6'));
     added.push(loc);
   }
 

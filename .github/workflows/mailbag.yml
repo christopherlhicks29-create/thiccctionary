@@ -37,18 +37,27 @@ jobs:
       - name: Normalize article <head> blocks (Wave 303)
         run: node scripts/normalize-article-heads.js
         continue-on-error: true
+      - name: Build category pages (Wave 304b)
+        run: node scripts/build-category-pages.js
+        continue-on-error: true
       - name: Sync sitemap (Wave 303)
         run: node scripts/sync-sitemap.js
         continue-on-error: true
       - name: Fix heading hierarchy (Wave 304)
         run: node scripts/fix-heading-hierarchy.js
         continue-on-error: true
+      - name: Sync footer links (Wave 304b)
+        run: node scripts/sync-footer-links.js
+        continue-on-error: true
 
       - name: Commit + push
         run: |
           git config user.email "actions@github.com"
           git config user.name "Bartholomew (auto)"
-          git add articles/ data/articles.json index.html sitemap.xml 2>/dev/null || true
+          # Wave 304b: the post-generation reconcilers (headings, footer links,
+          # category hubs) touch pages outside articles/, so a narrow add left
+          # their work unstaged and silently discarded. Checkout is clean here.
+          git add -A 2>/dev/null || true
           if ! git diff --staged --quiet; then
             git commit -m "Mailbag Vol. (auto) $(date -u +%Y-%m-%d)"
             git pull --rebase origin main || true

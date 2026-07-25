@@ -15,6 +15,7 @@ import { buildRssFeed } from './build-rss.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { syncSitemap } from './sync-sitemap.js';
+import { CATEGORIES } from './build-category-pages.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -141,11 +142,38 @@ function normTag(t) {
   return TAG_ALIASES[k] || k;
 }
 
+/**
+ * Wave 304b: deterministic tiebreak.
+ *
+ * This used to break score ties with `Math.random() - 0.5` and shuffle the
+ * fallback pool with `.sort(() => Math.random() - 0.5)`. Two problems:
+ *
+ *   1. Every pipeline run rewrote the "Related entries" block on all 105 entry
+ *      pages, so the daily commit churned 115 files and nothing in the diff
+ *      told you which change was real. It also meant a page's internal links
+ *      changed under Google every single day for no editorial reason.
+ *   2. `.sort()` with a comparator that is not consistent (a<b and b<a both
+ *      true at random) is undefined behaviour in V8, not a shuffle.
+ *
+ * Replaced with a cheap FNV-1a hash of the pair of dates: still an arbitrary
+ * spread across the archive rather than "always the three most recent", but
+ * stable for a given entry, so the file only changes when the data changes.
+ */
+function hash32(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h;
+}
+
 function findRelatedEntries(entry, allEntries, limit = 3) {
   // Score other entries by shared tag count, return top N (shared >= 1).
-  // Fall back to random recent entries if no tag overlap exists.
+  // Fall back to deterministically-spread other entries if no tag overlap.
   const myTags = new Set((entry.tags || []).map(normTag));
   const others = allEntries.filter(e => e.date !== entry.date);
+  const seed = (e) => hash32(`${entry.date}:${e.date}`);
   if (myTags.size > 0) {
     const scored = others
       .map(e => {
@@ -154,18 +182,18 @@ function findRelatedEntries(entry, allEntries, limit = 3) {
         return { entry: e, shared };
       })
       .filter(x => x.shared > 0)
-      .sort((a, b) => b.shared - a.shared || Math.random() - 0.5);
+      .sort((a, b) => b.shared - a.shared || seed(a.entry) - seed(b.entry));
     if (scored.length >= limit) return scored.slice(0, limit).map(x => x.entry);
-    // Fewer than `limit` tag-matches, top them up with random other entries.
+    // Fewer than `limit` tag-matches, top them up from the rest of the archive.
     const taken = new Set(scored.map(x => x.entry.date));
     const fillers = others
       .filter(e => !taken.has(e.date))
-      .sort(() => Math.random() - 0.5)
+      .sort((a, b) => seed(a) - seed(b))
       .slice(0, limit - scored.length);
     return [...scored.map(x => x.entry), ...fillers];
   }
-  // No tags on the source entry, pick random recent.
-  return others.sort(() => Math.random() - 0.5).slice(0, limit);
+  // No tags on the source entry.
+  return others.slice().sort((a, b) => seed(a) - seed(b)).slice(0, limit);
 }
 
 function renderRelated(related) {
@@ -247,9 +275,15 @@ function renderSources(entry, allEntries = null) {
     items.push(`Cross-reference: <a href="../a-z.html#${firstLetter}">Thiccctionary A-Z, ${firstLetter}</a>.`);
   }
 
-  // 3. Category lineage. Real internal link if the entry has a category.
+  // 3. Category lineage. Wave 304b: this used to be a dead <em>. Now it links
+  // to the category hub, which is the entry's only inbound link from a topical
+  // parent and the only thing that makes those hubs worth having.
   if (entry.category) {
-    items.push(`Catalogued under: <em>${String(entry.category).replace(/&/g, '&amp;').replace(/</g, '&lt;')}</em>. See related entries below.`);
+    const label = String(entry.category).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    const slug = CATEGORIES[entry.category]?.slug;
+    items.push(slug
+      ? `Catalogued under: <a href="../category/${slug}/">${label}</a>. See related entries below.`
+      : `Catalogued under: <em>${label}</em>. See related entries below.`);
   }
 
   // 4. Editorial review line. Deadpan joke that lands without needing

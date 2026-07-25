@@ -260,6 +260,11 @@ jobs:
         run: node normalize-article-heads.js
         continue-on-error: true
 
+      - name: Build category pages (Wave 304b)
+        working-directory: scripts
+        run: node build-category-pages.js
+        continue-on-error: true
+
       - name: Sync sitemap (Wave 303)
         working-directory: scripts
         run: node sync-sitemap.js
@@ -268,6 +273,11 @@ jobs:
       - name: Fix heading hierarchy (Wave 304)
         working-directory: scripts
         run: node fix-heading-hierarchy.js
+        continue-on-error: true
+
+      - name: Sync footer links (Wave 304b)
+        working-directory: scripts
+        run: node sync-footer-links.js
         continue-on-error: true
 
       - name: Build vertical Reel video

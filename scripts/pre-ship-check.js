@@ -211,9 +211,10 @@ for (const f of allFiles) {
 // Catches the Wave 174 drift where pages had varying nav-link counts +
 // missing footer columns. Every site page (excluding admin/embed-widgets/
 // generators) MUST have the canonical 14 nav-links (Wave: added /guess/)
-// + 12 Sections + 5 Follow + 4 Legal links + the ccc-highlight script tag.
+// + 13 Sections + 5 Follow + 4 Legal links + the ccc-highlight script tag.
+// Wave 304b: 12 -> 13, the /category/ hub.
 const CANON_NAV_COUNT = 14;
-const CANON_SECTIONS_COUNT = 12;
+const CANON_SECTIONS_COUNT = 13;
 const CANON_FOLLOW_COUNT = 5;
 const CANON_LEGAL_COUNT = 4;
 const PAGE_SKIP_RE = /^(admin\/|embed\/today\.html|embed\/[a-z0-9-]+\.html|og-image-generator\.html|profile-image-generator\.html|entries\/_template\.html|.*\.LATEST)$/;
