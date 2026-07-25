@@ -167,6 +167,24 @@ export async function syncSitemap({ check = false, quiet = false } = {}) {
     added.push(loc);
   }
 
+  // --- the documents archive ------------------------------------------------
+  // Wave 311d: STATIC lists /about/documents/ (the hub) but never listed the 13
+  // documents inside it, even though this file's own header claims
+  // "/about/documents/*" among the pages Wave 303 set out to rescue. They are
+  // self-canonical, indexable, linked from the hub, and were invisible to the
+  // sitemap for eight waves. Discovered from disk in the Wave 304b category-hub
+  // style, so document number fourteen lists itself.
+  let docDirs = [];
+  try { docDirs = await fs.readdir(path.join(ROOT, 'about', 'documents'), { withFileTypes: true }); } catch {}
+  for (const d of docDirs) {
+    if (!d.isDirectory()) continue;
+    const loc = `${SITE}/about/documents/${d.name}/`;
+    if (present.has(loc)) continue;
+    if (!(await exists(`about/documents/${d.name}/index.html`))) continue;
+    additions.push(urlBlock(loc, '0.4'));
+    added.push(loc);
+  }
+
   // --- articles -------------------------------------------------------------
   const articles = await readJson('data/articles.json', []);
   for (const a of articles) {
