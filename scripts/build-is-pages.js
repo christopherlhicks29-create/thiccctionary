@@ -194,12 +194,12 @@ ${JSON.stringify(jsonLd, null, 2)}
     <span class="meta-line">A Ruling</span>
     <span class="meta-line meta-line--right">The Thiccctionary, Official</span>
   </div>
-  <h1 class="wordmark" aria-label="Thiccctionary">
+  <div class="wordmark" aria-label="Thiccctionary">
     <a href="/" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
-  </h1>
+  </div>
   <nav class="nav">
     <a href="/" class="nav-link">Today's Entry</a>
     <a href="/archive.html" class="nav-link">The Archive</a>
@@ -224,9 +224,9 @@ ${JSON.stringify(jsonLd, null, 2)}
   <article class="entry entry--single">
     <p class="entry-date-stamp">Editorial Ruling &middot; Catalogued ${escapeHtml(entry.date)}</p>
 
-    <h2 class="headword" style="font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1; margin: 0 0 12px;">
+    <h1 class="headword" style="font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1; margin: 0 0 12px;">
       Is ${escapeHtml(article)} ${escapeHtml(subject)} thi<span class="ccc">ccc</span>?
-    </h2>
+    </h1>
 
     <div style="display: inline-block; padding: 14px 28px; border: 2px solid var(--oxblood); border-radius: 4px; background: rgba(139,31,31,0.04); margin: 14px 0 28px; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood);">
       Verdict, <strong style="font-size: 16px; letter-spacing: 0.22em;">Yes, Officially Thi<span class="ccc">ccc</span></strong>
@@ -287,6 +287,7 @@ ${JSON.stringify(jsonLd, null, 2)}
       <p class="footer-head">Sections</p>
       <a href="/archive.html">Archive</a>
       <a href="/a-z.html">A-Z</a>
+      <a href="/category/">Categories</a>
       <a href="/articles/">Articles</a>
       <a href="/about/documents/">References</a>
       <a href="/cartoons/">Cartoons</a>
@@ -412,12 +413,12 @@ ${JSON.stringify(itemListJsonLd, null, 2)}
     <span class="meta-line">The Ledger</span>
     <span class="meta-line meta-line--right">Official Rulings</span>
   </div>
-  <h1 class="wordmark" aria-label="Thiccctionary">
+  <div class="wordmark" aria-label="Thiccctionary">
     <a href="/" class="wordmark-link" aria-label="Thiccctionary, home">
       <span class="wordmark-the">The</span>
       <span class="wordmark-main">Thi<span class="wordmark-extra">ccc</span>tionary</span>
     </a>
-  </h1>
+  </div>
   <nav class="nav">
     <a href="/" class="nav-link">Today's Entry</a>
     <a href="/archive.html" class="nav-link">The Archive</a>
@@ -437,7 +438,7 @@ ${JSON.stringify(itemListJsonLd, null, 2)}
 </header>
 
 <main id="main-content">
-  <h2 class="headword" style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 24px 0 8px;">Is It Thi<span class="ccc">ccc</span>?</h2>
+  <h1 class="headword" style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 24px 0 8px;">Is It Thi<span class="ccc">ccc</span>?</h1>
   <p style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--oxblood); margin: 0 0 18px;">${sorted.length} Official Rulings</p>
 
   <p style="max-width: 640px; font-size: 1.05rem; line-height: 1.6;">
@@ -467,6 +468,7 @@ ${cards}
       <p class="footer-head">Sections</p>
       <a href="/archive.html">Archive</a>
       <a href="/a-z.html">A-Z</a>
+      <a href="/category/">Categories</a>
       <a href="/articles/">Articles</a>
       <a href="/about/documents/">References</a>
       <a href="/cartoons/">Cartoons</a>
