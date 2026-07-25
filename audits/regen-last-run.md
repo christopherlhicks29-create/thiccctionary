@@ -3,11 +3,11 @@
 Written by scripts/regenerate-images.js and committed by the workflow with
 `if: always()`, so it exists even when the run exits non-zero and opens no PR.
 
-- **Run:** [30177751939](https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30177751939)
-- **Dates requested:** `2026-07-06`
-- **Subject override:** `slam ball|wall ball|medicine ball`
-- **Result:** 1 critic-rejected
+- **Run:** [30177945700](https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30177945700)
+- **Dates requested:** `2026-05-14`
+- **Subject override:** `copper timpani drum|timpani|orchestral kettledrum`
+- **Result:** 1 replaced
 
 | Date | Word | Outcome | Detail |
 | --- | --- | --- | --- |
-| 2026-07-06 | Ball, Medicine Gym | **critic-rejected** | 30 candidates, 5 attempts, last verdict: score=1, subject%=6, NOT THE SUBJECT, saw "a man playing basketball outdoors", stranger sees "a man playing basketball" |
+| 2026-05-14 | Kettledrum, Industrial | **replaced** | images/2026-05-14-kettledrum-industrial-avbi.jpg <- https://unsplash.com/photos/a-group-of-musical-instruments-sitting-next-to-a-brick-wall-1wGoYR_uEO0 (score=8, subject%=40, saw "a real pair of copper timpani drums", stranger sees "a pair of timpani drums") |
