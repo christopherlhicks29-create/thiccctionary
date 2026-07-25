@@ -3,6 +3,7 @@
   Per-entry page template.
   Tokens (replaced by scripts/generate-daily.js or by hand for seed entries):
     {{WORD}}               , headword (e.g. "Thiccc Boeing")
+    {{TITLE_NAME}}         , headword un-inverted for <title> ("Saguaro Cactus"). Wave 324.
     {{WORD_HTML}}          , same, but allowing HTML (for ccc styling fallback)
     {{PRONUNCIATION}}      , IPA, e.g. "/ˈθɪk ˈboʊ.ɪŋ/"
     {{POS}}                , part of speech, e.g. "n."
@@ -24,14 +25,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{{WORD}}, Thiccctionary</title>
+<title>{{TITLE_NAME}}, Thiccctionary</title>
 <meta name="description" content="{{DESCRIPTION}}" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="canonical" href="{{CANONICAL}}" />
 
-<meta property="og:title" content="{{WORD}}, Thiccctionary" />
+<meta property="og:title" content="{{TITLE_NAME}}, Thiccctionary" />
 <meta property="og:description" content="{{DESCRIPTION}}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="{{CANONICAL}}" />
@@ -39,7 +40,7 @@
 <meta property="article:published_time" content="{{DATE}}" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{WORD}}, Thiccctionary" />
+<meta name="twitter:title" content="{{TITLE_NAME}}, Thiccctionary" />
 <meta name="twitter:description" content="{{DESCRIPTION}}" />
 <meta name="twitter:image" content="{{OG_IMAGE}}" />
 

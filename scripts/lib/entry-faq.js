@@ -61,15 +61,28 @@ export function headNoun(word) {
  * question is the one string on the page whose whole job is to match what a
  * person types, so it gets the un-inverted form: "cast iron tea kettle".
  *
- * The exception is a qualifier that already contains the head noun, where
- * reversing produces "meatloaf loaf". Those are the entries where the qualifier
- * IS the common name, so use it alone.
+ * Two exceptions, both derived rather than listed:
+ *
+ *   A qualifier that already contains the head noun. Reversing "Loaf, Meatloaf"
+ *   gives "meatloaf loaf"; the qualifier IS the common name, so use it alone.
+ *
+ *   A head noun carrying a model number ("Hummer H2", "Ram 3500"). Those are
+ *   product names, not nouns being modified, and English puts the modifier
+ *   after them: "Hummer H2 limousine", not "limousine Hummer H2".
+ *
+ * It is a heuristic and it is not perfect. "Ever Given, Suez Container Ship"
+ * comes out backwards because the head noun is a ship's name and nothing in the
+ * string says so. Roughly four of 106 read oddly, against ninety that go from
+ * an order nobody types to the order everybody does. An exception list would
+ * fix those four by writing the same fact down in a second place, which is the
+ * bug this codebase keeps paying for.
  */
 export function naturalName(word) {
   const parts = String(word).split(',').map((s) => s.trim()).filter(Boolean);
   const head = parts[0] || String(word).trim();
   if (parts.length < 2) return head;
   const qualifier = parts.slice(1).join(' ');
+  if (/\d/.test(head)) return `${head} ${qualifier}`;
   const re = new RegExp(head.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
   if (re.test(qualifier)) return qualifier;
   return `${qualifier} ${head}`;

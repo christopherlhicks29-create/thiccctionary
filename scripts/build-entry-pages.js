@@ -18,7 +18,7 @@ import { syncSitemap } from './sync-sitemap.js';
 import { CATEGORIES } from './build-category-pages.js';
 import { ogDimsTags, ogCardUrl } from './lib/image-size.js'; // Wave 311: measure, don't type
 import { toRomanNumeral, plateNumberFor, stripPlatePrefix } from './lib/plate.js'; // Wave 314: derive, don't type
-import { faqsFor, faqPageNode, renderFaqSection } from './lib/entry-faq.js'; // Wave 323: the query-shaped text belongs on the canonical page
+import { faqsFor, faqPageNode, renderFaqSection, naturalName } from './lib/entry-faq.js'; // Wave 323/324: the query-shaped text belongs on the canonical page
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -53,7 +53,10 @@ function trimDescription(text, max = 155) {
 // "A substantial maritime device designed to..." with the term nowhere in it.
 // Lead with the headword, the way a dictionary result should.
 function entryDescription(entry) {
-  const word = stripHtml(entry.word || '').trim();
+  // Wave 324: the natural order, not the catalogue inversion. This string is
+  // the SERP snippet, and "Cactus, Saguaro: A towering succulent" opens on two
+  // words in an order no reader has ever typed or spoken.
+  const word = naturalName(stripHtml(entry.word || '').trim());
   const def = stripHtml(entry.definitions[0] || '').replace(/\s+/g, ' ').trim();
   if (!word) return trimDescription(def);
   const lead = `${word}: `;
@@ -370,6 +373,12 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     JSONLD: jsonld,
     WORD: escapeHtml(entry.word),
     WORD_HTML: escapeHtml(entry.word), // ccc highlighter runs client-side
+    // Wave 324. The headword stays inverted everywhere a reader sees it, because
+    // the inversion is the joke and the H1 is where the joke lives. The <title>
+    // is not a place a reader looks first, it is the strongest ranking signal on
+    // the page and the line that shows in the SERP, and on 106 pages it read
+    // "Cactus, Saguaro" -- a string with no search demand in any language.
+    TITLE_NAME: escapeHtml(naturalName(entry.word)),
     WORD_ENC: encodeURIComponent(entry.word),
     TWEET_TEXT: encodeURIComponent(`📖 ${entry.word}, today on @thiccctionary\n\n#wordoftheday #etymology #thiccctionary`),
     PRONUNCIATION: escapeHtml(entry.pronunciation || ''),
