@@ -311,6 +311,10 @@ jobs:
         working-directory: scripts
         run: node sync-article-og.js
         continue-on-error: true
+      - name: Structured data on every article (Wave 318)
+        working-directory: scripts
+        run: node sync-article-schema.js
+        continue-on-error: true
       - name: Offer a way to subscribe (Wave 317)
         working-directory: scripts
         run: node sync-subscribe.js
