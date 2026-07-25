@@ -18,6 +18,7 @@ import { syncSitemap } from './sync-sitemap.js';
 import { CATEGORIES } from './build-category-pages.js';
 import { ogDimsTags, ogCardUrl } from './lib/image-size.js'; // Wave 311: measure, don't type
 import { toRomanNumeral, plateNumberFor, stripPlatePrefix } from './lib/plate.js'; // Wave 314: derive, don't type
+import { faqsFor, faqPageNode, renderFaqSection } from './lib/entry-faq.js'; // Wave 323: the query-shaped text belongs on the canonical page
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -310,7 +311,13 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     : '';
   const description = entryDescription(entry);
 
-  // Build schema.org JSON-LD for this entry: DefinedTerm + Article + BreadcrumbList
+  // Wave 323. The /is/<slug>-thiccc/ page carries the "Is a kettlebell thiccc?"
+  // text and canonicals here, and is not in the sitemap, so the question a
+  // reader actually types was on the one page the site asks Google to ignore.
+  // It ships here now, on the page the canonical points at.
+  const faqs = faqsFor(entry);
+
+  // Build schema.org JSON-LD for this entry: DefinedTerm + Article + BreadcrumbList + FAQPage
   const jsonld = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -354,7 +361,8 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
           "@id": "https://thiccctionary.com/#organization",
           "name": "Thiccctionary"
         } : undefined
-      }
+      },
+      faqPageNode(faqs, canonical + "#faq")
     ]
   }, null, 2);
 
@@ -415,6 +423,7 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     NEXT_NAV: next
       ? `<a class="entry-nav-link entry-nav-link--next" href="${next.date}.html"><span class="entry-nav-direction">Next entry →</span><span class="entry-nav-word">${escapeHtml(next.word)}</span></a>`
       : `<span class="entry-nav-link entry-nav-link--placeholder"></span>`,
+    FAQ_HTML: renderFaqSection(faqs),
     SOURCES_HTML: renderSources(entry, allEntries),
     RELATED_ENTRIES: renderRelated(allEntries ? findRelatedEntries(entry, allEntries, 3) : []),
   };

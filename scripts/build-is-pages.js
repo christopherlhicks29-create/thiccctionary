@@ -29,6 +29,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assignSlugs } from './lib/is-slug.js';
 import { ogDimsTags, ogCardUrl } from './lib/image-size.js'; // Wave 311: measure, don't type
+// Wave 323: the Q&A this page was built around now also ships on the entry page
+// it canonicals to, which is the one that can actually rank. Derived in one
+// place so the two pages cannot answer the same question differently.
+import { faqsFor, faqPageNode, renderFaqSection, stripHtml, trimText, articleFor } from './lib/entry-faq.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -46,28 +50,8 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-function stripHtml(s) {
-  return String(s || '').replace(/<[^>]+>/g, '');
-}
-
-// Wave 303: this used to hard-slice at `max` and glue on "...", which shipped
-// visible fragments like "...when viewed astern in raking..." three times on
-// every page. Prefer the last complete sentence that fits; only fall back to a
-// word-boundary elision when no sentence fits inside the budget.
-function trimText(s, max) {
-  s = stripHtml(s).replace(/\s+/g, ' ').trim();
-  if (s.length <= max) return s;
-  const window = s.slice(0, max);
-  const lastStop = Math.max(window.lastIndexOf('. '), window.lastIndexOf('? '), window.lastIndexOf('! '));
-  if (lastStop > max * 0.5) return window.slice(0, lastStop + 1).trim();
-  return window.replace(/\s\S*$/, '').replace(/[\s,;:]+$/, '') + '\u2026';
-}
-
-function articleFor(word) {
-  // "Kettlebell" -> "a", "Avocado" -> "an"
-  const first = String(word).split(',')[0].trim();
-  return /^[aeiouAEIOU]/.test(first) ? 'an' : 'a';
-}
+// stripHtml, trimText and articleFor moved to lib/entry-faq.js in Wave 323, so
+// the FAQ text reads identically wherever it is built.
 
 function renderPage(entry) {
   const slug = entry._slug;
@@ -92,20 +76,7 @@ function renderPage(entry) {
     155
   );
 
-  const faqs = [
-    {
-      q: `Is ${article} ${subject.toLowerCase()} thiccc?`,
-      a: `Yes. The Thiccctionary catalogued ${fullWord} as a verified entry. ${rationale}`,
-    },
-    {
-      q: `What makes ${article} ${subject.toLowerCase()} thiccc?`,
-      a: rationale,
-    },
-    {
-      q: `Is "thiccc" spelled with three c's?`,
-      a: `Yes. The Thiccctionary house spelling uses three c's, distinguishing the editorial register from the colloquial "thicc" (two c's) and standard "thick" (one c).`,
-    },
-  ];
+  const faqs = faqsFor(entry);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -126,15 +97,7 @@ function renderPage(entry) {
         },
         mainEntityOfPage: pageUrl,
       },
-      {
-        '@type': 'FAQPage',
-        '@id': `${pageUrl}#faq`,
-        mainEntity: faqs.map((f) => ({
-          '@type': 'Question',
-          name: f.q,
-          acceptedAnswer: { '@type': 'Answer', text: f.a },
-        })),
-      },
+      faqPageNode(faqs, `${pageUrl}#faq`),
       {
         '@type': 'BreadcrumbList',
         '@id': `${pageUrl}#crumbs`,
@@ -258,14 +221,7 @@ ${JSON.stringify(jsonLd, null, 2)}
       </div>
     </div>
 
-    <section style="margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--rule);">
-      <h3 style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--oxblood); margin: 0 0 18px;">Frequently asked</h3>
-      ${faqs.map((f) => `
-      <details style="margin-bottom: 14px; padding: 14px 18px; border: 1px solid var(--rule); border-radius: 4px;">
-        <summary style="cursor: pointer; font-weight: 600;">${escapeHtml(f.q)}</summary>
-        <p style="margin: 10px 0 0;">${escapeHtml(f.a)}</p>
-      </details>`).join('')}
-    </section>
+    ${renderFaqSection(faqs)}
 
     <section style="margin-top: 48px; padding: 28px 24px; border: 1px solid var(--rule); border-radius: 6px; background: rgba(139,31,31,0.03); text-align: center;">
       <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin: 0;">Have your own subject?</p>
