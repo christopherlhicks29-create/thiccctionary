@@ -86,10 +86,37 @@ drum`), which is what the "else" entries in the table below were already saying
 in prose. Covered by `scripts/test-search-queries.js`; `pre-ship-check.js` now
 finds test suites by listing `scripts/` rather than naming each one.
 
+**Wave 327 (2026-07-25).** The ladder worked, the reshoot ran, and the result
+exposed that Wave 325 had not tightened the prominence gate so much as removed
+it. `passesGate()` guarded its prominence check with `typeof
+subjectPercentEstimate === 'number'`, which was a sensible tolerance while the
+model was asked for that number directly and always sent one. Wave 325 stopped
+asking for it and asked for a bounding box instead, so a response with a missing
+or malformed box now arrives with no prominence number at all -- and the guard
+waved it through while the run log said "passed". A gate that disappears exactly
+when the critic answers badly is worse than no gate. It now fails closed, with
+one carve-out: a response carrying no score either was never an answer, it is
+the critic being unreachable, and `generate-daily.js` builds exactly that object
+on a critique timeout. Failing that closed would block the daily post the way
+Wave 209b's threshold blocked five days in a row.
+
+Second finding, same run. The reject path logged score, measured percentage,
+what the critic saw and what a stranger would call it; the pass path logged
+score and what the critic saw. So the audit file carried full evidence for every
+photograph that did not ship and partial evidence for every photograph that did.
+Both paths now call one `formatCritique()`.
+
+Both were found by looking at the photograph the pipeline said was a score-8
+pass. It is a real-estate listing shot of a white kitchen with the refrigerator
+standing about an eighth of the frame, and Unsplash's own caption calls it a
+french door refrigerator, which is not a side-by-side. Better than the photo it
+replaced, which had the appliance cut off at the edge, so it stays up. Still a
+miss, and re-queued below.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
-| 2026-05-02 | Frigidaire, Side-by-Side | **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. **Re-fired Wave 325b: zero Unsplash results, so the measured gate was never exercised.** The five-word override was too specific for the library and, at the time, an override replaced the ladder rather than leading it. Wave 326 fixes that; re-fire with a ladder | `side by side refrigerator\|stainless steel refrigerator\|refrigerator` |
+| 2026-05-02 | Frigidaire, Side-by-Side | **FIRED Wave 323b, REGRESSED, RE-QUEUED.** The override worked in the sense that it returned photos, and the critic passed one at score 7. The photograph is captioned "modern kitchen with island and bar stools" and it is exactly that: island centre, four stools, a refrigerator down the left edge, partly outside the crop, about a ninth of the frame. This is the third instance of the same defect (blacksmith/anvil, desk globe, now this) and it is what Wave 325 fixes. **Re-fired Wave 325b: zero Unsplash results, so the measured gate was never exercised.** The five-word override was too specific for the library and, at the time, an override replaced the ladder rather than leading it. Wave 326 fixed that. **Re-fired Wave 326b: replaced, critic score 8.** The ladder found photos on rung one and the run completed, but the photograph is a real-estate listing shot of a white kitchen, refrigerator about an eighth of the frame, and Unsplash calls it a *french door* refrigerator, which is not a side-by-side. It passed because the prominence gate had a hole (Wave 327). Kept, because it beats the cut-off-at-the-edge photo it replaced. Re-fire against the closed gate, and lean on the configuration word so a french-door does not qualify | `side-by-side refrigerator two doors\|side by side refrigerator\|refrigerator` |
 | 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia\|gel water cup\|viscous liquid pouring closeup` |
 | 2026-05-26 | Globe, Library Floor Model | **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate | `standing floor globe library` |
 | 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |

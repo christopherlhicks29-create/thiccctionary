@@ -84,6 +84,16 @@ Score 1 (unusable) to 10 (perfect). Brief one-paragraph critique. Output JSON on
  * A response with no usable box keeps whatever subjectPercentEstimate it came
  * with, so an older critic, or the Anthropic fallback on a bad day, degrades to
  * exactly the previous behaviour instead of to an exception.
+ *
+ * Wave 327 correction. "Degrades to the previous behaviour" was wrong, and the
+ * 2026-07-25 Frigidaire proved it within a day. Wave 325 also removed
+ * subjectPercentEstimate from the JSON the model is asked for, so when a box
+ * comes back missing or malformed there is no longer any number to fall back
+ * to -- the field is simply absent. passesGate() guarded its prominence check
+ * with `typeof ... === 'number'`, which was a reasonable tolerance when the
+ * field was always present and became a silent bypass the moment it was not.
+ * Wave 325 did not loosen the prominence gate. For that case it removed it.
+ * See passesGate() for the fix; this function is unchanged.
  */
 export function withMeasuredProminence(c) {
   if (!c || typeof c !== 'object') return c;
@@ -176,7 +186,55 @@ export function passesGate(critique, gate) {
   // so a critic response that predates this field behaves exactly as before.
   if (critique.isSubject === false) return false;
   if (typeof critique.score === 'number' && critique.score < gate.minScore) return false;
-  if (typeof critique.subjectPercentEstimate === 'number' && critique.subjectPercentEstimate < gate.minSubjectPct) return false;
+  // Wave 327: fail closed. This used to read `typeof x === 'number' && x < min`,
+  // which passes anything that failed to produce a number at all. That tolerance
+  // was harmless while the model was asked for the percentage directly and the
+  // field was always present. Wave 325 replaced the percentage with a bounding
+  // box, so a response that omits or malforms the box now arrives with no
+  // prominence number whatsoever -- and the check waved it through. A gate that
+  // disappears exactly when the critic answers badly is worse than no gate,
+  // because the run log still says "passed".
+  //
+  // Rejecting instead is safe here in a way it would not be elsewhere: the
+  // caller has two more attempts, and the outcome of exhausting them is "keep
+  // the photograph that is already published", not "ship nothing".
+  //
+  // The one thing that must NOT start failing is an unreachable critic. `!critique`
+  // above covers the null case, but generate-daily.js builds a sentinel object
+  // on a critique timeout -- { score: null, verdict: 'unknown' } -- which is the
+  // service being down wearing an object costume, and failing that closed would
+  // block the daily post exactly the way Wave 209b's too-strict gate blocked
+  // five days in a row. So the test is: a response carrying a real score is an
+  // answer, and an answer with no prominence number is a failed measurement and
+  // gets rejected. A response with no score either was never an answer at all.
+  if (typeof gate.minSubjectPct === 'number') {
+    const pct = critique.subjectPercentEstimate;
+    if (typeof pct !== 'number') return typeof critique.score !== 'number';
+    if (pct < gate.minSubjectPct) return false;
+  }
   if (critique.verdict === 'reject') return false;
   return true;
+}
+
+/**
+ * One line of evidence about a critique, for run logs.
+ *
+ * Wave 327. The reject path logged the score, the measured percentage, what the
+ * critic saw and what a stranger would call it. The pass path logged the score
+ * and what the critic saw. So audits/regen-last-run.md carried full evidence for
+ * every photograph that did NOT ship and partial evidence for every photograph
+ * that did, which is precisely backwards: the shipped ones are the ones anyone
+ * would later need to audit. Both paths call this now, so they cannot drift
+ * apart again.
+ */
+export function formatCritique(c) {
+  if (!c) return 'no critique (critic unavailable)';
+  const bits = [`score=${c.score}`];
+  const pct = c.subjectPercentEstimate;
+  bits.push(`subject%=${typeof pct === 'number' ? pct : 'UNMEASURED'}${
+    typeof c.subjectPercentClaimed === 'number' ? ` measured (claimed ${c.subjectPercentClaimed})` : ''}`);
+  if (c.isSubject === false) bits.push('NOT THE SUBJECT');
+  bits.push(`saw "${c.photoSubject ?? 'n/a'}"`);
+  bits.push(`stranger sees "${c.strangerGuess ?? 'n/a'}"`);
+  return bits.join(', ');
 }

@@ -10,7 +10,7 @@
  *
  * Run: node scripts/test-image-critic.js
  */
-import { withMeasuredProminence, passesGate, GATES } from './image-critic.js';
+import { withMeasuredProminence, passesGate, GATES, formatCritique } from './image-critic.js';
 
 let failed = 0;
 function check(name, actual, expected) {
@@ -46,6 +46,47 @@ check('claim retained for the audit trail', withMeasuredProminence(FRIGIDAIRE).s
 // The point of all of the above.
 check('the Frigidaire now fails the regen gate', passesGate(withMeasuredProminence(FRIGIDAIRE), GATES.regen), false);
 check('the same photo passed on the claimed number', passesGate(FRIGIDAIRE, GATES.regen), true);
+
+// --- Wave 327: the hole Wave 325 opened and its own tests could not see. ---
+//
+// Every fixture above carries a subjectPercentEstimate, because that is what
+// the model used to be asked for. Wave 325 stopped asking for it, so the
+// realistic bad response is one with NO box and NO percentage -- and passesGate
+// guarded the prominence check with `typeof === 'number'`, which waved that
+// straight through. The suite tested the function that was rewritten and not
+// the gate that read it.
+const NO_NUMBERS = { isSubject: true, score: 8, verdict: 'ship',
+  photoSubject: 'a stainless steel refrigerator in a kitchen' };
+
+check('a critique with no prominence number is rejected, not waved through',
+  passesGate(NO_NUMBERS, GATES.regen), false);
+check('...and withMeasuredProminence cannot rescue it',
+  passesGate(withMeasuredProminence(NO_NUMBERS), GATES.regen), false);
+check('a malformed box is treated the same as no box',
+  passesGate(withMeasuredProminence({ ...NO_NUMBERS, subjectBox: [0, 0, 1] }), GATES.regen), false);
+check('a good box still passes',
+  passesGate(withMeasuredProminence({ ...NO_NUMBERS, subjectBox: [0.1, 0.1, 0.9, 0.9] }), GATES.regen), true);
+check('a missing critic still passes, because that is the service being down',
+  passesGate(null, GATES.regen), true);
+// generate-daily.js builds this exact object when critiqueChosenImage times out.
+// Failing it closed would block the daily post, which is the Wave 209b failure.
+check('the timeout sentinel is not an answer and must not block the daily',
+  passesGate({ score: null, verdict: 'unknown', critique: 'Critique unavailable: critique timeout' }, GATES.daily), true);
+check('a scored answer that failed to localise is an answer, and is rejected',
+  passesGate({ score: 5, verdict: 'ship' }, GATES.daily), false);
+check('a gate with no minSubjectPct does not require one',
+  passesGate(NO_NUMBERS, { minScore: 7 }), true);
+
+// --- formatCritique: one writer for the pass row and the reject row. ---
+check('the unmeasured case is named, not printed as undefined',
+  formatCritique(NO_NUMBERS).includes('subject%=UNMEASURED'), true);
+check('the gap between measured and claimed is in the line',
+  formatCritique(withMeasuredProminence(FRIGIDAIRE)),
+  'score=7, subject%=9 measured (claimed 45), saw "n/a", stranger sees "n/a"');
+check('identity failure is called out',
+  formatCritique({ ...NO_NUMBERS, isSubject: false }).includes('NOT THE SUBJECT'), true);
+check('a null critique formats rather than throws',
+  formatCritique(null), 'no critique (critic unavailable)');
 
 console.log(failed ? `\n${failed} check(s) FAILED` : '\nall checks passed.');
 process.exit(failed ? 1 : 0);

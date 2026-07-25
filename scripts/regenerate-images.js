@@ -20,7 +20,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { critiqueImage, passesGate, GATES } from './image-critic.js';
+import { critiqueImage, passesGate, GATES, formatCritique } from './image-critic.js';
 import { fileURLToPath } from 'node:url';
 import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
@@ -300,14 +300,14 @@ async function main() {
         if (passesGate(c, GATES.regen)) {
           chosen = candidate;
           critique = c;
-          if (c) console.log(`  Critic PASS (attempt ${attempt}/3): score=${c.score}, subject%=${c.subjectPercentEstimate}${c.subjectPercentClaimed != null ? ` measured (claimed ${c.subjectPercentClaimed})` : ''}, stranger sees "${c.strangerGuess ?? 'n/a'}"`);
+          if (c) console.log(`  Critic PASS (attempt ${attempt}/3): ${formatCritique(c)}`);
         } else {
           // Wave 321: name the identity failure explicitly. A run log reading
           // only "score=4" invites another query tweak; one reading
           // "not the subject" says the query was fine and the photo was not.
           // Wave 325 adds the stranger's answer, which is the line that would
           // have caught the Frigidaire-that-was-a-kitchen on sight.
-          lastReject = `${c?.isSubject === false ? 'NOT THE SUBJECT, ' : ''}score=${c?.score}, subject%=${c?.subjectPercentEstimate}, saw "${c?.photoSubject}", stranger sees "${c?.strangerGuess ?? 'n/a'}"`;
+          lastReject = formatCritique(c);
           console.log(`  Critic REJECT (attempt ${attempt}/3): ${lastReject}. Trying next.`);
         }
       }
@@ -360,7 +360,7 @@ async function main() {
       entry.photographerUrl = chosen.photographerUrl;
       entry.unsplashUrl = chosen.unsplashUrl;
       logRow(entry.date, entry.word, 'replaced',
-        `images/${filename} <- ${chosen.unsplashUrl} (critic score=${critique?.score}, saw "${critique?.photoSubject ?? 'n/a'}")`);
+        `images/${filename} <- ${chosen.unsplashUrl} (${formatCritique(critique)})`);
       succeeded++;
     } catch (err) {
       console.error(`  FAILED: ${err.message}`);
