@@ -1,0 +1,6 @@
+{
+  "dates": "2026-05-02,2026-05-10,2026-05-21,2026-05-24,2026-05-26,2026-06-27,2026-07-06,2026-07-17",
+  "subject_override": "",
+  "hold": true,
+  "why": "Wave 306 visual audit of all 106 entry photos. These eight show the wrong subject: 05-02 shows a kitchen with a French-door fridge cropped at the frame edge (not a side-by-side, and well under the 25% subject-prominence bar); 05-10 shows a rusty colliery gantry, not the Bagger 288 bucket-wheel excavator; 05-21 and 07-06 both show the same stack of naval cannonballs, which belongs to 06-05; 05-24 and 06-27 share one overhead shot of an unidentifiable pump; 05-26 shows a small desk globe at f/1.8, not a library floor globe; 07-17 shows two undersized cantaloupes. No subject_override: the entry words are all specific enough, and Wave 306's photo-dedup filter now makes the cannonball and pump collisions impossible on its own. hold:true so the PR waits for a look."
+}

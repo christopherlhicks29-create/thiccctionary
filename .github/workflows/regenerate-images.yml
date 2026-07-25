@@ -50,8 +50,10 @@ jobs:
           if [ -f data/.fire-image-regen.json ]; then
             DATES=$(python3 -c "import json; print(json.load(open('data/.fire-image-regen.json')).get('dates',''))")
             SUBJECT=$(python3 -c "import json; print(json.load(open('data/.fire-image-regen.json')).get('subject_override',''))")
+            HOLD=$(python3 -c "import json; print('true' if json.load(open('data/.fire-image-regen.json')).get('hold') else 'false')")
             echo "dates=${DATES}" >> $GITHUB_OUTPUT
             echo "subject_override=${SUBJECT}" >> $GITHUB_OUTPUT
+            echo "hold=${HOLD}" >> $GITHUB_OUTPUT
           fi
 
       - name: Delete sentinel file (push triggers only)
@@ -97,8 +99,14 @@ jobs:
 
             **To merge:** Squash and merge as usual.
 
+      # Wave 306: `"hold": true` in the sentinel leaves the PR open for a human
+      # (or a session that can fetch the branch and look at the pictures) to
+      # review before anything reaches main. The admin UI fires without it and
+      # keeps the old fire-and-forget behaviour, which is right for a button
+      # nobody is watching -- but a batch regen of wrong-subject photos is
+      # exactly the case where the whole point is looking at the result first.
       - name: Auto-merge when fired from admin (push event)
-        if: success() && github.event_name == 'push' && steps.open_pr.outputs.pull-request-number
+        if: success() && github.event_name == 'push' && steps.sentinel.outputs.hold != 'true' && steps.open_pr.outputs.pull-request-number
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
