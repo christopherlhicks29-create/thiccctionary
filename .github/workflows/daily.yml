@@ -240,6 +240,25 @@ jobs:
           echo "$CRIT_TEXT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
+      # Wave 312: entry photos are square or portrait, and every platform crops a
+      # link preview to 1.91:1, so og:image pointed at the raw photo meant a
+      # machine chose which 47% of each entry the world saw. This composes the
+      # crop. It has to run before the entry pages are rebuilt, because
+      # ogCardUrl falls back to the raw photo when no card exists on disk.
+      - name: Build entry OG cards (Wave 312)
+        run: |
+          pip install pillow --quiet --break-system-packages || pip install pillow --quiet
+          python3 scripts/build-entry-og-images.py
+        continue-on-error: true
+
+      # generate-daily.js already wrote today's entry page, pointing og:image at
+      # the photo because the card did not exist yet. Rebuilding is idempotent
+      # (rebuild-entries.yml does exactly this) and is what picks the card up.
+      - name: Rebuild entry pages against the new cards (Wave 312)
+        working-directory: scripts
+        run: node build-entry-pages.js
+        continue-on-error: true
+
       - name: Prerender homepage with today's entry (Wave 179)
         working-directory: scripts
         run: node prerender-homepage.js

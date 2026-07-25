@@ -82,3 +82,25 @@ export function ogDimsTags(url, root) {
   return `\n<meta property="og:image:width" content="${d.w}" />`
        + `\n<meta property="og:image:height" content="${d.h}" />`;
 }
+
+/**
+ * The URL a social card should use for an entry: the composed 1200x630 card if
+ * one has been built, otherwise the raw photograph.  Wave 312.
+ *
+ * Entry photos are square or portrait; every platform crops a link preview to
+ * 1.91:1, so pointing og:image at the photo meant a machine chose which 47% of
+ * each one the world saw. scripts/build-entry-og-images.py composes that crop
+ * deliberately. The fallback matters: a card is a build artefact, and a page
+ * built before the cards exist should still ship a working preview rather than
+ * a 404.
+ *
+ * This lives here, next to ogDims, so that the card path is written down once.
+ * Wave 307 and 308 were both a fact stored in two places drifting apart.
+ */
+export function ogCardUrl(entry, root) {
+  const rel = `images/og/${entry.date}.jpg`;
+  try {
+    if (entry.date && fs.statSync(path.join(root, rel)).size > 0) return `${SITE}/${rel}`;
+  } catch { /* no card yet */ }
+  return `${SITE}/${(entry.image || '').replace(/^\.?\//, '')}`;
+}

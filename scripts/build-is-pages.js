@@ -28,7 +28,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assignSlugs } from './lib/is-slug.js';
-import { ogDimsTags } from './lib/image-size.js'; // Wave 311: measure, don't type
+import { ogDimsTags, ogCardUrl } from './lib/image-size.js'; // Wave 311: measure, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -84,6 +84,9 @@ function renderPage(entry) {
   // The pages stay live and linked from /is-it-thiccc/ for humans.
   const canonical = `${SITE}/entries/${entry.date}.html`;
   const ogImage = `${SITE}/${(entry.image || '').replace(/^\.?\//, '')}`;
+  // Wave 312: the link preview uses the composed 1200x630 card; the JSON-LD
+  // image above stays the photograph. See lib/image-size.js#ogCardUrl.
+  const ogCard = ogCardUrl(entry, ROOT);
   const description = trimText(
     `Yes, ${article} ${subject.toLowerCase()} is officially thiccc per the Thiccctionary. ${rationale}`,
     155
@@ -167,13 +170,13 @@ function renderPage(entry) {
 <meta property="og:description" content="${escapeHtml(description)}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="${pageUrl}" />
-<meta property="og:image" content="${escapeHtml(ogImage)}" />${ogDimsTags(ogImage, ROOT)}
+<meta property="og:image" content="${escapeHtml(ogCard)}" />${ogDimsTags(ogCard, ROOT)}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@thiccctionary" />
 <meta name="twitter:title" content="Is ${escapeHtml(article)} ${escapeHtml(subject)} thiccc? &middot; Thiccctionary" />
 <meta name="twitter:description" content="${escapeHtml(description)}" />
-<meta name="twitter:image" content="${escapeHtml(ogImage)}" />
+<meta name="twitter:image" content="${escapeHtml(ogCard)}" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

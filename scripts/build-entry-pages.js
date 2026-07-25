@@ -16,7 +16,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { syncSitemap } from './sync-sitemap.js';
 import { CATEGORIES } from './build-category-pages.js';
-import { ogDimsTags } from './lib/image-size.js'; // Wave 311: measure, don't type
+import { ogDimsTags, ogCardUrl } from './lib/image-size.js'; // Wave 311: measure, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -84,6 +84,14 @@ function imageUrlForOg(entry) {
   // entry.image is "images/foo.jpg", normalize to absolute URL
   const path = entry.image.replace(/^\.?\//, '');
   return `${SITE.replace(/\/$/, '')}/${path}`;
+}
+
+// Wave 312: og:image and twitter:image now point at the composed card, not the
+// raw photo. imageUrlForOg is kept for the JSON-LD "image" field, which should
+// stay the photograph of the actual thing rather than a graphic with our
+// wordmark on it -- Google reads that field as a depiction of the subject.
+function cardUrlForOg(entry) {
+  return ogCardUrl(entry, ROOT);
 }
 
 function imageUrlForPage(entry) {
@@ -372,11 +380,11 @@ export async function buildEntryPage(entry, prev = null, next = null, allEntries
     ETYMOLOGY: entry.etymology || '',
     IMAGE: imageUrlForPage(entry),
     IMAGE_WEBP: imageUrlForPage(entry).replace(/\.jpg$/i, '.webp'),
-    OG_IMAGE: imageUrlForOg(entry),
-    OG_IMAGE_ENC: encodeURIComponent(imageUrlForOg(entry)),
+    OG_IMAGE: cardUrlForOg(entry),
+    OG_IMAGE_ENC: encodeURIComponent(cardUrlForOg(entry)),
     // Wave 311: measured from the image, not typed. Entry photos are 1080x1140,
     // not the 1200x630 the template used to claim for every one of them.
-    OG_IMAGE_DIMS: ogDimsTags(imageUrlForOg(entry), ROOT),
+    OG_IMAGE_DIMS: ogDimsTags(cardUrlForOg(entry), ROOT),
     PIN_TEXT: (() => {
       const def = stripHtml(entry.definitions[0]);
       let trimmed = def;
