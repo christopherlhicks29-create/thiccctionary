@@ -178,7 +178,14 @@ function buildArticleText(article, baseUrl) {
 }
 
 // Wave 117: weighted byline picker for social posts. ~20% unsigned brand voice.
-function pickSocialByline() {
+//
+// Wave 302 bug fix: this used Math.random(), which was fine when buildText()
+// was called exactly once per post. Now that it is called once PER PLATFORM,
+// a random pick meant the SAME post went out signed "Eli" on X and "Teddy" on
+// Instagram -- caught immediately by the new --preview mode. Seed the pick on
+// (date, mode) instead, matching pickPunchline/pickEngagementAsk, so one post
+// carries one byline everywhere and backfills/retries stay reproducible.
+function pickSocialByline(entry, mode) {
   const dist = [
     { id: 'eli', display: 'Eli', weight: 35 },
     { id: 'teddy', display: 'Teddy', weight: 25 },
@@ -188,7 +195,10 @@ function pickSocialByline() {
     { id: null, display: null, weight: 20 },
   ];
   const total = dist.reduce((a, x) => a + x.weight, 0);
-  let r = Math.random() * total;
+  const seed = `${(entry && entry.date) || ''}:${mode || ''}:byline`;
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = ((h << 5) - h + seed.charCodeAt(i)) | 0;
+  let r = (Math.abs(h) % total) + 0.5;
   for (const d of dist) { r -= d.weight; if (r <= 0) return d; }
   return dist[dist.length - 1];
 }
@@ -298,11 +308,125 @@ async function pickEntry(entries, mode, baseUrl) {
 // Twitter free-tier cap is 280 chars. Truncate any excess body text with an ellipsis
 // so we don't lose the whole post if a future entry has an unusually long example.
 const X_LIMIT = 280;
-function fitToX(prefix, body, suffix) {
+
+// ---------------------------------------------------------------------------
+// Wave 302 (2026-07-25): per-platform caption shaping.
+//
+// THE BUG THIS FIXES. buildText() used to return ONE string that was posted
+// verbatim to every channel, shaped entirely around X's 280-char cap and
+// always ending in a bare entry URL. Two measured consequences:
+//
+//   1. Every IG and FB caption was truncated to X's budget for no reason
+//      (IG allows 2,200) AND carried a plain-text URL that Instagram renders
+//      as dead, unclickable text. We were spending ~60 chars of a 280-char
+//      caption on a link nobody can click.
+//   2. Cold FB Pages and IG accounts are throttled hardest on posts with
+//      outbound links. docs/SOCIAL-STRATEGY.md flagged this on 2026-06-08
+//      ("Everything links out ... That's an ad") and it was never implemented.
+//
+// Hard numbers that forced this (pulled 2026-07-25): X 188 posts / 0 followers,
+// IG 141 posts / 3 followers, FB 141 posts / ~0 impressions. 470 posts, 3
+// followers. Identical cross-posted link-bearing text is the exact pattern
+// every one of these ranking systems suppresses.
+//
+// The fix: each service gets its own caption budget, its own link policy, and
+// its own hashtag block. X keeps the link (it is the only platform where the
+// link is both clickable and not the primary reach lever, and X's reach is
+// already zero). IG and FB drop the outbound URL entirely in favour of the
+// "link in bio" convention the Reels path already uses.
+// ---------------------------------------------------------------------------
+
+function serviceFamily(service) {
+  const s = (service || '').toLowerCase();
+  if (s === 'twitter' || s === 'x') return 'x';
+  if (s === 'facebook' || s === 'facebookpage') return 'facebook';
+  if (s === 'instagram' || s === 'instagrambusiness') return 'instagram';
+  return 'x'; // unknown service: keep the historical (most conservative) shape
+}
+
+// Discovery hashtags. #thiccctionary alone has zero reach BY DEFINITION -- it
+// is our own tag on an account with 3 followers, so it surfaces to nobody. A
+// hashtag only does work if strangers already browse it.
+//
+// Two rules baked in here: (1) no engagement-bait tags (#followforfollow,
+// #likeforlike), which IG actively penalises; (2) tags must be RELEVANT to the
+// entry. A generic block that puts #heavyequipment on a mango is the kind of
+// mismatch IG treats as spam, so the category-specific tags below are keyed off
+// entry.category and only the small universal set is unconditional.
+const BASE_TAGS = ['#thiccctionary', '#wordoftheday', '#oddlysatisfying'];
+
+const CATEGORY_TAGS = {
+  'Produce & Botanical': ['#produce', '#farmersmarket', '#growyourown'],
+  'Vehicles & Transport': ['#trucks', '#carsofinstagram', '#bigrig'],
+  'Domestic Goods': ['#homedecor', '#interiordesign', '#furniture'],
+  'Industrial Machinery': ['#heavyequipment', '#construction', '#machinery'],
+  'Foods of Substance': ['#foodie', '#comfortfood', '#foodporn'],
+  'Architecture & Infrastructure': ['#architecture', '#brutalism', '#infrastructure'],
+  'Engineering Marvels': ['#engineering', '#megastructures', '#civilengineering'],
+  'Musical Instruments': ['#musicalinstruments', '#brass', '#percussion'],
+  'Natural Specimens': ['#nature', '#geology', '#naturephotography'],
+};
+
+function hashtagsFor(service, entry) {
+  const fam = serviceFamily(service);
+  // X: a wall of tags reads as spam there and eats the 280 budget.
+  if (fam === 'x') return '#thiccctionary';
+  const cat = CATEGORY_TAGS[entry && entry.category] || [];
+  // FB's tag ecosystem is weak; keep it short. IG is where tags do real work.
+  const n = fam === 'facebook' ? 1 : 3;
+  return [...BASE_TAGS, ...cat.slice(0, n)].join(' ');
+}
+
+const SERVICE_PROFILE = {
+  // limit: hard caption cap. link: include the bare entry/site URL?
+  x: { limit: X_LIMIT, link: true },
+  // IG allows 2,200 but engagement drops off a cliff past ~300 on a cold
+  // account, and the hook has to survive the "... more" fold at ~125 chars.
+  instagram: { limit: 900, link: false },
+  facebook: { limit: 900, link: false },
+};
+
+// Service-aware replacement for the old fitToX(). Same signature plus the
+// service, so every existing call site reads the same.
+function fitTo(prefix, body, suffix, service) {
+  const limit = (SERVICE_PROFILE[serviceFamily(service)] || SERVICE_PROFILE.x).limit;
   const overhead = prefix.length + suffix.length;
-  const room = X_LIMIT - overhead;
+  const room = limit - overhead;
   if (body.length <= room) return prefix + body + suffix;
   return prefix + body.slice(0, Math.max(0, room - 1)).trimEnd() + '…' + suffix;
+}
+
+// Back-compat shim. buildArticleText() (and any future caller that genuinely
+// wants the X shape regardless of destination) still calls fitToX. Declared as
+// a function so it hoists above its use site.
+function fitToX(prefix, body, suffix) {
+  return fitTo(prefix, body, suffix, 'x');
+}
+
+// Some stored socialCaptions already end with a CTA / link line baked in by the
+// caption generator. The tail now owns the CTA per service, so strip any baked
+// one rather than emitting it twice.
+const BAKED_CTA_RE = /\n+\s*(new round of guess the thiccc[^\n]*|full entry (on|at)[^\n]*|link in bio[^\n]*|https?:\/\/\S+)\s*$/gi;
+
+function stripBakedCta(text) {
+  let out = String(text || '').trimEnd();
+  let prev;
+  do { prev = out; out = out.replace(BAKED_CTA_RE, '').trimEnd(); } while (out !== prev);
+  return out;
+}
+
+// Build the trailing block (CTA + link + hashtags) for a given service.
+// This is where the link-out policy actually lives.
+function tailFor(service, { entryUrl, baseUrl, entry, includeSubmitCta = false } = {}) {
+  const fam = serviceFamily(service);
+  const tags = hashtagsFor(service, entry);
+  if (!SERVICE_PROFILE[fam].link) {
+    // No outbound URL. "Link in bio" is the native convention on both IG and
+    // FB and does not trip the outbound-link downrank.
+    return `\n\nNew round of Guess the Thiccc, every day. Link in bio.\n\n${tags}`;
+  }
+  const cta = includeSubmitCta && baseUrl ? `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html` : '';
+  return `${cta}\n\n${entryUrl}\n\n${tags}`;
 }
 
 // Wave 87, punchline pool. Brand-voice asides that ride along with every
@@ -369,10 +493,16 @@ function pickEngagementAsk(entry) {
 // Hand-written (or LLM-generated at entry-gen time, see QUEUED-FOLLOWUPS) per
 // entry so the caption references real specifics about THAT subject instead of
 // a universal one-liner. Falls back to template below if absent.
-async function buildText(entry, mode, baseUrl) {
+// Wave 302: `service` selects the caption budget, link policy and hashtag block
+// (see SERVICE_PROFILE / tailFor above). Defaults to 'x', which reproduces the
+// exact pre-Wave-302 output, so any caller not yet updated stays safe.
+async function buildText(entry, mode, baseUrl, service = 'x') {
   const entryUrl = `${baseUrl}/entries/${entry.date}.html`;
+  const fam = serviceFamily(service);
+  const tail = tailFor(service, { entryUrl, baseUrl, entry });
+  const tailWithCta = tailFor(service, { entryUrl, baseUrl, entry, includeSubmitCta: true });
   // Wave 117: pick byline. Reels are always Hugh. Non-reels weighted random with ~20% unsigned.
-  const byline = mode === 'reels' ? { id: 'hugh', display: 'Hugh' } : pickSocialByline();
+  const byline = mode === 'reels' ? { id: 'hugh', display: 'Hugh' } : pickSocialByline(entry, mode);
   const sig = byline.display ? `\n\n${byline.display}` : '';
 
   // Wave 127: if byline is signed and mode is a daily post, try Claude voice-rewrite first.
@@ -380,9 +510,7 @@ async function buildText(entry, mode, baseUrl) {
     const rewrite = await rewriteInBylineVoice(entry, byline, mode, baseUrl);
     if (rewrite) {
       console.log(`[buildText] voice-rewrote in ${byline.display}'s voice`);
-      const cta = `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html`;
-      const suffix = `${cta}\n\n${entryUrl}\n\n#thiccctionary`;
-      return fitToX('', rewrite, suffix);
+      return fitTo('', rewrite, tailWithCta, service);
     }
     console.log('[buildText] voice-rewrite failed, falling back to template + signature');
   }
@@ -393,11 +521,12 @@ async function buildText(entry, mode, baseUrl) {
     : '';
   if (bespoke) {
     if (mode === 'reels') {
-      return `${bespoke}${sig}\n\nFull entry on thiccctionary.com\n\n#thiccctionary #wordoftheday`;
+      // The bespoke caption sometimes already carries a CTA line (the caption
+      // generator bakes one in). Strip it before appending the service tail,
+      // otherwise the post says "Link in bio" twice.
+      return `${stripBakedCta(bespoke)}${sig}${tail}`;
     }
-    const cta = `\n\nSpotted a thiccc thing? → ${baseUrl}/submit.html`;
-    const suffix = `${cta}\n\n${entryUrl}\n\n#thiccctionary`;
-    return fitToX('', bespoke + sig, suffix);
+    return fitTo('', stripBakedCta(bespoke) + sig, tailWithCta, service);
   }
 
   // Fallback path: Wave 86/87 templated captions.
@@ -410,16 +539,16 @@ async function buildText(entry, mode, baseUrl) {
     // the AI-generated caption path's mandatory engagement close).
     const body = example || def0;
     const ask = pickEngagementAsk(entry);
-    const suffix = `\n\n${punch}\n\nThat's ${entry.word.toLowerCase()}. ${ask}\n${entryUrl}\n\n#thiccctionary`;
-    return fitToX('', body, suffix);
+    const suffix = `\n\n${punch}\n\nThat's ${entry.word.toLowerCase()}. ${ask}${tail}`;
+    return fitTo('', body, suffix, service);
   }
 
   if (mode === 'evening') {
     // Archive callback. Definition + word + punchline kicker.
     const body = def0;
     const prefix = `From the archives:\n\n`;
-    const suffix = `\n\n${entry.word}. ${punch}${sig}\n${entryUrl}\n\n#thiccctionary`;
-    return fitToX(prefix, body, suffix);
+    const suffix = `\n\n${entry.word}. ${punch}${sig}${tail}`;
+    return fitTo(prefix, body, suffix, service);
   }
 
   if (mode === 'reels') {
@@ -430,7 +559,7 @@ async function buildText(entry, mode, baseUrl) {
     // static entry page. New round of the site's own daily guessing game
     // fits that, phrased as the standard "link in bio" Reels convention.
     const lead = example || def0;
-    return `${lead}\n\n${punch}\n\n${entry.word}.${sig}\n\nNew round of Guess the Thiccc, every day. Link in bio.\n\n#thiccctionary #wordoftheday`;
+    return `${lead}\n\n${punch}\n\n${entry.word}.${sig}${tail}`;
   }
 
   // morning, rotate 4 chassis by day-of-year. Each one is a clearly distinct
@@ -441,27 +570,27 @@ async function buildText(entry, mode, baseUrl) {
   if (variant === 0) {
     // Example + punchline kicker + word tag.
     const body = example || def0;
-    const suffix = `\n\n${punch}\n\nToday's entry: ${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
-    return fitToX('', body, suffix);
+    const suffix = `\n\n${punch}\n\nToday's entry: ${entry.word}.${tail}`;
+    return fitTo('', body, suffix, service);
   }
   if (variant === 1) {
     // Definition + punchline + word reveal. Definition-led for variety.
     const body = def0;
-    const suffix = `\n\n${punch}\n\n${entry.word}.\n${baseUrl}\n\n#thiccctionary`;
-    return fitToX('', body, suffix);
+    const suffix = `\n\n${punch}\n\n${entry.word}.${tail}`;
+    return fitTo('', body, suffix, service);
   }
   if (variant === 2) {
     // Punchline-led, minimal. Image carries the rest. (Replaces the old
     // etymology variant, which depended on entry data that landed thiccc
     // jokes only 28% of the time.)
     const body = punch;
-    const suffix = `\n\n${entry.word}, today on Thiccctionary\u2122.\n${baseUrl}\n\n#thiccctionary`;
-    return fitToX('', body, suffix);
+    const suffix = `\n\n${entry.word}, today on Thiccctionary\u2122.${tail}`;
+    return fitTo('', body, suffix, service);
   }
   // variant 3, example + em-dash word + punchline as kicker.
   const body = example || def0;
-  const suffix = `\n\n${entry.word}. ${punch}\n${baseUrl}\n\n#thiccctionary`;
-  return fitToX('', body, suffix);
+  const suffix = `\n\n${entry.word}. ${punch}${tail}`;
+  return fitTo('', body, suffix, service);
 }
 
 function filterChannelsForMode(channels, mode) {
@@ -503,7 +632,27 @@ function filterChannelsForMode(channels, mode) {
   return filtered;
 }
 
+// Wave 302: caption preview. `node scripts/post-to-buffer.js --preview [mode]`
+// prints the caption each platform would actually receive, for the most recent
+// entry, and posts nothing. Added because the per-platform caption split
+// (Wave 302) was otherwise unverifiable without shipping a live post to three
+// public accounts and reading them back.
+async function preview() {
+  const mode = process.argv[3] || 'morning';
+  const baseUrl = process.env.SITE_BASE_URL || 'https://thiccctionary.com';
+  const entries = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'entries.json'), 'utf8'));
+  const entry = entries[0];
+  console.log(`Preview: mode=${mode} entry=${entry.date} "${entry.word}"\n`);
+  for (const service of ['twitter', 'instagram', 'facebook']) {
+    const t = await buildText(entry, mode, baseUrl, service);
+    console.log(`===== ${service.toUpperCase()} (${t.length} chars) =====`);
+    console.log(t);
+    console.log('');
+  }
+}
+
 async function main() {
+  if (process.argv[2] === '--preview') return preview();
   if (!process.env.BUFFER_ACCESS_TOKEN || !process.env.BUFFER_PROFILE_IDS) {
     console.log('Buffer not configured. Skipping.');
     return;
@@ -726,7 +875,20 @@ async function main() {
     console.log(`Mode "${mode}" filters to ${channels.length} of ${allChannels.length} channels.`);
   }
 
-  const text = await buildText(entry, mode, baseUrl);
+  // Wave 302: build ONE caption PER SERVICE FAMILY rather than one caption for
+  // every channel. buildText() is async (it may hit the voice-rewrite model), so
+  // cache per family -- otherwise adding a fourth channel would cost a fourth
+  // model call for text we already have.
+  const textByFamily = new Map();
+  for (const { service } of channels) {
+    const fam = serviceFamily(service);
+    if (!textByFamily.has(fam)) {
+      textByFamily.set(fam, await buildText(entry, mode, baseUrl, service));
+    }
+  }
+  // Canonical text for the dedup gate and the audit record. X is the shape the
+  // 48h dedup history was recorded in, so keep comparing against that one.
+  const text = textByFamily.get('x') || textByFamily.values().next().value || '';
 
   // Wave 207: dedup gate. If the EXACT same text was posted in the last 48h
   // (per audits/buffer-posts/), skip this post instead of pushing a duplicate.
@@ -762,11 +924,18 @@ async function main() {
   } else {
     console.log(`Posting to ${channels.length} channels with image: ${imageUrl}`);
   }
-  console.log(`--- Post text ---\n${text}\n---`);
+  for (const [fam, t] of textByFamily) {
+    console.log(`--- Post text [${fam}] (${t.length} chars) ---\n${t}\n---`);
+  }
 
   const results = await Promise.all(
     channels.map(({ channelId, service }) =>
-      postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl, token: process.env.BUFFER_ACCESS_TOKEN, service, mode })
+      postToChannel({
+        channelId,
+        text: textByFamily.get(serviceFamily(service)) || text,
+        imageUrl, videoUrl, thumbnailUrl,
+        token: process.env.BUFFER_ACCESS_TOKEN, service, mode,
+      })
     )
   );
 

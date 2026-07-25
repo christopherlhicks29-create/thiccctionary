@@ -1,4 +1,13 @@
 /**
+ * ⚠️ UNWIRED / STALE as of Wave 302 (2026-07-25).
+ *
+ * No workflow calls this script; FB posting runs through post-to-buffer.js.
+ * Its buildText()/fitToX() are a fork that has since drifted badly: emoji
+ * prefixes, an outbound URL in every post, no bespoke socialCaptions, no
+ * byline, no per-service caption shaping, and X's 280-char cap applied to a
+ * Facebook post. Do NOT wire this up as-is; port post-to-buffer.js's
+ * buildText/fitTo/tailFor first, or delete the fork and import from there.
+ *
  * Direct Facebook Page posting via Graph API, replaces Buffer for FB
  * specifically. Removes the "Published by Buffer" attribution; Meta will
  * attribute posts to the registered Facebook App name (so register the app
