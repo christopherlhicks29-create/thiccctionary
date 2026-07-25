@@ -48,12 +48,18 @@ the wrong thing rather than of nothing.
 One sentinel per push. Batch mode cannot carry a per-date override, so a batch
 of dates all share one query and most of them get the wrong photograph.
 
+Since Wave 321 the critic answers `isSubject` before it scores anything, and
+`passesGate()` rejects a false outright. That matters for most of the rows
+below: a desk globe, a teapot standing in for a kettle and a cannonball
+standing in for a medicine ball are all photographs of the wrong object that
+score well on composition, which is exactly what used to get through.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
-| 2026-05-24 | Crankshaft, Marine Diesel | **FIRED Wave 320.** Wave 319's replacement is a steam turbine rotor on trestles, not a crankshaft | `crankshaft engine` |
+| 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
 | 2026-05-02 | Frigidaire, Side-by-Side | All three ladder rungs returned 0 photos. Unsplash has no "Frigidaire" -- it is a brand, and the ladder cannot invent the generic noun | `side by side refrigerator stainless steel kitchen` |
 | 2026-04-14 | Thick Water | Audit scores it 1/10; the photo is ocean waves. The headword is a phrase, not an object | `glass of water with spoon dysphagia`, else `gel water cup`, else `viscous liquid pouring closeup` |
-| 2026-05-26 | Globe, Library Floor Model | Entry says floor model; both photos to date are desk globes. Either override or rename the entry to match what is photographable | `standing floor globe library` |
+| 2026-05-26 | Globe, Library Floor Model | **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate | `standing floor globe library` |
 | 2026-07-22 | Kettle, Cast Iron Tea | Shares a photograph with 2026-05-12 Teapot, Cast Iron | `whistling stovetop kettle` |
 | 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval | `medicine ball gym weight` |
 | 2026-05-14 | Kettledrum, Industrial | Parked from an earlier audit | `timpani orchestra` |
