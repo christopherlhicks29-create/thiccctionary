@@ -98,7 +98,8 @@ ${NAV.map(([h, l]) => `    <a href="${h}" class="nav-link">${l}</a>`).join('\n')
 </header>`;
 }
 
-export function footer() {
+/** The footer markup alone, no trailing scripts. */
+export function footerGrid() {
   return `<footer class="footer">
   <div class="footer-grid">
     <div>
@@ -138,7 +139,11 @@ export function footer() {
     </div>
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All proportions exaggerated for comedic effect.<br><span style="font-size:0.85em; opacity:0.65;">THICCCTIONARY is a federally trademark-pending word mark, <a href="https://tsdr.uspto.gov/#caseNumber=99827994" rel="noopener" target="_blank" style="color:inherit; text-decoration:underline;">USPTO serial 99827994</a>. Thiccctionary is an independent publication, unaffiliated with any other site or publication using a similar name.</span></p>
-</footer>
+</footer>`;
+}
+
+export function footer() {
+  return `${footerGrid()}
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script defer src="/scripts/mobile-nav.js?v=66"></script>

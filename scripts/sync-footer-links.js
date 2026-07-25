@@ -18,6 +18,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { footerGrid } from './lib/chrome.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -50,8 +51,43 @@ async function walk(dir, out = []) {
   return out;
 }
 
+/**
+ * Wave 304b (2): eight pages -- six of the hand-written essays, a-z.html, and
+ * the foreword journal -- shipped a stub footer that was one line of copyright
+ * and nothing else. They keep the full nav, so they are not orphans, but they
+ * are missing the Sections / Follow / Legal columns every other page carries,
+ * which is ~20 internal links each on exactly the pages most likely to be a
+ * stranger's entry point from search.
+ *
+ * Replace the stub with the canonical footer. Detected by: a <footer
+ * class="footer"> that contains no .footer-grid. Idempotent by construction --
+ * after one pass the page has a grid, so it no longer matches.
+ */
+function replaceStubFooter(html) {
+  // Two pages carry a variant opening tag: class="site-footer", and a
+  // class="footer" with an inline style. Match any <footer ...> tag.
+  const m = html.match(/<footer(\s[^>]*)?>/i);
+  if (!m) return html;
+  const open = m.index;
+  const close = html.indexOf('</footer>', open);
+  if (close === -1) return html;
+  const end = close + '</footer>'.length;
+  const block = html.slice(open, end);
+  // A grid alone is not enough: the foreword journal has a .footer-grid whose
+  // last three columns are literally <div></div>. Test for the Sections column.
+  if (/footer-head">\s*Sections/.test(block)) return html;
+
+  let out = html.slice(0, open) + footerGrid() + html.slice(end);
+  // footerGrid() renders the year into <span id="year">; without the updater it
+  // would freeze. Only add the script if the page has not already got one.
+  if (!out.includes("getElementById('year')")) {
+    out = out.replace('</body>', `<script>document.getElementById('year').textContent = new Date().getFullYear();</script>\n</body>`);
+  }
+  return out;
+}
+
 export function syncFooter(html) {
-  let out = html;
+  let out = replaceStubFooter(html);
   for (const r of RULES) {
     if (out.includes(`href="${r.href}"`)) continue;
     const i = out.indexOf(r.after);
