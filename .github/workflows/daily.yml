@@ -260,6 +260,11 @@ jobs:
         run: node normalize-article-heads.js
         continue-on-error: true
 
+      - name: Sync sitemap (Wave 303)
+        working-directory: scripts
+        run: node sync-sitemap.js
+        continue-on-error: true
+
       - name: Build vertical Reel video
         working-directory: scripts
         env:

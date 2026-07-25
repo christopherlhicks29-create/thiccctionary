@@ -49,10 +49,17 @@ function stripHtml(s) {
   return String(s || '').replace(/<[^>]+>/g, '');
 }
 
+// Wave 303: this used to hard-slice at `max` and glue on "...", which shipped
+// visible fragments like "...when viewed astern in raking..." three times on
+// every page. Prefer the last complete sentence that fits; only fall back to a
+// word-boundary elision when no sentence fits inside the budget.
 function trimText(s, max) {
   s = stripHtml(s).replace(/\s+/g, ' ').trim();
   if (s.length <= max) return s;
-  return s.slice(0, max - 1).replace(/\s\S*$/, '') + '...';
+  const window = s.slice(0, max);
+  const lastStop = Math.max(window.lastIndexOf('. '), window.lastIndexOf('? '), window.lastIndexOf('! '));
+  if (lastStop > max * 0.5) return window.slice(0, lastStop + 1).trim();
+  return window.replace(/\s\S*$/, '').replace(/[\s,;:]+$/, '') + '\u2026';
 }
 
 function articleFor(word) {
@@ -67,7 +74,14 @@ function renderPage(entry) {
   const fullWord = entry.word;
   const article = articleFor(subject);
   const rationale = trimText(entry.definitions?.[0] || '', 220);
-  const canonical = `${SITE}/is/${slug}-thiccc/`;
+  const pageUrl = `${SITE}/is/${slug}-thiccc/`;
+  // Wave 303: these 106 pages are near-duplicates of their parent entry -- the
+  // definition, image and caption are lifted verbatim, and "is a kettlebell
+  // thiccc" has no independent search demand. As their own indexed URLs they
+  // were 35% of the site's page count contributing programmatic thin content,
+  // which is a sitewide quality risk. Consolidate the signal onto the entry.
+  // The pages stay live and linked from /is-it-thiccc/ for humans.
+  const canonical = `${SITE}/entries/${entry.date}.html`;
   const ogImage = `${SITE}/${(entry.image || '').replace(/^\.?\//, '')}`;
   const description = trimText(
     `Yes, ${article} ${subject.toLowerCase()} is officially thiccc per the Thiccctionary. ${rationale}`,
@@ -94,8 +108,8 @@ function renderPage(entry) {
     '@graph': [
       {
         '@type': 'Article',
-        '@id': `${canonical}#article`,
-        url: canonical,
+        '@id': `${pageUrl}#article`,
+        url: pageUrl,
         headline: `Is ${article} ${subject} thiccc?`,
         description,
         image: ogImage,
@@ -106,11 +120,11 @@ function renderPage(entry) {
           name: 'Thiccctionary',
           logo: { '@type': 'ImageObject', url: `${SITE}/favicon.svg` },
         },
-        mainEntityOfPage: canonical,
+        mainEntityOfPage: pageUrl,
       },
       {
         '@type': 'FAQPage',
-        '@id': `${canonical}#faq`,
+        '@id': `${pageUrl}#faq`,
         mainEntity: faqs.map((f) => ({
           '@type': 'Question',
           name: f.q,
@@ -119,11 +133,11 @@ function renderPage(entry) {
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': `${canonical}#crumbs`,
+        '@id': `${pageUrl}#crumbs`,
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Thiccctionary', item: `${SITE}/` },
           { '@type': 'ListItem', position: 2, name: 'Is It Thiccc?', item: `${SITE}/is-it-thiccc/` },
-          { '@type': 'ListItem', position: 3, name: `Is ${article} ${subject} thiccc?`, item: canonical },
+          { '@type': 'ListItem', position: 3, name: `Is ${article} ${subject} thiccc?`, item: pageUrl },
         ],
       },
     ],
@@ -151,7 +165,7 @@ function renderPage(entry) {
 <meta property="og:title" content="Is ${escapeHtml(article)} ${escapeHtml(subject)} thiccc? &middot; Thiccctionary" />
 <meta property="og:description" content="${escapeHtml(description)}" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="${canonical}" />
+<meta property="og:url" content="${pageUrl}" />
 <meta property="og:image" content="${escapeHtml(ogImage)}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -530,22 +544,22 @@ async function main() {
   try {
     let sitemap = await fs.readFile(sitemapPath, 'utf8');
     const today = new Date().toISOString().slice(0, 10);
-    const newUrls = [
-      `${SITE}/is-it-thiccc/`,
-      ...entries.map((e) => `${SITE}/is/${e._slug}-thiccc/`),
-    ];
+    // Wave 303: the individual /is/ pages now canonical to their parent entry,
+    // so listing them in the sitemap contradicts the canonical and spends crawl
+    // budget on 106 URLs we are explicitly telling Google not to index. Only the
+    // hub stays.
+    const newUrls = [`${SITE}/is-it-thiccc/`];
     const additions = [];
     for (const url of newUrls) {
       if (!sitemap.includes(`<loc>${url}</loc>`)) {
         additions.push(`  <url>\n    <loc>${url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`);
       }
     }
-    // Drop stale /is/ urls (pruned subjects) from the sitemap.
-    const validIsUrls = new Set(entries.map((e) => `${SITE}/is/${e._slug}-thiccc/`));
+    // Drop every individual /is/ url from the sitemap (see above).
     let smChanged = false;
     sitemap = sitemap.replace(/\s*<url>(?:(?!<\/url>)[\s\S])*?<\/url>/g, (block) => {
       const m = block.match(/<loc>([^<]+)<\/loc>/);
-      if (m && /\/is\/[^/]+-thiccc\/$/.test(m[1]) && !validIsUrls.has(m[1])) {
+      if (m && /\/is\/[^/]+-thiccc\/$/.test(m[1])) {
         smChanged = true;
         return '';
       }
