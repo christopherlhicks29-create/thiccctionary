@@ -74,11 +74,15 @@ function renderBody(body) {
 
 function buildPage({ meta, headline, bodyHtml, slug }) {
   // Wave 247: keep title <=70 and meta description <=165 (site-health SEO limits).
-  // Append the ", The Thiccc Beat" suffix only when it still fits; truncate at a
-  // word boundary rather than mid-word.
+  // Wave 303: STOP truncating the headline. Clamping shipped titles like
+  // "The World Cup Is Now Too Large to Be Hosted. It Can Only Be" -- a fragment
+  // that ends mid-thought and reads as broken in the SERP. Google truncates for
+  // display anyway and keeps the full string for ranking, so an over-length
+  // title costs nothing while a severed one costs the click. Drop the suffix
+  // when it doesn't fit; never cut the headline itself.
   const clamp = (str, max) => str.length <= max ? str : str.slice(0, max).replace(/\s+\S*$/, '');
   const titleSuffix = ', The Thiccc Beat';
-  const title = (headline + titleSuffix).length <= 70 ? headline + titleSuffix : clamp(headline, 70);
+  const title = (headline + titleSuffix).length <= 70 ? headline + titleSuffix : deDash(headline);
   const desc = clamp(deDash(`${meta.author} on ${meta.subject}. Ruling: ${meta.ruling}. The Thiccc Beat, the desk reacts to the news.`), 165);
   const ogImg = `https://thiccctionary.com/articles/og/${slug}.png`;
   const url = `https://thiccctionary.com/articles/${slug}.html`;
