@@ -1,6 +1,5 @@
 {
-  "queued_at": "2026-07-20T06:21:44.051Z",
-  "dates": "2026-06-16,2026-06-15,2026-05-24,2026-05-10",
-  "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 4): 2026-06-16 Double Bass, Upright (score 3, depicts \"a jazz quintet with double basses\"); 2026-06-15 Cinder Block, Concrete (score 3, depicts \"a large concrete block with sand on top\"); 2026-05-24 Crankshaft, Marine Diesel (score 3, depicts \"industrial machinery in a facility\"); 2026-05-10 Bagger 288 (score 3, depicts \"an industrial structure with a crane\")"
+  "dates": "2026-07-25",
+  "subject_override": "meatloaf glazed loaf baked homemade dinner",
+  "reason": "Live image is BBQ ribs with asparagus and potato salad (unsplash slug: ribs-asparagus-and-mashed-potatoes); entry is Loaf, Meatloaf. Image/text mismatch, daily QA 2026-07-25."
 }
