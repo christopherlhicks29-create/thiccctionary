@@ -133,6 +133,7 @@ Data so far, measured against my own eyeball on the rendered crop:
 | Thick Water 2026-04-14 | 30 | ~20 | +10 |
 | Kettle 2026-07-22 | 25 | ~9 | +16 |
 | Medicine Ball 2026-07-06 | 40 | ~32 | +8 |
+| Kettledrum 2026-05-14 | 40 | ~22 | +18 |
 
 Four points, worst error sixteen, three of four running high. The suspicion
 logged after Thick Water is now confirmed by a second, larger case, and it is
@@ -183,6 +184,36 @@ successes is the same mistake as a critic grading its own arithmetic. Tuning it
 now would also be tuning against a measurement bias we have just fixed -- the
 next few reshoots are the first honest read on the deltas.
 
+**Wave 328f, and the honest read is bad.** The Kettledrum is the second
+measurement taken under the tightened criterion 8 and it is the worst delta in
+the table: measured 40, eyeballed about 22, an overshoot of eighteen. Working it
+back from the rendered grid, the two timpani occupy roughly x 0.335 to 1.0 by y
+0.475 to 0.80. For the model's box to reach 40% it has to run from about y 0.40
+down to about y 0.98 -- that is the cymbal and mallets above the rims and, far
+more of it, **the timpani stands below**. Criterion 8 names "stand" in its
+exclusion list by hand. Naming the exclusion did not work.
+
+That is worth saying plainly because Wave 328 was written as if it would. The
+two worst deltas in the table are now Kettle +16 and Kettledrum +18, and both
+are the same photograph in the abstract: an object sitting on or among the
+hardware that holds it up. Five of six rows run high; the mean is about +10. So
+the standing refusal to move `minSubjectPct: 25` holds for the reason it always
+did, plus a new one -- moving it would be tuning against a bias that is still
+present, still unfixed, and now demonstrably not fixable by adding words to the
+prompt. The next attempt at this should probably ask the critic for the box of
+the object and the box of whatever it rests on separately, so the arithmetic can
+subtract rather than the prose can plead.
+
+One correction to a hypothesis carried in from the reshoot itself. I flagged a
+tension between the completeness gate passing and my own eye reading the
+right-hand drum as cut off by the frame. There is no tension:
+`maxEdgeTouches: 1` permits exactly one cut edge by design, and the right edge
+is that one edge. The gate behaved as specified. The narrower true finding is
+that **"touches one edge" cannot distinguish a subject resting against the frame
+from a subject sliced by it.** Tightening to zero would reject the many good
+compositions where a subject legitimately fills its frame, which is the Wave
+209b failure again. Logged as a note, not an action.
+
 | Date | Entry | Problem | Override to try |
 | --- | --- | --- | --- |
 | 2026-05-24 | Crankshaft, Marine Diesel | **RESOLVED Wave 321b.** Took three tries: a turbine rotor, then an engine block, both scored 7 on composition because nothing asked whether the photo was of a crankshaft. Wave 321's identity gate plus the bare head noun `crankshaft` landed a real Sulzer 1891 crank -- webs, journals, big-end bearings, score 8 | -- |
@@ -191,8 +222,61 @@ next few reshoots are the first honest read on the deltas.
 | 2026-05-26 | Globe, Library Floor Model | **RESOLVED Wave 327c.** A genuine antique floor globe on a turned wooden stand, in focus and filling the left half of the frame, a second one behind it in the dark. Measured 35 against an eyeball of about 37. Second data point on the measured gate and the second time it has landed within single digits of the picture. History: **FIRED Wave 322b.** Entry says floor model; both photos to date are desk globes. This is the same identity failure the crankshaft had, so it is the right next test of the Wave 321 gate. Wave 322b fixed the identity; the framing stayed marginal, globe roughly a quarter of the frame with bookcases dominating. **Re-fired Wave 327c** as the first case whose recorded failure is prominence rather than identity, which makes it the cleanest read on whether the measured gate rejects on framing alone. Note "library" is dropped from every rung: naming the room is what invited the room, exactly as "kitchen" did on the Frigidaire | `antique floor standing globe on stand\|large world globe on wooden stand\|floor globe` |
 | 2026-07-22 | Kettle, Cast Iron Tea | **RESOLVED Wave 328.** A dark cast iron kettle with a bail handle and a spout, sitting on a rusted outdoor stove drum against a stone wall. It is a kettle and not the teapot it used to duplicate, which was the whole bar. Measured 25 against an eyeball of about 9, the largest overshoot recorded and the case that produced the Wave 328 prompt fix -- the box took in the stove. Passed the gate on a number that was wrong; kept because the photograph is right | `cast iron whistling kettle on a stove\|cast iron kettle\|whistling kettle` |
 | 2026-07-06 | Ball, Medicine Gym | Shares Unsplash TthLw9wNyQE with 2026-06-05 Cannonball, Naval. **FIRED Wave 328.** "Gym" is dropped from every rung under the Wave 327d/e rule, and no rung names a rack, stand or hand under the new Wave 328 clause: this is the first reshoot fired against the tightened criterion 8, so its delta is the first honest measurement in the table. Criterion 0 already names this exact confusion -- "a cannonball is not a medicine ball" -- so identity should hold; prominence is the thing to watch. **Result: critic-rejected, 29 candidates, 3 attempts, no replacement.** Last verdict score=1, "NOT THE SUBJECT", saw "a person balancing on a medicine ball". The library's answer to "medicine ball" is fitness-lifestyle stock with a human as the composition, which criterion 5 disqualifies. Nothing was shipped, which is the gate working: the old duplicate is still in place and no wrong plate went out. **Re-fired Wave 328b** on rungs that describe the object as an object and never as equipment in use. **Also critic-rejected**, and this one is the useful failure: the pool collapsed from 29 candidates to 6, and the last verdict was a firefighter helmet badge. "Vintage leather" found leather, not medicine balls. Crucially the run never tried the broad rung behind it, because the ladder stopped at the first rung returning anything and 6 is not zero -- which is the defect Wave 328c fixes. **Re-fired Wave 328c** against the accumulating ladder and a five-attempt window. **Rejected a third time, but the run itself proves the fix**: 34 candidates where the same lead rung gave 6, and 5 attempts where the cap gave 3. The last verdict also changed character -- "a modern exercise medicine ball on a wooden box", subject%=16 -- so the critic found the object and rejected the composition, where the first two firings could not find the object at all. That is a near-miss on vocabulary, not an empty library. **Re-fired Wave 328d** on the trade names a photographer actually files these under. Note the photo this entry currently carries is a stack of iron cannonballs at a fort wall: it is not merely a duplicate, it is the exact criterion-0 failure the critic prompt names by hand ("a cannonball is not a medicine ball"), and it belongs to 2026-06-05 Cannonball, Naval on the merits. **If 328d fails this stops being a search problem.** The recommendation then is editorial and belongs to Chris: either the entry keeps a knowingly wrong plate, or the headword changes to something stock photography has ("Slam Ball" / "Wall Ball" are photographed as objects; "Medicine Ball, Gym" is photographed as an activity). **328d replaced it, and the vocabulary hypothesis was right**: leading on "slam ball" found a real slam ball at score 7, subject 40%. The plate is kept because it is the right object and the cannonballs were the wrong one, and criterion 0 says in as many words that a beautiful photo of the wrong object is the worse outcome. It is still not a good plate: the ball is cut off at the top and right and a purple dumbbell sits in sharp focus across the foreground. That is what produced Wave 328e. **Re-fired Wave 328e** on the same ladder, which is not another vocabulary guess -- the vocabulary is solved -- but the first production test of the completeness gate, which should reject this exact photograph and dig further into the pool. **It did, and nothing better was behind it**: 30 candidates, 5 attempts, all rejected, last verdict a man playing basketball at 6%. So the cut-off slam ball stands, which is the fallback working as designed -- the gate declined to trade a right-object-badly-framed for a wrong-object-well-framed. **CLOSED with a caveat.** The duplicate with Cannonball, Naval is gone and the criterion-0 identity failure is gone; what remains is a composition complaint, which is a smaller defect than either, and five firings is enough. Anyone reopening this should change the headword rather than the query | `slam ball\|wall ball\|medicine ball` |
-| 2026-05-14 | Kettledrum, Industrial | Parked from an earlier audit. **FIRED Wave 328f.** "Orchestra" is dropped from the lead rung under the Wave 327d/e rule -- it is a context word in exactly the way "kitchen", "library" and "gym" were, and every one of those invited the context in instead of the object. It stays as a late rung because the ladder accumulates now (Wave 328c) and a wide rung behind a narrow one costs nothing. First reshoot fired against both the tightened criterion 8 and the completeness gate | `copper timpani drum\|timpani\|orchestral kettledrum` |
-| 2026-07-17 | Honeydew, Giant | Replacement rejected; needs a scale reference in frame or it reads as an ordinary melon | `honeydew melon held in hands` |
+| 2026-05-14 | Kettledrum, Industrial | **RESOLVED Wave 328f**, with caveats worth reading. The plate now carries a genuine pair of copper timpani against a brick wall, score 8, and the stranger line agrees with the headword for only the second time on record. Dropping "orchestra" from the lead rung worked exactly as Wave 327d/e predicted -- it is a context word in the way "kitchen", "library" and "gym" were, and every one of those invited the context in instead of the object. Two caveats. The frame is crowded: music stands, microphone stands, a cymbal and a speaker cabinet share it, so this is a photograph of drums in a room rather than a plate of a drum. And the measurement is the worst in the calibration table, 40 against an eyeball of 22, because the box took in the timpani stands that criterion 8 names by hand as an exclusion. Kept because identity is right and identity outranks framing (criterion 0). Anyone reopening this wants a studio-isolated timpani, which the library may simply not have | `copper timpani drum\|timpani\|orchestral kettledrum` |
+| 2026-07-17 | Honeydew, Giant | Replacement rejected; needs a scale reference in frame or it reads as an ordinary melon. **Override reworded Wave 329 before firing.** The stored phrase was `honeydew melon held in hands`, which names a hand -- the exact word Wave 328's criterion 8 added to its exclusion list, and the exact composition that got three consecutive Medicine Ball firings rejected ("a person balancing on a medicine ball"). Asking for hands to solve the scale problem invites the fitness-lifestyle stock that has no object in it. A narrow lead rung is safe now that Wave 328c accumulates the ladder instead of stopping at the first rung that returns anything, so the melon leads and the bare head noun sits behind it | `giant honeydew melon\|whole honeydew melon\|honeydew melon` |
+
+---
+
+## Wave 329: the caption under the plate described the previous photograph
+
+Found while eyeballing the Wave 328f Kettledrum. The entry now carries two
+copper timpani; the caption under it read "Close-up of a drum head, showcasing
+its substantial acoustic potential." That is a faithful description of the
+photograph the regen had just deleted.
+
+**The cause is an ownership gap, not a bug.** Both regen scripts documented the
+boundary and neither closed it. `regenerate-text.js` says so in as many words --
+"Wave 147 gave every image-side field to regenerate-images.js, so this script
+writes text fields only" -- and discards the caption the model hands it.
+`regenerate-images.js` writes image, photographer, photographerUrl and
+unsplashUrl, and does not mention the caption anywhere in the file. So the field
+was owned by neither, and the only thing that has ever written one is the
+original `generate-daily` run. **A field owned by nobody is worse than a field
+owned by the wrong script**, because a wrong owner at least shows up in a grep.
+The general form: when a boundary comment says "X is not my job", grep whether
+it is anyone's.
+
+It is also the repo's recurring bug wearing a new label. The fact "what the
+photograph shows" was stored twice, in the photograph and in the prose beneath
+it, and only one copy got updated.
+
+**The fix.** `scripts/lib/caption.js` writes a caption for the photograph that
+is actually on disk, and `regenerate-images.js` calls it in the same block that
+swaps the image. Three layers, each falling to the next, because this runs
+unattended at the far end of a workflow and a caption is never worth failing a
+replacement over: model in the house voice, then a flat deterministic line built
+from the critic's own `photoSubject`, then null -- which the caller must read as
+"keep what is there and say so in the audit file", never as "write an empty
+caption". The whole block is wrapped and non-fatal; the image swap has already
+succeeded by the time it runs. The banned-words filter now runs against this
+field for the first time in the site's history, and it outranks voice: a caption
+that breaks the editorial rules is worse than a dull one, and this is the only
+path nobody reads before it ships. 18 checks in `scripts/test-caption.js`, all
+against injected chat stubs so no key or network is needed.
+
+**The backlog.** Wave 329 stops new drift; it cannot fix what is already on
+disk, because knowing whether a sentence describes a picture requires looking at
+the picture. `scripts/audit-caption-drift.js` does the part a script can do
+exactly: it walks the history of `data/entries.json` and lists every entry whose
+`image` changed more recently than its `caption`. That is a suspect list, not a
+defect list -- a generic caption survives a reshoot of the same object fine.
+Current read: **17 entries reshot, 10 suspects.** A ten-thumbnail contact sheet
+adjudicated all of them in one look: **4 confirmed wrong and rewritten**
+(Kettledrum, Crankshaft, Globe, Medicine Ball), **6 cleared** (Thick Water,
+Frigidaire, Atlas Stone, Kettle, Mango, Meatloaf). The 6 stay on the list and
+clear themselves automatically the next time they are reshot. A 60% false
+positive rate is fine when the list is finite, ordered, and shrinks on its own;
+a repeatable audit producing a suspect list beats a one-off finding.
 
 ---
 

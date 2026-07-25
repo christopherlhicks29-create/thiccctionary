@@ -26,6 +26,8 @@ import { buildEntryPage, buildSitemap } from './build-entry-pages.js';
 import { usedPhotoIds, filterUsedPhotos } from './lib/used-photos.js';
 import { writeEntries } from './lib/entries-io.js';
 import { queryLadder, gatherCandidates } from './lib/search-queries.js';
+import { writeCaption } from './lib/caption.js';
+import { withPlateNumber, plateNumberFor } from './lib/plate.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -377,8 +379,38 @@ async function main() {
       entry.photographer = chosen.photographer;
       entry.photographerUrl = chosen.photographerUrl;
       entry.unsplashUrl = chosen.unsplashUrl;
+
+      // Wave 329: the caption describes the photograph, so replacing the
+      // photograph without rewriting it leaves a sentence about a picture
+      // nobody can see. The 2026-05-14 Kettledrum shipped two copper timpani
+      // under the words "Close-up of a drum head". See lib/caption.js for why
+      // neither regen script owned this field.
+      //
+      // Wrapped, and never fatal: the image swap is the valuable half of this
+      // block and has already succeeded by the time we get here. A caption
+      // failure must cost the caption, not the replacement.
+      let captionNote = '';
+      try {
+        const written = await writeCaption({
+          word: entry.word,
+          photoSubject: critique && critique.photoSubject,
+          photoDescription: chosen.description,
+        });
+        if (written) {
+          entry.caption = withPlateNumber(written, plateNumberFor(entry, entries));
+          captionNote = `, recaptioned "${entry.caption}"`;
+        } else {
+          // Both layers refused. Say so in the run log rather than in a console
+          // line nobody can read: a stale caption is the exact defect this wave
+          // exists to remove, so one surviving is worth a human's attention.
+          captionNote = ', CAPTION NOT REWRITTEN (stale caption retained, needs a human)';
+        }
+      } catch (e) {
+        captionNote = `, caption rewrite errored (${e.message}), stale caption retained`;
+      }
+
       logRow(entry.date, entry.word, 'replaced',
-        `images/${filename} <- ${chosen.unsplashUrl} (${formatCritique(critique)})`);
+        `images/${filename} <- ${chosen.unsplashUrl} (${formatCritique(critique)})${captionNote}`);
       succeeded++;
     } catch (err) {
       console.error(`  FAILED: ${err.message}`);
