@@ -279,6 +279,10 @@ jobs:
         working-directory: scripts
         run: node sync-footer-links.js
         continue-on-error: true
+      - name: Reconcile og:image dimensions (Wave 311b)
+        working-directory: scripts
+        run: node sync-og-dimensions.js
+        continue-on-error: true
       - name: Sync WebP derivatives (Wave 305)
         working-directory: scripts
         run: node sync-webp.js

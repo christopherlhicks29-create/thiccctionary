@@ -20,6 +20,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { autoLink } from './auto-link-references.js';
+import { ogDimsTags } from './lib/image-size.js'; // Wave 311b: measure, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -154,7 +155,7 @@ async function main() {
 <meta name="description" content="Bartholomew Whitmore answers letters from readers. Mailbag, Vol. ${vol}." />
 <meta property="og:title" content="${escapeHtml(title)}" />
 <meta property="og:description" content="Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters." />
-<meta property="og:image" content="https://thiccctionary.com/articles/og/${slug}.png" />
+<meta property="og:image" content="https://thiccctionary.com/articles/og/${slug}.png" />${ogDimsTags(`https://thiccctionary.com/articles/og/${slug}.png`, ROOT)}
 <meta property="og:url" content="https://thiccctionary.com/articles/${slug}.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />

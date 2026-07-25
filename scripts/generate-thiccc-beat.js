@@ -19,6 +19,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { autoLink } from './auto-link-references.js';
+import { ogDimsTags } from './lib/image-size.js'; // Wave 311b: measure, don't type
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -105,7 +106,7 @@ function buildPage({ meta, headline, bodyHtml, slug }) {
 <meta name="description" content="${escapeHtml(desc)}" />
 <meta property="og:title" content="${escapeHtml(deDash(headline))}" />
 <meta property="og:description" content="${escapeHtml(desc)}" />
-<meta property="og:image" content="${ogImg}" />
+<meta property="og:image" content="${ogImg}" />${ogDimsTags(ogImg, ROOT)}
 <meta property="og:url" content="${url}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />

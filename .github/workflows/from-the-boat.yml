@@ -45,6 +45,9 @@ jobs:
       - name: Sync footer links (Wave 304b)
         run: node scripts/sync-footer-links.js
         continue-on-error: true
+      - name: Reconcile og:image dimensions (Wave 311b)
+        run: node scripts/sync-og-dimensions.js
+        continue-on-error: true
       - name: Sync WebP derivatives (Wave 305)
         run: node scripts/sync-webp.js
         continue-on-error: true
