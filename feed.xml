@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Jul 2026 15:56:38 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 15:57:27 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A culinary entity of formidable density, characterized by its homogenous composition and substantial profile, typically cloaked in a glaze of ambiguous origin.</description>
       <enclosure url="https://thiccctionary.com/images/2026-07-25-loaf-meatloaf-4l9c.jpg" type="image/jpeg" length="138821" />
       <category>culinary</category><category>domestic</category><category>girth</category>
+    </item>
+    <item>
+      <title>[Article] The World Cup Is Now Too Large to Be Hosted. It Can Only Be Regionally Absorbed.</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-07-25-bertram-largest-world-cup.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-07-25-bertram-largest-world-cup.html</guid>
+      <pubDate>Sat, 25 Jul 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Bertram Whitmore on the FIFA World Cup 2026, the largest World Cup ever staged, 48 teams and a record 104 matches spread across the United States, Canada, and Mexico, with reported attendance above six million, concluded 19 July 2026 with Spain defeating Argentina 1-0 at New York New Jersey Stadium. Ruling: Thiccc. The first tournament to require a continent..</description>
+      <category>article</category>
     </item>
     <item>
       <title>[Article] On the Edible Entry: A Classification Problem the Catalogue Was Not Built to Solve</title>

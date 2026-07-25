@@ -164,6 +164,28 @@ function isSlugFor(word) {
   return primary.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
+// 2026-07-25: mirrors generate-daily.js's caption numbering. The Sources line
+// used to hardcode the literal string "plate N." on every entry page (same
+// placeholder-leak class as the caption bug fixed 2026-07-23, missed then
+// because it lives in a different template).
+function toRomanNumeral(num) {
+  const vals = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+  let n = num, out = '';
+  for (const [v, sym] of vals) { while (n >= v) { out += sym; n -= v; } }
+  return out;
+}
+
+// Plate number = 1-based chronological position (entries.json is newest-first).
+function plateLabelFor(entry, allEntries) {
+  if (Array.isArray(allEntries)) {
+    const i = allEntries.findIndex(e => e.date === entry.date);
+    if (i !== -1) return `plate ${toRomanNumeral(allEntries.length - i)}`;
+  }
+  // Fallback: reuse the numeral already rendered into the caption.
+  const m = typeof entry.caption === 'string' && entry.caption.match(/^Plate\s+([IVXLCDM]+)\.,?/);
+  return m ? `plate ${m[1]}` : null;
+}
+
 function renderSources(entry, allEntries = null) {
   const items = [];
 
@@ -172,7 +194,9 @@ function renderSources(entry, allEntries = null) {
     const url = entry.photographerUrl || 'https://unsplash.com/';
     const photoUrl = entry.unsplashUrl || url;
     const safeName = String(entry.photographer).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-    items.push(`Photograph by <a href="${url}" target="_blank" rel="noopener">${safeName}</a>, via <a href="${photoUrl}" target="_blank" rel="noopener">Unsplash</a>. Catalogued under plate N.`);
+    const plate = plateLabelFor(entry, allEntries);
+    const plateNote = plate ? ` Catalogued under ${plate}.` : '';
+    items.push(`Photograph by <a href="${url}" target="_blank" rel="noopener">${safeName}</a>, via <a href="${photoUrl}" target="_blank" rel="noopener">Unsplash</a>.${plateNote}`);
   }
 
   // 1b. Wave 190: direct link to the standalone "Is X thiccc?" ruling page.
