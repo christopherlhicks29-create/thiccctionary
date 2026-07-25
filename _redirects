@@ -3,8 +3,11 @@
 /reels/*  /archive.html  301
 # Trailing slash normalization for directory-style URLs (cosmetic only,
 # Cloudflare Pages already serves index.html on directory hits)
+# No /reels line here on purpose: /reels/ has no index.html, and the three
+# rules at the top of this file already send every /reels* URL to the archive.
+# First match wins, so a /reels -> /reels/ rule was both unreachable and, had
+# it ever been reached, a 301 to a 404.
 /articles  /articles/  301
-/reels     /reels/     301
 /rate      /rate/      301
 /api       /api/       301
 /about     /about/     301
