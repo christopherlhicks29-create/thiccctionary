@@ -1,6 +1,0 @@
-{
-  "dates": "2026-05-02,2026-05-10,2026-05-21,2026-05-24,2026-05-26,2026-06-27,2026-07-06,2026-07-17",
-  "subject_override": "",
-  "hold": true,
-  "why": "Wave 310 re-dispatch. The 309b run consumed its sentinel and hung with no upper bound on any network call and no job timeout, so it produced neither a PR nor a log. This run is capped at 20 minutes, flushes its log after every entry, and publishes a stub to ci-regen-log even if the script never starts. hold:true, so nothing auto-merges."
-}
