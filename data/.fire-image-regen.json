@@ -1,0 +1,5 @@
+{
+  "dates": "2026-05-24",
+  "subject_override": "crankshaft engine",
+  "note": "Wave 320: the Wave 319 replacement for Crankshaft, Marine Diesel is a steam turbine rotor on trestles -- bladed discs on a shaft, in a marine workshop with a diesel engine behind it. Related, and not a crankshaft: a crankshaft has offset journals and no blades. The critic scored it 7 on an Unsplash caption of 'a room with a bunch of machines inside of it', which is what a critic does when the caption describes the room and not the object. The query ladder's fault was not the ladder: 'Crankshaft, Marine Diesel' returned something, so it never fell through to 'Crankshaft'. Override forces the head noun."
+}

@@ -117,19 +117,15 @@ jobs:
           git push -f origin HEAD:refs/heads/ci-regen-log
           echo "log at: https://github.com/${{ github.repository }}/blob/ci-regen-log/audits/regen-last-run.md"
 
-      # Wave 312: entry photos are square; every platform crops a link preview to
-      # 1.91:1. scripts/build-entry-og-images.py composes that crop instead of
-      # letting a machine choose it. Cards are named by entry date, so a
-      # replaced photo needs a new card but no page rewrite: the URL and the
-      # 1200x630 dimensions are unchanged. Only missing or stale cards rebuild.
-      - name: Build entry OG cards (Wave 312)
-        run: |
-          pip install pillow --quiet --break-system-packages || pip install pillow --quiet
-          python3 scripts/build-entry-og-images.py
-        continue-on-error: true
+      - name: Reconciler prerequisites (Wave 320)
+        run: pip install pillow --quiet --break-system-packages || pip install pillow --quiet
 
-      - name: Sync WebP derivatives (Wave 305)
-        run: node scripts/sync-webp.js
+      # Wave 320: the reconciler chain lives in scripts/reconcile.js, once.
+      # It used to be seventeen YAML steps repeated in four workflows and
+      # missing from a fifth, which is how a renamed photograph shipped a
+      # category hub pointing at a file that no longer existed.
+      - name: Reconcile the whole site (Wave 320)
+        run: node scripts/reconcile.js
         continue-on-error: true
 
       - name: Open Pull Request

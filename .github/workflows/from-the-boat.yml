@@ -28,43 +28,17 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-from-the-boat.js
-      - name: Regenerate article listings
-        run: node scripts/regenerate-article-listings.js
-      - name: Normalize article <head> blocks (Wave 303)
-        run: node scripts/normalize-article-heads.js
-        continue-on-error: true
-      - name: Build category pages (Wave 304b)
-        run: node scripts/build-category-pages.js
-        continue-on-error: true
-      - name: Sync sitemap (Wave 303)
-        run: node scripts/sync-sitemap.js
-        continue-on-error: true
-      - name: Fix heading hierarchy (Wave 304)
-        run: node scripts/fix-heading-hierarchy.js
-        continue-on-error: true
-      - name: Sync footer links (Wave 304b)
-        run: node scripts/sync-footer-links.js
-        continue-on-error: true
-      - name: Reconcile plate numbers (Wave 314)
-        run: node scripts/sync-plate-numbers.js
-        continue-on-error: true
-      - name: Point articles at their own OG cards (Wave 314)
-        run: node scripts/sync-article-og.js
-        continue-on-error: true
-      - name: Structured data on every article (Wave 318)
-        run: node scripts/sync-article-schema.js
-        continue-on-error: true
-      - name: Offer a way to subscribe (Wave 317)
-        run: node scripts/sync-subscribe.js
-        continue-on-error: true
-      - name: Complete share cards (Wave 316)
-        run: node scripts/sync-social-cards.js
-        continue-on-error: true
-      - name: Reconcile og:image dimensions (Wave 311b)
-        run: node scripts/sync-og-dimensions.js
-        continue-on-error: true
-      - name: Sync WebP derivatives (Wave 305)
-        run: node scripts/sync-webp.js
+      - name: Reconciler prerequisites (Wave 320)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq webp
+          pip install pillow --quiet --break-system-packages || pip install pillow --quiet
+
+      # Wave 320: the reconciler chain lives in scripts/reconcile.js, once.
+      # It used to be seventeen YAML steps repeated in four workflows and
+      # missing from a fifth, which is how a renamed photograph shipped a
+      # category hub pointing at a file that no longer existed.
+      - name: Reconcile the whole site (Wave 320)
+        run: node scripts/reconcile.js
         continue-on-error: true
 
       - name: Commit + push
