@@ -92,6 +92,10 @@ jobs:
           SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
           POST_MODE: morning
           TARGET_DATE: ${{ steps.target.outputs.date }}
+          # 2026-07-25: X-only. Buffer drains 1 slot/day/channel (2026-07-23 cut);
+          # FB's one daily slot is the reel below. Without this, FB got 2-3
+          # posts/day queued and the backlog published days stale.
+          SKIP_FACEBOOK: 'true'
         run: node post-to-buffer.js
 
       - name: Check if today's Reel video exists

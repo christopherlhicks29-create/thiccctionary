@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-25",
+    "word": "Loaf, Meatloaf",
+    "pronunciation": "/LOAF, MEET-loaf/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A culinary entity of formidable density, characterized by its homogenous composition and substantial profile, typically cloaked in a glaze of ambiguous origin.",
+      "<em>colloq.</em> A kitchen heavyweight that arrives at the table with the gravitas of a redbrick bungalow."
+    ],
+    "example": "The buffet centerpiece was a thiccc meatloaf straining its aluminum containment, demanding respect by sheer volume.",
+    "etymology": "From Middle English <em>lof</em>, meaning 'a mass of bread', combined with 'meat', from Old English <em>mete</em>, signifying 'food in general'. The redundancy of the term mirrors its culinary ambition.",
+    "image": "images/2026-07-25-loaf-meatloaf-4l9c.jpg",
+    "caption": "Plate CVI., A thiccc meatloaf surveyed in the waning afternoon light.",
+    "tags": [
+      "culinary",
+      "domestic",
+      "girth"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 7,
+    "photographer": "Martinet Sinan",
+    "photographerUrl": "https://unsplash.com/@foodfusionfrenzy",
+    "unsplashUrl": "https://unsplash.com/photos/a-loaf-of-meatloaf-on-a-cutting-board-with-a-sprig-of-u0gs_AzC9CQ",
+    "socialCaptions": {
+      "morning": "Loaf, Meatloaf.\nAn ode to the 1930s—a time when economy met aspiration.\nA dense biography of leftovers, bound by breadcrumbs.\nThe Great Depression had its own culinary monument.",
+      "afternoon": "Loaf, Meatloaf.\nA 9x5 pyrex challenges its dimensions.\nA glaze of ketchup—origin uncertain—seals the deal.\nThicccer: this, or a standard brick?\n#LoafMeatloaf",
+      "evening": "From the archives, Loaf, Meatloaf.\nOnce a staple of 1950s Americana—now a nostalgic heavyweight.\nThe stovetop's perennial challenger, clocking in at 350°F.\nA culinary time capsule wrapped in foil.",
+      "reels": "Loaf, Meatloaf.\nA culinary monolith, slicing through generations.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-07-24",
     "word": "Mango, Honey Ataulfo",
     "pronunciation": "/man-go, hun-nee a-TOL-fo/",

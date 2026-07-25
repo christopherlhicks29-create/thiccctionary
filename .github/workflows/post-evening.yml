@@ -1,11 +1,14 @@
 name: Post Evening (Archive Throwback)
 
 # Posts a random older entry from the archive to all 3 platforms.
-# Runs daily at 03:00 UTC = 9pm Mountain Time / 11pm Eastern (previous day).
+#
+# 2026-07-25: daily cron DISABLED. Buffer publish cadence was cut to 1 slot/day
+# per channel on 2026-07-23, but supply stayed at 2-3 posts/day, so the queue
+# backlog grew ~1-2 posts/day/channel and content was publishing 2+ days stale.
+# Supply now matches drain: X gets the morning static, FB+IG get the daily reel.
+# Fire manually via workflow_dispatch for one-off throwbacks.
 
 on:
-  schedule:
-    - cron: '0 3 * * *'
   workflow_dispatch:
 
 jobs:
