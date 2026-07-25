@@ -51,6 +51,9 @@ jobs:
       - name: Point articles at their own OG cards (Wave 314)
         run: node scripts/sync-article-og.js
         continue-on-error: true
+      - name: Offer a way to subscribe (Wave 317)
+        run: node scripts/sync-subscribe.js
+        continue-on-error: true
       - name: Complete share cards (Wave 316)
         run: node scripts/sync-social-cards.js
         continue-on-error: true
