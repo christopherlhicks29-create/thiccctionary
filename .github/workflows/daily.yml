@@ -311,6 +311,10 @@ jobs:
         working-directory: scripts
         run: node sync-article-og.js
         continue-on-error: true
+      - name: Complete share cards (Wave 316)
+        working-directory: scripts
+        run: node sync-social-cards.js
+        continue-on-error: true
       - name: Reconcile og:image dimensions (Wave 311b)
         working-directory: scripts
         run: node sync-og-dimensions.js

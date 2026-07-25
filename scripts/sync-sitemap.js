@@ -99,6 +99,34 @@ async function exists(p) {
   try { await fs.access(path.join(ROOT, p)); return true; } catch { return false; }
 }
 
+// The disk file a public URL is served from. The inverse of how every loop
+// below builds a loc, kept in one place so the two cannot disagree.
+function diskPathFor(loc) {
+  if (!loc.startsWith(SITE)) return null;
+  const route = loc.slice(SITE.length) || '/';
+  if (route === '/') return 'index.html';
+  return route.endsWith('/') ? `${route.slice(1)}index.html` : route.slice(1);
+}
+
+// Wave 314: a page that tells robots not to index it has no business in the
+// sitemap -- a sitemap is a list of pages you are asking to have indexed, so
+// listing a noindex page is a direct contradiction and Search Console reports
+// it as an error. /foreword-journal/ was doing exactly that: noindex,nofollow
+// in its head and priority 0.5 in the sitemap.
+//
+// Read from the page rather than added to the EXCLUDE list above, because the
+// page already states this about itself. A typed exclusion is a second copy of
+// a fact that is right there in the file, and it goes stale the day someone
+// adds or removes a noindex without remembering this script exists.
+async function isNoindex(rel) {
+  if (!rel) return false;
+  try {
+    const html = await fs.readFile(path.join(ROOT, rel), 'utf8');
+    const m = html.match(/<meta[^>]+name="robots"[^>]*content="([^"]*)"/i);
+    return !!m && /\bnoindex\b/i.test(m[1]);
+  } catch { return false; }
+}
+
 async function readJson(rel, fallback) {
   try { return JSON.parse(await fs.readFile(path.join(ROOT, rel), 'utf8')); }
   catch { return fallback; }
@@ -119,10 +147,15 @@ export async function syncSitemap({ check = false, quiet = false } = {}) {
   const added = [];
   const removed = [];
 
-  // --- drop anything on the exclude list ------------------------------------
+  // --- drop anything excluded, or anything the page itself says is noindex ---
+  const noindexLocs = new Set();
+  for (const loc of present) {
+    if (await isNoindex(diskPathFor(loc))) noindexLocs.add(loc);
+  }
   sm = sm.replace(/\s*<url>(?:(?!<\/url>)[\s\S])*?<\/url>/g, (block) => {
     const m = block.match(/<loc>([^<]+)<\/loc>/);
-    if (m && EXCLUDE.some(re => re.test(m[1]))) { removed.push(m[1]); return ''; }
+    if (!m) return block;
+    if (EXCLUDE.some(re => re.test(m[1])) || noindexLocs.has(m[1])) { removed.push(m[1]); return ''; }
     return block;
   });
 
@@ -137,6 +170,7 @@ export async function syncSitemap({ check = false, quiet = false } = {}) {
       : route.endsWith('/') ? `${route.slice(1)}index.html`
       : route.slice(1);
     if (!(await exists(diskPath))) continue;
+    if (await isNoindex(diskPath)) continue;
     additions.push(urlBlock(loc, priority));
     added.push(loc);
   }
