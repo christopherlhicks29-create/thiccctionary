@@ -40,6 +40,9 @@ jobs:
       - name: Sync sitemap (Wave 303)
         run: node scripts/sync-sitemap.js
         continue-on-error: true
+      - name: Fix heading hierarchy (Wave 304)
+        run: node scripts/fix-heading-hierarchy.js
+        continue-on-error: true
       - name: Commit and push
         run: |
           git config user.email "actions@github.com"

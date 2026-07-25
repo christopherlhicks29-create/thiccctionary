@@ -265,6 +265,11 @@ jobs:
         run: node sync-sitemap.js
         continue-on-error: true
 
+      - name: Fix heading hierarchy (Wave 304)
+        working-directory: scripts
+        run: node fix-heading-hierarchy.js
+        continue-on-error: true
+
       - name: Build vertical Reel video
         working-directory: scripts
         env:
