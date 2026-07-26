@@ -606,3 +606,13 @@ The current copy is functional but a bit defensive (heavy on the "rules are not 
 **Fix when picked up:** generate the PDFs from the live pages in the build (headless render or a doc-to-pdf script), or regenerate manually after material page changes and add a site-health check comparing PDF mtime/size against page changes.
 
 **Trigger:** any session touching the reference documents, or if Christopher mentions the PDFs.
+
+---
+
+## Entry corrections don't propagate to already-queued Buffer posts
+
+**Observed 2026-07-26:** the Hummer reel published Jul 25 with the pre-correction "H1" caption (entry was corrected to H2 on 07-23), and the mango reel published with the old sliced-mango image (entry photo was fixed to a whole mango on 07-24). Both posts were created before the corrections and sat in the queue across the fix.
+
+**Fix shape:** when a correction lands (regenerate-images run, entry text edit), scan the Buffer queue for pending posts referencing that entry's date/slug and update or flag them. `scripts/buffer-queue.js` already knows how to list the queue; needs an update/delete-and-recreate path plus a hook in the correction workflows.
+
+**Trigger to surface this:** next time an entry correction ships, or if the queue depth grows again (longer queue = longer exposure window; at ~1-5 posts/channel it's days).

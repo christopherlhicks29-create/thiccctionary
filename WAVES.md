@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 309 (2026-07-26, PO session): daily posts were queue-lagging 2-5 days; today hand-fixed, schema chase shipped
+
+- Found in the Buffer sweep: mode:'addToQueue' + the 1-slot/day cadence (07-23) + legacy backlog (18 posts) meant TODAY's onion entry posts were scheduled Jul 31 (X) and Aug 1 (FB reel) - the site and the socials were drifting days apart. Yesterday's supply-side fix (evening cron disabled) stops the backlog growing but never drains it.
+- Hand-fix, live now: moved the onion post/reel to top of queue on X, FB, and IG in the Buffer UI. All three channels publish today's entry today. No deletions.
+- Durable fix needs Buffer's real scheduling schema (does CreatePostInput take dueAt? what are the mode enum values?). introspect-buffer.yml now fires on a sentinel push (data/.fire-introspect-buffer) and commits output to audits/buffer-schema/ - autonomous sessions cannot workflow_dispatch or read run logs. introspect-buffer.js additionally chases every enum referenced by CreatePostInput plus candidate scheduling types. Sentinel fired this session; next step is reading the dump and pinning morning+reels posts to same-day.
+- Also observed, filed to QUEUED-FOLLOWUPS: entry corrections do not propagate to already-queued posts. The Hummer reel published Jul 25 with the pre-correction H1 caption, and the mango reel published with the old sliced-mango image. Queue is only ~1-5 posts/channel deep now, so exposure window is days, not weeks.
+
 ## Wave 307 (2026-07-19, session): reel text safe-zones
 
 - Christopher's phone screenshot of the cake reel showed the headword clipped on both sides and the "thiccc" wordmark buried under Facebook's bottom UI.
