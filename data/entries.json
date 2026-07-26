@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-07-26",
+    "word": "Onion, Walla Walla",
+    "pronunciation": "/wah-lah WAH-lah AH-nee-un/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A bulbous vegetable of significant corpulence, known for its capacious diameter and mild sweetness; commonly found lounging in bulk displays where the spatial dynamics are decidedly in its favor.",
+      "<em>colloq.</em> The agricultural heavyweight of the onion family, often mistaken for a decorative gourd in the autumnal months."
+    ],
+    "example": "He snagged a thiccc Walla Walla onion from the farmer's market, and three tote bags were immediately repurposed.",
+    "etymology": "Named after Walla Walla, a region in Washington State, where this variety thrives due to the fertile loam and generous growing season. The second 'Walla' is there just to emphasize its thicccness.",
+    "image": "images/2026-07-26-onion-walla-walla.jpg",
+    "caption": "Plate CVII., A robust assembly of Walla Walla onions demonstrating their seasonal dominance.",
+    "tags": [
+      "girth",
+      "produce",
+      "natural-specimens",
+      "culinary"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 9,
+    "photographer": "James Lee",
+    "photographerUrl": "https://unsplash.com/@jbl12761",
+    "unsplashUrl": "https://unsplash.com/photos/a-pile-of-onions-sitting-on-top-of-a-pile-of-leaves-GNTjtGcyRBk",
+    "socialCaptions": {
+      "morning": "Onion, Walla Walla.\nCommended for its 6-inch girth—often mistaken for a small planet.\nThis bulb knows how to make an entrance.",
+      "afternoon": "Walla Walla onions: Sweetness proportional to their diameter.\nGrown since the early 1900s, yet still demands a double take.\nRate its thicccness 1-10, if you dare.\nOnion, Walla Walla.",
+      "evening": "From the archives, Onion, Walla Walla.\nFirst cultivated in 1905—still holding its ground.\nThe loam of Washington whispers its name.",
+      "reels": "Onion, Walla Walla.\nA single slice could eclipse the sun.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-07-25",
     "word": "Loaf, Meatloaf",
     "pronunciation": "/LOAF, MEET-loaf/",
