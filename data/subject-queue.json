@@ -6,9 +6,29 @@
   ],
   "queue": [
     {
-      "subject": "Onion, Walla Walla",
-      "query": "large walla walla onion",
-      "category": "Produce & Botanical"
+      "subject": "Slab, Granite Countertop",
+      "query": "granite countertop slab kitchen",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Iceberg, Arctic",
+      "query": "iceberg arctic ocean",
+      "category": "Other"
+    },
+    {
+      "subject": "Lobster, Maine",
+      "query": "maine lobster whole",
+      "category": "Other"
+    },
+    {
+      "subject": "Refrigerator, Commercial",
+      "query": "commercial walk-in refrigerator",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Truck, Monster Bigfoot",
+      "query": "monster truck bigfoot show",
+      "category": "Vehicles & Transport"
     }
   ]
 }
