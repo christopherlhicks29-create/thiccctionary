@@ -616,3 +616,11 @@ The current copy is functional but a bit defensive (heavy on the "rules are not 
 **Fix shape:** when a correction lands (regenerate-images run, entry text edit), scan the Buffer queue for pending posts referencing that entry's date/slug and update or flag them. `scripts/buffer-queue.js` already knows how to list the queue; needs an update/delete-and-recreate path plus a hook in the correction workflows.
 
 **Trigger to surface this:** next time an entry correction ships, or if the queue depth grows again (longer queue = longer exposure window; at ~1-5 posts/channel it's days).
+
+---
+
+## Remove the temporary 3:00 PM Buffer slots once the backlog drains
+
+**Added 2026-07-26 (Wave 310):** all 3 channels got a second daily posting slot (3:00 PM Denver) so the ~15-post evergreen backlog drains at ~1/day/channel while the morning slot is now always taken by the day's fresh post (shareNext). Backlog at add time: X 5, IG 4, FB 6 (after the day's posts).
+
+**Trigger:** any session where the Buffer sweep shows a channel's queue at 0-1 evergreen posts: remove that channel's 3:00 PM slot in Channel Settings -> Posting Schedule so cadence returns to 1x/day. Expected around 2026-08-01.
