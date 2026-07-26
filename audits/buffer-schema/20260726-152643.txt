@@ -1,0 +1,418 @@
+
+=== CreatePostInput ===
+{
+  "data": {
+    "__type": {
+      "name": "CreatePostInput",
+      "inputFields": [
+        {
+          "name": "aiAssisted",
+          "type": {
+            "name": "Boolean",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "assets",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            }
+          }
+        },
+        {
+          "name": "channelId",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "ChannelId",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        },
+        {
+          "name": "draftId",
+          "type": {
+            "name": "DraftId",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "dueAt",
+          "type": {
+            "name": "DateTime",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "ideaId",
+          "type": {
+            "name": "IdeaId",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "metadata",
+          "type": {
+            "name": "PostInputMetaData",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "mode",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "ShareMode",
+              "kind": "ENUM",
+              "ofType": null
+            }
+          }
+        },
+        {
+          "name": "saveToDraft",
+          "type": {
+            "name": "Boolean",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "schedulingType",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "SchedulingType",
+              "kind": "ENUM",
+              "ofType": null
+            }
+          }
+        },
+        {
+          "name": "source",
+          "type": {
+            "name": "String",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "tagIds",
+          "type": {
+            "name": null,
+            "kind": "LIST",
+            "ofType": {
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "name": "TagId",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        },
+        {
+          "name": "text",
+          "type": {
+            "name": "String",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        }
+      ]
+    }
+  }
+}
+
+=== AssetsInput ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== ImageAssetInput ===
+{
+  "data": {
+    "__type": {
+      "name": "ImageAssetInput",
+      "inputFields": [
+        {
+          "name": "metadata",
+          "type": {
+            "name": "ImageMetadataInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "thumbnailUrl",
+          "type": {
+            "name": "String",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "url",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+=== VideoAssetInput ===
+{
+  "data": {
+    "__type": {
+      "name": "VideoAssetInput",
+      "inputFields": [
+        {
+          "name": "metadata",
+          "type": {
+            "name": "VideoMetadataInput",
+            "kind": "INPUT_OBJECT",
+            "ofType": null
+          }
+        },
+        {
+          "name": "thumbnailUrl",
+          "type": {
+            "name": "String",
+            "kind": "SCALAR",
+            "ofType": null
+          }
+        },
+        {
+          "name": "url",
+          "type": {
+            "name": null,
+            "kind": "NON_NULL",
+            "ofType": {
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+=== VideoInput ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== MediaInput ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== enum/scalar chase: Boolean ===
+{
+  "data": {
+    "__type": {
+      "name": "Boolean",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: ChannelId ===
+{
+  "data": {
+    "__type": {
+      "name": "ChannelId",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: DraftId ===
+{
+  "data": {
+    "__type": {
+      "name": "DraftId",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: DateTime ===
+{
+  "data": {
+    "__type": {
+      "name": "DateTime",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: IdeaId ===
+{
+  "data": {
+    "__type": {
+      "name": "IdeaId",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: PostInputMetaData ===
+{
+  "data": {
+    "__type": {
+      "name": "PostInputMetaData",
+      "kind": "INPUT_OBJECT",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: ShareMode ===
+{
+  "data": {
+    "__type": {
+      "name": "ShareMode",
+      "kind": "ENUM",
+      "enumValues": [
+        {
+          "name": "addToQueue",
+          "description": null
+        },
+        {
+          "name": "customScheduled",
+          "description": null
+        },
+        {
+          "name": "shareNext",
+          "description": null
+        },
+        {
+          "name": "shareNow",
+          "description": null
+        }
+      ]
+    }
+  }
+}
+
+=== enum/scalar chase: SchedulingType ===
+{
+  "data": {
+    "__type": {
+      "name": "SchedulingType",
+      "kind": "ENUM",
+      "enumValues": [
+        {
+          "name": "automatic",
+          "description": "The post was created natively on the social network using automatic publishing"
+        },
+        {
+          "name": "notification",
+          "description": "The post was created natively on the social network using notification publishing"
+        }
+      ]
+    }
+  }
+}
+
+=== enum/scalar chase: String ===
+{
+  "data": {
+    "__type": {
+      "name": "String",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: TagId ===
+{
+  "data": {
+    "__type": {
+      "name": "TagId",
+      "kind": "SCALAR",
+      "enumValues": null
+    }
+  }
+}
+
+=== enum/scalar chase: PostSchedulingType ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== enum/scalar chase: CreatePostMode ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== enum/scalar chase: PostMode ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== enum/scalar chase: QueueMode ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== enum/scalar chase: AddToQueueMode ===
+{
+  "data": {
+    "__type": null
+  }
+}
+
+=== enum/scalar chase: PostDueAtInput ===
+{
+  "data": {
+    "__type": null
+  }
+}
