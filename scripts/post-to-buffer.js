@@ -79,7 +79,14 @@ async function postToChannel({ channelId, text, imageUrl, videoUrl, thumbnailUrl
     channelId,
     text,
     schedulingType: 'automatic',
-    mode: 'addToQueue',
+    // Wave 310 (2026-07-26): daily-fresh content (morning static, daily reels)
+    // must not queue-lag behind backlog. These posts are created the evening
+    // before their entry day, so shareNext = the next morning's slot, which is
+    // exactly the entry's own day. Evergreen/weekly modes keep addToQueue and
+    // fill the remaining slots. Enum evidence: audits/buffer-schema/
+    // 20260726-152643.txt (ShareMode = addToQueue | customScheduled |
+    // shareNext | shareNow; dueAt exists but needs date math we don't).
+    mode: (mode === 'morning' || mode === 'reels') ? 'shareNext' : 'addToQueue',
   };
 
   if (mode === 'reels' && videoUrl) {

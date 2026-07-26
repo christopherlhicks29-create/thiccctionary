@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 310 (2026-07-26, PO session): daily posts jump the queue - shareNext, on schema evidence
+
+- Follow-through on Wave 309 within the same session: the schema dump landed (audits/buffer-schema/20260726-152643.txt) and proves ShareMode = addToQueue | customScheduled | shareNext | shareNow, plus dueAt: DateTime on CreatePostInput.
+- post-to-buffer.js: morning + reels posts now use mode:'shareNext'. They are created the evening before their entry day, so "next slot" IS the entry day's morning slot. Evergreen/weekly modes (evening, article, office, cartoons) keep addToQueue and trail behind.
+- Consequence: with every daily slot now consumed by fresh content, the ~15-post evergreen backlog would starve forever. Temporary second slot (3:00 PM) added per channel in the Buffer UI to drain it (~5-7 days), then the slot should be removed - follow-up filed.
+- First live validation: tomorrow morning's posts (created tonight) should all carry the Jul 27 entry.
+
 ## Wave 309 (2026-07-26, PO session): daily posts were queue-lagging 2-5 days; today hand-fixed, schema chase shipped
 
 - Found in the Buffer sweep: mode:'addToQueue' + the 1-slot/day cadence (07-23) + legacy backlog (18 posts) meant TODAY's onion entry posts were scheduled Jul 31 (X) and Aug 1 (FB reel) - the site and the socials were drifting days apart. Yesterday's supply-side fix (evening cron disabled) stops the backlog growing but never drains it.
