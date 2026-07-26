@@ -132,7 +132,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-08-combine-harvester",
+      "at": "2026-07-26T17:55:51.122Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a664a26353caf726925cd6e"
+        },
+        {
+          "service": "facebook",
+          "id": "6a664a26ecad4329a914ee8b"
+        },
+        {
+          "service": "instagram",
+          "id": "6a664a26351863828cf72755"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-07-19T17:51:59.166Z"
+  "lastPostedAt": "2026-07-26T17:55:51.122Z"
 }
