@@ -87,6 +87,15 @@ jobs:
         if: steps.check.outputs.skip != 'true'
         run: rm -f data/regen-queue.json
 
+      - name: Flag queued Buffer posts referencing regenerated entries (Wave 330)
+        if: steps.check.outputs.skip != 'true' && steps.queue.outputs.dates != ''
+        continue-on-error: true
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          ENTRY_DATES: ${{ steps.queue.outputs.dates }}
+        run: node scripts/flag-stale-queued-posts.js
+
       - name: Open Pull Request
         if: steps.check.outputs.skip != 'true' && steps.queue.outputs.dates != ''
         id: open_pr

@@ -1,5 +1,12 @@
 # Thiccctionary Wave Log
 
+## Wave 330 (2026-07-27, PO session): corrections now flag stale queued Buffer posts
+
+- Closes the 07-26 finding: entry corrections never propagated to already-queued Buffer posts (the Hummer H1 reel and the sliced-mango reel both published stale). New scripts/flag-stale-queued-posts.js is REPORT-ONLY: after a regen it scans the queued/scheduled posts (same verified GraphQL shape as buffer-queue.js) for text matching the regenerated entries' headword, comma-head, or image basename, and writes audits/stale-queue-flags/<stamp>.md with post id, channel, dueAt, and excerpt. Nothing is deleted or edited automatically.
+- Wired as a continue-on-error step into all three correction paths: regenerate-entry.yml (report rides the existing commit), regen-on-push.yml and regenerate-text.yml (report rides the PR). Missing creds, no matches, or API failure all exit 0; a regen can never fail because of this step.
+- Also this session: shareNext first live validation PASSED at queue level (all 3 channels had the Jul 27 Granite Countertop entry at today's morning slots, created the evening before); 3PM backlog slots fired on X + IG on 07-26; the FB 3PM mango post failed with a transient image-upload error and a single Retry Now published it. Queues after retry: FB 7 / X 6 / IG 5, on track for the ~08-01 3PM-slot removal.
+- Note: WAVES.md top was 310 but the codebase already references waves through 329 from parallel sessions; this entry takes 330 to avoid a third numbering collision.
+
 ## Wave 310 (2026-07-26, PO session): daily posts jump the queue - shareNext, on schema evidence
 
 - Follow-through on Wave 309 within the same session: the schema dump landed (audits/buffer-schema/20260726-152643.txt) and proves ShareMode = addToQueue | customScheduled | shareNext | shareNow, plus dueAt: DateTime on CreatePostInput.
