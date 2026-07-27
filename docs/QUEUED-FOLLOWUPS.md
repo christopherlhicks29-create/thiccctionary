@@ -611,6 +611,8 @@ The current copy is functional but a bit defensive (heavy on the "rules are not 
 
 ## Entry corrections don't propagate to already-queued Buffer posts
 
+**ADDRESSED 2026-07-27 (Wave 330/330b):** `scripts/flag-stale-queued-posts.js` (report-only) now runs after regenerate-entry, regen-on-push, regenerate-text, AND regenerate-images. It scans queued/scheduled Buffer posts for the regenerated entries and writes `audits/stale-queue-flags/<stamp>.md`. It flags; it does not edit or delete. Remaining gap, deliberate: hand-edits to entries.json that skip the regen workflows get no flag. Proven need same morning: the 07-27 granite image regen shipped while last night's queued posts carried the old image, and all three published stale before the fix landed. Close fully once a flag report has fired in anger.
+
 **Observed 2026-07-26:** the Hummer reel published Jul 25 with the pre-correction "H1" caption (entry was corrected to H2 on 07-23), and the mango reel published with the old sliced-mango image (entry photo was fixed to a whole mango on 07-24). Both posts were created before the corrections and sat in the queue across the fix.
 
 **Fix shape:** when a correction lands (regenerate-images run, entry text edit), scan the Buffer queue for pending posts referencing that entry's date/slug and update or flag them. `scripts/buffer-queue.js` already knows how to list the queue; needs an update/delete-and-recreate path plus a hook in the correction workflows.
