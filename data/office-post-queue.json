@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Tried pottery this morning. Centered the clay wrong. The instructor said \"feel the mass, work with it.\" I nearly said something professional. Caught myself. The bowl came out lopsided. I liked it anyway.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-27T22:19:53.491Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1784932117453",
