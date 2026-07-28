@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Broken since March. I have filed three complaints. The fourth is in draft because I keep revising the opening sentence. Somewhere behind me, a voice has mentioned the previous machine was better. No year given. No model. Just: better.\n\nEliza",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-28T18:53:09.917Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785190790978",
