@@ -6,21 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Iceberg, Arctic",
-      "query": "iceberg arctic ocean",
-      "category": "Other"
-    },
-    {
-      "subject": "Lobster, Maine",
-      "query": "maine lobster whole",
-      "category": "Other"
-    },
-    {
-      "subject": "Refrigerator, Commercial",
-      "query": "commercial walk-in refrigerator",
-      "category": "Domestic Goods"
-    },
-    {
       "subject": "Truck, Monster Bigfoot",
       "query": "monster truck bigfoot show",
       "category": "Vehicles & Transport"
