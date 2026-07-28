@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Watered the ficus this morning. Measured the trunk. 2.3 cm, up from 2.1 in April. I wrote it down. I don't know what I expected to feel. Pride, maybe. I felt pride.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-28T22:17:58.218Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785264786752",
