@@ -6,13 +6,21 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jul 2026 01:28:03 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 17:14:31 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] Filed Replies, Vol. 10</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-07-29.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-07-29.html</guid>
+      <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 10.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>Tree, Sequoia</title>
       <link>https://thiccctionary.com/entries/2026-07-28.html</link>
