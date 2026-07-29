@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-29",
+    "word": "Adobe, Architectural",
+    "pronunciation": "/uh-DOE-bee, ar-ki-TEK-chur-ul/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A construction style renowned for its formidable mass and earthen hues, characterized by thick walls of sun-dried brick. Often observed in Southwestern settings, where it invites a spell of winter warmth.",
+      "<em>colloq.</em> A structure that stands like a fortress against seasonal affective disorder, refusing to let the cold in without a written request."
+    ],
+    "example": "That adobe was so thiccc it could double as a bunker. The red flowers out front were just the garnish.",
+    "etymology": "From Spanish <em>adobe</em>, from Arabic <em>at-tūb</em>, meaning 'the brick', which perhaps underestimates its commitment to permanence.",
+    "image": "images/2026-07-29-adobe-architectural.jpg",
+    "caption": "Plate CX., An adobe building, its thiccc walls embracing the floral embellishments.",
+    "tags": [
+      "architecture",
+      "construction",
+      "landscape"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 9,
+    "photographer": "mk. s",
+    "photographerUrl": "https://unsplash.com/@mk__s",
+    "unsplashUrl": "https://unsplash.com/photos/an-adobe-building-with-red-flowers-in-front-of-it-QV2Mb8ob8Lw",
+    "socialCaptions": {
+      "morning": "Adobe, Architectural. Fortresses of the Southwest.\nThe walls: 24 inches thick, the warmth: immeasurable.\nNew Mexico's answer to winter.",
+      "afternoon": "Adobe, Architectural. \nSun-dried bricks, 3,000 years and counting.\nThicccer: this, or the Great Wall of China? Discuss.\nAdobe, Architectural.",
+      "evening": "From the archives, Adobe, Architectural.\nSanta Fe's skyline—unmoved since 1610.\nWhere thicccness meets historical zoning.",
+      "reels": "Adobe, Architectural.\nA 90% clay, 10% straw recipe for immovable comfort.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-07-28",
     "word": "Tree, Sequoia",
     "pronunciation": "se-KWO-ya",
