@@ -6,9 +6,14 @@
   ],
   "queue": [
     {
-      "subject": "Truck, Monster Bigfoot",
-      "query": "monster truck bigfoot show",
-      "category": "Vehicles & Transport"
+      "subject": "Stone, Megalith Standing",
+      "query": "megalith standing stone",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Refrigerator, Sub-Zero Built-In",
+      "query": "sub-zero built in refrigerator kitchen",
+      "category": "Domestic Goods"
     }
   ]
 }
