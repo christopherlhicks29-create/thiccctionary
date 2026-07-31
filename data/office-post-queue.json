@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "JAIPUR, 0530\n\nChai stall. Third cup. Man next to me hasn't moved in an hour, possibly asleep, possibly dead, hard to say. Filed the copy anyway. Expense report already formatted. The office will not call. They know better by now.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-31T18:50:16.681Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785277074998",
