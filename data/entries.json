@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-31",
+    "word": "Saucer, Satellite Dish",
+    "pronunciation": "/SAW-ser, sa-tuh-lite DISH/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A parabolic reflector engineered to receive or transmit data signals, often characterized by an exaggerated depth and breadth that challenges conventional suburban landscapes.",
+      "<em>colloq.</em> The reason a backyard barbecue suddenly feels like a NASA mission control, especially when viewed astern, aglow in raking light."
+    ],
+    "example": "In Oman, the thiccc satellite dish overshadowed the entire block, giving new meaning to 'home entertainment'.",
+    "etymology": "From French <em>soucoupe</em> ('saucer') and Middle English <em>dish</em> ('receptacle'), combined in the modern era to describe a device which, ironically, serves nothing edible.",
+    "image": "images/2026-07-31-saucer-satellite-dish.jpg",
+    "caption": "Plate CXII., Satellite dish observed in its natural suburban habitat.",
+    "tags": [
+      "architecture",
+      "landscape",
+      "industrial"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Erik Esly",
+    "photographerUrl": "https://unsplash.com/@lensofbbb",
+    "unsplashUrl": "https://unsplash.com/photos/men-unload-satellite-dish-from-truck-on-street-cR_S-RwJEj0",
+    "socialCaptions": {
+      "morning": "Saucer, Satellite Dish.\nDeployed in 1962 by NASA—measuring 85 feet across.\nBroadcasting thicccness since the dawn of space-age suburbia.",
+      "afternoon": "The Arecibo Observatory dish—1,000 feet across, now retired.\nDared to capture whispers from the cosmos.\nThicccer: this, or a small parking lot?\nSaucer, Satellite Dish.",
+      "evening": "From the archives, Saucer, Satellite Dish.\n1982. A suburban backyard.\nThe dish claimed more space than the family pool.\nTelevision never looked so... all-consuming.",
+      "reels": "In 1978, a dish in New Mexico saw first light.\n80 feet wide, demanding respect from both sky and soil.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-07-30",
     "word": "Hydraulic Excavator, Large Bucket",
     "pronunciation": "hy-DRAUL-ik ex-ca-VAY-tor, larj BUCK-et",
