@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to Cassaro's tonight. Ordered the veal. I have ordered the veal for eleven years. The waiter did not ask. That is the correct amount of mass for a Tuesday.\n\nBartholomew",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-07-31T22:17:03.948Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785523813737",
