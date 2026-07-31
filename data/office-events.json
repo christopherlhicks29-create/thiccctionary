@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1785523813739",
+      "date": "2026-07-31",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about spider-dispatches: \"JAIPUR, 0530\n\nChai stall. Third cup. Man next to me hasn't moved in an hour, possibly asleep, possib...\""
+    },
+    {
       "id": "auto-1785277075000",
       "date": "2026-07-28",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-07-04",
       "byline_id": "margie",
       "summary": "Margaret posted about personal life: a remarkable person you met whom no reader has heard of: \"Lunch in Antibes with Gilles Marceaux, who restores pipe organs for a living. He described one in Ly...\""
-    },
-    {
-      "id": "auto-1783117019971",
-      "date": "2026-07-03",
-      "byline_id": "hugh",
-      "summary": "Hugh posted about Mattress, Pillow-Top King: \"Recorded the pillow-top entry this morning. The script called for a pause after \"dominant.\" I held i...\""
     }
   ]
 }
