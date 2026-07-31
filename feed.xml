@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jul 2026 01:21:56 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 01:47:42 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Saucer, Satellite Dish</title>
+      <link>https://thiccctionary.com/entries/2026-07-31.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-07-31.html</guid>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A parabolic reflector engineered to receive or transmit data signals, often characterized by an exaggerated depth and breadth that challenges conventional suburban landscapes.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-07-31-saucer-satellite-dish.jpg" type="image/jpeg" length="226716" />
+      <category>architecture</category><category>landscape</category><category>industrial</category>
+    </item>
     <item>
       <title>Hydraulic Excavator, Large Bucket</title>
       <link>https://thiccctionary.com/entries/2026-07-30.html</link>
