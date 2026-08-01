@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1785622369583",
+    "created": "2026-08-01T22:12:49.583Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "office",
+    "text": "Rodrigo cut the Époisses this morning. Perfect. I filed the piece from the terrace. The publication has been in continuous operation since Uncle Bertram founded it, and I see no reason the terrace should not count as the office.\n\nMargaret",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1785608853072",
     "created": "2026-08-01T18:27:33.072Z",
     "byline_id": "eli",
