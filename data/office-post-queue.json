@@ -7,7 +7,11 @@
     "topic_kind": "thiccc",
     "text": "Counted four satellite dishes on the walk in today. One per block, roughly. The biggest one faced slightly wrong, like it gave up on the signal and started listening to the street instead. Relatable, honestly.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-01T18:27:35.364Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785536220443",
