@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Rodrigo cut the Époisses this morning. Perfect. I filed the piece from the terrace. The publication has been in continuous operation since Uncle Bertram founded it, and I see no reason the terrace should not count as the office.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-01T22:12:52.587Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785608853072",
