@@ -6,11 +6,6 @@
   ],
   "queue": [
     {
-      "subject": "Refrigerator, Commercial",
-      "query": "commercial walk-in refrigerator",
-      "category": "Domestic Goods"
-    },
-    {
       "subject": "Steam Locomotive, Big Boy",
       "query": "big boy locomotive 4014",
       "category": "Vehicles & Transport"
