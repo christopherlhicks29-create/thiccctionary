@@ -1,5 +1,23 @@
 # Queued Follow-ups
 
+## Real catalog gap: 2026-08-01 has no entry (root cause found, fix scoped, NOT yet shipped)
+
+**Found 2026-08-02** while chasing why `reel-video-yesterday` kept failing in outcome-verify: the recovery attempt errored `No entry for 2026-08-01` from `build-tiktok-video.js`. Checked `data/entries.json` and `entries/` directly -- confirmed, there is no 2026-08-01 record and no `entries/2026-08-01.html`. The homepage's "Recently Catalogued" rail jumps straight from Jul 31 to Aug 2.
+
+**What happened:** `outcome-verify.yml`'s daily-entry recovery step fired the `.fire-daily` sentinel + `workflow_dispatch daily.yml` **six times** across 2026-08-01 (commits 682fd71, 93620fc, 9957935, ee4ca14, ee8b174, 5a7acac) trying to recover the missing entry, and every attempt still failed to land one -- no `audits/failed-runs/` or `audits/dead-subjects/` entry exists for any of those runs, so the actual error was never captured (a second gap: the failure-handler that caught today's TikTok failure apparently isn't wired to every `daily.yml` failure mode). By the time 2026-08-02's cron ran and succeeded, `outcome-verify` only checks *today's* date, so it stopped complaining -- 08-01 was silently left behind for good.
+
+**Why it wasn't backfilled this session:** `generate-daily.js` already honors a `TARGET_DATE` env var (confirmed by reading the source, line ~718/739) but `daily.yml` never wires it through anywhere -- the workflow always generates for the literal system date, and its `workflow_dispatch` only accepts `force_regenerate` (boolean, today only). There's no way to ask the live daily pipeline for a specific past date without editing the workflow. I chose not to hand-edit `daily.yml` (the live cron every other day depends on) without being able to test the change first -- and I have no OpenAI/Anthropic/Unsplash keys in this sandbox to run `generate-daily.js` locally, so hand-fabricating the entry content myself was the only alternative, which fails the same quality/editorial-sanity bar that sank the fabricated "Kettle, Industrial F350" entry in May. A rushed low-quality entry to fill a date is worse than a visible gap.
+
+**Fix shape for next session (or Christopher, if he wants it sooner):**
+1. Add a `target_date` input to `daily.yml`'s `workflow_dispatch` (string, optional). When set, pass it as `TARGET_DATE` env to the generate step and use it (not `date -u +%Y-%m-%d`) in the "Skip if today's entry already exists" collision check.
+2. Test the change on a **workflow_dispatch dry run for a date that doesn't collide** (e.g. re-target today with `force_regenerate` still working) before trusting it against a live gap.
+3. Then dispatch it once for `2026-08-01` with a subject that doesn't collide with anything already catalogued (check `data/entries.json` first -- avoid repeating May's Sequoia-dup class of bug).
+4. Also worth fixing while in there: wire `daily.yml`'s own failure paths into the same `audits/failed-runs/` handler that already caught today's TikTok failure, so the NEXT six-sentinel-fires-no-progress loop leaves a diagnosable trail instead of nothing.
+
+**Trigger:** next session with room to test a GitHub Actions change carefully, or if Christopher notices the Aug 1 gap and wants it prioritized.
+
+---
+
 ## "Plate N." caption bug, RESOLVED Wave 314
 
 **Found 2026-07-23** (Christopher spotted it live: "Why does it say 'Plate N' under the images?"). `generate-daily.js` told the model to write the caption as literally `"Plate N.,"` with N a placeholder for a step that never existed, so 76 of 106 published entries shipped the placeholder visible under the photo.
