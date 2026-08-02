@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-02",
+    "word": "Pumper Truck, Fire Engine",
+    "pronunciation": "/PUM-per truk, fyr EN-jin/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A specialized firefighting apparatus characterized by its robust water-pumping capabilities and an impressive bulk, typically adorned in vibrant hues, seen especially in its commanding presence when viewed astern.",
+      "<em>colloq.</em> A red behemoth that refuses to let narrow streets define its path, carrying with it the unspoken promise that any hydrant will submit to its will."
+    ],
+    "example": "That thiccc pumper truck rolled up, and the neighborhood hydrants immediately reconsidered their life choices.",
+    "etymology": "From Old French <em>pompe</em> meaning 'pump' and Middle English <em>truk</em> denoting 'vehicle for carrying goods'. The combination implies something both functional and unapologetically grand.",
+    "image": "images/2026-08-02-pumper-truck-fire-engine.jpg",
+    "caption": "Plate CXIII., The majestic hindquarters of a pumper truck, poised for action.",
+    "tags": [
+      "vehicle",
+      "industrial",
+      "construction"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "James Day",
+    "photographerUrl": "https://unsplash.com/@jamesday",
+    "unsplashUrl": "https://unsplash.com/photos/white-and-green-firetruck-with-e-843-plate-gYDJySuVLdw",
+    "socialCaptions": {
+      "morning": "Pumper Truck, Fire Engine—42,000 pounds of hydraulic bravado. \nThe hydrants know who’s in charge.",
+      "afternoon": "When it deploys its 1,000 gallons per minute, even Niagara takes notes. \nThicccer than a naval destroyer? Debate ensues.\n#PumperTruckFireEngine",
+      "evening": "From the archives, Pumper Truck, Fire Engine.\nIn service since 1901, mastering the art of aqueous diplomacy.\nThe streets still whisper its tales.",
+      "reels": "In 60 seconds or less: Pumper Truck, Fire Engine—an aqueous colossus. \nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-07-31",
     "word": "Saucer, Satellite Dish",
     "pronunciation": "/SAW-ser, sa-tuh-lite DISH/",
