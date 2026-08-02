@@ -82,8 +82,29 @@ function buildPage({ meta, headline, bodyHtml, slug }) {
   // title costs nothing while a severed one costs the click. Drop the suffix
   // when it doesn't fit; never cut the headline itself.
   const clamp = (str, max) => str.length <= max ? str : str.slice(0, max).replace(/\s+\S*$/, '');
+  // Wave 332: site-health's <title>-only budget is 95 chars for articles/.
+  // Wave 303 was right that a mid-word slice reads as a broken fragment in
+  // the SERP -- but a bare headline over 95 chars (e.g. "...Is Also, One
+  // Regrets to Report, the Least Thiccc Object We Have Ever Measured", 108
+  // chars) still trips the health check every day, forever, with nothing to
+  // show for it since h1/og/schema keep the untouched headline regardless.
+  // Clamp <title> ONLY (not headline, not og:title, not schema headline) at
+  // the last clause boundary (', ' or '. ') under 95 chars; only fall back
+  // to a word-boundary slice if no clause boundary exists in range.
+  // Only a period is a reliable "complete thought" boundary -- commas are
+  // too ambiguous (a mid-parenthetical comma reads as a worse fragment than
+  // no clamp at all, per Wave 303's original finding). If there's no period
+  // under budget, leave the title long rather than risk a broken-looking cut.
+  const clampAtSentence = (str, max) => {
+    if (str.length <= max) return str;
+    const window = str.slice(0, max);
+    const lastPeriod = window.lastIndexOf('. ');
+    if (lastPeriod > max * 0.4) return str.slice(0, lastPeriod + 1);
+    return str;
+  };
   const titleSuffix = ', The Thiccc Beat';
-  const title = (headline + titleSuffix).length <= 70 ? headline + titleSuffix : deDash(headline);
+  const withSuffix = headline + titleSuffix;
+  const title = withSuffix.length <= 70 ? withSuffix : clampAtSentence(deDash(headline), 95);
   const desc = clamp(deDash(`${meta.author} on ${meta.subject}. Ruling: ${meta.ruling}. The Thiccc Beat, the desk reacts to the news.`), 165);
   const ogImg = `https://thiccctionary.com/articles/og/${slug}.png`;
   const url = `https://thiccctionary.com/articles/${slug}.html`;
