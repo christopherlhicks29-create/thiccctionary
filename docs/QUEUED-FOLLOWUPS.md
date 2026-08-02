@@ -1,6 +1,6 @@
 # Queued Follow-ups
 
-## Real catalog gap: 2026-08-01 has no entry (root cause found, fix scoped, NOT yet shipped)
+## Real catalog gap: 2026-08-01 has no entry -- target_date wiring SHIPPED (Wave 333), backfill NOT yet dispatched
 
 **Found 2026-08-02** while chasing why `reel-video-yesterday` kept failing in outcome-verify: the recovery attempt errored `No entry for 2026-08-01` from `build-tiktok-video.js`. Checked `data/entries.json` and `entries/` directly -- confirmed, there is no 2026-08-01 record and no `entries/2026-08-01.html`. The homepage's "Recently Catalogued" rail jumps straight from Jul 31 to Aug 2.
 
@@ -14,7 +14,11 @@
 3. Then dispatch it once for `2026-08-01` with a subject that doesn't collide with anything already catalogued (check `data/entries.json` first -- avoid repeating May's Sequoia-dup class of bug).
 4. Also worth fixing while in there: wire `daily.yml`'s own failure paths into the same `audits/failed-runs/` handler that already caught today's TikTok failure, so the NEXT six-sentinel-fires-no-progress loop leaves a diagnosable trail instead of nothing.
 
-**Trigger:** next session with room to test a GitHub Actions change carefully, or if Christopher notices the Aug 1 gap and wants it prioritized.
+**Update 2026-08-02 (Wave 333):** shipped the `target_date` wiring from step 1 above. `daily.yml`'s `workflow_dispatch` now accepts an optional `target_date: string` input; when set it overrides `date -u +%Y-%m-%d` in the collision check, the `TARGET_DATE` env passed to `generate-daily-with-retry.js` (already reads `process.env.TARGET_DATE || today()`, confirmed in source), the "Verify entry actually changed" check, and the PR metadata step. When the input is empty/unset (every `schedule` and `push` trigger, and any `workflow_dispatch` that doesn't set it), all four spots fall through to the exact same `date -u +%Y-%m-%d` as before -- verified by reading `${{ inputs.target_date }}` renders as empty string outside `workflow_dispatch`, so `[ -n "" ]` is false. Confirmed via `python3 -c "import yaml; yaml.safe_load(...)"` that the YAML still parses. **NOT dispatched or live-tested** -- this sandbox has no `gh` CLI and `api.github.com` is proxy-blocked (403), so I cannot fire `workflow_dispatch` or read run logs myself. Step 2's dry-run and step 3's actual `2026-08-01` backfill both still need a session with either Chrome (drive the Actions tab UI) or Christopher dispatching it directly: Actions -> "Daily Thiccc, Generate Draft PR" -> Run workflow -> target_date=`2026-08-01`, force_regenerate=false (2026-08-01 doesn't exist yet so the collision check will proceed on its own).
+
+**New hypothesis for gap #4 (why the 6 retry attempts left no failure trace):** `daily.yml` has `concurrency: group: daily-cron, cancel-in-progress: true` (Wave 168, prevents two daily runs racing). If the outcome-verify sentinel fired a new `workflow_dispatch` before the previous attempt finished, the concurrency group would CANCEL the in-flight run rather than let it fail -- and the "Capture failure trace" step's `if: always() && failure()` condition does not fire on a cancelled run (GitHub Actions treats cancelled as a distinct conclusion from failure). That would explain 6 attempts, 0 traces, with no code bug required. Not confirmed (would need the actual run list/timing from the Actions tab, which needs `gh`/API access this sandbox doesn't have) -- flagging as the leading theory for whoever picks this up with UI access, before assuming the failure-handler itself is broken.
+
+**Trigger:** next session with Chrome/API access to dispatch + watch the backfill run, or Christopher doing it himself (one click, see above).
 
 ---
 

@@ -14,6 +14,10 @@ on:
         description: "Replace today's entry if one already exists (otherwise the workflow exits early)"
         type: boolean
         default: false
+      target_date:
+        description: "Wave 333: backfill a specific past date (YYYY-MM-DD) instead of today. Leave empty for normal operation -- this input is inert unless set."
+        type: string
+        default: ''
   # Manual fire-from-anywhere trigger: touch data/.fire-daily and push.
   # Useful when the cron is failing and we need a daily entry to ship anyway.
   push:
@@ -63,7 +67,12 @@ jobs:
       - name: Skip if today's entry already exists (Wave 188a)
         id: collision
         run: |
-          TODAY=$(date -u +%Y-%m-%d)
+          if [ -n "${{ inputs.target_date }}" ]; then
+            TODAY="${{ inputs.target_date }}"
+            echo "::notice::target_date input set; backfilling $TODAY instead of the live date."
+          else
+            TODAY=$(date -u +%Y-%m-%d)
+          fi
           # Wave 244: autonomous force-regenerate lever. Pushing data/.fire-daily-force
           # (with the dup-guard now in generate-daily.js) lets a slipped duplicate be
           # replaced without a manual workflow_dispatch. Only honored on push events;
@@ -112,6 +121,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          TARGET_DATE: ${{ inputs.target_date }}
           FORCE_REGENERATE: ${{ (inputs.force_regenerate == true || steps.collision.outputs.force == 'true') && 'true' || 'false' }}
           # Wave 248: a sentinel-fired (.fire-daily-force) regen is autonomous dup-cleanup -> only replace if today's entry is still a catalog dup, so parallel sessions can't clobber a good entry. A human workflow_dispatch force stays unconditional.
           REPLACE_ONLY_IF_DUP: ${{ (steps.collision.outputs.force == 'true' && inputs.force_regenerate != true) && 'true' || 'false' }}
@@ -192,7 +202,11 @@ jobs:
           # In that case, set outputs.entry_written=false and continue with exit 0; skip
           # downstream PR steps via the conditional. True silent failures (no bail log)
           # still fail the workflow.
-          TODAY=$(date -u +%Y-%m-%d)
+          if [ -n "${{ inputs.target_date }}" ]; then
+            TODAY="${{ inputs.target_date }}"
+          else
+            TODAY=$(date -u +%Y-%m-%d)
+          fi
           NEW_DATE=$(node -e "const e=require('./data/entries.json'); console.log(e[0].date);")
           NEW_WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
           if [ "$NEW_DATE" != "$TODAY" ]; then
@@ -210,7 +224,11 @@ jobs:
       - name: Read entry metadata + design critique
         id: entry
         run: |
-          DATE=$(date -u +%Y-%m-%d)
+          if [ -n "${{ inputs.target_date }}" ]; then
+            DATE="${{ inputs.target_date }}"
+          else
+            DATE=$(date -u +%Y-%m-%d)
+          fi
           WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
           PHOTOG=$(node -e "const e=require('./data/entries.json'); console.log(e[0].photographer || 'unknown');")
           # Wave 90: parse critique with python3 instead of bash+node-e heredoc.

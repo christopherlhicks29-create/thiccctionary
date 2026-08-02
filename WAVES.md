@@ -1,5 +1,13 @@
 # Thiccctionary Wave Log
 
+## Wave 334 (2026-08-02, PO scheduled resume): daily.yml target_date backfill wiring shipped (not yet dispatched)
+
+- Closes step 1 of the 08-01 catalog-gap fix scoped last session (see docs/QUEUED-FOLLOWUPS.md top entry). `daily.yml`'s `workflow_dispatch` now takes an optional `target_date` string input; when set, it overrides the literal `date -u +%Y-%m-%d` in all 3 places that compute it (collision check, verify-entry-written check, PR metadata) and is passed through as `TARGET_DATE` env to `generate-daily-with-retry.js`, which already reads `process.env.TARGET_DATE || today()` (confirmed in source before wiring anything).
+- Every existing trigger path (schedule, push, and workflow_dispatch without target_date) renders `${{ inputs.target_date }}` as an empty string, so `[ -n "" ]` is false and all 3 spots fall through to the identical `date -u +%Y-%m-%d` as before this change -- the live daily cron's default behavior is unchanged. Verified the YAML still parses (`python3 -c "import yaml; yaml.safe_load(...)"`) before committing.
+- **Deliberately NOT dispatched.** This sandbox has no `gh` CLI and `api.github.com` returns 403 through the proxy, so I cannot fire `workflow_dispatch` or read Actions run logs myself -- confirmed both, didn't assume. The actual `2026-08-01` backfill needs a session with Chrome (drive the Actions tab) or Christopher clicking Run workflow himself with `target_date=2026-08-01`.
+- New theory recorded in QUEUED-FOLLOWUPS for why the prior 6 sentinel-retries left zero failure traces: `daily.yml`'s `concurrency: cancel-in-progress: true` (Wave 168) may have cancelled each in-flight attempt before the failure-trace step's `if: always() && failure()` could fire -- cancelled != failed in Actions. Unconfirmed (needs run-log timing this sandbox can't fetch), flagged for whoever has API/UI access next.
+- Buffer/social sweep still blocked (no Chrome this run, same as this session's other work).
+
 ## Wave 333 (2026-08-02, PO scheduled resume): 2 real site-health issues fixed + title-budget clamp shipped
 
 - Buffer/social sweep still blocked this session (Chrome extension not connected, unattended run) -- queue depth, errors, Sent tab, and the ~08-01 3PM-slot removal remain unverified.
