@@ -81,3 +81,41 @@ jobs:
           gh workflow run daily.yml --ref main && echo "Dispatched daily.yml via workflow_dispatch."
         env:
           GH_TOKEN: ${{ github.token }}
+
+      # 2026-08-02: reel-video-yesterday has been failing every hourly run
+      # since 01:43 UTC today with no remediation wired up -- this check
+      # detected the "Build vertical Reel video" step in daily.yml silently
+      # no-oping (it runs with continue-on-error: true) but nothing ever
+      # re-fired the build. Detection without remediation is the same
+      # anti-pattern the daily-entry step above already solves; this closes
+      # the matching gap for the Reel video.
+      - name: Fire Reel-build sentinel if yesterday's video missing
+        if: steps.verify.outcome == 'failure'
+        run: |
+          YESTERDAY=$(date -u -d 'yesterday' +%Y-%m-%d)
+          if [ -f "videos/$YESTERDAY.mp4" ]; then
+            SZ=$(stat -c %s "videos/$YESTERDAY.mp4" 2>/dev/null || echo 0)
+            if [ "$SZ" -ge 100000 ]; then
+              echo "videos/$YESTERDAY.mp4 already present ($SZ bytes), not firing."
+              exit 0
+            fi
+          fi
+          if [ -f "data/.fire-tiktok" ]; then
+            AGE_MIN=$(( ( $(date -u +%s) - $(stat -c %Y data/.fire-tiktok 2>/dev/null || echo 0) ) / 60 ))
+            if [ "$AGE_MIN" -lt 60 ]; then
+              echo "Reel sentinel fired ${AGE_MIN}min ago, not re-firing."
+              exit 0
+            fi
+          fi
+          echo "Firing Reel-build sentinel to recover missing $YESTERDAY video."
+          echo "$YESTERDAY outcome-verify-recovery" > data/.fire-tiktok
+          git add data/.fire-tiktok
+          git commit -m "outcome-verify: fire Reel-build sentinel (missing $YESTERDAY video)"
+          git pull --rebase origin main 2>&1 | tail -3
+          git push origin main 2>&1 | tail -3
+          # Same GITHUB_TOKEN push-suppression issue as the daily sentinel
+          # above (fixed 2026-06-11): the push won't self-trigger, so dispatch
+          # build-tiktok.yml directly.
+          gh workflow run build-tiktok.yml --ref main -f date="$YESTERDAY" && echo "Dispatched build-tiktok.yml via workflow_dispatch."
+        env:
+          GH_TOKEN: ${{ github.token }}
