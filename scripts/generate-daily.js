@@ -191,6 +191,8 @@ ALL OTHER ANIMALS ARE FORBIDDEN: NO sheep, cow, pig, bear, dog, cat, tortoise, g
 
 SCROLL-STOPPING BIAS, this is critical. The reader is scrolling past on social. A clean photo of a regular sofa won't stop them. A real photo of a 2,500-lb championship pumpkin, a Saturn V booster on a transport crawler, a Brutalist concrete bunker, a 40-foot-tall industrial tuba, a sousaphone, a giant hay bale, a Cadbury Creme Egg the size of a microwave, or a comically thicc submarine WILL. The subject's REAL form should be inherently striking, visually absurd in its own right, with no Photoshop or AI needed.
 
+EXTREMITY IS THE BRAND, not just a nice-to-have. Recent entries have drifted toward safe, everyday objects wearing a fancy variety name as a disguise for being ordinary: "Onion, Walla Walla", "Mango, Honey Ataulfo", "Kettle, Cast Iron Tea", "Chair, Beanbag Oversized", "Sundae, Banana Split", "Boot, Snow Pack Insulated", "Cake, Wedding Three-Tier", "Roll, Cinnamon Bun Oversized", "Loaf, Meatloaf", "Engine, V8 Crate", "Slab, Granite Countertop", "Saucer, Satellite Dish", "Adobe, Architectural". Every one of these is a THING FROM AROUND THE HOUSE with a qualifier bolted on. A qualifier cannot rescue a mundane category. STOP producing this pattern. If your candidate is a kitchen item, a piece of furniture, a common fruit/vegetable, or a household appliance — even a fancy or "oversized" one — treat that as a strong signal to reject it and reach further, toward machinery, vehicles, structures, industrial-scale food, or record-holding specimens instead. Household categories are not banned outright, but they should be rare exceptions, not the daily default.
+
 Bias your picks toward subjects that are absurdly thicc IN REALITY. Brands and models help (Saturn V, Sousaphone, Champion Prize Pumpkin, Boeing 747, Chesterfield Sofa). HARD RULE: do NOT invent or borrow model numbers from unrelated product categories. "F350", "F-150", "747", "M1A2" are real Ford trucks, planes, and tanks; they are NOT generic intensifiers. Never paste a vehicle/aircraft model number onto a kitchen, furniture, or appliance subject (no "F350 kettle", no "Boeing 747 sofa", no "M1 toaster"). If you cannot name a real product line for a subject, pick a different subject. Strong absurd-real subjects that would land:
 - Giant gourds and championship-cultivar fruit/veg (record-setting pumpkins, watermelons, rutabagas)
 - Industrial machinery at scale (mining-truck tires, transformer drums, smokestacks, Saturn V boosters, pipe organs)
@@ -233,11 +235,17 @@ Reference for what to AVOID (these were weak):
 - "Big Truck"  ← no specificity. Better: model + qualifier.
 - "Sofa, Standard"  ← mundane. Better: "Sectional, U-Shaped Pit" or "Chesterfield, Tufted Leather"
 
+Reference for shipped subjects that were TOO MUNDANE (household item + fancy qualifier is not enough — do not repeat this pattern, pick something genuinely extreme instead):
+- "Onion, Walla Walla" / "Mango, Honey Ataulfo" / "Kettle, Cast Iron Tea" / "Chair, Beanbag Oversized" / "Sundae, Banana Split" / "Boot, Snow Pack Insulated" / "Cake, Wedding Three-Tier" / "Roll, Cinnamon Bun Oversized" / "Loaf, Meatloaf" / "Engine, V8 Crate" / "Slab, Granite Countertop"
+
+Before answering: silently think of 3 different candidate subjects spanning different categories (at least one should be machinery/vehicle/structure-scale, not food or furniture). Silently rate each 1-10 on "extremityScore": 9-10 = a genuine engineering marvel, world record, or category-defining giant (Saturn V, Bagger 288, Atlantic Giant pumpkin, Antonov An-225); 5-7 = a big/loaded example of an everyday category (oversized chair, giant onion); 1-4 = a totally ordinary object. Only output a subject that scores 8 or higher. If your best idea still scores below 8, that means you haven't reached far enough — pick again.
+
 Schema:
 {
   "subject": "the noun phrase being defined, must follow one of the three style patterns above",
   "unsplashQuery": "a 1-3 word search query for Unsplash that will return relevant photos (e.g. 'concrete mixer' or 'heirloom tomato'). Use the literal object name, not the qualifier.",
-  "category": "one of: aircraft, vehicle, fruit, vegetable, furniture, building, appliance, tool, machinery, instrument, other"
+  "category": "one of: aircraft, vehicle, fruit, vegetable, furniture, building, appliance, tool, machinery, instrument, other",
+  "extremityScore": "your own honest 1-10 rating per the rubric above for the subject you are actually outputting"
 }`;
 
   const res = await openaiChat({
@@ -253,6 +261,29 @@ Schema:
   if (!res.ok) throw new Error(`Subject pick failed: ${res.status} ${await res.text()}`);
   const data = await res.json();
   return JSON.parse(data.choices[0].message.content);
+}
+
+// Wraps pickSubject with one soft retry if the model's own extremityScore is
+// low (< 8) — nudges toward the exaggerated/attention-grabbing bar Christopher
+// asked for (2026-08-02) without ever hard-blocking the daily pipeline (a
+// strict gate here caused multi-day silent skips before, see Wave 209b).
+async function pickSubjectExaggerated(usedWords) {
+  let pick = await pickSubject(usedWords);
+  const score = Number(pick.extremityScore);
+  if (Number.isFinite(score) && score < 8) {
+    console.log(`Subject "${pick.subject}" scored extremityScore ${score} (<8) — retrying once for something more extreme.`);
+    try {
+      const retryUsed = [...usedWords, pick.subject];
+      const retryPick = await pickSubject(retryUsed);
+      const retryScore = Number(retryPick.extremityScore);
+      if (!Number.isFinite(retryScore) || retryScore >= score) {
+        pick = retryPick;
+      }
+    } catch (err) {
+      console.log(`Retry pick failed (${err.message}), keeping original pick.`);
+    }
+  }
+  return pick;
 }
 
 // ---------- 2. Search Unsplash ----------
@@ -887,13 +918,13 @@ async function main() {
     const allPastWords = [...new Set([...entries.map(e => e.word), ...pendingWords, ...(replacedWord ? [replacedWord] : [])])];
     const MAX_DUP_RETRIES = 5;
     let avoidDup = [...usedWords];
-    subjectInfo = await pickSubject(avoidDup);
+    subjectInfo = await pickSubjectExaggerated(avoidDup);
     for (let i = 0; i < MAX_DUP_RETRIES; i++) {
       const dup = subjectFamilyDup(subjectInfo.subject, allPastWords);
       if (!dup) break;
       console.log(`Duplicate-subject guard: "${subjectInfo.subject}" is the same family as already-published "${dup}" (headNoun "${headNoun(subjectInfo.subject)}"). Retry ${i + 1}/${MAX_DUP_RETRIES}.`);
       avoidDup = [...avoidDup, subjectInfo.subject, `anything in the "${headNoun(subjectInfo.subject)}" family (already catalogued as "${dup}")`];
-      subjectInfo = await pickSubject(avoidDup);
+      subjectInfo = await pickSubjectExaggerated(avoidDup);
     }
     const finalDup = subjectFamilyDup(subjectInfo.subject, allPastWords);
     if (finalDup) {
@@ -966,7 +997,7 @@ async function main() {
         break;
       }
       avoidNow.push(subjectInfo.subject);
-      subjectInfo = await pickSubject(avoidNow);
+      subjectInfo = await pickSubjectExaggerated(avoidNow);
       console.log(`Fallback subject (#${attempts}): ${subjectInfo.subject} (query: "${subjectInfo.unsplashQuery}")`);
     }
   }

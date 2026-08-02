@@ -46,6 +46,51 @@ function escFFText(s) {
     .replace(/,/g, '\\,');
 }
 
+// Burned captions, synced approximately (by character-length share of the
+// voiceover's measured duration) so the reel still tells its story when
+// watched muted, which is most of the time on FB/IG/TikTok feeds. Not
+// word-perfect (no ASR pass on the TTS output), but clause-level chunks land
+// close enough to read naturally against the deadpan pacing.
+function splitCaptionChunks(script) {
+  const MAX_LEN = 42; // keep each on-screen line short and legible
+  const sentences = (script.match(/[^.!?]+[.!?]*/g) || [script]).map(s => s.trim()).filter(Boolean);
+  const chunks = [];
+  const wrapWords = (text) => {
+    const words = text.trim().split(/\s+/);
+    let line = '';
+    for (const w of words) {
+      if ((line + ' ' + w).trim().length > MAX_LEN) {
+        if (line) chunks.push(line.trim());
+        line = w;
+      } else {
+        line = (line + ' ' + w).trim();
+      }
+    }
+    if (line) chunks.push(line.trim());
+  };
+  for (const sentence of sentences) {
+    if (sentence.length <= MAX_LEN) { chunks.push(sentence); continue; }
+    for (const part of sentence.split(/,\s*/)) {
+      if (part.length <= MAX_LEN) chunks.push(part.trim());
+      else wrapWords(part);
+    }
+  }
+  return chunks.filter(Boolean);
+}
+
+function buildCaptionTimings(chunks, audioDuration) {
+  const totalChars = chunks.reduce((sum, c) => sum + c.length, 0) || 1;
+  let elapsed = 0;
+  return chunks.map(text => {
+    const share = text.length / totalChars;
+    const dur = Math.max(0.6, share * audioDuration);
+    const start = elapsed;
+    const end = Math.min(audioDuration, elapsed + dur);
+    elapsed = end;
+    return { text, start, end };
+  });
+}
+
 async function generateVoiceover(text, outPath) {
   console.log('Calling OpenAI TTS...');
   const res = await fetch('https://api.openai.com/v1/audio/speech', {
@@ -135,13 +180,37 @@ async function main() {
   const headwordLine = escFFText(headwordText);
   // Image scaled to 920 wide (not 1080) so it clears the side crop, seated
   // between the title block and the wordmark band.
+  // Ken Burns: slow continuous zoom on the (already letterbox-padded) 920x840
+  // frame so the reel has motion instead of sitting on one dead still frame
+  // for 15-20s. Capped at 1.15x over the full clip, gentle enough not to
+  // crop into the subject the photo-critic already verified is fully framed.
   const filterParts = [
-    `[0:v]scale=920:840:force_original_aspect_ratio=decrease,pad=1080:1920:(1080-iw)/2:420:color=${CREAM}[bg]`,
+    `[0:v]scale=920:840:force_original_aspect_ratio=decrease,pad=920:840:(920-iw)/2:(840-ih)/2:color=${CREAM},zoompan=z='min(zoom+0.0012,1.15)':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=920x840:fps=30[kb]`,
+    `[kb]pad=1080:1920:(1080-iw)/2:420:color=${CREAM}[bg]`,
     `[bg]drawtext=fontfile=${FONT}:text='${headwordLine}':fontcolor=${INK}:fontsize=${headFS}:x=(w-text_w)/2:y=210[h1]`,
     `[h1]drawbox=x=194:y=310:w=692:h=3:color=${INK}:t=fill[h2]`,
     `[h2]drawtext=fontfile=${FONT_ITALIC}:text='thiccctionary.com':fontcolor=${OXBLOOD}:fontsize=36:x=(w-text_w)/2:y=346[h3]`,
-    `[h3]drawtext=fontfile=${FONT}:text='thiccc':fontcolor=${INK}:fontsize=160:x=(w-text_w)/2:y=1310:enable='gte(t,2)'[v]`,
   ];
+
+  // Burned captions chained in after the title block, before the "thiccc"
+  // reveal (which must stay the final node feeding [v]).
+  const captionChunks = splitCaptionChunks(script);
+  const captionTimings = buildCaptionTimings(captionChunks, audioDuration);
+  let prevLabel = 'h3';
+  captionTimings.forEach((cue, i) => {
+    const label = `cap${i}`;
+    const fitCaption = Math.floor(1000 / (0.56 * Math.max(cue.text.length, 1)));
+    const capFS = Math.max(34, Math.min(50, fitCaption));
+    const capText = escFFText(cue.text);
+    filterParts.push(
+      `[${prevLabel}]drawtext=fontfile=${FONT}:text='${capText}':fontcolor=white:fontsize=${capFS}:box=1:boxcolor=black@0.55:boxborderw=16:x=(w-text_w)/2:y=1090:enable='between(t\,${cue.start.toFixed(2)}\,${cue.end.toFixed(2)})'[${label}]`
+    );
+    prevLabel = label;
+  });
+
+  filterParts.push(
+    `[${prevLabel}]drawtext=fontfile=${FONT}:text='thiccc':fontcolor=${INK}:fontsize=160:x=(w-text_w)/2:y=1310:enable='gte(t,2)'[v]`
+  );
 
   const ffArgs = [
     '-y',
