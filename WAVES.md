@@ -1,5 +1,15 @@
 # Thiccctionary Wave Log
 
+## Wave 331 (2026-08-02, PO scheduled resume): Reel-video outcome-verify now recovers, not just detects
+
+- Buffer sweep this session was blocked (Chrome extension not connected in this unattended run) -- queue depth/errors/Sent tab/3PM-slot removal (trigger was ~08-01) unchecked, needs a session with browser access.
+- Found via the outcome-verify audit trail: `reel-video-yesterday` had FAILed every hourly run since 2026-08-02 01:43 UTC (videos/2026-08-01.mp4 missing) with zero remediation wired up -- `build-tiktok-video.js` runs `continue-on-error: true` inside daily.yml, so a failed render is silent. The daily-entry check already self-heals (fires a sentinel + workflow_dispatch); the Reel check never did. Detection without remediation is the exact anti-pattern flagged after the 07-05 Bratwurst incident.
+- Fixed: outcome-verify.yml gained a matching recovery step -- on failure, verifies videos/<yesterday>.mp4 is genuinely missing/undersized, guards against re-firing inside 60min via `data/.fire-tiktok` mtime, writes the sentinel, and explicitly `gh workflow run build-tiktok.yml` (push-based triggers from GITHUB_TOKEN commits don't self-fire, same fix as the 06-11 daily case).
+- Manually fired the recovery sentinel for the stuck 2026-08-01 video (PAT push, should self-trigger since it's not a GITHUB_TOKEN commit) -- verify next session that videos/2026-08-01.mp4 landed.
+- pre-ship-check ran in a sparse clone; 3 FAILs were drafts/cartoons/*.png not fetched by this session's sparse-checkout (confirmed present via `git ls-tree origin/main`), unrelated to the change. All script test suites passed.
+- QA'd via web_fetch (no Chrome available): homepage live, 08-02 entry "Pumper Truck, Fire Engine" rendered correctly, caption/photo topic match reads sound, no "Plate N." literal or template artifacts.
+- Also flagging: GitHub PAT (`.gh-token`) is dated 2026-05-04 with a 90-day expiration -- that's today. It still worked for this session's clone/push, but it can die at any time. Regenerating requires Christopher's GitHub login (physical action) -- can't self-serve. Recommend he refresh it via SETUP_GITHUB_TOKEN.bat / github.com/settings/tokens when he has a minute.
+
 ## Wave 330 (2026-07-27, PO session): corrections now flag stale queued Buffer posts
 
 - Closes the 07-26 finding: entry corrections never propagated to already-queued Buffer posts (the Hummer H1 reel and the sliced-mango reel both published stale). New scripts/flag-stale-queued-posts.js is REPORT-ONLY: after a regen it scans the queued/scheduled posts (same verified GraphQL shape as buffer-queue.js) for text matching the regenerated entries' headword, comma-head, or image basename, and writes audits/stale-queue-flags/<stamp>.md with post id, channel, dueAt, and excerpt. Nothing is deleted or edited automatically.
