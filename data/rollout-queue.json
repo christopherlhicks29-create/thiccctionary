@@ -1,13 +1,7 @@
 {
   "_comment": "Phase 1-4 byline rollout queue. The article generator pops the next entry from here BEFORE falling back to weighted random selection. Once empty, normal weighted distribution resumes. Each entry has an optional 'theme_hint' to guide the angle.",
   "version": 1,
-  "queue": [
-    {
-      "byline": "eli",
-      "phase": "4",
-      "theme_hint": "reference 'the ongoing dispute' without naming the Saturn V or the cataloguers. Audience knows. Eli's voice, observational, a small smile in the prose."
-    }
-  ],
+  "queue": [],
   "free_rotation_starts_at": "phase 5",
   "phase_5_plus_notes": "After queue empties, fall back to weighted random selection. Phase 5 (Hugh) and Phase 6 (Spider) will arrive via natural weighted rotation; their weights (2% and 7%) will hit them eventually."
 }
