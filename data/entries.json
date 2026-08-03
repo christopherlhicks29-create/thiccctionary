@@ -1,5 +1,35 @@
 [
   {
+    "date": "2026-08-03",
+    "word": "Giant Gear, Industrial Mechanism",
+    "pronunciation": "/JYE-ant GEER, in-DUS-tree-al meh-KAN-izm/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A massive cogwheel of industrial proportions, typically found in steam-powered engines, demonstrating an unapologetic commitment to rotational grandeur.",
+      "<em>colloq.</em> What you'd expect if a Ferris wheel married a Swiss watch and joined a punk band."
+    ],
+    "example": "At the Bolton Steam Museum, the thiccc giant gear spun languidly, as if time itself were on its payroll.",
+    "etymology": "From Latin 'gigantem,' meaning 'giant,' and Old English 'gēar,' meaning 'toothed wheel.' The concept of rotating excess traced back to the earliest revolutions.",
+    "image": "images/2026-08-03-giant-gear-industrial-mechanism.jpg",
+    "caption": "Plate CXIV., An exemplar of rotational thicccness in its natural habitat.",
+    "tags": [
+      "industrial"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": true,
+    "humorScore": 9,
+    "photoScore": 8,
+    "photographer": "Georg Eiermann",
+    "photographerUrl": "https://unsplash.com/@georgeiermann",
+    "unsplashUrl": "https://unsplash.com/photos/industrial-steam-engine-with-large-black-wheel-and-red-supports--GRfcxFtgX4",
+    "socialCaptions": {
+      "morning": "Giant Gear, Industrial Mechanism.\nWeighs nearly 22 tons.\nSpins dreams and nightmares—often indistinguishable.",
+      "afternoon": "Diameter: 30 feet—once a mere suggestion.\nIt turns with the quiet insistence of inevitability.\nThicccer: this, or an Olympic discus? Consult the scales.\n#GiantGear",
+      "evening": "From the archives, Giant Gear, Industrial Mechanism.\nForged in 1842—a time when size was a statement.\nStill rotates with Victorian precision.",
+      "reels": "Giant Gear: 240 teeth, each a silent sentinel.\nMeasured revolutions, measured existence.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-02",
     "word": "Pumper Truck, Fire Engine",
     "pronunciation": "/PUM-per truk, fyr EN-jin/",
