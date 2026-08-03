@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1785783711831",
+    "created": "2026-08-03T19:01:51.831Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "office",
+    "text": "Counted 312 hydrants. Started as a column, became a notebook, now it's just a thing I do. The one on Mercer has a dent nobody filed a report about. Someone knows how that happened.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1785708740560",
     "created": "2026-08-02T22:12:20.560Z",
     "byline_id": "spider",
