@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-27T06:29:32.572Z",
-  "scanned": 108,
-  "passed": 103,
+  "generated_at": "2026-08-03T06:22:57.179Z",
+  "scanned": 114,
+  "passed": 109,
   "failed": 5,
   "gate": {
     "minScore": 6,
@@ -9,14 +9,25 @@
   },
   "failures": [
     {
-      "date": "2026-07-13",
-      "word": "Trophy, Stanley Cup",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-13-trophy-stanley-cup.jpg",
+      "date": "2026-08-02",
+      "word": "Pumper Truck, Fire Engine",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-02-pumper-truck-fire-engine.jpg",
       "score": 1,
-      "subjectPct": 8,
+      "subjectPct": 48,
       "verdict": "reject",
-      "photoSubject": "a replica of the Stanley Cup in a display case",
-      "critique": "The photo does not show the actual Stanley Cup but rather a replica or representation of it in a display case. The subject is not centered, and the composition includes significant distractions such as the surrounding display and background images. The replica does not meet the criteria for the real object, leading to a rejection.",
+      "photoSubject": "a real fire engine from the front",
+      "critique": "The photo shows the front of a fire engine, not the hindquarters of a pumper truck as specified. The subject is not centered as the description suggests, and the angle does not match the description of 'hindquarters.' The image is clear and well-lit, but it does not meet the criteria for the specified subject. Therefore, it cannot be used for the intended entry.",
+      "passed": false
+    },
+    {
+      "date": "2026-07-14",
+      "word": "Helmet, Astronaut",
+      "imageUrl": "https://thiccctionary.com/images/2026-07-14-helmet-astronaut.jpg",
+      "score": 1,
+      "subjectPct": 48,
+      "verdict": "reject",
+      "photoSubject": "an astronaut suit with a helmet",
+      "critique": "The photo primarily depicts an astronaut suit, not just the helmet. The helmet is part of the suit, but the subject 'Helmet, Astronaut' suggests a focus solely on the helmet itself. The suit dominates the frame, making it unclear if the helmet is the main subject. Additionally, the reflection in the helmet visor adds some visual interest but does not contribute to the clarity of the subject. The image is well-centered and free of clutter, but it fails the identity test by not isolating the helmet as the primary focus.",
       "passed": false
     },
     {
@@ -24,32 +35,21 @@
       "word": "Engine, V8 Crate",
       "imageUrl": "https://thiccctionary.com/images/2026-07-21-engine-v8-crate.jpg",
       "score": 1,
-      "subjectPct": 100,
+      "subjectPct": 64,
       "verdict": "reject",
       "photoSubject": "a collection of various engines with fans",
-      "critique": "The photo shows a collection of various engines with fans, not a single V8 crate engine. The engines are cluttered and the focus is not on a specific V8 crate engine, making it difficult to identify the intended subject. The image lacks the documentary clarity needed for a dictionary entry, and the presence of multiple engines creates visual clutter. The subject is not centered or isolated, and the image does not fit the brand's style of showcasing a single, imposing example of the subject.",
+      "critique": "The photo does not specifically show a V8 crate engine but rather a collection of various engines, making it difficult to identify the subject as the named object. The engines are cluttered together, and the framing does not focus on a single V8 crate engine. The presence of multiple engines and other items in the background creates distractions, and the subject is not clearly defined. This image fails the identity test, as it does not depict the specific subject required.",
       "passed": false
     },
     {
       "date": "2026-07-18",
       "word": "Boot, Snow Pack Insulated",
       "imageUrl": "https://thiccctionary.com/images/2026-07-18-boot-snow-pack-insulated.jpg",
-      "score": 8,
+      "score": 7,
       "subjectPct": 24,
-      "verdict": "ship",
+      "verdict": "needs-review",
       "photoSubject": "a real pair of insulated snow pack boots on a snowy log",
-      "critique": "The photo effectively showcases a pair of insulated snow pack boots, meeting the subject criteria. The boots are prominently displayed and centered, with a clear view of their sturdy build, fitting the documentary style. The rustic, snowy setting enhances the theme of winter resilience. However, the background is somewhat busy with tents and trees, which slightly distracts from the boots as the focal point. Overall, the image captures the essence of the subject well, making it suitable for publication.",
-      "passed": false
-    },
-    {
-      "date": "2026-06-05",
-      "word": "Cannonball, Naval",
-      "imageUrl": "https://thiccctionary.com/images/2026-06-05-cannonball-naval.jpg",
-      "score": 9,
-      "subjectPct": 16,
-      "verdict": "ship",
-      "photoSubject": "a real stack of naval cannonballs",
-      "critique": "The photo clearly depicts a stack of naval cannonballs, which matches the subject. The composition is well-balanced, with the cannonballs prominently centered against a textured wall, enhancing their historical context. The lighting and focus are excellent, giving the cannonballs a solid and imposing appearance. The only minor drawback is the presence of the wall and window, which slightly distracts from the subject, but overall, it fits well as a documentary-style image.",
+      "critique": "The photo effectively showcases a pair of insulated snow pack boots, meeting the subject criteria. The boots are prominently displayed and centered, though the background is somewhat busy with trees and tents, which can be distracting. The setting adds context but slightly detracts from the focus on the boots. The boots appear sturdy and appropriate for winter, aligning with the subject description. However, the overall composition could benefit from a tighter crop to emphasize the boots more and reduce background clutter.",
       "passed": false
     },
     {
@@ -60,7 +60,7 @@
       "subjectPct": 24,
       "verdict": "ship",
       "photoSubject": "a real Honey Ataulfo mango",
-      "critique": "The photo clearly depicts a Honey Ataulfo mango, fulfilling the subject requirement. The mango is well-centered and the image is free of distractions, focusing solely on the fruit. The lighting is good, highlighting the mango's natural color and texture. The composition fits the brand's documentary style, and the mango appears plump and ripe, fitting the 'thiccc' theme. The only minor improvement could be a slightly tighter crop to enhance focus, but overall, it's an excellent representation.",
+      "critique": "The photo clearly depicts a Honey Ataulfo mango, meeting the subject requirement. The mango is fully visible and well-centered, with a clean background that avoids distractions. The image fits the documentary style, showcasing the mango's distinctive shape and color. The subject is prominent, and the mango appears plump and ripe, aligning with the 'thiccc' theme. The only minor improvement could be a slightly tighter crop to enhance focus, but overall, the image is excellent.",
       "passed": false
     }
   ]
