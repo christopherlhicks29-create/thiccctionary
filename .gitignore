@@ -33,3 +33,27 @@ data/.critique.json
 # Wave 236: editorial-panel cross-post logs MUST commit for autonomous debugging
 !audits/editorial-panel/
 !audits/editorial-panel/**
+
+# Wave 335: daily-run diagnostic logs MUST commit despite *.log above --
+# confirmed 2026-08-03 that daily-stdout, daily-failures, reel-fires,
+# higgsfield-download-runs, office-history-runs, and cartoon-posts had ZERO
+# commits ever (git log --all -- <dir> returns nothing) despite their
+# workflows explicitly tee-ing/copying a .log file and running git add on
+# it every single run. Root cause: git add on a path matched by the
+# blanket *.log rule above silently no-ops (no error), so every
+# "git diff --cached --quiet || commit" check always took the "nothing to
+# commit" branch. Same failure mode Wave 191b/193/236 already fixed for
+# cartoon-runs/higgsfield-upload-runs/editorial-panel -- extending the same
+# pattern to the remaining log-writing audit dirs discovered this session.
+!audits/daily-stdout/
+!audits/daily-stdout/**
+!audits/daily-failures/
+!audits/daily-failures/**
+!audits/reel-fires/
+!audits/reel-fires/**
+!audits/higgsfield-download-runs/
+!audits/higgsfield-download-runs/**
+!audits/office-history-runs/
+!audits/office-history-runs/**
+!audits/cartoon-posts/
+!audits/cartoon-posts/**
