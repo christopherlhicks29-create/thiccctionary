@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Aug 2026 01:45:21 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 05:31:23 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Giant Gear, Industrial Mechanism</title>
+      <link>https://thiccctionary.com/entries/2026-08-03.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-03.html</guid>
+      <pubDate>Mon, 03 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A massive cogwheel of industrial proportions, typically found in steam-powered engines, demonstrating an unapologetic commitment to rotational grandeur.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-03-giant-gear-industrial-mechanism.jpg" type="image/jpeg" length="317430" />
+      <category>industrial</category>
+    </item>
     <item>
       <title>Pumper Truck, Fire Engine</title>
       <link>https://thiccctionary.com/entries/2026-08-02.html</link>
