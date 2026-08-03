@@ -1,5 +1,29 @@
 # Queued Follow-ups
 
+## Instagram reels silently vanishing after Buffer accepts them (found 2026-08-03)
+
+`post-on-merge.yml` run #80 (2026-08-02 evening) posted today's (08-03) reel. The log shows `OK channel 69f62e0e5c4c051afa033677 (post id: 6a702846aacd241cfdb659b9)` -- Buffer's `createPost` mutation returned a `PostActionSuccess` with a real post id for the IG channel, same as it did for FB. FB's copy is live (verified in Buffer's Sent tab, 9:46 AM MDT). IG's copy does not exist anywhere in Buffer: Queue=0, no "Not Published" error banner (FB's stuck Jul 30/Aug 1 reels DO show a visible red banner for the same class of failure), and IG's most recent Sent post is from the day before, not today.
+
+Checked and ruled out: IG channel posting schedule is on, queue is not paused, no visible disconnect/reconnect warning in channel settings.
+
+Leading theory: Buffer/Meta validates video asynchronously after `createPost` returns, and IG's async-failure path drops the post silently while FB's leaves a visible banner. Not confirmed -- would need a verify-after-post query (`scripts/buffer-queue.js` already has a working `posts(input: {filter: {channelIds, status}})` query shape with an `error { message }` field on each post node) run ~60s after the reels post-to-buffer step, filtered to `status: [errored, failed]` for the IG channel, to catch this with evidence instead of guessing. Not shipped 2026-08-03 -- didn't want to guess at untested GraphQL shapes against the live daily cron; the query shape needs to be proven against a real errored post first, ideally in a session with API/Chrome access to iterate quickly.
+
+If this has been happening beyond just today, it plausibly explains any IG follower/engagement stagnation independent of content quality -- worth prioritizing over further reel creative work until confirmed one way or the other.
+
+**Trigger:** next session with Chrome/Buffer access -- watch tomorrow's IG reel the same way (post-on-merge.yml log post id + Buffer Sent tab) to see if it's a every-day pattern or one-off; if it recurs, build the verify-after-post check.
+
+## GitHub PAT expired 2026-08-03 -- needs Christopher's regeneration
+
+`git push` failed with "Invalid username or token" this session (clone/read still worked at session start, so it crossed its expiration boundary mid-session or the read/write paths validate differently). This was flagged as due ~2026-08-02 in three straight prior sessions. Every autonomous git-push workflow is now blocked until regenerated. This session's fixes shipped via the GitHub web editor instead (Chrome was available), which works for small text-file edits but doesn't scale to larger changes or binary files.
+
+**Trigger:** Christopher runs `SETUP_GITHUB_TOKEN.bat` or regenerates at github.com/settings/tokens (Fine-grained tokens tab), then updates `.gh-token` on disk. Next session should save the fresh token to `secret_github_pat.md` per that file's own instructions.
+
+## 6 stale "Regenerated images" PRs open a week+ despite green checks (found 2026-08-03)
+
+PRs #199-207 (image regen bot PRs) are all open, all have a green checkmark, none have merged. Not investigated this session (time-boxed) -- worth checking whether the auto-merge workflow ("Auto-resolve PR conflicts") is actually running against these, or whether they need a manual merge / are stuck on a check that isn't visible from the PR list view.
+
+**Trigger:** next session with a few spare minutes -- open one PR, check its merge status/checks in detail, decide auto-merge-fix vs. manual-merge-once vs. close-as-stale.
+
 ## Real catalog gap: 2026-08-01 has no entry -- target_date wiring SHIPPED (Wave 333), backfill NOT yet dispatched
 
 **Found 2026-08-02** while chasing why `reel-video-yesterday` kept failing in outcome-verify: the recovery attempt errored `No entry for 2026-08-01` from `build-tiktok-video.js`. Checked `data/entries.json` and `entries/` directly -- confirmed, there is no 2026-08-01 record and no `entries/2026-08-01.html`. The homepage's "Recently Catalogued" rail jumps straight from Jul 31 to Aug 2.
