@@ -1,0 +1,138 @@
+# Daily run trace 2026-08-04-182421
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30938248533
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-04
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Pork Shoulder Boston Butt" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Pork Shoulder Boston Butt" query="boston butt pork shoulder roast" (source: queue)
+Subject: Roast, Pork Shoulder Boston Butt (query: "boston butt pork shoulder roast")
+Subject "Roast, Pork Shoulder Boston Butt" returned zero Unsplash results for query "boston butt pork shoulder roast". (attempt 1)
+Fallback subject (#1): Cement Truck, Heavy-Duty (query: "cement truck")
+Found 20 candidate photos.
+Vision picked #2 of 12: This photo clearly shows the full silhouette of a heavy-duty cement truck, emphasizing its girth with a vibrant color against a clean background.
+Saved image to images/2026-08-04-cement-truck-heavy-duty.jpg
+[webp] 2026-08-04-cement-truck-heavy-duty.jpg: 268KB -> 166KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Cement Truck, Heavy-Duty" (19 candidates left).
+Vision picked #5 of 12: this photo shows the full side profile of the cement truck, emphasizing its girth and silhouette.
+[webp] 2026-08-04-cement-truck-heavy-duty.jpg: 201KB -> 114KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Cement Truck, Heavy-Duty" (18 candidates left).
+Vision picked #3 of 12: This photo shows a heavy-duty cement truck head-on, emphasizing its robust girth and silhouette.
+[webp] 2026-08-04-cement-truck-heavy-duty.jpg: 250KB -> 165KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a large silver semi-truck, not a cement truck, heavy-duty. The subject is not the named object, which disqualifies it for the intended entry. The truck is well-framed and prominent in the image, but it does not match the specified subject of a cement truck. Therefore, the photo cannot be used for this entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Cement Truck, Heavy-Duty"
+[bail] popped "Cement Truck, Heavy-Duty" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-04 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Giant Cabbage, Colossal (query: "giant cabbage")
+Found 23 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 22 left.
+Vision picked #2 of 12: this photo showcases a cluster of cabbages that emphasizes their collective girth and volume.
+Saved image to images/2026-08-04-giant-cabbage-colossal.jpg
+[webp] 2026-08-04-giant-cabbage-colossal.jpg: 244KB -> 145KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Giant Cabbage, Colossal" (21 candidates left).
+Vision picked #4 of 12: This photo showcases a full cabbage with a prominent silhouette, emphasizing its girth.
+[webp] 2026-08-04-giant-cabbage-colossal.jpg: 265KB -> 148KB (44% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The entry is solid with a specific scene at the county fair and a strong punchline tag. The etymology kicker cleverly ties the colossal cabbage to historical sculptures. However, the definition could be more playful to match the rest of the entry's tone.
+Generated social captions:
+  morning: Giant Cabbage, Colossal.
+  afternoon: In 2012, a giant cabbage weighed in at 138.25 pounds.
+  evening: From the archives, Giant Cabbage, Colossal.
+  reels: Giant cabbages reach maturity in 90 days.
+[bail] final dup-guard: "Giant Cabbage, Colossal" duplicates catalogued "Cabbage, Savoy" - subject "Giant Cabbage, Colossal"
+[bail] popped "Giant Cabbage, Colossal" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-04 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 (query: "Antonov An-225")
+Found 29 candidate photos.
+Vision picked #7 of 12: this photo shows the full silhouette of a large aircraft, emphasizing its girth and size.
+Saved image to images/2026-08-04-thiccc-antonov-an-225.jpg
+[webp] 2026-08-04-thiccc-antonov-an-225.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Antonov An-225" (28 candidates left).
+Vision picked #2 of 12: this photo shows the full silhouette of an aircraft, emphasizing its large and thick structure.
+[webp] 2026-08-04-thiccc-antonov-an-225.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 30; trying another photo for "Thiccc Antonov An-225" (27 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 30  isSubject: false
+  critique: The photo does not show the Antonov An-225, but rather an IL-76 cargo plane. The Antonov An-225 is a distinct and much larger aircraft, known for being the heaviest and having the largest wingspan of any operational plane. The IL-76, while large, does not meet the criteria for the subject 'Thiccc Antonov An-225'. Therefore, the image is unsuitable for the entry and is rejected.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=30 - subject "Thiccc Antonov An-225"
+[bail] popped "Thiccc Antonov An-225" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-04 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crab, King Alaskan" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Tire, 63-Inch Mining (query: "mining tire")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo shows the full tire, emphasizing its size and girth.
+Saved image to images/2026-08-04-tire-63-inch-mining.jpg
+[webp] 2026-08-04-tire-63-inch-mining.jpg: 239KB -> 150KB (37% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Tire, 63-Inch Mining" (29 candidates left).
+Vision picked #1 of 12: this tire's bold silhouette and prominent size make it the thiccest choice.
+[webp] 2026-08-04-tire-63-inch-mining.jpg: 384KB -> 274KB (28% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 49; trying another photo for "Tire, 63-Inch Mining" (28 candidates left).
+Vision picked #11 of 12: this photo shows the massive scale of mining equipment, emphasizing the girth of the tire in context.
+[webp] 2026-08-04-tire-63-inch-mining.jpg: 379KB -> 320KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo does not show a 'Tire, 63-Inch Mining'. Instead, it depicts an aerial view of a mining site with machinery and coal deposits. The subject is not visible, making it unsuitable for the intended entry. The image is well-composed for its actual content but fails to meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Tire, 63-Inch Mining"
+[bail] popped "Tire, 63-Inch Mining" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-04 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-04.
+```
