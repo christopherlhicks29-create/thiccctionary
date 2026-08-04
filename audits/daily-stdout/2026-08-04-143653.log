@@ -1,0 +1,56 @@
+# Daily run trace 2026-08-04-143653
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30919757298
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-04
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Thiccc An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #7 of 12: this photo shows the full silhouette of the An-225, emphasizing its massive wingspan and girth.
+Saved image to images/2026-08-04-thiccc-an-225-mriya.jpg
+[webp] 2026-08-04-thiccc-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc An-225 Mriya" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not show the An-225 Mriya, which is a specific large cargo aircraft. Instead, it depicts a large aircraft on a beach, likely a ground effect vehicle. The subject is not the named object, leading to a rejection. The composition is centered and clear, but it does not meet the identity criteria for the subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc An-225 Mriya"
+[bail] popped "Thiccc An-225 Mriya" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-04 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Titan, Largest Mining Truck (query: "mining truck")
+Error: Unsplash search failed: 500 
+      {
+        "errors": ["We are experiencing errors. Please check https://status.unsplash.com for updates."]
+      }
+    
+    at searchUnsplash (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:300:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:962:20)
+[retry-wrapper] attempt 2 threw: Command failed: node generate-daily.js
+```
