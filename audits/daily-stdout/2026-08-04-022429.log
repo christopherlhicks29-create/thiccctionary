@@ -1,0 +1,104 @@
+# Daily run trace 2026-08-04-022429
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30871591538
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-04
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crab, King Alaskan" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Boeing 787 Dreamliner (query: "Boeing 787")
+Found 20 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 19 left.
+Vision picked #1 of 12: This photo shows the Boeing 787 Dreamliner in a clear, full silhouette during landing, emphasizing its girthy shape.
+Saved image to images/2026-08-04-boeing-787-dreamliner.jpg
+[webp] 2026-08-04-boeing-787-dreamliner.jpg: 111KB -> 37KB (67% smaller)
+Design critique: score=9/10, verdict=ship
+  ⚠️ Banned terms found in entry "Boeing 787 Dreamliner":
+     [definitions] "runway" (banned-word)
+     [example] "runway" (banned-word)
+Banned-words attempt 1/3 rejected ("runway" in definitions, "runway" in example). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The example sentence is specific and ends on a comedic beat, capturing the scene at an airport with a humorous twist. The etymology includes a deadpan kicker with 'thiccliner,' adding to the humor. However, the definitions lean towards generic descriptions and could benefit from more unexpected details or a playful tone.
+Generated social captions:
+  morning: Boeing 787 Dreamliner. Wingspan of 197 feet.
+  afternoon: Thicccness transcends altitude—787 Dreamliner maintains a cabin pressure equivalent to 6,000 feet.
+  evening: From the archives, Boeing 787 Dreamliner.
+  reels: Boeing 787 Dreamliner engines: 11 feet in diameter each.
+[bail] final dup-guard: "Boeing 787 Dreamliner" duplicates catalogued "Boeing 777X" - subject "Boeing 787 Dreamliner"
+[bail] popped "Boeing 787 Dreamliner" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-04 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Pumper Truck, Fire Engine".
+Subject queue: pulling "Bag, Punching Heavy" (4 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Bag, Punching Heavy" query="heavy punching bag gym" (source: queue)
+Subject: Bag, Punching Heavy (query: "heavy punching bag gym")
+Found 11 candidate photos.
+Vision rejected all 11 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 2: The punching bag is fully visible and emphasizes its girth against the background.
+Saved image to images/2026-08-04-bag-punching-heavy.jpg
+[webp] 2026-08-04-bag-punching-heavy.jpg: 105KB -> 40KB (62% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] image 1 scored 7 / subjectPct 24; trying another photo for "Bag, Punching Heavy" (11 candidates left).
+Vision rejected all 11 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 7  verdict: ship  subjectPct: 24  isSubject: true
+  critique: The photo clearly shows a heavy punching bag being used by a mixed martial arts fighter, which matches the subject. The bag is prominently featured, though the fighter is also a significant part of the composition. The lighting and focus effectively highlight the action, but the presence of the fighter slightly shifts attention away from the bag itself. Overall, the image captures the essence of the subject well, though the human element is quite prominent.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=ship score=7 subjectPct=24 - subject "Bag, Punching Heavy"
+[bail] popped "Bag, Punching Heavy" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-04 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Pizza, Detroit Square" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pizza, Detroit Square" query="detroit square pan pizza" (source: queue)
+Subject: Pizza, Detroit Square (query: "detroit square pan pizza")
+Subject "Pizza, Detroit Square" returned zero Unsplash results for query "detroit square pan pizza". (attempt 1)
+Fallback subject (#1): Transcontinental Truck, Freightliner Cascadia (query: "freightliner truck")
+Found 16 candidate photos.
+Vision picked #7 of 12: this photo shows the full silhouette of a Freightliner Cascadia, emphasizing its overall girth and presence on the road.
+Saved image to images/2026-08-04-transcontinental-truck-freightliner-cascadia.jpg
+[webp] 2026-08-04-transcontinental-truck-freightliner-cascadia.jpg: 171KB -> 87KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Transcontinental Truck, Freightliner Cascadia" (15 candidates left).
+Vision picked #2 of 12: This photo shows the full front of the truck, emphasizing its robust and thick silhouette.
+[webp] 2026-08-04-transcontinental-truck-freightliner-cascadia.jpg: 335KB -> 245KB (27% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 56; trying another photo for "Transcontinental Truck, Freightliner Cascadia" (14 candidates left).
+Vision picked #1 of 12: this photo shows the full silhouette of a large truck on the road, emphasizing its size and girth.
+[webp] 2026-08-04-transcontinental-truck-freightliner-cascadia.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo shows a red semi truck, but it is not a Freightliner Cascadia. The truck depicted has a different design and does not match the specific model required. The image is well-composed with the truck centered, but since it does not show the correct subject, it cannot be used. The landscape and road are clear, but they do not contribute to identifying the truck as a Freightliner Cascadia.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Transcontinental Truck, Freightliner Cascadia"
+[bail] popped "Transcontinental Truck, Freightliner Cascadia" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-04.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-04 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-04.
+```
