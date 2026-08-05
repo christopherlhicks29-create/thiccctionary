@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Bart filed a counter-complaint today. Not to fix the machine. To note that the previous one was superior. I asked which one. He looked at me the way he looks at my Saturn V briefs. There is apparently a correct answer I am not cleared to know.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-05T18:59:58.920Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785783711831",
