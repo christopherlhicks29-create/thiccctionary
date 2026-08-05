@@ -1,0 +1,121 @@
+# Daily run trace 2026-08-05-102552
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30997243323
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-05
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Pork Shoulder Boston Butt" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Pork Shoulder Boston Butt" query="boston butt pork shoulder roast" (source: queue)
+Subject: Roast, Pork Shoulder Boston Butt (query: "boston butt pork shoulder roast")
+Subject "Roast, Pork Shoulder Boston Butt" returned zero Unsplash results for query "boston butt pork shoulder roast". (attempt 1)
+Fallback subject (#1): Cake, Chocolate Mousse Tower (query: "chocolate mousse cake")
+Found 30 candidate photos.
+Vision picked #11 of 12: This photo showcases a tall, layered chocolate mousse cake, emphasizing its impressive height and girth.
+Saved image to images/2026-08-05-cake-chocolate-mousse-tower.jpg
+[webp] 2026-08-05-cake-chocolate-mousse-tower.jpg: 185KB -> 84KB (54% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Cake, Chocolate Mousse Tower" (29 candidates left).
+Vision picked #4 of 12: this photo shows a whole chocolate mousse cake with a thick, rich layer of frosting and a generous slice cut out, emphasizing its girth.
+[webp] 2026-08-05-cake-chocolate-mousse-tower.jpg: 174KB -> 89KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 49; trying another photo for "Cake, Chocolate Mousse Tower" (28 candidates left).
+Vision picked #1 of 12: This photo showcases a full chocolate mousse cake with a rich, thick appearance, emphasizing its girth.
+[webp] 2026-08-05-cake-chocolate-mousse-tower.jpg: 238KB -> 164KB (31% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts a chocolate cake garnished with strawberries, which does not match the subject 'Cake, Chocolate Mousse Tower'. The cake shown is not a tower structure, which is typically tall and layered, and lacks the mousse characteristic. The image is well-composed and centered, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Cake, Chocolate Mousse Tower"
+[bail] popped "Cake, Chocolate Mousse Tower" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-05.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-05 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Titan, Bowling Ball (query: "bowling ball")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo clearly shows a bowling ball's round shape, emphasizing its girth.
+Saved image to images/2026-08-05-titan-bowling-ball.jpg
+[webp] 2026-08-05-titan-bowling-ball.jpg: 52KB -> 15KB (71% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 25; trying another photo for "Titan, Bowling Ball" (29 candidates left).
+Vision picked #2 of 12: this photo shows a full spherical shape, emphasizing the girth of the bowling ball.
+[webp] 2026-08-05-titan-bowling-ball.jpg: 142KB -> 95KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Titan, Bowling Ball" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The image depicts a 3D rendered textured sphere on a wooden stand, not an actual bowling ball. The material and texture suggest it is a digital creation rather than a real object. The subject is well-centered and prominent, but it does not meet the criteria of showing a real 'Titan, Bowling Ball'. The depiction nature of the image disqualifies it from being used as a documentary plate for the subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Titan, Bowling Ball"
+[bail] popped "Titan, Bowling Ball" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-05.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-05 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Boeing 747, Jumbo Jet (query: "Boeing 747")
+Found 8 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 7 left.
+Vision rejected all 7 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 1 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Boeing 747, Jumbo Jet"
+[bail] popped "Boeing 747, Jumbo Jet" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-05.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-05 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Concrete Bunker, Soviet-Era (query: "soviet bunker")
+Subject "Concrete Bunker, Soviet-Era" returned zero Unsplash results for query "soviet bunker". (attempt 2)
+Fallback subject (#2): Thiccc Tanker Truck (query: "tanker truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #2 of 12: This tanker truck has a prominent girthy silhouette and is fully visible against a clean background.
+Saved image to images/2026-08-05-thiccc-tanker-truck.jpg
+[webp] 2026-08-05-thiccc-tanker-truck.jpg: 268KB -> 166KB (38% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry is solid with a humorous etymology kicker that lands well, referencing the Greeks and 12-wheelers. The example could use more specificity or a punchline tag to elevate it, as it currently lacks a strong comedic beat.
+Generated social captions:
+  morning: Thiccc Tanker Truck. 
+  afternoon: With a GVWR of 80,000 pounds, it makes gravity its passenger.
+  evening: From the archives, Thiccc Tanker Truck.
+  reels: It consumes 6 miles per gallon—
+Saved entry: Thiccc Tanker Truck
+Built entry page: entries/2026-08-05.html
+Rebuilt prev entry page (2026-08-03) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 115 entries + 53 articles.
+Sitemap rebuilt with 115 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-05 landed on attempt 4.
+```
