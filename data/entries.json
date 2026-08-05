@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-05",
+    "word": "Thiccc Tanker Truck",
+    "pronunciation": "/thik TAN-ker truk/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A road-bound behemoth of liquid transport characterized by an expansive cylindrical body, particularly prominent when viewed from the rear in a low-angle light.",
+      "<em>colloq.</em> The vehicular embodiment of 'go big or go home,' hauling more gallons than the average swimming pool."
+    ],
+    "example": "He spotted a thiccc tanker truck rolling down Main Street, reshaping the street's wind patterns with its presence.",
+    "etymology": "From Middle English 'tank' (large container for liquid) + 'truck' (from Greek 'trochos,' wheel). Evidently, the Greeks weren't considering 12-wheelers.",
+    "image": "images/2026-08-05-thiccc-tanker-truck.jpg",
+    "caption": "Plate CXV., A verdant tanker truck in motion, flaunting its robust liquid-carrying capacity.",
+    "tags": [
+      "girth",
+      "industrial",
+      "vehicle"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Maciej Kaliszewski",
+    "photographerUrl": "https://unsplash.com/@kalisz",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-green-tanker-truck-driving-down-a-street-TO9Bs1bLkTM",
+    "socialCaptions": {
+      "morning": "Thiccc Tanker Truck. \n10,000 gallons of liquid confidence. \nIt never second-guesses its route.",
+      "afternoon": "With a GVWR of 80,000 pounds, it makes gravity its passenger.\nThicccer: this, or a 747's wingspan? \nThe floor is yours.\nThiccc Tanker Truck.",
+      "evening": "From the archives, Thiccc Tanker Truck.\nIntroduced in 1917, it has been redefining 'full' for over a century.\nIts odometer is simply an exercise in futility.",
+      "reels": "It consumes 6 miles per gallon—\nand the road respects it for that.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-03",
     "word": "Giant Gear, Industrial Mechanism",
     "pronunciation": "/JYE-ant GEER, in-DUS-tree-al meh-KAN-izm/",
