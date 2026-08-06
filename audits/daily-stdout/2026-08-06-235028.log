@@ -1,0 +1,116 @@
+# Daily run trace 2026-08-06-235028
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31132364049
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-06
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Titanosaur (query: "titanosaur")
+Subject "Thiccc Titanosaur" returned zero Unsplash results for query "titanosaur". (attempt 2)
+Fallback subject (#2): Giant Pumpkin, Pig's Ear (query: "giant pumpkin")
+Subject "Giant Pumpkin, Pig's Ear" returned zero Unsplash results for query "giant pumpkin". (attempt 3)
+Fallback subject (#3): Antique Steam Tractor (query: "steam tractor")
+Found 25 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 23 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the antique steam tractor, emphasizing its girth and vintage character.
+Saved image to images/2026-08-06-antique-steam-tractor.jpg
+[webp] 2026-08-06-antique-steam-tractor.jpg: 323KB -> 245KB (24% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=example
+  feedback: The entry is strong with a specific scene and a solid punchline in the etymology. The example could use a sharper comedic tag, but the image of the boiler out-sizing the hayloft is amusing. Overall, it lands well with a dry wit and clever etymology kicker.
+Generated social captions:
+  morning: Antique Steam Tractor. The boiler—an ode to the industrial revolution. Outmoded yet inexorably massive.
+  afternoon: Antique Steam Tractor. 20,000 pounds of agricultural nostalgia. More horsepower than a small herd.
+  evening: From the archives, Antique Steam Tractor.
+  reels: Antique Steam Tractor. Witness the steam-age swagger.
+[bail] final dup-guard: "Antique Steam Tractor" duplicates catalogued "Tractor, Compact Utility" - subject "Antique Steam Tractor"
+[bail] popped "Antique Steam Tractor" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-06 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-06 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Prime Rib" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Prime Rib" query="prime rib roast standing" (source: queue)
+Subject: Roast, Prime Rib (query: "prime rib roast standing")
+Found 5 candidate photos.
+Vision picked #1 of 5: This photo showcases thick prime rib cuts, emphasizing their girth and silhouette.
+Saved image to images/2026-08-06-roast-prime-rib.jpg
+[webp] 2026-08-06-roast-prime-rib.jpg: 310KB -> 225KB (27% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Roast, Prime Rib" (4 candidates left).
+Vision picked #1 of 4: This photo showcases the whole prime rib in a hanging display, emphasizing its overall girth and thickness.
+[webp] 2026-08-06-roast-prime-rib.jpg: 248KB -> 151KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 36; trying another photo for "Roast, Prime Rib" (3 candidates left).
+Vision picked #3 of 3: this photo showcases a thick cut of prime rib with ample girth and a hearty presentation.
+[webp] 2026-08-06-roast-prime-rib.jpg: 232KB -> 140KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 49  isSubject: false
+  critique: The photo does not show a prime rib roast; instead, it depicts a sliced steak with vegetables and sauce. The composition is appealing and well-framed, but it fails the identity test as it does not feature the named subject. The subject box captures the main elements on the plate, but since the subject is incorrect, the photo cannot be used.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=49 - subject "Roast, Prime Rib"
+[bail] popped "Roast, Prime Rib" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-06 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Antoine, 1940s Military Tank (query: "military tank")
+Found 7 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 6 left.
+Vision picked #5 of 6: this photo shows a full military tank in action, emphasizing its size and girth.
+Saved image to images/2026-08-06-antoine-1940s-military-tank.jpg
+[webp] 2026-08-06-antoine-1940s-military-tank.jpg: 167KB -> 90KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 15; trying another photo for "Antoine, 1940s Military Tank" (5 candidates left).
+Vision picked #3 of 5: This photo features a military tank with soldiers, clearly showcasing its robust silhouette and girth.
+[webp] 2026-08-06-antoine-1940s-military-tank.jpg: 147KB -> 85KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 30; trying another photo for "Antoine, 1940s Military Tank" (4 candidates left).
+Vision rejected all 4 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 30  isSubject: false
+  critique: The photo prominently features soldiers sitting on a tank, but it does not clearly identify the tank as 'Antoine, 1940s Military Tank.' The focus is more on the soldiers than the tank itself, which makes it unsuitable for a dictionary entry specifically about the tank. The composition centers on the people, and the tank is not fully visible, failing the silhouette completeness test. Additionally, the presence of people as the main focus disqualifies it under the primary-subject test.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=30 - subject "Antoine, 1940s Military Tank"
+[bail] popped "Antoine, 1940s Military Tank" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-06 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-06.
+```
