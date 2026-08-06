@@ -1,0 +1,108 @@
+# Daily run trace 2026-08-06-012652
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31062632578
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-06
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Garbage Truck, Front-Loader" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Zeppelin (query: "zeppelin")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo shows a zeppelin in full view against a clear sky, emphasizing its overall girth and silhouette.
+Saved image to images/2026-08-06-thiccc-zeppelin.jpg
+[webp] 2026-08-06-thiccc-zeppelin.jpg: 178KB -> 110KB (38% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] image 1 scored 7 / subjectPct 21; trying another photo for "Thiccc Zeppelin" (29 candidates left).
+Vision picked #2 of 12: this photo shows a full silhouette of a zeppelin, emphasizing its girth and shape.
+[webp] 2026-08-06-thiccc-zeppelin.jpg: 100KB -> 45KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Thiccc Zeppelin" (28 candidates left).
+Vision picked #2 of 12: the inflated shape of the zeppelin is clearly visible, emphasizing its thiccness.
+[webp] 2026-08-06-thiccc-zeppelin.jpg: 171KB -> 81KB (52% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not depict a 'Thiccc Zeppelin' but rather a toy blimp with a Supreme logo. The object is a representation and not an actual zeppelin, failing the real vs representation test. The subject is centered and clearly visible, but it does not meet the criteria for the intended subject. The image is well-composed but irrelevant to the entry's requirements.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Zeppelin"
+[bail] popped "Thiccc Zeppelin" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-06 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Bagger 288 (query: "Bagger 288")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #9 of 12: this photo shows the Bagger 288's massive scale and girth against the surrounding landscape.
+Saved image to images/2026-08-06-bagger-288.jpg
+[webp] 2026-08-06-bagger-288.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 18; trying another photo for "Bagger 288" (28 candidates left).
+Vision picked #7 of 12: this photo shows the full silhouette of the Bagger 288's massive structure against a clear background, emphasizing its girth.
+[webp] 2026-08-06-bagger-288.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Bagger 288" (27 candidates left).
+Vision picked #4 of 12: This photo shows a large crane with a prominent silhouette, emphasizing its girth and industrial character.
+[webp] 2026-08-06-bagger-288.jpg: 241KB -> 158KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts an old coal crane, not the Bagger 288. The Bagger 288 is a massive bucket-wheel excavator, not a crane. The crane is well-framed and the image is clear, but it does not match the subject description. Therefore, it fails the identity test and must be rejected.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Bagger 288"
+[bail] popped "Bagger 288" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-06 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Crab, King Alaskan" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Fortress, Stalingrad (query: "Stalingrad fortress")
+Subject "Fortress, Stalingrad" returned zero Unsplash results for query "Stalingrad fortress". (attempt 2)
+Fallback subject (#2): Cranberry, Largest Recorded (query: "cranberry bog")
+Subject "Cranberry, Largest Recorded" returned zero Unsplash results for query "cranberry bog". (attempt 3)
+Fallback subject (#3): Thiccc Antonov An-225 (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #7 of 12: this photo shows the Antonov An-225 with its full silhouette, highlighting its impressive girth and massive wingspan.
+Saved image to images/2026-08-06-thiccc-antonov-an-225.jpg
+[webp] 2026-08-06-thiccc-antonov-an-225.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Antonov An-225" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not depict the Antonov An-225, which is a specific type of aircraft known for its size and cargo capacity. Instead, it shows a large ekranoplan, a ground-effect vehicle, on a beach. The framing is centered and the subject is prominent, but the identity of the aircraft is incorrect for the entry. This misidentification makes the photo unsuitable for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Antonov An-225"
+[bail] popped "Thiccc Antonov An-225" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-06.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-06 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-06.
+```
