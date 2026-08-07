@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1786064563228",
+    "created": "2026-08-07T01:02:43.228Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Cassaro's moved the tables. Same chairs, same lighting, same veal. But the table by the window is gone. I sat in the middle. It was fine. It was not fine.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1785956396730",
     "created": "2026-08-05T18:59:56.730Z",
     "byline_id": "teddy",
