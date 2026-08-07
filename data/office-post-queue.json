@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Cassaro's moved the tables. Same chairs, same lighting, same veal. But the table by the window is gone. I sat in the middle. It was fine. It was not fine.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-07T01:02:45.510Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1785956396730",
