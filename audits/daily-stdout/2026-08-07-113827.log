@@ -1,0 +1,66 @@
+# Daily run trace 2026-08-07-113827
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31174788985
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-07
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Tabular Iceberg, Antarctic".
+Subject queue: pulling "Roast, Pork Shoulder Boston Butt" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Pork Shoulder Boston Butt" query="boston butt pork shoulder roast" (source: queue)
+Subject: Roast, Pork Shoulder Boston Butt (query: "boston butt pork shoulder roast")
+Subject "Roast, Pork Shoulder Boston Butt" returned zero Unsplash results for query "boston butt pork shoulder roast". (attempt 1)
+Fallback subject (#1): Komatsu D575A, Bulldozer (query: "bulldozer")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Vision rejected all 8 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Komatsu D575A, Bulldozer"
+[bail] popped "Komatsu D575A, Bulldozer" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-07.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-07 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Pumper, Firefighting (query: "fire truck")
+Found 20 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 19 left.
+Vision picked #6 of 12: this photo shows a large firefighting truck in a clear setting, emphasizing its substantial girth.
+Saved image to images/2026-08-07-pumper-firefighting.jpg
+[webp] 2026-08-07-pumper-firefighting.jpg: 356KB -> 263KB (26% smaller)
+Design critique: score=6/10, verdict=needs-review
+Humor critique: score=8/10, verdict=ship, weakest=example
+  feedback: The entry is solid with a specific scene and a decent punchline tag in the example. The etymology ends on a humorous note, though the example could use a sharper comedic beat. Overall, it maintains a good balance of specificity and humor.
+Generated social captions:
+  morning: Pumper, Firefighting.
+  afternoon: Pumper, Firefighting.
+  evening: From the archives, Pumper, Firefighting.
+  reels: Pumper, Firefighting.
+Saved entry: Pumper, Firefighting
+Built entry page: entries/2026-08-07.html
+Rebuilt prev entry page (2026-08-05) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 116 entries + 54 articles.
+Sitemap rebuilt with 116 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-07 landed on attempt 2.
+```
