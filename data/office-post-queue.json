@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Filed the fourth complaint today. Bart has now clarified that the previous machine was better. Not this previous machine. A different one. From when. He gestured vaguely at the wall.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-07T18:08:39.835Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786064563228",
