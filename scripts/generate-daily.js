@@ -965,7 +965,7 @@ async function main() {
       candidates = filterUsedPhotos(candidates, spentPhotos);
       break;
     } catch (e) {
-      if (!/No Unsplash results/i.test(e.message)) throw e;
+      if (!/No Unsplash results|Unsplash search failed: 5\d\d/i.test(e.message)) throw e;
       attempts += 1;
       console.warn(`Subject "${subjectInfo.subject}" returned zero Unsplash results for query "${subjectInfo.unsplashQuery}". (attempt ${attempts})`);
       // Wave 222c: if SUBJECT_OVERRIDE is set, do NOT silently fall back to
@@ -1018,7 +1018,7 @@ async function main() {
       retryCandidates = await searchUnsplash(broaderQuery);
       retryCandidates = filterUsedPhotos(retryCandidates, spentPhotos);
     } catch (e) {
-      if (!/No Unsplash results/i.test(e.message)) throw e;
+      if (!/No Unsplash results|Unsplash search failed: 5\d\d/i.test(e.message)) throw e;
       console.warn(`Photography-bias retry returned zero Unsplash results for "${broaderQuery}".`);
     }
     if (!retryCandidates || retryCandidates.length === 0) {
