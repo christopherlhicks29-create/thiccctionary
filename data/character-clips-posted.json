@@ -127,7 +127,21 @@
           "id": "6a6e3149c54cb283664b9d17"
         }
       ]
+    },
+    {
+      "path": "videos/characters/margie-typewriter-scowl.mp4",
+      "at": "2026-08-08T17:18:49.086Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a7764f8529955fa902bf095"
+        },
+        {
+          "service": "instagram",
+          "id": "6a7764f89c08137afa1dc77a"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-08-01T17:47:53.501Z"
+  "lastPostedAt": "2026-08-08T17:18:49.086Z"
 }
