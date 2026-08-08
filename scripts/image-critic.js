@@ -202,11 +202,12 @@ export const GATES = {
   // it would suppress posts for every already-published tight crop. That is the
   // Wave 209b failure with a different label on it.
   regen:     { minScore: 7, minSubjectPct: 25, maxEdgeTouches: 1 },  // strict: replacing a bad one
-  throwback: { minScore: 6, minSubjectPct: 25 },  // looser: image already shipped
+// Wave 337 (2026-08-08): was minSubjectPct 25 -- identical to daily/generate
+   throwback: { minScore: 6, minSubjectPct: 15 },  // looser: image already shipped
   // Wave 209b deliberately runs the daily looser than `generate`: the strict
   // gate was bailing on 5+ consecutive days. Score-5 ships with needsReview.
   daily:     { minScore: 5, minSubjectPct: 25 },
-};
+  };
 
 export function passesGate(critique, gate) {
   if (!critique) return true;  // critic unavailable, don't block
