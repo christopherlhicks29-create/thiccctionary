@@ -1,0 +1,30 @@
+Post mode: reels
+TARGET_DATE override: posting for 2026-08-08, Bag, Punching Heavy
+Selected entry: 2026-08-08 -- "Bag, Punching Heavy"
+[critic-gate] reels 2026-08-08: PASS (score=7, subj%=24)
+Video URL verified reachable: https://cdn.jsdelivr.net/gh/christopherlhicks29-create/thiccctionary@main/videos/2026-08-08.mp4
+Mode "reels" filters to 2 of 3 channels.
+Posting Reel to 2 channels with video: https://cdn.jsdelivr.net/gh/christopherlhicks29-create/thiccctionary@main/videos/2026-08-08.mp4
+--- Post text [facebook] (181 chars) ---
+A heavy bag absorbs energy—like a physics lesson in humility.
+
+Hugh
+
+New round of Guess the Thiccc, every day. Link in bio.
+
+#thiccctionary #wordoftheday #oddlysatisfying #homedecor
+---
+--- Post text [instagram] (208 chars) ---
+A heavy bag absorbs energy—like a physics lesson in humility.
+
+Hugh
+
+New round of Guess the Thiccc, every day. Link in bio.
+
+#thiccctionary #wordoftheday #oddlysatisfying #homedecor #interiordesign #furniture
+---
+FAIL channel 69f62da25c4c051afa03305a: status=200 body=Invalid post: Video could not be read from its URL.
+OK channel 69f62e0e5c4c051afa033677 (post id: 6a774b399c08137afa1c4dd3)
+
+Summary: 1 succeeded, 1 failed (out of 2).
+Wrote results to audits/buffer-posts/2026-08-08.json
