@@ -1,5 +1,5 @@
 # Queued Follow-ups
-
+ **CORRECTION 2026-08-07: likely a red herring.** Buffer sweep this session found FB has the identical every-other-day posting gap IG showed (both missing 08-04 and 08-06) -- the real cause is that `entries/2026-08-04.html` and `entries/2026-08-06.html` don't exist at all, so there was nothing for either channel to post. Don't build the verify-after-post query yet; first confirm whether IG has ANY silent-drop on a day the entry DID land (like 08-03, the original example). If 08-03 was itself actually a one-off and not a pattern, this whole item may be closed.
 ## Instagram reels silently vanishing after Buffer accepts them (found 2026-08-03)
 
 `post-on-merge.yml` run #80 (2026-08-02 evening) posted today's (08-03) reel. The log shows `OK channel 69f62e0e5c4c051afa033677 (post id: 6a702846aacd241cfdb659b9)` -- Buffer's `createPost` mutation returned a `PostActionSuccess` with a real post id for the IG channel, same as it did for FB. FB's copy is live (verified in Buffer's Sent tab, 9:46 AM MDT). IG's copy does not exist anywhere in Buffer: Queue=0, no "Not Published" error banner (FB's stuck Jul 30/Aug 1 reels DO show a visible red banner for the same class of failure), and IG's most recent Sent post is from the day before, not today.
