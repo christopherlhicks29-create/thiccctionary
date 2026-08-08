@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Cassaro's replaced the veal with a \"seasonal ragu.\" I asked how long it had been seasonal. The waiter said spring. It is August. I ordered the ragu. It was not the correct amount of anything.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-08T17:54:29.937Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786139823943",
