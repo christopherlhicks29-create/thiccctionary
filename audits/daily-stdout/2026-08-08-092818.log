@@ -1,0 +1,77 @@
+# Daily run trace 2026-08-08-092818
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31250576145
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-08
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Prime Rib" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Prime Rib" query="prime rib roast standing" (source: queue)
+Subject: Roast, Prime Rib (query: "prime rib roast standing")
+Found 5 candidate photos.
+Vision picked #1 of 5: The photo showcases multiple thick cuts of prime rib, emphasizing their girth and silhouette.
+Saved image to images/2026-08-08-roast-prime-rib.jpg
+[webp] 2026-08-08-roast-prime-rib.jpg: 310KB -> 225KB (27% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Roast, Prime Rib" (4 candidates left).
+Vision picked #1 of 4: This photo showcases hanging prime rib cuts, emphasizing their thickness and girth.
+[webp] 2026-08-08-roast-prime-rib.jpg: 248KB -> 151KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Roast, Prime Rib" (3 candidates left).
+Vision picked #3 of 3: this photo showcases a large, thick cut of prime rib with a generous presentation that emphasizes its girth.
+[webp] 2026-08-08-roast-prime-rib.jpg: 232KB -> 140KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a 'Roast, Prime Rib' as specified. Instead, it depicts a sliced steak with vegetables on a plate. The composition is visually appealing, with good lighting and focus on the food, but it does not meet the subject criteria. The subject is not a prime rib roast, which is a specific cut and preparation, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Roast, Prime Rib"
+[bail] popped "Roast, Prime Rib" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-08.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-08 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Bag, Punching Heavy" (4 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Bag, Punching Heavy" query="heavy punching bag gym" (source: queue)
+Subject: Bag, Punching Heavy (query: "heavy punching bag gym")
+Found 11 candidate photos.
+Vision rejected all 11 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 2: The punching bag is fully visible and emphasizes its girth against a contrasting background.
+Saved image to images/2026-08-08-bag-punching-heavy.jpg
+[webp] 2026-08-08-bag-punching-heavy.jpg: 105KB -> 40KB (62% smaller)
+Design critique: score=8/10, verdict=ship
+  ⚠️ Banned terms found in entry "Bag, Punching Heavy":
+     [definitions] "commands attention" (banned-word)
+Banned-words attempt 1/3 rejected ("commands attention" in definitions). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The example sentence is specific and paints a scene, but lacks a strong punchline tag. The etymology has a nice kicker with the twist on aspirations, and the entry avoids anti-patterns. Adding a sharper comedic beat to the example would elevate the humor.
+Generated social captions:
+  morning: Bag, Punching Heavy.
+  afternoon: The thicccness of a well-stuffed heavy bag is measured in pounds—and unspoken wisdom.
+  evening: From the archives, Bag, Punching Heavy.
+  reels: A heavy bag absorbs energy—like a physics lesson in humility.
+Saved entry: Bag, Punching Heavy
+Built entry page: entries/2026-08-08.html
+Rebuilt prev entry page (2026-08-07) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 117 entries + 54 articles.
+Sitemap rebuilt with 117 entries.
+Subject queue updated: 1 item(s) remaining.
+[retry-wrapper] entry for 2026-08-08 landed on attempt 2.
+```
