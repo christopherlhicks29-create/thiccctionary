@@ -1,0 +1,112 @@
+# Daily run trace 2026-08-09-092943
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31305972148
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-09
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Thiccc Blue Whale (query: "blue whale")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #2 of 12: this photo captures the full body of the whale breaching, showcasing its massive girth and silhouette.
+Saved image to images/2026-08-09-thiccc-blue-whale.jpg
+[webp] 2026-08-09-thiccc-blue-whale.jpg: 137KB -> 63KB (54% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 9; trying another photo for "Thiccc Blue Whale" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 9  isSubject: false
+  critique: The photo depicts a whale breaching the ocean, but it is not clearly identifiable as a blue whale, which is the specified subject. The image is well-composed and captures the dynamic action of the whale, but without clear identification, it fails the identity test. Additionally, the whale occupies a small portion of the frame, which reduces its prominence. Therefore, the photo is not suitable for the entry 'Thiccc Blue Whale.'
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=9 - subject "Thiccc Blue Whale"
+[bail] popped "Thiccc Blue Whale" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-09 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Crab, King Alaskan" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Titan II, ICBM (query: "Titan II")
+Subject "Titan II, ICBM" returned zero Unsplash results for query "Titan II". (attempt 2)
+Fallback subject (#2): Bagger 393 (query: "Bagger 393")
+Subject "Bagger 393" returned zero Unsplash results for query "Bagger 393". (attempt 3)
+Fallback subject (#3): Hopper, Coal Processing (query: "coal hopper")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo showcases a large coal processing facility with significant bulk and structure, emphasizing its thicc silhouette.
+Saved image to images/2026-08-09-hopper-coal-processing.jpg
+[webp] 2026-08-09-hopper-coal-processing.jpg: 327KB -> 241KB (26% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Hopper, Coal Processing" (29 candidates left).
+Vision picked #8 of 12: the photo shows a coal hopper with a prominent and robust silhouette, emphasizing its thiccness.
+[webp] 2026-08-09-hopper-coal-processing.jpg: 392KB -> 307KB (22% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Hopper, Coal Processing" (28 candidates left).
+Vision picked #2 of 12: this photo showcases a large coal processing structure with a prominent, thicc silhouette.
+[webp] 2026-08-09-hopper-coal-processing.jpg: 93KB -> 40KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts industrial silos or storage tanks, not a coal processing hopper. The structures are prominently framed and well-lit, but they do not match the specified subject. The image is visually striking with a clear silhouette against the sky, yet it fails the identity test as it does not show a coal processing hopper. Therefore, it is unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Hopper, Coal Processing"
+[bail] popped "Hopper, Coal Processing" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-09 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Pizza, Detroit Square" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pizza, Detroit Square" query="detroit square pan pizza" (source: queue)
+Subject: Pizza, Detroit Square (query: "detroit square pan pizza")
+Subject "Pizza, Detroit Square" returned zero Unsplash results for query "detroit square pan pizza". (attempt 1)
+Fallback subject (#1): Cement Mixer, Tarmac Titan (query: "cement mixer")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Vision picked #5 of 8: this photo shows a full cement mixer in a clear setting, emphasizing its size and girth.
+Saved image to images/2026-08-09-cement-mixer-tarmac-titan.jpg
+[webp] 2026-08-09-cement-mixer-tarmac-titan.jpg: 166KB -> 99KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct undefined; trying another photo for "Cement Mixer, Tarmac Titan" (7 candidates left).
+Vision picked #2 of 7: this photo shows a large cement mixer with a prominent silhouette and overall girth.
+[webp] 2026-08-09-cement-mixer-tarmac-titan.jpg: 154KB -> 85KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Cement Mixer, Tarmac Titan" (6 candidates left).
+Vision picked #1 of 6: This photo shows a large cement mixer with a prominent silhouette against a striking background, emphasizing its girth.
+[webp] 2026-08-09-cement-mixer-tarmac-titan.jpg: 93KB -> 40KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a cement mixer, but rather a group of industrial silos. The subject 'Cement Mixer, Tarmac Titan' is not visible in the image. The composition is visually appealing with a striking color contrast against the sunset sky, but it fails to meet the criteria as it does not show the named object. The silos dominate the frame, making it clear that the photo is not of a cement mixer.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Cement Mixer, Tarmac Titan"
+[bail] popped "Cement Mixer, Tarmac Titan" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-09 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-09.
+```
