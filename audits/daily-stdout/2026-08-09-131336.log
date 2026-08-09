@@ -1,0 +1,132 @@
+# Daily run trace 2026-08-09-131336
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31315158520
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-09
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Cement Truck, McNeilus (query: "cement truck")
+Found 20 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 19 left.
+Vision picked #5 of 12: this photo shows the side profile of the cement truck, highlighting its girth and silhouette clearly.
+Saved image to images/2026-08-09-cement-truck-mcneilus.jpg
+[webp] 2026-08-09-cement-truck-mcneilus.jpg: 201KB -> 114KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Cement Truck, McNeilus" (18 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the cement truck, emphasizing its robust and thick structure.
+[webp] 2026-08-09-cement-truck-mcneilus.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Cement Truck, McNeilus" (17 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the cement truck prominently against a clear sky, emphasizing its girth.
+[webp] 2026-08-09-cement-truck-mcneilus.jpg: 142KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 4  isSubject: false
+  critique: The photo does not depict a McNeilus cement truck. Instead, it shows a truck with a large sprayer on a highway overpass. The subject is not centered, and the composition is dominated by the overpass structure rather than the truck itself. The image lacks focus on the intended subject, making it unsuitable for the dictionary entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=4 - subject "Cement Truck, McNeilus"
+[bail] popped "Cement Truck, McNeilus" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-09 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Tuba, Contrabass (query: "contrabass tuba")
+Found 8 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 7 left.
+Vision picked #3 of 7: this photo prominently features multiple tubas, showcasing their thiccness in a clear and vibrant manner.
+Saved image to images/2026-08-09-thiccc-tuba-contrabass.jpg
+[webp] 2026-08-09-thiccc-tuba-contrabass.jpg: 132KB -> 71KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Tuba, Contrabass" (6 candidates left).
+Vision picked #1 of 6: This photo shows a tuba being held prominently, emphasizing its girth and shape.
+[webp] 2026-08-09-thiccc-tuba-contrabass.jpg: 228KB -> 129KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 42; trying another photo for "Thiccc Tuba, Contrabass" (5 candidates left).
+Vision rejected all 5 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 42  isSubject: false
+  critique: The photo does not show a contrabass tuba but rather a euphonium or a similar brass instrument. The subject is not centered, and the photo focuses more on the person playing the instrument rather than the instrument itself. The composition is cluttered with the background and the person, which distracts from the instrument. The image does not fit the criteria for a documentary-style photo of a 'Thiccc Tuba, Contrabass.'
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=42 - subject "Thiccc Tuba, Contrabass"
+[bail] popped "Thiccc Tuba, Contrabass" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-09 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Pork Shoulder Boston Butt" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Pork Shoulder Boston Butt" query="boston butt pork shoulder roast" (source: queue)
+Subject: Roast, Pork Shoulder Boston Butt (query: "boston butt pork shoulder roast")
+Subject "Roast, Pork Shoulder Boston Butt" returned zero Unsplash results for query "boston butt pork shoulder roast". (attempt 1)
+Fallback subject (#1): Championship Pumpkin, Atlantic Giant (query: "championship pumpkin")
+Found 30 candidate photos.
+Vision picked #4 of 12: this photo showcases a variety of large pumpkins with prominent girth and shape.
+Saved image to images/2026-08-09-championship-pumpkin-atlantic-giant.jpg
+[webp] 2026-08-09-championship-pumpkin-atlantic-giant.jpg: 268KB -> 177KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Championship Pumpkin, Atlantic Giant" (29 candidates left).
+Vision picked #1 of 12: this photo shows a single, round pumpkin with a prominent silhouette that emphasizes its girth.
+[webp] 2026-08-09-championship-pumpkin-atlantic-giant.jpg: 109KB -> 54KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Championship Pumpkin, Atlantic Giant" (28 candidates left).
+Vision picked #8 of 12: this photo showcases a large, prominent pumpkin surrounded by others, emphasizing its girth and silhouette.
+[webp] 2026-08-09-championship-pumpkin-atlantic-giant.jpg: 191KB -> 102KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a collection of regular-sized pumpkins, not a 'Championship Pumpkin, Atlantic Giant.' The pumpkins appear to be of typical size and do not exhibit the oversized characteristics expected of an Atlantic Giant. The composition is cluttered with multiple pumpkins, making it difficult to focus on a single, standout specimen. The image does not meet the criteria for showcasing an unusually large or imposing pumpkin, which is essential for this subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Championship Pumpkin, Atlantic Giant"
+[bail] popped "Championship Pumpkin, Atlantic Giant" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-09 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lock, Padlock Brass" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lock, Padlock Brass" query="large brass padlock" (source: queue)
+Subject: Lock, Padlock Brass (query: "large brass padlock")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Vision picked #3 of 8: This photo prominently features a robust padlock on a gate, showcasing its girth and solid construction.
+Saved image to images/2026-08-09-lock-padlock-brass.jpg
+[webp] 2026-08-09-lock-padlock-brass.jpg: 257KB -> 176KB (32% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] image 1 scored 8 / subjectPct 9; trying another photo for "Lock, Padlock Brass" (7 candidates left).
+Vision picked #1 of 7: this photo shows multiple padlocks, emphasizing their collective girth and presence.
+[webp] 2026-08-09-lock-padlock-brass.jpg: 135KB -> 61KB (55% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] image 2 scored 7 / subjectPct 16; trying another photo for "Lock, Padlock Brass" (6 candidates left).
+Vision picked #4 of 6: this photo shows multiple padlocks on a fence, emphasizing their collective girth and presence.
+[webp] 2026-08-09-lock-padlock-brass.jpg: 236KB -> 137KB (42% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 1  isSubject: false
+  critique: The photo does not focus on a single 'Padlock, Brass' as the subject, but rather shows multiple padlocks on a fence with the Golden Gate Bridge in the background. The composition is more about the scenic view and the concept of love locks rather than a specific brass padlock. The padlocks are not prominently featured, and the image does not fit the criteria of a documentary or dictionary-style plate focused on a single object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=1 - subject "Lock, Padlock Brass"
+[bail] popped "Lock, Padlock Brass" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-09 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-09.
+```
