@@ -1,0 +1,140 @@
+# Daily run trace 2026-08-09-152218
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31320827299
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-09
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Cement Truck, Heavy-Duty (query: "cement truck")
+Found 20 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 19 left.
+Vision picked #6 of 12: This photo shows the cement truck in a clear silhouette, emphasizing its girth against the backdrop.
+Saved image to images/2026-08-09-cement-truck-heavy-duty.jpg
+[webp] 2026-08-09-cement-truck-heavy-duty.jpg: 36KB -> 12KB (67% smaller)
+Design critique: score=6/10, verdict=needs-review
+[image-retry] image 1 scored 6 / subjectPct 24; trying another photo for "Cement Truck, Heavy-Duty" (18 candidates left).
+Vision picked #5 of 12: it shows the full side profile of the cement truck, emphasizing its girth and silhouette.
+[webp] 2026-08-09-cement-truck-heavy-duty.jpg: 201KB -> 114KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Cement Truck, Heavy-Duty" (17 candidates left).
+Vision picked #8 of 12: This photo shows a heavy-duty cement truck with a clear front view, emphasizing its robust girth.
+[webp] 2026-08-09-cement-truck-heavy-duty.jpg: 242KB -> 138KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a front view of a Scania truck, not a cement truck. The subject is not the named object 'Cement Truck, Heavy-Duty,' as there is no visible cement mixing drum or other indicators of a cement truck. The framing is centered, and the truck is prominent, but it does not meet the identity requirement for the subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Cement Truck, Heavy-Duty"
+[bail] popped "Cement Truck, Heavy-Duty" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-09 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Caterpillar, D11T Dozer (query: "Caterpillar D11T dozer")
+Subject "Caterpillar, D11T Dozer" returned zero Unsplash results for query "Caterpillar D11T dozer". (attempt 2)
+Fallback subject (#2): Pumpkin, Atlantic Giant (query: "atlantic giant pumpkin")
+Subject "Pumpkin, Atlantic Giant" returned zero Unsplash results for query "atlantic giant pumpkin". (attempt 3)
+Fallback subject (#3): Giant Watermelon, World Record (query: "giant watermelon")
+Found 16 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 15 left.
+Vision picked #2 of 12: this photo showcases multiple giant watermelons, emphasizing their impressive size and girth.
+Saved image to images/2026-08-09-giant-watermelon-world-record.jpg
+[webp] 2026-08-09-giant-watermelon-world-record.jpg: 196KB -> 111KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Giant Watermelon, World Record" (14 candidates left).
+Vision picked #1 of 12: This photo shows a whole watermelon, emphasizing its size and girth.
+[webp] 2026-08-09-giant-watermelon-world-record.jpg: 171KB -> 86KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 49; trying another photo for "Giant Watermelon, World Record" (13 candidates left).
+Vision picked #1 of 12: this photo showcases multiple halves of watermelon, emphasizing their large and thick appearance.
+[webp] 2026-08-09-giant-watermelon-world-record.jpg: 276KB -> 183KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo shows sliced watermelons, not a giant whole watermelon, which disqualifies it from representing a 'Giant Watermelon, World Record.' The composition is focused on the interior of the watermelons rather than showcasing a single, large specimen. The image lacks the context needed to convey the size of a world record watermelon, and the subject is not centered as a whole object. Therefore, it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Giant Watermelon, World Record"
+[bail] popped "Giant Watermelon, World Record" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-09 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Gong, Chinese Brass" (4 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Hydraulic Press, 100 Ton (query: "hydraulic press")
+Found 15 candidate photos.
+Vision picked #5 of 12: This photo shows a large hydraulic press with a prominent silhouette, emphasizing its substantial girth.
+Saved image to images/2026-08-09-hydraulic-press-100-ton.jpg
+[webp] 2026-08-09-hydraulic-press-100-ton.jpg: 244KB -> 156KB (36% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 56; trying another photo for "Hydraulic Press, 100 Ton" (14 candidates left).
+Vision picked #1 of 12: This photo shows a robust hydraulic press setup, emphasizing its substantial structure and girth.
+[webp] 2026-08-09-hydraulic-press-100-ton.jpg: 182KB -> 89KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 36; trying another photo for "Hydraulic Press, 100 Ton" (13 candidates left).
+Vision picked #1 of 12: This photo shows the full hydraulic press with a clear silhouette, emphasizing its size and girth.
+[webp] 2026-08-09-hydraulic-press-100-ton.jpg: 172KB -> 74KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo depicts a man operating a mechanical press, not a hydraulic press, 100 ton. The machinery shown is not identifiable as a hydraulic press, which is the specified subject. The image is well-composed and clear, but it does not match the subject criteria. The presence of a person is incidental and not the focus, but the machine itself does not fit the required description.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Hydraulic Press, 100 Ton"
+[bail] popped "Hydraulic Press, 100 Ton" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-09 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Lock, Padlock Brass" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lock, Padlock Brass" query="large brass padlock" (source: queue)
+Subject: Lock, Padlock Brass (query: "large brass padlock")
+Found 10 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 9 left.
+Vision picked #1 of 9: this photo features a dense collection of padlocks, emphasizing their overall girth and presence.
+Saved image to images/2026-08-09-lock-padlock-brass.jpg
+[webp] 2026-08-09-lock-padlock-brass.jpg: 135KB -> 61KB (55% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] image 1 scored 7 / subjectPct 12; trying another photo for "Lock, Padlock Brass" (8 candidates left).
+Vision picked #8 of 8: this photo shows a large collection of padlocks, emphasizing their overall girth and presence.
+[webp] 2026-08-09-lock-padlock-brass.jpg: 372KB -> 299KB (20% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Lock, Padlock Brass" (7 candidates left).
+Vision picked #2 of 7: this photo prominently features a brass padlock on a gate, showcasing its girth and silhouette effectively.
+[webp] 2026-08-09-lock-padlock-brass.jpg: 257KB -> 176KB (32% smaller)
+Design critique: score=8/10, verdict=ship
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 8  verdict: ship  subjectPct: 9  isSubject: true
+  critique: The photo clearly depicts a brass padlock, which is the subject. The padlock is prominently displayed and centered, making it the focal point of the image. The background is slightly cluttered with a brick wall and graffiti, but it does not significantly distract from the padlock itself. The image has a documentary feel, fitting well with the brand's style. The padlock appears to be a standard size, which slightly affects the score, but overall, it effectively represents the subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=ship score=8 subjectPct=9 - subject "Lock, Padlock Brass"
+[bail] popped "Lock, Padlock Brass" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-09.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-09 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-09.
+```
