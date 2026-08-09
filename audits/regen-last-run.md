@@ -3,11 +3,11 @@
 Written by scripts/regenerate-images.js and committed by the workflow with
 `if: always()`, so it exists even when the run exits non-zero and opens no PR.
 
-- **Run:** [30280425716](https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/30280425716)
-- **Dates requested:** `2026-07-27`
-- **Subject override:** `marble waterfall kitchen island|granite waterfall countertop|stone slab kitchen island|granite countertop kitchen`
+- **Run:** [31264283381](https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31264283381)
+- **Dates requested:** `2026-04-25`
+- **Subject override:** `Maersk container ship|blue container ship bow|container ship at sea fully loaded`
 - **Result:** 1 replaced
 
 | Date | Word | Outcome | Detail |
 | --- | --- | --- | --- |
-| 2026-07-27 | Slab, Granite Countertop | **replaced** | images/2026-07-27-slab-granite-countertop-yl74.jpg <- https://unsplash.com/photos/a-large-kitchen-with-a-center-island-and-marble-counter-tops-tqksyXLp2mI (score=9, subject%=40, saw "a real marble waterfall kitchen island", stranger sees "a modern kitchen with a marble island"), recaptioned "Plate C |
+| 2026-04-25 | Ship, Container Maersk | **replaced** | images/2026-04-25-ship-container-maersk-wbnx.jpg <- https://unsplash.com/photos/a-large-blue-cargo-ship-in-the-middle-of-a-body-of-water-Th6RnVx3TbQ (score=9, subject%=32, saw "a real Maersk container ship at sea fully loaded", stranger sees "a container ship"), recaptioned "Plate XV., Maersk contai |
