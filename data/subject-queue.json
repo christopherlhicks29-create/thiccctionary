@@ -1,65 +1,55 @@
 {
-    "_description": "Editorial subject queue for daily entries. The cron pulls the FIRST item before falling back to the auto-picker. Each item is {subject, query?, notes?}. If the query returns zero Unsplash results, generate-daily.js falls back to the auto-picker. Items pop after each run. KEEP SUBJECTS DISTINCT FROM THE LIVE CATALOG.",
-    "_authoring_notes": [
-          "VERIFY Unsplash has results for `query` before queueing.",
-          "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
-          "Wave 338 (2026-08-09): refilled after the queue drained to 1 item and today's cron burned 4 attempts / 5 subjects without landing an entry (2 zero-Unsplash-result subjects, 3 low-subjectPct rejects on wide/cluttered/pile shots). Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
-    ],
-    "queue": [
-          {
-                  "subject": "Container, Shipping 40-Foot",
-                  "query": "40 foot shipping container",
-                  "category": "Industrial Machinery"
-          },
-          {
-                  "subject": "Elephant, African Bull",
-                  "query": "african elephant",
-                  "category": "Megafauna"
-          },
-          {
-                  "subject": "Walrus, Pacific",
-                  "query": "walrus",
-                  "category": "Megafauna"
-          },
-          {
-                  "subject": "Tortoise, Galapagos",
-                  "query": "galapagos tortoise",
-                  "category": "Megafauna"
-          },
-          {
-                  "subject": "Submarine, Naval",
-                  "query": "submarine",
-                  "category": "Naval / Maritime"
-          },
-          {
-                  "subject": "Battleship, Naval",
-                  "query": "battleship",
-                  "category": "Naval / Maritime"
-          },
-          {
-                  "subject": "Steamroller, Road",
-                  "query": "steamroller",
-                  "category": "Industrial Machinery"
-          },
-          {
-                  "subject": "Blimp, Airship",
-                  "query": "blimp airship",
-                  "category": "Aviation"
-          },
-          {
-                  "subject": "Pizza, Deep Dish",
-                  "query": "deep dish pizza",
-                  "category": "Food"
-          },
-          {
-                  "subject": "Turkey, Roasted Whole",
-                  "query": "roasted turkey whole",
-                  "category": "Food"
-          },
-          {
-                  "subject": "Ham, Whole Smoked",
-                  "query": "whole smoked ham",
-                  "category": "Food"
-          }
-    ]
+  "_description": "Editorial subject queue for daily entries. The cron pulls the FIRST item before falling back to the auto-picker. Each item is {subject, query?, notes?}. If the query returns zero Unsplash results, generate-daily.js falls back to the auto-picker. Items pop after each run. KEEP SUBJECTS DISTINCT FROM THE LIVE CATALOG.",
+  "_authoring_notes": [
+    "VERIFY Unsplash has results for `query` before queueing.",
+    "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
+    "Wave 338 (2026-08-09): refilled after the queue drained to 1 item and today's cron burned 4 attempts / 5 subjects without landing an entry (2 zero-Unsplash-result subjects, 3 low-subjectPct rejects on wide/cluttered/pile shots). Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
+  ],
+  "queue": [
+    {
+      "subject": "Walrus, Pacific",
+      "query": "walrus",
+      "category": "Megafauna"
+    },
+    {
+      "subject": "Tortoise, Galapagos",
+      "query": "galapagos tortoise",
+      "category": "Megafauna"
+    },
+    {
+      "subject": "Submarine, Naval",
+      "query": "submarine",
+      "category": "Naval / Maritime"
+    },
+    {
+      "subject": "Battleship, Naval",
+      "query": "battleship",
+      "category": "Naval / Maritime"
+    },
+    {
+      "subject": "Steamroller, Road",
+      "query": "steamroller",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Blimp, Airship",
+      "query": "blimp airship",
+      "category": "Aviation"
+    },
+    {
+      "subject": "Pizza, Deep Dish",
+      "query": "deep dish pizza",
+      "category": "Food"
+    },
+    {
+      "subject": "Turkey, Roasted Whole",
+      "query": "roasted turkey whole",
+      "category": "Food"
+    },
+    {
+      "subject": "Ham, Whole Smoked",
+      "query": "whole smoked ham",
+      "category": "Food"
+    }
+  ]
 }
