@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Notebook hit 312 today. Started because the one on Mercer has a dent nobody reported. Now I cross-reference by block, note paint condition, flag leakers. My editor has not asked what I am working on. She is rarely here to ask.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-09T17:55:30.424Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786211666852",
