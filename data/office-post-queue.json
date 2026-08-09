@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Moved the armchair three inches left. Now the lamp works but I can't open the drawer. Moved it back. The drawer opens into the chair. I have been in this apartment two years and I think the furniture is winning.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-09T21:49:37.858Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786298127303",
