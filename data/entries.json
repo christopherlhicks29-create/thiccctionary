@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-09",
+    "word": "Elephant, African Bull",
+    "pronunciation": "/EL-e-fant, AF-ri-kan BUL/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A terrestrial mammal of notable size, renowned for its substantial mass and commanding presence, particularly when viewed from behind in its natural habitat.",
+      "<em>colloq.</em> Nature's armored vehicle; unapologetically occupies its environment and any shallow pond it deems a suitable watering hole."
+    ],
+    "example": "A thiccc African bull elephant waded through the pond, each step redefining the landscape as it pleased.",
+    "etymology": "From Latin <em>elephantus</em>, derived from Greek <em>elephas</em>, meaning 'ivory' or 'elephant', reflecting both the animal's stature and its historically prized tusks. It's the heavyweight champion of the savanna, no weigh-ins required.",
+    "image": "images/2026-08-09-elephant-african-bull.jpg",
+    "caption": "Plate CXVIII., African bull elephant demonstrating aquatic prowess and terrestrial dominance.",
+    "tags": [
+      "natural-specimens",
+      "landscape",
+      "girth"
+    ],
+    "category": "Uncategorized",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Chris Linnett",
+    "photographerUrl": "https://unsplash.com/@chrislinnett",
+    "unsplashUrl": "https://unsplash.com/photos/an-elephant-walking-in-water-QTbWkfKrTXM",
+    "socialCaptions": {
+      "morning": "Elephant, African Bull. Weighs up to 14,000 pounds—gravity seems optional.\nThe savanna rearranges itself accordingly.",
+      "afternoon": "An African Bull Elephant's ears can reach six feet—enough shade for a small picnic.\nThicccer: this, or a Boeing 747's wing? We have a tally.\nElephant, African Bull.",
+      "evening": "From the archives, Elephant, African Bull.\nTusks grow over seven feet—natural ivory, not just a dent in the air.\nThe landscape takes note.",
+      "reels": "Trunk can hold 2.5 gallons of water—perfect for a splash.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-08",
     "word": "Bag, Punching Heavy",
     "pronunciation": "/BAG, PUNCH-ing HEV-ee/",
