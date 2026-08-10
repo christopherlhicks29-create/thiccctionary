@@ -1,5 +1,15 @@
 # Queued Follow-ups
 
+## RESOLVED 2026-08-10 (Wave 339): the real reason EVERY backfill has ever failed, root-caused and fixed
+
+Every backfill attempt since Wave 331 (including the two "still bailing" entries below and Wave 337's own 08-04/08-06 attempts) reported graceful bail with no entry written. The actual cause was never the subject queue, the critique gate, or a git-push race: `scripts/generate-daily-with-retry.js`'s `landed()` check and `daily.yml`'s "Verify entry actually changed" / "Read entry metadata" steps all independently compared `entries.json[0].date` (the single most-recent catalogued entry) to the backfill's target date. `entries.json` is sorted newest-first, so index 0 can only equal a PAST target date if that date is somehow more recent than every other entry, which never happens once any later date has already shipped. A live/current-day run always passes trivially, which is exactly why this was invisible through 2.5 months of normal daily cron operation and only ever broke backfills.
+
+Proven with hard evidence before touching code: dispatching `target_date=2026-08-01` (run #317) produced a trace log showing attempt 3 actually wrote "Pizza, Deep Dish" to disk and to entries.json, and attempt 4 immediately confirmed "Entry already exists" -- yet the wrapper and the workflow both still reported total failure, so no PR ever opened and the real work was thrown away when the runner exited.
+
+Fixed in commits 64df9c5 (generate-daily-with-retry.js: added entryExistsFor(date), replaced the index-0 checks) and 76f0d35 (daily.yml: fixed the same index-0 assumption in its own verify/metadata steps). Re-validated live: re-dispatching the identical backfill (run #319) now correctly opened and auto-merged PR #253, landing entries/2026-08-01.html for real. Full writeup in WAVES.md Wave 339.
+
+The 08-04 and 08-06 gaps noted in Wave 337 below are now almost certainly backfillable with the fixed wiring -- not yet dispatched this session (one at a time, per the existing lesson about daily.yml's concurrency: cancel-in-progress killing a second dispatch fired too soon after the first). Next session should just try them.
+
 ## RESOLVED 2026-08-08 (Wave 337): FB+IG silent reel-post gap -- root cause was the throwback critic gate, not Buffer/Meta
 
 The section below ("Instagram reels silently vanishing after Buffer accepts them") is now understood to have the wrong culprit -- keeping it for the historical trail but the real fix is documented here. `GATES.throwback.minSubjectPct` in `scripts/image-critic.js` was 25, identical to `daily`/`generate` despite being commented as "looser: image already shipped." Any throwback-mode reel post (which is what post-on-merge's FB+IG cross-post step runs, per `scripts/post-to-buffer.js`) with a subjectPct estimate under 25 got silently dropped for FB+IG with zero user-visible signal, just a buried Actions-log line. This explains the multi-day FB/IG posting gaps seen since 2026-08-02 far better than a Buffer/Meta-side bug does: X kept posting fine on the same days because its morning post uses a different code path unaffected by this gate.
