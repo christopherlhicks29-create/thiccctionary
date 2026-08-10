@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-10",
+    "word": "Battleship, Naval",
+    "pronunciation": "/BAT-ul-ship, NAY-vul/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A formidable maritime vessel characterized by extensive displacement and reinforced armor, often presenting an imposing silhouette when viewed astern in reflective waters.",
+      "<em>colloq.</em> A seafaring behemoth that refuses to fit neatly within the confines of a standard harbor."
+    ],
+    "example": "Seeing a thiccc battleship navigate under the bridge, the river seemed to shrink in protest.",
+    "etymology": "From Middle English 'batel' meaning 'battle' and 'ship'—an Old English term for a vessel. The term 'battleship' was first recorded in the late 18th century, when a ship decided it was tired of sharing the spotlight.",
+    "image": "images/2026-08-10-battleship-naval.jpg",
+    "caption": "Plate CXIX., A battleship asserting its presence in the maritime hierarchy.",
+    "tags": [
+      "maritime",
+      "vehicle",
+      "industrial"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Tony Williams",
+    "photographerUrl": "https://unsplash.com/@puffinadventures",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-boat-in-the-water-near-a-bridge-v73Pyd1GcR0",
+    "socialCaptions": {
+      "morning": "Battleship, Naval.\n45,000 tons of diplomatic subtlety.\nThe ocean waves were not consulted.",
+      "afternoon": "Launched in 1906, HMS Dreadnought redefined thicccness on the high seas.\nIt held the title until 1920—no farewell party needed.\nThicccer: this or a fully loaded aircraft carrier?\nBattleship, Naval.",
+      "evening": "From the archives, Battleship, Naval.\n12-inch guns—where intimidation meets precision.\nThe horizon trembled in anticipation.",
+      "reels": "Battleship, Naval.\nWhen 16 inches of armor plate speak, everyone listens.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-09",
     "word": "Elephant, African Bull",
     "pronunciation": "/EL-e-fant, AF-ri-kan BUL/",
