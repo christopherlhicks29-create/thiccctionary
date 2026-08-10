@@ -1,0 +1,110 @@
+# Daily run trace 2026-08-10-151813
+
+Triggered by: workflow_dispatch (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31402627703
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Steamroller, Road" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Steamroller, Road" query="steamroller" (source: queue)
+Subject: Steamroller, Road (query: "steamroller")
+Subject "Steamroller, Road" returned zero Unsplash results for query "steamroller". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+Saved image to images/2026-08-01-bagger-293.jpg
+[webp] 2026-08-01-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette clearly against the landscape, emphasizing its thiccness.
+[webp] 2026-08-01-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and industrial presence.
+[webp] 2026-08-01-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane, likely used in a port or construction setting. The crane is well-framed and prominent in the image, but it is not the subject specified. The industrial scenery is clear, but the wrong object makes this photo unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-01 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Blimp, Airship" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Blimp, Airship" query="blimp airship" (source: queue)
+Subject: Blimp, Airship (query: "blimp airship")
+Subject "Blimp, Airship" returned zero Unsplash results for query "blimp airship". (attempt 1)
+Fallback subject (#1): Thiccc Crawler Crane (query: "crawler crane")
+Found 30 candidate photos.
+Vision picked #6 of 12: this photo shows multiple crawler cranes with a strong emphasis on their robust silhouettes.
+Saved image to images/2026-08-01-thiccc-crawler-crane.jpg
+[webp] 2026-08-01-thiccc-crawler-crane.jpg: 318KB -> 224KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Crawler Crane" (29 candidates left).
+Vision picked #6 of 12: This photo shows a crawler crane with a prominent silhouette, emphasizing its girth and structure.
+[webp] 2026-08-01-thiccc-crawler-crane.jpg: 178KB -> 89KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Crawler Crane" (28 candidates left).
+Vision picked #5 of 12: This photo shows a crawler crane in action, emphasizing its robust structure and girth against a clear background.
+[webp] 2026-08-01-thiccc-crawler-crane.jpg: 181KB -> 113KB (37% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 3.
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The example sentence paints a vivid scene with seagulls and a yacht, ending on a comedic note. The etymology has a deadpan kicker with the crawler preferring a steady roll. However, the definitions could use a bit more specificity or a humorous twist to enhance the comedic impact.
+Generated social captions:
+  morning: Thiccc Crawler Crane.
+  afternoon: The Liebherr LR 13000—1,073 feet of extended ambition.
+  evening: From the archives, Thiccc Crawler Crane.
+  reels: Underneath its thiccc shell, a 1,500-horsepower heart.
+[bail] final dup-guard: "Thiccc Crawler Crane" duplicates catalogued "Crane, Tower Construction" - subject "Thiccc Crawler Crane"
+[bail] popped "Thiccc Crawler Crane" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-01 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Pizza, Deep Dish" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pizza, Deep Dish" query="deep dish pizza" (source: queue)
+Subject: Pizza, Deep Dish (query: "deep dish pizza")
+Found 26 candidate photos.
+Vision picked #4 of 12: this photo showcases a large, thick deep dish pizza with a full view of its girthy crust and toppings.
+Saved image to images/2026-08-01-pizza-deep-dish.jpg
+[webp] 2026-08-01-pizza-deep-dish.jpg: 216KB -> 118KB (45% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=etymology
+  feedback: The entry is solid with a specific example that humorously suggests the pizza's weight and ambition. The etymology could use a kicker to enhance the humor, as it currently lacks a comedic punch. Overall, the entry effectively uses dictionary register with a touch of dry comedy.
+Generated social captions:
+  morning: Pizza, Deep Dish—a 2-inch culinary abyss. 
+  afternoon: In 1943, the deep dish pizza emerged, defying conventional flat geometry.
+  evening: From the archives, Pizza, Deep Dish.
+  reels: Deep Dish Pizza—proof that sauce can have altitude.
+Saved entry: Pizza, Deep Dish
+Built entry page: entries/2026-08-01.html
+Rebuilt prev entry page (2026-08-09) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 120 entries + 54 articles.
+Sitemap rebuilt with 120 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-01 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Entry for 2026-08-01 already exists. Exiting. (Set FORCE_REGENERATE=true to override.)
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-01 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-01.
+```
