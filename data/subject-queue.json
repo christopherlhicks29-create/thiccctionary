@@ -7,21 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Steamroller, Road",
-      "query": "steamroller",
-      "category": "Industrial Machinery"
-    },
-    {
-      "subject": "Blimp, Airship",
-      "query": "blimp airship",
-      "category": "Aviation"
-    },
-    {
-      "subject": "Pizza, Deep Dish",
-      "query": "deep dish pizza",
-      "category": "Food"
-    },
-    {
       "subject": "Turkey, Roasted Whole",
       "query": "roasted turkey whole",
       "category": "Food"
