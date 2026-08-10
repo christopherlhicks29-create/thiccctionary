@@ -1,0 +1,95 @@
+# Daily run trace 2026-08-10-154559
+
+Triggered by: workflow_dispatch (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31405173080
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Steamroller, Road" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Steamroller, Road" query="steamroller" (source: queue)
+Subject: Steamroller, Road (query: "steamroller")
+Subject "Steamroller, Road" returned zero Unsplash results for query "steamroller". (attempt 1)
+Fallback subject (#1): Thicc Luchador Burrito (query: "burrito")
+Found 3 candidate photos.
+Vision picked #1 of 3: the burrito is prominently displayed, showcasing its girth and filling ingredients.
+Saved image to images/2026-08-01-thicc-luchador-burrito.jpg
+[webp] 2026-08-01-thicc-luchador-burrito.jpg: 151KB -> 74KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 16; trying another photo for "Thicc Luchador Burrito" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 16  isSubject: false
+  critique: The photo does not show a 'Thicc Luchador Burrito' as the subject. Instead, it features a bottle of kombucha and a burrito on a plate. The burrito is not particularly oversized or imposing, failing the girth test. The composition includes multiple elements, which distracts from focusing on a single subject. The image does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=16 - subject "Thicc Luchador Burrito"
+[bail] popped "Thicc Luchador Burrito" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-01 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Blimp, Airship" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Blimp, Airship" query="blimp airship" (source: queue)
+Subject: Blimp, Airship (query: "blimp airship")
+Subject "Blimp, Airship" returned zero Unsplash results for query "blimp airship". (attempt 1)
+Fallback subject (#1): Cement Truck, McNeilus 12-Yard (query: "cement truck")
+Found 20 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 19 left.
+Vision picked #5 of 12: it shows the full side profile of the cement truck, emphasizing its girth and silhouette.
+Saved image to images/2026-08-01-cement-truck-mcneilus-12-yard.jpg
+[webp] 2026-08-01-cement-truck-mcneilus-12-yard.jpg: 201KB -> 114KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Cement Truck, McNeilus 12-Yard" (18 candidates left).
+Vision picked #9 of 12: This photo shows the full front view of a cement truck, emphasizing its robust and thick silhouette.
+[webp] 2026-08-01-cement-truck-mcneilus-12-yard.jpg: 242KB -> 138KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Cement Truck, McNeilus 12-Yard" (17 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of a cement truck, emphasizing its substantial girth.
+[webp] 2026-08-01-cement-truck-mcneilus-12-yard.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show a 'Cement Truck, McNeilus 12-Yard' but rather a red semi truck. The subject is not a cement truck, which is a specific type of vehicle with a rotating drum for mixing concrete. The image is well-composed and clear, but it does not meet the criteria for the specified subject. Therefore, it is not suitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Cement Truck, McNeilus 12-Yard"
+[bail] popped "Cement Truck, McNeilus 12-Yard" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-01 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Pizza, Deep Dish" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pizza, Deep Dish" query="deep dish pizza" (source: queue)
+Subject: Pizza, Deep Dish (query: "deep dish pizza")
+Found 26 candidate photos.
+Vision picked #4 of 12: this photo showcases a large, thick deep dish pizza with a full view of its girthy silhouette.
+Saved image to images/2026-08-01-pizza-deep-dish.jpg
+[webp] 2026-08-01-pizza-deep-dish.jpg: 216KB -> 118KB (45% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=9/10, verdict=ship, weakest=overall
+  feedback: The entry is strong with a specific scene in the example sentence, a punchline tag that lands well, and an etymology kicker that adds humor. The unexpected detail about the pan being 'just a suggestion' is particularly amusing. Overall, it's a solid entry with a good mix of specificity and humor.
+Generated social captions:
+  morning: Pizza, Deep Dish—3 inches tall, with a crust engineered to defy gravity.
+  afternoon: In 1943, the deep dish emerged as a culinary skyscraper.
+  evening: From the archives, Pizza, Deep Dish.
+  reels: A Chicago staple—Pizza, Deep Dish.
+Saved entry: Pizza, Deep Dish
+Built entry page: entries/2026-08-01.html
+Rebuilt prev entry page (2026-08-09) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 120 entries + 54 articles.
+Sitemap rebuilt with 120 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-08-01 landed on attempt 3.
+```
