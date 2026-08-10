@@ -1,0 +1,103 @@
+# Daily run trace 2026-08-10-153133
+
+Triggered by: workflow_dispatch (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31403837750
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Steamroller, Road" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Steamroller, Road" query="steamroller" (source: queue)
+Subject: Steamroller, Road (query: "steamroller")
+Subject "Steamroller, Road" returned zero Unsplash results for query "steamroller". (attempt 1)
+Fallback subject (#1): Cargo Ship, Emma Maersk (query: "cargo ship")
+Found 15 candidate photos.
+Vision picked #1 of 12: This photo shows a cargo ship with a full silhouette and ample girth, making it the most fitting for a 'thicc' entry.
+Saved image to images/2026-08-01-cargo-ship-emma-maersk.jpg
+[webp] 2026-08-01-cargo-ship-emma-maersk.jpg: 204KB -> 127KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Cargo Ship, Emma Maersk" (14 candidates left).
+Vision picked #3 of 12: This photo shows the cargo ship silhouetted against a dramatic sky, emphasizing its overall girth.
+[webp] 2026-08-01-cargo-ship-emma-maersk.jpg: 195KB -> 114KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 40; trying another photo for "Cargo Ship, Emma Maersk" (13 candidates left).
+Vision picked #3 of 12: This photo shows the cargo ship silhouetted against a dramatic sky, emphasizing its large and thick profile.
+[webp] 2026-08-01-cargo-ship-emma-maersk.jpg: 253KB -> 173KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 10  isSubject: false
+  critique: The photo shows a cargo ship sailing under dramatic clouds, but it does not specifically identify the 'Emma Maersk.' The ship is centered and well-framed, with a clear silhouette against the sky, but the lack of specific identification makes it unsuitable for the subject 'Cargo Ship, Emma Maersk.' The dramatic clouds add aesthetic value, but the focus is not on a specific ship model, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=10 - subject "Cargo Ship, Emma Maersk"
+[bail] popped "Cargo Ship, Emma Maersk" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-01 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Blimp, Airship" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Blimp, Airship" query="blimp airship" (source: queue)
+Subject: Blimp, Airship (query: "blimp airship")
+Subject "Blimp, Airship" returned zero Unsplash results for query "blimp airship". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of a large industrial crane, emphasizing its girth and structure.
+Saved image to images/2026-08-01-bagger-293.jpg
+[webp] 2026-08-01-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette clearly against the landscape.
+[webp] 2026-08-01-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of a large crane, emphasizing its thiccness and industrial presence.
+[webp] 2026-08-01-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane, likely in a port or industrial area. The crane is centered and clearly the main subject, but it is not the object specified. The image is well-composed and free of clutter, but it fails the identity test as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-01 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Pizza, Deep Dish" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pizza, Deep Dish" query="deep dish pizza" (source: queue)
+Subject: Pizza, Deep Dish (query: "deep dish pizza")
+Found 26 candidate photos.
+Vision picked #4 of 12: this photo showcases a large, thick deep dish pizza with a full view of its girthy silhouette.
+Saved image to images/2026-08-01-pizza-deep-dish.jpg
+[webp] 2026-08-01-pizza-deep-dish.jpg: 216KB -> 118KB (45% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The example lacks a punchline tag, ending on a flat note without a comedic beat. The etymology could use a deadpan kicker to enhance humor. The entry avoids anti-patterns, but needs more specific and surprising details to elevate the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: Pizza, Deep Dish. A 2-inch culinary skyscraper.
+  afternoon: The 1943 birth of a Chicago icon—deep dish pizza.
+  evening: From the archives, Pizza, Deep Dish.
+  reels: Deep Dish Pizza.
+Saved entry: Pizza, Deep Dish
+Built entry page: entries/2026-08-01.html
+Rebuilt prev entry page (2026-08-09) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 120 entries + 54 articles.
+Sitemap rebuilt with 120 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-08-01 landed on attempt 3.
+```
