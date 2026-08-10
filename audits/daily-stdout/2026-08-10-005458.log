@@ -1,0 +1,127 @@
+# Daily run trace 2026-08-10-005458
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31345616166
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-10
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 9
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Walrus, Pacific" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Walrus, Pacific" query="walrus" (source: queue)
+Subject: Walrus, Pacific (query: "walrus")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #10 of 12: This photo showcases multiple walruses with their full silhouettes, emphasizing their girth and thiccness.
+Saved image to images/2026-08-10-walrus-pacific.jpg
+[webp] 2026-08-10-walrus-pacific.jpg: 224KB -> 152KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Walrus, Pacific" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a Pacific Walrus, but rather a group of Steller's Sea Lions. The entire subject is visible, and the image is well-framed and clear, with the sea lions being the focal point. However, since the subject is incorrect, the photo cannot be used for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Walrus, Pacific"
+[bail] popped "Walrus, Pacific" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-10.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-10 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 19 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Tortoise, Galapagos" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Tortoise, Galapagos" query="galapagos tortoise" (source: queue)
+Subject: Tortoise, Galapagos (query: "galapagos tortoise")
+Subject "Tortoise, Galapagos" returned zero Unsplash results for query "galapagos tortoise". (attempt 1)
+Fallback subject (#1): Titanic, RMS (query: "Titanic ship")
+Found 13 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 12 left.
+Vision picked #10 of 12: this photo shows the full silhouette of a large ship, emphasizing its girth and structure.
+Saved image to images/2026-08-10-titanic-rms.jpg
+[webp] 2026-08-10-titanic-rms.jpg: 172KB -> 101KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Titanic, RMS" (11 candidates left).
+Vision picked #10 of 11: this photo shows the full front view of a large ship, emphasizing its substantial girth.
+[webp] 2026-08-10-titanic-rms.jpg: 155KB -> 86KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Titanic, RMS" (10 candidates left).
+Vision picked #1 of 10: this photo depicts the RMS Titanic in a prominent and detailed manner, emphasizing its grand silhouette.
+[webp] 2026-08-10-titanic-rms.jpg: 200KB -> 110KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a commemorative coin depicting the RMS Titanic, not the actual ship itself. The subject, 'Titanic, RMS,' refers to the ship, not a representation of it. The image is well-composed and clear, but it does not meet the criteria for the subject as it is a depiction rather than the actual object. Therefore, it does not fulfill the requirements for the dictionary entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Titanic, RMS"
+[bail] popped "Titanic, RMS" from queue. 7 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-10.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-10 yet). Queue now has 7 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 20 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Naval" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Naval" query="submarine" (source: queue)
+Subject: Submarine, Naval (query: "submarine")
+Found 30 candidate photos.
+Vision picked #12 of 12: This photo clearly shows the full silhouette of a submarine against the horizon, emphasizing its girth.
+Saved image to images/2026-08-10-submarine-naval.jpg
+[webp] 2026-08-10-submarine-naval.jpg: 99KB -> 47KB (53% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct undefined; trying another photo for "Submarine, Naval" (29 candidates left).
+Vision picked #12 of 12: this photo showcases the full silhouette of a naval submarine, emphasizing its substantial girth and structure.
+[webp] 2026-08-10-submarine-naval.jpg: 213KB -> 125KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Submarine, Naval" (28 candidates left).
+Vision picked #10 of 12: the photo shows a large, thick ship struggling in rough waters, emphasizing its girth.
+[webp] 2026-08-10-submarine-naval.jpg: 219KB -> 142KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo depicts a shipwrecked vessel, not a submarine. The subject is clearly a surface ship, which disqualifies it from representing a 'Submarine, Naval.' The composition is dramatic and well-captured, but it does not meet the criteria for the specified subject. The image is centered and the ship is prominent, but it is not the correct type of vessel.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Submarine, Naval"
+[bail] popped "Submarine, Naval" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-10.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-10 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 21 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Battleship, Naval" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Battleship, Naval" query="battleship" (source: queue)
+Subject: Battleship, Naval (query: "battleship")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #3 of 12: This photo shows the battleship clearly in full silhouette against the backdrop of the iconic bridge, emphasizing its girth and size.
+Saved image to images/2026-08-10-battleship-naval.jpg
+[webp] 2026-08-10-battleship-naval.jpg: 251KB -> 165KB (34% smaller)
+Design critique: score=8/10, verdict=ship
+  ⚠️ Banned terms found in entry "Battleship, Naval":
+     [definitions] "speaks volumes" (banned-word)
+Banned-words attempt 1/3 rejected ("speaks volumes" in definitions). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=7/10, verdict=ship, weakest=definitions
+  feedback: The example sentence provides a specific scene with a comedic twist, and the etymology ends on a humorous note. However, the definitions rely on clichéd phrases like 'imposing silhouette,' which could be more original. A bit more surprise or specificity in the definitions would elevate the entry.
+Generated social captions:
+  morning: Battleship, Naval.
+  afternoon: Launched in 1906, HMS Dreadnought redefined thicccness on the high seas.
+  evening: From the archives, Battleship, Naval.
+  reels: Battleship, Naval.
+Saved entry: Battleship, Naval
+Built entry page: entries/2026-08-10.html
+Rebuilt prev entry page (2026-08-09) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 119 entries + 54 articles.
+Sitemap rebuilt with 119 entries.
+Subject queue updated: 5 item(s) remaining.
+[retry-wrapper] entry for 2026-08-10 landed on attempt 4.
+```
