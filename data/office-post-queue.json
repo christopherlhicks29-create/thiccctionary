@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Objection #47 to Bart's eligibility ruling arrived in my inbox this morning. I reread it. It says \"not a vehicle.\" The Saturn V lifted 130,000 kg off the earth. I don't know what verb Bart thinks that is.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-10T18:11:07.895Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786312174298",
