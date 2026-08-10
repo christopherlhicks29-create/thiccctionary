@@ -1,6 +1,6 @@
 {
-  "queued_at": "2026-08-03T06:22:57.180Z",
-  "dates": "2026-08-02,2026-07-14,2026-07-21,2026-07-18",
+  "queued_at": "2026-08-10T04:29:33.156Z",
+  "dates": "2026-08-02,2026-07-21,2026-07-08",
   "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 4): 2026-08-02 Pumper Truck, Fire Engine (score 1, depicts \"a real fire engine from the front\"); 2026-07-14 Helmet, Astronaut (score 1, depicts \"an astronaut suit with a helmet\"); 2026-07-21 Engine, V8 Crate (score 1, depicts \"a collection of various engines with fans\"); 2026-07-18 Boot, Snow Pack Insulated (score 7, depicts \"a real pair of insulated snow pack boots on a snowy log\")"
+  "reason": "Wave 212 image-audit batch (worst 3): 2026-08-02 Pumper Truck, Fire Engine (score 1, depicts \"a real fire engine from the front\"); 2026-07-21 Engine, V8 Crate (score 1, depicts \"a collection of used car engines with fans\"); 2026-07-08 Beet, Sugar (score 1, depicts \"a bunch of radishes tied together\")"
 }

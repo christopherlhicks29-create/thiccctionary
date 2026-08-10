@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-03T06:22:57.179Z",
-  "scanned": 114,
-  "passed": 109,
-  "failed": 5,
+  "generated_at": "2026-08-10T04:29:33.156Z",
+  "scanned": 119,
+  "passed": 116,
+  "failed": 3,
   "gate": {
     "minScore": 6,
-    "minSubjectPct": 25
+    "minSubjectPct": 15
   },
   "failures": [
     {
@@ -13,21 +13,10 @@
       "word": "Pumper Truck, Fire Engine",
       "imageUrl": "https://thiccctionary.com/images/2026-08-02-pumper-truck-fire-engine.jpg",
       "score": 1,
-      "subjectPct": 48,
+      "subjectPct": 64,
       "verdict": "reject",
       "photoSubject": "a real fire engine from the front",
-      "critique": "The photo shows the front of a fire engine, not the hindquarters of a pumper truck as specified. The subject is not centered as the description suggests, and the angle does not match the description of 'hindquarters.' The image is clear and well-lit, but it does not meet the criteria for the specified subject. Therefore, it cannot be used for the intended entry.",
-      "passed": false
-    },
-    {
-      "date": "2026-07-14",
-      "word": "Helmet, Astronaut",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-14-helmet-astronaut.jpg",
-      "score": 1,
-      "subjectPct": 48,
-      "verdict": "reject",
-      "photoSubject": "an astronaut suit with a helmet",
-      "critique": "The photo primarily depicts an astronaut suit, not just the helmet. The helmet is part of the suit, but the subject 'Helmet, Astronaut' suggests a focus solely on the helmet itself. The suit dominates the frame, making it unclear if the helmet is the main subject. Additionally, the reflection in the helmet visor adds some visual interest but does not contribute to the clarity of the subject. The image is well-centered and free of clutter, but it fails the identity test by not isolating the helmet as the primary focus.",
+      "critique": "The photo does not show the hindquarters of a pumper truck as described. Instead, it depicts the front of a fire engine. The subject is not centered, and the focus is on the front view rather than the rear. The image does not meet the criteria for the specified subject, resulting in a low score.",
       "passed": false
     },
     {
@@ -37,30 +26,19 @@
       "score": 1,
       "subjectPct": 64,
       "verdict": "reject",
-      "photoSubject": "a collection of various engines with fans",
-      "critique": "The photo does not specifically show a V8 crate engine but rather a collection of various engines, making it difficult to identify the subject as the named object. The engines are cluttered together, and the framing does not focus on a single V8 crate engine. The presence of multiple engines and other items in the background creates distractions, and the subject is not clearly defined. This image fails the identity test, as it does not depict the specific subject required.",
+      "photoSubject": "a collection of used car engines with fans",
+      "critique": "The photo does not show a single V8 crate engine, but rather a collection of used car engines with visible fans and other components. The engines are cluttered together, making it difficult to focus on a single subject. The composition lacks the clarity and focus needed for a dictionary-style entry. Additionally, the engines do not appear to be V8 crate engines, which further disqualifies the image. The presence of various items in the background adds to the clutter, detracting from the subject's prominence.",
       "passed": false
     },
     {
-      "date": "2026-07-18",
-      "word": "Boot, Snow Pack Insulated",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-18-boot-snow-pack-insulated.jpg",
-      "score": 7,
-      "subjectPct": 24,
-      "verdict": "needs-review",
-      "photoSubject": "a real pair of insulated snow pack boots on a snowy log",
-      "critique": "The photo effectively showcases a pair of insulated snow pack boots, meeting the subject criteria. The boots are prominently displayed and centered, though the background is somewhat busy with trees and tents, which can be distracting. The setting adds context but slightly detracts from the focus on the boots. The boots appear sturdy and appropriate for winter, aligning with the subject description. However, the overall composition could benefit from a tighter crop to emphasize the boots more and reduce background clutter.",
-      "passed": false
-    },
-    {
-      "date": "2026-07-24",
-      "word": "Mango, Honey Ataulfo",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-24-mango-honey-ataulfo-qlgy.jpg",
-      "score": 9,
-      "subjectPct": 24,
-      "verdict": "ship",
-      "photoSubject": "a real Honey Ataulfo mango",
-      "critique": "The photo clearly depicts a Honey Ataulfo mango, meeting the subject requirement. The mango is fully visible and well-centered, with a clean background that avoids distractions. The image fits the documentary style, showcasing the mango's distinctive shape and color. The subject is prominent, and the mango appears plump and ripe, aligning with the 'thiccc' theme. The only minor improvement could be a slightly tighter crop to enhance focus, but overall, the image is excellent.",
+      "date": "2026-07-08",
+      "word": "Beet, Sugar",
+      "imageUrl": "https://thiccctionary.com/images/2026-07-08-beet-sugar.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a bunch of radishes tied together",
+      "critique": "The photo shows a bunch of radishes, not sugar beets. Sugar beets are typically larger, with a more elongated shape and a pale color, unlike the small, round, red radishes depicted here. The image is well-composed and clear, but it does not meet the subject criteria for 'Beet, Sugar.' Therefore, it is unsuitable for the intended entry.",
       "passed": false
     }
   ]
