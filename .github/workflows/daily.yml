@@ -207,18 +207,18 @@ jobs:
           else
             TODAY=$(date -u +%Y-%m-%d)
           fi
-          NEW_DATE=$(node -e "const e=require('./data/entries.json'); console.log(e[0].date);")
-          NEW_WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
-          if [ "$NEW_DATE" != "$TODAY" ]; then
+          NEW_DATE=$(node -e "const e=require('./data/entries.json'); const h=e.find(x=>x.date==='$TODAY'); console.log(h?h.date:'');")
+          NEW_WORD=$(node -e "const e=require('./data/entries.json'); const h=e.find(x=>x.date==='$TODAY'); console.log(h?h.word:'');")
+          if [ -z "$NEW_DATE" ]; then
             if [ -f "audits/dead-subjects/$TODAY.md" ]; then
               echo "::warning::Graceful bail logged in audits/dead-subjects/$TODAY.md, no entry written. Outcome-verify will retry."
               echo "entry_written=false" >> $GITHUB_OUTPUT
               exit 0
             fi
-            echo "::error::entries.json[0].date is $NEW_DATE, not today ($TODAY). Entry generation failed silently. Aborting."
+            echo "::error::No entries.json record for $TODAY. Entry generation failed silently. Aborting."
             exit 1
           fi
-          echo "Verified: today's entry is $NEW_WORD ($NEW_DATE)"
+          echo "Verified: $TODAY entry is $NEW_WORD ($NEW_DATE)"
           echo "entry_written=true" >> $GITHUB_OUTPUT
 
       - name: Read entry metadata + design critique
@@ -229,8 +229,8 @@ jobs:
           else
             DATE=$(date -u +%Y-%m-%d)
           fi
-          WORD=$(node -e "const e=require('./data/entries.json'); console.log(e[0].word);")
-          PHOTOG=$(node -e "const e=require('./data/entries.json'); console.log(e[0].photographer || 'unknown');")
+          WORD=$(node -e "const e=require('./data/entries.json'); const h=e.find(x=>x.date==='$DATE'); console.log(h?h.word:'');")
+          PHOTOG=$(node -e "const e=require('./data/entries.json'); const h=e.find(x=>x.date==='$DATE'); console.log((h&&h.photographer)||'unknown');")
           # Wave 90: parse critique with python3 instead of bash+node-e heredoc.
           # The prior shell helper was fragile and rendered scores as literal "v"
           # in PR bodies. Also dumps the raw json to logs for debug.
