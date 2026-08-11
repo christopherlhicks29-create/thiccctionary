@@ -1,0 +1,108 @@
+# Daily run trace 2026-08-11-054755
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31462755765
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-11
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Turkey, Roasted Whole" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Turkey, Roasted Whole" query="roasted turkey whole" (source: queue)
+Subject: Turkey, Roasted Whole (query: "roasted turkey whole")
+Found 18 candidate photos.
+Vision picked #1 of 12: This photo shows two whole roasted turkeys surrounded by colorful vegetables, emphasizing their size and girth.
+Saved image to images/2026-08-11-turkey-roasted-whole.jpg
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 185KB -> 110KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Turkey, Roasted Whole" (17 candidates left).
+Vision picked #2 of 12: This photo shows a whole roasted turkey, emphasizing its girth and silhouette.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 318KB -> 223KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Turkey, Roasted Whole" (16 candidates left).
+Vision picked #4 of 12: this photo features a whole roasted turkey prominently displayed, showcasing its full shape and girth.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 141KB -> 69KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 16  isSubject: false
+  critique: The photo does not show a roasted whole turkey, but rather a roasted chicken. The subject is not the named object, which disqualifies the image. The composition is clear and well-lit, but the primary subject is incorrect for the entry. The chicken is centered and prominent, but it does not meet the criteria for a 'Turkey, Roasted Whole.'
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=16 - subject "Turkey, Roasted Whole"
+[bail] popped "Turkey, Roasted Whole" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-11 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Ham, Whole Smoked" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Ham, Whole Smoked" query="whole smoked ham" (source: queue)
+Subject: Ham, Whole Smoked (query: "whole smoked ham")
+Found 4 candidate photos.
+Vision picked #3 of 4: this photo showcases a whole smoked ham prominently, emphasizing its girth among a spread of food.
+Saved image to images/2026-08-11-ham-whole-smoked.jpg
+[webp] 2026-08-11-ham-whole-smoked.jpg: 306KB -> 218KB (29% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 1 scored 7 / subjectPct 15; trying another photo for "Ham, Whole Smoked" (3 candidates left).
+Vision picked #3 of 3: this photo shows whole smoked hams prominently, emphasizing their girth and silhouette.
+[webp] 2026-08-11-ham-whole-smoked.jpg: 174KB -> 98KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 18; trying another photo for "Ham, Whole Smoked" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show a 'Whole Smoked Ham' but instead depicts ribs on a grill. The subject is not centered, and the grill occupies a significant portion of the frame. The image is well-composed for marketing purposes but fails to meet the criteria for a dictionary-style entry of the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Ham, Whole Smoked"
+[bail] popped "Ham, Whole Smoked" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-11 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-11 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Antonov An-225 (query: "Antonov An-225")
+Found 29 candidate photos.
+Vision picked #2 of 12: this photo shows the full silhouette of a large aircraft, emphasizing its thiccness.
+Saved image to images/2026-08-11-thiccc-antonov-an-225.jpg
+[webp] 2026-08-11-thiccc-antonov-an-225.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Thiccc Antonov An-225" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo shows an IL-76 aircraft, not the Antonov An-225. The An-225 is a distinct and much larger aircraft, known for being the heaviest airplane ever built. The IL-76, while a large cargo plane, does not meet the criteria for the subject 'Thiccc Antonov An-225'. The photo is well-composed and centered, but it does not depict the correct subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Thiccc Antonov An-225"
+[bail] popped "Thiccc Antonov An-225" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-11 yet). Queue now has 3 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-11.
+```
