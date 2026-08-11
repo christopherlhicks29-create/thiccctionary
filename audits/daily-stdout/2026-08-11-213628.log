@@ -1,0 +1,126 @@
+# Daily run trace 2026-08-11-213628
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31538525270
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-11
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Turkey, Roasted Whole" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Turkey, Roasted Whole" query="roasted turkey whole" (source: queue)
+Subject: Turkey, Roasted Whole (query: "roasted turkey whole")
+Found 18 candidate photos.
+Vision picked #1 of 12: this photo showcases two whole roasted turkeys with a variety of colorful sides, emphasizing their thicc silhouette.
+Saved image to images/2026-08-11-turkey-roasted-whole.jpg
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 185KB -> 110KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Turkey, Roasted Whole" (17 candidates left).
+Vision picked #2 of 12: this photo showcases a whole roasted turkey with a prominent silhouette, emphasizing its girth.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 318KB -> 223KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Turkey, Roasted Whole" (16 candidates left).
+Vision picked #4 of 12: this photo showcases a whole roasted turkey prominently, emphasizing its size and girth.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 141KB -> 69KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show a roasted whole turkey, but rather a roasted chicken. The subject is not the named object, which disqualifies it. The composition is clear, and the chicken is well-framed, but it does not meet the criteria for the specified subject. The presence of other food items adds clutter, drawing attention away from the main subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Turkey, Roasted Whole"
+[bail] popped "Turkey, Roasted Whole" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-11 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Ham, Whole Smoked" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Ham, Whole Smoked" query="whole smoked ham" (source: queue)
+Subject: Ham, Whole Smoked (query: "whole smoked ham")
+Found 4 candidate photos.
+Vision picked #3 of 4: this photo showcases a whole smoked ham prominently among a spread of dishes, emphasizing its girth and appeal.
+Saved image to images/2026-08-11-ham-whole-smoked.jpg
+[webp] 2026-08-11-ham-whole-smoked.jpg: 306KB -> 218KB (29% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 1 scored 7 / subjectPct 12; trying another photo for "Ham, Whole Smoked" (3 candidates left).
+Vision rejected all 3 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 7  verdict: needs-review  subjectPct: 12  isSubject: true
+  critique: The photo does show a whole smoked ham, which is the subject, but it is surrounded by a variety of side dishes that compete for attention. The ham is prominently placed in the center, yet the presence of other foods makes the image feel cluttered. The lighting is well-executed, giving the ham an appealing look, but the overall composition could be tighter to emphasize the ham more. The image fits the documentary style but could benefit from reduced distractions to better align with the brand's focus on singular objects.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=needs-review score=7 subjectPct=12 - subject "Ham, Whole Smoked"
+[bail] popped "Ham, Whole Smoked" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-11 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #3 of 3: This photo shows the full silhouette of the Caterpillar D11T against a clear background, emphasizing its impressive girth.
+Saved image to images/2026-08-11-thiccc-caterpillar-d11t.jpg
+[webp] 2026-08-11-thiccc-caterpillar-d11t.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11T" (2 candidates left).
+Vision picked #1 of 2: This photo shows the full silhouette of the D11T against a clear background, emphasizing its girth.
+[webp] 2026-08-11-thiccc-caterpillar-d11t.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11T" (1 candidates left).
+Vision picked #1 of 1: The photo shows the Caterpillar D11T in a construction setting, emphasizing its large and robust silhouette.
+[webp] 2026-08-11-thiccc-caterpillar-d11t.jpg: 401KB -> 307KB (23% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not show a Caterpillar D11T, which is a bulldozer, not an excavator. The subject of the image is an excavator involved in a demolition project, with a construction worker observing. The framing and composition focus on the demolition scene rather than showcasing the specific machinery requested. Therefore, the image fails to meet the subject identity criteria.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Caterpillar D11T"
+[bail] popped "Thiccc Caterpillar D11T" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-11 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: pulling "Lobster, Maine" (4 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lobster, Maine" query="maine lobster whole" (source: queue)
+Subject: Lobster, Maine (query: "maine lobster whole")
+Subject "Lobster, Maine" returned zero Unsplash results for query "maine lobster whole". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive girth and industrial presence.
+Saved image to images/2026-08-11-bagger-293.jpg
+[webp] 2026-08-11-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive scale and silhouette clearly against the landscape.
+[webp] 2026-08-11-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows a large crane with a substantial base, emphasizing its thicc silhouette.
+[webp] 2026-08-11-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a large bucket-wheel excavator. Instead, it depicts a crane in an industrial setting. The crane is centered and clearly visible, but it is not the correct subject. The image is well-composed and free of clutter, but it fails the identity test as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-11 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-11.
+```
