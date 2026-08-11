@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1786485986328",
+      "date": "2026-08-11",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about reply to eli: \"ABIDJAN, 0220\n\nEli says the dish \"gave up.\" Wrong. Dishes that size drift. Wind, settlement, the slo...\""
+    },
+    {
       "id": "auto-1786385464029",
       "date": "2026-08-10",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-07-14",
       "byline_id": "bart",
       "summary": "Bartholomew posted about girth-quarterly: \"Someone left a photocopy of a 1994 newsletter on my desk. No note. The staple placement is wrong and...\""
-    },
-    {
-      "id": "auto-1783968818404",
-      "date": "2026-07-13",
-      "byline_id": "margie",
-      "summary": "Margaret posted about personal life: a remarkable person you met whom no reader has heard of: \"Sat next to Heloise Tamberlain at dinner in Cannes. She restores antique safes. I asked how heavy th...\""
     }
   ]
 }
