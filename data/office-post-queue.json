@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "ABIDJAN, 0220\n\nEli says the dish \"gave up.\" Wrong. Dishes that size drift. Wind, settlement, the slow pull of the earth. Give it six months. It'll find something. Not the signal it wanted, maybe. Something.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-11T22:06:30.277Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786385464028",
