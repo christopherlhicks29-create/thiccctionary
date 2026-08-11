@@ -1,0 +1,120 @@
+# Daily run trace 2026-08-11-133845
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31497005445
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-11
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Turkey, Roasted Whole" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Turkey, Roasted Whole" query="roasted turkey whole" (source: queue)
+Subject: Turkey, Roasted Whole (query: "roasted turkey whole")
+Found 18 candidate photos.
+Vision picked #1 of 12: This photo showcases multiple whole roasted turkeys with vibrant sides, emphasizing their size and girth.
+Saved image to images/2026-08-11-turkey-roasted-whole.jpg
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 185KB -> 110KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Turkey, Roasted Whole" (17 candidates left).
+Vision picked #2 of 12: This photo shows a whole roasted turkey, emphasizing its full shape and girth.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 318KB -> 223KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Turkey, Roasted Whole" (16 candidates left).
+Vision picked #4 of 12: This photo showcases a whole roasted turkey prominently, emphasizing its size and girth.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 141KB -> 69KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 16  isSubject: false
+  critique: The photo shows a roasted chicken, not a roasted whole turkey. The subject is not the named object, which disqualifies it. The composition is clear and well-lit, but the presence of other food items adds some clutter. The chicken is centered and prominent, but it does not meet the subject identity requirement.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=16 - subject "Turkey, Roasted Whole"
+[bail] popped "Turkey, Roasted Whole" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-11 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Ham, Whole Smoked" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Ham, Whole Smoked" query="whole smoked ham" (source: queue)
+Subject: Ham, Whole Smoked (query: "whole smoked ham")
+Found 4 candidate photos.
+Vision picked #3 of 4: this photo showcases a whole smoked ham prominently among a spread of food, emphasizing its size and girth.
+Saved image to images/2026-08-11-ham-whole-smoked.jpg
+[webp] 2026-08-11-ham-whole-smoked.jpg: 306KB -> 218KB (29% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 1 scored 7 / subjectPct 6; trying another photo for "Ham, Whole Smoked" (3 candidates left).
+Vision rejected all 3 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 7  verdict: needs-review  subjectPct: 6  isSubject: true
+  critique: The photo clearly shows a whole smoked ham as the central element, fitting the subject description. The ham is well-lit and prominently displayed, making it the focal point. However, the presence of numerous side dishes and utensils creates some visual clutter, which slightly detracts from the subject's prominence. The composition is appealing and fits a documentary style, but the ham could be more isolated to enhance focus. Overall, it captures the essence of a festive meal, but the subject could be more distinct.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=needs-review score=7 subjectPct=6 - subject "Ham, Whole Smoked"
+[bail] popped "Ham, Whole Smoked" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-11 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive girth and industrial design.
+Saved image to images/2026-08-11-bagger-293.jpg
+[webp] 2026-08-11-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: This photo shows the Bagger 293's massive scale and girth from an aerial perspective, emphasizing its thicc silhouette.
+[webp] 2026-08-11-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of a large crane, emphasizing its substantial girth and imposing presence.
+[webp] 2026-08-11-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane, likely in a port setting. The crane is centered and prominent, but it is not the correct subject. The image is well-composed and clear, but it fails the identity test as it does not feature the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-11 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Stew, Cast Iron Dutch" (4 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #7 of 12: This photo shows the Antonov An-225's massive silhouette clearly, emphasizing its impressive girth.
+Saved image to images/2026-08-11-antonov-an-225-mriya.jpg
+[webp] 2026-08-11-antonov-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 56; trying another photo for "Antonov An-225 Mriya" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 56  isSubject: false
+  critique: The photo does not show the Antonov An-225 Mriya, but rather an ekranoplan, which is a different type of aircraft. The subject is incorrectly identified, leading to a rejection. The composition is centered and clear, but the mismatch between the subject and the actual object depicted is a critical error.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=56 - subject "Antonov An-225 Mriya"
+[bail] popped "Antonov An-225 Mriya" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-11 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-11.
+```
