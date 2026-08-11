@@ -1,0 +1,114 @@
+# Daily run trace 2026-08-11-095144
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31479442425
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-11
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Turkey, Roasted Whole" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Turkey, Roasted Whole" query="roasted turkey whole" (source: queue)
+Subject: Turkey, Roasted Whole (query: "roasted turkey whole")
+Found 18 candidate photos.
+Vision picked #1 of 12: This photo shows multiple whole roasted turkeys surrounded by colorful vegetables, emphasizing their thiccness.
+Saved image to images/2026-08-11-turkey-roasted-whole.jpg
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 185KB -> 110KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Turkey, Roasted Whole" (17 candidates left).
+Vision picked #2 of 12: This photo shows a whole roasted turkey with a clear view of its size and shape, emphasizing its thiccness.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 318KB -> 223KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Turkey, Roasted Whole" (16 candidates left).
+Vision picked #4 of 12: This photo showcases a whole roasted turkey prominently, emphasizing its size and girth.
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 141KB -> 69KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 25  isSubject: false
+  critique: The photo shows a roasted chicken, not a turkey. The subject is not the named object, which disqualifies it. The composition is centered on the chicken, and while the image is clear and well-lit, it does not meet the criteria for the subject 'Turkey, Roasted Whole.' The presence of other food items adds some clutter, but the main issue is the incorrect subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=25 - subject "Turkey, Roasted Whole"
+[bail] popped "Turkey, Roasted Whole" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-11 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Ham, Whole Smoked" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Ham, Whole Smoked" query="whole smoked ham" (source: queue)
+Subject: Ham, Whole Smoked (query: "whole smoked ham")
+Found 4 candidate photos.
+Vision picked #3 of 4: this photo showcases the whole smoked ham prominently among other dishes, emphasizing its girth.
+Saved image to images/2026-08-11-ham-whole-smoked.jpg
+[webp] 2026-08-11-ham-whole-smoked.jpg: 306KB -> 218KB (29% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 1 scored 7 / subjectPct 12; trying another photo for "Ham, Whole Smoked" (3 candidates left).
+Vision picked #3 of 3: this photo shows a whole smoked ham prominently displayed, emphasizing its girth and silhouette.
+[webp] 2026-08-11-ham-whole-smoked.jpg: 174KB -> 98KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 18; trying another photo for "Ham, Whole Smoked" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo shows ribs on a grill, not a whole smoked ham as specified. The subject is incorrect, leading to a rejection. The image is well-composed and clear, but it does not meet the criteria for the specified subject. The focus is on the ribs, which are not the object of interest in this context.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Ham, Whole Smoked"
+[bail] popped "Ham, Whole Smoked" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-11 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Thiccc Titanosaurus (query: "titanosaurus")
+Subject "Thiccc Titanosaurus" returned zero Unsplash results for query "titanosaurus". (attempt 2)
+Fallback subject (#2): Giant Potato, Agria (query: "giant potato")
+Found 15 candidate photos.
+Vision picked #2 of 12: This photo showcases a large, irregularly shaped potato with a prominent silhouette, emphasizing its thiccness.
+Saved image to images/2026-08-11-giant-potato-agria.jpg
+[webp] 2026-08-11-giant-potato-agria.jpg: 107KB -> 74KB (31% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Giant Potato, Agria" (14 candidates left).
+Vision picked #1 of 12: This potato clearly showcases the overall girth and shape of an Agria, making it the thiccest option.
+[webp] 2026-08-11-giant-potato-agria.jpg: 78KB -> 40KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 49; trying another photo for "Giant Potato, Agria" (13 candidates left).
+Vision picked #1 of 12: This photo clearly shows the full silhouette of a giant potato with a distinct thicc shape.
+[webp] 2026-08-11-giant-potato-agria.jpg: 113KB -> 56KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 49  isSubject: false
+  critique: The photo does not depict a 'Giant Potato, Agria' but rather a yellow sponge on a blue background. The subject is clearly not the named object, failing the identity test. The sponge is well-centered and the background is uncluttered, but these factors do not compensate for the incorrect subject. The image does not meet the criteria for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=49 - subject "Giant Potato, Agria"
+[bail] popped "Giant Potato, Agria" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-11 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-11.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-11 yet). Queue now has 3 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-11.
+```
