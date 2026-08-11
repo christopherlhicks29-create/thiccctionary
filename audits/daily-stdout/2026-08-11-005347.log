@@ -1,0 +1,40 @@
+# Daily run trace 2026-08-11-005347
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31447501071
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-11
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Turkey, Roasted Whole" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Turkey, Roasted Whole" query="roasted turkey whole" (source: queue)
+Subject: Turkey, Roasted Whole (query: "roasted turkey whole")
+Found 18 candidate photos.
+Vision picked #1 of 12: This photo showcases two whole roasted turkeys surrounded by vibrant vegetables, emphasizing their substantial girth.
+Saved image to images/2026-08-11-turkey-roasted-whole.jpg
+[webp] 2026-08-11-turkey-roasted-whole.jpg: 185KB -> 110KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Turkey, Roasted Whole" (17 candidates left).
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Timeout while downloading https://images.unsplash.com/photo-1546250683-afa23f23dde1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NDA2MDh8MHwxfHNlYXJjaHw0fHxyb2FzdGVkJTIwdHVya2V5JTIwd2hvbGV8ZW58MXwyfHx8MTc4NjQwOTYxN3ww&ixlib=rb-4.1.0&q=80&w=400.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1085:19)
+[retry-wrapper] attempt 1 threw: Command failed: node generate-daily.js
+```
