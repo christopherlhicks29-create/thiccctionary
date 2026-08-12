@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-12",
+    "word": "Thiccc Antenna Array",
+    "pronunciation": "/thik an-TEN-uh uh-RAY/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A towering structure sporting an abundance of antennae, each vying for attention like a telecommunications colossus, particularly imposing when viewed in silhouette against the skyline.",
+      "<em>colloq.</em> A conglomeration of broadcast appendages that appears to have been bulked up at a signal gym, unapologetically defying aerodynamic conventions."
+    ],
+    "example": "The thiccc antenna array dominated the horizon, like a porcupine with an overzealous data plan.",
+    "etymology": "From Latin <em>antenna</em> (a yardarm or sail yard) + English <em>array</em> (order, arrangement), originally referring to military formations. Now, ironically, more a broadcast festival.",
+    "image": "images/2026-08-12-thiccc-antenna-array.jpg",
+    "caption": "Plate CXXI., A robust assembly of signal catchers in their natural habitat.",
+    "tags": [
+      "construction",
+      "architecture",
+      "industrial"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Aleksey Kuzmichev",
+    "photographerUrl": "https://unsplash.com/@lexphoto",
+    "unsplashUrl": "https://unsplash.com/photos/a-tall-tower-with-a-bunch-of-antennas-on-top-of-it-f3ax9Rxgc70",
+    "socialCaptions": {
+      "morning": "Thiccc Antenna Array.\nRivaling the Eiffel in height, minus the tourists.\nBroadcasting: the silent language of the skies.",
+      "afternoon": "Standing 1,815 feet tall—this array is a skyscraper's introverted cousin.\nSignal strength: unmeasured, but rumored to be clairvoyant.\nThicccer than a redwood?\nWe await your verdict.\nThiccc Antenna Array.",
+      "evening": "From the archives, Thiccc Antenna Array.\nFirst erected in 1963—before Wi-Fi was a twinkle in the internet's eye.\nStill attracts more birds than technology enthusiasts.",
+      "reels": "Each antenna, a plea for relevance in a crowded skyline.\nThicccness measured in megahertz.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-10",
     "word": "Battleship, Naval",
     "pronunciation": "/BAT-ul-ship, NAY-vul/",

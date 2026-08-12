@@ -7,14 +7,19 @@
   ],
   "queue": [
     {
-      "subject": "Turkey, Roasted Whole",
-      "query": "roasted turkey whole",
-      "category": "Food"
+      "subject": "Roast, Prime Rib",
+      "query": "prime rib roast standing",
+      "category": "Foods of Substance"
     },
     {
-      "subject": "Ham, Whole Smoked",
-      "query": "whole smoked ham",
-      "category": "Food"
+      "subject": "Iceberg, Arctic",
+      "query": "iceberg arctic ocean",
+      "category": "Other"
+    },
+    {
+      "subject": "Door, Bank Vault Round",
+      "query": "round bank vault door",
+      "category": "Architecture & Infrastructure"
     }
   ]
 }
