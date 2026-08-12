@@ -1,0 +1,122 @@
+# Daily run trace 2026-08-12-124339
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31597650496
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-12
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Turkey, Roasted Whole" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Turkey, Roasted Whole" query="roasted turkey whole" (source: queue)
+Subject: Turkey, Roasted Whole (query: "roasted turkey whole")
+Found 18 candidate photos.
+Vision picked #1 of 12: this photo showcases two whole roasted turkeys with vibrant sides, emphasizing their thiccness and appeal.
+Saved image to images/2026-08-12-turkey-roasted-whole.jpg
+[webp] 2026-08-12-turkey-roasted-whole.jpg: 185KB -> 110KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 39; trying another photo for "Turkey, Roasted Whole" (17 candidates left).
+Vision picked #2 of 12: This photo shows a whole roasted turkey with a clear, full silhouette, emphasizing its girth.
+[webp] 2026-08-12-turkey-roasted-whole.jpg: 318KB -> 223KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Turkey, Roasted Whole" (16 candidates left).
+Vision picked #4 of 12: this photo showcases a whole roasted turkey prominently, emphasizing its size and girth.
+[webp] 2026-08-12-turkey-roasted-whole.jpg: 141KB -> 69KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 16  isSubject: false
+  critique: The photo shows a roasted chicken rather than a roasted whole turkey. The subject is not the named object, which disqualifies it for the intended entry. The composition is clear and well-lit, but it does not meet the criteria for 'Turkey, Roasted Whole.'
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=16 - subject "Turkey, Roasted Whole"
+[bail] popped "Turkey, Roasted Whole" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-12.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-12 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 22 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Ham, Whole Smoked" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Ham, Whole Smoked" query="whole smoked ham" (source: queue)
+Subject: Ham, Whole Smoked (query: "whole smoked ham")
+Found 4 candidate photos.
+Vision picked #3 of 4: this photo prominently features a whole smoked ham, showcasing its girth among a spread of delicious dishes.
+Saved image to images/2026-08-12-ham-whole-smoked.jpg
+[webp] 2026-08-12-ham-whole-smoked.jpg: 306KB -> 218KB (29% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 1 scored 7 / subjectPct 9; trying another photo for "Ham, Whole Smoked" (3 candidates left).
+Vision rejected all 3 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 7  verdict: needs-review  subjectPct: 9  isSubject: true
+  critique: The photo prominently features a whole smoked ham, which is the subject, surrounded by an array of side dishes. The ham is well-centered and clearly the focal point, but the presence of numerous other dishes slightly distracts from its prominence. The lighting and composition are appealing, giving a festive, documentary feel. However, the clutter from the surrounding dishes and the tight crop around the ham could be improved to better isolate the subject. Overall, it fits the brand but could benefit from a clearer focus on the ham itself.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=needs-review score=7 subjectPct=9 - subject "Ham, Whole Smoked"
+[bail] popped "Ham, Whole Smoked" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-12.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-12 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 23 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Pork Shoulder Boston Butt" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Pork Shoulder Boston Butt" query="boston butt pork shoulder roast" (source: queue)
+Subject: Roast, Pork Shoulder Boston Butt (query: "boston butt pork shoulder roast")
+Subject "Roast, Pork Shoulder Boston Butt" returned zero Unsplash results for query "boston butt pork shoulder roast". (attempt 1)
+Fallback subject (#1): Thiccc Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293 with a clear emphasis on its girthy structure.
+Saved image to images/2026-08-12-thiccc-bagger-293.jpg
+[webp] 2026-08-12-thiccc-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Bagger 293" (28 candidates left).
+Vision picked #10 of 12: This photo clearly shows the full silhouette of the excavator, emphasizing its substantial girth.
+[webp] 2026-08-12-thiccc-bagger-293.jpg: 114KB -> 46KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Thiccc Bagger 293" (27 candidates left).
+Vision picked #2 of 12: This photo shows the Bagger 293's massive silhouette and girth clearly from an aerial perspective.
+[webp] 2026-08-12-thiccc-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show a Bagger 293, which is a massive bucket-wheel excavator, not a bulldozer. The subject of the photo is a construction site with a bulldozer, which does not match the specified subject. The image is well-composed and clear, but it fails the identity test as it does not depict the named object. Therefore, it cannot be used for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Thiccc Bagger 293"
+[bail] popped "Thiccc Bagger 293" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-12.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-12 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Antenna Array (query: "antenna array")
+Found 30 candidate photos.
+Vision picked #6 of 12: this photo showcases a prominent and bulky antenna array with a clear silhouette against the sky.
+Saved image to images/2026-08-12-thiccc-antenna-array.jpg
+[webp] 2026-08-12-thiccc-antenna-array.jpg: 90KB -> 43KB (52% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=etymology
+  feedback: The example sentence lands well with the porcupine metaphor, creating a vivid and humorous image. The etymology could use a stronger deadpan kicker to enhance the humor, as it currently leans more informative than comedic. Overall, the entry is solid with a good punchline and specific scene.
+Generated social captions:
+  morning: Thiccc Antenna Array.
+  afternoon: Standing 1,815 feet tall—this array is a skyscraper's introverted cousin.
+  evening: From the archives, Thiccc Antenna Array.
+  reels: Each antenna, a plea for relevance in a crowded skyline.
+Saved entry: Thiccc Antenna Array
+Built entry page: entries/2026-08-12.html
+Rebuilt prev entry page (2026-08-10) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 121 entries + 54 articles.
+Sitemap rebuilt with 121 entries.
+Subject queue updated: 3 item(s) remaining.
+[retry-wrapper] entry for 2026-08-12 landed on attempt 4.
+```
