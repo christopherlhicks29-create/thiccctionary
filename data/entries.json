@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-13",
+    "word": "Roast, Prime Rib",
+    "pronunciation": "/prime rib/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A culinary indulgence distinguished by its substantial mass and robust marbling, typically served in a style that invites admiration from across the dining room.",
+      "<em>colloq.</em> The heavyweight champion of Sunday roasts, defying any gravy boat's capacity and carving boards alike."
+    ],
+    "example": "He unveiled a thiccc prime rib roast that put the dining table on notice. The gravy boat threw in the towel.",
+    "etymology": "From Middle English <em>rost</em>, meaning 'to cook by exposure to direct heat,' and rib, from Old English <em>ribb</em>, referring to the supportive bone structure. Its current usage suggests a majestic encounter best approached with utensils and respect.",
+    "image": "images/2026-08-13-roast-prime-rib.jpg",
+    "caption": "Plate CXXII., A prime rib roast that commands attention, viewed from the side in raking light.",
+    "tags": [
+      "girth",
+      "culinary",
+      "domestic"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "behrouz sasani",
+    "photographerUrl": "https://unsplash.com/@behrouzsasani",
+    "unsplashUrl": "https://unsplash.com/photos/a-plate-of-meat-and-vegetables-on-a-table-RZoNMrC13KU",
+    "socialCaptions": {
+      "morning": "Roast, Prime Rib. Weighs up to 14 pounds, displaces conversation. Carving knives—considered optional.",
+      "afternoon": "Prime Rib—known for its 6-8 hours of slow cooking. Patience and saliva required in equal measure. \nWhich thicccness reigns supreme: this, or a Thanksgiving turkey? \n#RoastPrimeRib",
+      "evening": "From the archives, Roast, Prime Rib. \nIntroduced to the American palate in the 19th century. Continues to dominate the dinner table—unopposed.",
+      "reels": "Prime Rib—7 bones, a culinary fortress. New round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-12",
     "word": "Thiccc Antenna Array",
     "pronunciation": "/thik an-TEN-uh uh-RAY/",

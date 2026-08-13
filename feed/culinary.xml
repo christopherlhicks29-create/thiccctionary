@@ -6,7 +6,16 @@
     <atom:link href="https://thiccctionary.com/feed/culinary.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "culinary".</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Aug 2026 16:57:16 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 01:01:55 GMT</lastBuildDate>
+    <item>
+      <title>Roast, Prime Rib</title>
+      <link>https://thiccctionary.com/entries/2026-08-13.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-13.html</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A culinary indulgence distinguished by its substantial mass and robust marbling, typically served in a style that invites admiration from across the dining room.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-13-roast-prime-rib.jpg" type="image/jpeg" length="237900" />
+      <category>girth</category><category>culinary</category><category>domestic</category>
+    </item>
     <item>
       <title>Pizza, Deep Dish</title>
       <link>https://thiccctionary.com/entries/2026-08-01.html</link>
