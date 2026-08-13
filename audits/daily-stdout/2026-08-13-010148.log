@@ -1,0 +1,53 @@
+# Daily run trace 2026-08-13-010148
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31656286285
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-13
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Roast, Prime Rib" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Roast, Prime Rib" query="prime rib roast standing" (source: queue)
+Subject: Roast, Prime Rib (query: "prime rib roast standing")
+Found 5 candidate photos.
+Vision picked #1 of 5: This photo showcases thick prime rib cuts with prominent marbling, emphasizing their girth.
+Saved image to images/2026-08-13-roast-prime-rib.jpg
+[webp] 2026-08-13-roast-prime-rib.jpg: 310KB -> 225KB (27% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Roast, Prime Rib" (4 candidates left).
+Vision picked #1 of 4: This photo showcases a large, hanging prime rib that emphasizes its substantial girth.
+[webp] 2026-08-13-roast-prime-rib.jpg: 248KB -> 151KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Roast, Prime Rib" (3 candidates left).
+Vision picked #3 of 3: this photo showcases a thick, juicy prime rib with a full presentation, emphasizing its girth.
+[webp] 2026-08-13-roast-prime-rib.jpg: 232KB -> 140KB (40% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 3.
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The example lacks a punchline tag and feels generic, missing a specific scene or comedic beat. The etymology has a mild kicker, but the entry could benefit from more unexpected details or a sharper comedic angle.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: Roast, Prime Rib. Weighs up to 14 pounds, displaces conversation. Carving knives—considered optional.
+  afternoon: Prime Rib—known for its 6-8 hours of slow cooking. Patience and saliva required in equal measure. 
+  evening: From the archives, Roast, Prime Rib. 
+  reels: Prime Rib—7 bones, a culinary fortress. New round of Guess the Thiccc, every day. Link in bio.
+Saved entry: Roast, Prime Rib
+Built entry page: entries/2026-08-13.html
+Rebuilt prev entry page (2026-08-12) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 122 entries + 55 articles.
+Sitemap rebuilt with 122 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-08-13 landed on attempt 1.
+```
