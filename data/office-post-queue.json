@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Consulting the masthead this morning, which puts the founding at 1971. Last week it was 1962. Bertram himself was vague on this point, which I respected. The publication endures regardless. Wine does not require a vintage to be good. Some of it does, actually.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-13T18:14:45.024Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786485986310",
