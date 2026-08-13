@@ -7,11 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Roast, Prime Rib",
-      "query": "prime rib roast standing",
-      "category": "Foods of Substance"
-    },
-    {
       "subject": "Iceberg, Arctic",
       "query": "iceberg arctic ocean",
       "category": "Other"
