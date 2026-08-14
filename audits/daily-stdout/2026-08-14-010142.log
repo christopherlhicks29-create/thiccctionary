@@ -1,0 +1,120 @@
+# Daily run trace 2026-08-14-010142
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31759182123
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-14
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Tabular Iceberg, Antarctic".
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Rock, Plymouth" (7 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Titanic, RMS (query: "Titanic")
+Found 17 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 16 left.
+Vision picked #3 of 12: This photo shows the RMS Titanic's grandeur and silhouette, emphasizing its thiccness with a full view of the ship's structure.
+Saved image to images/2026-08-14-titanic-rms.jpg
+[webp] 2026-08-14-titanic-rms.jpg: 287KB -> 177KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Titanic, RMS" (15 candidates left).
+Vision picked #3 of 12: this photo shows a large, weathered ship that emphasizes its girth and silhouette.
+[webp] 2026-08-14-titanic-rms.jpg: 128KB -> 62KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Titanic, RMS" (14 candidates left).
+Vision picked #1 of 12: this photo shows the Titanic's massive hull silhouette, emphasizing its thiccness.
+[webp] 2026-08-14-titanic-rms.jpg: 73KB -> 16KB (78% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 25  isSubject: false
+  critique: The photo does not depict the RMS Titanic. Instead, it shows a shipwreck partially submerged in calm water. The composition is artistic and the grayscale adds to the mood, but it fails the identity test as it is not the named object. The subject is centered and clear, but it is not the Titanic, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=25 - subject "Titanic, RMS"
+[bail] popped "Titanic, RMS" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-14.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-14 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Sub-Zero Built-In" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Sub-Zero Built-In" query="sub-zero built in refrigerator kitchen" (source: queue)
+Subject: Refrigerator, Sub-Zero Built-In (query: "sub-zero built in refrigerator kitchen")
+Found 16 candidate photos.
+Vision picked #4 of 12: this photo clearly shows the refrigerator with a full silhouette, emphasizing its thiccness in a modern kitchen setting.
+Saved image to images/2026-08-14-refrigerator-sub-zero-built-in.jpg
+[webp] 2026-08-14-refrigerator-sub-zero-built-in.jpg: 182KB -> 97KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 13; trying another photo for "Refrigerator, Sub-Zero Built-In" (15 candidates left).
+Vision picked #4 of 12: this photo shows a full refrigerator packed with items, emphasizing its substantial girth.
+[webp] 2026-08-14-refrigerator-sub-zero-built-in.jpg: 245KB -> 150KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Refrigerator, Sub-Zero Built-In" (14 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of a refrigerator against a clean background, emphasizing its thiccness.
+[webp] 2026-08-14-refrigerator-sub-zero-built-in.jpg: 196KB -> 90KB (54% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 14  isSubject: false
+  critique: The photo does not clearly show a Sub-Zero Built-In refrigerator. Instead, it depicts a modern kitchen with wood cabinets and a teal stool. The refrigerator is not identifiable, as the focus is on the overall kitchen design rather than a specific appliance. The subject is not centered, and the composition is more about the kitchen's aesthetic rather than highlighting the refrigerator. This makes it unsuitable for the intended dictionary entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=14 - subject "Refrigerator, Sub-Zero Built-In"
+[bail] popped "Refrigerator, Sub-Zero Built-In" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-14.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-14 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-14.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-14 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Orca, Killer Whale (query: "killer whale")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #7 of 12: this photo shows the orca's full body and emphasizes its girth while swimming.
+Saved image to images/2026-08-14-orca-killer-whale.jpg
+[webp] 2026-08-14-orca-killer-whale.jpg: 117KB -> 63KB (46% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The example sentence is vivid and ends on a humorous note with the 'living eclipse' imagery. The etymology kicker is clever, adding a deadpan twist. However, the definitions lean on 'imposing mass' and 'formidable girth,' which are close to anti-patterns. A touch more originality there would elevate the entry.
+Model returned off-list category: "Natural Specimens". Marked Uncategorized.
+Generated social captions:
+  morning: Orca, Killer Whale.
+  afternoon: Dorsal fins reaching six feet.
+  evening: From the archives, Orca, Killer Whale.
+  reels: Orcas swim up to 34.5 mph.
+Saved entry: Orca, Killer Whale
+Built entry page: entries/2026-08-14.html
+Rebuilt prev entry page (2026-08-13) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 123 entries + 55 articles.
+Sitemap rebuilt with 123 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-14 landed on attempt 4.
+```
