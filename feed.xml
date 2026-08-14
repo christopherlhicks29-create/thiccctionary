@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Aug 2026 01:01:55 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 01:01:51 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Orca, Killer Whale</title>
+      <link>https://thiccctionary.com/entries/2026-08-14.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-14.html</guid>
+      <pubDate>Fri, 14 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A marine mammal of imposing mass, often distinguished by its contrasting black and white coloration and formidable girth, especially when observed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-14-orca-killer-whale.jpg" type="image/jpeg" length="119647" />
+      <category>girth</category><category>maritime</category><category>natural-specimens</category>
+    </item>
     <item>
       <title>Roast, Prime Rib</title>
       <link>https://thiccctionary.com/entries/2026-08-13.html</link>
