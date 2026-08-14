@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-14",
+    "word": "Orca, Killer Whale",
+    "pronunciation": "/OR-kuh, KIL-er WAYL/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A marine mammal of imposing mass, often distinguished by its contrasting black and white coloration and formidable girth, especially when observed astern in raking light.",
+      "<em>colloq.</em> The apex of aquatic thicccness, refusing to be relegated to mere background fauna."
+    ],
+    "example": "The aquarium's new thiccc orca swam past the viewing window, blocking out the sun like a living eclipse.",
+    "etymology": "From Latin <em>Orcinus orca</em>, meaning 'belonging to Orcus' (the god of the underworld), as if naming it after a mythical abyss was somehow reassuring.",
+    "image": "images/2026-08-14-orca-killer-whale.jpg",
+    "caption": "Plate CXXIII., The posterior of an orca, viewed astern, defies casual description.",
+    "tags": [
+      "girth",
+      "maritime",
+      "natural-specimens"
+    ],
+    "category": "Uncategorized",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 9,
+    "photographer": "Freysteinn G. Jonsson",
+    "photographerUrl": "https://unsplash.com/@freys",
+    "unsplashUrl": "https://unsplash.com/photos/a-whale-is-swimming-in-the-water-m5ByB0WxmwQ",
+    "socialCaptions": {
+      "morning": "Orca, Killer Whale.\nUp to 6 tons, 32 feet in length.\nA mass of elegance—designed for the Arctic opera.",
+      "afternoon": "Dorsal fins reaching six feet.\nA maritime skyscraper, if skyscrapers were also apex predators.\nThicccer: this, or the Eiffel Tower in a wetsuit?\nOrca, Killer Whale.",
+      "evening": "From the archives, Orca, Killer Whale.\nRecognizable since the 18th century.\nIt's unclear if the ocean was ever asked for a second opinion.",
+      "reels": "Orcas swim up to 34.5 mph.\nThe ocean's heavyweight sprinters.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-13",
     "word": "Roast, Prime Rib",
     "pronunciation": "/prime rib/",
