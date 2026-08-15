@@ -1,0 +1,103 @@
+# Daily run trace 2026-08-15-121717
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31884130438
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-15
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #7 of 12: this photo shows the Antonov An-225's full silhouette and emphasizes its massive wingspan and girth.
+Saved image to images/2026-08-15-thiccc-antonov-an-225.jpg
+[webp] 2026-08-15-thiccc-antonov-an-225.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-225" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not depict the Antonov An-225, which is a large cargo aircraft. Instead, it shows an ekranoplan, a ground effect vehicle, on a beach. The subject is not the named object, leading to a rejection. The composition is centered and clear, but the identity mismatch is critical.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Antonov An-225"
+[bail] popped "Thiccc Antonov An-225" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-15 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: pulling "Gong, Chinese Brass" (4 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its impressive girth and structure.
+Saved image to images/2026-08-15-bagger-293.jpg
+[webp] 2026-08-15-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette and overall girth clearly from an aerial perspective.
+[webp] 2026-08-15-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 13; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the Bagger 293's massive structure and silhouette clearly, emphasizing its thiccness.
+[webp] 2026-08-15-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts an industrial crane, likely in a port or industrial area. The crane is the central focus, but it is not the subject specified. The image is well-composed and clear, but it fails the identity test as it does not match the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-15 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lock, Padlock Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lock, Padlock Brass" query="large brass padlock" (source: queue)
+Subject: Lock, Padlock Brass (query: "large brass padlock")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Vision picked #3 of 8: this photo shows a robust padlock prominently secured on a gate, emphasizing its thickness and strength.
+Saved image to images/2026-08-15-lock-padlock-brass.jpg
+[webp] 2026-08-15-lock-padlock-brass.jpg: 257KB -> 176KB (32% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 1 scored 7 / subjectPct 9; trying another photo for "Lock, Padlock Brass" (7 candidates left).
+Vision picked #5 of 7: this photo shows multiple padlocks on a fence, emphasizing their collective girth and presence.
+[webp] 2026-08-15-lock-padlock-brass.jpg: 236KB -> 137KB (42% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 1; trying another photo for "Lock, Padlock Brass" (6 candidates left).
+Vision picked #1 of 6: this photo shows multiple padlocks, emphasizing their collective girth and presence.
+[webp] 2026-08-15-lock-padlock-brass.jpg: 135KB -> 61KB (55% smaller)
+Design critique: score=7/10, verdict=ship
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 7  verdict: ship  subjectPct: 18  isSubject: true
+  critique: The photo clearly shows multiple brass padlocks, fitting the subject 'Lock, Padlock Brass.' The locks are prominently displayed along the fence, making them the focal point. However, the image includes several locks, which slightly dilutes the focus on a single padlock. The composition is balanced, with the locks centered enough to fit within a natural aspect crop. The background is slightly distracting but not overly so. Overall, it serves well as a documentary-style image of brass padlocks.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=ship score=7 subjectPct=18 - subject "Lock, Padlock Brass"
+[bail] popped "Lock, Padlock Brass" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-15 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-15.
+```
