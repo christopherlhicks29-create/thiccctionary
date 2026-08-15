@@ -1,0 +1,97 @@
+# Daily run trace 2026-08-15-091653
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31876520710
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-15
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Burger, Quadruple Stack" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Tower, Fernsehturm Berlin (query: "Fernsehturm Berlin")
+Found 11 candidate photos.
+Vision picked #1 of 11: This photo shows the Fernsehturm Berlin in its full height and girth, emphasizing its thicc silhouette.
+Saved image to images/2026-08-15-tower-fernsehturm-berlin.jpg
+[webp] 2026-08-15-tower-fernsehturm-berlin.jpg: 39KB -> 16KB (59% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The entry is solid with a specific scene set in Berlin and a comedic tag in the example sentence. The etymology ends on a humorous note, though the definitions could use more unexpected details to enhance the humor. Overall, it lands well.
+Generated social captions:
+  morning: Tower, Fernsehturm Berlin. 368 meters tall—an imposing probe into the heavens.
+  afternoon: The 207-meter revolving restaurant serves a full rotation in an hour—dining with a spin.
+  evening: From the archives, Tower, Fernsehturm Berlin.
+  reels: 1,200 guests per hour ascend—defying gravity en masse.
+[bail] final dup-guard: "Tower, Fernsehturm Berlin" duplicates catalogued "Eiffel Tower, Iron Lady" - subject "Tower, Fernsehturm Berlin"
+[bail] popped "Tower, Fernsehturm Berlin" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-15 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Sub-Zero Built-In" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Sub-Zero Built-In" query="sub-zero built in refrigerator kitchen" (source: queue)
+Subject: Refrigerator, Sub-Zero Built-In (query: "sub-zero built in refrigerator kitchen")
+Found 16 candidate photos.
+Vision picked #4 of 12: this photo prominently features a full-size refrigerator, emphasizing its substantial girth in a modern kitchen setting.
+Saved image to images/2026-08-15-refrigerator-sub-zero-built-in.jpg
+[webp] 2026-08-15-refrigerator-sub-zero-built-in.jpg: 182KB -> 97KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 9; trying another photo for "Refrigerator, Sub-Zero Built-In" (15 candidates left).
+Vision picked #4 of 12: this photo showcases the full interior of a refrigerator, highlighting its spaciousness and contents, emphasizing its 'thicc' nature.
+[webp] 2026-08-15-refrigerator-sub-zero-built-in.jpg: 245KB -> 150KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Refrigerator, Sub-Zero Built-In" (14 candidates left).
+Vision picked #8 of 12: this photo prominently features a full-sized refrigerator, emphasizing its substantial girth in a spacious kitchen setting.
+[webp] 2026-08-15-refrigerator-sub-zero-built-in.jpg: 245KB -> 153KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 3  isSubject: false
+  critique: The image shows a modern kitchen, and while there is a refrigerator present, it is not clearly identifiable as a Sub-Zero Built-In model. The refrigerator is not the focal point of the image, and the composition centers more on the kitchen as a whole. Additionally, the image appears to be a render rather than a real photograph, which does not fit the documentary style required. The subject is not prominently featured, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=3 - subject "Refrigerator, Sub-Zero Built-In"
+[bail] popped "Refrigerator, Sub-Zero Built-In" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-15 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Crab, King Alaskan" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Thiccc Dumper Truck (query: "dumper truck")
+Found 2 candidate photos.
+Vision picked #1 of 2: the first photo shows two dumper trucks side by side, emphasizing their bulk and girth.
+Saved image to images/2026-08-15-thiccc-dumper-truck.jpg
+[webp] 2026-08-15-thiccc-dumper-truck.jpg: 348KB -> 254KB (27% smaller)
+Design critique: score=7/10, verdict=needs-review
+Humor critique: score=7/10, verdict=ship, weakest=etymology
+  feedback: The example sentence lands with a comedic punch, reimagining urban planning through the truck's dimensions. The etymology could use a deadpan kicker instead of a straightforward translation. Overall, it has a good mix of specificity and humor.
+Generated social captions:
+  morning: Thiccc Dumper Truck.
+  afternoon: The thiccc dumper truck's tires measure over 13 feet in diameter.
+  evening: From the archives, Thiccc Dumper Truck.
+  reels: Thiccc Dumper Truck.
+[bail] final dup-guard: "Thiccc Dumper Truck" duplicates catalogued "Dumper Truck, Articulated" - subject "Thiccc Dumper Truck"
+[bail] popped "Thiccc Dumper Truck" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-15 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-15.
+```
