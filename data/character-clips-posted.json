@@ -141,7 +141,21 @@
           "id": "6a7764f89c08137afa1dc77a"
         }
       ]
+    },
+    {
+      "path": "videos/characters/hugh-sunset-call-profile.mp4",
+      "at": "2026-08-15T17:09:47.606Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a809d5a7e17c9c408858c58"
+        },
+        {
+          "service": "instagram",
+          "id": "6a809d5b7e17c9c408858c7b"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-08-08T17:18:49.086Z"
+  "lastPostedAt": "2026-08-15T17:09:47.606Z"
 }
