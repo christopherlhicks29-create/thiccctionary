@@ -1,0 +1,136 @@
+# Daily run trace 2026-08-15-125742
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31885822472
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-15
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Watermelon, Carolina Cross (query: "carolina cross watermelon")
+Subject "Watermelon, Carolina Cross" returned zero Unsplash results for query "carolina cross watermelon". (attempt 2)
+Fallback subject (#2): Antonov An-225 Mriya (query: "Antonov An-225")
+Found 29 candidate photos.
+Vision picked #7 of 12: this photo shows the Antonov An-225's full silhouette and emphasizes its massive wingspan and girth.
+Saved image to images/2026-08-15-antonov-an-225-mriya.jpg
+[webp] 2026-08-15-antonov-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Antonov An-225 Mriya" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not depict the Antonov An-225 Mriya, which is a large cargo aircraft. Instead, it shows a much smaller airplane on a sandy beach. The subject is not centered, and the composition includes a person lying on the sand, which distracts from the airplane. The image does not fit the brand's documentary style, as it appears more artistic than informative. The subject is not thiccc for its kind, as the Antonov An-225 is known for its massive size, which is not represented here.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Antonov An-225 Mriya"
+[bail] popped "Antonov An-225 Mriya" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-15 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Titan II (query: "Titan II")
+Subject "Thiccc Titan II" returned zero Unsplash results for query "Titan II". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Cement Truck, Mack Gu383 (query: "cement truck")
+Found 20 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 19 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the cement truck, emphasizing its girth and structure.
+Saved image to images/2026-08-15-cement-truck-mack-gu383.jpg
+[webp] 2026-08-15-cement-truck-mack-gu383.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Cement Truck, Mack Gu383" (18 candidates left).
+Vision picked #4 of 12: this photo clearly shows the side profile of the cement truck, emphasizing its girth and silhouette.
+[webp] 2026-08-15-cement-truck-mack-gu383.jpg: 201KB -> 114KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Cement Truck, Mack Gu383" (17 candidates left).
+Vision picked #1 of 12: This photo showcases the cement truck in a full silhouette against a clear background, emphasizing its girth.
+[webp] 2026-08-15-cement-truck-mack-gu383.jpg: 142KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 6  isSubject: false
+  critique: The photo does not depict a 'Cement Truck, Mack Gu383.' Instead, it shows a truck with a large nozzle, possibly a water or misting truck, on an elevated highway. The subject is not centered, and the truck is not the primary focus of the image. The framing includes a significant amount of the highway structure, distracting from the truck itself. The photo does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=6 - subject "Cement Truck, Mack Gu383"
+[bail] popped "Cement Truck, Mack Gu383" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-15 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive structure and girth.
+Saved image to images/2026-08-15-bagger-293.jpg
+[webp] 2026-08-15-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive scale and silhouette clearly against the landscape.
+[webp] 2026-08-15-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 20; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the Bagger 293's massive structure and silhouette clearly, emphasizing its girth.
+[webp] 2026-08-15-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 42  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator, but rather a large industrial crane in a port setting. The crane is well-framed and dominates the scene, but it is not the correct subject. The image is clear and well-composed for what it depicts, but it fails the identity test as it does not match the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=42 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-15 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Backhoe Loader (query: "backhoe loader")
+Found 10 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 8 left.
+Vision picked #1 of 8: This photo shows the backhoe loader prominently in a clear setting, emphasizing its overall girth and silhouette.
+Saved image to images/2026-08-15-thiccc-backhoe-loader.jpg
+[webp] 2026-08-15-thiccc-backhoe-loader.jpg: 292KB -> 215KB (26% smaller)
+Design critique: score=7/10, verdict=needs-review
+Humor critique: score=4/10, verdict=regenerate, weakest=example
+  feedback: The example sentence lacks specificity and a punchline tag, making it fall flat. The etymology is straightforward without a comedic kicker. Adding a specific scene and a humorous twist in the example would improve the entry.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Backhoe Loader.
+  afternoon: Operating at a modest 25 miles per hour, the Thiccc Backhoe Loader demonstrates diplomatic patience.
+  evening: From the archives, Thiccc Backhoe Loader.
+  reels: The Thiccc Backhoe Loader.
+Saved entry: Thiccc Backhoe Loader
+Built entry page: entries/2026-08-15.html
+Rebuilt prev entry page (2026-08-14) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 124 entries + 55 articles.
+Sitemap rebuilt with 124 entries.
+Subject queue updated: 1 item(s) remaining.
+[retry-wrapper] entry for 2026-08-15 landed on attempt 4.
+```
