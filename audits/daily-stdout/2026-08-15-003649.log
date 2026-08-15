@@ -1,0 +1,93 @@
+# Daily run trace 2026-08-15-003649
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31854066027
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-15
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Sub-Zero Built-In" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Sub-Zero Built-In" query="sub-zero built in refrigerator kitchen" (source: queue)
+Subject: Refrigerator, Sub-Zero Built-In (query: "sub-zero built in refrigerator kitchen")
+Found 16 candidate photos.
+Vision picked #4 of 12: this photo clearly shows the full refrigerator with its width and height, emphasizing its substantial presence in the kitchen.
+Saved image to images/2026-08-15-refrigerator-sub-zero-built-in.jpg
+[webp] 2026-08-15-refrigerator-sub-zero-built-in.jpg: 182KB -> 97KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 10; trying another photo for "Refrigerator, Sub-Zero Built-In" (15 candidates left).
+Vision picked #4 of 12: this photo shows a full view of a spacious refrigerator filled with various items, emphasizing its size and girth.
+[webp] 2026-08-15-refrigerator-sub-zero-built-in.jpg: 245KB -> 150KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Refrigerator, Sub-Zero Built-In" (14 candidates left).
+Vision picked #10 of 12: this photo shows a full-sized refrigerator prominently, emphasizing its substantial presence in the kitchen.
+[webp] 2026-08-15-refrigerator-sub-zero-built-in.jpg: 245KB -> 153KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 6  isSubject: false
+  critique: The photo depicts a modern kitchen, not specifically a 'Sub-Zero Built-In Refrigerator.' The refrigerator is visible but not the focal point, and the image appears to be a marketing render rather than a documentary-style photo. The refrigerator is not prominently featured, and the overall composition centers on the kitchen design rather than the appliance itself. This does not meet the criteria for a dictionary entry focused on the refrigerator.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=6 - subject "Refrigerator, Sub-Zero Built-In"
+[bail] popped "Refrigerator, Sub-Zero Built-In" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-15 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: pulling "Submarine, Ballistic Missile" (4 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-15 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive and thick structure.
+Saved image to images/2026-08-15-bagger-293.jpg
+[webp] 2026-08-15-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive scale and girth clearly from an aerial perspective.
+[webp] 2026-08-15-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 13; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full structure of the crane, emphasizing its large and robust silhouette.
+[webp] 2026-08-15-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator, not a crane. The image depicts a large industrial crane in a port setting, which is unrelated to the subject. The crane is well-framed and clearly the focal point, but it is not the correct object. Therefore, the photo is unsuitable for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-15.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-15 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-15.
+```
