@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Spider says \"give it six months.\" I have been giving Bart six months for nineteen months. The dish and I are in the same position. We are both pointed at something. Neither of us has confirmed a signal.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-15T21:37:10.609Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786743757799",
