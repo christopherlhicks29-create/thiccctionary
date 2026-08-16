@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1786916146789",
+      "date": "2026-08-16",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about reply to eli: \"ROTTERDAM, 0615\n\nEli hit 312. I have one notebook. It has the colonel's phone number, a tide table, ...\""
+    },
+    {
       "id": "auto-1786902100419",
       "date": "2026-08-16",
       "byline_id": "bart",
@@ -274,12 +280,6 @@
       "date": "2026-07-19",
       "byline_id": "eli",
       "summary": "Eliza posted about personal life: your tiny apartment's ongoing negotiations with your furnitu: \"Pushed the bed six inches from the wall so the radiator could breathe. Now I can't open the closet d...\""
-    },
-    {
-      "id": "auto-1784313110291",
-      "date": "2026-07-17",
-      "byline_id": "margie",
-      "summary": "Margaret posted about Crane, Tower Construction: \"Rodrigo pointed at the crane outside the Belmond window this morning and said \"that one has been the...\""
     }
   ]
 }
