@@ -1,0 +1,44 @@
+# Daily run trace 2026-08-16-062226
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31931195146
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-16
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Concrete Bunker, Soviet (query: "soviet concrete bunker")
+Found 30 candidate photos.
+Vision picked #3 of 12: This photo shows a full concrete structure with a strong silhouette, emphasizing its robust and thick design.
+Saved image to images/2026-08-16-concrete-bunker-soviet.jpg
+[webp] 2026-08-16-concrete-bunker-soviet.jpg: 266KB -> 186KB (30% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry is solid with a strong etymology kicker that ties the Soviet era to the enduring nature of the bunker. The example, however, lacks a punchline tag, ending on a generic note. Adding a comedic beat to the example would elevate the humor.
+Generated social captions:
+  morning: Concrete Bunker, Soviet. 
+  afternoon: Unyielding since Khrushchev, this bunker rests on 3,000 cubic meters of concrete.
+  evening: From the archives, Concrete Bunker, Soviet.
+  reels: Concrete Bunker, Soviet: Cold War's immovable relic.
+Saved entry: Concrete Bunker, Soviet
+Built entry page: entries/2026-08-16.html
+Rebuilt prev entry page (2026-08-15) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 125 entries + 56 articles.
+Sitemap rebuilt with 125 entries.
+Subject queue updated: 5 item(s) remaining.
+[retry-wrapper] entry for 2026-08-16 landed on attempt 1.
+```
