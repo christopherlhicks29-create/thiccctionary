@@ -189,7 +189,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-11-mining-tire",
+      "at": "2026-08-16T17:12:34.550Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a81ef813486edd56d163dae"
+        },
+        {
+          "service": "facebook",
+          "id": "6a81ef823486edd56d163dcf"
+        },
+        {
+          "service": "instagram",
+          "id": "6a81ef829284fc013d614d18"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-08-09T17:23:13.201Z"
+  "lastPostedAt": "2026-08-16T17:12:34.550Z"
 }
