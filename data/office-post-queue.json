@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to the harbor this morning. Same bench. The tanker coming in was very large. I sat with it for a while. Nobody asked me to write anything down.\n\nBartholomew",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-16T17:41:42.956Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786829828009",
