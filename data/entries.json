@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-16",
+    "word": "Concrete Bunker, Soviet",
+    "pronunciation": "/CON-kreet BUNK-er, SOH-vee-et/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A monumental construct of reinforced concrete, typically characterized by its formidable thickness and unyielding presence; esp. one observed in stark contrast against placid bodies of water.",
+      "<em>colloq.</em> A relic of Cold War architecture that does not accommodate through-traffic so much as absorb it entirely."
+    ],
+    "example": "The thiccc concrete bunker loomed by the lakeside, defying both time and trespassers with equal indifference.",
+    "etymology": "From Latin 'concretus' meaning 'condensed, hardened' + Russian 'бункер' (bunker), signifying a fortified shelter. Much like the Soviet era itself, still standing when all else crumbles.",
+    "image": "images/2026-08-16-concrete-bunker-soviet.jpg",
+    "caption": "Plate CXXV., A Soviet-era concrete bunker, observed mid-girth.",
+    "tags": [
+      "construction",
+      "architecture",
+      "landscape"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Roman",
+    "photographerUrl": "https://unsplash.com/@timesnewroman14",
+    "unsplashUrl": "https://unsplash.com/photos/gray-concrete-building-near-body-of-water-during-daytime-ZV9JctgxbbY",
+    "socialCaptions": {
+      "morning": "Concrete Bunker, Soviet. \nWalls five feet thick—outlasting ideologies since 1941.\nDefying decay, with indifference.",
+      "afternoon": "Unyielding since Khrushchev, this bunker rests on 3,000 cubic meters of concrete.\nThicccer than the Iron Curtain?\nDiscuss.\n#ConcreteBunkerSoviet",
+      "evening": "From the archives, Concrete Bunker, Soviet.\nSilent sentinel against both nature and time.\nFortress of 20th-century stoicism. \nNo trespassers allowed.",
+      "reels": "Concrete Bunker, Soviet: Cold War's immovable relic.\nCheck the daily Guess the Thiccc. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-15",
     "word": "Thiccc Backhoe Loader",
     "pronunciation": "/thik-bak-hoh LOA-der/",

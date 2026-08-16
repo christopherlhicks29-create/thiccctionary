@@ -7,9 +7,29 @@
   ],
   "queue": [
     {
-      "subject": "Stew, Cast Iron Dutch",
-      "query": "dutch oven stew cast iron",
+      "subject": "Burger, Quadruple Stack",
+      "query": "quadruple stack burger",
       "category": "Foods of Substance"
+    },
+    {
+      "subject": "Gong, Chinese Brass",
+      "query": "chinese brass gong large",
+      "category": "Musical Instruments"
+    },
+    {
+      "subject": "Crab, King Alaskan",
+      "query": "king crab alaskan leg",
+      "category": "Other"
+    },
+    {
+      "subject": "Steam Locomotive, Big Boy",
+      "query": "big boy locomotive 4014",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Truck, Cement Mixer Drum",
+      "query": "concrete mixer truck drum",
+      "category": "Vehicles & Transport"
     }
   ]
 }
