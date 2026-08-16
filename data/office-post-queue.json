@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1786902100417",
+    "created": "2026-08-16T17:41:40.417Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Went to the harbor this morning. Same bench. The tanker coming in was very large. I sat with it for a while. Nobody asked me to write anything down.\n\nBartholomew",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1786829828009",
     "created": "2026-08-15T21:37:08.009Z",
     "byline_id": "teddy",
