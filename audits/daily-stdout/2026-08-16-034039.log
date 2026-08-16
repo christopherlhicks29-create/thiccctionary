@@ -1,0 +1,152 @@
+# Daily run trace 2026-08-16-034039
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31924730675
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-16
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "caterpillar d11t")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "caterpillar d11t". (attempt 2)
+Fallback subject (#2): Thiccc Titan Truss Bridge (query: "titan truss bridge")
+Subject "Thiccc Titan Truss Bridge" returned zero Unsplash results for query "titan truss bridge". (attempt 3)
+Fallback subject (#3): Thiccc Harvest Moon Melon (query: "harvest moon melon")
+Subject "Thiccc Harvest Moon Melon" returned zero Unsplash results for query "harvest moon melon". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #9 of 12: this photo showcases a full tractor with prominent, thick tires, emphasizing its girth.
+Saved image to images/2026-08-16-tractor-tire.jpg
+[webp] 2026-08-16-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 25; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #7 of 12: it shows the full tractor with its large, thick tires prominently displayed.
+[webp] 2026-08-16-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #9 of 12: this photo shows a full tractor tire with clear visibility of its girth and rugged texture.
+[webp] 2026-08-16-tractor-tire.jpg: 434KB -> 362KB (17% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 3.
+Humor critique: score=7/10, verdict=ship, weakest=etymology
+  feedback: The example sentence is specific and ends on a comedic beat with the notion of annexation. The etymology lacks a deadpan kicker, instead opting for a straightforward historical explanation. Adding a humorous twist would elevate the entry.
+Generated social captions:
+  morning: Tractor Tire.
+  afternoon: With a circumference rivaling small lunar craters, the tractor tire reigns supreme.
+  evening: From the archives, Tractor Tire.
+  reels: A tractor tire's footprint is 3.5 times larger than yours.
+[bail] final dup-guard: "Tractor Tire" duplicates catalogued "Tire, Tractor Rear" - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-16.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-16 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Crab, King Alaskan" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Giant Pumpkin, Atlantic (query: "giant pumpkin")
+Subject "Giant Pumpkin, Atlantic" returned zero Unsplash results for query "giant pumpkin". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D11T (query: "caterpillar d11t")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "caterpillar d11t". (attempt 3)
+Fallback subject (#3): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive girth and industrial design.
+Saved image to images/2026-08-16-bagger-293.jpg
+[webp] 2026-08-16-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette and girth clearly from an aerial perspective.
+[webp] 2026-08-16-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 13; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+[webp] 2026-08-16-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 32  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane. The crane is well-framed and clearly the focal point of the image, but it is not the correct subject. The image is clear and well-composed, but it fails the identity test as it does not feature the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=32 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-16.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-16 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Titan 9000 Excavator (query: "excavator")
+Found 14 candidate photos.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 11 left.
+Vision picked #3 of 11: this photo shows the entire excavator in action, emphasizing its large girth and silhouette.
+Saved image to images/2026-08-16-thiccc-titan-9000-excavator.jpg
+[webp] 2026-08-16-thiccc-titan-9000-excavator.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 18; trying another photo for "Thiccc Titan 9000 Excavator" (10 candidates left).
+Vision picked #4 of 10: This photo shows the excavator in action, emphasizing its size and girth against a backdrop of demolition work.
+[webp] 2026-08-16-thiccc-titan-9000-excavator.jpg: 401KB -> 307KB (23% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 49; trying another photo for "Thiccc Titan 9000 Excavator" (9 candidates left).
+Vision picked #1 of 9: this photo clearly shows the full silhouette of the excavator, emphasizing its girth and size.
+[webp] 2026-08-16-thiccc-titan-9000-excavator.jpg: 213KB -> 127KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo shows a real excavator, specifically a Robex 220LC-95, not the 'Thiccc Titan 9000 Excavator' as named. The subject is well-framed and clearly visible, but the model does not match the specified subject. The image is documentary in style, but the mismatch in model identity leads to rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Titan 9000 Excavator"
+[bail] popped "Thiccc Titan 9000 Excavator" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-16.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-16 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293 with a clear emphasis on its massive structure.
+Saved image to images/2026-08-16-bagger-293.jpg
+[webp] 2026-08-16-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo showcases the Bagger 293's massive silhouette and girth from an aerial perspective.
+[webp] 2026-08-16-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo showcases the Bagger 293's massive structure and girth clearly.
+[webp] 2026-08-16-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane in a port setting. The crane is well-framed and the image is clear, but it does not match the subject description. The crane dominates the scene, making it the focal point, but it is not the correct object for the entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-16.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-16 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-16.
+```
