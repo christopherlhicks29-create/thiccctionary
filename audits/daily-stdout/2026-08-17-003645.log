@@ -1,0 +1,52 @@
+# Daily run trace 2026-08-17-003645
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/31982432787
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-17
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Antartican Iceberg (query: "iceberg")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #10 of 12: this photo shows a large, prominent iceberg that emphasizes its thicc silhouette against the water.
+Saved image to images/2026-08-17-thiccc-antartican-iceberg.jpg
+[webp] 2026-08-17-thiccc-antartican-iceberg.jpg: 93KB -> 32KB (65% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Antartican Iceberg" (28 candidates left).
+Vision picked #3 of 12: This photo shows multiple large icebergs, emphasizing their overall girth and presence in the landscape.
+[webp] 2026-08-17-thiccc-antartican-iceberg.jpg: 140KB -> 60KB (57% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The entry has a solid etymology kicker with the 'ice mountain' observation, but the example lacks a punchline tag, ending on a poetic note rather than a comedic one. The definition uses 'imposing breadth,' an anti-pattern phrase, which detracts from the humor. Adding a specific scene or a surprising detail could elevate the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=9/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Antartican Iceberg.
+  afternoon: In 2000, Iceberg B-15 broke off from the Ross Ice Shelf.
+  evening: From the archives, Thiccc Antartican Iceberg.
+  reels: Iceberg A-68, once 6,000 square kilometers, now reduced.
+Saved entry: Thiccc Antartican Iceberg
+Built entry page: entries/2026-08-17.html
+Rebuilt prev entry page (2026-08-16) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 126 entries + 56 articles.
+Sitemap rebuilt with 126 entries.
+Subject queue updated: 4 item(s) remaining.
+[retry-wrapper] entry for 2026-08-17 landed on attempt 1.
+```
