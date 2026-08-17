@@ -1,6 +1,6 @@
 {
-  "queued_at": "2026-08-10T04:29:33.156Z",
-  "dates": "2026-08-02,2026-07-21,2026-07-08",
+  "queued_at": "2026-08-17T03:49:32.374Z",
+  "dates": "2026-04-15,2026-08-01,2026-08-16,2026-08-13",
   "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 3): 2026-08-02 Pumper Truck, Fire Engine (score 1, depicts \"a real fire engine from the front\"); 2026-07-21 Engine, V8 Crate (score 1, depicts \"a collection of used car engines with fans\"); 2026-07-08 Beet, Sugar (score 1, depicts \"a bunch of radishes tied together\")"
+  "reason": "Wave 212 image-audit batch (worst 4): 2026-04-15 Bell, Cathedral (score 1, depicts \"a stone bell tower with visible bells\"); 2026-08-01 Pizza, Deep Dish (score 1, depicts \"a rectangular pizza on a table\"); 2026-08-16 Concrete Bunker, Soviet (score 1, depicts \"a large concrete building with architectural features\"); 2026-08-13 Roast, Prime Rib (score 1, depicts \"a sliced steak dish with vegetables and sauce\")"
 }

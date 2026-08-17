@@ -1,44 +1,55 @@
 {
-  "generated_at": "2026-08-10T04:29:33.156Z",
-  "scanned": 119,
-  "passed": 116,
-  "failed": 3,
+  "generated_at": "2026-08-17T03:49:32.373Z",
+  "scanned": 126,
+  "passed": 122,
+  "failed": 4,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
     {
-      "date": "2026-08-02",
-      "word": "Pumper Truck, Fire Engine",
-      "imageUrl": "https://thiccctionary.com/images/2026-08-02-pumper-truck-fire-engine.jpg",
+      "date": "2026-04-15",
+      "word": "Bell, Cathedral",
+      "imageUrl": "https://thiccctionary.com/images/2026-04-15-bell-cathedral.jpg",
       "score": 1,
-      "subjectPct": 64,
+      "subjectPct": 24,
       "verdict": "reject",
-      "photoSubject": "a real fire engine from the front",
-      "critique": "The photo does not show the hindquarters of a pumper truck as described. Instead, it depicts the front of a fire engine. The subject is not centered, and the focus is on the front view rather than the rear. The image does not meet the criteria for the specified subject, resulting in a low score.",
+      "photoSubject": "a stone bell tower with visible bells",
+      "critique": "The photo depicts a stone bell tower with bells visible, not a singular cathedral bell as specified. The composition centers on the architectural structure rather than the bell itself, making it unsuitable for the subject. The bells are not the primary focus, and the image does not fit the criteria for a documentary-style plate of a cathedral bell. The subject is not clearly identifiable as the named object.",
       "passed": false
     },
     {
-      "date": "2026-07-21",
-      "word": "Engine, V8 Crate",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-21-engine-v8-crate.jpg",
+      "date": "2026-08-01",
+      "word": "Pizza, Deep Dish",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-01-pizza-deep-dish.jpg",
       "score": 1,
-      "subjectPct": 64,
+      "subjectPct": 32,
       "verdict": "reject",
-      "photoSubject": "a collection of used car engines with fans",
-      "critique": "The photo does not show a single V8 crate engine, but rather a collection of used car engines with visible fans and other components. The engines are cluttered together, making it difficult to focus on a single subject. The composition lacks the clarity and focus needed for a dictionary-style entry. Additionally, the engines do not appear to be V8 crate engines, which further disqualifies the image. The presence of various items in the background adds to the clutter, detracting from the subject's prominence.",
+      "photoSubject": "a rectangular pizza on a table",
+      "critique": "The photo does not show a deep dish pizza, which is typically characterized by a thick crust and a deep, round shape. Instead, it depicts a rectangular pizza, which does not fit the description of 'Pizza, Deep Dish.' The composition is clear and well-lit, but the subject is incorrect for the entry. The pizza is the focal point, but it does not match the specified type.",
       "passed": false
     },
     {
-      "date": "2026-07-08",
-      "word": "Beet, Sugar",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-08-beet-sugar.jpg",
+      "date": "2026-08-16",
+      "word": "Concrete Bunker, Soviet",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-16-concrete-bunker-soviet.jpg",
       "score": 1,
       "subjectPct": 64,
       "verdict": "reject",
-      "photoSubject": "a bunch of radishes tied together",
-      "critique": "The photo shows a bunch of radishes, not sugar beets. Sugar beets are typically larger, with a more elongated shape and a pale color, unlike the small, round, red radishes depicted here. The image is well-composed and clear, but it does not meet the subject criteria for 'Beet, Sugar.' Therefore, it is unsuitable for the intended entry.",
+      "photoSubject": "a large concrete building with architectural features",
+      "critique": "The photo depicts a large concrete building with distinct architectural features, but it does not clearly identify as a Soviet-era concrete bunker. The structure appears more like a modernist building rather than a military bunker. The framing and composition are good, but the subject does not match the specified object, leading to a rejection.",
+      "passed": false
+    },
+    {
+      "date": "2026-08-13",
+      "word": "Roast, Prime Rib",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-13-roast-prime-rib.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a sliced steak dish with vegetables and sauce",
+      "critique": "The photo does not show a whole prime rib roast; instead, it depicts a sliced steak dish with accompanying vegetables and sauce. The composition is appealing and well-lit, but it fails the identity test as it does not display the named subject, a prime rib roast. The subject box captures the main dish, but the image is not suitable for the intended entry.",
       "passed": false
     }
   ]
