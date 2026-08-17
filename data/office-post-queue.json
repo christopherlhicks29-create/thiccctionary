@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went grocery shopping at 9pm. Wheel of parmesan under the deli light, just sitting there. I stood in front of it for maybe four minutes. The guy restocking the yogurt watched me the whole time. I bought pasta.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-17T21:42:50.838Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1786916146787",
