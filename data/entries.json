@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-08-18",
+    "word": "Turbine, Gas-Fired",
+    "pronunciation": "TUR-byn, GAS-fyerd",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "An industrial powerhouse, characterized by a cylindrical form designed for burning fuel to produce rotational energy, esp. one viewed astern, in raking light that reveals its thiccc majesty.",
+      "<em>colloq.</em> The industrial equivalent of a heavyweight champion, refusing to be contained within standard enclosure dimensions without first negotiating a structural expansion."
+    ],
+    "example": "He marveled at the thiccc gas-fired turbine mounted on the jet, its posterior defying casual description in the early morning light.",
+    "etymology": "From Latin turbinem, meaning 'whirl' or 'vortex', combined with gas (from Greek khaos, 'chaos') and fire (Old English fyr). Clearly, the engineers knew exactly what they were creating.",
+    "image": "images/2026-08-18-turbine-gas-fired.jpg",
+    "caption": "Plate CXXVII., A rear view of a thiccc gas-fired turbine, capturing its formidable presence.",
+    "tags": [
+      "industrial",
+      "vehicle"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Pablo Romay",
+    "photographerUrl": "https://unsplash.com/@pabloromay",
+    "unsplashUrl": "https://unsplash.com/photos/a-close-up-view-of-a-jet-engine-S9wDLXFaTYA",
+    "socialCaptions": {
+      "morning": "Turbine, Gas-Fired. Rotates at up to 3,600 RPM.\nThe air is not aware of how it got here.",
+      "afternoon": "Weighing in at over 400 tons, this mechanical marvel burns through 50,000 cubic feet of natural gas per hour.\nThicccer: this, or a fully loaded oil tanker? The engineers are in a heated debate.\nTurbine, Gas-Fired.",
+      "evening": "From the archives, Turbine, Gas-Fired.\nFirst produced in 1939—an era when thicccness was measured in megawatts.\nThe National Grid was not prepared.",
+      "reels": "Capable of generating up to 500 MW—powering an entire city with a single spin.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-17",
     "word": "Thiccc Antartican Iceberg",
     "pronunciation": "/THIK ant-AR-tik-an ICE-berg/",
