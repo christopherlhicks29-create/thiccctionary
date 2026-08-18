@@ -5,26 +5,5 @@
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
     "Wave 338 (2026-08-09): refilled after the queue drained to 1 item and today's cron burned 4 attempts / 5 subjects without landing an entry (2 zero-Unsplash-result subjects, 3 low-subjectPct rejects on wide/cluttered/pile shots). Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
   ],
-  "queue": [
-    {
-      "subject": "Gong, Chinese Brass",
-      "query": "chinese brass gong large",
-      "category": "Musical Instruments"
-    },
-    {
-      "subject": "Crab, King Alaskan",
-      "query": "king crab alaskan leg",
-      "category": "Other"
-    },
-    {
-      "subject": "Steam Locomotive, Big Boy",
-      "query": "big boy locomotive 4014",
-      "category": "Vehicles & Transport"
-    },
-    {
-      "subject": "Truck, Cement Mixer Drum",
-      "query": "concrete mixer truck drum",
-      "category": "Vehicles & Transport"
-    }
-  ]
+  "queue": []
 }
