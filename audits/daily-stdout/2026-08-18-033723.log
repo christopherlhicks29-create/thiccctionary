@@ -1,0 +1,99 @@
+# Daily run trace 2026-08-18-033723
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32096010066
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-18
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 4
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and industrial presence.
+Saved image to images/2026-08-18-bagger-293.jpg
+[webp] 2026-08-18-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette clearly against the landscape, emphasizing its girth.
+[webp] 2026-08-18-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 25; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+[webp] 2026-08-18-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo shows an industrial crane, not the Bagger 293, which is a massive bucket-wheel excavator. The crane is centered and well-framed, but it is not the subject specified. The image captures the crane in a clear and uncluttered manner, but it does not meet the criteria for the intended subject. Therefore, it is unsuitable for the entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-18.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-18 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crab, King Alaskan" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "caterpillar bulldozer")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 5 left.
+Vision rejected all 5 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Caterpillar D11T"
+[bail] popped "Thiccc Caterpillar D11T" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-18.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-18 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 2 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Monster Truck (query: "monster truck")
+Subject "Thiccc Monster Truck" returned zero Unsplash results for query "monster truck". (attempt 1)
+Fallback subject (#1): Ship, Seawise Giant (query: "Seawise Giant")
+Subject "Ship, Seawise Giant" returned zero Unsplash results for query "Seawise Giant". (attempt 2)
+Fallback subject (#2): Turbine, Gas-Fired (query: "gas turbine")
+Found 30 candidate photos.
+Vision picked #7 of 12: this photo showcases a large, robust turbine with significant girth and structure.
+Saved image to images/2026-08-18-turbine-gas-fired.jpg
+[webp] 2026-08-18-turbine-gas-fired.jpg: 304KB -> 197KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Turbine, Gas-Fired" (29 candidates left).
+Vision picked #4 of 12: this photo shows a full gas turbine with a clear silhouette emphasizing its girth.
+[webp] 2026-08-18-turbine-gas-fired.jpg: 242KB -> 144KB (41% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a solid dictionary register and the etymology ends on a humorous note. The example, however, lacks a punchline tag and could benefit from a more specific scene to enhance the humor. Overall, it lands well but could use a sharper comedic beat.
+Generated social captions:
+  morning: Turbine, Gas-Fired. Rotates at up to 3,600 RPM.
+  afternoon: Weighing in at over 400 tons, this mechanical marvel burns through 50,000 cubic feet of natural gas per hour.
+  evening: From the archives, Turbine, Gas-Fired.
+  reels: Capable of generating up to 500 MW—powering an entire city with a single spin.
+Saved entry: Turbine, Gas-Fired
+Built entry page: entries/2026-08-18.html
+Rebuilt prev entry page (2026-08-17) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 127 entries + 56 articles.
+Sitemap rebuilt with 127 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-18 landed on attempt 3.
+```
