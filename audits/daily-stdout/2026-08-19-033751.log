@@ -1,0 +1,36 @@
+# Daily run trace 2026-08-19-033751
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32212769664
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lock, Padlock Brass" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lock, Padlock Brass" query="large brass padlock" (source: queue)
+Subject: Lock, Padlock Brass (query: "large brass padlock")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Unable to download content from the provided URL before the timeout. Check that the URL is publicly accessible and responds promptly, or upload the file and provide a file_id instead.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1006:16)
+[retry-wrapper] attempt 1 threw: Command failed: node generate-daily.js
+```
