@@ -1,0 +1,117 @@
+# Daily run trace 2026-08-19-062935
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32223242361
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Bagger 288 (query: "Bagger 288")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #9 of 12: This photo shows the Bagger 288's massive scale and silhouette clearly against the landscape.
+Saved image to images/2026-08-19-thiccc-bagger-288.jpg
+[webp] 2026-08-19-thiccc-bagger-288.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 13; trying another photo for "Thiccc Bagger 288" (28 candidates left).
+Vision picked #7 of 12: this photo shows the full silhouette of a thicc structure with ample girth and size.
+[webp] 2026-08-19-thiccc-bagger-288.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Bagger 288" (27 candidates left).
+Vision picked #4 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and industrial character.
+[webp] 2026-08-19-thiccc-bagger-288.jpg: 241KB -> 158KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show the Bagger 288, which is a massive bucket-wheel excavator, not a crane. The subject in the image is an old coal crane, which is a different type of machinery. The crane is well-framed and the image is clear, but it does not match the specified subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Bagger 288"
+[bail] popped "Thiccc Bagger 288" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-19 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-19 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar Crawler Transporter (query: "crawler transporter")
+Subject "Thiccc Caterpillar Crawler Transporter" returned zero Unsplash results for query "crawler transporter". (attempt 2)
+Fallback subject (#2): Thiccc Daria (query: "military tank")
+Found 7 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 6 left.
+Vision picked #5 of 6: this photo features a tank prominently, showcasing its girth and silhouette effectively.
+Saved image to images/2026-08-19-thiccc-daria.jpg
+[webp] 2026-08-19-thiccc-daria.jpg: 167KB -> 90KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 20; trying another photo for "Thiccc Daria" (5 candidates left).
+Vision rejected all 5 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 20  isSubject: false
+  critique: The photo shows a real battle tank, likely in a military reenactment setting, but it does not match the subject 'Thiccc Daria.' The tank is prominent, but the scene is cluttered with people and other elements, detracting from the focus on the tank itself. The subject identity is unclear, and the photo does not fit the criteria for the specified object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=20 - subject "Thiccc Daria"
+[bail] popped "Thiccc Daria" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-19 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Titan, Super Heavy Launch Vehicle (query: "super heavy launch vehicle")
+Found 28 candidate photos.
+Vision picked #5 of 12: the launch vehicle is fully visible with dramatic smoke, emphasizing its massive girth.
+Saved image to images/2026-08-19-titan-super-heavy-launch-vehicle.jpg
+[webp] 2026-08-19-titan-super-heavy-launch-vehicle.jpg: 84KB -> 42KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Titan, Super Heavy Launch Vehicle" (27 candidates left).
+Vision picked #6 of 12: the photo shows a large rocket engine, emphasizing its significant girth and power.
+[webp] 2026-08-19-titan-super-heavy-launch-vehicle.jpg: 152KB -> 85KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 18; trying another photo for "Titan, Super Heavy Launch Vehicle" (26 candidates left).
+Vision picked #1 of 12: this crane's elongated arm emphasizes its girth and overall size against the clean background.
+[webp] 2026-08-19-titan-super-heavy-launch-vehicle.jpg: 154KB -> 63KB (59% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not depict a 'Titan, Super Heavy Launch Vehicle' but rather a toy telescopic crane. The subject is clearly a miniature version intended for children, which disqualifies it as a representation of the named object. The image is well-composed and the crane is centered, but it fails the identity test as it shows a toy rather than the actual subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Titan, Super Heavy Launch Vehicle"
+[bail] popped "Titan, Super Heavy Launch Vehicle" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-19 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-19.
+```
