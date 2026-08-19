@@ -1,0 +1,119 @@
+# Daily run trace 2026-08-19-122628
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32252255909
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lobster, Maine" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lobster, Maine" query="maine lobster whole" (source: queue)
+Subject: Lobster, Maine (query: "maine lobster whole")
+Subject "Lobster, Maine" returned zero Unsplash results for query "maine lobster whole". (attempt 1)
+Fallback subject (#1): Bagger 396 (query: "Bagger 396")
+Found 23 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 22 left.
+Vision picked #12 of 12: this photo clearly shows the full silhouette of the Bagger 396, emphasizing its substantial girth.
+Saved image to images/2026-08-19-bagger-396.jpg
+[webp] 2026-08-19-bagger-396.jpg: 213KB -> 127KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 56; trying another photo for "Bagger 396" (21 candidates left).
+Vision picked #12 of 12: This photo shows the full silhouette of the Bagger 396, emphasizing its massive and thick structure.
+[webp] 2026-08-19-bagger-396.jpg: 241KB -> 155KB (36% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Bagger 396" (20 candidates left).
+Vision picked #3 of 12: this photo shows a large loader amidst a significant sand pile, emphasizing its girth and scale.
+[webp] 2026-08-19-bagger-396.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo shows a bulldozer at a sand excavation site, not the Bagger 396, which is a large bucket-wheel excavator. The subject is not centered, and the bulldozer is partially obscured by sand, making it difficult to identify. The image lacks the imposing size and complexity expected of a Bagger 396, leading to a low score.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Bagger 396"
+[bail] popped "Bagger 396" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-19 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-19 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Cement Pump, Truck-Mounted (query: "cement pump truck")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Vision picked #2 of 8: this photo shows the full front view of a cement pump truck, emphasizing its robust and thick structure.
+Saved image to images/2026-08-19-cement-pump-truck-mounted.jpg
+[webp] 2026-08-19-cement-pump-truck-mounted.jpg: 242KB -> 138KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Cement Pump, Truck-Mounted" (7 candidates left).
+Vision picked #1 of 7: this photo shows the full silhouette of a truck-mounted cement pump, emphasizing its size and girth.
+[webp] 2026-08-19-cement-pump-truck-mounted.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Cement Pump, Truck-Mounted" (6 candidates left).
+Vision picked #3 of 6: this photo shows the full truck-mounted cement pump in action, emphasizing its size and girth against the backdrop of the highway.
+[webp] 2026-08-19-cement-pump-truck-mounted.jpg: 142KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 10  isSubject: false
+  critique: The photo does not show a cement pump truck, but rather a truck-mounted fog cannon on a bridge. The subject is not centered, and the composition includes significant portions of the bridge and sky, which distract from the truck. The image does not fit the criteria for a documentary-style photo of a cement pump truck, and the subject is not the focal point.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=10 - subject "Cement Pump, Truck-Mounted"
+[bail] popped "Cement Pump, Truck-Mounted" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-19 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D10T (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #3 of 3: This photo shows the full silhouette of the D10T, emphasizing its substantial girth against the landscape.
+Saved image to images/2026-08-19-thiccc-caterpillar-d10t.jpg
+[webp] 2026-08-19-thiccc-caterpillar-d10t.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D10T" (2 candidates left).
+Vision picked #1 of 2: This photo showcases the D10T's full silhouette against a large pile of sand, emphasizing its thiccness.
+[webp] 2026-08-19-thiccc-caterpillar-d10t.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D10T" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo does not show a Caterpillar D10T, which is a large bulldozer, but rather a different type of excavator. The subject is not centered, and the excavator is partially obscured by sand, making it difficult to identify. The composition includes significant distractions like the sand piles and surrounding structures, which dominate the frame. The image fails the identity test as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Thiccc Caterpillar D10T"
+[bail] popped "Thiccc Caterpillar D10T" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-19 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-19.
+```
