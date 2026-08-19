@@ -1,0 +1,139 @@
+# Daily run trace 2026-08-19-131200
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32256067812
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Giant Pumpkin, Atlantic Giant (query: "giant pumpkin")
+Subject "Giant Pumpkin, Atlantic Giant" returned zero Unsplash results for query "giant pumpkin". (attempt 2)
+Fallback subject (#2): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive structure and girth.
+Saved image to images/2026-08-19-bagger-293.jpg
+[webp] 2026-08-19-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette against the landscape, emphasizing its girth.
+[webp] 2026-08-19-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #12 of 12: this photo shows the full silhouette of the Bagger 293, emphasizing its massive structure and girth.
+[webp] 2026-08-19-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 42  isSubject: false
+  critique: The photo shows a large industrial crane, not the Bagger 293, which is a massive bucket-wheel excavator. The crane is well-framed and clearly the focal point of the image, but it does not match the subject description. The industrial setting is captured nicely, but the subject identity is incorrect, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=42 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-19 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crab, King Alaskan" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Bagger 287 (query: "Bagger 287")
+Subject "Bagger 287" returned zero Unsplash results for query "Bagger 287". (attempt 2)
+Fallback subject (#2): Thiccc Bagger 288 (query: "Bagger 288")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #9 of 12: this photo shows the Bagger 288's massive scale and silhouette against the landscape.
+Saved image to images/2026-08-19-thiccc-bagger-288.jpg
+[webp] 2026-08-19-thiccc-bagger-288.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 20; trying another photo for "Thiccc Bagger 288" (28 candidates left).
+Vision picked #6 of 12: This photo shows a large crane with a prominent silhouette, emphasizing its substantial girth.
+[webp] 2026-08-19-thiccc-bagger-288.jpg: 327KB -> 241KB (26% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Bagger 288" (27 candidates left).
+Vision picked #6 of 12: This photo shows a large crane with a prominent silhouette, emphasizing its substantial girth against a clean background.
+[webp] 2026-08-19-thiccc-bagger-288.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo depicts gantry cranes in an industrial port, not the Bagger 288, which is a massive bucket-wheel excavator. The subject is not correctly identified, leading to an automatic rejection. The cranes are well-framed and centered, but they are not the object specified. The image is clear and documentary in style, but it does not meet the criteria for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Bagger 288"
+[bail] popped "Thiccc Bagger 288" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-19 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Sub-Zero Built-In" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Sub-Zero Built-In" query="sub-zero built in refrigerator kitchen" (source: queue)
+Subject: Refrigerator, Sub-Zero Built-In (query: "sub-zero built in refrigerator kitchen")
+Found 16 candidate photos.
+Vision picked #4 of 12: this photo prominently features a full-sized refrigerator, showcasing its girth in a modern kitchen setting.
+Saved image to images/2026-08-19-refrigerator-sub-zero-built-in.jpg
+[webp] 2026-08-19-refrigerator-sub-zero-built-in.jpg: 182KB -> 97KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 8; trying another photo for "Refrigerator, Sub-Zero Built-In" (15 candidates left).
+Vision picked #4 of 12: this photo showcases the refrigerator's full size and ample storage capacity, emphasizing its thiccness.
+[webp] 2026-08-19-refrigerator-sub-zero-built-in.jpg: 245KB -> 150KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Refrigerator, Sub-Zero Built-In" (14 candidates left).
+Vision picked #1 of 12: This photo showcases the full silhouette of the refrigerator against a clean background, emphasizing its substantial presence.
+[webp] 2026-08-19-refrigerator-sub-zero-built-in.jpg: 196KB -> 90KB (54% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 16  isSubject: false
+  critique: The photo does not clearly show a 'Refrigerator, Sub-Zero Built-In.' Instead, it depicts a modern kitchen with wood cabinets and a teal stool. The refrigerator is not distinctly visible or identifiable in the image. The focus is more on the kitchen design rather than the specific appliance. The subject box is small because the kitchen elements dominate the frame, and the refrigerator is not the focal point. Therefore, the image does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=16 - subject "Refrigerator, Sub-Zero Built-In"
+[bail] popped "Refrigerator, Sub-Zero Built-In" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-19 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Thiccc Antartican Iceberg".
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 2 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Duplicate-subject guard: "Boeing 767, Freighter" is the same family as already-published "Boeing 777X" (headNoun "boeing 767"). Retry 1/5.
+Duplicate-subject guard: "Thiccc Pipe Organ" is the same family as already-published "Pipe Organ, Cathedral" (headNoun "thiccc pipe organ"). Retry 2/5.
+Duplicate-subject guard: "Boeing 747, Jumbo" is the same family as already-published "Boeing 777X" (headNoun "boeing 747"). Retry 3/5.
+Duplicate-subject guard: "Turbine, Gas-Fired Power" is the same family as already-published "Turbine, Gas-Fired" (headNoun "turbine"). Retry 4/5.
+Duplicate-subject guard: "Pumpkin, Atlantic Giant" is the same family as already-published "Pumpkin, Atlantic Giant" (headNoun "pumpkin"). Retry 5/5.
+Subject: Thiccc Ferris Wheel (query: "ferris wheel")
+Found 30 candidate photos.
+Vision picked #4 of 12: This photo shows the full Ferris wheel with clear visibility of its girth and structure.
+Saved image to images/2026-08-19-thiccc-ferris-wheel.jpg
+[webp] 2026-08-19-thiccc-ferris-wheel.jpg: 197KB -> 129KB (34% smaller)
+Design critique: score=7/10, verdict=needs-review
+Humor critique: score=8/10, verdict=ship, weakest=etymology
+  feedback: The example is vivid and ends on a humorous note with the funnel cake stand. The etymology could use a stronger kicker, as it leans more informative than funny. Overall, the entry is solid with a good mix of specificity and surprise.
+Generated social captions:
+  morning: Thiccc Ferris Wheel.
+  afternoon: In 1893, the first Ferris wheel stood 264 feet tall.
+  evening: From the archives, Thiccc Ferris Wheel.
+  reels: A thiccc icon of amusement parks.
+Saved entry: Thiccc Ferris Wheel
+Built entry page: entries/2026-08-19.html
+Rebuilt prev entry page (2026-08-18) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 128 entries + 56 articles.
+Sitemap rebuilt with 128 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-19 landed on attempt 4.
+```
