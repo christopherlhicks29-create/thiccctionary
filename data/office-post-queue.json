@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Replaced the kitchen faucet this afternoon. Correct wrench, correct tape, no second trip to the hardware store. Turned it on. Held. I stood there longer than necessary. It was a good amount of water.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-19T17:47:45.685Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787075479731",
