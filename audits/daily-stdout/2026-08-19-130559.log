@@ -1,0 +1,49 @@
+# Daily run trace 2026-08-19-130559
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32256067812
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Titan II (query: "Titan II rocket")
+Subject "Thiccc Titan II" returned zero Unsplash results for query "Titan II rocket". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D10 (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #1 of 3: This photo shows the full silhouette of the Caterpillar D10 against a clear background, emphasizing its thiccness.
+Saved image to images/2026-08-19-thiccc-caterpillar-d10.jpg
+[webp] 2026-08-19-thiccc-caterpillar-d10.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D10" (2 candidates left).
+Vision picked #2 of 2: the aerial view showcases the full silhouette and girth of the Caterpillar D10 against the landscape.
+[webp] 2026-08-19-thiccc-caterpillar-d10.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 15; trying another photo for "Thiccc Caterpillar D10" (1 candidates left).
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Unable to download content from the provided URL before the timeout. Check that the URL is publicly accessible and responds promptly, or upload the file and provide a file_id instead.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1085:19)
+[retry-wrapper] attempt 1 threw: Command failed: node generate-daily.js
+```
