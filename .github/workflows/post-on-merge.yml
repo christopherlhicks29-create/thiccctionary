@@ -79,10 +79,26 @@ jobs:
           echo "date=$DATE" >> $GITHUB_OUTPUT
 
       - name: Wait for Cloudflare Pages deploy
-        # Pages typically deploys in 30-90s after a push to main. Wait a bit so the image URL resolves.
-        run: sleep 90
+        # Pages typically deploys in 30-90s after a push to main, but can take
+        # longer under load. Bumped 90->150 (Wave 342, 2026-08-19) to match
+        # post-deploy-verify.yml's wait and reduce the image-not-yet-live race
+        # that was failing the next step (see continue-on-error note below).
+        run: sleep 150
 
       - name: Post to Buffer (morning, image)
+        # Wave 342 (2026-08-19): continue-on-error added. Root cause: runs
+        # #92-94 all failed here with "Invalid post: Image could not be read
+        # from its URL" -- a Cloudflare Pages propagation race, not a real
+        # content bug (the same image URL was confirmed reachable minutes
+        # later). Because this step had no continue-on-error, its failure was
+        # silently skipping EVERY step after it in the job -- Reel cross-post
+        # (FB+IG), IndexNow ping, and the newsletter send -- for at least 3
+        # consecutive daily runs. That's the real explanation for the IG/FB
+        # reel gap flagged in multiple prior sessions as posts "silently
+        # vanishing": the job never reached the Reel step at all. A transient
+        # image race on this step should not block the independent Reel and
+        # newsletter steps below.
+        continue-on-error: true
         working-directory: scripts
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
