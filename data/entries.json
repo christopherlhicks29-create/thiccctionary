@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-19",
+    "word": "Thiccc Ferris Wheel",
+    "pronunciation": "/thik fer-is weel/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A towering amusement device characterized by its impressive radial girth, often seen silhouetted against the skyline with a circumference that suggests a profound commitment to rotational leisure.",
+      "<em>colloq.</em> A carnival behemoth that does not merely invite riders but absorbs them into its orbit, offering a panoramic view that defies any claims of subtlety."
+    ],
+    "example": "The county fair unveiled a thiccc Ferris wheel, its colossal spokes casting shadows that eclipsed the entire midway. The funnel cake stand never stood a chance.",
+    "etymology": "Named after George Washington Gale Ferris Jr. (American engineer, inventor of the Ferris Wheel, 1893). The added 'c's in thiccc serve as an homage to its expansive wheelbase, which spins like it's always been in the spotlight.",
+    "image": "images/2026-08-19-thiccc-ferris-wheel.jpg",
+    "caption": "Plate CXXVIII., A Ferris wheel of industrial proportions, basking in its own grandeur.",
+    "tags": [
+      "girth",
+      "industrial",
+      "architecture"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 7,
+    "photographer": "Akshay Mehta",
+    "photographerUrl": "https://unsplash.com/@yayavarii",
+    "unsplashUrl": "https://unsplash.com/photos/a-ferris-wheel-with-a-few-seats-1cBIagisUtk",
+    "socialCaptions": {
+      "morning": "Thiccc Ferris Wheel.\nA full rotation takes 15 minutes—\nTime to ponder life's big questions,\nOr how many corn dogs are too many.",
+      "afternoon": "In 1893, the first Ferris wheel stood 264 feet tall.\nToday's thiccc variations dwarf skyscrapers—\nA testament to human ambition or hubris.\nWhich is thicccer: this or a Boeing 747?\n#ThicccFerrisWheel",
+      "evening": "From the archives, Thiccc Ferris Wheel.\nStructural engineers estimate it weighs over 2,000 tons.\nGravity remains unbothered.",
+      "reels": "A thiccc icon of amusement parks.\n270 feet of rotating history.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-18",
     "word": "Turbine, Gas-Fired",
     "pronunciation": "TUR-byn, GAS-fyerd",
