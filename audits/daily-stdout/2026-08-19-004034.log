@@ -1,0 +1,114 @@
+# Daily run trace 2026-08-19-004034
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32201824316
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar truck")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar truck". (attempt 2)
+Fallback subject (#2): Thiccc Icebreaker Ship (query: "icebreaker ship")
+Subject "Thiccc Icebreaker Ship" returned zero Unsplash results for query "icebreaker ship". (attempt 3)
+Fallback subject (#3): Thiccc Paramax 8000 (query: "dump truck")
+Found 26 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 24 left.
+Vision picked #1 of 12: This photo shows the Paramax 8000 in a full profile, emphasizing its robust and thicc silhouette.
+Saved image to images/2026-08-19-thiccc-paramax-8000.jpg
+[webp] 2026-08-19-thiccc-paramax-8000.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Thiccc Paramax 8000" (23 candidates left).
+Vision picked #1 of 12: This photo showcases two trucks side by side, emphasizing their substantial girth and presence.
+[webp] 2026-08-19-thiccc-paramax-8000.jpg: 348KB -> 254KB (27% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Thiccc Paramax 8000" (22 candidates left).
+Vision picked #5 of 12: this photo shows the full side profile of a large truck, emphasizing its girth and silhouette.
+[webp] 2026-08-19-thiccc-paramax-8000.jpg: 201KB -> 114KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not show the 'Thiccc Paramax 8000' but rather a truck with a container. The framing captures part of the truck and container, but it is not centered and does not focus on a specific object that matches the subject name. The subject identity appears to be fabricated, as 'Paramax 8000' does not correspond to a known product. The image lacks the necessary focus and clarity to be considered for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Paramax 8000"
+[bail] popped "Thiccc Paramax 8000" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-19 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Giant Watermelon, Sugar Baby (query: "giant watermelon")
+Found 16 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 15 left.
+Vision picked #1 of 12: This photo shows a whole Sugar Baby watermelon with clear girth and silhouette.
+Saved image to images/2026-08-19-giant-watermelon-sugar-baby.jpg
+[webp] 2026-08-19-giant-watermelon-sugar-baby.jpg: 171KB -> 86KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Giant Watermelon, Sugar Baby" (14 candidates left).
+Vision picked #1 of 12: this photo shows multiple giant watermelons, emphasizing their overall girth and size.
+[webp] 2026-08-19-giant-watermelon-sugar-baby.jpg: 196KB -> 111KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Giant Watermelon, Sugar Baby" (13 candidates left).
+Vision picked #1 of 12: This photo showcases multiple halves of the watermelon, emphasizing its overall girth and size.
+[webp] 2026-08-19-giant-watermelon-sugar-baby.jpg: 276KB -> 183KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo shows sliced watermelons, not a whole 'Giant Watermelon, Sugar Baby.' The subject is not identifiable as a specific type or size of watermelon, and the image does not convey the 'giant' aspect required. The composition is clear and focused on the sliced fruit, but it fails to meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Giant Watermelon, Sugar Baby"
+[bail] popped "Giant Watermelon, Sugar Baby" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-19 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Stone, Megalith Standing" - duplicates catalogued "Atlas Stone, Strongman".
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Berm, Earthen Dam" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Kettledrum, Concert (query: "kettledrum")
+Subject "Kettledrum, Concert" returned zero Unsplash results for query "kettledrum". (attempt 2)
+Fallback subject (#2): Titan, Giant Earthmover (query: "giant earthmover")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #5 of 12: this photo shows the giant earthmover clearly, emphasizing its massive size and girth against the landscape.
+Saved image to images/2026-08-19-titan-giant-earthmover.jpg
+[webp] 2026-08-19-titan-giant-earthmover.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Titan, Giant Earthmover" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show a 'Titan, Giant Earthmover' but rather a standard bulldozer at a construction site. The subject is not centered, and the framing includes a large portion of the surrounding area, making the bulldozer less prominent. The image lacks the focus and clarity needed for a dictionary-style entry, and the subject is not the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Titan, Giant Earthmover"
+[bail] popped "Titan, Giant Earthmover" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-19 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-19.
+```
