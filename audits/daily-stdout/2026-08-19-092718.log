@@ -1,0 +1,134 @@
+# Daily run trace 2026-08-19-092718
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32237205766
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crab, King Alaskan" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Thiccc Tuba, Marching (query: "marching tuba")
+Found 11 candidate photos.
+Vision picked #1 of 11: this photo prominently features the full silhouette of a tuba, emphasizing its girth and shape.
+Saved image to images/2026-08-19-thiccc-tuba-marching.jpg
+[webp] 2026-08-19-thiccc-tuba-marching.jpg: 132KB -> 71KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Tuba, Marching" (10 candidates left).
+Vision picked #2 of 10: this photo shows a tuba clearly being played, emphasizing its girth and presence in a marching context.
+[webp] 2026-08-19-thiccc-tuba-marching.jpg: 228KB -> 129KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 25; trying another photo for "Thiccc Tuba, Marching" (9 candidates left).
+Vision rejected all 9 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 25  isSubject: false
+  critique: The photo does not show a 'Thiccc Tuba, Marching' as specified. Instead, it depicts a man playing a brass instrument, likely a euphonium, which is not the subject. The composition centers on the person rather than the instrument, and the instrument does not appear unusually large or imposing for its kind. The focus on the person and the incorrect instrument disqualify the image for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=25 - subject "Thiccc Tuba, Marching"
+[bail] popped "Thiccc Tuba, Marching" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-19 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Luffa, Giant (query: "giant luffa")
+Subject "Luffa, Giant" returned zero Unsplash results for query "giant luffa". (attempt 2)
+Fallback subject (#2): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive structure and girth.
+Saved image to images/2026-08-19-bagger-293.jpg
+[webp] 2026-08-19-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's large silhouette and overall girth in a clear and prominent way.
+[webp] 2026-08-19-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 13; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #12 of 12: this photo shows the full silhouette of the Bagger 293, emphasizing its massive and distinctive structure.
+[webp] 2026-08-19-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 32  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane. The crane is well-framed and clearly visible, but it is not the subject specified. The image is clear and well-composed, but it fails the identity test as it does not match the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=32 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-19 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lock, Padlock Brass" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lock, Padlock Brass" query="large brass padlock" (source: queue)
+Subject: Lock, Padlock Brass (query: "large brass padlock")
+Found 10 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 9 left.
+Vision picked #6 of 9: this photo showcases a variety of padlocks prominently displayed, emphasizing their collective girth against a striking backdrop.
+Saved image to images/2026-08-19-lock-padlock-brass.jpg
+[webp] 2026-08-19-lock-padlock-brass.jpg: 236KB -> 137KB (42% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 1; trying another photo for "Lock, Padlock Brass" (8 candidates left).
+Vision picked #1 of 8: this photo shows a dense collection of padlocks, emphasizing their collective girth.
+[webp] 2026-08-19-lock-padlock-brass.jpg: 135KB -> 61KB (55% smaller)
+Design critique: score=7/10, verdict=needs-review
+[image-retry] image 2 scored 7 / subjectPct 12; trying another photo for "Lock, Padlock Brass" (7 candidates left).
+Vision picked #7 of 7: this photo shows a large collection of padlocks, emphasizing their overall girth and presence.
+[webp] 2026-08-19-lock-padlock-brass.jpg: 372KB -> 299KB (20% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo shows many padlocks attached to a metal fence, but it does not focus on a single 'Padlock, Brass' as the subject. The image is cluttered with numerous locks, making it difficult to identify a specific brass padlock. The composition is more about the collective display of locks rather than highlighting an individual padlock, which is required for the subject. Therefore, it does not meet the criteria for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Lock, Padlock Brass"
+[bail] popped "Lock, Padlock Brass" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-19 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lobster, Maine" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lobster, Maine" query="maine lobster whole" (source: queue)
+Subject: Lobster, Maine (query: "maine lobster whole")
+Subject "Lobster, Maine" returned zero Unsplash results for query "maine lobster whole". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293 with its impressive girth and structure.
+Saved image to images/2026-08-19-bagger-293.jpg
+[webp] 2026-08-19-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette and girth as it moves earth, emphasizing its thiccness.
+[webp] 2026-08-19-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #12 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its impressive girth and structure.
+[webp] 2026-08-19-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane in a port setting. The crane is centered and prominent, but it is not the subject specified. The image is clear and well-composed for what it shows, but it fails the identity test as it does not feature the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-19.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-19 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-19.
+```
