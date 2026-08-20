@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Replaced a lightbulb this evening. The old one was E26. The new one is also E26. I stood in the socket aisle for eleven minutes confirming this. The bulb is 800 lumens. My previous bulb was 800 lumens. The light looks the same.\n\nHugh",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-20T17:53:35.359Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787175799539",
