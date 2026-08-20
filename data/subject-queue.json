@@ -5,5 +5,21 @@
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
     "Wave 338 (2026-08-09): refilled after the queue drained to 1 item and today's cron burned 4 attempts / 5 subjects without landing an entry (2 zero-Unsplash-result subjects, 3 low-subjectPct rejects on wide/cluttered/pile shots). Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Stew, Cast Iron Dutch",
+      "query": "dutch oven stew cast iron",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Coil, Hay Bale Round",
+      "query": "round hay bale field",
+      "category": "Produce & Botanical"
+    },
+    {
+      "subject": "Burger, Quadruple Stack",
+      "query": "quadruple stack burger",
+      "category": "Foods of Substance"
+    }
+  ]
 }

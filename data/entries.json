@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-20",
+    "word": "Lock, Padlock Brass",
+    "pronunciation": "/pad-lok BRAS/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A security device characterized by its robust brass construction and notable heft, often serving both utilitarian and decorative roles on outdoor fences.",
+      "<em>colloq.</em> An urban accessory that clings to its surroundings with unwavering dedication, refusing to be ignored."
+    ],
+    "example": "He added another thiccc brass padlock to the crowded fence, ensuring that even the pigeons took the long way around.",
+    "etymology": "From Middle English 'padlok,' of unknown origin, likely referring to a lock with a 'pad' or 'clasp' mechanism; brass from Latin 'aes' (bronze), noting its intrinsic flair. A device that locks in its own gravitas.",
+    "image": "images/2026-08-20-lock-padlock-brass.jpg",
+    "caption": "Plate CXXIX., An assemblage of thiccc brass padlocks, each vying for dominance in a crowded marketplace.",
+    "tags": [
+      "tools",
+      "architecture",
+      "domestic"
+    ],
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 8,
+    "photoScore": 6,
+    "photographer": "T",
+    "photographerUrl": "https://unsplash.com/@tanyabarrow",
+    "unsplashUrl": "https://unsplash.com/photos/many-padlocks-attached-to-a-metal-fence-outdoors-K1io-l7aUhA",
+    "socialCaptions": {
+      "morning": "Lock, Padlock Brass.\nTwo pounds of uncompromising security.\nThe fence is just a mere suggestion.",
+      "afternoon": "In 1870, brass padlocks gained popularity—\nA testament to their unyielding presence.\nThiccer: this padlock or a medieval drawbridge chain?\nLock, Padlock Brass.",
+      "evening": "From the archives, Lock, Padlock Brass.\nHolding secrets since the Industrial Revolution.\nEven rust respects its authority.",
+      "reels": "The padlock that makes keys question their purpose.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-19",
     "word": "Thiccc Ferris Wheel",
     "pronunciation": "/thik fer-is weel/",
