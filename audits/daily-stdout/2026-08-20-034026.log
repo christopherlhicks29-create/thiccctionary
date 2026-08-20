@@ -1,0 +1,62 @@
+# Daily run trace 2026-08-20-034026
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32328878483
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-20
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-20.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-20 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lock, Padlock Brass" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lock, Padlock Brass" query="large brass padlock" (source: queue)
+Subject: Lock, Padlock Brass (query: "large brass padlock")
+Found 10 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 9 left.
+Vision picked #1 of 9: this photo shows a large collection of padlocks, emphasizing their collective girth and presence.
+Saved image to images/2026-08-20-lock-padlock-brass.jpg
+[webp] 2026-08-20-lock-padlock-brass.jpg: 135KB -> 61KB (55% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] image 1 scored 7 / subjectPct 18; trying another photo for "Lock, Padlock Brass" (8 candidates left).
+Vision picked #8 of 8: this photo shows a large collection of padlocks, emphasizing their overall girth and presence.
+[webp] 2026-08-20-lock-padlock-brass.jpg: 372KB -> 299KB (20% smaller)
+Design critique: score=6/10, verdict=needs-review
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The example sentence is specific and ends on a comedic beat with the pigeons, which is unexpected and funny. The etymology has a deadpan kicker with 'locks in its own gravitas.' However, the definitions could use more humor or specificity to match the rest of the entry's tone.
+Generated social captions:
+  morning: Lock, Padlock Brass.
+  afternoon: In 1870, brass padlocks gained popularity—
+  evening: From the archives, Lock, Padlock Brass.
+  reels: The padlock that makes keys question their purpose.
+Saved entry: Lock, Padlock Brass
+Built entry page: entries/2026-08-20.html
+Rebuilt prev entry page (2026-08-19) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 129 entries + 56 articles.
+Sitemap rebuilt with 129 entries.
+Subject queue updated: 3 item(s) remaining.
+[retry-wrapper] entry for 2026-08-20 landed on attempt 2.
+```
