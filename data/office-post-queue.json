@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Neighbor asked me to haul her couch upstairs. I said no. Not my section. She said I don't have sections, I'm not at work. I said Section 11 covers load-bearing. She said that's animals. I said correct.\n\nJon.",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-20T21:44:57.223Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787248412759",
