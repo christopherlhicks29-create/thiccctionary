@@ -1,0 +1,76 @@
+# Daily run trace 2026-08-21-182232
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32512860688
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Giant Carrot, Australian (query: "giant carrot")
+Found 10 candidate photos.
+Vision picked #5 of 10: this photo showcases a cluster of thick, vibrant carrots, emphasizing their girth.
+Saved image to images/2026-08-21-giant-carrot-australian.jpg
+[webp] 2026-08-21-giant-carrot-australian.jpg: 204KB -> 111KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Giant Carrot, Australian" (9 candidates left).
+Vision picked #6 of 9: this photo showcases a large bunch of carrots, emphasizing their overall girth and silhouette.
+[webp] 2026-08-21-giant-carrot-australian.jpg: 218KB -> 130KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Giant Carrot, Australian" (8 candidates left).
+Vision picked #5 of 8: this photo showcases multiple giant carrots, emphasizing their girth and overall shape.
+[webp] 2026-08-21-giant-carrot-australian.jpg: 307KB -> 204KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a bunch of regular-sized carrots, not a 'Giant Carrot, Australian'. The carrots appear to be of typical size for their kind, lacking the exaggerated size required for the subject. The image is well-composed and clear, but it does not meet the criteria for the specified subject. The focus is on the carrots, but they do not exhibit the 'thiccc' characteristic expected for a giant carrot.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Giant Carrot, Australian"
+[bail] popped "Giant Carrot, Australian" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Blue Whale (query: "blue whale")
+Found 4 candidate photos.
+Vision rejected all 4 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #5 of 12: this photo shows a full silhouette of a whale, emphasizing its large and thick body in an engaging setting.
+Saved image to images/2026-08-21-thiccc-blue-whale.jpg
+[webp] 2026-08-21-thiccc-blue-whale.jpg: 246KB -> 147KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Blue Whale" (4 candidates left).
+Vision rejected all 4 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts a life-size origami sculpture of a whale, not an actual blue whale. This fails the identity test as it is a representation rather than the real subject. The composition is clear and the sculpture is prominently displayed, but it does not meet the criteria for a documentary-style image of a 'Thiccc Blue Whale.' The setting is also distracting, with the indoor environment and people around, which detracts from the focus on the whale itself.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Blue Whale"
+[bail] popped "Thiccc Blue Whale" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-21 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-21.
+```
