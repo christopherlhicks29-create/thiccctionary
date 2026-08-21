@@ -1,0 +1,81 @@
+# Daily run trace 2026-08-21-152341
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32497202300
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Tire, Mining Truck (query: "mining truck tire")
+Found 23 candidate photos.
+Vision picked #1 of 12: this photo showcases a large tire with a prominent girth and solid silhouette, perfect for a thicc entry.
+Saved image to images/2026-08-21-thiccc-tire-mining-truck.jpg
+[webp] 2026-08-21-thiccc-tire-mining-truck.jpg: 239KB -> 150KB (37% smaller)
+Design critique: score=7/10, verdict=needs-review
+Humor critique: score=7/10, verdict=ship, weakest=etymology
+  feedback: The example sentence is specific and ends on a comedic beat with the playground pebbles comparison. The etymology lacks a deadpan kicker, ending instead on a straightforward historical note. Adding a humorous twist there would elevate the entry.
+Generated social captions:
+  morning: Thiccc Tire, Mining Truck.
+  afternoon: A single mining truck tire weighs 11,860 pounds—more than a T-Rex.
+  evening: From the archives, Thiccc Tire, Mining Truck.
+  reels: 12 feet tall, 5 feet wide—enough rubber to befuddle an entire pit crew.
+[bail] final dup-guard: "Thiccc Tire, Mining Truck" duplicates catalogued "Tire, Tractor Rear" - subject "Thiccc Tire, Mining Truck"
+[bail] popped "Thiccc Tire, Mining Truck" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "Caterpillar D11T")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "Caterpillar D11T". (attempt 2)
+Fallback subject (#2): Thiccc Volvo FH16 (query: "volvo fh16 truck")
+Subject "Thiccc Volvo FH16" returned zero Unsplash results for query "volvo fh16 truck". (attempt 3)
+Fallback subject (#3): Thiccc Crawler-Transporter (query: "crawler transporter")
+Subject "Thiccc Crawler-Transporter" returned zero Unsplash results for query "crawler transporter". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #9 of 12: the full tractor silhouette emphasizes the girth of the tire and overall structure.
+Saved image to images/2026-08-21-tractor-tire.jpg
+[webp] 2026-08-21-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #7 of 12: This photo shows a full tractor with prominent, thick tires, emphasizing its girth.
+[webp] 2026-08-21-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #1 of 12: This photo shows a tractor tire in a natural setting, emphasizing its size and girth.
+[webp] 2026-08-21-tractor-tire.jpg: 240KB -> 167KB (31% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo primarily depicts a tractor, not specifically a tractor tire as required by the subject. The tire is part of the tractor but not the focal point of the image. The composition includes the entire tractor, and the surrounding foliage adds clutter, distracting from the tire itself. The grayscale effect and natural setting give it a documentary feel, but it does not meet the criteria for a dictionary entry focused solely on a tractor tire.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-21 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-21.
+```
