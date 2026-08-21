@@ -1,0 +1,75 @@
+# Daily run trace 2026-08-21-122438
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32481637750
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Boeing 777X, Thiccc Wing (query: "Boeing 777X")
+Found 18 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 17 left.
+Vision picked #9 of 12: this photo shows the full silhouette of the Boeing 777X with its impressive wingspan clearly visible, emphasizing its thiccness.
+Saved image to images/2026-08-21-boeing-777x-thiccc-wing.jpg
+[webp] 2026-08-21-boeing-777x-thiccc-wing.jpg: 105KB -> 39KB (62% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Boeing 777X, Thiccc Wing" (16 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows an airplane from below, but it does not specifically highlight the 'Boeing 777X, Thiccc Wing' as the subject. The image is well-composed and clear, but it lacks the focus on the wing's thickness or any distinguishing features that would identify it as the 777X model. Without clear identification of the specific wing type, the photo fails the identity test and is not suitable for the subject described.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Boeing 777X, Thiccc Wing"
+[bail] popped "Boeing 777X, Thiccc Wing" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Giant Watermelon, World Record (query: "giant watermelon")
+Found 16 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 15 left.
+Vision picked #1 of 12: This photo shows a whole watermelon with its full girth clearly visible.
+Saved image to images/2026-08-21-giant-watermelon-world-record.jpg
+[webp] 2026-08-21-giant-watermelon-world-record.jpg: 171KB -> 86KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 42; trying another photo for "Giant Watermelon, World Record" (14 candidates left).
+Vision picked #1 of 12: it showcases multiple large watermelons, emphasizing their impressive girth.
+[webp] 2026-08-21-giant-watermelon-world-record.jpg: 196KB -> 111KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Giant Watermelon, World Record" (13 candidates left).
+Vision picked #1 of 12: this photo showcases multiple watermelon halves, emphasizing their overall girth and size.
+[webp] 2026-08-21-giant-watermelon-world-record.jpg: 276KB -> 183KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo shows sliced watermelons, not a giant whole watermelon, which is required for the subject 'Giant Watermelon, World Record'. The image does not depict a single, intact watermelon, making it impossible to assess its size relative to a world record. The focus is on the interior of the watermelons, rather than showcasing a whole, oversized specimen. Thus, the image does not meet the criteria for the subject and is rejected.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Giant Watermelon, World Record"
+[bail] popped "Giant Watermelon, World Record" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-21 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-21.
+```
