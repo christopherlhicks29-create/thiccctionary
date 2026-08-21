@@ -1,0 +1,82 @@
+# Daily run trace 2026-08-21-062729
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32454360883
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Titan, Super Heavy Lift (query: "Super Heavy rocket")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo captures the Titan rocket launching, showcasing its impressive size and girth against the backdrop of smoke and light.
+Saved image to images/2026-08-21-titan-super-heavy-lift.jpg
+[webp] 2026-08-21-titan-super-heavy-lift.jpg: 84KB -> 42KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Titan, Super Heavy Lift" (29 candidates left).
+Vision picked #9 of 12: This photo shows the full silhouette of a tall structure, emphasizing its substantial girth against the sky.
+[webp] 2026-08-21-titan-super-heavy-lift.jpg: 144KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Titan, Super Heavy Lift" (28 candidates left).
+Vision picked #5 of 12: this photo shows a large cylindrical structure being lifted, emphasizing its substantial girth.
+[webp] 2026-08-21-titan-super-heavy-lift.jpg: 152KB -> 81KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 32  isSubject: false
+  critique: The photo shows a large metal pipe being lifted by a crane, not a 'Titan, Super Heavy Lift' rocket. The subject is not correctly identified, failing the identity test. The composition is clear, and the metal structure is prominent, but it does not match the specified subject. The image is unsuitable for the entry and is rejected.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=32 - subject "Titan, Super Heavy Lift"
+[bail] popped "Titan, Super Heavy Lift" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Cathedral, Concrete Brutalist (query: "brutalist architecture")
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #1 of 12: This photo showcases the rounded, robust forms of the concrete structure, emphasizing its thicc silhouette.
+Saved image to images/2026-08-21-cathedral-concrete-brutalist.jpg
+[webp] 2026-08-21-cathedral-concrete-brutalist.jpg: 145KB -> 104KB (28% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Cathedral, Concrete Brutalist" (27 candidates left).
+Vision picked #8 of 12: this photo shows a large, imposing concrete structure that emphasizes the thiccness of Brutalist architecture.
+[webp] 2026-08-21-cathedral-concrete-brutalist.jpg: 295KB -> 209KB (29% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Cathedral, Concrete Brutalist" (26 candidates left).
+Vision picked #8 of 12: This photo shows the full silhouette of a concrete brutalist cathedral with its distinctive arches, emphasizing its thiccness.
+[webp] 2026-08-21-cathedral-concrete-brutalist.jpg: 181KB -> 93KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not clearly depict a 'Concrete Brutalist Cathedral.' Instead, it shows a row of concrete arches on a building, which may not be a cathedral. The composition is well-framed and the black and white aesthetic fits the brutalist theme, but without clear identification of the subject as a cathedral, it fails the identity test. The arches are prominent, but the context does not confirm the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Cathedral, Concrete Brutalist"
+[bail] popped "Cathedral, Concrete Brutalist" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-21 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-21.
+```
