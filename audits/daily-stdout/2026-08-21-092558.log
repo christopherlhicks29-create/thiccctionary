@@ -1,0 +1,68 @@
+# Daily run trace 2026-08-21-092558
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32467750379
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Wheel, Parmigiano-Reggiano (query: "parmigiano cheese wheel")
+Found 9 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 8 left.
+Vision picked #1 of 8: This photo features a prominent wheel of cheese, showcasing its thickness and girth effectively.
+Saved image to images/2026-08-21-wheel-parmigiano-reggiano.jpg
+[webp] 2026-08-21-wheel-parmigiano-reggiano.jpg: 139KB -> 69KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Wheel, Parmigiano-Reggiano" (7 candidates left).
+Vision picked #5 of 7: this photo shows a full wheel of Parmigiano-Reggiano, emphasizing its girth and shape.
+[webp] 2026-08-21-wheel-parmigiano-reggiano.jpg: 114KB -> 48KB (58% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Wheel, Parmigiano-Reggiano" (6 candidates left).
+Vision picked #1 of 6: this photo shows the full wheel shape prominently, emphasizing its thiccness.
+[webp] 2026-08-21-wheel-parmigiano-reggiano.jpg: 284KB -> 210KB (26% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a wheel of Parmigiano-Reggiano cheese. Instead, it depicts an old millstone setup, which is unrelated to the subject. The composition is centered and clear, but since it fails to meet the subject identity requirement, it is unsuitable for the entry. The rustic setting adds character, but the object is not relevant to the dictionary entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Wheel, Parmigiano-Reggiano"
+[bail] popped "Wheel, Parmigiano-Reggiano" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Titan, Saturn V (query: "Saturn V")
+Found 7 candidate photos.
+Vision rejected all 7 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Photography-bias retry returned zero Unsplash results for "Saturn V photograph".
+No results for retry query "Saturn V photograph".
+[bail] unsplash returned zero results on both queries - subject "Titan, Saturn V"
+[bail] popped "Titan, Saturn V" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-21 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-21.
+```
