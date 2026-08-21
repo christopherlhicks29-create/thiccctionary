@@ -1,0 +1,84 @@
+# Daily run trace 2026-08-21-211448
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32527429501
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Volvo FH16, Truck-Mounted (query: "volvo fh16")
+Subject "Volvo FH16, Truck-Mounted" returned zero Unsplash results for query "volvo fh16". (attempt 2)
+Fallback subject (#2): Thiccc Silo, Grain Storage (query: "grain silo")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows multiple silos with a prominent girthy silhouette and artistic details that emphasize their thiccness.
+Saved image to images/2026-08-21-thiccc-silo-grain-storage.jpg
+[webp] 2026-08-21-thiccc-silo-grain-storage.jpg: 205KB -> 120KB (41% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=9/10, verdict=ship, weakest=definitions
+  feedback: The example sentence is vivid and lands a solid punchline with the sunset joke. The etymology has a delightful kicker with the 'flourish of additional c's'. The definitions are slightly generic, but overall, the entry is strong and funny.
+Generated social captions:
+  morning: Thiccc Silo, Grain Storage.
+  afternoon: Legend has it, one silo held 50,000 bushels—
+  evening: From the archives, Thiccc Silo, Grain Storage.
+  reels: Standing tall since the 20th century.
+[bail] final dup-guard: "Thiccc Silo, Grain Storage" duplicates catalogued "Silo, Grain Concrete" - subject "Thiccc Silo, Grain Storage"
+[bail] popped "Thiccc Silo, Grain Storage" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Pumpkin, Atlantic Giant (query: "giant pumpkin")
+Subject "Pumpkin, Atlantic Giant" returned zero Unsplash results for query "giant pumpkin". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Giant Pumpkin, Atlantic Giant (query: "giant pumpkin")
+Subject "Giant Pumpkin, Atlantic Giant" returned zero Unsplash results for query "giant pumpkin". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #9 of 12: this photo shows a full tractor with prominent, thick tires, emphasizing its girth.
+Saved image to images/2026-08-21-tractor-tire.jpg
+[webp] 2026-08-21-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 25; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #7 of 12: The photo shows a full tractor with prominent, thick tires, emphasizing its girth.
+[webp] 2026-08-21-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #1 of 12: This photo shows a tractor tire in a natural setting, emphasizing its robust and thick silhouette.
+[webp] 2026-08-21-tractor-tire.jpg: 240KB -> 167KB (31% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo primarily depicts a tractor, not specifically a tractor tire. The tire is visible but not the main focus, which disqualifies it from being a suitable representation of the subject 'Tractor Tire'. The image is well-composed and has an artistic quality, but it fails to meet the criteria for showing the named object. The tractor is surrounded by foliage, which adds to the clutter and distracts from the tire itself.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-21 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-21.
+```
