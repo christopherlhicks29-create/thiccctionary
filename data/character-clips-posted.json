@@ -155,7 +155,21 @@
           "id": "6a809d5b7e17c9c408858c7b"
         }
       ]
+    },
+    {
+      "path": "videos/characters/bart-radio-mic-g.mp4",
+      "at": "2026-08-22T17:09:22.048Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a89d7c1859b98c365f21525"
+        },
+        {
+          "service": "instagram",
+          "id": "6a89d7c137caa42812d09870"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-08-15T17:09:47.606Z"
+  "lastPostedAt": "2026-08-22T17:09:22.048Z"
 }
