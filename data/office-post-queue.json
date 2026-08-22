@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went back for a second wheel of parmesan. The guy restocking yogurt recognized me. He didn't say anything. I didn't say anything. We both just looked at it for a second. I bought the smaller one. I don't know why.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-22T21:38:00.898Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787334803380",
