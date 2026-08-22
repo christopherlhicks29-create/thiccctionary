@@ -1,0 +1,84 @@
+# Daily run trace 2026-08-22-125811
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32574363362
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-22
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Transformer, Power Distribution (query: "power transformer")
+Found 30 candidate photos.
+Vision picked #6 of 12: the photo of the power tower showcases a robust and thick structure, emphasizing its girth and silhouette.
+Saved image to images/2026-08-22-thiccc-transformer-power-distribution.jpg
+[webp] 2026-08-22-thiccc-transformer-power-distribution.jpg: 283KB -> 174KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Transformer, Power Distribution" (29 candidates left).
+Vision picked #2 of 12: this photo shows multiple power meters, emphasizing a thick cluster of utility equipment.
+[webp] 2026-08-22-thiccc-transformer-power-distribution.jpg: 322KB -> 220KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Transformer, Power Distribution" (28 candidates left).
+Vision picked #1 of 12: This photo shows a full power distribution pole with a transformer, emphasizing its thicc silhouette against a clear sky.
+[webp] 2026-08-22-thiccc-transformer-power-distribution.jpg: 168KB -> 101KB (40% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 3.
+Humor critique: score=8/10, verdict=ship, weakest=etymology
+  feedback: The example sentence is specific and ends on a humorous note with the wooden post's 'pecking order.' The etymology could use a stronger kicker, but the Latin reference and suburban lore nod are amusing. Overall, the entry is solid with a good mix of specificity and surprise.
+Generated social captions:
+  morning: Thiccc Transformer, Power Distribution.
+  afternoon: Thiccc Transformer, Power Distribution.
+  evening: From the archives, Thiccc Transformer, Power Distribution.
+  reels: Thiccc Transformer, Power Distribution—silent sentinel of suburban skies.
+[bail] final dup-guard: "Thiccc Transformer, Power Distribution" duplicates catalogued "Transformer, Power Generation" - subject "Thiccc Transformer, Power Distribution"
+[bail] popped "Thiccc Transformer, Power Distribution" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-22.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-22 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive structure and girth.
+Saved image to images/2026-08-22-bagger-293.jpg
+[webp] 2026-08-22-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette against the landscape, emphasizing its girth.
+[webp] 2026-08-22-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 18; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #12 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive size and girth.
+[webp] 2026-08-22-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo does not depict the Bagger 293, which is a massive bucket-wheel excavator. Instead, it shows a large industrial crane, likely in a port setting. The crane is well-framed and dominates the image, but it is not the subject specified. The photo is clear and well-composed, but it fails the identity test as it does not show the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-22.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-22 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-22.
+```
