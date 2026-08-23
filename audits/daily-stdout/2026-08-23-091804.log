@@ -1,0 +1,49 @@
+# Daily run trace 2026-08-23-091804
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32630566302
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-23
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Titan, Jumbo Shrimp (query: "jumbo shrimp")
+Found 28 candidate photos.
+Vision picked #7 of 12: this photo showcases a large shrimp prominently, emphasizing its size and girth.
+Saved image to images/2026-08-23-titan-jumbo-shrimp.jpg
+[webp] 2026-08-23-titan-jumbo-shrimp.jpg: 199KB -> 114KB (42% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Titan, Jumbo Shrimp" (27 candidates left).
+Vision picked #8 of 12: this photo showcases large, plump shrimp prominently, emphasizing their girth.
+[webp] 2026-08-23-titan-jumbo-shrimp.jpg: 166KB -> 95KB (43% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=8/10, verdict=ship, weakest=etymology
+  feedback: The entry is solid with a specific scene in the example sentence and a punchline tag that lands well. The etymology could use a stronger kicker, as the irony mention is a bit flat. Overall, it captures the humor of a thiccc jumbo shrimp effectively.
+Generated social captions:
+  morning: Titan, Jumbo Shrimp. Average length: 8 inches.
+  afternoon: The Titan, Jumbo Shrimp—1,000 grams per kilogram.
+  evening: From the archives, Titan, Jumbo Shrimp.
+  reels: Titan, Jumbo Shrimp: the oxymoron that got away.
+Saved entry: Titan, Jumbo Shrimp
+Built entry page: entries/2026-08-23.html
+Rebuilt prev entry page (2026-08-20) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 130 entries + 56 articles.
+Sitemap rebuilt with 130 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-08-23 landed on attempt 1.
+```

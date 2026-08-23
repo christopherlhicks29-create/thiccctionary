@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-23",
+    "word": "Titan, Jumbo Shrimp",
+    "pronunciation": "/tahy-tuhn, jum-boh SHRIMP/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A species of marine crustacean celebrated for its formidable dimensions and noteworthy heft, particularly when arrayed on a platter with a presentation that challenges the notion of 'appetizer'.",
+      "<em>colloq.</em> A seafood selection that redefines 'finger food', requiring two hands and a napkin-laden strategy meeting."
+    ],
+    "example": "The thiccc jumbo shrimp on the plate practically demanded its own zip code, rivaling the main course in stature.",
+    "etymology": "From Latin <em>titan</em> (giant deity of Greek mythology), paired with Middle English <em>shrimpe</em> (small shellfish). The irony was not lost on the seafood aficionado.",
+    "image": "images/2026-08-23-titan-jumbo-shrimp.jpg",
+    "caption": "Plate CXXX., An audacious display of marine grandeur.",
+    "tags": [
+      "culinary",
+      "natural-specimens",
+      "girth"
+    ],
+    "category": "Foods of Substance",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Furkan Uyanık",
+    "photographerUrl": "https://unsplash.com/@heybeliz",
+    "unsplashUrl": "https://unsplash.com/photos/a-plate-with-food-on-it-eXhKNYTY6kI",
+    "socialCaptions": {
+      "morning": "Titan, Jumbo Shrimp. Average length: 8 inches.\nThe appetizer that questions your choice of entrée.",
+      "afternoon": "The Titan, Jumbo Shrimp—1,000 grams per kilogram.\nA culinary paradox in every bite. Rate the thicccness, 1 to 10.\nTitan, Jumbo Shrimp.",
+      "evening": "From the archives, Titan, Jumbo Shrimp.\nFirst recorded in 1960, the name remains an enigma.\nIts presence on the plate, unquestionable.",
+      "reels": "Titan, Jumbo Shrimp: the oxymoron that got away.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-20",
     "word": "Lock, Padlock Brass",
     "pronunciation": "/pad-lok BRAS/",
