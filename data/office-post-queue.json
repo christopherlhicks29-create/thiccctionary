@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Counted seven people reading on the F train this morning. One guy, paperback so thick the spine was basically furniture. He had both hands around it like he was holding something alive. I kept watching. He never turned a page.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-23T21:37:23.863Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787434678095",
