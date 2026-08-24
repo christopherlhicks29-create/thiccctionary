@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2026 14:41:03 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 15:52:23 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -23,6 +23,14 @@
       <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
     </item>
     <item>
+      <title>[Article] A Comet From Outside Our Solar System Was Measured Three Times. This Desk Only Trusts the Last One.</title>
+      <link>https://thiccctionary.com/articles/thiccc-beat-2026-08-24-bart-interstellar-comet.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/thiccc-beat-2026-08-24-bart-interstellar-comet.html</guid>
+      <pubDate>Mon, 24 Aug 2026 12:00:00 GMT</pubDate>
+      <description>The Thiccc Beat: Bartholomew &quot;Bart&quot; Pruss on the interstellar comet 3I/ATLAS, the third confirmed visitor from outside our solar system, whose nucleus was initially reported at roughly 7 miles wide before the Vera C. Rubin Observatory&apos;s July 2026 review revised the figure down to approximately 3.5 miles (5.6 km) across, while the surrounding coma of gas, ice, and dust swelled to spans exceeding 15 miles. Ruling: Split ruling. The nucleus, Not Thiccc, a modest, ordinary 3.5 miles, unremarkable by catalogue standards. The coma, Thiccc, and decisively so..</description>
+      <category>article</category>
+    </item>
+    <item>
       <title>Titan, Jumbo Shrimp</title>
       <link>https://thiccctionary.com/entries/2026-08-23.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-23.html</guid>
@@ -32,11 +40,11 @@
       <category>culinary</category><category>natural-specimens</category><category>girth</category>
     </item>
     <item>
-      <title>Bell, Cathedral</title>
+      <title>The Liberty Bell</title>
       <link>https://thiccctionary.com/entries/2026-08-22.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-22.html</guid>
       <pubDate>Sat, 22 Aug 2026 12:00:00 GMT</pubDate>
-      <description>A cast bronze instrument of significant mass and wall thickness, hung in a tower and rung to announce the hour, the service, or the apocalypse, depending on parish.</description>
+      <description>A 2,080-pound cast bronze bell of Pennsylvania State House provenance, retired from active ringing duty after acquiring a crack that, depending on the source, came from routine use, cold weather, or simply trying too hard.</description>
       <enclosure url="https://thiccctionary.com/images/2026-08-22-bell-cathedral.jpg" type="image/jpeg" length="165320" />
       <category>instrument</category><category>architecture</category>
     </item>
