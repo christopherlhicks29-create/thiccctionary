@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Eli's notebook hit 312 and her editor hasn't asked. Objection #47 sits on my desk unanswered at nineteen months. We are both, it seems, cataloguing into the void. The difference is she started voluntarily.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-24T17:55:22.829Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787521041492",
