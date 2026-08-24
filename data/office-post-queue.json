@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Told my college group chat I catalogue objects of unusual girth for a living. Twelve people left the conversation. Two stayed. One asked if it pays well. I said not really. He left too.\n\nTheodore",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-24T21:45:22.525Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787594120057",
