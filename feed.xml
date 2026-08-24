@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2026 03:45:06 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 14:37:21 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -30,6 +30,15 @@
       <description>A species of marine crustacean celebrated for its formidable dimensions and noteworthy heft, particularly when arrayed on a platter with a presentation that challenges the notion of &apos;appetizer&apos;.</description>
       <enclosure url="https://thiccctionary.com/images/2026-08-23-titan-jumbo-shrimp.jpg" type="image/jpeg" length="170008" />
       <category>culinary</category><category>natural-specimens</category><category>girth</category>
+    </item>
+    <item>
+      <title>Anchor, Ship&apos;s</title>
+      <link>https://thiccctionary.com/entries/2026-08-21.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-21.html</guid>
+      <pubDate>Fri, 21 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A cast-iron or forged-steel fluke assembly of considerable heft, lowered to bite into the seabed and hold a vessel fast against wind, current, and second thoughts.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-21-anchor-ship-s.jpg" type="image/jpeg" length="127637" />
+      <category>industrial</category><category>maritime</category>
     </item>
     <item>
       <title>Lock, Padlock Brass</title>
