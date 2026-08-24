@@ -1,0 +1,137 @@
+# Daily run trace 2026-08-24-003833
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32677217088
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-24
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Burger, Quadruple Stack" (7 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive girth and industrial design.
+Saved image to images/2026-08-24-bagger-293.jpg
+[webp] 2026-08-24-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive size and shape clearly against the landscape.
+[webp] 2026-08-24-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 13; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+[webp] 2026-08-24-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 35  isSubject: false
+  critique: The photo does not show a Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane in a port setting. The crane is the focal point, but it does not match the subject specified. The image is well-composed and clear, but it fails the identity test, as it does not feature the correct object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=35 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-24.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-24 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Giant Watermelon, Sugar Baby (query: "watermelon")
+Found 19 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 18 left.
+Vision picked #1 of 12: This photo shows the whole watermelon, highlighting its round shape and girth.
+Saved image to images/2026-08-24-giant-watermelon-sugar-baby.jpg
+[webp] 2026-08-24-giant-watermelon-sugar-baby.jpg: 171KB -> 86KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 42; trying another photo for "Giant Watermelon, Sugar Baby" (17 candidates left).
+Vision picked #4 of 12: this photo showcases multiple whole watermelons, emphasizing their girth and size.
+[webp] 2026-08-24-giant-watermelon-sugar-baby.jpg: 276KB -> 183KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Giant Watermelon, Sugar Baby" (16 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows sliced watermelons, not a whole 'Giant Watermelon, Sugar Baby' as specified. The image focuses on the interior of the watermelons, making it impossible to assess the size or variety of the whole fruit. The composition is visually appealing but does not meet the subject criteria. The subject is not identifiable as a 'Giant Watermelon, Sugar Baby,' leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Giant Watermelon, Sugar Baby"
+[bail] popped "Giant Watermelon, Sugar Baby" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-24.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-24 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Giant Pumpkin, Big Moon (query: "giant pumpkin")
+Subject "Giant Pumpkin, Big Moon" returned zero Unsplash results for query "giant pumpkin". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Giant Watermelon, Crimson Sweet (query: "giant watermelon")
+Found 16 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 15 left.
+Vision picked #1 of 12: This photo shows the whole watermelon with a clear silhouette, emphasizing its thiccness.
+Saved image to images/2026-08-24-giant-watermelon-crimson-sweet.jpg
+[webp] 2026-08-24-giant-watermelon-crimson-sweet.jpg: 171KB -> 86KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Giant Watermelon, Crimson Sweet" (14 candidates left).
+Vision picked #1 of 12: this photo shows multiple large watermelons, emphasizing their overall girth and size.
+[webp] 2026-08-24-giant-watermelon-crimson-sweet.jpg: 196KB -> 111KB (44% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=8/10, verdict=ship, weakest=etymology
+  feedback: The example sentence is specific and ends on a humorous note with the patio table creaking 'with respect,' which is a clever personification. The etymology could use a stronger deadpan kicker instead of just describing the cultivar's attributes. Overall, the entry is solid with a good comedic tone and vivid imagery.
+Generated social captions:
+  morning: Giant Watermelon, Crimson Sweet. 
+  afternoon: In 1963, the Crimson Sweet was born—
+  evening: From the archives, Giant Watermelon, Crimson Sweet. 
+  reels: With a rind as thick as its reputation, 
+[bail] final dup-guard: "Giant Watermelon, Crimson Sweet" duplicates catalogued "Champion Watermelon, Heavyweight" - subject "Giant Watermelon, Crimson Sweet"
+[bail] popped "Giant Watermelon, Crimson Sweet" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-24.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-24 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Thiccc Tank, M1 Abrams (query: "M1 Abrams tank")
+Subject "Thiccc Tank, M1 Abrams" returned zero Unsplash results for query "M1 Abrams tank". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Thiccc Saturn V (query: "Saturn V")
+Found 7 candidate photos.
+Vision picked #7 of 7: this photo showcases Saturn's full silhouette and its prominent rings, emphasizing its thiccness.
+Saved image to images/2026-08-24-thiccc-saturn-v.jpg
+[webp] 2026-08-24-thiccc-saturn-v.jpg: 109KB -> 42KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Saturn V" (6 candidates left).
+Vision rejected all 6 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts Saturn with its moons, not a 'Thiccc Saturn V'. The subject is incorrectly identified as the Saturn V rocket, which is unrelated to the celestial body shown. The image is a beautiful astronomical capture but does not match the specified subject, leading to rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Saturn V"
+[bail] popped "Thiccc Saturn V" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-24.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-24 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-24.
+```
