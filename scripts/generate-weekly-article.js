@@ -33,6 +33,18 @@ if (!ANTHROPIC_API_KEY) {
 const TARGET_DATE = (process.env.TARGET_DATE || new Date().toISOString().slice(0, 10)).trim();
 const THEME_OVERRIDE = (process.env.THEME_OVERRIDE || '').trim();
 
+// Wave 344 (2026-08-24): was hardcoded to 4 attempts. Weekly Field Report has
+// failed the quality gate on effectively every run since ~2026-07-29 (53
+// "quality gate failed" GitHub issues), most often whack-a-mole: a rewrite
+// fixes the critic's flagged issues but drifts on an UNFLAGGED mechanical
+// constraint (word count, section count) because critique.issues only lists
+// what the critic happened to catch that pass, not the full checklist. Bumped
+// to 6 attempts (more shots on goal; a failed run already burns 4 Claude +
+// 4 critique calls for zero output, so this is a bounded cost increase) and
+// added REWRITE_CHECKLIST below so every rewrite re-verifies the FULL
+// mechanical checklist, not just this round's flagged issues.
+const MAX_ATTEMPTS = 6;
+
 function isoDateDaysAgo(refIso, days) {
   const d = new Date(refIso + 'T12:00:00Z');
   d.setUTCDate(d.getUTCDate() - days);
@@ -492,6 +504,8 @@ ${relatedBlock}
 
 
 
+const REWRITE_CHECKLIST = `Regardless of what's listed above, ALWAYS re-verify the FULL checklist before returning, not just the issues named this round: word count is 700-1000 words total across the whole piece, section count is 4-6, no heading is "Conclusion"/"Final Thoughts"/"In Summary"/"Reflections" or a single abstract noun, the closer does not summarize the piece or use "we continue"/"dwells"/"transcends", zero em-dashes anywhere, at least 2 recent entries linked as markdown [Entry Word](../entries/YYYY-MM-DD.html) (never a bare URL), and none of the banned metaphors (symphony, harmony, tapestry, dance, embodies, encapsulates, captures the essence, stands as a testament) appear anywhere in the draft, including in sections you did not just edit.`;
+
 const BANNED_PHRASES = [
   /\bembod(y|ies|ied|ying)\b/i,
   /\bencaps(u|o)l(a|i)t(e|es|ed|ing)\b/i,
@@ -629,12 +643,12 @@ async function main() {
   );
 
   // Self-critique loop: regex pre-filter first (cheap, deterministic), then critic.
-  for (let attempt = 1; attempt <= 4; attempt++) {
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     const banHits = preFilterDraft(article);
     if (banHits.length > 0) {
       console.log(`[weekly] pre-filter pass ${attempt} hit banned phrases: ${banHits.join(', ')}`);
-      if (attempt === 4) {
-        console.error('[weekly] FAILED pre-filter after 4 attempts, exiting non-zero');
+      if (attempt === MAX_ATTEMPTS) {
+        console.error(`[weekly] FAILED pre-filter after ${MAX_ATTEMPTS} attempts, exiting non-zero`);
         process.exit(1);
       }
       console.log(`[weekly] rewriting (pre-filter fail, draft ${attempt + 1})…`);
@@ -649,8 +663,8 @@ async function main() {
     console.log(`[weekly] critique pass ${attempt} verdict: ${critique.verdict} (score ${critique.score}/10)`);
     if (critique.verdict === 'pass') break;
     console.log(`[weekly] issues: ${critique.issues.join(' | ')}`);
-    if (attempt === 4) {
-      console.error('[weekly] FAILED quality bar after 2 attempts, exiting non-zero');
+    if (attempt === MAX_ATTEMPTS) {
+      console.error(`[weekly] FAILED quality bar after ${MAX_ATTEMPTS} attempts, exiting non-zero`);
       console.error(JSON.stringify(critique, null, 2));
       process.exit(1);
     }
@@ -658,7 +672,7 @@ async function main() {
     article = await callClaude(fullSystem, [
       { role: 'user', content: buildUserPrompt(recent, pastTitles) },
       { role: 'assistant', content: JSON.stringify(article) },
-      { role: 'user', content: `Your last draft failed the editorial review. Fix these issues and return a complete new JSON article with ALL banned patterns removed:\n\n${critique.issues.map(i => '- ' + i).join('\n')}\n\nReturn the corrected JSON only.` },
+      { role: 'user', content: `Your last draft failed the editorial review. Fix these issues and return a complete new JSON article with ALL banned patterns removed:\n\n${critique.issues.map(i => '- ' + i).join('\n')}\n\n${REWRITE_CHECKLIST}\n\nReturn the corrected JSON only.` },
     ]);
   }
   for (const field of ['slug', 'title', 'kicker', 'dek', 'description', 'sections']) {
