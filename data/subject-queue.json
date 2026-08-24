@@ -7,14 +7,29 @@
   ],
   "queue": [
     {
-      "subject": "Coil, Hay Bale Round",
-      "query": "round hay bale field",
-      "category": "Produce & Botanical"
+      "subject": "Stew, Cast Iron Dutch",
+      "query": "dutch oven stew cast iron",
+      "category": "Foods of Substance"
     },
     {
-      "subject": "Burger, Quadruple Stack",
-      "query": "quadruple stack burger",
-      "category": "Foods of Substance"
+      "subject": "Rock, Plymouth",
+      "query": "plymouth rock memorial",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Briefcase, Hardshell Pelican",
+      "query": "pelican hardshell case",
+      "category": "Other"
+    },
+    {
+      "subject": "Garbage Truck, Front-Loader",
+      "query": "front loader garbage truck",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Truck, Monster Bigfoot",
+      "query": "monster truck bigfoot show",
+      "category": "Vehicles & Transport"
     }
   ]
 }
