@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1787594120057",
+    "created": "2026-08-24T17:55:20.057Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "reply",
+    "text": "Eli's notebook hit 312 and her editor hasn't asked. Objection #47 sits on my desk unanswered at nineteen months. We are both, it seems, cataloguing into the void. The difference is she started voluntarily.\n\nTheodore",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1787521041492",
     "created": "2026-08-23T21:37:21.492Z",
     "byline_id": "eli",
@@ -1399,19 +1409,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-05-17T04:11:21.358Z",
-    "success_count": 0,
-    "failure_count": 2
-  },
-  {
-    "id": "office-1778985176673",
-    "created": "2026-05-17T02:32:56.673Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "office",
-    "text": "Machine down since March. Bart mourns a predecessor he cannot name or date. This writer has filed three complaints, none acknowledged. The weather outside is fine, actually. Only in here is it March forever.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-17T02:32:58.980Z",
     "success_count": 0,
     "failure_count": 2
   }
