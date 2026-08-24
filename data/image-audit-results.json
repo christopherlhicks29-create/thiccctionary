@@ -1,35 +1,13 @@
 {
-  "generated_at": "2026-08-17T03:49:32.373Z",
-  "scanned": 126,
-  "passed": 122,
+  "generated_at": "2026-08-24T03:54:07.719Z",
+  "scanned": 131,
+  "passed": 127,
   "failed": 4,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
-    {
-      "date": "2026-04-15",
-      "word": "Bell, Cathedral",
-      "imageUrl": "https://thiccctionary.com/images/2026-04-15-bell-cathedral.jpg",
-      "score": 1,
-      "subjectPct": 24,
-      "verdict": "reject",
-      "photoSubject": "a stone bell tower with visible bells",
-      "critique": "The photo depicts a stone bell tower with bells visible, not a singular cathedral bell as specified. The composition centers on the architectural structure rather than the bell itself, making it unsuitable for the subject. The bells are not the primary focus, and the image does not fit the criteria for a documentary-style plate of a cathedral bell. The subject is not clearly identifiable as the named object.",
-      "passed": false
-    },
-    {
-      "date": "2026-08-01",
-      "word": "Pizza, Deep Dish",
-      "imageUrl": "https://thiccctionary.com/images/2026-08-01-pizza-deep-dish.jpg",
-      "score": 1,
-      "subjectPct": 32,
-      "verdict": "reject",
-      "photoSubject": "a rectangular pizza on a table",
-      "critique": "The photo does not show a deep dish pizza, which is typically characterized by a thick crust and a deep, round shape. Instead, it depicts a rectangular pizza, which does not fit the description of 'Pizza, Deep Dish.' The composition is clear and well-lit, but the subject is incorrect for the entry. The pizza is the focal point, but it does not match the specified type.",
-      "passed": false
-    },
     {
       "date": "2026-08-16",
       "word": "Concrete Bunker, Soviet",
@@ -38,7 +16,7 @@
       "subjectPct": 64,
       "verdict": "reject",
       "photoSubject": "a large concrete building with architectural features",
-      "critique": "The photo depicts a large concrete building with distinct architectural features, but it does not clearly identify as a Soviet-era concrete bunker. The structure appears more like a modernist building rather than a military bunker. The framing and composition are good, but the subject does not match the specified object, leading to a rejection.",
+      "critique": "The photo does not depict a concrete bunker but rather a large concrete building with distinctive architectural features. The structure shown does not fit the typical characteristics of a Soviet-era bunker, which are usually more utilitarian and less ornate. The building's prominent location by the water and its architectural style suggest it is not a bunker. The image is well-composed and clear, but it does not match the subject description, leading to a rejection.",
       "passed": false
     },
     {
@@ -48,8 +26,30 @@
       "score": 1,
       "subjectPct": 64,
       "verdict": "reject",
-      "photoSubject": "a sliced steak dish with vegetables and sauce",
-      "critique": "The photo does not show a whole prime rib roast; instead, it depicts a sliced steak dish with accompanying vegetables and sauce. The composition is appealing and well-lit, but it fails the identity test as it does not display the named subject, a prime rib roast. The subject box captures the main dish, but the image is not suitable for the intended entry.",
+      "photoSubject": "a sliced steak with vegetables and sauce on a plate",
+      "critique": "The photo does not depict a whole prime rib roast at full carving weight, but rather a sliced steak with accompanying vegetables and sauce. The subject is not the named object, which disqualifies it. The composition is appealing and well-lit, but it fails the identity test as it does not show the whole roast. The focus is on the sliced steak, making it unsuitable for the intended subject.",
+      "passed": false
+    },
+    {
+      "date": "2026-08-02",
+      "word": "Pumper Truck, Fire Engine",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-02-pumper-truck-fire-engine.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a real fire engine from the front",
+      "critique": "The photo does not show the hindquarters of a pumper truck as described. Instead, it depicts the front of a fire engine. The subject is not centered on the specified part of the truck, failing the identity test. The composition is clear and documentary in style, but it does not match the subject description, leading to a rejection.",
+      "passed": false
+    },
+    {
+      "date": "2026-05-27",
+      "word": "Vault Door, Bank",
+      "imageUrl": "https://thiccctionary.com/images/2026-05-27-vault-door-bank.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a metal door with a padlock, possibly a utility or storage entrance",
+      "critique": "The photo does not depict a bank vault door, which is typically much thicker and more complex, often featuring a circular design with locking mechanisms visible. Instead, it shows a simple metal door with a padlock, likely not part of a bank vault. The image is well-framed and clear, but it fails the identity test as it does not match the subject description. Therefore, it is unsuitable for the entry.",
       "passed": false
     }
   ]
