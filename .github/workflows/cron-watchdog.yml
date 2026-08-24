@@ -9,6 +9,14 @@ name: Cron watchdog, alert on missing daily entry or Reel
 # cron, and FAILS LOUD if today's date is missing from data/entries.json
 # OR videos/<today>.mp4 doesn't exist. A failed workflow shows a red badge
 # on the Actions tab and emails Christopher's GitHub-notifications address.
+#
+# Wave 345 (2026-08-24): a red Actions badge alone let the 2026-08-21/08-22
+# entry gap go unnoticed for 3+ days across sessions (nobody happened to
+# check the Actions tab). Added an "on failure open issue" step, mirroring
+# weekly-article.yml's pattern, so a failure also lands as a persistent,
+# visible GitHub issue instead of only a run annotation. Deduped against
+# any existing open issue with the cron-watchdog-fail label so a multi-day
+# outage doesn't spam a fresh issue every 24h.
 
 on:
   schedule:
@@ -21,6 +29,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   check-todays-entry:
@@ -30,6 +39,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Verify today's entry exists
+        id: entry_check
         run: |
           TODAY=$(date -u +%Y-%m-%d)
           echo "Checking for entry dated $TODAY in data/entries.json..."
@@ -49,7 +59,7 @@ jobs:
               process.exit(1);
             }
             console.log('OK, entry for ' + today + ' present: ' + found.word);
-          "; then
+          " 2>&1 | tee /tmp/entry-check.log; then
             echo "Entry check passed."
           else
             echo "::error title=Daily cron silent failure (entry missing)::No entry for $TODAY in data/entries.json."
@@ -62,22 +72,76 @@ jobs:
         # of the daily PR (hours or even next-day later). Checking for today's
         # reel here always failed. Yesterday's reel has had 24+ hours to land,
         # so a miss there is a real failure.
+        id: reel_check
         run: |
           YESTERDAY=$(date -u -d 'yesterday' +%Y-%m-%d)
           if [ -f "videos/$YESTERDAY.mp4" ]; then
             SIZE=$(stat -c%s "videos/$YESTERDAY.mp4")
             echo "OK, Reel for $YESTERDAY present: videos/$YESTERDAY.mp4 ($SIZE bytes)"
           else
+            {
+              echo "Reel video missing for yesterday: videos/$YESTERDAY.mp4 not on main 24+ hours after entry shipped."
+              echo ""
+              echo "Likely causes:"
+              echo "  1. fire-reel.yml never fired (post-merge sentinel didn't trigger)"
+              echo "  2. ffmpeg install failed inside the build"
+              echo "  3. OpenAI TTS quota or auth failure"
+              echo ""
+              echo "Recovery: touch data/.fire-tiktok-latest and push, fire-build-tiktok.yml will rebuild the MP4 and commit it."
+            } | tee /tmp/reel-check.log
             echo "::error title=Reel video missing for yesterday::videos/$YESTERDAY.mp4 not on main 24+ hours after entry shipped."
-            echo ""
-            echo "Likely causes:"
-            echo "  1. fire-reel.yml never fired (post-merge sentinel didn't trigger)"
-            echo "  2. ffmpeg install failed inside the build"
-            echo "  3. OpenAI TTS quota or auth failure"
-            echo ""
-            echo "Recovery: touch data/.fire-tiktok-latest and push, fire-build-tiktok.yml will rebuild the MP4 and commit it."
             exit 1
           fi
+
+      - name: On failure open persistent issue (Wave 345)
+        if: failure()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const label = 'cron-watchdog-fail';
+            const today = new Date().toISOString().slice(0, 10);
+
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: label,
+            });
+            if (existing.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing[0].number,
+                body: 'Still failing as of ' + today + '. See run: ' + context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId,
+              });
+              console.log('Commented on existing issue #' + existing[0].number + ' instead of opening a duplicate.');
+              return;
+            }
+
+            let entryLog = '';
+            try { entryLog = fs.readFileSync('/tmp/entry-check.log', 'utf8').slice(-1500); } catch (e) {}
+            let reelLog = '';
+            try { reelLog = fs.readFileSync('/tmp/reel-check.log', 'utf8').slice(-1500); } catch (e) {}
+
+            const body = [
+              'The daily cron watchdog failed on ' + today + '. This used to only show as a red Actions badge, which let a 3-day catalog gap (2026-08-21/08-22) go unnoticed across sessions. This issue exists so the failure is visible outside the Actions tab.',
+              '',
+              '**Run:** ' + context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId,
+              '',
+              entryLog ? '**Entry check output:**\n<pre>' + entryLog.replace(/</g, '&lt;') + '</pre>' : '',
+              reelLog ? '**Reel check output:**\n<pre>' + reelLog.replace(/</g, '&lt;') + '</pre>' : '',
+              '',
+              'This issue will get a new comment (not a new issue) on subsequent failures while it stays open. Close it once the underlying gap is backfilled and the root cause is fixed.',
+            ].filter(Boolean).join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Cron watchdog: daily entry or Reel check failed (' + today + ')',
+              body,
+              labels: [label],
+            });
 
       - name: Cleanup fire-watchdog sentinel (Wave 187a)
         if: always() && github.event_name == 'push' && hashFiles('data/.fire-watchdog') != ''
