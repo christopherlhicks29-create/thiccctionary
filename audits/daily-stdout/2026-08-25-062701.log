@@ -1,0 +1,76 @@
+# Daily run trace 2026-08-25-062701
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32816895270
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-25
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo clearly shows the full silhouette and massive structure of the Bagger 293, emphasizing its thiccness.
+Saved image to images/2026-08-25-thiccc-bagger-293.jpg
+[webp] 2026-08-25-thiccc-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Bagger 293" (28 candidates left).
+Vision picked #10 of 12: This photo shows the full silhouette of a large excavator, emphasizing its thiccness and industrial presence.
+[webp] 2026-08-25-thiccc-bagger-293.jpg: 114KB -> 46KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 36; trying another photo for "Thiccc Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+[webp] 2026-08-25-thiccc-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo depicts a large industrial crane, not the Bagger 293, which is a massive bucket-wheel excavator. The crane is well-framed and prominent, but it is not the subject specified. The image is clear and fits a documentary style, but it fails the identity test as it does not show the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Bagger 293"
+[bail] popped "Thiccc Bagger 293" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-25.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-25 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Whale Shark (query: "whale shark")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: this photo shows the whale shark's large silhouette alongside a diver, emphasizing its thiccness.
+Saved image to images/2026-08-25-thiccc-whale-shark.jpg
+[webp] 2026-08-25-thiccc-whale-shark.jpg: 104KB -> 42KB (60% smaller)
+Design critique: score=6/10, verdict=needs-review
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a solid dictionary register and the etymology ends on a gentle giant twist, which works well. However, the example lacks a strong punchline tag, ending on a somewhat flat note. Adding a more unexpected or humorous detail could enhance the comedic impact.
+Model returned off-list category: "Natural Specimens". Marked Uncategorized.
+Generated social captions:
+  morning: Thiccc Whale Shark. Eighteen to thirty-three feet of majesty.
+  afternoon: The Thiccc Whale Shark's mouth spans nearly five feet—ideal for plankton, not gossip.
+  evening: From the archives, Thiccc Whale Shark.
+  reels: Filter-feeding with elegance since the Late Jurassic.
+Saved entry: Thiccc Whale Shark
+Built entry page: entries/2026-08-25.html
+Rebuilt prev entry page (2026-08-24) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 134 entries + 57 articles.
+Sitemap rebuilt with 134 entries.
+Subject queue updated: 3 item(s) remaining.
+[retry-wrapper] entry for 2026-08-25 landed on attempt 2.
+```
