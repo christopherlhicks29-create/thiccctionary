@@ -1,0 +1,110 @@
+# Daily run trace 2026-08-25-034041
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32805951947
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-25
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Titanoboa (query: "titanoboa")
+Subject "Thiccc Titanoboa" returned zero Unsplash results for query "titanoboa". (attempt 2)
+Fallback subject (#2): Giant Pumpkin, Atlantic Giant (query: "giant pumpkin")
+Subject "Giant Pumpkin, Atlantic Giant" returned zero Unsplash results for query "giant pumpkin". (attempt 3)
+Fallback subject (#3): Smoke Stack, Industrial (query: "industrial smokestack")
+Found 5 candidate photos.
+Vision picked #3 of 5: This photo prominently features two thick smokestacks with a clear silhouette against the sky, emphasizing their girth.
+Saved image to images/2026-08-25-smoke-stack-industrial.jpg
+[webp] 2026-08-25-smoke-stack-industrial.jpg: 154KB -> 75KB (51% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=4/10, verdict=regenerate, weakest=example
+  feedback: The example lacks a punchline tag and uses the anti-pattern phrase 'commanding the skyline.' The etymology has a decent kicker, but the entry could benefit from a more specific scene and a sharper comedic beat.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=5/10, verdict=regenerate
+Generated social captions:
+  morning: Smoke Stack, Industrial.
+  afternoon: The 1970s witnessed the construction of the tallest smoke stack in the world—1,205 feet in Sudbury, Ontario.
+  evening: From the archives, Smoke Stack, Industrial.
+  reels: Diameter: often exceeding 30 feet.
+[bail] final dup-guard: "Smoke Stack, Industrial" duplicates catalogued "Stack, Pancakes Diner" - subject "Smoke Stack, Industrial"
+[bail] popped "Smoke Stack, Industrial" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-25.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-25 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive girth and industrial design.
+Saved image to images/2026-08-25-bagger-293.jpg
+[webp] 2026-08-25-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette clearly against the ground, emphasizing its girth and scale.
+[webp] 2026-08-25-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the Bagger 293's massive structure and silhouette clearly.
+[webp] 2026-08-25-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a large industrial crane in a port setting. The crane is well-framed and dominates the image, but it is not the subject specified. The industrial scenery is clear, but the subject identity is incorrect, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-25.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-25 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-25.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-25 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Titan II (query: "Titan II missile")
+Subject "Thiccc Titan II" returned zero Unsplash results for query "Titan II missile". (attempt 2)
+Fallback subject (#2): Dumper Truck, Caterpillar 785C (query: "dumper truck")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Dumper Truck, Caterpillar 785C"
+[bail] popped "Dumper Truck, Caterpillar 785C" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-25.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-25 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-25.
+```
