@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2026 15:52:23 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 06:27:05 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Thiccc Whale Shark</title>
+      <link>https://thiccctionary.com/entries/2026-08-25.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-25.html</guid>
+      <pubDate>Tue, 25 Aug 2026 12:00:00 GMT</pubDate>
+      <description>An exceptional example of the Rhincodon typus, admired for its ample midsection and significant presence in the marine environment, particularly impressive when observed astern in raking light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-25-thiccc-whale-shark.jpg" type="image/jpeg" length="106840" />
+      <category>maritime</category><category>natural-specimens</category>
+    </item>
     <item>
       <title>Thiccc Ficus Macrophylla</title>
       <link>https://thiccctionary.com/entries/2026-08-24.html</link>

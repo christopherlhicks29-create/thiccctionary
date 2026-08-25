@@ -7,16 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Stew, Cast Iron Dutch",
-      "query": "dutch oven stew cast iron",
-      "category": "Foods of Substance"
-    },
-    {
-      "subject": "Rock, Plymouth",
-      "query": "plymouth rock memorial",
-      "category": "Architecture & Infrastructure"
-    },
-    {
       "subject": "Briefcase, Hardshell Pelican",
       "query": "pelican hardshell case",
       "category": "Other"
