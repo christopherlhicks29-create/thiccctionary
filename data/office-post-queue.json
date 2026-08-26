@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Boat to Corsica is delayed. The harbormaster, a man of extraordinary personal volume, shrugged in a way that moved weather. I have eaten an entire burrata on a dock piling. Bertram would have approved of both.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-26T19:23:35.987Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787607919777",
