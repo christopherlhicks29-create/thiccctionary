@@ -1,0 +1,94 @@
+# Daily run trace 2026-08-26-212806
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33015340800
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-26
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-26 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Cannon, Parrott Rifle (query: "civil war cannon")
+Found 11 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 10 left.
+Vision picked #4 of 10: the photo clearly shows the full silhouette of the Parrott Rifle cannon, emphasizing its girth.
+Saved image to images/2026-08-26-cannon-parrott-rifle.jpg
+[webp] 2026-08-26-cannon-parrott-rifle.jpg: 110KB -> 37KB (66% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Cannon, Parrott Rifle" (9 candidates left).
+Vision rejected all 9 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo shows a historic cannon, but it does not appear to be a Parrott Rifle, which is a specific type of cannon with distinctive features. The framing is good, and the cannon is the focal point, but the subject identity is incorrect. The background is not overly distracting, but the photo fails the identity test, as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Cannon, Parrott Rifle"
+[bail] popped "Cannon, Parrott Rifle" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-26 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 1 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Volvo FH16 (query: "volvo fh16")
+Subject "Thiccc Volvo FH16" returned zero Unsplash results for query "volvo fh16". (attempt 1)
+Fallback subject (#1): Thiccc Titanosaur (query: "titanosaur")
+Subject "Thiccc Titanosaur" returned zero Unsplash results for query "titanosaur". (attempt 2)
+Fallback subject (#2): Thiccc Thor's Hammer (query: "Mjolnir")
+Subject "Thiccc Thor's Hammer" returned zero Unsplash results for query "Mjolnir". (attempt 3)
+Fallback subject (#3): Thiccc Atlas Rocket (query: "Atlas rocket")
+Subject "Thiccc Atlas Rocket" returned zero Unsplash results for query "Atlas rocket". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #9 of 12: this photo shows a full tractor with prominent, thick tires, emphasizing its girth.
+Saved image to images/2026-08-26-tractor-tire.jpg
+[webp] 2026-08-26-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #7 of 12: This photo shows a tractor with prominent, thick tires that highlight the overall girth.
+[webp] 2026-08-26-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #10 of 12: this photo shows a full tractor tire that emphasizes its girth and robust profile.
+[webp] 2026-08-26-tractor-tire.jpg: 232KB -> 124KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 30  isSubject: false
+  critique: The photo does not show a tractor tire, but rather a spare tire mounted on the back of a vehicle. The subject is not the named object, which disqualifies it. The image is well-composed and centered, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=30 - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-26 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-26.
+```
