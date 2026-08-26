@@ -1,0 +1,83 @@
+# Daily run trace 2026-08-26-161121
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32986933553
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-26
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-26 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar, 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar, 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Crawler Crane (query: "crawler crane")
+Found 30 candidate photos.
+Vision picked #6 of 12: This photo shows multiple crawler cranes in a row, emphasizing their overall girth and presence.
+Saved image to images/2026-08-26-thiccc-crawler-crane.jpg
+[webp] 2026-08-26-thiccc-crawler-crane.jpg: 318KB -> 224KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Crawler Crane" (29 candidates left).
+Vision picked #6 of 12: This photo shows a full crawler crane with a prominent silhouette, emphasizing its thicc structure.
+[webp] 2026-08-26-thiccc-crawler-crane.jpg: 178KB -> 89KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Crawler Crane" (28 candidates left).
+Vision picked #11 of 12: This photo shows a robust crawler crane with a prominent silhouette, emphasizing its thiccness against a clean background.
+[webp] 2026-08-26-thiccc-crawler-crane.jpg: 132KB -> 66KB (50% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 3.
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a solid etymology kicker with a deadpan remark about the bird metaphor. The example, while specific, lacks a punchline tag to land the humor effectively. The definitions are free from anti-patterns and have a nice touch of grandeur, but could use a more unexpected detail to elevate the humor.
+Generated social captions:
+  morning: Thiccc Crawler Crane.
+  afternoon: Its boom extends over 300 feet—reaching places mere mortals only dream of.
+  evening: From the archives, Thiccc Crawler Crane.
+  reels: Rotates 360 degrees, but never loses sight of its purpose.
+[bail] final dup-guard: "Thiccc Crawler Crane" duplicates catalogued "Crane, Tower Construction" - subject "Thiccc Crawler Crane"
+[bail] popped "Thiccc Crawler Crane" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-26 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 1 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-26 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-26.
+```
