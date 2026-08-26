@@ -1,0 +1,98 @@
+# Daily run trace 2026-08-26-063009
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32938252470
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-26
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-26 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #7 of 12: This photo shows the Antonov An-225's full silhouette and emphasizes its massive girth.
+Saved image to images/2026-08-26-thiccc-antonov-an-225-mriya.jpg
+[webp] 2026-08-26-thiccc-antonov-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-225 Mriya" (29 candidates left).
+Vision picked #2 of 12: this photo shows the full silhouette of the Antonov An-225, emphasizing its massive girth and imposing presence.
+[webp] 2026-08-26-thiccc-antonov-an-225-mriya.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Thiccc Antonov An-225 Mriya" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show the Antonov An-225 Mriya, but rather an IL-76 cargo plane. The Antonov An-225 is a distinct and much larger aircraft, and this misidentification fails the identity test. The image is well-framed and the plane is centered, but it does not meet the subject criteria. Therefore, it cannot be used for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-26 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 1 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Duplicate-subject guard: "Titan, Saturn V" is the same family as already-published "Titan, Jumbo Shrimp" (headNoun "titan"). Retry 1/5.
+Subject: Thiccc Titanoboa (query: "titanoboa")
+Subject "Thiccc Titanoboa" returned zero Unsplash results for query "titanoboa". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive and thick structure.
+Saved image to images/2026-08-26-bagger-293.jpg
+[webp] 2026-08-26-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's full silhouette and emphasizes its impressive girth against the landscape.
+[webp] 2026-08-26-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 13; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of a large crane, emphasizing its massive girth and structure.
+[webp] 2026-08-26-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+[image-retry] an alternative photo passed the gate on try 3.
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The entry has potential with its ambitious definitions and a decent etymology kicker. However, the example lacks a specific scene and a punchline tag, making it feel flat. Adding a vivid scenario or a surprising twist would elevate the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=6/10, verdict=ship
+Generated social captions:
+  morning: Bagger 293. Weighs 14,200 tons.
+  afternoon: With an arm span of 738 feet, Bagger 293 embraces the horizon.
+  evening: From the archives, Bagger 293.
+  reels: Bagger 293 consumes 16.56 megawatts of power.
+[bail] final dup-guard: "Bagger 293" duplicates catalogued "Bagger 288" - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-26 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-26.
+```
