@@ -1,0 +1,88 @@
+# Daily run trace 2026-08-26-034511
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/32927529269
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-26
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-26 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+Saved image to images/2026-08-26-bagger-293.jpg
+[webp] 2026-08-26-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #11 of 12: this photo shows the full silhouette of the Bagger 293, emphasizing its substantial girth and structure.
+[webp] 2026-08-26-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 32; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive size and silhouette against the ground, emphasizing its thiccness.
+[webp] 2026-08-26-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a standard bulldozer on a construction site. The subject is not centered, and the bulldozer is not the focal point of the image. The photo lacks the imposing presence and size associated with the Bagger 293, leading to a low score.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-26 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 1 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Duplicate-subject guard: "Thiccc Cathedral, Concrete" is the same family as already-published "Cathedral, Concrete Brutalist" (headNoun "thiccc cathedral"). Retry 1/5.
+Subject: Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 1)
+Fallback subject (#1): Titan, Super Heavy (query: "space launch")
+Found 30 candidate photos.
+Vision picked #5 of 12: This photo shows the full silhouette of a rocket against a clear sky, emphasizing its girth.
+Saved image to images/2026-08-26-titan-super-heavy.jpg
+[webp] 2026-08-26-titan-super-heavy.jpg: 233KB -> 173KB (26% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 16; trying another photo for "Titan, Super Heavy" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 16  isSubject: false
+  critique: The photo shows a rocket replica, not an actual 'Titan, Super Heavy' rocket. The subject is not the real object but a depiction, which disqualifies it according to the criteria. The rocket is partially visible and not centered, with the tree taking up a significant portion of the frame. The image does not fit the documentary style required, and the subject does not appear thiccc for its kind.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=16 - subject "Titan, Super Heavy"
+[bail] popped "Titan, Super Heavy" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-26 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-26.
+```
