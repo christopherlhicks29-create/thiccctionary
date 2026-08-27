@@ -1,0 +1,92 @@
+# Daily run trace 2026-08-27-132043
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33076041417
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-27
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-27.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-27 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #8 of 12: this photo shows the Antonov An-225 Mriya's massive silhouette and girth in a striking way.
+Saved image to images/2026-08-27-thiccc-antonov-an-225-mriya.jpg
+[webp] 2026-08-27-thiccc-antonov-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 56; trying another photo for "Thiccc Antonov An-225 Mriya" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 56  isSubject: false
+  critique: The photo does not show the Antonov An-225 Mriya, which is a specific cargo aircraft. Instead, it depicts a large aircraft that resembles a ground effect vehicle, possibly the Lun-class ekranoplan. The subject is centered and prominent, but it is not the named object. The setting on a sandy beach adds visual interest but does not fit the subject criteria. The image is well-composed but fails the identity test, necessitating rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=56 - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-27.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-27 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 1 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Fjord, Thiccc Glacial (query: "glacial fjord")
+Found 15 candidate photos.
+Vision picked #1 of 12: This photo showcases the massive scale of the glacier and surrounding landscape, emphasizing its thicc silhouette.
+Saved image to images/2026-08-27-fjord-thiccc-glacial.jpg
+[webp] 2026-08-27-fjord-thiccc-glacial.jpg: 350KB -> 280KB (20% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Fjord, Thiccc Glacial" (14 candidates left).
+Vision picked #6 of 12: This photo showcases the expansive and thick glacial formations, emphasizing the thiccness of the glacial landscape.
+[webp] 2026-08-27-fjord-thiccc-glacial.jpg: 331KB -> 241KB (27% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+  ⚠️ Banned terms found in entry "Fjord, Thiccc Glacial":
+     [example] "boasts" (banned-word)
+     [etymology] "voluptuous" (banned-word)
+Banned-words attempt 1/3 rejected ("boasts" in example, "voluptuous" in etymology). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=4/10, verdict=regenerate, weakest=example
+  feedback: The entry lacks a specific scene in the example sentence, making it feel generic. The etymology misses a kicker, ending on a flat note. Definitions contain some humor, but the overall entry needs more surprise and specificity to land.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=9/10, verdict=ship
+Model returned off-list category: "Landscape & Natural Formations". Marked Uncategorized.
+Generated social captions:
+  morning: Fjord, Thiccc Glacial.
+  afternoon: Norwegian fjords—
+  evening: From the archives, Fjord, Thiccc Glacial.
+  reels: Fjord, Thiccc Glacial.
+Saved entry: Fjord, Thiccc Glacial
+Built entry page: entries/2026-08-27.html
+Rebuilt prev entry page (2026-08-25) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 135 entries + 58 articles.
+Sitemap rebuilt with 135 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-27 landed on attempt 3.
+```
