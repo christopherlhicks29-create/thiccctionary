@@ -1,0 +1,107 @@
+# Daily run trace 2026-08-28-074624
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33152491330
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-28
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Concrete Bunker, Cold War Era (query: "concrete bunker")
+Subject "Concrete Bunker, Cold War Era" returned zero Unsplash results for query "concrete bunker". (attempt 2)
+Fallback subject (#2): Thiccc Saturn V Rocket (query: "Saturn V rocket")
+Found 25 candidate photos.
+Vision picked #2 of 12: This photo emphasizes the Saturn V's towering girth with a dramatic low-angle perspective.
+Saved image to images/2026-08-28-thiccc-saturn-v-rocket.jpg
+[webp] 2026-08-28-thiccc-saturn-v-rocket.jpg: 144KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 54; trying another photo for "Thiccc Saturn V Rocket" (24 candidates left).
+Vision picked #1 of 12: This photo shows the Saturn V rocket against a clear sky, highlighting its tall and thick silhouette.
+[webp] 2026-08-28-thiccc-saturn-v-rocket.jpg: 233KB -> 173KB (26% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 40; trying another photo for "Thiccc Saturn V Rocket" (23 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 40  isSubject: false
+  critique: The photo shows a rocket replica, not an actual Saturn V rocket, which disqualifies it based on the real vs representation test. The subject is partially cropped and not centered, with a significant portion of the frame dominated by the tree and sky, reducing the prominence of the rocket. The image does not fit the brand's documentary style, as it appears more like a casual outdoor shot rather than a focused, documentary-style image.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=40 - subject "Thiccc Saturn V Rocket"
+[bail] popped "Thiccc Saturn V Rocket" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-28.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-28 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Titan Conveyor (query: "titan conveyor")
+Subject "Thiccc Titan Conveyor" returned zero Unsplash results for query "titan conveyor". (attempt 2)
+Fallback subject (#2): Thiccc Titan II (query: "titan ii rocket")
+Subject "Thiccc Titan II" returned zero Unsplash results for query "titan ii rocket". (attempt 3)
+Fallback subject (#3): Thiccc Goliath Beetle (query: "goliath beetle")
+Found 30 candidate photos.
+Vision picked #3 of 12: This photo shows the Goliath beetle in a hand, emphasizing its size and girth.
+Saved image to images/2026-08-28-thiccc-goliath-beetle.jpg
+[webp] 2026-08-28-thiccc-goliath-beetle.jpg: 161KB -> 85KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Thiccc Goliath Beetle" (29 candidates left).
+Vision picked #6 of 12: this photo shows the Goliath beetle in a full profile, highlighting its girth and distinctive features.
+[webp] 2026-08-28-thiccc-goliath-beetle.jpg: 161KB -> 84KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Goliath Beetle" (28 candidates left).
+Vision picked #3 of 12: this photo clearly shows the Goliath beetle's distinctive shape and girth against a clean background.
+[webp] 2026-08-28-thiccc-goliath-beetle.jpg: 96KB -> 47KB (51% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 25  isSubject: false
+  critique: The photo does not show the named subject, 'Thiccc Goliath Beetle,' but rather a different type of beetle. The image is well-framed and clear, with the beetle prominently displayed against a plain background. However, since the subject does not match the specified object, it cannot be accepted.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=25 - subject "Thiccc Goliath Beetle"
+[bail] popped "Thiccc Goliath Beetle" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-28.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-28 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: all 3 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #8 of 12: this photo showcases the full silhouette of a large aircraft, emphasizing its impressive girth.
+Saved image to images/2026-08-28-thiccc-antonov-an-225-mriya.jpg
+[webp] 2026-08-28-thiccc-antonov-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-225 Mriya" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not depict the Antonov An-225 Mriya, which is a specific type of aircraft. Instead, it shows a different large aircraft on a beach. The subject is centered and prominent, but it fails the identity test as it is not the named object. Therefore, the photo cannot be used for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-28.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-28 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-28.
+```
