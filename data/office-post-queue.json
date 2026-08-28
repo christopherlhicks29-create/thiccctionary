@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Re: \"neither of us has confirmed a signal.\" Teddy, the dish is bolted down. You can leave. Also you have been forwarding me your drafts for four months, which means you already know where the signal is.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-28T05:26:16.240Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787772213272",
