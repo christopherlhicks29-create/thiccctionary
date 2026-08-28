@@ -1,0 +1,51 @@
+# Daily run trace 2026-08-28-194557
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33205183176
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-28
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Garbage Truck, Front-Loader" (5 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D10T (query: "Caterpillar D10T")
+Subject "Thiccc Caterpillar D10T" returned zero Unsplash results for query "Caterpillar D10T". (attempt 2)
+Fallback subject (#2): Thiccc Titan II (query: "Titan II missile")
+Subject "Thiccc Titan II" returned zero Unsplash results for query "Titan II missile". (attempt 3)
+Fallback subject (#3): Jumbo, Watermelon (query: "jumbo watermelon")
+Found 24 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 23 left.
+Vision picked #7 of 12: this photo features multiple whole watermelons, showcasing their overall girth and size.
+Saved image to images/2026-08-28-jumbo-watermelon.jpg
+[webp] 2026-08-28-jumbo-watermelon.jpg: 196KB -> 111KB (44% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The example sentence lands with a solid comedic tag, and the etymology has a deadpan kicker that works well. However, the definitions could benefit from more specific or unexpected details to enhance the humor.
+Generated social captions:
+  morning: Jumbo, Watermelon. 
+  afternoon: Recognized for its rotund presence since 1870—when the first was deemed 'too big for a basket'. 
+  evening: From the archives, Jumbo, Watermelon. 
+  reels: Jumbo, Watermelon—a spherical enigma. 
+Saved entry: Jumbo, Watermelon
+Built entry page: entries/2026-08-28.html
+Rebuilt prev entry page (2026-08-27) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 136 entries + 58 articles.
+Sitemap rebuilt with 136 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-08-28 landed on attempt 1.
+```
