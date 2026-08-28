@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-28",
+    "word": "Jumbo, Watermelon",
+    "pronunciation": "/JUM-bo, WA-ter-mel-on/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A watermelon of considerable magnitude, often exceeding standard countertop dimensions and displaying a vibrantly green surface with a girth that challenges casual containment.",
+      "<em>colloq.</em> A produce aisle heavyweight, known for occupying the entire bottom shelf of a shopping cart, leaving little room for other groceries."
+    ],
+    "example": "He rolled a thiccc jumbo watermelon from the trunk of his SUV to the picnic table. It settled in like it owned the place.",
+    "etymology": "From English 'jumbo', popularized by P.T. Barnum in the 19th century to describe his famed elephant, combined with 'watermelon', from Old English 'water' (water) + Latin 'melo' (melon). Its heft makes the name feel like an understatement.",
+    "image": "images/2026-08-28-jumbo-watermelon.jpg",
+    "caption": "Plate CXXXVI., The formidable silhouette of a jumbo watermelon, worthy of reverent inspection.",
+    "tags": [
+      "girth",
+      "produce",
+      "natural-specimens"
+    ],
+    "category": "Produce & Botanical",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Ehsan Eslami",
+    "photographerUrl": "https://unsplash.com/@ehsaneslami",
+    "unsplashUrl": "https://unsplash.com/photos/a-snake-in-a-watermelon-zBQpP164JUo",
+    "socialCaptions": {
+      "morning": "Jumbo, Watermelon. \nWeighs as much as a mid-sized dog. \nCannot be walked, only rolled.",
+      "afternoon": "Recognized for its rotund presence since 1870—when the first was deemed 'too big for a basket'. \nThicccer: Jumbo Watermelon or a Mini Cooper? Discuss among yourselves. \nJumbo, Watermelon.",
+      "evening": "From the archives, Jumbo, Watermelon. \nCommonly found dominating the summer picnic table. \nIts origins trace back to fields unknown.",
+      "reels": "Jumbo, Watermelon—a spherical enigma. \nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-27",
     "word": "Fjord, Thiccc Glacial",
     "pronunciation": "/fjord, THIK-glay-shul/",

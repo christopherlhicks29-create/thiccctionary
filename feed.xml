@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Aug 2026 13:21:09 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 19:46:03 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Jumbo, Watermelon</title>
+      <link>https://thiccctionary.com/entries/2026-08-28.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-28.html</guid>
+      <pubDate>Fri, 28 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A watermelon of considerable magnitude, often exceeding standard countertop dimensions and displaying a vibrantly green surface with a girth that challenges casual containment.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-28-jumbo-watermelon.jpg" type="image/jpeg" length="200601" />
+      <category>girth</category><category>produce</category><category>natural-specimens</category>
+    </item>
     <item>
       <title>Fjord, Thiccc Glacial</title>
       <link>https://thiccctionary.com/entries/2026-08-27.html</link>
