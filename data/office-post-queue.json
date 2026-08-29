@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788033051075",
+    "created": "2026-08-29T19:50:51.075Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "personal",
+    "text": "Grocery store, 10pm. Lady in front of me had a cart so full she was basically chaperoning it. I had four things. We both waited at the self-checkout for a long time. Neither of us said anything. I counted twelve melons.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1787894773991",
     "created": "2026-08-28T05:26:13.991Z",
     "byline_id": "eli",
@@ -1395,20 +1405,5 @@
     "failure_count": 0,
     "retry_count": 1,
     "retried_at": "2026-05-17T20:26:50.507Z"
-  },
-  {
-    "id": "office-1778992031283",
-    "created": "2026-05-17T04:27:11.283Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Girth Quarterly (Vol. 3, No. 2) correctly identified the Liebherr T 282B as a Tier I subject. That was 1997. The catalogue, properly understood, has not improved on this. The author remains unknown. The stapler marks are consistent with a Swingline 747.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-17T20:26:50.828Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "retry_count": 1,
-    "retried_at": "2026-05-17T20:26:50.828Z"
   }
 ]
