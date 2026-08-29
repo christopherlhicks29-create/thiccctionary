@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Sent \"update on the girth job\" to the group chat. Eight people watched it for forty minutes. Nobody typed. Finally Marco said \"bro.\" That's it. Just \"bro.\" I think that covers it.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-29T23:22:30.494Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788033051075",
