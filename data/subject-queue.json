@@ -7,14 +7,34 @@
   ],
   "queue": [
     {
-      "subject": "Container, Shipping 40-Foot",
-      "query": "40 foot shipping container",
-      "category": "Industrial Machinery"
-    },
-    {
       "subject": "Berm, Earthen Dam",
       "query": "earthen berm dam embankment",
       "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Submarine, Ballistic Missile",
+      "query": "submarine surfaced ocean",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Briefcase, Hardshell Pelican",
+      "query": "pelican hardshell case",
+      "category": "Other"
+    },
+    {
+      "subject": "Door, Bank Vault Round",
+      "query": "round bank vault door",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Rock, Plymouth",
+      "query": "plymouth rock memorial",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Refrigerator, Commercial",
+      "query": "commercial walk-in refrigerator",
+      "category": "Domestic Goods"
     }
   ]
 }
