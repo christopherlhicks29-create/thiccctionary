@@ -169,7 +169,21 @@
           "id": "6a89d7c137caa42812d09870"
         }
       ]
+    },
+    {
+      "path": "videos/characters/hugh-railing-handset.mp4",
+      "at": "2026-08-29T19:32:57.525Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a9333e861f7ab587ccdf2b9"
+        },
+        {
+          "service": "instagram",
+          "id": "6a9333e9ba5ed8519805026d"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-08-22T17:09:22.048Z"
+  "lastPostedAt": "2026-08-29T19:32:57.526Z"
 }
