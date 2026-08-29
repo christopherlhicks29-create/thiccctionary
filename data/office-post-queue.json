@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Grocery store, 10pm. Lady in front of me had a cart so full she was basically chaperoning it. I had four things. We both waited at the self-checkout for a long time. Neither of us said anything. I counted twelve melons.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-08-29T19:50:53.669Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1787894773991",
