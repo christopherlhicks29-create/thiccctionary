@@ -1,0 +1,109 @@
+# Daily run trace 2026-08-30-005439
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33284366685
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-30
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Trident Submarine (query: "submarine")
+Found 30 candidate photos.
+Vision picked #11 of 12: this photo shows the full silhouette of a submarine, emphasizing its thicc shape against the water.
+Saved image to images/2026-08-30-thiccc-trident-submarine.jpg
+[webp] 2026-08-30-thiccc-trident-submarine.jpg: 99KB -> 47KB (53% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Trident Submarine" (29 candidates left).
+Vision picked #12 of 12: this photo shows the full silhouette of a submarine, emphasizing its substantial girth and structure.
+[webp] 2026-08-30-thiccc-trident-submarine.jpg: 213KB -> 125KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Thiccc Trident Submarine" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo shows a section of a battleship, not a submarine, which disqualifies it as the subject is 'Thiccc Trident Submarine'. The image is well-composed and detailed, capturing the intricate structure of the ship, but it does not meet the subject criteria. Additionally, the image is cluttered with various elements, making it difficult to focus solely on the intended subject. The subject is not centered, and the overall framing does not highlight the submarine, leading to a low score.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Thiccc Trident Submarine"
+[bail] popped "Thiccc Trident Submarine" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-30 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-30 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-30 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Antares Rocket (query: "Antares rocket")
+Subject "Thiccc Antares Rocket" returned zero Unsplash results for query "Antares rocket". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D10T (query: "Caterpillar D10T")
+Subject "Thiccc Caterpillar D10T" returned zero Unsplash results for query "Caterpillar D10T". (attempt 3)
+Fallback subject (#3): Thiccc Caterpillar 797F (query: "caterpillar 797f")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "caterpillar 797f". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #9 of 12: this photo showcases a full tractor with prominent, thick tires that emphasize girth.
+Saved image to images/2026-08-30-tractor-tire.jpg
+[webp] 2026-08-30-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 45; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #7 of 12: This photo shows a tractor with prominent, thick tires that emphasize girth and silhouette.
+[webp] 2026-08-30-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #12 of 12: This photo shows a full tractor with its prominent tires, emphasizing overall girth.
+[webp] 2026-08-30-tractor-tire.jpg: 235KB -> 141KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 20  isSubject: false
+  critique: The photo primarily depicts a red Massey Ferguson tractor, not specifically a tractor tire. The tractor is the main focus, and while the tire is visible, it is not the central subject. The image does not meet the requirement of showing the tractor tire as the main object. Therefore, it does not fulfill the criteria for the subject 'Tractor Tire'.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=20 - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-30 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-30.
+```
