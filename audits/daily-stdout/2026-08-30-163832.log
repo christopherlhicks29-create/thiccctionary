@@ -1,0 +1,99 @@
+# Daily run trace 2026-08-30-163832
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33322930944
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-30
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Dumper Truck (query: "dumper truck")
+Found 2 candidate photos.
+Vision picked #1 of 2: the first photo shows two dumper trucks side by side, emphasizing their overall girth and silhouette.
+Saved image to images/2026-08-30-thiccc-dumper-truck.jpg
+[webp] 2026-08-30-thiccc-dumper-truck.jpg: 348KB -> 254KB (27% smaller)
+Design critique: score=6/10, verdict=needs-review
+Humor critique: score=9/10, verdict=ship, weakest=overall
+  feedback: The entry is strong with a vivid example that places the scene on a street, ending with a humorous eclipse metaphor. The etymology kicker is a delightful surprise, suggesting the truck's posterior needs its own zip code. The definitions are clear and avoid anti-patterns, maintaining a comedic tone throughout.
+Generated social captions:
+  morning: Thiccc Dumper Truck.
+  afternoon: In 1942, the first diesel-powered dumper truck rolled out—its inventor never anticipated the robust posterior acclaim.
+  evening: From the archives, Thiccc Dumper Truck.
+  reels: Thiccc Dumper Truck, the 12-wheel wonder.
+[bail] final dup-guard: "Thiccc Dumper Truck" duplicates catalogued "Dumper Truck, Articulated" - subject "Thiccc Dumper Truck"
+[bail] popped "Thiccc Dumper Truck" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-30 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-30 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-30 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Boeing 777-300ER (query: "Boeing 777")
+Found 24 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 23 left.
+Vision picked #4 of 12: This photo shows the Boeing 777-300ER in a rear three-quarter view, emphasizing its girth and silhouette as it lands.
+Saved image to images/2026-08-30-boeing-777-300er.jpg
+[webp] 2026-08-30-boeing-777-300er.jpg: 152KB -> 70KB (54% smaller)
+Design critique: score=9/10, verdict=ship
+  ⚠️ Banned terms found in entry "Boeing 777-300ER":
+     [example] "runway" (banned-word)
+Banned-words attempt 1/3 rejected ("runway" in example). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=7/10, verdict=ship, weakest=definitions
+  feedback: The example sentence effectively sets a scene with a specific detail about the shadow, and the etymology has a playful twist with 'affinity for both distance and displacement.' However, the definitions lean on generic phrases like 'commanding admiration,' which could be more inventive.
+Generated social captions:
+  morning: Boeing 777-300ER—twenty-three feet wide, silently dominating the horizon.
+  afternoon: Boeing 777-300ER. A tale of 396 seats and 7,370 nautical miles.
+  evening: From the archives, Boeing 777-300ER.
+  reels: Boeing 777-300ER. 14,680 pounds of thrust per engine—just a light jog for this avian monolith.
+[bail] final dup-guard: "Boeing 777-300ER" duplicates catalogued "Boeing 777X" - subject "Boeing 777-300ER"
+[bail] popped "Boeing 777-300ER" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-30 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-30.
+```
