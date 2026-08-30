@@ -227,7 +227,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-13-container-ship",
+      "at": "2026-08-30T19:35:08.663Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a9485eb6bbc8c9a02f579a4"
+        },
+        {
+          "service": "facebook",
+          "id": "6a9485ecfd31f7e50b773bb8"
+        },
+        {
+          "service": "instagram",
+          "id": "6a9485ecfd31f7e50b773bd8"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-08-23T17:13:38.729Z"
+  "lastPostedAt": "2026-08-30T19:35:08.663Z"
 }
