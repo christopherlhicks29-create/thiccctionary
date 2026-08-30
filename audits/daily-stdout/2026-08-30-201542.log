@@ -1,0 +1,111 @@
+# Daily run trace 2026-08-30-201542
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33333058543
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-30
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "Caterpillar D11T")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "Caterpillar D11T". (attempt 2)
+Fallback subject (#2): Thiccc Titanosaur (query: "titanosaur")
+Subject "Thiccc Titanosaur" returned zero Unsplash results for query "titanosaur". (attempt 3)
+Fallback subject (#3): Thiccc Saturn V (query: "saturn v rocket")
+Found 24 candidate photos.
+Vision picked #2 of 12: This photo shows the Saturn V's full height and girth with a dramatic angle, emphasizing its thicc silhouette.
+Saved image to images/2026-08-30-thiccc-saturn-v.jpg
+[webp] 2026-08-30-thiccc-saturn-v.jpg: 144KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Saturn V" (23 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the Saturn V against a clear sky, emphasizing its impressive height and girth.
+[webp] 2026-08-30-thiccc-saturn-v.jpg: 233KB -> 173KB (26% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Thiccc Saturn V" (22 candidates left).
+Vision picked #4 of 12: the launch photo dramatically showcases the Saturn V's massive silhouette against the backdrop of smoke and light.
+[webp] 2026-08-30-thiccc-saturn-v.jpg: 84KB -> 42KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo depicts a space shuttle taking off, not a Saturn V rocket. The subject is incorrectly identified, as the Saturn V is a different type of launch vehicle. The image is dramatic and well-composed, but it does not match the specified subject, leading to a rejection. The focus is on the shuttle and its launch, not the Saturn V.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Saturn V"
+[bail] popped "Thiccc Saturn V" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-30 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-30 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-30 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Titanosaur (query: "titanosaur")
+Subject "Thiccc Titanosaur" returned zero Unsplash results for query "titanosaur". (attempt 2)
+Fallback subject (#2): Bagger 293 (query: "bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #5 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+Saved image to images/2026-08-30-bagger-293.jpg
+[webp] 2026-08-30-bagger-293.jpg: 241KB -> 158KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+[webp] 2026-08-30-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+[webp] 2026-08-30-bagger-293.jpg: 114KB -> 46KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a person sitting on a large orange structure, possibly part of a bridge or industrial equipment. The subject is not centered, and the composition is dominated by the structure rather than the intended subject. The image does not fit the criteria for a documentary or dictionary plate of the Bagger 293.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-30.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-08-30 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-08-30.
+```
