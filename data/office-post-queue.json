@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788119716879",
+    "created": "2026-08-30T19:55:16.879Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "personal",
+    "text": "Lunched with Perpetua Vane-Mosswick in Antibes. She has outlived four husbands and owns a chest of drawers the size of a reasonable studio flat. Told me this without context. I liked her immediately.\n\nMargaret",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788045747910",
     "created": "2026-08-29T23:22:27.910Z",
     "byline_id": "teddy",
@@ -1391,20 +1401,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-05-17T04:40:44.099Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1778992665749",
-    "created": "2026-05-17T04:37:45.749Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "thiccc",
-    "text": "Contrabass tuba: bell diameter wider than most doorways this writer has used today. It doesn't lead a parade. It IS the parade. Everything else is just keeping up.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-17T04:37:47.810Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []
