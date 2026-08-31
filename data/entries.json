@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-08-31",
+    "word": "Thiccc Earth Mover",
+    "pronunciation": "/THIK erth MOOV-er/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A construction vehicle of formidable mass and breadth, particularly noted for its expansive rear profile when viewed from behind.",
+      "<em>colloq.</em> The undeniable heavyweight of the construction site, whose presence redefines the spatial norms of any parking lot."
+    ],
+    "example": "He spotted a thiccc earth mover stationed outside the hardware store. Its shadow claimed the entire loading zone.",
+    "etymology": "From Middle English 'erthe', meaning 'ground', and the verb 'mover', from Old French 'moveir', meaning 'to set in motion'. Appropriately enough, also how one might describe relocating small continents.",
+    "image": "images/2026-08-31-thiccc-earth-mover.jpg",
+    "caption": "Plate CXXXVIII., A tractor posing with architectural nonchalance.",
+    "tags": [
+      "industrial",
+      "construction",
+      "vehicle"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Amaury TRAVER",
+    "photographerUrl": "https://unsplash.com/@beyondreality",
+    "unsplashUrl": "https://unsplash.com/photos/a-tractor-is-parked-in-front-of-a-store-2UcDfcJy1Ho",
+    "socialCaptions": {
+      "morning": "Thiccc Earth Mover.\nTen wheels, twenty-eight tons.\nThe ground politely makes way.",
+      "afternoon": "Behold the 797F—400 tons when empty.\nStill manages a gentle tread.\nRate the thicccness from 1 to 10.\nThiccc Earth Mover.",
+      "evening": "From the archives, Thiccc Earth Mover.\nFirst deployed in 1973—still undefeated in mass appeal.\nThe hardware store remains in awe.",
+      "reels": "Thiccc Earth Mover.\nAn unassuming colossus on coffee breaks.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-08-29",
     "word": "Thiccc Hydraulic Press",
     "pronunciation": "/thik hy-DRAU-lik pres/",
