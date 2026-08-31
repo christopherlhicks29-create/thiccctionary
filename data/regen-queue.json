@@ -1,6 +1,6 @@
 {
-  "queued_at": "2026-08-24T03:54:07.720Z",
-  "dates": "2026-08-16,2026-08-13,2026-08-02,2026-05-27",
+  "queued_at": "2026-08-31T09:22:20.050Z",
+  "dates": "2026-08-21,2026-05-11,2026-08-16,2026-08-29",
   "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 4): 2026-08-16 Concrete Bunker, Soviet (score 1, depicts \"a large concrete building with architectural features\"); 2026-08-13 Roast, Prime Rib (score 1, depicts \"a sliced steak with vegetables and sauce on a plate\"); 2026-08-02 Pumper Truck, Fire Engine (score 1, depicts \"a real fire engine from the front\"); 2026-05-27 Vault Door, Bank (score 1, depicts \"a metal door with a padlock, possibly a utility or storage entrance\")"
+  "reason": "Wave 212 image-audit batch (worst 4): 2026-08-21 Anchor, Ship's (score 1, depicts \"a decorative anchor sculpture mounted on a pedestal\"); 2026-05-11 Champion Watermelon, Heavyweight (score 1, depicts \"a sliced watermelon on a white background\"); 2026-08-16 Concrete Bunker, Soviet (score 1, depicts \"a large concrete building with architectural features\"); 2026-08-29 Thiccc Hydraulic Press (score 1, depicts \"a man operating a mechanical press\")"
 }

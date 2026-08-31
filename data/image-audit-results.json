@@ -1,22 +1,66 @@
 {
-  "generated_at": "2026-08-24T03:54:07.719Z",
-  "scanned": 131,
-  "passed": 127,
-  "failed": 4,
+  "generated_at": "2026-08-31T09:22:20.050Z",
+  "scanned": 138,
+  "passed": 132,
+  "failed": 6,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
     {
+      "date": "2026-08-21",
+      "word": "Anchor, Ship's",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-21-anchor-ship-s.jpg",
+      "score": 1,
+      "subjectPct": 18,
+      "verdict": "reject",
+      "photoSubject": "a decorative anchor sculpture mounted on a pedestal",
+      "critique": "The photo shows a decorative anchor sculpture rather than a real ship's anchor. The object is mounted on a pedestal, indicating it is a representation rather than a functional anchor. This does not meet the criteria for a ship's anchor, which should be a real, functional object. The composition is clear and well-framed, but the subject is incorrect for the entry.",
+      "passed": false
+    },
+    {
+      "date": "2026-05-11",
+      "word": "Champion Watermelon, Heavyweight",
+      "imageUrl": "https://thiccctionary.com/images/2026-05-11-champion-watermelon-heavyweight.jpg",
+      "score": 1,
+      "subjectPct": 36,
+      "verdict": "reject",
+      "photoSubject": "a sliced watermelon on a white background",
+      "critique": "The photo does not depict a 'Champion Watermelon, Heavyweight' as it shows a standard-sized watermelon that has been sliced. The subject is not a heavyweight example, which is crucial for the entry. The composition is clean and the watermelon is centered, but it does not meet the criteria for a heavyweight champion. The image lacks the imposing size expected from a heavyweight watermelon, leading to a rejection.",
+      "passed": false
+    },
+    {
       "date": "2026-08-16",
       "word": "Concrete Bunker, Soviet",
       "imageUrl": "https://thiccctionary.com/images/2026-08-16-concrete-bunker-soviet.jpg",
       "score": 1,
-      "subjectPct": 64,
+      "subjectPct": 56,
       "verdict": "reject",
       "photoSubject": "a large concrete building with architectural features",
-      "critique": "The photo does not depict a concrete bunker but rather a large concrete building with distinctive architectural features. The structure shown does not fit the typical characteristics of a Soviet-era bunker, which are usually more utilitarian and less ornate. The building's prominent location by the water and its architectural style suggest it is not a bunker. The image is well-composed and clear, but it does not match the subject description, leading to a rejection.",
+      "critique": "The photo shows a large concrete building with distinct architectural features, but it does not clearly depict a Soviet-era concrete bunker. The structure appears more like a building or facility rather than a military bunker. The framing captures the entire building and its surroundings, but the subject does not match the specified object. Therefore, the image is not suitable for the entry 'Concrete Bunker, Soviet'.",
+      "passed": false
+    },
+    {
+      "date": "2026-08-29",
+      "word": "Thiccc Hydraulic Press",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-29-thiccc-hydraulic-press.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a man operating a mechanical press",
+      "critique": "The photo depicts a man operating a mechanical press, not a hydraulic press. The machine shown lacks the characteristics of a hydraulic press, which typically involves hydraulic cylinders and is used for compressive tasks. The presence of a person operating the machine shifts the focus away from the press itself, and the composition centers more on the human activity rather than the machinery. This does not fit the subject description of a 'Thiccc Hydraulic Press' and thus fails the identity test.",
+      "passed": false
+    },
+    {
+      "date": "2026-08-28",
+      "word": "Jumbo, Watermelon",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-28-jumbo-watermelon.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a collection of watermelons with a glove",
+      "critique": "The image shows a collection of watermelons rather than a single 'Jumbo, Watermelon' as specified. The presence of multiple watermelons and a glove in the center distracts from the focus on a singular jumbo watermelon. The composition does not highlight a particularly oversized example, failing the girth test. The subject is not clearly defined, leading to a rejection.",
       "passed": false
     },
     {
@@ -27,29 +71,7 @@
       "subjectPct": 64,
       "verdict": "reject",
       "photoSubject": "a sliced steak with vegetables and sauce on a plate",
-      "critique": "The photo does not depict a whole prime rib roast at full carving weight, but rather a sliced steak with accompanying vegetables and sauce. The subject is not the named object, which disqualifies it. The composition is appealing and well-lit, but it fails the identity test as it does not show the whole roast. The focus is on the sliced steak, making it unsuitable for the intended subject.",
-      "passed": false
-    },
-    {
-      "date": "2026-08-02",
-      "word": "Pumper Truck, Fire Engine",
-      "imageUrl": "https://thiccctionary.com/images/2026-08-02-pumper-truck-fire-engine.jpg",
-      "score": 1,
-      "subjectPct": 64,
-      "verdict": "reject",
-      "photoSubject": "a real fire engine from the front",
-      "critique": "The photo does not show the hindquarters of a pumper truck as described. Instead, it depicts the front of a fire engine. The subject is not centered on the specified part of the truck, failing the identity test. The composition is clear and documentary in style, but it does not match the subject description, leading to a rejection.",
-      "passed": false
-    },
-    {
-      "date": "2026-05-27",
-      "word": "Vault Door, Bank",
-      "imageUrl": "https://thiccctionary.com/images/2026-05-27-vault-door-bank.jpg",
-      "score": 1,
-      "subjectPct": 64,
-      "verdict": "reject",
-      "photoSubject": "a metal door with a padlock, possibly a utility or storage entrance",
-      "critique": "The photo does not depict a bank vault door, which is typically much thicker and more complex, often featuring a circular design with locking mechanisms visible. Instead, it shows a simple metal door with a padlock, likely not part of a bank vault. The image is well-framed and clear, but it fails the identity test as it does not match the subject description. Therefore, it is unsuitable for the entry.",
+      "critique": "The photo does not show a prime rib roast at full carving weight. Instead, it depicts a sliced steak with accompanying vegetables and sauce. The composition is centered and well-lit, but it fails the identity test as it does not match the subject description of a whole prime rib roast. The presence of additional elements like the sauce and vegetables further distracts from the intended subject.",
       "passed": false
     }
   ]
