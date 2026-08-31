@@ -1,0 +1,101 @@
+# Daily run trace 2026-08-31-010845
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33346575142
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-31
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Silo, Grain Storage (query: "grain silo")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo prominently features multiple grain silos with a clear silhouette, emphasizing their girth.
+Saved image to images/2026-08-31-silo-grain-storage.jpg
+[webp] 2026-08-31-silo-grain-storage.jpg: 205KB -> 120KB (41% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a solid dictionary register and a humorous etymology kicker with its 'vertical ambition' line. The example could use a sharper punchline, as it lacks a comedic tag. Overall, it captures the thiccc essence of a grain silo with a touch of rural charm.
+Generated social captions:
+  morning: Silo, Grain Storage. 
+  afternoon: Standing tall since the 19th century. Still hasn't found a hat to fit. 
+  evening: From the archives, Silo, Grain Storage. 
+  reels: Cylindrical sentinel of the cornfields—guarding the golden bounty. 
+[bail] final dup-guard: "Silo, Grain Storage" duplicates catalogued "Silo, Grain Concrete" - subject "Silo, Grain Storage"
+[bail] popped "Silo, Grain Storage" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-31.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-31 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-31.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-31 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-31.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-31 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Earth Mover (query: "bulldozer")
+Found 9 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 7 left.
+Vision picked #4 of 7: this photo shows a large, robust earth mover with a clear silhouette, emphasizing its thiccness.
+Saved image to images/2026-08-31-thiccc-earth-mover.jpg
+[webp] 2026-08-31-thiccc-earth-mover.jpg: 392KB -> 314KB (20% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=example
+  feedback: The entry has a solid dictionary register and ends on a humorous etymology kicker. The example could be more specific, as 'outside the hardware store' is somewhat generic. A more vivid scene would elevate the humor.
+Generated social captions:
+  morning: Thiccc Earth Mover.
+  afternoon: Behold the 797F—400 tons when empty.
+  evening: From the archives, Thiccc Earth Mover.
+  reels: Thiccc Earth Mover.
+Saved entry: Thiccc Earth Mover
+Built entry page: entries/2026-08-31.html
+Rebuilt prev entry page (2026-08-29) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 138 entries + 58 articles.
+Sitemap rebuilt with 138 entries.
+Subject queue updated: 1 item(s) remaining.
+[retry-wrapper] entry for 2026-08-31 landed on attempt 4.
+```
