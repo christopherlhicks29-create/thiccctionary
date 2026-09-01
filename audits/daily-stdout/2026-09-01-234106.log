@@ -1,0 +1,91 @@
+# Daily run trace 2026-09-01-234106
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33571979701
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "bucket wheel excavator")
+Found 27 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 25 left.
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette against the landscape, emphasizing its thiccness.
+Saved image to images/2026-09-01-bagger-293.jpg
+[webp] 2026-09-01-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (24 candidates left).
+Vision picked #5 of 12: This photo shows large, robust machinery with a full silhouette, emphasizing its thiccness.
+[webp] 2026-09-01-bagger-293.jpg: 284KB -> 184KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (23 candidates left).
+Vision picked #5 of 12: it shows a large piece of machinery with a prominent silhouette against a clear background, emphasizing its girth.
+[webp] 2026-09-01-bagger-293.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 13  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a standard construction bulldozer at a sand site. The bulldozer is not the subject described and does not meet the criteria for the Bagger 293. The framing and composition are fine for a documentary style, but the subject is incorrect, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=13 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-01 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-124 Ruslan (query: "Antonov An-124")
+Found 30 candidate photos.
+Vision picked #2 of 12: this photo shows the Antonov An-124 head-on, emphasizing its massive girth and silhouette.
+Saved image to images/2026-09-01-thiccc-antonov-an-124-ruslan.jpg
+[webp] 2026-09-01-thiccc-antonov-an-124-ruslan.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-124 Ruslan" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo shows an IL-76 aircraft, not the Antonov An-124 Ruslan as specified. The IL-76 is a different model and does not meet the subject criteria. The aircraft is well-framed and clearly visible, but since it is not the correct subject, the image cannot be used. The composition is strong with the aircraft centered, but it does not fulfill the identity requirement for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Antonov An-124 Ruslan"
+[bail] popped "Thiccc Antonov An-124 Ruslan" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-01 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Unable to download content from the provided URL before the timeout. Check that the URL is publicly accessible and responds promptly, or upload the file and provide a file_id instead.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1032:14)
+[retry-wrapper] attempt 3 threw: Command failed: node generate-daily.js
+```
