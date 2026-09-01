@@ -1,0 +1,112 @@
+# Daily run trace 2026-09-01-151851
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33524791632
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "Caterpillar D11T")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "Caterpillar D11T". (attempt 2)
+Fallback subject (#2): Thiccc I-Beam, Steel (query: "steel I-beam")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #11 of 12: this photo clearly shows the robust structure of the steel I-beam against a clear sky, emphasizing its thiccness.
+Saved image to images/2026-09-01-thiccc-i-beam-steel.jpg
+[webp] 2026-09-01-thiccc-i-beam-steel.jpg: 112KB -> 48KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc I-Beam, Steel" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo does not show a steel I-beam, but rather a section of a tall concrete structure. The image lacks the necessary elements to identify it as a steel I-beam, which is crucial for the subject. Additionally, the composition focuses on a part of the structure, not allowing for a complete view of any I-beam. The photo does not meet the criteria for silhouette completeness or subject identity, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Thiccc I-Beam, Steel"
+[bail] popped "Thiccc I-Beam, Steel" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-01 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Tuba (query: "tuba")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Tuba"
+[bail] popped "Thiccc Tuba" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-01 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Thiccc Antartican Iceberg".
+Subject queue: pulling "Berm, Earthen Dam" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Giant Pumpkin, Atlantic Giant (query: "giant pumpkin")
+Subject "Giant Pumpkin, Atlantic Giant" returned zero Unsplash results for query "giant pumpkin". (attempt 2)
+Fallback subject (#2): Potato, Russian Giant (query: "giant potato")
+Subject "Potato, Russian Giant" returned zero Unsplash results for query "giant potato". (attempt 3)
+Fallback subject (#3): Giant Gourd, Champion (query: "champion pumpkin")
+Subject "Giant Gourd, Champion" returned zero Unsplash results for query "champion pumpkin". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #7 of 12: This photo shows a full tractor with a prominent tire, emphasizing its girth and silhouette.
+Saved image to images/2026-09-01-tractor-tire.jpg
+[webp] 2026-09-01-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #12 of 12: this photo shows a full tractor with prominent, thick tires emphasizing its girth.
+[webp] 2026-09-01-tractor-tire.jpg: 235KB -> 141KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #8 of 12: the photo shows a full tractor with prominent, thick tires emphasizing girth.
+[webp] 2026-09-01-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 49  isSubject: false
+  critique: The photo shows a vintage farm tractor, not specifically a tractor tire. The entire tractor is visible, but the focus is not on the tire itself, which is the subject of interest. The image is well-composed for showcasing the tractor, but it does not meet the criteria for a 'Tractor Tire' as the subject. Thus, it is unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=49 - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-01 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Submarine, Ballistic Missile" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Submarine, Ballistic Missile" query="submarine surfaced ocean" (source: queue)
+Subject: Submarine, Ballistic Missile (query: "submarine surfaced ocean")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Submarine, Ballistic Missile"
+[bail] popped "Submarine, Ballistic Missile" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-01 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-01.
+```
