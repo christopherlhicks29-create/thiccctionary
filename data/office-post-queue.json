@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788223108243",
+    "created": "2026-09-01T00:38:28.243Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Saturday. Newsagent at 8, same paper, same corner. Bakery at 8:20, same loaf. Home by 9. I have done this since 2009. This morning the bakery was out of the loaf. I stood there for a moment. Got the same loaf from the other shelf. It was not the same.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788213449575",
     "created": "2026-08-31T21:57:29.575Z",
     "byline_id": "spider",
@@ -1391,20 +1401,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-05-17T13:40:58.438Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1778992881665",
-    "created": "2026-05-17T04:41:21.665Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "thiccc",
-    "text": "Parmigiano-Reggiano wheel: 84 lbs, 18 months minimum, legally regulated curvature. The catalogue, properly understood, does not accept food. And yet here we are. I have filed the objection. It will be ignored.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-17T04:41:23.880Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []
