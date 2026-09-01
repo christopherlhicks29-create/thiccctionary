@@ -1,0 +1,109 @@
+# Daily run trace 2026-09-01-104417
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33498753426
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #2 of 12: this photo shows the Antonov An-225 head-on, emphasizing its massive girth and silhouette.
+Saved image to images/2026-09-01-thiccc-antonov-an-225-mriya.jpg
+[webp] 2026-09-01-thiccc-antonov-an-225-mriya.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-225 Mriya" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not show the Antonov An-225 Mriya, but rather an IL-76 cargo plane. The Antonov An-225 is much larger and distinct in design, with six engines and a unique tail structure. The subject is well-framed and centered, but it is not the correct aircraft, leading to a rejection. The image is clear and documentary in style, but it fails the identity test as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-01 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Airbus A380 (query: "Airbus A380")
+Subject "Thiccc Airbus A380" returned zero Unsplash results for query "Airbus A380". (attempt 2)
+Fallback subject (#2): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #5 of 12: This photo shows the full silhouette of the Bagger 293 with a clear view of its massive structure, emphasizing its thiccness.
+Saved image to images/2026-09-01-bagger-293.jpg
+[webp] 2026-09-01-bagger-293.jpg: 241KB -> 158KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+[webp] 2026-09-01-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive scale and girth with a clear view of its silhouette.
+[webp] 2026-09-01-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator, but rather a standard bulldozer on a construction site. The subject is not centered, and the composition includes significant portions of the surrounding area, which distracts from the machinery. The image fails the identity test as it does not depict the named object, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-01 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: dropping "Stone, Megalith Standing" - duplicates catalogued "Atlas Stone, Strongman".
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Thiccc Antartican Iceberg".
+Subject queue: all 4 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Caterpillar D11T (query: "Caterpillar D11T")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "Caterpillar D11T". (attempt 1)
+Fallback subject (#1): Thiccc Airbus A380 (query: "airbus a380")
+Subject "Thiccc Airbus A380" returned zero Unsplash results for query "airbus a380". (attempt 2)
+Fallback subject (#2): Thiccc Airbus Beluga (query: "airbus beluga")
+Subject "Thiccc Airbus Beluga" returned zero Unsplash results for query "airbus beluga". (attempt 3)
+Fallback subject (#3): Thiccc Antonov An-124 Ruslan (query: "Antonov An-124")
+Found 30 candidate photos.
+Vision picked #5 of 12: This photo shows the Antonov An-124 in a full frontal view, emphasizing its massive wingspan and overall girth.
+Saved image to images/2026-09-01-thiccc-antonov-an-124-ruslan.jpg
+[webp] 2026-09-01-thiccc-antonov-an-124-ruslan.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 56; trying another photo for "Thiccc Antonov An-124 Ruslan" (29 candidates left).
+Vision picked #2 of 12: this photo shows the Antonov An-124 head-on, emphasizing its large and wide silhouette.
+[webp] 2026-09-01-thiccc-antonov-an-124-ruslan.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-124 Ruslan" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo shows an Ilyushin IL-76, not the Antonov An-124 Ruslan as specified. The IL-76 is a different aircraft, and thus the image does not meet the subject identity requirement. The aircraft is centered and clearly visible, but since it does not depict the correct subject, the photo is unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Antonov An-124 Ruslan"
+[bail] popped "Thiccc Antonov An-124 Ruslan" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-01.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-01 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-01.
+```
