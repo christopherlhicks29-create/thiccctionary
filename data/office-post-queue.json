@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Saturday. Newsagent at 8, same paper, same corner. Bakery at 8:20, same loaf. Home by 9. I have done this since 2009. This morning the bakery was out of the loaf. I stood there for a moment. Got the same loaf from the other shelf. It was not the same.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-01T00:38:30.320Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788213449575",
