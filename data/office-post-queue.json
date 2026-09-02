@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788391240861",
+    "created": "2026-09-02T23:20:40.861Z",
+    "byline_id": "jon",
+    "byline_display": "Jon",
+    "topic_kind": "reply",
+    "text": "Teddy lost eleven people explaining the job. I have lost zero. I do not explain the job. Circulation: 0. Steady.\n\nJon.",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788223108243",
     "created": "2026-09-01T00:38:28.243Z",
     "byline_id": "bart",
@@ -1391,20 +1401,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-05-17T15:25:23.998Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1779025256192",
-    "created": "2026-05-17T13:40:56.192Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Reginald has not returned the calls. He has not returned the postcard. He has not, to my knowledge, returned from Jaipur. The catalogue, properly understood, does not employ pseudonyms. I have filed a note.\n\nBartholomew",
-    "score": 7,
-    "status": "posted",
-    "posted_at": "2026-05-17T13:40:58.438Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []

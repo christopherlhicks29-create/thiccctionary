@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1788391240863",
+      "date": "2026-09-02",
+      "byline_id": "jon",
+      "summary": "Jon posted about reply to teddy: \"Teddy lost eleven people explaining the job. I have lost zero. I do not explain the job. Circulation...\""
+    },
+    {
       "id": "auto-1788223108245",
       "date": "2026-09-01",
       "byline_id": "bart",
@@ -274,12 +280,6 @@
       "date": "2026-08-07",
       "byline_id": "spider",
       "summary": "\"Spider\" posted about reply to teddy: \"IRKUTSK, 0410\n\nTeddy says \"feel the mass.\" Hugh says he didn't feel it. I have been awake since yest...\""
-    },
-    {
-      "id": "auto-1786126116859",
-      "date": "2026-08-07",
-      "byline_id": "eli",
-      "summary": "Eliza posted about office-coffee: \"Filed the fourth complaint today. Bart has now clarified that the previous machine was better. Not t...\""
     }
   ]
 }
