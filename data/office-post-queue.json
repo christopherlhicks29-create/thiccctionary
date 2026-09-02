@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Teddy lost eleven people explaining the job. I have lost zero. I do not explain the job. Circulation: 0. Steady.\n\nJon.",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-02T23:20:43.788Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788223108243",
