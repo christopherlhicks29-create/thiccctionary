@@ -7,9 +7,29 @@
   ],
   "queue": [
     {
-      "subject": "Refrigerator, Commercial",
-      "query": "commercial walk-in refrigerator",
+      "subject": "Truck, Monster Bigfoot",
+      "query": "monster truck bigfoot show",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Stew, Cast Iron Dutch",
+      "query": "dutch oven stew cast iron",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Steam Locomotive, Big Boy",
+      "query": "big boy locomotive 4014",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Whisk, Industrial Mixer",
+      "query": "industrial stand mixer whisk attachment",
       "category": "Domestic Goods"
+    },
+    {
+      "subject": "Rock, Plymouth",
+      "query": "plymouth rock memorial",
+      "category": "Architecture & Infrastructure"
     }
   ]
 }
