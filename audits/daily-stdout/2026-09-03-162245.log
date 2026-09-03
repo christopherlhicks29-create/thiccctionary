@@ -1,0 +1,65 @@
+# Daily run trace 2026-09-03-162245
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33778068678
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-03
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Silos, Grain Storage (query: "grain silo")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases multiple silos with a prominent girthy silhouette and artistic detail.
+Saved image to images/2026-09-03-silos-grain-storage.jpg
+[webp] 2026-09-03-silos-grain-storage.jpg: 205KB -> 120KB (41% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The example sentence lands well with a specific scene and a punchline involving pigeons. The etymology has a clever kicker comparing silos to Instagram influencers. However, the definitions could use more humor and specificity, as they lean towards generic descriptions.
+Generated social captions:
+  morning: Silos, Grain Storage. 
+  afternoon: The grain silo—over two million pounds when full. 
+  evening: From the archives, Silos, Grain Storage. 
+  reels: Circular logic, 360 degrees of containment. 
+[bail] final dup-guard: "Silos, Grain Storage" duplicates catalogued "Silo, Grain Concrete" - subject "Silos, Grain Storage"
+[bail] popped "Silos, Grain Storage" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-03 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Titan Saturn V (query: "Saturn V")
+Found 7 candidate photos.
+Vision rejected all 7 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Photography-bias retry returned zero Unsplash results for "Saturn V photograph".
+No results for retry query "Saturn V photograph".
+[bail] unsplash returned zero results on both queries - subject "Thiccc Titan Saturn V"
+[bail] popped "Thiccc Titan Saturn V" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-03 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-03.
+```
