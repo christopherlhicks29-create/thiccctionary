@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788477491698",
+    "created": "2026-09-03T23:18:11.698Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "thiccc",
+    "text": "Farmer's market, corner of 4th. Man with a watermelon so large he'd built a kind of relationship with it. Both hands, leaning back, negotiating. Three people offered help. He declined all three. I counted.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788391240861",
     "created": "2026-09-02T23:20:40.861Z",
     "byline_id": "jon",
@@ -1394,19 +1404,5 @@
     "posted_at": "2026-05-17T15:48:29.792Z",
     "errors": [],
     "handcrafted": true
-  },
-  {
-    "id": "office-1779031521972",
-    "created": "2026-05-17T15:25:21.972Z",
-    "byline_id": "teddy",
-    "byline_display": "Theodore",
-    "topic_kind": "reply",
-    "text": "Bart's objection is noted. Also noted: \"legally regulated curvature\" is exactly the girth criterion, page 4, section 2. The catalogue, properly understood, has been accidentally correct.\n\nTheodore",
-    "score": 7,
-    "status": "posted",
-    "posted_at": "2026-05-17T15:25:23.998Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
   }
 ]
