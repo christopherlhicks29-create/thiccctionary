@@ -1,0 +1,65 @@
+# Daily run trace 2026-09-03-005031
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33701117130
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-03
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Titanic, RMS (query: "RMS Titanic")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Photography-bias retry returned zero Unsplash results for "RMS Titanic photograph".
+No results for retry query "RMS Titanic photograph".
+[bail] unsplash returned zero results on both queries - subject "Titanic, RMS"
+[bail] popped "Titanic, RMS" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-03 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-22 (query: "Antonov An-22")
+Subject "Thiccc Antonov An-22" returned zero Unsplash results for query "Antonov An-22". (attempt 2)
+Fallback subject (#2): Thiccc Antonov An-124 Ruslan (query: "Antonov An-124")
+Found 30 candidate photos.
+Vision picked #2 of 12: this photo shows the full silhouette of the Antonov An-124, emphasizing its large and wide body.
+Saved image to images/2026-09-03-thiccc-antonov-an-124-ruslan.jpg
+[webp] 2026-09-03-thiccc-antonov-an-124-ruslan.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Thiccc Antonov An-124 Ruslan" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show the Antonov An-124 Ruslan, but rather an IL-76 aircraft. The subject is incorrectly identified, which is a critical error. The IL-76 is centered and clearly visible, but it is not the subject specified. The image is well-composed and free from clutter, but it fails the identity test, making it unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Thiccc Antonov An-124 Ruslan"
+[bail] popped "Thiccc Antonov An-124 Ruslan" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-03 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-03.
+```
