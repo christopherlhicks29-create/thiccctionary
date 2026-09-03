@@ -1,0 +1,63 @@
+# Daily run trace 2026-09-03-102010
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33743604771
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-03
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-124 Ruslan (query: "Antonov An-124")
+Found 30 candidate photos.
+Vision picked #2 of 12: this photo shows the full silhouette of the Antonov An-124, emphasizing its large and robust shape.
+Saved image to images/2026-09-03-thiccc-antonov-an-124-ruslan.jpg
+[webp] 2026-09-03-thiccc-antonov-an-124-ruslan.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 30; trying another photo for "Thiccc Antonov An-124 Ruslan" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 30  isSubject: false
+  critique: The photo shows an Ilyushin IL-76, not the Antonov An-124 Ruslan, which is the named subject. The IL-76 is a different model and does not meet the identity requirement. While the composition is centered and clear, the subject is incorrect, leading to an automatic rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=30 - subject "Thiccc Antonov An-124 Ruslan"
+[bail] popped "Thiccc Antonov An-124 Ruslan" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-03 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Boeing 747, Jumbo (query: "Boeing 747")
+Found 8 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 7 left.
+Vision rejected all 7 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 1 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Boeing 747, Jumbo"
+[bail] popped "Boeing 747, Jumbo" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-03 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-03.
+```
