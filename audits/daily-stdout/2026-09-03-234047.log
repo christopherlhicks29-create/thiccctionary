@@ -1,0 +1,78 @@
+# Daily run trace 2026-09-03-234047
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33818499081
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-03
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Gundam (query: "Gundam statue")
+Found 13 candidate photos.
+Vision picked #2 of 12: this photo shows a large and imposing Gundam silhouette, emphasizing its thiccness.
+Saved image to images/2026-09-03-thiccc-gundam.jpg
+[webp] 2026-09-03-thiccc-gundam.jpg: 330KB -> 237KB (28% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Gundam" (12 candidates left).
+Vision picked #6 of 12: This photo shows a full silhouette of a Gundam, emphasizing its overall girth and imposing presence.
+[webp] 2026-09-03-thiccc-gundam.jpg: 154KB -> 77KB (50% smaller)
+Design critique: score=3/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 3 / subjectPct 49; trying another photo for "Thiccc Gundam" (11 candidates left).
+Vision rejected all 11 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 3  verdict: reject  subjectPct: 49  isSubject: false
+  critique: The photo shows a Gundam model figure, which is a depiction rather than an actual Gundam. The composition is strong, with the model centered and well-lit, but it does not meet the criteria for a real, thiccc object as required by the subject. The subject is a model, not an actual Gundam, which disqualifies it from being shipped as a dictionary entry for 'Thiccc Gundam.'
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=3 subjectPct=49 - subject "Thiccc Gundam"
+[bail] popped "Thiccc Gundam" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-03 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Cargo Ship (query: "cargo ship")
+Found 16 candidate photos.
+Vision picked #1 of 12: This photo showcases the full silhouette of a large cargo ship, emphasizing its girth against a vibrant sky.
+Saved image to images/2026-09-03-thiccc-cargo-ship.jpg
+[webp] 2026-09-03-thiccc-cargo-ship.jpg: 203KB -> 127KB (38% smaller)
+Design critique: score=9/10, verdict=ship
+  ⚠️ Banned terms found in entry "Thiccc Cargo Ship":
+     [definitions] "boasting" (banned-word)
+Banned-words attempt 1/3 rejected ("boasting" in definitions). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=7/10, verdict=ship, weakest=etymology
+  feedback: The example sentence paints a vivid scene in Hamburg harbor and ends on a humorous note with the water displacement comparison. The etymology, while informative, lacks a strong comedic kicker. A deadpan twist or absurd detail would elevate it.
+Generated social captions:
+  morning: Thiccc Cargo Ship—246 feet wide.
+  afternoon: Thiccc Cargo Ship: 20,000 containers in one sitting.
+  evening: From the archives, Thiccc Cargo Ship.
+  reels: Thiccc Cargo Ship.
+[bail] final dup-guard: "Thiccc Cargo Ship" duplicates catalogued "Ship, Container Maersk" - subject "Thiccc Cargo Ship"
+[bail] popped "Thiccc Cargo Ship" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-03 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-03.
+```
