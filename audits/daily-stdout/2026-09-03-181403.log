@@ -1,0 +1,86 @@
+# Daily run trace 2026-09-03-181403
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33789082300
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-03
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Thiccc Titan II (query: "titan II missile")
+Subject "Thiccc Titan II" returned zero Unsplash results for query "titan II missile". (attempt 4)
+Last-resort: picking from safe pool → "Tractor Tire".
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #9 of 12: This photo shows a full tractor with prominent, thick tires, emphasizing its overall girth.
+Saved image to images/2026-09-03-tractor-tire.jpg
+[webp] 2026-09-03-tractor-tire.jpg: 491KB -> 435KB (11% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Tractor Tire" (27 candidates left).
+Vision picked #7 of 12: the photo shows a full tractor with prominent, thick tires emphasizing girth.
+[webp] 2026-09-03-tractor-tire.jpg: 287KB -> 194KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 42; trying another photo for "Tractor Tire" (26 candidates left).
+Vision picked #12 of 12: this photo shows a full tractor with prominent, thick tires emphasizing its girth.
+[webp] 2026-09-03-tractor-tire.jpg: 235KB -> 141KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 32  isSubject: false
+  critique: The photo primarily depicts a red Massey Ferguson tractor, not specifically a tractor tire. The tire is part of the tractor but not the main focus. The entire tractor is visible, and while the image is well-composed and clear, it does not meet the criteria for a photo specifically of a 'Tractor Tire.' The subject is not centered on the tire itself, which is necessary for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=32 - subject "Tractor Tire"
+[bail] popped "Tractor Tire" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-03 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-124 Ruslan (query: "Antonov An-124")
+Found 30 candidate photos.
+Vision picked #3 of 12: This photo shows the Antonov An-124 from a low angle, emphasizing its massive wingspan and overall girth.
+Saved image to images/2026-09-03-thiccc-antonov-an-124-ruslan.jpg
+[webp] 2026-09-03-thiccc-antonov-an-124-ruslan.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Antonov An-124 Ruslan" (29 candidates left).
+Vision picked #2 of 12: this photo shows the Antonov An-124 head-on, emphasizing its massive girth and silhouette.
+[webp] 2026-09-03-thiccc-antonov-an-124-ruslan.jpg: 136KB -> 70KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 36; trying another photo for "Thiccc Antonov An-124 Ruslan" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo shows an Ilyushin IL-76, not the Antonov An-124 Ruslan. The IL-76 is a different model of cargo aircraft, which disqualifies the photo based on the identity test. The image is well-composed and centered, but it does not meet the subject criteria for the Thiccc Antonov An-124 Ruslan. Therefore, it cannot be used for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Antonov An-124 Ruslan"
+[bail] popped "Thiccc Antonov An-124 Ruslan" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-03.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-03 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-03.
+```
