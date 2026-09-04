@@ -1,0 +1,77 @@
+# Daily run trace 2026-09-04-161825
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33894215174
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-04
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Stew, Cast Iron Dutch" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D9T (query: "caterpillar d9t")
+Subject "Thiccc Caterpillar D9T" returned zero Unsplash results for query "caterpillar d9t". (attempt 2)
+Fallback subject (#2): Giant Carousel, Steampunk (query: "steampunk carousel")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo showcases the full silhouette of the giant carousel with vibrant details and lighting, emphasizing its thiccness.
+Saved image to images/2026-09-04-giant-carousel-steampunk.jpg
+[webp] 2026-09-04-giant-carousel-steampunk.jpg: 297KB -> 198KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Giant Carousel, Steampunk" (29 candidates left).
+Vision picked #3 of 12: This photo shows a full view of a vibrant carousel with a clear silhouette, emphasizing its grand size and steampunk elements.
+[webp] 2026-09-04-giant-carousel-steampunk.jpg: 381KB -> 290KB (24% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Giant Carousel, Steampunk" (28 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the giant carousel with vibrant colors, emphasizing its thicc structure.
+[webp] 2026-09-04-giant-carousel-steampunk.jpg: 454KB -> 375KB (18% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 72  isSubject: false
+  critique: The photo depicts a vintage carousel, not a 'Giant Carousel, Steampunk' as specified. The carousel is well-framed and the image is clear, but it does not match the steampunk theme required by the subject. The presence of a bicycle adds an element of clutter, detracting from the focus on the carousel itself. The image lacks the distinctive steampunk aesthetic elements necessary for the subject, such as gears, brass, and steam-powered features.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=72 - subject "Giant Carousel, Steampunk"
+[bail] popped "Giant Carousel, Steampunk" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-04.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-04 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision picked #8 of 12: this photo showcases the Antonov An-225's massive silhouette and girth against a clear background.
+Saved image to images/2026-09-04-thiccc-antonov-an-225-mriya.jpg
+[webp] 2026-09-04-thiccc-antonov-an-225-mriya.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 42; trying another photo for "Thiccc Antonov An-225 Mriya" (29 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 42  isSubject: false
+  critique: The photo does not show the Antonov An-225 Mriya, which is a specific type of cargo aircraft. Instead, it depicts a large aircraft that appears to be a ground effect vehicle, possibly the Lun-class ekranoplan. The subject is not the Antonov An-225, failing the identity test. The aircraft is well-centered and the image is clear, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=42 - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-04.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-04 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-04.
+```
