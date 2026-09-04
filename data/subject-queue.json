@@ -3,33 +3,38 @@
   "_authoring_notes": [
     "VERIFY Unsplash has results for `query` before queueing.",
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
-    "Wave 338 (2026-08-09): refilled after the queue drained to 1 item and today's cron burned 4 attempts / 5 subjects without landing an entry (2 zero-Unsplash-result subjects, 3 low-subjectPct rejects on wide/cluttered/pile shots). Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
+    "Wave 346 (2026-09-04): full refill after the prior 5-item queue died completely (3 dropped as catalog duplicates, 2 zero-Unsplash-result) and burned 2 straight cron days (09-03, 09-04) without landing an entry. Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
   ],
   "queue": [
     {
-      "subject": "Truck, Monster Bigfoot",
-      "query": "monster truck bigfoot show",
+      "subject": "Walrus, Pacific",
+      "query": "walrus",
+      "category": "Natural Specimens"
+    },
+    {
+      "subject": "Aircraft Carrier, Naval",
+      "query": "aircraft carrier",
       "category": "Vehicles & Transport"
     },
     {
-      "subject": "Stew, Cast Iron Dutch",
-      "query": "dutch oven stew cast iron",
-      "category": "Foods of Substance"
+      "subject": "Lighthouse, Coastal",
+      "query": "lighthouse coast",
+      "category": "Architecture & Infrastructure"
     },
     {
-      "subject": "Steam Locomotive, Big Boy",
-      "query": "big boy locomotive 4014",
-      "category": "Vehicles & Transport"
-    },
-    {
-      "subject": "Whisk, Industrial Mixer",
-      "query": "industrial stand mixer whisk attachment",
+      "subject": "Grandfather Clock, Antique",
+      "query": "grandfather clock",
       "category": "Domestic Goods"
     },
     {
-      "subject": "Rock, Plymouth",
-      "query": "plymouth rock memorial",
-      "category": "Architecture & Infrastructure"
+      "subject": "Pretzel, Bavarian Soft",
+      "query": "bavarian soft pretzel",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Steamer Trunk, Vintage",
+      "query": "vintage steamer trunk",
+      "category": "Domestic Goods"
     }
   ]
 }
