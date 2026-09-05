@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-05",
+    "word": "Aircraft Carrier, Naval",
+    "pronunciation": "air-kraft KAIR-ee-er, NAY-vul",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A floating fortress of formidable mass and breadth, designed to deploy and recover aircraft at sea; esp. one observed astern, in raking light, its vast expanse daring the horizon to match its presence.",
+      "<em>colloq.</em> The ocean's answer to a landlocked stadium, but with more firepower and less subtlety."
+    ],
+    "example": "The USS Dwight D. Eisenhower cruised into Halifax Harbour, a thiccc naval aircraft carrier that redefined the term 'port of call' with its imposing tonnage.",
+    "etymology": "From aircraft (1908, from air + craft) + carrier (late 14c., 'one who carries or conveys'), the naval variant attesting to a superlative form of buoyant audacity.",
+    "image": "images/2026-09-05-aircraft-carrier-naval.jpg",
+    "caption": "Plate CXLII., An aerial view of a naval aircraft carrier asserting dominion over both sea and sky.",
+    "tags": [
+      "maritime",
+      "vehicle",
+      "architecture"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "MD Amadul Haque",
+    "photographerUrl": "https://unsplash.com/@amadul",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-aircraft-carrier-floating-on-top-of-a-body-of-water-lZI_OluwQxM",
+    "socialCaptions": {
+      "morning": "Aircraft Carrier, Naval. One thousand feet of floating diplomacy.\nThe ocean remains unimpressed—perhaps feigning ignorance.",
+      "afternoon": "USS Gerald R. Ford—112,000 tons of maritime assurance.\nDoes it carry planes, or do planes carry it?\nRate the thicccness, 1 to 10.\nAircraft Carrier, Naval.",
+      "evening": "From the archives, Aircraft Carrier, Naval.\n1942: USS Enterprise, the most decorated ship of WWII.\nA testament to thicccness that even history couldn't sink.",
+      "reels": "USS Nimitz, a city at sea—5,000 crew strong.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-04",
     "word": "Windmill, Dutch",
     "pronunciation": "/WIND-mil, duhch/",
