@@ -1,0 +1,65 @@
+# Daily run trace 2026-09-05-015231
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/33937377562
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-05
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Walrus, Pacific" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Walrus, Pacific" query="walrus" (source: queue)
+Subject: Walrus, Pacific (query: "walrus")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #10 of 12: This photo showcases multiple walruses in a relaxed pose, emphasizing their overall girth and bulk.
+Saved image to images/2026-09-05-walrus-pacific.jpg
+[webp] 2026-09-05-walrus-pacific.jpg: 281KB -> 195KB (31% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Walrus, Pacific" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a Pacific walrus, but rather a sea lion. The subject is well-framed and clear, but it fails the identity test as it does not show the named object. The image is focused on the sea lion, which is not the correct subject for this entry. Therefore, it cannot be used for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Walrus, Pacific"
+[bail] popped "Walrus, Pacific" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-05.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-05 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Aircraft Carrier, Naval" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Aircraft Carrier, Naval" query="aircraft carrier" (source: queue)
+Subject: Aircraft Carrier, Naval (query: "aircraft carrier")
+Found 1 candidate photos.
+Vision picked #1 of 1: The photo shows the full silhouette of the aircraft carrier, emphasizing its massive girth and imposing presence on the water.
+Saved image to images/2026-09-05-aircraft-carrier-naval.jpg
+[webp] 2026-09-05-aircraft-carrier-naval.jpg: 149KB -> 75KB (49% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a strong dictionary register and the etymology ends on a humorous note with 'buoyant audacity.' However, the example sentence lacks a punchline tag, ending on 'imposing tonnage' which feels flat. A sharper comedic beat would elevate the humor.
+Generated social captions:
+  morning: Aircraft Carrier, Naval. One thousand feet of floating diplomacy.
+  afternoon: USS Gerald R. Ford—112,000 tons of maritime assurance.
+  evening: From the archives, Aircraft Carrier, Naval.
+  reels: USS Nimitz, a city at sea—5,000 crew strong.
+Saved entry: Aircraft Carrier, Naval
+Built entry page: entries/2026-09-05.html
+Rebuilt prev entry page (2026-09-04) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 142 entries + 60 articles.
+Sitemap rebuilt with 142 entries.
+Subject queue updated: 4 item(s) remaining.
+[retry-wrapper] entry for 2026-09-05 landed on attempt 2.
+```
