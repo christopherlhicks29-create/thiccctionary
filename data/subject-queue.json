@@ -7,16 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Walrus, Pacific",
-      "query": "walrus",
-      "category": "Natural Specimens"
-    },
-    {
-      "subject": "Aircraft Carrier, Naval",
-      "query": "aircraft carrier",
-      "category": "Vehicles & Transport"
-    },
-    {
       "subject": "Lighthouse, Coastal",
       "query": "lighthouse coast",
       "category": "Architecture & Infrastructure"
