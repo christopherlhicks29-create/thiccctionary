@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788648990158",
+    "created": "2026-09-05T22:56:30.158Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "personal",
+    "text": "Defended the job at dinner again. Someone said \"so it's a joke website.\" I said no, actually. Talked for eleven minutes. Nobody touched their food. I think I made it worse.\n\nTheodore",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1788477491698",
     "created": "2026-09-03T23:18:11.698Z",
     "byline_id": "eli",
@@ -1391,21 +1401,6 @@
     "success_count": 2,
     "failure_count": 0,
     "posted_at": "2026-05-17T15:48:31.268Z",
-    "errors": [],
-    "handcrafted": true
-  },
-  {
-    "id": "office-handcraft-1779032909792-eli",
-    "created": "2026-05-17T15:48:29.792Z",
-    "byline_id": "eli",
-    "byline_display": "Eli",
-    "topic_kind": "office",
-    "text": "Eleven fire hydrants on the walk to work this morning. Six blocks. One outside the deli has been repainted three times since January. Currently a confident cream.\n\nEliza",
-    "score": 9,
-    "status": "posted",
-    "success_count": 2,
-    "failure_count": 0,
-    "posted_at": "2026-05-17T15:48:29.792Z",
     "errors": [],
     "handcrafted": true
   }

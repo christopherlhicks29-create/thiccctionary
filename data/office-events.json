@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1788648990159",
+      "date": "2026-09-05",
+      "byline_id": "teddy",
+      "summary": "Theodore posted about personal life: a dinner party where you defended your job again: \"Defended the job at dinner again. Someone said \"so it's a joke website.\" I said no, actually. Talked...\""
+    },
+    {
       "id": "auto-1788477491700",
       "date": "2026-09-03",
       "byline_id": "eli",
@@ -274,12 +280,6 @@
       "date": "2026-08-09",
       "byline_id": "eli",
       "summary": "Eliza posted about eli-window: \"Notebook hit 312 today. Started because the one on Mercer has a dent nobody reported. Now I cross-re...\""
-    },
-    {
-      "id": "auto-1786211666854",
-      "date": "2026-08-08",
-      "byline_id": "bart",
-      "summary": "Bartholomew posted about personal life: the restaurant where you have ordered the same dish for year: \"Cassaro's replaced the veal with a \"seasonal ragu.\" I asked how long it had been seasonal. The waite...\""
     }
   ]
 }
