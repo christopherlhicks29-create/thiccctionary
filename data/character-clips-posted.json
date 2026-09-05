@@ -183,7 +183,21 @@
           "id": "6a9333e9ba5ed8519805026d"
         }
       ]
+    },
+    {
+      "path": "videos/characters/constance-desk-authority-a.mp4",
+      "at": "2026-09-05T18:37:34.960Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6a9c616d0ca93dff23a07af7"
+        },
+        {
+          "service": "instagram",
+          "id": "6a9c616e85ccb3a22c08206e"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-08-29T19:32:57.526Z"
+  "lastPostedAt": "2026-09-05T18:37:34.960Z"
 }
