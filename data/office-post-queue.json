@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Defended the job at dinner again. Someone said \"so it's a joke website.\" I said no, actually. Talked for eleven minutes. Nobody touched their food. I think I made it worse.\n\nTheodore",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-05T22:56:32.561Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788477491698",
