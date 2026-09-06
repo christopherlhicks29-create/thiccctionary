@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-06",
+    "word": "Lighthouse, Coastal",
+    "pronunciation": "/LITE-hous, KO-stal/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A maritime beacon of formidable girth, often perched on rugged cliffs to project its resplendent beam across the tempestuous seas.",
+      "<em>colloq.</em> The towering sentinel of shorelines, steadfast and unapologetically rooted, ensuring ships are kept in their lane."
+    ],
+    "example": "He marveled at the thiccc coastal lighthouse, rising from the rocks like a maritime monument. Seagulls hushed in reverence.",
+    "etymology": "From Middle English 'lighthous', a compound of 'light' (from Old English 'leoht') + 'hous' (from Old English 'hus'). Originally a signal fire on a hilltop, now the patron saint of foggy nights.",
+    "image": "images/2026-09-06-lighthouse-coastal.jpg",
+    "caption": "Plate CXLIII., A robust example of coastal vigilance.",
+    "tags": [
+      "maritime",
+      "architecture",
+      "landscape"
+    ],
+    "category": "Architecture & Infrastructure",
+    "bookReady": null,
+    "humorScore": 5,
+    "photoScore": 9,
+    "photographer": "Joseph Sintum",
+    "photographerUrl": "https://unsplash.com/@josephsintum",
+    "unsplashUrl": "https://unsplash.com/photos/a-lighthouse-on-a-rocky-hill-lRwEprnochk",
+    "socialCaptions": {
+      "morning": "Lighthouse, Coastal. Cape Hatteras Lighthouse—210 feet of undeniable presence. An architectural whisperer, calling ships home since 1803.",
+      "afternoon": "Lighthouse, Coastal. The Eddystone Lighthouse faced 80-foot waves with stoic indifference. Compare: thicccer than a fully-loaded container ship?\nLighthouse, Coastal.",
+      "evening": "From the archives, Lighthouse, Coastal.\nSmeaton's Tower—72 feet tall, surviving 60 years of Atlantic tantrums. A beacon in granite armor.",
+      "reels": "Lighthouse, Coastal. Cordouan Lighthouse—standing 223 years, a stone sentinel in the Gironde estuary.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-05",
     "word": "Aircraft Carrier, Naval",
     "pronunciation": "air-kraft KAIR-ee-er, NAY-vul",
