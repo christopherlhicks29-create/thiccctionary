@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788722452446",
+    "created": "2026-09-06T19:20:52.446Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "thiccc",
+    "text": "Sat with the anchor entry for twenty minutes this morning. Kept thinking about Hugh's car in the lot. Something about a thing that holds position without explanation. Anyway. It's raining.\n\nEliza",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1788648990158",
     "created": "2026-09-05T22:56:30.158Z",
     "byline_id": "teddy",
@@ -1390,21 +1400,6 @@
     "success_count": 2,
     "failure_count": 0,
     "posted_at": "2026-05-17T15:48:32.640Z",
-    "errors": [],
-    "handcrafted": true
-  },
-  {
-    "id": "office-handcraft-1779032911268-teddy",
-    "created": "2026-05-17T15:48:31.268Z",
-    "byline_id": "teddy",
-    "byline_display": "Teddy",
-    "topic_kind": "office",
-    "text": "Re: the ongoing question of whether the Saturn V counts. It does. Five F-1 engines, 7.5 million pounds of thrust, 363 feet of vehicle. Whatever the objection in 1969 was, the Saturn V outlived it.\n\nTheodore",
-    "score": 9,
-    "status": "posted",
-    "success_count": 2,
-    "failure_count": 0,
-    "posted_at": "2026-05-17T15:48:31.268Z",
     "errors": [],
     "handcrafted": true
   }
