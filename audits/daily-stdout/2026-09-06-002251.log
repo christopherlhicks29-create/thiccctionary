@@ -1,0 +1,44 @@
+# Daily run trace 2026-09-06-002251
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34001061404
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-06
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 4
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lighthouse, Coastal" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lighthouse, Coastal" query="lighthouse coast" (source: queue)
+Subject: Lighthouse, Coastal (query: "lighthouse coast")
+Found 30 candidate photos.
+Vision picked #1 of 12: This lighthouse stands prominently on a cliff, showcasing its full silhouette against the coastal backdrop.
+Saved image to images/2026-09-06-lighthouse-coastal.jpg
+[webp] 2026-09-06-lighthouse-coastal.jpg: 199KB -> 120KB (39% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=definitions
+  feedback: The entry relies on anti-pattern phrases like 'imposing solidity' and 'steadfast presence,' which dilute the humor. The example sentence lacks a punchline tag, and the etymology misses a kicker. Adding a specific scene or a deadpan etymology kicker could enhance the comedic impact.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=5/10, verdict=regenerate
+Generated social captions:
+  morning: Lighthouse, Coastal. Cape Hatteras Lighthouse—210 feet of undeniable presence. An architectural whisperer, calling ships home since 1803.
+  afternoon: Lighthouse, Coastal. The Eddystone Lighthouse faced 80-foot waves with stoic indifference. Compare: thicccer than a fully-loaded container ship?
+  evening: From the archives, Lighthouse, Coastal.
+  reels: Lighthouse, Coastal. Cordouan Lighthouse—standing 223 years, a stone sentinel in the Gironde estuary.
+Saved entry: Lighthouse, Coastal
+Built entry page: entries/2026-09-06.html
+Rebuilt prev entry page (2026-09-05) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 143 entries + 60 articles.
+Sitemap rebuilt with 143 entries.
+Subject queue updated: 3 item(s) remaining.
+[retry-wrapper] entry for 2026-09-06 landed on attempt 1.
+```
