@@ -246,7 +246,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-14-brisket-smoker",
+      "at": "2026-09-06T18:45:39.347Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6a9db4d22066ff47cc42a578"
+        },
+        {
+          "service": "facebook",
+          "id": "6a9db4d25c2ba4d1541ab77e"
+        },
+        {
+          "service": "instagram",
+          "id": "6a9db4d36acbdfc9eda68537"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-08-30T19:35:08.663Z"
+  "lastPostedAt": "2026-09-06T18:45:39.347Z"
 }
