@@ -1,0 +1,93 @@
+# Daily run trace 2026-09-07-003004
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34069899468
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-07
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Grandfather Clock, Antique" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Grandfather Clock, Antique" query="grandfather clock" (source: queue)
+Subject: Grandfather Clock, Antique (query: "grandfather clock")
+Found 30 candidate photos.
+Vision picked #5 of 12: This photo showcases a grand and ornate grandfather clock with a prominent silhouette and decorative features.
+Saved image to images/2026-09-07-grandfather-clock-antique.jpg
+[webp] 2026-09-07-grandfather-clock-antique.jpg: 231KB -> 132KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Grandfather Clock, Antique" (29 candidates left).
+Vision picked #6 of 12: This photo shows a grand antique clock with a prominent silhouette and ornate details, emphasizing its girth.
+[webp] 2026-09-07-grandfather-clock-antique.jpg: 296KB -> 199KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 40; trying another photo for "Grandfather Clock, Antique" (28 candidates left).
+Vision picked #6 of 12: This photo showcases a grand antique clock with a prominent silhouette and ornate design, emphasizing its thiccness.
+[webp] 2026-09-07-grandfather-clock-antique.jpg: 66KB -> 25KB (63% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo does not show a full grandfather clock, but rather a decorative clock face with a statue and a flowing effect. The image lacks the silhouette completeness required to identify it as a grandfather clock, as it only shows a portion of the clock. The artistic blur effect further obscures the subject, making it unsuitable for a documentary or dictionary-style entry. The subject is not centered, and the clock face is not prominent enough to meet the criteria for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Grandfather Clock, Antique"
+[bail] popped "Grandfather Clock, Antique" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-07.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-07 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Pretzel, Bavarian Soft" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pretzel, Bavarian Soft" query="bavarian soft pretzel" (source: queue)
+Subject: Pretzel, Bavarian Soft (query: "bavarian soft pretzel")
+Found 3 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 2 left.
+Vision picked #1 of 2: The Bavarian pretzels are prominently displayed and showcase their girthy shape against the background.
+Saved image to images/2026-09-07-pretzel-bavarian-soft.jpg
+[webp] 2026-09-07-pretzel-bavarian-soft.jpg: 306KB -> 204KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 9; trying another photo for "Pretzel, Bavarian Soft" (1 candidates left).
+Vision picked #1 of 1: The photo showcases multiple Bavarian soft pretzels, highlighting their round, thick shape in a visually appealing way.
+[webp] 2026-09-07-pretzel-bavarian-soft.jpg: 132KB -> 53KB (59% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show a Bavarian soft pretzel, but rather a basket of seeded bread rolls. The subject is not correctly identified, which disqualifies the image for the intended entry. The rolls are well-framed and the image is clear, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Pretzel, Bavarian Soft"
+[bail] popped "Pretzel, Bavarian Soft" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-07.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-07 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Steamer Trunk, Vintage" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Steamer Trunk, Vintage" query="vintage steamer trunk" (source: queue)
+Subject: Steamer Trunk, Vintage (query: "vintage steamer trunk")
+Found 8 candidate photos.
+Vision picked #1 of 8: this photo shows a stack of vintage steamer trunks, emphasizing their overall girth and silhouette.
+Saved image to images/2026-09-07-steamer-trunk-vintage.jpg
+[webp] 2026-09-07-steamer-trunk-vintage.jpg: 203KB -> 101KB (50% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=etymology
+  feedback: The example sentence is specific and amusing, with a nice touch of 'ancestral authority.' The etymology could use a stronger kicker; the irony is noted but not particularly punchy. Overall, it lands well with a solid comedic tone.
+Generated social captions:
+  morning: Steamer Trunk, Vintage.
+  afternoon: Contains 30 gallons of potential secrets.
+  evening: From the archives, Steamer Trunk, Vintage.
+  reels: Steamer Trunk, Vintage.
+Saved entry: Steamer Trunk, Vintage
+Built entry page: entries/2026-09-07.html
+Rebuilt prev entry page (2026-09-06) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 144 entries + 60 articles.
+Sitemap rebuilt with 144 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-09-07 landed on attempt 3.
+```
