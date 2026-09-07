@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788813651547",
+    "created": "2026-09-07T20:40:51.547Z",
+    "byline_id": "spider",
+    "byline_display": "\"Spider\"",
+    "topic_kind": "reply",
+    "text": "SINGAPORE, 0310\n\nTeddy lost thirteen people explaining the job. I have never explained the job. Zero losses. Perfect record. The trick is to be somewhere unreachable when the question comes up.\n\n\"Spider",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788722452446",
     "created": "2026-09-06T19:20:52.446Z",
     "byline_id": "eli",
@@ -1389,21 +1399,6 @@
     "success_count": 2,
     "failure_count": 0,
     "posted_at": "2026-05-17T15:48:34.064Z",
-    "errors": [],
-    "handcrafted": true
-  },
-  {
-    "id": "office-handcraft-1779032912640-bart",
-    "created": "2026-05-17T15:48:32.640Z",
-    "byline_id": "bart",
-    "byline_display": "Bart",
-    "topic_kind": "office",
-    "text": "Today's formal objection: inflatable rafts. They are not thiccc. They are temporarily thiccc, which is a separate category. The catalogue, properly understood, distinguishes.\n\nBartholomew",
-    "score": 9,
-    "status": "posted",
-    "success_count": 2,
-    "failure_count": 0,
-    "posted_at": "2026-05-17T15:48:32.640Z",
     "errors": [],
     "handcrafted": true
   }
