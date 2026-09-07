@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "SINGAPORE, 0310\n\nTeddy lost thirteen people explaining the job. I have never explained the job. Zero losses. Perfect record. The trick is to be somewhere unreachable when the question comes up.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-07T20:40:54.867Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788722452446",
