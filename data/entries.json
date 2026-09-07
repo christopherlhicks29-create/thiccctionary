@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-07",
+    "word": "Steamer Trunk, Vintage",
+    "pronunciation": "/STEEM-er TRUNK, VIN-tij/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A sturdy, rectangular container from the golden age of travel, characterized by a reinforced frame and expansive dimensions, often accompanied by brass fittings and leather straps.",
+      "<em>colloq.</em> Furniture with delusions of grandeur, aspiring to occupy more space than any modern luggage claim allows."
+    ],
+    "example": "He discovered a thiccc vintage steamer trunk at the railway station, displacing the more modern baggage with ancestral authority.",
+    "etymology": "From the Old English 'trunc,' meaning 'tree trunk,' reflecting the original robust construction. Ironically, its role in modern transport is mostly decorative.",
+    "image": "images/2026-09-07-steamer-trunk-vintage.jpg",
+    "caption": "Plate CXLIV., Vintage steamer trunks awaiting their next grand adventure.",
+    "tags": [
+      "maritime",
+      "domestic",
+      "girth"
+    ],
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Ray Harrington",
+    "photographerUrl": "https://unsplash.com/@raymondo600",
+    "unsplashUrl": "https://unsplash.com/photos/a-stack-of-old-suitcases-sitting-in-front-of-a-building-5faQifmZEW8",
+    "socialCaptions": {
+      "morning": "Steamer Trunk, Vintage.\n44 inches of reinforced nostalgia.\nLeather straps—because zippers are for amateurs.",
+      "afternoon": "Contains 30 gallons of potential secrets.\nOnce a transatlantic companion, now a coffee table.\nThicccer: this, or a modern carry-on? We have our opinions.\nSteamer Trunk, Vintage.",
+      "evening": "From the archives, Steamer Trunk, Vintage.\nBorn in the 1890s. Outlived the Titanic.\nCurrently holds an extensive collection of dust.",
+      "reels": "Steamer Trunk, Vintage.\n14 brass fittings, zero complaints.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-06",
     "word": "Lighthouse, Coastal",
     "pronunciation": "/LITE-hous, KO-stal/",

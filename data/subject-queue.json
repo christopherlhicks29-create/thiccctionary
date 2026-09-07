@@ -5,21 +5,5 @@
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
     "Wave 346 (2026-09-04): full refill after the prior 5-item queue died completely (3 dropped as catalog duplicates, 2 zero-Unsplash-result) and burned 2 straight cron days (09-03, 09-04) without landing an entry. Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
   ],
-  "queue": [
-    {
-      "subject": "Grandfather Clock, Antique",
-      "query": "grandfather clock",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Pretzel, Bavarian Soft",
-      "query": "bavarian soft pretzel",
-      "category": "Foods of Substance"
-    },
-    {
-      "subject": "Steamer Trunk, Vintage",
-      "query": "vintage steamer trunk",
-      "category": "Domestic Goods"
-    }
-  ]
+  "queue": []
 }

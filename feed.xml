@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Sep 2026 00:22:58 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 00:30:11 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Steamer Trunk, Vintage</title>
+      <link>https://thiccctionary.com/entries/2026-09-07.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-09-07.html</guid>
+      <pubDate>Mon, 07 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A sturdy, rectangular container from the golden age of travel, characterized by a reinforced frame and expansive dimensions, often accompanied by brass fittings and leather straps.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-09-07-steamer-trunk-vintage.jpg" type="image/jpeg" length="207471" />
+      <category>maritime</category><category>domestic</category><category>girth</category>
+    </item>
     <item>
       <title>Lighthouse, Coastal</title>
       <link>https://thiccctionary.com/entries/2026-09-06.html</link>
