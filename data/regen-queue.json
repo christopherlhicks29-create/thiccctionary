@@ -1,6 +1,6 @@
 {
-  "queued_at": "2026-08-31T09:22:20.050Z",
-  "dates": "2026-08-21,2026-05-11,2026-08-16,2026-08-29",
+  "queued_at": "2026-09-07T07:58:28.555Z",
+  "dates": "2026-09-03,2026-08-21,2026-08-29,2026-08-16",
   "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 4): 2026-08-21 Anchor, Ship's (score 1, depicts \"a decorative anchor sculpture mounted on a pedestal\"); 2026-05-11 Champion Watermelon, Heavyweight (score 1, depicts \"a sliced watermelon on a white background\"); 2026-08-16 Concrete Bunker, Soviet (score 1, depicts \"a large concrete building with architectural features\"); 2026-08-29 Thiccc Hydraulic Press (score 1, depicts \"a man operating a mechanical press\")"
+  "reason": "Wave 212 image-audit batch (worst 4): 2026-09-03 Cruise Ship, Ocean Liner (score 1, depicts \"a river cruise ship navigating a waterway\"); 2026-08-21 Anchor, Ship's (score 1, depicts \"a decorative anchor sculpture on a pedestal by the sea\"); 2026-08-29 Thiccc Hydraulic Press (score 1, depicts \"a mechanical press machine with a worker operating it\"); 2026-08-16 Concrete Bunker, Soviet (score 1, depicts \"a large Soviet-era concrete building, possibly a cultural or government structure\")"
 }

@@ -1,44 +1,33 @@
 {
-  "generated_at": "2026-08-31T09:22:20.050Z",
-  "scanned": 138,
-  "passed": 132,
-  "failed": 6,
+  "generated_at": "2026-09-07T07:58:28.554Z",
+  "scanned": 144,
+  "passed": 139,
+  "failed": 5,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
     {
+      "date": "2026-09-03",
+      "word": "Cruise Ship, Ocean Liner",
+      "imageUrl": "https://thiccctionary.com/images/2026-09-03-cruise-ship-ocean-liner.jpg",
+      "score": 1,
+      "subjectPct": 10,
+      "verdict": "reject",
+      "photoSubject": "a river cruise ship navigating a waterway",
+      "critique": "The photo depicts a river cruise ship, not an ocean liner, which disqualifies it for the subject 'Cruise Ship, Ocean Liner.' The ship is clearly visible and centered, but it does not fit the specified category. The surrounding environment is distracting, with buildings and other ships in the frame, which detracts from the focus on the ship itself. The image does not meet the criteria for the specified subject.",
+      "passed": false
+    },
+    {
       "date": "2026-08-21",
       "word": "Anchor, Ship's",
       "imageUrl": "https://thiccctionary.com/images/2026-08-21-anchor-ship-s.jpg",
       "score": 1,
-      "subjectPct": 18,
+      "subjectPct": 24,
       "verdict": "reject",
-      "photoSubject": "a decorative anchor sculpture mounted on a pedestal",
-      "critique": "The photo shows a decorative anchor sculpture rather than a real ship's anchor. The object is mounted on a pedestal, indicating it is a representation rather than a functional anchor. This does not meet the criteria for a ship's anchor, which should be a real, functional object. The composition is clear and well-framed, but the subject is incorrect for the entry.",
-      "passed": false
-    },
-    {
-      "date": "2026-05-11",
-      "word": "Champion Watermelon, Heavyweight",
-      "imageUrl": "https://thiccctionary.com/images/2026-05-11-champion-watermelon-heavyweight.jpg",
-      "score": 1,
-      "subjectPct": 36,
-      "verdict": "reject",
-      "photoSubject": "a sliced watermelon on a white background",
-      "critique": "The photo does not depict a 'Champion Watermelon, Heavyweight' as it shows a standard-sized watermelon that has been sliced. The subject is not a heavyweight example, which is crucial for the entry. The composition is clean and the watermelon is centered, but it does not meet the criteria for a heavyweight champion. The image lacks the imposing size expected from a heavyweight watermelon, leading to a rejection.",
-      "passed": false
-    },
-    {
-      "date": "2026-08-16",
-      "word": "Concrete Bunker, Soviet",
-      "imageUrl": "https://thiccctionary.com/images/2026-08-16-concrete-bunker-soviet.jpg",
-      "score": 1,
-      "subjectPct": 56,
-      "verdict": "reject",
-      "photoSubject": "a large concrete building with architectural features",
-      "critique": "The photo shows a large concrete building with distinct architectural features, but it does not clearly depict a Soviet-era concrete bunker. The structure appears more like a building or facility rather than a military bunker. The framing captures the entire building and its surroundings, but the subject does not match the specified object. Therefore, the image is not suitable for the entry 'Concrete Bunker, Soviet'.",
+      "photoSubject": "a decorative anchor sculpture on a pedestal by the sea",
+      "critique": "The photo shows a decorative anchor sculpture, not an actual ship's anchor. The object is clearly a representation, likely made for aesthetic purposes rather than functional use on a ship. The composition is centered and clear, but the subject does not meet the criteria of being a real ship's anchor. Therefore, it does not fit the intended subject and must be rejected.",
       "passed": false
     },
     {
@@ -46,10 +35,21 @@
       "word": "Thiccc Hydraulic Press",
       "imageUrl": "https://thiccctionary.com/images/2026-08-29-thiccc-hydraulic-press.jpg",
       "score": 1,
-      "subjectPct": 64,
+      "subjectPct": 40,
       "verdict": "reject",
-      "photoSubject": "a man operating a mechanical press",
-      "critique": "The photo depicts a man operating a mechanical press, not a hydraulic press. The machine shown lacks the characteristics of a hydraulic press, which typically involves hydraulic cylinders and is used for compressive tasks. The presence of a person operating the machine shifts the focus away from the press itself, and the composition centers more on the human activity rather than the machinery. This does not fit the subject description of a 'Thiccc Hydraulic Press' and thus fails the identity test.",
+      "photoSubject": "a mechanical press machine with a worker operating it",
+      "critique": "The photo does not show a hydraulic press, but rather a mechanical press, which disqualifies it based on the identity test. The subject is partially visible and the composition includes a person operating the machine, which could distract from the focus on the machine itself. The image does not fit the criteria for a thiccc hydraulic press, as it does not depict the correct type of machinery.",
+      "passed": false
+    },
+    {
+      "date": "2026-08-16",
+      "word": "Concrete Bunker, Soviet",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-16-concrete-bunker-soviet.jpg",
+      "score": 1,
+      "subjectPct": 49,
+      "verdict": "reject",
+      "photoSubject": "a large Soviet-era concrete building, possibly a cultural or government structure",
+      "critique": "The photo does not depict a concrete bunker, but rather a large Soviet-era concrete building, possibly a cultural or government structure. The building is imposing and well-captured, but it does not match the specified subject of a 'Concrete Bunker, Soviet.' The image is well-framed and the subject is prominent, but it fails the identity test as it does not show the named object.",
       "passed": false
     },
     {
@@ -59,19 +59,8 @@
       "score": 1,
       "subjectPct": 64,
       "verdict": "reject",
-      "photoSubject": "a collection of watermelons with a glove",
-      "critique": "The image shows a collection of watermelons rather than a single 'Jumbo, Watermelon' as specified. The presence of multiple watermelons and a glove in the center distracts from the focus on a singular jumbo watermelon. The composition does not highlight a particularly oversized example, failing the girth test. The subject is not clearly defined, leading to a rejection.",
-      "passed": false
-    },
-    {
-      "date": "2026-08-13",
-      "word": "Roast, Prime Rib",
-      "imageUrl": "https://thiccctionary.com/images/2026-08-13-roast-prime-rib.jpg",
-      "score": 1,
-      "subjectPct": 64,
-      "verdict": "reject",
-      "photoSubject": "a sliced steak with vegetables and sauce on a plate",
-      "critique": "The photo does not show a prime rib roast at full carving weight. Instead, it depicts a sliced steak with accompanying vegetables and sauce. The composition is centered and well-lit, but it fails the identity test as it does not match the subject description of a whole prime rib roast. The presence of additional elements like the sauce and vegetables further distracts from the intended subject.",
+      "photoSubject": "a collection of regular-sized watermelons with a glove",
+      "critique": "The photo does not clearly depict a single 'Jumbo, Watermelon' as the subject. Instead, it shows a collection of watermelons, none of which stand out as particularly large or imposing. The presence of a glove adds unnecessary clutter and distracts from the subject. The image fails to meet the criteria for silhouette completeness and subject prominence, as no single watermelon is emphasized as the focal point. The lack of a clearly defined jumbo watermelon makes the photo unsuitable for the intended entry.",
       "passed": false
     }
   ]
