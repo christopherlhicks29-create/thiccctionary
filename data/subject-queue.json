@@ -6,10 +6,5 @@
     "Wave 346 (2026-09-04): full refill after the prior 5-item queue died completely (3 dropped as catalog duplicates, 2 zero-Unsplash-result) and burned 2 straight cron days (09-03, 09-04) without landing an entry. Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers.",
     "2026-09-08 watchdog refill v2: removed 'Grandfather Clock, Antique' -- it landed live as today's entry (Clock, Grandfather) via a concurrent inject-entry run while this queue edit was in flight, so it was a same-day catalog duplicate. Avoided a bell subject since Bell, Cathedral and The Liberty Bell are already catalogued. Remaining picks are broad, single-object, high-stock-coverage subjects with no close catalog neighbor."
   ],
-  "queue": [
-    { "subject": "Beer Keg, Steel", "query": "beer keg" },
-    { "subject": "Blimp, Airship", "query": "airship blimp" },
-    { "subject": "Manatee, Florida", "query": "manatee" },
-    { "subject": "Yacht, Luxury Motor", "query": "luxury motor yacht" }
-  ]
+  "queue": []
 }
