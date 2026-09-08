@@ -1,0 +1,124 @@
+# Daily run trace 2026-09-08-151808
+
+Triggered by: workflow_dispatch (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34243603656
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-08-26
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 4
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Beer Keg, Steel" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Beer Keg, Steel" query="beer keg" (source: queue)
+Subject: Beer Keg, Steel (query: "beer keg")
+Subject "Beer Keg, Steel" returned zero Unsplash results for query "beer keg". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #5 of 12: this photo showcases the full silhouette of the Bagger 293 with its impressive structure and girth clearly visible.
+Saved image to images/2026-08-26-bagger-293.jpg
+[webp] 2026-08-26-bagger-293.jpg: 241KB -> 158KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+[webp] 2026-08-26-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: This photo shows the Bagger 293's large silhouette and overall girth from an aerial perspective, emphasizing its massive scale.
+[webp] 2026-08-26-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show a Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a standard bulldozer on a construction site. The Bagger 293 is a significantly larger and more complex machine, and this image fails the identity test. The bulldozer is centered and clear, but it is not the subject described. Thus, the photo is unsuitable for the entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-08-26 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Blimp, Airship" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Blimp, Airship" query="airship blimp" (source: queue)
+Subject: Blimp, Airship (query: "airship blimp")
+Found 12 candidate photos.
+Vision picked #1 of 12: This photo shows a blimp in full view against a clear sky, emphasizing its large, rounded silhouette.
+Saved image to images/2026-08-26-blimp-airship.jpg
+[webp] 2026-08-26-blimp-airship.jpg: 178KB -> 110KB (38% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] image 1 scored 8 / subjectPct 12; trying another photo for "Blimp, Airship" (11 candidates left).
+Vision rejected all 11 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 8  verdict: ship  subjectPct: 12  isSubject: true
+  critique: The photo successfully captures the subject, a blimp, prominently in the sky over a crowd. The airship is clearly visible and identifiable, fitting the subject description well. The framing is decent, but the crowd takes up a significant portion of the image, which slightly detracts from the focus on the blimp. The image is documentary in style and fits the brand's criteria. Overall, it effectively showcases the airship, though a tighter focus on the blimp itself would enhance the subject prominence.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=ship score=8 subjectPct=12 - subject "Blimp, Airship"
+[bail] popped "Blimp, Airship" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-08-26 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Manatee, Florida" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Manatee, Florida" query="manatee" (source: queue)
+Subject: Manatee, Florida (query: "manatee")
+Subject "Manatee, Florida" returned zero Unsplash results for query "manatee". (attempt 1)
+Fallback subject (#1): Thiccc Aircraft Carrier (query: "aircraft carrier")
+Found 1 candidate photos.
+[photo-dedup] all 1 candidates are already used by other entries; proceeding anyway rather than dropping the day.
+Vision picked #1 of 1: This photo showcases the full silhouette of the aircraft carrier, emphasizing its massive girth against the dramatic sky.
+Saved image to images/2026-08-26-thiccc-aircraft-carrier.jpg
+[webp] 2026-08-26-thiccc-aircraft-carrier.jpg: 149KB -> 75KB (49% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The example lacks a punchline tag and feels generic, missing a specific scene or comedic beat. The etymology is dry and could use a deadpan kicker. Consider adding a surprising detail or a more vivid setting to enhance the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=4/10, verdict=regenerate
+Generated social captions:
+  morning: Thiccc Aircraft Carrier.
+  afternoon: In service since 1977, the USS Nimitz still commands respect.
+  evening: From the archives, Thiccc Aircraft Carrier.
+  reels: Thiccc Aircraft Carrier.
+[bail] final dup-guard: "Thiccc Aircraft Carrier" duplicates catalogued "Aircraft Carrier, Naval" - subject "Thiccc Aircraft Carrier"
+[bail] popped "Thiccc Aircraft Carrier" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-08-26.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-08-26 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Yacht, Luxury Motor" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Yacht, Luxury Motor" query="luxury motor yacht" (source: queue)
+Subject: Yacht, Luxury Motor (query: "luxury motor yacht")
+Found 30 candidate photos.
+Vision picked #4 of 12: This photo shows a luxury motor yacht with a prominent silhouette and ample girth, making it the thiccest choice.
+Saved image to images/2026-08-26-yacht-luxury-motor.jpg
+[webp] 2026-08-26-yacht-luxury-motor.jpg: 310KB -> 214KB (31% smaller)
+Design critique: score=7/10, verdict=needs-review
+  ⚠️ Banned terms found in entry "Yacht, Luxury Motor":
+     [definitions] "a testament to" (banned-word)
+Banned-words attempt 1/3 rejected ("a testament to" in definitions). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a solid dictionary register and the etymology ends with a nice deadpan kicker. However, the example lacks a strong punchline tag; it could use a sharper comedic beat to close. The definitions are specific and amusing, particularly the 'pontoon envy' phrase.
+Generated social captions:
+  morning: Yacht, Luxury Motor.
+  afternoon: In 2023, the average yacht measures 30 meters in length.
+  evening: From the archives, Yacht, Luxury Motor.
+  reels: The 202-foot 'Dream'—a floating statement piece.
+Saved entry: Yacht, Luxury Motor
+Built entry page: entries/2026-08-26.html
+Rebuilt prev entry page (2026-09-07) so its next-link points to today.
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 146 entries + 60 articles.
+Sitemap rebuilt with 146 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-08-26 landed on attempt 4.
+```
