@@ -3,7 +3,14 @@
   "_authoring_notes": [
     "VERIFY Unsplash has results for `query` before queueing.",
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
-    "Wave 346 (2026-09-04): full refill after the prior 5-item queue died completely (3 dropped as catalog duplicates, 2 zero-Unsplash-result) and burned 2 straight cron days (09-03, 09-04) without landing an entry. Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers."
+    "Wave 346 (2026-09-04): full refill after the prior 5-item queue died completely (3 dropped as catalog duplicates, 2 zero-Unsplash-result) and burned 2 straight cron days (09-03, 09-04) without landing an entry. Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers.",
+    "2026-09-08 PO resume: prior refill (Lighthouse/Grandfather Clock/Pretzel/Steamer Trunk) fully drained by 09-06/09-07/09-08 landings, then the 09-08 cron burned all 4 auto-picker fallbacks (missile, tuba, D11T) on the same 'not centered / not the named object' critique failure -- narrow military/industrial hardware keeps failing the image gate because stock photos of them are rarely a clean single-subject frame. This refill sticks to broad everyday/animal/vehicle nouns with deep, unambiguous stock coverage."
   ],
-  "queue": []
+  "queue": [
+    { "subject": "Walrus, Pacific", "query": "walrus", "notes": "natural-specimens; broad single-animal frame, deep stock coverage" },
+    { "subject": "Locomotive, Diesel Freight", "query": "freight train locomotive", "notes": "vehicle; distinct from Boiler, Steam Locomotive (05-30 entry is about the boiler component, not the whole engine)" },
+    { "subject": "Pretzel, Bavarian Soft", "query": "giant pretzel", "notes": "culinary; not yet catalogued" },
+    { "subject": "Sledgehammer, Industrial", "query": "sledgehammer", "notes": "tools category currently has zero entries; broad single-object frame" },
+    { "subject": "Airship, Blimp", "query": "blimp airship", "notes": "vehicle; distinct from Hot air balloon (04-13)" }
+  ]
 }
