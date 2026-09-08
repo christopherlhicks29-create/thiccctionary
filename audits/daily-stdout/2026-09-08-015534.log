@@ -1,0 +1,97 @@
+# Daily run trace 2026-09-08-015534
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34178178783
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-08
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-08 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Thiccc Antartican Iceberg".
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: pulling "Gong, Chinese Brass" (4 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Hovercraft (query: "hovercraft")
+Subject "Thiccc Hovercraft" returned zero Unsplash results for query "hovercraft". (attempt 2)
+Fallback subject (#2): Thiccc Cabbage, Mammoth (query: "mammoth cabbage")
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #1 of 12: this photo prominently displays a full, round cabbage, emphasizing its thiccness.
+Saved image to images/2026-09-08-thiccc-cabbage-mammoth.jpg
+[webp] 2026-09-08-thiccc-cabbage-mammoth.jpg: 244KB -> 145KB (41% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The example lacks a punchline tag, ending on a flat note with 'needed a new scale.' The etymology is straightforward without a humorous kicker. Adding a specific scene or a surprising detail could elevate the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=9/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Cabbage, Mammoth.
+  afternoon: In 2010, a thiccc cabbage in Palmer, Alaska reached a girth of 17 feet.
+  evening: From the archives, Thiccc Cabbage, Mammoth.
+  reels: Thiccc Cabbage, Mammoth.
+[bail] final dup-guard: "Thiccc Cabbage, Mammoth" duplicates catalogued "Cabbage, Savoy" - subject "Thiccc Cabbage, Mammoth"
+[bail] popped "Thiccc Cabbage, Mammoth" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-08 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Antlered Sequoia (query: "giant sequoia")
+Subject "Thiccc Antlered Sequoia" returned zero Unsplash results for query "giant sequoia". (attempt 2)
+Fallback subject (#2): Thiccc Cycloidal Pile Driver (query: "pile driver")
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #11 of 12: this photo showcases multiple cranes, emphasizing their size and girth in a construction setting.
+Saved image to images/2026-09-08-thiccc-cycloidal-pile-driver.jpg
+[webp] 2026-09-08-thiccc-cycloidal-pile-driver.jpg: 318KB -> 224KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Cycloidal Pile Driver" (27 candidates left).
+Vision picked #1 of 12: This photo prominently features a cycloidal pile driver, showcasing its substantial height and girth in the construction environment.
+[webp] 2026-09-08-thiccc-cycloidal-pile-driver.jpg: 188KB -> 126KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 21; trying another photo for "Thiccc Cycloidal Pile Driver" (26 candidates left).
+Vision picked #7 of 12: this photo shows a large truck with a prominent silhouette, emphasizing its thiccness.
+[webp] 2026-09-08-thiccc-cycloidal-pile-driver.jpg: 113KB -> 59KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo shows a red semi truck driving down a road, not a 'Thiccc Cycloidal Pile Driver.' The subject of the image does not match the named object, leading to an automatic rejection. The truck is well-centered and the image is clear, but it does not depict the required subject matter.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Thiccc Cycloidal Pile Driver"
+[bail] popped "Thiccc Cycloidal Pile Driver" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-08 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-08.
+```
