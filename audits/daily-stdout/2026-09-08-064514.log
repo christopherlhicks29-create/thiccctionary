@@ -1,0 +1,126 @@
+# Daily run trace 2026-09-08-064514
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34195823441
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-08
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Hydrocracking Unit (query: "hydrocracking unit")
+Found 30 candidate photos.
+Vision picked #9 of 12: this photo shows a thick arrangement of pipes and machinery, emphasizing the industrial girth of the hydrocracking unit.
+Saved image to images/2026-09-08-thiccc-hydrocracking-unit.jpg
+[webp] 2026-09-08-thiccc-hydrocracking-unit.jpg: 294KB -> 197KB (33% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Hydrocracking Unit" (29 candidates left).
+Vision picked #11 of 12: this photo shows a large industrial structure that embodies the thiccness of a hydrocracking unit.
+[webp] 2026-09-08-thiccc-hydrocracking-unit.jpg: 201KB -> 105KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Hydrocracking Unit" (28 candidates left).
+Vision picked #2 of 12: the large, thick pipes prominently display the industrial scale and girth associated with hydrocracking units.
+[webp] 2026-09-08-thiccc-hydrocracking-unit.jpg: 155KB -> 70KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 32  isSubject: false
+  critique: The photo shows a series of industrial pipes and gauges, not a hydrocracking unit. A hydrocracking unit is a complex piece of refinery equipment, and this image does not capture the entirety or the defining features of such a unit. The composition centers on the pipes, which are not the main subject as specified. The image lacks the necessary context and detail to be considered a depiction of a 'Thiccc Hydrocracking Unit.'
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=32 - subject "Thiccc Hydrocracking Unit"
+[bail] popped "Thiccc Hydrocracking Unit" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-08 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Digger, Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Digger, Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Thiccc International Space Station (query: "international space station")
+Found 3 candidate photos.
+Vision rejected all 3 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 1 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc International Space Station"
+[bail] popped "Thiccc International Space Station" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-08 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Evergreen Sequoia (query: "sequoia tree")
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #3 of 12: This photo showcases a gnarled and thick trunk, emphasizing the girth of the Sequoia.
+Saved image to images/2026-09-08-thiccc-evergreen-sequoia.jpg
+[webp] 2026-09-08-thiccc-evergreen-sequoia.jpg: 592KB -> 536KB (9% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Evergreen Sequoia" (27 candidates left).
+Vision picked #4 of 12: this photo showcases a dense grove of tall sequoias, emphasizing their impressive girth and stature.
+[webp] 2026-09-08-thiccc-evergreen-sequoia.jpg: 391KB -> 326KB (17% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The example lacks a specific scene and ends without a comedic punchline, making it feel flat. The etymology has a mild kicker but could be sharper. Definitions use an anti-pattern phrase ('monumental in scale'), which detracts from the humor. A more specific scene and a stronger punchline would elevate the entry.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Evergreen Sequoia.
+  afternoon: Spanning millennia, the Sequoia stands as a testament to patience.
+  evening: From the archives, Thiccc Evergreen Sequoia.
+  reels: The Sequoia's bark can be up to two feet thick.
+[bail] final dup-guard: "Thiccc Evergreen Sequoia" duplicates catalogued "Sequoia, General Sherman" - subject "Thiccc Evergreen Sequoia"
+[bail] popped "Thiccc Evergreen Sequoia" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-08 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Liebherr R 9800 (query: "Liebherr R 9800")
+Subject "Thiccc Liebherr R 9800" returned zero Unsplash results for query "Liebherr R 9800". (attempt 2)
+Fallback subject (#2): Thiccc Airbus A380 (query: "airbus a380")
+Subject "Thiccc Airbus A380" returned zero Unsplash results for query "airbus a380". (attempt 3)
+Fallback subject (#3): Thiccc Cargo Ship (query: "cargo ship")
+Found 16 candidate photos.
+Vision picked #1 of 12: this photo clearly shows the full silhouette of a large cargo ship, emphasizing its thiccness with a colorful backdrop.
+Saved image to images/2026-09-08-thiccc-cargo-ship.jpg
+[webp] 2026-09-08-thiccc-cargo-ship.jpg: 203KB -> 127KB (38% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=9/10, verdict=ship, weakest=overall
+  feedback: The entry is strong with a specific example set in Hamburg, a punchline tag where cranes 'lean back in awe,' and an etymology kicker with 'cargo, containers, and chutzpah.' It avoids anti-patterns and includes a surprise detail with the 'maritime city block afloat.' Overall, it's humorous and well-crafted.
+Generated social captions:
+  morning: Thiccc Cargo Ship.
+  afternoon: In 2019, the MSC Gülsün transported over 23,000 containers.
+  evening: From the archives, Thiccc Cargo Ship.
+  reels: The Maersk Triple E.
+[bail] final dup-guard: "Thiccc Cargo Ship" duplicates catalogued "Ship, Container Maersk" - subject "Thiccc Cargo Ship"
+[bail] popped "Thiccc Cargo Ship" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-08 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-08.
+```
