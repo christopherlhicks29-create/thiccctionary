@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788909924965",
+    "created": "2026-09-08T23:25:24.965Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "reply",
+    "text": "Eleven minutes. I have given thirty-seven years to this publication and I would not spend eleven minutes defending it at dinner. You say \"reference materials\" and you move on.\n\nNobody touched their food because of the Saturn V, Teddy.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788813651547",
     "created": "2026-09-07T20:40:51.547Z",
     "byline_id": "spider",
@@ -1390,20 +1400,5 @@
     "success_count": 2,
     "failure_count": 0,
     "errors": []
-  },
-  {
-    "id": "office-handcraft-1779032914064-margie",
-    "created": "2026-05-17T15:48:34.064Z",
-    "byline_id": "margie",
-    "byline_display": "Margie",
-    "topic_kind": "office",
-    "text": "Reporting in from Sonoma. Spent ninety minutes watching a tractor today, by my estimate one of the better tractors of its class. Will assign coverage when I return. Approximately.\n\nMargaret",
-    "score": 9,
-    "status": "posted",
-    "success_count": 2,
-    "failure_count": 0,
-    "posted_at": "2026-05-17T15:48:34.064Z",
-    "errors": [],
-    "handcrafted": true
   }
 ]
