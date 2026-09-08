@@ -1,0 +1,121 @@
+# Daily run trace 2026-09-08-115418
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34222951646
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-08
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Sub-Zero Built-In" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Sub-Zero Built-In" query="sub-zero built in refrigerator kitchen" (source: queue)
+Subject: Refrigerator, Sub-Zero Built-In (query: "sub-zero built in refrigerator kitchen")
+Found 16 candidate photos.
+Vision picked #4 of 12: this photo prominently features a full-sized refrigerator, showcasing its girth in a kitchen setting.
+Saved image to images/2026-09-08-refrigerator-sub-zero-built-in.jpg
+[webp] 2026-09-08-refrigerator-sub-zero-built-in.jpg: 182KB -> 97KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Refrigerator, Sub-Zero Built-In" (15 candidates left).
+Vision picked #4 of 12: this photo showcases the refrigerator with a full view of its spacious interior, emphasizing its size and capacity.
+[webp] 2026-09-08-refrigerator-sub-zero-built-in.jpg: 245KB -> 150KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Refrigerator, Sub-Zero Built-In" (14 candidates left).
+Vision picked #7 of 12: this photo shows a full refrigerator in a spacious kitchen, highlighting its substantial presence.
+[webp] 2026-09-08-refrigerator-sub-zero-built-in.jpg: 145KB -> 57KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 21  isSubject: false
+  critique: The photo primarily depicts a modern kitchen, with the refrigerator only partially visible on the right side. The image does not focus on the 'Sub-Zero Built-In Refrigerator' as the main subject, failing the identity test. The refrigerator is not prominently featured or identifiable as a Sub-Zero model. The composition centers on the kitchen layout rather than the specific appliance, making it unsuitable for the subject requirement.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=21 - subject "Refrigerator, Sub-Zero Built-In"
+[bail] popped "Refrigerator, Sub-Zero Built-In" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-08 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Tuba (query: "tuba")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Tuba"
+[bail] popped "Thiccc Tuba" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-08 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Titan II Missile (query: "titan ii missile")
+Subject "Thiccc Titan II Missile" returned zero Unsplash results for query "titan ii missile". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D11T (query: "Caterpillar D11T")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "Caterpillar D11T". (attempt 3)
+Fallback subject (#3): Thiccc Titan Missile (query: "Titan missile")
+Found 24 candidate photos.
+Vision picked #10 of 12: This photo shows the full silhouette of a large aircraft, emphasizing its girth and imposing presence.
+Saved image to images/2026-09-08-thiccc-titan-missile.jpg
+[webp] 2026-09-08-thiccc-titan-missile.jpg: 308KB -> 210KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Titan Missile" (23 candidates left).
+Vision picked #11 of 12: This photo shows the full silhouette of the Titan missile, emphasizing its impressive girth and stature.
+[webp] 2026-09-08-thiccc-titan-missile.jpg: 75KB -> 31KB (59% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Titan Missile" (22 candidates left).
+Vision picked #11 of 12: This photo shows the full silhouette of the Titan Missile, emphasizing its impressive girth and stature.
+[webp] 2026-09-08-thiccc-titan-missile.jpg: 144KB -> 76KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 60  isSubject: false
+  critique: The photo does not show a 'Thiccc Titan Missile' but rather a graffiti-covered tower or similar structure. The subject is not centered, and the graffiti distracts from the intended focus. The image does not fit the brand's documentary style and fails the identity test, as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=60 - subject "Thiccc Titan Missile"
+[bail] popped "Thiccc Titan Missile" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-08 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Whisk, Industrial Mixer" - duplicates catalogued "Concrete Mixer".
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: all 2 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Titan II (query: "titan missile")
+Found 24 candidate photos.
+Vision picked #11 of 12: the photo shows the full silhouette of a large aircraft, emphasizing its impressive girth.
+Saved image to images/2026-09-08-thiccc-titan-ii.jpg
+[webp] 2026-09-08-thiccc-titan-ii.jpg: 146KB -> 65KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 35; trying another photo for "Thiccc Titan II" (23 candidates left).
+Vision picked #11 of 12: This photo shows the full silhouette of a Titan II missile, emphasizing its substantial girth.
+[webp] 2026-09-08-thiccc-titan-ii.jpg: 75KB -> 31KB (59% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Titan II" (22 candidates left).
+Vision picked #10 of 12: this photo shows the full silhouette of the Titan II, emphasizing its thiccness and structure.
+[webp] 2026-09-08-thiccc-titan-ii.jpg: 308KB -> 210KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a 'Thiccc Titan II' robot but rather a large industrial-looking machine or structure. The subject is not clearly identifiable as the named object. The image is cluttered with surrounding elements, and the composition does not focus on a distinct robot figure. The subject's identity is unclear, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Titan II"
+[bail] popped "Thiccc Titan II" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-08.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-08 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-08.
+```
