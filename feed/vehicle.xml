@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed/vehicle.xml" rel="self" type="application/rss+xml" />
     <description>Thiccctionary entries tagged "vehicle".</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Sep 2026 13:54:47 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 15:18:14 GMT</lastBuildDate>
     <item>
       <title>Aircraft Carrier, Naval</title>
       <link>https://thiccctionary.com/entries/2026-09-05.html</link>
@@ -42,6 +42,15 @@
       <description>A construction vehicle of formidable mass and breadth, particularly noted for its expansive rear profile when viewed from behind.</description>
       <enclosure url="https://thiccctionary.com/images/2026-08-31-thiccc-earth-mover.jpg" type="image/jpeg" length="401207" />
       <category>industrial</category><category>construction</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>Yacht, Luxury Motor</title>
+      <link>https://thiccctionary.com/entries/2026-08-26.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-08-26.html</guid>
+      <pubDate>Wed, 26 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A leisure vessel of substantial displacement, noted for its expansive beam and generous cabin accommodations; esp. one whose aft view inspires awe and pontoon envy.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-08-26-yacht-luxury-motor.jpg" type="image/jpeg" length="317706" />
+      <category>maritime</category><category>vehicle</category>
     </item>
     <item>
       <title>Turbine, Gas-Fired</title>
