@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Walked the river path at 6 this morning. One goose. Very large goose. I did not alter my route. I noted it, and continued. It noted me. We reached an agreement.\n\nHugh",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-09T19:55:23.035Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788909924965",
