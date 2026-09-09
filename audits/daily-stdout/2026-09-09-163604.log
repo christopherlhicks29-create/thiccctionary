@@ -1,0 +1,120 @@
+# Daily run trace 2026-09-09-163604
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34377442667
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-09
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Refrigerator, Sub-Zero Built-In" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Sub-Zero Built-In" query="sub-zero built in refrigerator kitchen" (source: queue)
+Subject: Refrigerator, Sub-Zero Built-In (query: "sub-zero built in refrigerator kitchen")
+Found 16 candidate photos.
+Vision picked #5 of 12: this photo showcases a full Sub-Zero refrigerator with ample contents, emphasizing its size and capacity.
+Saved image to images/2026-09-09-refrigerator-sub-zero-built-in.jpg
+[webp] 2026-09-09-refrigerator-sub-zero-built-in.jpg: 245KB -> 150KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Refrigerator, Sub-Zero Built-In" (15 candidates left).
+Vision picked #4 of 12: this photo clearly shows the refrigerator with ample visibility, emphasizing its size and presence in the kitchen.
+[webp] 2026-09-09-refrigerator-sub-zero-built-in.jpg: 182KB -> 97KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 10; trying another photo for "Refrigerator, Sub-Zero Built-In" (14 candidates left).
+Vision picked #1 of 12: this photo prominently features the full silhouette of a refrigerator in a stylish kitchen setting.
+[webp] 2026-09-09-refrigerator-sub-zero-built-in.jpg: 196KB -> 90KB (54% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: undefined  isSubject: false
+  critique: The photo primarily depicts a modern kitchen with wood cabinetry and a teal stool, not a Sub-Zero built-in refrigerator. The refrigerator is not clearly visible or identifiable in the image, as the focus is on the overall kitchen design. The subject is not centered, and the image does not fit the criteria for a documentary-style plate of the specified object. Therefore, it fails the identity test and is unsuitable for the entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=undefined - subject "Refrigerator, Sub-Zero Built-In"
+[bail] popped "Refrigerator, Sub-Zero Built-In" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-09.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-09 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc SpaceX Falcon Heavy (query: "SpaceX Falcon Heavy")
+Found 3 candidate photos.
+Vision rejected all 3 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 1 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc SpaceX Falcon Heavy"
+[bail] popped "Thiccc SpaceX Falcon Heavy" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-09.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-09 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Refrigerator, Commercial" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Refrigerator, Commercial" query="commercial walk-in refrigerator" (source: queue)
+Subject: Refrigerator, Commercial (query: "commercial walk-in refrigerator")
+Subject "Refrigerator, Commercial" returned zero Unsplash results for query "commercial walk-in refrigerator". (attempt 1)
+Fallback subject (#1): Giant Potato, Idaho (query: "giant potato")
+Subject "Giant Potato, Idaho" returned zero Unsplash results for query "giant potato". (attempt 2)
+Fallback subject (#2): Bagger 293 (query: "bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #5 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive structure and girth.
+Saved image to images/2026-09-09-bagger-293.jpg
+[webp] 2026-09-09-bagger-293.jpg: 241KB -> 158KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+[webp] 2026-09-09-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 56; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive silhouette and girth clearly from above.
+[webp] 2026-09-09-bagger-293.jpg: 418KB -> 355KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 13  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a standard bulldozer at a construction site. The subject is not centered, and the bulldozer is not the focal point of the image. The image lacks the imposing size and unique characteristics of the Bagger 293, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=13 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-09.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-09 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 33 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Bass, Upright Acoustic" - duplicates catalogued "Double Bass, Upright".
+Subject queue: all 1 item(s) were catalog dups; cleared queue, falling through to auto-picker.
+Subject: Thiccc Big Bud 747 (query: "Big Bud tractor")
+Subject "Thiccc Big Bud 747" returned zero Unsplash results for query "Big Bud tractor". (attempt 1)
+Fallback subject (#1): Thiccc Giant Cabbage (query: "giant cabbage")
+Found 24 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 23 left.
+Vision picked #2 of 12: This photo shows a cluster of cabbages, emphasizing their overall girth and abundance.
+Saved image to images/2026-09-09-thiccc-giant-cabbage.jpg
+[webp] 2026-09-09-thiccc-giant-cabbage.jpg: 244KB -> 145KB (41% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The example sentence lacks a punchline tag, ending on a flat note with 'just a formality.' The etymology is informative but could use a deadpan kicker. The entry avoids anti-patterns and has some specificity, but it needs more surprise or comedic detail to elevate it.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=7/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Giant Cabbage.
+  afternoon: In 2012, a thiccc giant cabbage set records at the Alaska State Fair.
+  evening: From the archives, Thiccc Giant Cabbage.
+  reels: Thiccc Giant Cabbage.
+[bail] final dup-guard: "Thiccc Giant Cabbage" duplicates catalogued "Cabbage, Savoy" - subject "Thiccc Giant Cabbage"
+[bail] popped "Thiccc Giant Cabbage" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-09.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-09 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-09.
+```
