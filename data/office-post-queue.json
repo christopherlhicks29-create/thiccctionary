@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Docked in Monaco. Lovely light this time of year. Rodrigo at the Belmond says the mimosas are better since they switched suppliers, which is simply true. The publication remains in continuous operation since Bertram founded it. The office, I am told, also remains.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-09T23:18:04.647Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788983719924",
