@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1788995882511",
+    "created": "2026-09-09T23:18:02.511Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "office",
+    "text": "Docked in Monaco. Lovely light this time of year. Rodrigo at the Belmond says the mimosas are better since they switched suppliers, which is simply true. The publication remains in continuous operation since Bertram founded it. The office, I am told, also remains.\n\nMargaret",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788983719924",
     "created": "2026-09-09T19:55:19.924Z",
     "byline_id": "hugh",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-05-20T22:46:59.746Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1779228067040",
-    "created": "2026-05-19T22:01:07.040Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Reginald has now missed four calls, two emails, and a postcard. Spider's expense reports, meanwhile, arrive on time, correctly formatted. I am not drawing conclusions. I am simply maintaining a list.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-19T22:01:09.639Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []
