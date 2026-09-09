@@ -6,13 +6,29 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Sep 2026 15:18:14 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 19:06:30 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] Filed Replies, Vol. 15</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-09-09.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-09-09.html</guid>
+      <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 15.</description>
+      <category>article</category>
+    </item>
+    <item>
+      <title>[Article] On Objects That Wait, and Objects That Move</title>
+      <link>https://thiccctionary.com/articles/things-that-keep-time-and-things-that-keep-everything-else.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/things-that-keep-time-and-things-that-keep-everything-else.html</guid>
+      <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Margie Whitmore-Hessian on the week&apos;s catalogue: grandfather clocks, steamer trunks, ocean liners, and the particular thicccness of objects built to contain.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>Clock, Grandfather</title>
       <link>https://thiccctionary.com/entries/2026-09-08.html</link>
