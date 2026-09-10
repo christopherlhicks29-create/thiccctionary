@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789070068682",
+    "created": "2026-09-10T19:54:28.682Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "thiccc",
+    "text": "Coworker showed up today with a bag so large it had compartments for its compartments. Wheeled it in like it had tenure. Seven people moved around it. Nobody said anything. I counted.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1788995882511",
     "created": "2026-09-09T23:18:02.511Z",
     "byline_id": "margie",
@@ -1387,20 +1397,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-05-21T22:07:06.755Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1779317217705",
-    "created": "2026-05-20T22:46:57.705Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "The coffee machine has been broken since March. Eli has filed three complaints. I have filed none, as the machine is not within my jurisdiction. The previous machine was better. I will not be elaborating.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-20T22:46:59.746Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []
