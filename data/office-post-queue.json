@@ -7,7 +7,11 @@
     "topic_kind": "thiccc",
     "text": "Coworker showed up today with a bag so large it had compartments for its compartments. Wheeled it in like it had tenure. Seven people moved around it. Nobody said anything. I counted.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-10T19:54:31.831Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1788995882511",
