@@ -1,10 +1,60 @@
 {
-  "_description": "Editorial subject queue for daily entries. The cron pulls the FIRST item before falling back to the auto-picker. Each item is {subject, query?, notes?}. If the query returns zero Unsplash results, generate-daily.js falls back to the auto-picker. Items pop after each run. KEEP SUBJECTS DISTINCT FROM THE LIVE CATALOG.",
+  "_description": "Editorial subject queue for daily entries. The cron pulls the FIRST item before falling back to the auto-picker. Each item is {subject, query?, category}.",
   "_authoring_notes": [
     "VERIFY Unsplash has results for `query` before queueing.",
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry (cement mixer == concrete mixer; double bass == bass).",
-    "Wave 346 (2026-09-04): full refill after the prior 5-item queue died completely (3 dropped as catalog duplicates, 2 zero-Unsplash-result) and burned 2 straight cron days (09-03, 09-04) without landing an entry. Favor subjects that read as ONE large object filling the frame -- broad, generic queries with deep stock coverage, not narrow industrial model numbers.",
-    "2026-09-08 watchdog refill v2: removed 'Grandfather Clock, Antique' -- it landed live as today's entry (Clock, Grandfather) via a concurrent inject-entry run while this queue edit was in flight, so it was a same-day catalog duplicate. Avoided a bell subject since Bell, Cathedral and The Liberty Bell are already catalogued. Remaining picks are broad, single-object, high-stock-coverage subjects with no close catalog neighbor."
+    "2026-09-11 PO resume: queue had run to 0 for 3 straight days (09-09/09-10/09-11), all 5 prior items were dead subjects sourced from the poisoned pool. Refilled with 10 items pulled directly from the freshly-pruned/vetted data/thiccc-noun-pool.json (see that file's 2026-09-11 commit) -- all 10 checked against the live 146-entry catalog for zero word-overlap before queueing."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Wheelbarrow, Steel Garden",
+      "query": "steel garden wheelbarrow",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Piggy Bank, Ceramic",
+      "query": "large ceramic piggy bank",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Fountain, Public Plaza",
+      "query": "large public plaza fountain",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Snowplow, Municipal",
+      "query": "municipal snowplow truck",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Drawbridge, Castle",
+      "query": "castle drawbridge stone",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Popcorn Tub, Movie Theater",
+      "query": "movie theater popcorn tub",
+      "category": "Foods of Substance"
+    },
+    {
+      "subject": "Beach Ball, Giant Inflatable",
+      "query": "giant inflatable beach ball",
+      "category": "Sports & Recreation"
+    },
+    {
+      "subject": "School Bus, Yellow",
+      "query": "yellow school bus",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Igloo, Snow Block",
+      "query": "snow block igloo",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Sandcastle, Beach Turret",
+      "query": "large sandcastle turret beach",
+      "category": "Other"
+    }
+  ]
 }
