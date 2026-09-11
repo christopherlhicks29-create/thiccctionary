@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789168658278",
+    "created": "2026-09-11T23:17:38.278Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "office",
+    "text": "HR said ninety days is standard. I said great, thank you. I have been here nineteen months. I am going to sit with that number for a little while.\n\nTheodore",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1789070068682",
     "created": "2026-09-10T19:54:28.682Z",
     "byline_id": "eli",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-05-24T18:49:12.151Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1779401224672",
-    "created": "2026-05-21T22:07:04.672Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Teddy has refiled the Saturn V brief. Again. It now has citations. I have returned it with \"see objection #34\" in the margin. The object is 363 feet tall and has never, at any point, driven anywhere.\n\nBartholomew",
-    "score": 7,
-    "status": "posted",
-    "posted_at": "2026-05-21T22:07:06.755Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []
