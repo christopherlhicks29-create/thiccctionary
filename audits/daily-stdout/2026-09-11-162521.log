@@ -1,0 +1,88 @@
+# Daily run trace 2026-09-11-162521
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34621705737
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-11
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Lobster, Maine" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Lobster, Maine" query="maine lobster whole" (source: queue)
+Subject: Lobster, Maine (query: "maine lobster whole")
+Subject "Lobster, Maine" returned zero Unsplash results for query "maine lobster whole". (attempt 1)
+Fallback subject (#1): Thiccc Antenna Array (query: "antenna array")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases a large, robust antenna array with a clear silhouette, emphasizing its thiccness.
+Saved image to images/2026-09-11-thiccc-antenna-array.jpg
+[webp] 2026-09-11-thiccc-antenna-array.jpg: 161KB -> 90KB (44% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=4/10, verdict=regenerate, weakest=definitions
+  feedback: The entry suffers from multiple anti-pattern phrases like 'imposing presence' and lacks a punchline tag in the example. The etymology is straightforward without a kicker. Consider adding a comedic twist or unexpected detail to elevate the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Antenna Array. A 300-foot marvel of modern telecommunication.
+  afternoon: Set against the sky, each dish spans 25 feet—an ode to angular momentum.
+  evening: From the archives, Thiccc Antenna Array.
+  reels: Each dish, a silent sentinel of the skies.
+[bail] final dup-guard: "Thiccc Antenna Array" duplicates catalogued "Thiccc Antenna Array" - subject "Thiccc Antenna Array"
+[bail] popped "Thiccc Antenna Array" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-11.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-11 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Briefcase, Hardshell Pelican" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Briefcase, Hardshell Pelican" query="pelican hardshell case" (source: queue)
+Subject: Briefcase, Hardshell Pelican (query: "pelican hardshell case")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Briefcase, Hardshell Pelican"
+[bail] popped "Briefcase, Hardshell Pelican" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-11.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-11 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Monster Bigfoot" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: dropping "Iceberg, Arctic" - duplicates catalogued "Thiccc Antartican Iceberg".
+Subject queue: pulling "Stew, Cast Iron Dutch" (3 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Stew, Cast Iron Dutch" query="dutch oven stew cast iron" (source: queue)
+Subject: Stew, Cast Iron Dutch (query: "dutch oven stew cast iron")
+Subject "Stew, Cast Iron Dutch" returned zero Unsplash results for query "dutch oven stew cast iron". (attempt 1)
+Fallback subject (#1): Thiccc Mack Anthem (query: "Mack Anthem truck")
+Subject "Thiccc Mack Anthem" returned zero Unsplash results for query "Mack Anthem truck". (attempt 2)
+Fallback subject (#2): Thiccc Saturn V (query: "Saturn V")
+Found 7 candidate photos.
+Vision picked #7 of 7: this photo shows Saturn's full silhouette and rings, emphasizing its overall girth.
+Saved image to images/2026-09-11-thiccc-saturn-v.jpg
+[webp] 2026-09-11-thiccc-saturn-v.jpg: 109KB -> 42KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Saturn V" (6 candidates left).
+Vision rejected all 6 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo depicts Saturn with its moons transiting, not a 'Thiccc Saturn V'. The subject 'Thiccc Saturn V' suggests a reference to the Saturn V rocket, not the planet Saturn. This mismatch in subject identity leads to a rejection. The image itself is a well-captured astronomical photo, but it does not fit the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Thiccc Saturn V"
+[bail] popped "Thiccc Saturn V" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-11.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-11 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-11.
+```
