@@ -1,5 +1,35 @@
 [
   {
+    "date": "2026-09-11",
+    "word": "Manatee, Florida",
+    "pronunciation": "/MAN-uh-tee/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A slow-moving aquatic mammal (Trichechus manatus) native to Florida's rivers, springs, and coastal shallows, distinguished by a paddle-shaped tail, wrinkled hide, and a rotund, blubber-padded body built for unhurried grazing on seagrass.",
+      "<em>colloq.</em> Proof that a creature can move at two miles per hour and still command the whole channel."
+    ],
+    "example": "The manatee grazed along the seawall so unbothered and so thiccc that the paddleboarders gave it the right of way without being asked.",
+    "etymology": "From the Taino word manati, adopted into Spanish as manati and then into English by the 1550s. Sailors on long voyages reportedly mistook the silhouette for a mermaid. History has since forgiven the eyesight; the girth explains the rest.",
+    "image": "images/2026-09-11-manatee-florida.jpg",
+    "caption": "Plate CXLVII., A Florida manatee grazes in the shallows, its broad, rounded body built for drifting rather than hurrying.",
+    "tags": [
+      "girth"
+    ],
+    "category": "Uncategorized",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": null,
+    "photographer": "Ben Everett",
+    "photographerUrl": "https://unsplash.com/@ben_everett",
+    "unsplashUrl": "https://unsplash.com/photos/a-dog-swimming-in-a-body-of-water-uuyuoF62was",
+    "socialCaptions": {
+      "morning": "Manatee, Florida. Two miles per hour, and the channel yields anyway.",
+      "afternoon": "Built like a throw pillow that learned to swim. The manatee, unbothered as ever.",
+      "evening": "From the archives, the Florida manatee. Mistaken for a mermaid by sailors with bad eyesight and worse standards.",
+      "reels": "Moves slow. Owns the water anyway."
+    }
+  },
+  {
     "date": "2026-09-08",
     "word": "Clock, Grandfather",
     "pronunciation": "/GRAND-fah-ther KLOK/",
