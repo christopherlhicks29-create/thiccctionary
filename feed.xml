@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Sep 2026 20:41:11 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 20:54:30 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,15 @@
       <description>A slow-moving aquatic mammal (Trichechus manatus) native to Florida&apos;s rivers, springs, and coastal shallows, distinguished by a paddle-shaped tail, wrinkled hide, and a rotund, blubber-padded body built for unhurried grazing on seagrass.</description>
       <enclosure url="https://thiccctionary.com/images/2026-09-11-manatee-florida.jpg" type="image/jpeg" length="212050" />
       <category>girth</category>
+    </item>
+    <item>
+      <title>Big Top, Circus Tent</title>
+      <link>https://thiccctionary.com/entries/2026-09-09.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-09-09.html</guid>
+      <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A large tent, typically canvas or vinyl stretched over a network of center poles and guy-wires, that serves as the primary performance venue for a traveling circus, engineered to shelter thousands of spectators and a full three-ring program under a single peaked roof.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-09-09-big-top-circus-tent.jpg" type="image/jpeg" length="112768" />
+      <category>architecture</category>
     </item>
     <item>
       <title>[Article] Filed Replies, Vol. 15</title>
