@@ -1,0 +1,102 @@
+# Daily run trace 2026-09-12-152920
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34702294298
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-12
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 10
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Wheelbarrow, Steel Garden" (10 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Wheelbarrow, Steel Garden" query="steel garden wheelbarrow" (source: queue)
+Subject: Wheelbarrow, Steel Garden (query: "steel garden wheelbarrow")
+Subject "Wheelbarrow, Steel Garden" returned zero Unsplash results for query "steel garden wheelbarrow". (attempt 1)
+Fallback subject (#1): Thiccc Tuba (query: "tuba")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Tuba"
+[bail] popped "Thiccc Tuba" from queue. 9 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-12.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-12 yet). Queue now has 9 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 3: This photo shows a ceramic piggy bank with clear girth and shape, fitting the 'thicc' theme.
+Saved image to images/2026-09-12-piggy-bank-ceramic.jpg
+[webp] 2026-09-12-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a ceramic piggy bank as specified. Instead, it shows a close-up of a ceramic phrenology head with labeled sections. The subject is not centered, and the image is cluttered with reflections, making it unsuitable for the intended purpose. The object is not thiccc for its kind, and the subject identity is incorrect, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-12.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-12 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Hummer H1 (query: "Hummer H1")
+Found 5 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 4 left.
+Vision rejected all 4 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 6 left.
+Vision rejected all 6 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Hummer H1"
+[bail] popped "Thiccc Hummer H1" from queue. 7 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-12.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-12 yet). Queue now has 7 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 33 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Snowplow, Municipal" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Snowplow, Municipal" query="municipal snowplow truck" (source: queue)
+Subject: Snowplow, Municipal (query: "municipal snowplow truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 4 candidate(s) already used by another entry; 26 left.
+Vision picked #3 of 12: this photo shows a full municipal snowplow battling through a snowstorm, emphasizing its robust size and girth.
+Saved image to images/2026-09-12-snowplow-municipal.jpg
+[webp] 2026-09-12-snowplow-municipal.jpg: 124KB -> 56KB (55% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] image 1 scored 9 / subjectPct 20; trying another photo for "Snowplow, Municipal" (25 candidates left).
+Vision picked #5 of 12: this photo prominently features a snowplow clearing a runway, showcasing its size and girth against a snowy backdrop.
+[webp] 2026-09-12-snowplow-municipal.jpg: 105KB -> 41KB (61% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] image 2 scored 8 / subjectPct 20; trying another photo for "Snowplow, Municipal" (24 candidates left).
+Vision picked #1 of 12: this photo clearly shows the full silhouette of a snowplow, emphasizing its girth and functionality in the snowy environment.
+[webp] 2026-09-12-snowplow-municipal.jpg: 215KB -> 112KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo depicts a bulldozer, not a municipal snowplow. The subject is not the named object, as a bulldozer is not specifically a snowplow. The framing is decent, and the bulldozer is the focal point, but the subject identity is incorrect, leading to a rejection. The image does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Snowplow, Municipal"
+[bail] popped "Snowplow, Municipal" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-12.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-12 yet). Queue now has 6 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-12.
+```
