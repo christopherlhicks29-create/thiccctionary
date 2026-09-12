@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-12",
+    "word": "Thiccc Jet Cargo Aircraft",
+    "pronunciation": "/thik jet KAR-go AIR-kraft/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A widebody cargo aircraft whose fuselage is designed to maximize volumetric efficiency, often resulting in a substantial posterior when viewed astern, especially in raking light.",
+      "<em>colloq.</em> A flying warehouse that refuses to be confined by conventional aerodynamics, embracing its girth with unapologetic gusto."
+    ],
+    "example": "The thiccc jet cargo aircraft sat on the tarmac, its aft section defying any notion of skybound subtlety.",
+    "etymology": "From English 'jet' (originating from French 'jeter', meaning to throw) + 'cargo' (from Spanish 'cargar', to load) + 'aircraft' (from Old English 'ærcraft', meaning skill of operating a vehicle). Perfectly named for something with the aerodynamic finesse of a brick.",
+    "image": "images/2026-09-12-thiccc-jet-cargo-aircraft.jpg",
+    "caption": "Plate CL., Thiccc jet cargo aircraft, pausing in dignified repose.",
+    "tags": [
+      "girth",
+      "vehicle",
+      "industrial"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Raul Gonzalez Escobar",
+    "photographerUrl": "https://unsplash.com/@ragonesco",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-jetliner-sitting-on-top-of-an-airport-tarmac-fYcF0JlMz6g",
+    "socialCaptions": {
+      "morning": "Thiccc Jet Cargo Aircraft.\nWingspan: 222 feet.\nTail section—undeniably present.",
+      "afternoon": "Max takeoff weight: 1.2 million pounds.\nGravity remains impressed.\nThicccer: this, or the Great Pyramid of Giza?\nThiccc Jet Cargo Aircraft.",
+      "evening": "From the archives, Thiccc Jet Cargo Aircraft.\nFirst flight: 1969.\nStill making gravity do a double take.",
+      "reels": "Cargo capacity: 26,000 cubic feet.\nThe sky bears its patience.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-11",
     "word": "Manatee, Florida",
     "pronunciation": "/MAN-uh-tee/",
@@ -10,18 +42,18 @@
     ],
     "example": "The manatee grazed along the seawall so unbothered and so thiccc that the paddleboarders gave it the right of way without being asked.",
     "etymology": "From the Taino word manati, adopted into Spanish as manati and then into English by the 1550s. Sailors on long voyages reportedly mistook the silhouette for a mermaid. History has since forgiven the eyesight; the girth explains the rest.",
-          "image": "https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730",
+    "image": "https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730",
     "caption": "Plate CXLIX., A Florida manatee grazes in the shallows, its broad, rounded body built for drifting rather than hurrying.",
     "tags": [
       "girth"
     ],
-          "category": "Natural Specimens",
+    "category": "Natural Specimens",
     "bookReady": null,
     "humorScore": 7,
     "photoScore": null,
-          "photographer": "NOAA",
-          "photographerUrl": "https://unsplash.com/@noaa",
-          "unsplashUrl": "https://unsplash.com/photos/mother-manatee-and-calf-swimming-8EXZXZrj3Tw",
+    "photographer": "NOAA",
+    "photographerUrl": "https://unsplash.com/@noaa",
+    "unsplashUrl": "https://unsplash.com/photos/mother-manatee-and-calf-swimming-8EXZXZrj3Tw",
     "socialCaptions": {
       "morning": "Manatee, Florida. Two miles per hour, and the channel yields anyway.",
       "afternoon": "Built like a throw pillow that learned to swim. The manatee, unbothered as ever.",
