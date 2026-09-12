@@ -197,7 +197,21 @@
           "id": "6a9c616e85ccb3a22c08206e"
         }
       ]
+    },
+    {
+      "path": "videos/characters/spider-faceless.mp4",
+      "at": "2026-09-12T18:50:01.309Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6aa59ed8f7b1958d5cd3c660"
+        },
+        {
+          "service": "instagram",
+          "id": "6aa59ed966679b076f157731"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-09-05T18:37:34.960Z"
+  "lastPostedAt": "2026-09-12T18:50:01.310Z"
 }
