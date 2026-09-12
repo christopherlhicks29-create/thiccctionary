@@ -1,0 +1,92 @@
+# Daily run trace 2026-09-12-020259
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34666402351
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-12
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 10
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Wheelbarrow, Steel Garden" (10 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Wheelbarrow, Steel Garden" query="steel garden wheelbarrow" (source: queue)
+Subject: Wheelbarrow, Steel Garden (query: "steel garden wheelbarrow")
+Subject "Wheelbarrow, Steel Garden" returned zero Unsplash results for query "steel garden wheelbarrow". (attempt 1)
+Fallback subject (#1): Thiccc Blue Whale (query: "blue whale")
+Found 4 candidate photos.
+Vision rejected all 4 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #6 of 12: the photo shows a large whale model that emphasizes its thicc silhouette in a playful context.
+Saved image to images/2026-09-12-thiccc-blue-whale.jpg
+[webp] 2026-09-12-thiccc-blue-whale.jpg: 246KB -> 147KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Blue Whale" (4 candidates left).
+Vision rejected all 4 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a life-size origami whale sculpture, not an actual blue whale. This fails the identity test as the subject is not a real blue whale but a representation. The sculpture is prominently displayed and well-framed, but it does not meet the criteria for the subject 'Thiccc Blue Whale.' The setting is clear and free from clutter, but the depiction of an origami sculpture disqualifies it from being shipped.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Blue Whale"
+[bail] popped "Thiccc Blue Whale" from queue. 9 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-12.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-12 yet). Queue now has 9 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 3: This photo shows the full silhouette of a ceramic piggy bank, emphasizing its thicc shape.
+Saved image to images/2026-09-12-piggy-bank-ceramic.jpg
+[webp] 2026-09-12-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank, but rather a ceramic globe with text. The subject is not centered and does not fit the description provided. The image is well-composed but irrelevant to the specified subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-12.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-12 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Titanosaur (query: "titanosaur")
+Subject "Thiccc Titanosaur" returned zero Unsplash results for query "titanosaur". (attempt 2)
+Fallback subject (#2): Thiccc Komatsu D575A-3 Super Dozer (query: "dozer")
+Found 26 candidate photos.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 23 left.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 27 left.
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Unable to download content from the provided URL before the timeout. Check that the URL is publicly accessible and responds promptly, or upload the file and provide a file_id instead.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1032:14)
+[retry-wrapper] attempt 3 threw: Command failed: node generate-daily.js
+```
