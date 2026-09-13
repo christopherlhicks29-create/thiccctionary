@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789341113076",
+    "created": "2026-09-13T23:11:53.076Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Went to the harbor this morning. Container ship coming in, fully laden. I stood there a while. The water just moves differently around something that heavy. I did not write anything down.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1789328130957",
     "created": "2026-09-13T19:35:30.957Z",
     "byline_id": "teddy",
@@ -1388,20 +1398,6 @@
     "status": "posted",
     "posted_at": "2026-05-29T22:44:46.856Z",
     "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1779654938226",
-    "created": "2026-05-24T20:35:38.226Z",
-    "byline_id": "teddy",
-    "byline_display": "Theodore",
-    "topic_kind": "office",
-    "text": "Bart referred to me, to my face, as \"the Junior Cataloguer\" again today. Third time this week. One has, after careful reflection, decided this is simply one's title now. Like a knighthood. But smaller.\n\nTheodore",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-24T20:35:39.901Z",
-    "success_count": 2,
     "failure_count": 0,
     "errors": []
   }
