@@ -1,0 +1,114 @@
+# Daily run trace 2026-09-13-123008
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34757171905
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-13
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 9
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 3: This photo shows a ceramic piggy bank with a clear, full silhouette emphasizing its thicc shape.
+Saved image to images/2026-09-13-piggy-bank-ceramic.jpg
+[webp] 2026-09-13-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a ceramic piggy bank as specified. Instead, it shows a phrenology head with labeled sections, which is unrelated to the subject. The object is centered and clear, but it fails the identity test as it is not the named object. Therefore, the image is unsuitable for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-13 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Kettledrum, Marching (query: "kettledrum")
+Subject "Kettledrum, Marching" returned zero Unsplash results for query "kettledrum". (attempt 2)
+Fallback subject (#2): Thiccc Saturn V, First Stage (query: "Saturn V")
+Found 7 candidate photos.
+Vision rejected all 7 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Photography-bias retry returned zero Unsplash results for "Saturn V photograph".
+No results for retry query "Saturn V photograph".
+[bail] unsplash returned zero results on both queries - subject "Thiccc Saturn V, First Stage"
+[bail] popped "Thiccc Saturn V, First Stage" from queue. 7 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-13 yet). Queue now has 7 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Snowplow, Municipal" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Snowplow, Municipal" query="municipal snowplow truck" (source: queue)
+Subject: Snowplow, Municipal (query: "municipal snowplow truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 4 candidate(s) already used by another entry; 26 left.
+Vision picked #3 of 12: this photo shows a full municipal snowplow in action, emphasizing its size and girth against a snowy backdrop.
+Saved image to images/2026-09-13-snowplow-municipal.jpg
+[webp] 2026-09-13-snowplow-municipal.jpg: 124KB -> 56KB (55% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] image 1 scored 9 / subjectPct 16; trying another photo for "Snowplow, Municipal" (25 candidates left).
+Vision picked #5 of 12: this photo clearly shows a snowplow with a large blade, emphasizing its thicc silhouette against a snowy backdrop.
+[webp] 2026-09-13-snowplow-municipal.jpg: 105KB -> 41KB (61% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] image 2 scored 8 / subjectPct 14; trying another photo for "Snowplow, Municipal" (24 candidates left).
+Vision picked #1 of 12: this photo clearly shows a snowplow in action, emphasizing its robust and thick silhouette against the snowy backdrop.
+[webp] 2026-09-13-snowplow-municipal.jpg: 215KB -> 112KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo shows a bulldozer with a snowplow attachment, not a municipal snowplow. The subject is incorrectly identified, as a bulldozer is not the same as a dedicated snowplow vehicle. The framing captures the bulldozer well, but the object does not match the specified subject. Therefore, the image is unsuitable for the entry and is rejected.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Snowplow, Municipal"
+[bail] popped "Snowplow, Municipal" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-13 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 33 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Drawbridge, Castle" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Drawbridge, Castle" query="castle drawbridge stone" (source: queue)
+Subject: Drawbridge, Castle (query: "castle drawbridge stone")
+Found 30 candidate photos.
+Vision picked #5 of 12: the photo showcases a robust drawbridge structure with a commanding presence.
+Saved image to images/2026-09-13-drawbridge-castle.jpg
+[webp] 2026-09-13-drawbridge-castle.jpg: 360KB -> 286KB (21% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Drawbridge, Castle" (29 candidates left).
+Vision picked #6 of 12: This photo prominently features a robust castle silhouette, emphasizing its substantial girth and structure.
+[webp] 2026-09-13-drawbridge-castle.jpg: 251KB -> 162KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Drawbridge, Castle" (28 candidates left).
+Vision picked #7 of 12: This photo shows a substantial castle structure with a bridge, emphasizing its impressive girth and silhouette.
+[webp] 2026-09-13-drawbridge-castle.jpg: 223KB -> 148KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows Pulteney Bridge in Bath, not a drawbridge at a castle. The subject is incorrectly identified, as the image depicts a historic bridge with shops and buildings, not a castle drawbridge. The composition is aesthetically pleasing, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Drawbridge, Castle"
+[bail] popped "Drawbridge, Castle" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-13 yet). Queue now has 5 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-13.
+```
