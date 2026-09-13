@@ -265,7 +265,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-15-jamon-iberico",
+      "at": "2026-09-13T19:08:40.798Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6aa6f4b74cc07ffa4d3e5d85"
+        },
+        {
+          "service": "facebook",
+          "id": "6aa6f4b866679b076f3248aa"
+        },
+        {
+          "service": "instagram",
+          "id": "6aa6f4b866679b076f3248cd"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-09-06T18:45:39.347Z"
+  "lastPostedAt": "2026-09-13T19:08:40.799Z"
 }
