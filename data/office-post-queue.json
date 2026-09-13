@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789328130957",
+    "created": "2026-09-13T19:35:30.957Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "office",
+    "text": "Bart left a note on my desk this morning. \"Re: probationary status.\" I read it twice. I thought it was about the Saturn V.\n\nIt was not about the Saturn V.\n\nTheodore",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1789168658278",
     "created": "2026-09-11T23:17:38.278Z",
     "byline_id": "teddy",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-05-24T20:35:39.901Z",
-    "success_count": 2,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1779648550243",
-    "created": "2026-05-24T18:49:10.243Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "thiccc",
-    "text": "Walked three blocks behind one this morning. It turned left onto Canal and the whole street just accepted it. No honking. No protest. Even the bollards looked modest.\n\nThat's not gravitas. That's jurisdiction.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-24T18:49:12.151Z",
     "success_count": 2,
     "failure_count": 0,
     "errors": []
