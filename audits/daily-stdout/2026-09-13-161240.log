@@ -1,0 +1,126 @@
+# Daily run trace 2026-09-13-161240
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34767789070
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-13
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 9
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 3: This photo shows the full silhouette of a ceramic piggy bank, emphasizing its roundness and girth.
+Saved image to images/2026-09-13-piggy-bank-ceramic.jpg
+[webp] 2026-09-13-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a ceramic piggy bank as specified. Instead, it shows a decorative globe with text. The subject is not centered, and the image is tightly cropped, making it difficult to identify the object clearly. The photo lacks the documentary style suitable for a dictionary entry, and the globe is not relevant to the subject description.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-13 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Titan II Rocket (query: "Titan II rocket")
+Subject "Thiccc Titan II Rocket" returned zero Unsplash results for query "Titan II rocket". (attempt 2)
+Fallback subject (#2): Compactor, Landfill (query: "landfill compactor")
+Subject "Compactor, Landfill" returned zero Unsplash results for query "landfill compactor". (attempt 3)
+Fallback subject (#3): Thiccc Porsche 917 (query: "Porsche 917")
+Found 30 candidate photos.
+Vision picked #1 of 12: this photo shows the Porsche 917 in action, highlighting its full silhouette and girth on the track.
+Saved image to images/2026-09-13-thiccc-porsche-917.jpg
+[webp] 2026-09-13-thiccc-porsche-917.jpg: 141KB -> 68KB (52% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] image 1 scored 8 / subjectPct 15; trying another photo for "Thiccc Porsche 917" (29 candidates left).
+Vision picked #10 of 12: This photo shows the full silhouette of the Porsche 917, emphasizing its unique and robust shape.
+[webp] 2026-09-13-thiccc-porsche-917.jpg: 110KB -> 43KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Porsche 917" (28 candidates left).
+Vision rejected all 12 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts a Porsche 959, not the specified Porsche 917. The subject is incorrect, which disqualifies it from being used for the intended entry. The car is well-framed and the image is clear, but it does not meet the subject identity requirement. The photo is otherwise well-composed, but the mismatch in subject identity is a critical issue.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Porsche 917"
+[bail] popped "Thiccc Porsche 917" from queue. 7 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-13 yet). Queue now has 7 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Snowplow, Municipal" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Snowplow, Municipal" query="municipal snowplow truck" (source: queue)
+Subject: Snowplow, Municipal (query: "municipal snowplow truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 4 candidate(s) already used by another entry; 26 left.
+Vision picked #3 of 12: this photo clearly shows a municipal snowplow in action, emphasizing its size and capability against a snowy backdrop.
+Saved image to images/2026-09-13-snowplow-municipal.jpg
+[webp] 2026-09-13-snowplow-municipal.jpg: 124KB -> 56KB (55% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] image 1 scored 9 / subjectPct 15; trying another photo for "Snowplow, Municipal" (25 candidates left).
+Vision picked #5 of 12: this photo prominently features a snowplow clearing a runway, showcasing its robust and thick silhouette.
+[webp] 2026-09-13-snowplow-municipal.jpg: 105KB -> 41KB (61% smaller)
+Design critique: score=7/10, verdict=ship
+[image-retry] image 2 scored 7 / subjectPct 18; trying another photo for "Snowplow, Municipal" (24 candidates left).
+Vision picked #1 of 12: this photo clearly shows the full snowplow in action, emphasizing its size and girth against the snowy backdrop.
+[webp] 2026-09-13-snowplow-municipal.jpg: 215KB -> 112KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 21  isSubject: false
+  critique: The photo depicts a bulldozer with a snowplow attachment, not a dedicated municipal snowplow. The subject is not centered, and the framing includes significant distractions like the surrounding street and structures. The image does not fit the criteria for a municipal snowplow, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=21 - subject "Snowplow, Municipal"
+[bail] popped "Snowplow, Municipal" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-13 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 33 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Drawbridge, Castle" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Drawbridge, Castle" query="castle drawbridge stone" (source: queue)
+Subject: Drawbridge, Castle (query: "castle drawbridge stone")
+Found 30 candidate photos.
+Vision picked #5 of 12: the imposing structure showcases a thick silhouette with strong architectural features.
+Saved image to images/2026-09-13-drawbridge-castle.jpg
+[webp] 2026-09-13-drawbridge-castle.jpg: 360KB -> 286KB (21% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Drawbridge, Castle" (29 candidates left).
+Vision picked #6 of 12: this photo shows a robust castle structure with a thick silhouette against the landscape.
+[webp] 2026-09-13-drawbridge-castle.jpg: 251KB -> 162KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Drawbridge, Castle" (28 candidates left).
+Vision picked #7 of 12: This photo prominently features a full castle and drawbridge, showcasing their substantial structure and girth.
+[webp] 2026-09-13-drawbridge-castle.jpg: 223KB -> 148KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts Pulteney Bridge in Bath, not a drawbridge associated with a castle. The subject is clearly misidentified, as Pulteney Bridge is a historic bridge with shops built across it, not a drawbridge. The image is well-composed and captures the architectural beauty of the bridge, but it does not meet the subject criteria of a 'Drawbridge, Castle.' Therefore, it is unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Drawbridge, Castle"
+[bail] popped "Drawbridge, Castle" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-13 yet). Queue now has 5 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-13.
+```
