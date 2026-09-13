@@ -1,0 +1,96 @@
+# Daily run trace 2026-09-13-065805
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34743992270
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-13
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 9
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision picked #1 of 2: The lion-shaped ceramic piggy bank has a rounded, prominent silhouette that emphasizes its girth.
+Saved image to images/2026-09-13-piggy-bank-ceramic.jpg
+[webp] 2026-09-13-piggy-bank-ceramic.jpg: 181KB -> 81KB (55% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Piggy Bank, Ceramic" (1 candidates left).
+Vision picked #1 of 1: The photo shows the full silhouette of the ceramic piggy bank, emphasizing its round and thick shape.
+[webp] 2026-09-13-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank, but rather a ceramic globe with inscriptions. The subject is not centered or framed as a piggy bank, failing the identity test. The image is well-composed and clear, but it does not meet the criteria for the specified subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-13 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Giant Gourd, Atlantic Giant (query: "giant pumpkin")
+Subject "Giant Gourd, Atlantic Giant" returned zero Unsplash results for query "giant pumpkin". (attempt 2)
+Fallback subject (#2): Giant Mooncake, Traditional (query: "giant mooncake")
+Found 29 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 28 left.
+Vision picked #1 of 12: This photo features a giant mooncake with a full silhouette, emphasizing its massive size.
+Saved image to images/2026-09-13-giant-mooncake-traditional.jpg
+[webp] 2026-09-13-giant-mooncake-traditional.jpg: 237KB -> 146KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Giant Mooncake, Traditional" (27 candidates left).
+Vision picked #5 of 12: it prominently features a traditional mooncake with a clear silhouette and context.
+[webp] 2026-09-13-giant-mooncake-traditional.jpg: 267KB -> 151KB (43% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 10; trying another photo for "Giant Mooncake, Traditional" (26 candidates left).
+Vision picked #1 of 12: This photo features multiple mooncakes, showcasing their traditional round shape and overall girth.
+[webp] 2026-09-13-giant-mooncake-traditional.jpg: 200KB -> 106KB (47% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo does not show a 'Giant Mooncake, Traditional' as the subject specifies. Instead, it features several regular-sized mooncakes on glass plates. The image lacks the imposing size expected of a 'giant' mooncake, which is crucial for meeting the subject's criteria. The composition is pleasant, but it does not fulfill the requirements for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Giant Mooncake, Traditional"
+[bail] popped "Giant Mooncake, Traditional" from queue. 7 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-13.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-13 yet). Queue now has 7 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 32 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Snowplow, Municipal" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Snowplow, Municipal" query="municipal snowplow truck" (source: queue)
+Subject: Snowplow, Municipal (query: "municipal snowplow truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 4 candidate(s) already used by another entry; 26 left.
+Vision picked #3 of 12: this photo shows a full municipal snowplow actively clearing snow, emphasizing its size and girth in a snowy environment.
+Saved image to images/2026-09-13-snowplow-municipal.jpg
+[webp] 2026-09-13-snowplow-municipal.jpg: 124KB -> 56KB (55% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] image 1 scored 9 / subjectPct 12; trying another photo for "Snowplow, Municipal" (25 candidates left).
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Unable to download content from the provided URL before the timeout. Check that the URL is publicly accessible and responds promptly, or upload the file and provide a file_id instead.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1085:19)
+[retry-wrapper] attempt 3 threw: Command failed: node generate-daily.js
+```
