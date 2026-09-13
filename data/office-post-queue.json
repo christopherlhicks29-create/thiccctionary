@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to the harbor this morning. Container ship coming in, fully laden. I stood there a while. The water just moves differently around something that heavy. I did not write anything down.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-13T23:11:55.833Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789328130957",
