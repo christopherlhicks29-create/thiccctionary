@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Weeknight grocery run. Got there for milk, left with eleven things, none of them milk. Stood in the cereal aisle longer than I'd like to admit. The fluorescents in that store are doing something to me specifically.\n\nEliza",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-14T23:53:15.073Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789419594137",
