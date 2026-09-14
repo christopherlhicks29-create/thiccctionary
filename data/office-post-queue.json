@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789429992685",
+    "created": "2026-09-14T23:53:12.685Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "personal",
+    "text": "Weeknight grocery run. Got there for milk, left with eleven things, none of them milk. Stood in the cereal aisle longer than I'd like to admit. The fluorescents in that store are doing something to me specifically.\n\nEliza",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1789419594137",
     "created": "2026-09-14T20:59:54.137Z",
     "byline_id": "eli",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-06-03T20:33:42.021Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1780173490759",
-    "created": "2026-05-30T20:38:10.759Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "office",
-    "text": "Notebook hit 312 this morning. Someone leaned over my shoulder, saw the tally, and asked if I was okay. I said yes. They did not look convinced. The hydrant outside the deli is still cream. It counts.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-05-30T20:38:12.787Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
