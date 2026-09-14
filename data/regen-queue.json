@@ -1,6 +1,6 @@
 {
-  "queued_at": "2026-09-07T07:58:28.555Z",
-  "dates": "2026-09-03,2026-08-21,2026-08-29,2026-08-16",
+  "queued_at": "2026-09-14T08:35:02.845Z",
+  "dates": "2026-09-03,2026-09-09,2026-08-21,2026-09-08",
   "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 4): 2026-09-03 Cruise Ship, Ocean Liner (score 1, depicts \"a river cruise ship navigating a waterway\"); 2026-08-21 Anchor, Ship's (score 1, depicts \"a decorative anchor sculpture on a pedestal by the sea\"); 2026-08-29 Thiccc Hydraulic Press (score 1, depicts \"a mechanical press machine with a worker operating it\"); 2026-08-16 Concrete Bunker, Soviet (score 1, depicts \"a large Soviet-era concrete building, possibly a cultural or government structure\")"
+  "reason": "Wave 212 image-audit batch (worst 4): 2026-09-03 Cruise Ship, Ocean Liner (score 1, depicts \"a river cruise ship navigating a waterway\"); 2026-09-09 Big Top, Circus Tent (score 1, depicts \"a small model of a circus tent in a field\"); 2026-08-21 Anchor, Ship's (score 1, depicts \"a decorative anchor sculpture mounted on a pedestal\"); 2026-09-08 Clock, Grandfather (score 1, depicts \"a close-up of an ornate clock face with decorative elements\")"
 }
