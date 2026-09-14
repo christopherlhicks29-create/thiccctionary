@@ -1,0 +1,76 @@
+# Daily run trace 2026-09-14-200315
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34890299464
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-14
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 9
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 3: This photo shows the full silhouette of a ceramic piggy bank, emphasizing its roundness and girth.
+Saved image to images/2026-09-14-piggy-bank-ceramic.jpg
+[webp] 2026-09-14-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Piggy Bank, Ceramic" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo does not depict a ceramic piggy bank as specified. Instead, it shows a close-up of a ceramic globe with various inscriptions. The subject is not centered, and the entire object is not visible, failing the silhouette completeness criterion. The focus on the text and the partial view of the globe make it unsuitable for the intended subject. The image does not fit the brand's documentary style as it appears more artistic than informative.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-14.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-14 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Coal Barge (query: "coal barge")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #10 of 12: This photo shows a coal barge clearly with its full silhouette and emphasizes its girth against the water.
+Saved image to images/2026-09-14-thiccc-coal-barge.jpg
+[webp] 2026-09-14-thiccc-coal-barge.jpg: 254KB -> 173KB (32% smaller)
+Design critique: score=8/10, verdict=ship
+  ⚠️ Banned terms found in entry "Thiccc Coal Barge":
+     [etymology] "voluptuous" (banned-word)
+Banned-words attempt 1/3 rejected ("voluptuous" in etymology). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The entry has a solid etymology kicker with a geological time reference, but the example lacks a punchline tag and specificity. The scene is generic, and the humor doesn't land as it could. Adding a specific location or scenario and a sharper comedic beat would elevate the entry.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=7/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Coal Barge.
+  afternoon: The thiccc coal barge—
+  evening: From the archives, Thiccc Coal Barge.
+  reels: A length of 300 feet, width of 50 feet.
+Saved entry: Thiccc Coal Barge
+Built entry page: entries/2026-09-14.html
+Rebuilt prev entry page (2026-09-12) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 151 entries + 63 articles.
+Sitemap rebuilt with 151 entries.
+Subject queue updated: 7 item(s) remaining.
+[retry-wrapper] entry for 2026-09-14 landed on attempt 2.
+```
