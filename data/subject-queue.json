@@ -7,16 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Piggy Bank, Ceramic",
-      "query": "large ceramic piggy bank",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Fountain, Public Plaza",
-      "query": "large public plaza fountain",
-      "category": "Architecture & Infrastructure"
-    },
-    {
       "subject": "Snowplow, Municipal",
       "query": "municipal snowplow truck",
       "category": "Vehicles & Transport"

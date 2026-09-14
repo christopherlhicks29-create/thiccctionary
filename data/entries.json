@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-09-14",
+    "word": "Thiccc Coal Barge",
+    "pronunciation": "THIK kohl BARJ",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A maritime vessel of formidable breadth and displacement, designed for the transport of coal along inland waterways. Its posterior, viewed astern, defies casual description.",
+      "<em>colloq.</em> The aquatic equivalent of a freight train that refuses to rush for any schedule. Its presence is felt long before it arrives."
+    ],
+    "example": "The captain navigated the thiccc coal barge down the Ohio River, and the wake reshaped local fishing conversations for weeks.",
+    "etymology": "From Middle English 'barge', derived from Old French 'barge', from Latin 'barca' (small boat). First noted carrying a burden of coal in the 18th century; its thicccness is both literal and figurative.",
+    "image": "images/2026-09-14-thiccc-coal-barge.jpg",
+    "caption": "Plate CLI., A thiccc coal barge under dramatic skies, asserting its presence.",
+    "tags": [
+      "vehicle",
+      "girth",
+      "maritime",
+      "industrial"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 8,
+    "photographer": "Bernd 📷 Dittrich",
+    "photographerUrl": "https://unsplash.com/@hdbernd",
+    "unsplashUrl": "https://unsplash.com/photos/a-cargo-ship-sails-on-the-sea-under-dramatic-clouds-otXoMA2ZMSc",
+    "socialCaptions": {
+      "morning": "Thiccc Coal Barge.\nCarrying up to 1,500 tons of coal per trip.\nThe river banks simply adjust to its passing.",
+      "afternoon": "The thiccc coal barge—\nTakes 12 hours to unload, but who's counting?\nThicccer: this, or a blue whale?\nThiccc Coal Barge.",
+      "evening": "From the archives, Thiccc Coal Barge.\nFirst documented in the 18th century.\nIt redefined what it meant to 'barge in'.",
+      "reels": "A length of 300 feet, width of 50 feet.\nStill prefers tight turns.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-12",
     "word": "Thiccc Jet Cargo Aircraft",
     "pronunciation": "/thik jet KAR-go AIR-kraft/",
