@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789419594137",
+    "created": "2026-09-14T20:59:54.137Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "personal",
+    "text": "Laundromat on Bleecker, 8am. Machine next to mine was so full it walked itself three inches from the wall over one cycle. Guy whose it was never looked up from his phone. I watched the whole thing.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1789341113076",
     "created": "2026-09-13T23:11:53.076Z",
     "byline_id": "bart",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-05-30T20:38:12.787Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1780094685088",
-    "created": "2026-05-29T22:44:45.088Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "office",
-    "text": "Notebook is at 312. Started it because someone in this office claimed hydrants were \"too common to catalogue.\" They are common. That's the whole point. Frequency IS the data.\n\nRain today. The one on 4th looks incredible.\n\nEliza",
-    "score": 7,
-    "status": "posted",
-    "posted_at": "2026-05-29T22:44:46.856Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
