@@ -7,21 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Snowplow, Municipal",
-      "query": "municipal snowplow truck",
-      "category": "Vehicles & Transport"
-    },
-    {
-      "subject": "Drawbridge, Castle",
-      "query": "castle drawbridge stone",
-      "category": "Architecture & Infrastructure"
-    },
-    {
-      "subject": "Popcorn Tub, Movie Theater",
-      "query": "movie theater popcorn tub",
-      "category": "Foods of Substance"
-    },
-    {
       "subject": "Beach Ball, Giant Inflatable",
       "query": "giant inflatable beach ball",
       "category": "Sports & Recreation"
