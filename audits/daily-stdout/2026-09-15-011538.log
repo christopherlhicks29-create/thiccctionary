@@ -1,0 +1,103 @@
+# Daily run trace 2026-09-15-011538
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/34916400003
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-15
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 31 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Snowplow, Municipal" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Snowplow, Municipal" query="municipal snowplow truck" (source: queue)
+Subject: Snowplow, Municipal (query: "municipal snowplow truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 4 candidate(s) already used by another entry; 26 left.
+Vision picked #3 of 12: this photo shows a full municipal snowplow in action, emphasizing its size and girth against a snowy backdrop.
+Saved image to images/2026-09-15-snowplow-municipal.jpg
+[webp] 2026-09-15-snowplow-municipal.jpg: 124KB -> 56KB (55% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] image 1 scored 9 / subjectPct 20; trying another photo for "Snowplow, Municipal" (25 candidates left).
+Vision picked #5 of 12: this photo clearly shows a large snowplow in action, emphasizing its substantial size and girth against the snowy landscape.
+[webp] 2026-09-15-snowplow-municipal.jpg: 105KB -> 41KB (61% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] image 2 scored 8 / subjectPct 20; trying another photo for "Snowplow, Municipal" (24 candidates left).
+Vision picked #1 of 12: this photo shows a snowplow with a prominent blade and a clear silhouette against the snowy background.
+[webp] 2026-09-15-snowplow-municipal.jpg: 215KB -> 112KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo shows a bulldozer with a snowplow attachment, not a dedicated municipal snowplow. The subject is not centered, and the framing includes significant background elements, which distract from the main object. The image does not fit the brand's documentary style, as it appears more like a candid street scene. Additionally, the bulldozer does not convey the intended 'thiccc' impression for a municipal snowplow.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Snowplow, Municipal"
+[bail] popped "Snowplow, Municipal" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-15.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-15 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 29 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Drawbridge, Castle" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Drawbridge, Castle" query="castle drawbridge stone" (source: queue)
+Subject: Drawbridge, Castle (query: "castle drawbridge stone")
+Found 30 candidate photos.
+Vision picked #5 of 12: the photo showcases a grand and thick structure that emphasizes the robust design of the drawbridge.
+Saved image to images/2026-09-15-drawbridge-castle.jpg
+[webp] 2026-09-15-drawbridge-castle.jpg: 360KB -> 286KB (21% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Drawbridge, Castle" (29 candidates left).
+Vision picked #6 of 12: this photo showcases a robust castle structure with a prominent silhouette against the landscape.
+[webp] 2026-09-15-drawbridge-castle.jpg: 251KB -> 162KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Drawbridge, Castle" (28 candidates left).
+Vision picked #7 of 12: this photo shows a robust castle structure with a thick bridge, emphasizing girth and solidity.
+[webp] 2026-09-15-drawbridge-castle.jpg: 223KB -> 148KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts Pulteney Bridge in Bath, not a drawbridge at a castle. The subject is incorrect as the image does not show a drawbridge, which is a specific type of movable bridge typically associated with castles. The image is well-composed and clear, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Drawbridge, Castle"
+[bail] popped "Drawbridge, Castle" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-15.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-15 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Popcorn Tub, Movie Theater" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Thiccc Freight Train (query: "freight train")
+Found 1 candidate photos.
+Vision picked #1 of 1: The photo shows the full silhouette of the freight train, emphasizing its substantial girth.
+Saved image to images/2026-09-15-thiccc-freight-train.jpg
+[webp] 2026-09-15-thiccc-freight-train.jpg: 219KB -> 138KB (37% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=etymology
+  feedback: The example sentence is specific and visual, but lacks a punchline tag. The etymology is dry and misses a comedic kicker. The entry avoids anti-patterns, but could benefit from a surprise detail or a more humorous etymology.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=9/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Freight Train. 
+  afternoon: Average length: 1.5 miles. 
+  evening: From the archives, Thiccc Freight Train. 
+  reels: 3,000 horsepower—each. 
+Saved entry: Thiccc Freight Train
+Built entry page: entries/2026-09-15.html
+Rebuilt prev entry page (2026-09-14) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 152 entries + 63 articles.
+Sitemap rebuilt with 152 entries.
+Subject queue updated: 4 item(s) remaining.
+[retry-wrapper] entry for 2026-09-15 landed on attempt 3.
+```
