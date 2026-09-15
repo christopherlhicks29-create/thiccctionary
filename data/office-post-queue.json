@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Tried sourdough. Fed the starter for six days. Talked to it a little. Baked it Sunday. Dense enough that I weighed it out of curiosity. Two pounds, three ounces. I am choosing to see this as a personal best.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-15T23:32:26.861Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789429992685",
