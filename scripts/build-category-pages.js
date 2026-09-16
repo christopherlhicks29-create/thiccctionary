@@ -162,12 +162,17 @@ ${all.map(c => `  <li><a href="/category/${c.slug}/"${c.slug === currentSlug ? '
 
 function card(e) {
   const word = stripHtml(e.word || '').trim();
-  const img = String(e.image || '').replace(/^\.?\//, '');
+  const rawImg = String(e.image || '');
+  // Wave 347: an absolute URL (camo.githubusercontent.com proxy, R2) must not
+  // be prefixed with '/' -- that turns "https://host/x" into the broken
+  // "/https://host/x". Same bug class fixed in build-entry-pages.js.
+  const img = /^https?:\/\//.test(rawImg) ? rawImg : rawImg.replace(/^\.?\//, '');
+  const imgSrc = /^https?:\/\//.test(img) ? img : '/' + img;
   const alt = stripHtml(e.caption || '').replace(/\s+/g, ' ').trim()
     .replace(/^Plate\s+[^.]{1,10}\.,?\s*/i, '') || `${word}, catalogued as thiccc`;
   return `  <li class="cat-card">
     <a href="/entries/${e.date}.html">
-      ${img ? `<img src="/${escapeHtml(img)}" alt="${escapeHtml(alt.slice(0, 125))}" loading="lazy" width="800" height="600" />` : ''}
+      ${img ? `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(alt.slice(0, 125))}" loading="lazy" width="800" height="600" />` : ''}
       <div class="cat-card-body">
         <p class="cat-card-word">${escapeHtml(word)}</p>
         <p class="cat-card-def">${escapeHtml(trimDef(e.definitions?.[0]))}</p>
@@ -227,7 +232,14 @@ ${sorted.map(card).join('\n')}
       description: cat.description,
       canonical,
       ogTitle: cat.title,
-      image: sorted[0]?.image ? `${SITE}/${String(sorted[0].image).replace(/^\.?\//, '')}` : undefined,
+      // Wave 347: sorted[0].image can already be an absolute URL (camo.
+      // githubusercontent.com proxy, R2); prefixing SITE onto one of those
+      // doubled the domain (https://thiccctionary.com/https://camo...),
+      // which broke the category hub's og:image. Same bug class fixed in
+      // build-entry-pages.js / build-is-pages.js.
+      image: sorted[0]?.image
+        ? (/^https?:\/\//.test(String(sorted[0].image)) ? String(sorted[0].image) : `${SITE}/${String(sorted[0].image).replace(/^\.?\//, '')}`)
+        : undefined,
       extraCss: CARD_CSS,
       jsonLd,
     }),
