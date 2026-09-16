@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1789602004229",
+      "date": "2026-09-16",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about personal life: a meal eaten somewhere improbable at an improbable hour: \"HAMBACH, 0415\n\nAte half a roast chicken on the bucket wheel. Alone. Wind coming off the pit. Bird wa...\""
+    },
+    {
       "id": "auto-1789589883564",
       "date": "2026-09-16",
       "byline_id": "bart",
@@ -274,12 +280,6 @@
       "date": "2026-08-20",
       "byline_id": "jon",
       "summary": "Jon posted about personal life: politely declining a task, with citation: \"Neighbor asked me to haul her couch upstairs. I said no. Not my section. She said I don't have secti...\""
-    },
-    {
-      "id": "auto-1787248412760",
-      "date": "2026-08-20",
-      "byline_id": "hugh",
-      "summary": "Hugh posted about personal life: a household task you completed; that is the post: \"Replaced a lightbulb this evening. The old one was E26. The new one is also E26. I stood in the sock...\""
     }
   ]
 }
