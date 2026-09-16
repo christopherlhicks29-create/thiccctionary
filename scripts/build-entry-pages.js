@@ -85,7 +85,13 @@ function humanDate(iso) {
 }
 
 function imageUrlForOg(entry) {
-  // entry.image is "images/foo.jpg", normalize to absolute URL
+  // entry.image is usually "images/foo.jpg" (normalize to absolute URL), but
+  // can also be an already-absolute URL (camo.githubusercontent.com proxy
+  // links, R2 URLs) -- Wave 347: prepending SITE to one of those produced a
+  // broken doubled-URL (https://thiccctionary.com/https://camo...). Same bug
+  // class as Wave 79's post-to-buffer.js / send-newsletter.js fix; use the
+  // absolute URL as-is instead of treating it as a relative path.
+  if (/^https?:\/\//.test(entry.image)) return entry.image;
   const path = entry.image.replace(/^\.?\//, '');
   return `${SITE.replace(/\/$/, '')}/${path}`;
 }
@@ -99,6 +105,10 @@ function cardUrlForOg(entry) {
 }
 
 function imageUrlForPage(entry) {
+  // Wave 347: same absolute-URL bug as imageUrlForOg above -- a
+  // camo.githubusercontent.com or R2 URL prefixed with '../' is not a valid
+  // relative path (browser resolves it as "../https:/host/...", which 404s).
+  if (/^https?:\/\//.test(entry.image)) return entry.image;
   // Page lives in /entries/ so go up one level
   return `../${entry.image.replace(/^\.?\//, '')}`;
 }
