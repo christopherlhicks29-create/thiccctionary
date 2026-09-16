@@ -40,6 +40,16 @@ const RULES = [
     after: '<a href="/a-z.html">A-Z</a>',
     link: '<a href="/category/">Categories</a>',
   },
+  {
+    // Wave 347: the Guess page shipped and the canon footer in lib/chrome.js
+    // has carried it since, but the from-the-boat / mailbag generators' own
+    // copy-pasted footer templates were never updated, so every page they
+    // produced was one link short of canon -- caught by pre-ship's
+    // footer-drift check tripping on a freshly-touched From the Boat page.
+    href: '/guess/',
+    after: '<a href="/rate/">Rate</a>',
+    link: '<a href="/guess/">Guess</a>',
+  },
 ];
 
 /**
@@ -120,7 +130,12 @@ function replaceStubFooter(html) {
 export function syncFooter(html) {
   let out = purgeRetiredLinks(replaceStubFooter(html));
   for (const r of RULES) {
-    if (out.includes(`href="${r.href}"`)) continue;
+    // Wave 347: checking bare href="..." false-positives when the same
+    // href already exists elsewhere on the page with different markup (the
+    // nav bar link, e.g. <a href="/guess/" class="nav-link">Guess</a>, has
+    // no relation to whether the FOOTER carries it). Match the exact footer
+    // link markup instead, which is unambiguous.
+    if (out.includes(r.link)) continue;
     const i = out.indexOf(r.after);
     if (i === -1) continue;
     const end = i + r.after.length;
