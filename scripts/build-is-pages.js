@@ -67,7 +67,7 @@ function renderPage(entry) {
   // which is a sitewide quality risk. Consolidate the signal onto the entry.
   // The pages stay live and linked from /is-it-thiccc/ for humans.
   const canonical = `${SITE}/entries/${entry.date}.html`;
-  const ogImage = `${SITE}/${(entry.image || '').replace(/^\.?\//, '')}`;
+  const ogImage = /^https?:\/\//.test(entry.image || '') ? entry.image : `${SITE}/${(entry.image || '').replace(/^\.?\//, '')}`;
   // Wave 312: the link preview uses the composed 1200x630 card; the JSON-LD
   // image above stays the photograph. See lib/image-size.js#ogCardUrl.
   const ogCard = ogCardUrl(entry, ROOT);
@@ -201,8 +201,8 @@ ${JSON.stringify(jsonLd, null, 2)}
       <div class="entry-image-wrap">
         <div class="entry-image">
           <picture>
-            <source srcset="/${escapeHtml((entry.image || '').replace(/\.(jpe?g)$/i, '.webp'))}" type="image/webp" />
-            <img src="/${escapeHtml(entry.image || '')}" alt="${escapeHtml(subject)}, a thiccc subject" width="600" height="600" loading="eager" decoding="async" />
+            ${/^https?:\/\//.test(entry.image || '') ? '' : `<source srcset="/${escapeHtml((entry.image || '').replace(/\.(jpe?g)$/i, '.webp'))}" type="image/webp" />`}
+            <img src="${/^https?:\/\//.test(entry.image || '') ? escapeHtml(entry.image) : '/' + escapeHtml(entry.image || '')}" alt="${escapeHtml(subject)}, a thiccc subject" width="600" height="600" loading="eager" decoding="async" />
           </picture>
         </div>
         <p class="entry-caption">${escapeHtml(entry.caption || '')}</p>
