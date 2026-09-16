@@ -186,6 +186,12 @@ async function main() {
     <a href="/cartoons/" class="nav-link">Cartoons</a>
     <a href="/random.html" class="nav-link">Random</a>
     <a href="/compare.html" class="nav-link">Compare</a>
+    <a href="/rate/" class="nav-link">Rate</a>
+    <a href="/guess/" class="nav-link">Guess</a>
+    <a href="/api/" class="nav-link">API</a>
+    <a href="/submit.html" class="nav-link">Submit a Thiccc</a>
+    <a href="/about/masthead/" class="nav-link">The Editors</a>
+    <a href="/about/" class="nav-link">About</a>
   </nav>
 </header>
 <main id="main-content">
@@ -233,6 +239,7 @@ ${htmlBody}
   </div>
   <p class="copyright">&copy; <span id="year">2026</span> Thiccctionary<sup style="font-size:0.7em;">TM</sup>. All entries fictional. All letters fabricated.</p>
 </footer>
+<script defer src="/scripts/ccc-highlight.js?v=2"></script>
 <script defer src="/scripts/mobile-nav.js?v=66"></script>
 <script defer src="/scripts/masthead-date.js?v=2"></script>\n</body>
 </html>
