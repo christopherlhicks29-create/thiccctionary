@@ -1,0 +1,73 @@
+# Daily run trace 2026-09-16-021257
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35046985749
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-16
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 4
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 30 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Beach Ball, Giant Inflatable" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Beach Ball, Giant Inflatable" query="giant inflatable beach ball" (source: queue)
+Subject: Beach Ball, Giant Inflatable (query: "giant inflatable beach ball")
+Found 7 candidate photos.
+Vision picked #5 of 7: this photo captures a giant inflatable beach ball with a clear silhouette against a vibrant background, emphasizing its size.
+Saved image to images/2026-09-16-beach-ball-giant-inflatable.jpg
+[webp] 2026-09-16-beach-ball-giant-inflatable.jpg: 244KB -> 149KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 32; trying another photo for "Beach Ball, Giant Inflatable" (6 candidates left).
+Vision picked #1 of 6: this photo prominently features the giant beach ball, emphasizing its size and girth against a clear background.
+[webp] 2026-09-16-beach-ball-giant-inflatable.jpg: 314KB -> 225KB (29% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 25; trying another photo for "Beach Ball, Giant Inflatable" (5 candidates left).
+Vision rejected all 5 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 25  isSubject: false
+  critique: The photo shows a person holding a regular-sized beach ball, not a giant inflatable one as specified. The subject is not centered, and the person dominates the composition, making it more of a portrait than a depiction of the ball itself. The ball does not appear oversized for its kind, failing the girth test. The image does not fit the documentary style needed for the brand.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=25 - subject "Beach Ball, Giant Inflatable"
+[bail] popped "Beach Ball, Giant Inflatable" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-16.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-16 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "School Bus, Yellow" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="School Bus, Yellow" query="yellow school bus" (source: queue)
+Subject: School Bus, Yellow (query: "yellow school bus")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #2 of 12: This photo shows the full rear silhouette of the school bus, emphasizing its thicc shape.
+Saved image to images/2026-09-16-school-bus-yellow.jpg
+[webp] 2026-09-16-school-bus-yellow.jpg: 162KB -> 79KB (51% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=definitions
+  feedback: The entry suffers from anti-pattern phrases like 'asserts its presence' and 'commanding the road,' which dilute the humor. The example sentence is specific and has a comedic contrast, but the etymology lacks a kicker. Adding a deadpan twist to the etymology and avoiding clichéd phrases would enhance the humor.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: School Bus, Yellow.
+  afternoon: The iconic 40-foot frame—an odyssey per trip.
+  evening: From the archives, School Bus, Yellow.
+  reels: The unmistakable diesel rumble—audible authority.
+Saved entry: School Bus, Yellow
+Built entry page: entries/2026-09-16.html
+Rebuilt prev entry page (2026-09-15) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 153 entries + 64 articles.
+Sitemap rebuilt with 153 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-09-16 landed on attempt 2.
+```
