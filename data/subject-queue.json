@@ -7,16 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Beach Ball, Giant Inflatable",
-      "query": "giant inflatable beach ball",
-      "category": "Sports & Recreation"
-    },
-    {
-      "subject": "School Bus, Yellow",
-      "query": "yellow school bus",
-      "category": "Vehicles & Transport"
-    },
-    {
       "subject": "Igloo, Snow Block",
       "query": "snow block igloo",
       "category": "Architecture & Infrastructure"

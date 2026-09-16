@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-16",
+    "word": "School Bus, Yellow",
+    "pronunciation": "/skool BUS, YEL-low/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A passenger vehicle of formidable bulk, typically painted in safety yellow, used for the transportation of students; often noted for its spacious rear overhang and expansive wheelbase.",
+      "<em>colloq.</em> The quintessential road titan: its approach is signaled by an audible suspension creak and the flustered retreat of lesser vehicles."
+    ],
+    "example": "He spotted a thiccc yellow school bus wedged into the lot, the adjacent cars parked like awestruck pupils.",
+    "etymology": "From Latin 'schola' meaning 'school' and Old English 'busse', a shortened form of 'omnibus'. The suffix 'yellow' derives from Old English 'geolu', which just happens to be the hue of caution and oversized cautionary tales.",
+    "image": "images/2026-09-16-school-bus-yellow.jpg",
+    "caption": "Plate CLIII., The subject's posterior, viewed astern, defies casual description in raking light.",
+    "tags": [
+      "vehicle",
+      "industrial",
+      "construction"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Joshua Hoehne",
+    "photographerUrl": "https://unsplash.com/@joshua_hoehne",
+    "unsplashUrl": "https://unsplash.com/photos/a-yellow-school-bus-parked-in-a-parking-lot-CR-qy_TGLJ4",
+    "socialCaptions": {
+      "morning": "School Bus, Yellow.\nSafety yellow since 1939—an unyielding beacon of punctuality.\nThe parking lot's gravitational center.",
+      "afternoon": "The iconic 40-foot frame—an odyssey per trip.\nDo you think it could parallel park, or is that just wishful thinking?\nRate the thicccness, 1-10.\nSchool Bus, Yellow.",
+      "evening": "From the archives, School Bus, Yellow.\nStandard seating capacity: 72, reality seating: 84.\nPhysics and state laws are often at odds.",
+      "reels": "The unmistakable diesel rumble—audible authority.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-15",
     "word": "Thiccc Freight Train",
     "pronunciation": "freyt TRAYN",
