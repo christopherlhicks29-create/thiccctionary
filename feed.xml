@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2026 19:23:46 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 15:21:54 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Igloo, Snow Block</title>
+      <link>https://thiccctionary.com/entries/2026-09-17.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-09-17.html</guid>
+      <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A dome-shaped dwelling constructed from compacted snow blocks, prized for its rounded silhouette and unexpectedly generous interior volume relative to its modest footprint.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-09-17-igloo-snow-block.jpg" type="image/jpeg" length="171901" />
+      <category>architecture</category><category>landscape</category><category>girth</category>
+    </item>
     <item>
       <title>School Bus, Yellow</title>
       <link>https://thiccctionary.com/entries/2026-09-16.html</link>
