@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789676803275",
+    "created": "2026-09-17T20:26:43.275Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "office",
+    "text": "Broken since March. Filed three complaints. The machine sits there anyway, taking up counter space like it has a lease.\n\nBart says the previous one was better. I asked which one. He said \"the one before.\"\n\nEliza",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1789602004227",
     "created": "2026-09-16T23:40:04.227Z",
     "byline_id": "spider",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-06-12T19:28:02.451Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1781121116231",
-    "created": "2026-06-10T19:51:56.231Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "office",
-    "text": "Three complaints filed. No response. Bart, unprompted, mentioned the previous machine was better. Asked which one. He gestured. At the room. The whole room.\n\nIt is June.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-06-10T19:51:58.767Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
