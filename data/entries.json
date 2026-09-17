@@ -11,7 +11,7 @@
     "example": "He filled the wheelbarrow past the rim with fresh soil, a decision his lower back would later describe, in writing, as premature.",
     "etymology": "From Middle English 'whele barewe,' joining wheel to barrow, a frame for carrying, documented in agricultural and building use since at least the thirteenth century, when relocating one large load by hand was still considered a full day's accomplishment.",
     "image": "https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80",
-    "caption": "Plate CLIV., A wheelbarrow on a construction site, filled well past any manufacturer's suggestion.",
+    "caption": "Plate CLV., A wheelbarrow on a construction site, filled well past any manufacturer's suggestion.",
     "tags": [
       "industrial"
     ],
@@ -41,7 +41,7 @@
     "example": "He spotted a thiccc yellow school bus wedged into the lot, the adjacent cars parked like awestruck pupils.",
     "etymology": "From Latin 'schola' meaning 'school' and Old English 'busse', a shortened form of 'omnibus'. The suffix 'yellow' derives from Old English 'geolu', which just happens to be the hue of caution and oversized cautionary tales.",
     "image": "images/2026-09-16-school-bus-yellow.jpg",
-    "caption": "Plate CLIII., The subject's posterior, viewed astern, defies casual description in raking light.",
+    "caption": "Plate CLIV., The subject's posterior, viewed astern, defies casual description in raking light.",
     "tags": [
       "vehicle",
       "industrial",
@@ -73,7 +73,7 @@
     "example": "A thiccc freight train lumbered past the crossing, and the vibration reset the town hall clock. The schedule is now irrelevant.",
     "etymology": "From Old French 'freit' (goods, merchandise) + Middle English 'trayne' (a trailing vehicle), with the added 'c' for the weight class. It could still use a caboose hype man.",
     "image": "images/2026-09-15-thiccc-freight-train.jpg",
-    "caption": "Plate CLII., A freight train of stately breadth, captured in serene monochrome.",
+    "caption": "Plate CLIII., A freight train of stately breadth, captured in serene monochrome.",
     "tags": [
       "vehicle",
       "industrial",
@@ -105,7 +105,7 @@
     "example": "The captain navigated the thiccc coal barge down the Ohio River, and the wake reshaped local fishing conversations for weeks.",
     "etymology": "From Middle English 'barge', derived from Old French 'barge', from Latin 'barca' (small boat). First noted carrying a burden of coal in the 18th century; its thicccness is both literal and figurative.",
     "image": "images/2026-09-14-thiccc-coal-barge.jpg",
-    "caption": "Plate CLI., A thiccc coal barge under dramatic skies, asserting its presence.",
+    "caption": "Plate CLII., A thiccc coal barge under dramatic skies, asserting its presence.",
     "tags": [
       "vehicle",
       "girth",
@@ -124,6 +124,36 @@
       "afternoon": "The thiccc coal barge—\nTakes 12 hours to unload, but who's counting?\nThicccer: this, or a blue whale?\nThiccc Coal Barge.",
       "evening": "From the archives, Thiccc Coal Barge.\nFirst documented in the 18th century.\nIt redefined what it meant to 'barge in'.",
       "reels": "A length of 300 feet, width of 50 feet.\nStill prefers tight turns.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
+    "date": "2026-09-13",
+    "word": "Wrecking Ball, Demolition",
+    "pronunciation": "/REK-ing bawl, dem-uh-LISH-uhn/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A solid steel sphere suspended from a crane and swung with great ceremony at a wall that would have come down eventually anyway, just less photogenically.",
+      "colloq. The construction industry's most honest tool, in that its entire design philosophy is admitting the plan is to hit something very hard."
+    ],
+    "example": "The ball connected on the second swing, and the corner office that had survived three regime changes did not survive the afternoon.",
+    "etymology": "In use since the mid-twentieth century, when cranes strong enough to swing several tons of forged steel became common enough that demolition crews stopped bothering with dynamite for anything under six stories.",
+    "image": "images/2026-09-13-wrecking-ball-demolition.jpg",
+    "caption": "Plate CLI., A wrecking ball, mid-swing, negotiating with a wall that has already lost.",
+    "tags": [
+      "industrial"
+    ],
+    "category": "Industrial Machinery",
+    "bookReady": null,
+    "humorScore": 8,
+    "photoScore": null,
+    "photographer": "Toni  Reed",
+    "photographerUrl": "https://unsplash.com/@trfotos",
+    "unsplashUrl": "https://unsplash.com/photos/demolition-crew-works-on-a-house-with-heavy-machinery-j0QG9JGTqoE",
+    "socialCaptions": {
+      "morning": "Wrecking Ball, Demolition. The only tool on a job site with a stated goal of causing damage.",
+      "afternoon": "Nobody has ever accused a wrecking ball of subtlety. That's rather the point.",
+      "evening": "From the archives, Wrecking Ball, Demolition. Steel sphere, one job, zero hesitation.",
+      "reels": "The most direct piece of equipment ever bolted to a crane. It has one setting and it is 'swing.'"
     }
   },
   {

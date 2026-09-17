@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Sep 2026 15:21:54 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 17:55:54 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -14,13 +14,13 @@
       <link>https://thiccctionary.com/</link>
     </image>
     <item>
-      <title>Igloo, Snow Block</title>
+      <title>Wheelbarrow, Construction Site</title>
       <link>https://thiccctionary.com/entries/2026-09-17.html</link>
       <guid isPermaLink="true">https://thiccctionary.com/entries/2026-09-17.html</guid>
       <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
-      <description>A dome-shaped dwelling constructed from compacted snow blocks, prized for its rounded silhouette and unexpectedly generous interior volume relative to its modest footprint.</description>
-      <enclosure url="https://thiccctionary.com/images/2026-09-17-igloo-snow-block.jpg" type="image/jpeg" length="171901" />
-      <category>architecture</category><category>landscape</category><category>girth</category>
+      <description>A single-wheeled conveyance engineered to redistribute mass from the earth to wherever a job site has decided mass should temporarily go instead. Its capacity is a matter of quiet pride among those who operate one.</description>
+      <enclosure url="https://thiccctionary.com/og-default.png" type="image/png" length="0" />
+      <category>industrial</category>
     </item>
     <item>
       <title>School Bus, Yellow</title>
@@ -72,6 +72,15 @@
       <description>A maritime vessel of formidable breadth and displacement, designed for the transport of coal along inland waterways. Its posterior, viewed astern, defies casual description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-09-14-thiccc-coal-barge.jpg" type="image/jpeg" length="259630" />
       <category>vehicle</category><category>girth</category><category>maritime</category><category>industrial</category>
+    </item>
+    <item>
+      <title>Wrecking Ball, Demolition</title>
+      <link>https://thiccctionary.com/entries/2026-09-13.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-09-13.html</guid>
+      <pubDate>Sun, 13 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A solid steel sphere suspended from a crane and swung with great ceremony at a wall that would have come down eventually anyway, just less photogenically.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-09-13-wrecking-ball-demolition.jpg" type="image/jpeg" length="410205" />
+      <category>industrial</category>
     </item>
     <item>
       <title>Thiccc Jet Cargo Aircraft</title>
