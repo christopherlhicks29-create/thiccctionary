@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Broken since March. Filed three complaints. The machine sits there anyway, taking up counter space like it has a lease.\n\nBart says the previous one was better. I asked which one. He said \"the one before.\"\n\nEliza",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-17T20:26:46.650Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789602004227",
