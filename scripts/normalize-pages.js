@@ -43,6 +43,7 @@ const CANON_NAV_LINKS = [
 const CANON_FOOTER_SECTIONS = `<p class="footer-head">Sections</p>
       <a href="/archive.html">Archive</a>
       <a href="/a-z.html">A-Z</a>
+      <a href="/category/">Categories</a>
       <a href="/articles/">Articles</a>
       <a href="/about/documents/">References</a>
       <a href="/cartoons/">Cartoons</a>
@@ -99,6 +100,14 @@ function normalizePath(p) {
   if (p === 'about/style-guide/index.html') return '/about/style-guide/';
   if (p === 'press/index.html') return '/press/';
   if (p === 'follow/index.html') return '/follow/';
+  // Wave (normalize-pages fix): individual pages inside a section should
+  // still mark that section's nav link active, not just the section's own
+  // index page. This was the root cause of the Wave 347 regression report
+  // (running the script stripped nav-link--active from every Thiccc Beat
+  // column page because e.g. articles/thiccc-beat-2026-06-23-....html
+  // never matched the canonical '/articles/' href).
+  if (p.startsWith('articles/') && p !== 'articles/index.html') return '/articles/';
+  if (p.startsWith('cartoons/') && p !== 'cartoons/index.html') return '/cartoons/';
   return '/' + p;
 }
 
