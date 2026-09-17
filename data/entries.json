@@ -127,34 +127,34 @@
     }
   },
   {
-    "date": "2026-09-13",
-    "word": "Wrecking Ball, Demolition",
-    "pronunciation": "/REK-ing bawl, dem-uh-LISH-uhn/",
-    "partOfSpeech": "n.",
-    "definitions": [
-      "A solid steel sphere suspended from a crane and swung with great ceremony at a wall that would have come down eventually anyway, just less photogenically.",
-      "colloq. The construction industry's most honest tool, in that its entire design philosophy is admitting the plan is to hit something very hard."
-    ],
-    "example": "The ball connected on the second swing, and the corner office that had survived three regime changes did not survive the afternoon.",
-    "etymology": "In use since the mid-twentieth century, when cranes strong enough to swing several tons of forged steel became common enough that demolition crews stopped bothering with dynamite for anything under six stories.",
-    "image": "images/2026-09-13-wrecking-ball-demolition.jpg",
-    "caption": "Plate CLI., A wrecking ball, mid-swing, negotiating with a wall that has already lost.",
-    "tags": [
-      "industrial"
-    ],
-    "category": "Industrial Machinery",
     "bookReady": null,
+    "caption": "Plate CLI., A manhole cover, doing the unglamorous work of staying exactly where it's put.",
+    "category": "Architecture & Infrastructure",
+    "date": "2026-09-13",
+    "definitions": [
+      "A circular iron disc set flush into pavement, engineered to be heavy enough that no passing vehicle will ever dislodge it and no passerby will ever consider lifting it out of curiosity.",
+      "colloq. The single heaviest object most people step on without noticing, several times a day, for their entire lives."
+    ],
+    "etymology": "Cast iron manhole covers date to the mid-nineteenth century, when growing sewer and utility networks needed access points sturdy enough to bear street traffic indefinitely without maintenance; the round shape is itself a safety feature, since a circle can never fall through the hole it covers no matter how it's turned.",
+    "example": "The utility crew needed a pry bar and two people to lift a cover most residents had walked over for years without ever registering that it weighed more than they did.",
     "humorScore": 8,
+    "image": "images/2026-09-13-wrecking-ball-demolition.jpg",
+    "partOfSpeech": "n.",
     "photoScore": null,
     "photographer": "Toni  Reed",
     "photographerUrl": "https://unsplash.com/@trfotos",
-    "unsplashUrl": "https://unsplash.com/photos/demolition-crew-works-on-a-house-with-heavy-machinery-j0QG9JGTqoE",
+    "pronunciation": "/MAN-hohl KUHV-er, kast AI-ern/",
     "socialCaptions": {
-      "morning": "Wrecking Ball, Demolition. The only tool on a job site with a stated goal of causing damage.",
-      "afternoon": "Nobody has ever accused a wrecking ball of subtlety. That's rather the point.",
-      "evening": "From the archives, Wrecking Ball, Demolition. Steel sphere, one job, zero hesitation.",
-      "reels": "The most direct piece of equipment ever bolted to a crane. It has one setting and it is 'swing.'"
-    }
+      "afternoon": "Nobody has ever admired a manhole cover. It has never once needed the attention.",
+      "evening": "From the archives, Manhole Cover, Cast Iron. The heaviest thing on the block, and the least remarked upon.",
+      "morning": "Manhole Cover, Cast Iron. You have stepped on one today. You did not notice.",
+      "reels": "It has one job and it has never once failed at it. Also, you cannot lift it, and that's the point."
+    },
+    "tags": [
+      "architecture"
+    ],
+    "unsplashUrl": "https://unsplash.com/photos/demolition-crew-works-on-a-house-with-heavy-machinery-j0QG9JGTqoE",
+    "word": "Manhole Cover, Cast Iron"
   },
   {
     "date": "2026-09-12",
