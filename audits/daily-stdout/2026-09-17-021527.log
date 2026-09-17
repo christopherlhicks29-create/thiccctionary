@@ -1,0 +1,39 @@
+# Daily run trace 2026-09-17-021527
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35173643083
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-17
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Igloo, Snow Block" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Igloo, Snow Block" query="snow block igloo" (source: queue)
+Subject: Igloo, Snow Block (query: "snow block igloo")
+Subject "Igloo, Snow Block" returned zero Unsplash results for query "snow block igloo". (attempt 1)
+Fallback subject (#1): Thiccc Kettledrum (query: "kettledrum")
+Subject "Thiccc Kettledrum" returned zero Unsplash results for query "kettledrum". (attempt 2)
+Fallback subject (#2): Boeing 747, Jumbo Jet (query: "Boeing 747")
+Found 7 candidate photos.
+Error: Vision pick failed: 400 {
+  "error": {
+    "message": "Unable to download content from the provided URL before the timeout. Check that the URL is publicly accessible and responds promptly, or upload the file and provide a file_id instead.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_image_url"
+  }
+}
+    at pickThiccestImage (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:374:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:1006:16)
+[retry-wrapper] attempt 1 threw: Command failed: node generate-daily.js
+```
