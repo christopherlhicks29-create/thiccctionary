@@ -1,0 +1,104 @@
+# Daily run trace 2026-09-17-080808
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35197923741
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-17
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Igloo, Snow Block" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Igloo, Snow Block" query="snow block igloo" (source: queue)
+Subject: Igloo, Snow Block (query: "snow block igloo")
+Subject "Igloo, Snow Block" returned zero Unsplash results for query "snow block igloo". (attempt 1)
+Fallback subject (#1): Boeing 747, Dreamlifter (query: "Boeing 747")
+Found 7 candidate photos.
+Vision rejected all 7 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 1 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Boeing 747, Dreamlifter"
+[bail] popped "Boeing 747, Dreamlifter" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-17.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-17 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Sandcastle, Beach Turret" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Sandcastle, Beach Turret" query="large sandcastle turret beach" (source: queue)
+Subject: Sandcastle, Beach Turret (query: "large sandcastle turret beach")
+Found 1 candidate photos.
+Vision picked #1 of 1: The sandcastle's broad structure is clearly visible against the beach, emphasizing its thicc silhouette.
+Saved image to images/2026-09-17-sandcastle-beach-turret.jpg
+[webp] 2026-09-17-sandcastle-beach-turret.jpg: 165KB -> 92KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 9  isSubject: false
+  critique: The photo does not show a 'Sandcastle, Beach Turret' but rather a real castle on a beach. The subject is not a sandcastle, which disqualifies it based on the identity test. The composition is scenic, but it does not fit the subject requirement. The castle is prominent but not relevant to the subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=9 - subject "Sandcastle, Beach Turret"
+[bail] popped "Sandcastle, Beach Turret" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-17.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-17 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Drawbridge, Castle" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Drawbridge, Castle" query="castle drawbridge stone" (source: queue)
+Subject: Drawbridge, Castle (query: "castle drawbridge stone")
+Found 30 candidate photos.
+Vision picked #7 of 12: This photo showcases a large castle with a substantial silhouette, emphasizing its thiccness against the backdrop.
+Saved image to images/2026-09-17-drawbridge-castle.jpg
+[webp] 2026-09-17-drawbridge-castle.jpg: 251KB -> 162KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Drawbridge, Castle" (29 candidates left).
+Vision picked #5 of 12: This photo showcases a grand, thick structure with strong architectural features, emphasizing the 'thicc' nature of a castle drawbridge.
+[webp] 2026-09-17-drawbridge-castle.jpg: 360KB -> 286KB (21% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Drawbridge, Castle" (28 candidates left).
+Vision picked #7 of 12: this photo showcases a robust castle structure with a prominent drawbridge, emphasizing its thicc silhouette.
+[webp] 2026-09-17-drawbridge-castle.jpg: 223KB -> 148KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo depicts Pulteney Bridge in Bath, not a drawbridge associated with a castle. The subject is incorrectly identified, as Pulteney Bridge is a historic bridge with shops, not a drawbridge. The image is well-composed and clear, but it does not match the specified subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Drawbridge, Castle"
+[bail] popped "Drawbridge, Castle" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-17.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-17 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Beach Ball, Giant Inflatable" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Beach Ball, Giant Inflatable" query="giant inflatable beach ball" (source: queue)
+Subject: Beach Ball, Giant Inflatable (query: "giant inflatable beach ball")
+Found 7 candidate photos.
+Vision picked #5 of 7: this photo captures a giant inflatable beach ball in a way that emphasizes its size and girth against a clear sky.
+Saved image to images/2026-09-17-beach-ball-giant-inflatable.jpg
+[webp] 2026-09-17-beach-ball-giant-inflatable.jpg: 244KB -> 149KB (39% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 20; trying another photo for "Beach Ball, Giant Inflatable" (6 candidates left).
+Vision picked #3 of 6: this photo clearly shows the giant inflatable beach ball's full round shape, emphasizing its girth.
+[webp] 2026-09-17-beach-ball-giant-inflatable.jpg: 244KB -> 159KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Beach Ball, Giant Inflatable" (5 candidates left).
+Vision rejected all 5 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo depicts a large transparent zorb ball, not a 'Giant Inflatable Beach Ball.' The zorb ball is prominent and well-framed, but it does not match the specified subject. The serene black-and-white setting adds a nice aesthetic touch, but the subject identity is incorrect, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Beach Ball, Giant Inflatable"
+[bail] popped "Beach Ball, Giant Inflatable" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-17.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-17 yet). Queue now has 3 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-17.
+```
