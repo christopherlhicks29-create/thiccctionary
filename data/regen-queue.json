@@ -1,6 +1,6 @@
 {
-  "queued_at": "2026-09-14T08:35:02.845Z",
-  "dates": "2026-09-03,2026-09-09,2026-08-21,2026-09-08",
+  "queued_at": "2026-09-17T18:04:07.970Z",
+  "dates": "2026-09-03,2026-09-09,2026-08-21,2026-09-08,2026-09-13",
   "subject_override": "",
-  "reason": "Wave 212 image-audit batch (worst 4): 2026-09-03 Cruise Ship, Ocean Liner (score 1, depicts \"a river cruise ship navigating a waterway\"); 2026-09-09 Big Top, Circus Tent (score 1, depicts \"a small model of a circus tent in a field\"); 2026-08-21 Anchor, Ship's (score 1, depicts \"a decorative anchor sculpture mounted on a pedestal\"); 2026-09-08 Clock, Grandfather (score 1, depicts \"a close-up of an ornate clock face with decorative elements\")"
+  "reason": "Combined re-fire: Wave 212 image-audit batch (worst 4, stuck unprocessed since 2026-09-14 -- 2026-09-03 Cruise Ship/Ocean Liner shows a river cruise ship not an ocean liner; 2026-09-09 Big Top/Circus Tent shows a small model tent; 2026-08-21 Anchor/Ship's shows a decorative anchor sculpture; 2026-09-08 Clock/Grandfather shows an ornate clock face close-up, no grandfather clock body) PLUS 2026-09-13 Wrecking Ball, Demolition (photo shows a generic excavator/demolition jobsite with no ball visible at all; caught via mandatory visual QA during 2026-09-17 PO resume session)."
 }
