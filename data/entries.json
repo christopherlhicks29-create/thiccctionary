@@ -1,34 +1,32 @@
 [
   {
     "date": "2026-09-17",
-    "word": "Igloo, Snow Block",
-    "pronunciation": "/IG-loo, snoh blok/",
+    "word": "Wheelbarrow, Construction Site",
+    "pronunciation": "/WEEL-ba-roh, kun-STRUK-shun sahyt/",
     "partOfSpeech": "n.",
     "definitions": [
-      "A dome-shaped dwelling constructed from compacted snow blocks, prized for its rounded silhouette and unexpectedly generous interior volume relative to its modest footprint.",
-      "<em>colloq.</em> The frozen tundra's answer to load-bearing chubbiness, its curved walls doing the structural work most buildings assign to a corner."
+      "A single-wheeled conveyance engineered to redistribute mass from the earth to wherever a job site has decided mass should temporarily go instead. Its capacity is a matter of quiet pride among those who operate one.",
+      "<em>colloq.</em> The wheel that does the work of four and receives the credit due to none of them."
     ],
-    "example": "The expedition team ducked into the thiccc igloo, its snow block walls curving overhead like the world's coldest hug.",
-    "etymology": "From Inuktitut 'iglu' meaning 'house,' paired with Old English 'snaw' and 'blok' from Old French 'bloc,' a term for a solid mass, which is, in fact, the entire architectural philosophy here.",
-    "image": "images/2026-09-17-igloo-snow-block-v2.jpg",
-    "caption": "Plate CLIV., The subject's rounded flank holds firm against the drift, betraying no seams.",
+    "example": "He filled the wheelbarrow past the rim with fresh soil, a decision his lower back would later describe, in writing, as premature.",
+    "etymology": "From Middle English 'whele barewe,' joining wheel to barrow, a frame for carrying, documented in agricultural and building use since at least the thirteenth century, when relocating one large load by hand was still considered a full day's accomplishment.",
+    "image": "https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80",
+    "caption": "Plate CLIV., A wheelbarrow on a construction site, filled well past any manufacturer's suggestion.",
     "tags": [
-      "architecture",
-      "landscape",
-      "girth"
+      "industrial"
     ],
-    "category": "Architecture & Infrastructure",
+    "category": "Industrial Machinery",
     "bookReady": null,
-    "humorScore": 7,
+    "humorScore": 8,
     "photoScore": null,
-    "photographer": "Aleksandra Sapozhnikova",
-    "photographerUrl": "https://unsplash.com/@rruprrup",
-    "unsplashUrl": "https://unsplash.com/photos/white-snow-covered-mountain-during-daytime-NbCribsLXKQ",
+    "photographer": "Alex Gallegos",
+    "photographerUrl": "https://unsplash.com/@alexgallegos",
+    "unsplashUrl": "https://unsplash.com/photos/a-blue-wheelbarrow-filled-with-dirt-on-a-construction-site-rEkS1RRFsSg",
     "socialCaptions": {
-      "morning": "Igloo, Snow Block.\nCompacted from cut snow bricks, curved for maximum interior girth.\nInsulation as architecture.",
-      "afternoon": "Interior temperature holds steady near freezing no matter the storm outside.\nRate the thicccness, 1-10.\nIgloo, Snow Block.",
-      "evening": "From the archives, Igloo, Snow Block.\nA single dome can sleep a family of four, snugly.\nRotundity, it turns out, keeps you warm.",
-      "reels": "No support beams, just snow and geometry.\nNew round of Guess the Thiccc, every day. Link in bio."
+      "morning": "Wheelbarrow, Construction Site. One wheel, one axle, and an unreasonable amount of faith in both.",
+      "afternoon": "Nobody has ever filled a wheelbarrow exactly halfway. It understands two settings: empty, and too much.",
+      "evening": "From the archives, Wheelbarrow, Construction Site. Small wheel. Enormous ambition.",
+      "reels": "The most honest tool on any job site. It has never once pretended the load was reasonable."
     }
   },
   {
