@@ -1,6 +1,0 @@
-{
-  "queued_at": "2026-09-17T18:27:33.018Z",
-  "dates": "2026-09-09",
-  "subject_override": "",
-  "reason": "Retry: 2026-09-09 Big Top, Circus Tent regen failed in the prior combined batch (PR #304) with a transient Unsplash download timeout (400, 'Unable to download content from the provided URL before the timeout') -- not a subject-availability problem. Re-queueing with no override so the picker re-attempts; infra hiccup, should succeed on retry."
-}
