@@ -1,27 +1,23 @@
 {
-  "date": "2026-09-17",
-  "word": "Igloo, Snow Block",
-  "pronunciation": "/IG-loo, snoh blok/",
+  "date": "2026-09-13",
+  "word": "Rock, Plymouth",
+  "pronunciation": "/rok, PLIM-uhth/",
   "partOfSpeech": "n.",
   "definitions": [
-    "A dome-shaped dwelling constructed from compacted snow blocks, prized for its rounded silhouette and unexpectedly generous interior volume relative to its modest footprint.",
-    "<em>colloq.</em> The frozen tundra's answer to load-bearing chubbiness, its curved walls doing the structural work most buildings assign to a corner."
+    "A modest granite boulder elevated, through sheer force of American mythology, to the structural weight of a founding document. Visitors arrive expecting a landmass and receive a rock roughly the size of a compact car, fenced, roofed, and guarded accordingly.",
+    "<em>colloq.</em> Proof that thiccc is not always a matter of tonnage. Sometimes it is a matter of narrative load bearing."
   ],
-  "example": "The expedition team ducked into the thiccc igloo, its snow block walls curving overhead like the world's coldest hug.",
-  "etymology": "From Inuktitut 'iglu' meaning 'house,' paired with Old English 'snaw' and 'blok' from Old French 'bloc,' a term for a solid mass, which is, in fact, the entire architectural philosophy here.",
-  "caption": "Plate CLIV., The subject's rounded flank holds firm against the drift, betraying no seams.",
-  "tags": [
-    "architecture",
-    "landscape",
-    "girth"
-  ],
-  "category": "Architecture & Infrastructure",
-  "unsplashQuery": "snow block igloo",
-  "humorScore": 7,
+  "example": "The tour guide gestured at Plymouth Rock with the solemnity usually reserved for objects considerably larger than it.",
+  "etymology": "Named for the Massachusetts landing site tradition assigns to the Mayflower passengers in 1620, though the rock was not identified as THE rock in any record until 1741, over a century later, when a 94 year old church elder pointed it out from memory of what his father once told him.",
+  "caption": "Plate CL., Plymouth Rock, weighing considerably less than its reputation.",
+  "tags": ["natural-specimens"],
+  "category": "Natural Specimens",
+  "humorScore": 8,
+  "unsplashQuery": "plymouth rock monument massachusetts",
   "socialCaptions": {
-    "morning": "Igloo, Snow Block.\nCompacted from cut snow bricks, curved for maximum interior girth.\nInsulation as architecture.",
-    "afternoon": "Interior temperature holds steady near freezing no matter the storm outside.\nRate the thicccness, 1-10.\nIgloo, Snow Block.",
-    "evening": "From the archives, Igloo, Snow Block.\nA single dome can sleep a family of four, snugly.\nRotundity, it turns out, keeps you warm.",
-    "reels": "No support beams, just snow and geometry.\nNew round of Guess the Thiccc, every day. Link in bio."
+    "morning": "Plymouth Rock. 350 plus years of fame on a boulder you could carry in a wheelbarrow, if you were allowed within fifty feet of it.",
+    "afternoon": "The rock itself never asked for any of this. It just sat there. Everything else was our idea.",
+    "evening": "From the archives, Rock, Plymouth. A landmark held to a higher standard of significance than of size.",
+    "reels": "Everyone expects a boulder. They built it a cage instead."
   }
 }
