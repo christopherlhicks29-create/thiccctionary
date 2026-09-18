@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789773600870",
+    "created": "2026-09-18T23:20:00.870Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "office",
+    "text": "Mireille at the Belmond concierge desk knows my filing schedule better than the office does. Six weeks, yes. The publication has been in continuous operation since Bertram founded it, and I have been in continuous operation since Monaco got decent rosé.\n\nMargaret",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1789760935886",
     "created": "2026-09-18T19:48:55.886Z",
     "byline_id": "teddy",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-06-16T20:22:36.523Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1781555822062",
-    "created": "2026-06-15T20:37:02.062Z",
-    "byline_id": "margie",
-    "byline_display": "Margaret",
-    "topic_kind": "reply",
-    "text": "Eli says \"some things have already decided where they live.\" Disagree. I moved my entire operation to a different continent in 2019 and the paperwork was fine. The desk simply needed confidence.\n\nCongratulations on the anvil.\n\nMargaret",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-06-15T20:37:04.731Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
