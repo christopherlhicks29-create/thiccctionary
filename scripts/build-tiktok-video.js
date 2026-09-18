@@ -42,7 +42,7 @@ function escFFText(s) {
   return s
     .replace(/\\/g, '\\\\')
     .replace(/:/g, '\\:')
-    .replace(/'/g, '’')
+    .replace(/'/g, 'â')
     .replace(/,/g, '\\,');
 }
 
@@ -124,6 +124,35 @@ async function probeDuration(audioPath) {
   });
 }
 
+// Wave 349: entry.image is normally a repo-relative path (images/<slug>.jpg),
+// but some hand-patched entries (e.g. 2026-09-17 Wheelbarrow, backfilled
+// via the manual inject path) ended up with a live Unsplash/camo hotlink
+// URL instead of a localized file. path.resolve() silently turned that URL
+// into a nonexistent local path, so the ffmpeg composition step failed
+// every time -- and because this workflow's failure mode is a hard exit
+// with no fallback, outcome-verify.js re-fired the Reel-build sentinel every
+// single hour forever with no way to ever recover (see WAVES.md). Rather
+// than only patching today's data, make the builder tolerate a remote URL
+// directly: download it to a temp file in OUT_DIR and use that as the
+// ffmpeg input.
+async function resolveImagePath(entryImage) {
+  if (/^https?:\/\//i.test(entryImage)) {
+    console.log(`entry.image is a remote URL, downloading: ${entryImage}`);
+    const res = await fetch(entryImage);
+    if (!res.ok) {
+      throw new Error(`Failed to download remote entry image (${res.status}): ${entryImage}`);
+    }
+    const buf = Buffer.from(await res.arrayBuffer());
+    const contentType = res.headers.get('content-type') || '';
+    const ext = contentType.includes('png') ? 'png' : contentType.includes('webp') ? 'webp' : 'jpg';
+    const tmpPath = path.join(OUT_DIR, `_remote-source.${ext}`);
+    await fs.writeFile(tmpPath, buf);
+    console.log(`Downloaded remote entry image (${buf.length} bytes) -> ${tmpPath}`);
+    return tmpPath;
+  }
+  return path.resolve(ROOT, entryImage);
+}
+
 async function main() {
   if (!process.env.OPENAI_API_KEY) {
     console.error('OPENAI_API_KEY required.');
@@ -152,7 +181,7 @@ async function main() {
   const slug = entry.word.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const audioPath = path.join(OUT_DIR, `${date}-${slug}.mp3`);
   const videoPath = path.join(OUT_DIR, `${date}-${slug}.mp4`);
-  const imagePath = path.resolve(ROOT, entry.image);
+  const imagePath = await resolveImagePath(entry.image);
 
   await generateVoiceover(script, audioPath);
   const audioDuration = await probeDuration(audioPath);
