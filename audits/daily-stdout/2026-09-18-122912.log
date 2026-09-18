@@ -1,0 +1,93 @@
+# Daily run trace 2026-09-18-122912
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35344708423
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-18
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 9
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (9 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "public plaza fountain". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its impressive girth and structure.
+Saved image to images/2026-09-18-bagger-293.jpg
+[webp] 2026-09-18-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #4 of 12: This photo shows the full silhouette of the Bagger 293 with its impressive height and structure clearly visible.
+[webp] 2026-09-18-bagger-293.jpg: 241KB -> 158KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive scale and silhouette clearly against the landscape.
+[webp] 2026-09-18-bagger-293.jpg: 418KB -> 354KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 30  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a standard bulldozer on a construction site. The subject is not centered, and the framing includes a lot of the surrounding area, which distracts from the bulldozer itself. The image lacks the imposing scale and distinctive features of the Bagger 293, resulting in a low score.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=30 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 8 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-18.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-18 yet). Queue now has 8 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Popcorn Tub, Movie Theater" (8 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn")
+Found 4 candidate photos.
+Vision rejected all 4 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 5 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Popcorn Tub, Movie Theater"
+[bail] popped "Popcorn Tub, Movie Theater" from queue. 7 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-18.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-18 yet). Queue now has 7 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Berm, Earthen Dam" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen dam" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen dam")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen dam". (attempt 1)
+Fallback subject (#1): Thiccc Road Roller (query: "road roller")
+Found 28 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 26 left.
+Vision picked #2 of 12: This photo clearly shows the full silhouette of the road roller, emphasizing its thiccness and overall girth.
+Saved image to images/2026-09-18-thiccc-road-roller.jpg
+[webp] 2026-09-18-thiccc-road-roller.jpg: 520KB -> 477KB (8% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=example
+  feedback: The entry has a solid dictionary register with a decent etymology kicker. The example could use a sharper punchline; 'going out of style' is a bit generic. The definition's 'contemplative rotundity' is a nice touch of surprise.
+Generated social captions:
+  morning: Thiccc Road Roller.
+  afternoon: In 1796, the first steam-powered roller was introduced.
+  evening: From the archives, Thiccc Road Roller.
+  reels: A road roller may take up to 8 mph to make a point.
+Saved entry: Thiccc Road Roller
+Built entry page: entries/2026-09-18.html
+Rebuilt prev entry page (2026-09-17) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 156 entries + 66 articles.
+Sitemap rebuilt with 156 entries.
+Subject queue updated: 6 item(s) remaining.
+[retry-wrapper] entry for 2026-09-18 landed on attempt 3.
+```
