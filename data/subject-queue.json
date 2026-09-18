@@ -7,21 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Fountain, Public Plaza",
-      "query": "public plaza fountain",
-      "category": "Architecture & Infrastructure"
-    },
-    {
-      "subject": "Popcorn Tub, Movie Theater",
-      "query": "movie theater popcorn",
-      "category": "Foods of Substance"
-    },
-    {
-      "subject": "Berm, Earthen Dam",
-      "query": "earthen dam",
-      "category": "Architecture & Infrastructure"
-    },
-    {
       "subject": "Crockpot, Slow Cooker Oval",
       "query": "slow cooker",
       "category": "Domestic Goods"
