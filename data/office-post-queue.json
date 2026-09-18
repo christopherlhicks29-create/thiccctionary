@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to the natural history museum today. Stood under the blue whale for a long time. A kid next to me said \"it's so big\" and walked off. I stayed another ten minutes. I don't know what I was solving for.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-18T19:48:58.506Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789676803275",
