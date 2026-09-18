@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1789760935887",
+      "date": "2026-09-18",
+      "byline_id": "teddy",
+      "summary": "Theodore posted about personal life: a museum or library visit on your day off: \"Went to the natural history museum today. Stood under the blue whale for a long time. A kid next to ...\""
+    },
+    {
       "id": "auto-1789676803277",
       "date": "2026-09-17",
       "byline_id": "eli",
@@ -274,12 +280,6 @@
       "date": "2026-08-22",
       "byline_id": "eli",
       "summary": "Eliza posted about personal life: the grocery store, alone, on a weeknight: \"Went back for a second wheel of parmesan. The guy restocking yogurt recognized me. He didn't say any...\""
-    },
-    {
-      "id": "auto-1787334803382",
-      "date": "2026-08-21",
-      "byline_id": "spider",
-      "summary": "\"Spider\" posted about personal life: your expense report: filed on time, as always, contents unex: \"VALLETTA, 0340\n\nFiled the expenses. Twelve days, four ports, one line item I will not be explaining....\""
     }
   ]
 }

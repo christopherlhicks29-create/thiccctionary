@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1789760935886",
+    "created": "2026-09-18T19:48:55.886Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "personal",
+    "text": "Went to the natural history museum today. Stood under the blue whale for a long time. A kid next to me said \"it's so big\" and walked off. I stayed another ten minutes. I don't know what I was solving for.\n\nTheodore",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1789676803275",
     "created": "2026-09-17T20:26:43.275Z",
     "byline_id": "eli",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-06-15T20:37:04.731Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1781292480132",
-    "created": "2026-06-12T19:28:00.132Z",
-    "byline_id": "spider",
-    "byline_display": "\"Spider\"",
-    "topic_kind": "office",
-    "text": "MACAU, 0300\n\nBart's brother-in-law Reginald has not returned the office's calls. I can confirm only that I am not in Macau. The ferry was unspecified. The expense report was correct.\n\n\"Spider",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-06-12T19:28:02.451Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
