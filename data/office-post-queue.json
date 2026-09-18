@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Mireille at the Belmond concierge desk knows my filing schedule better than the office does. Six weeks, yes. The publication has been in continuous operation since Bertram founded it, and I have been in continuous operation since Monaco got decent rosé.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-18T23:20:04.378Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789760935886",
