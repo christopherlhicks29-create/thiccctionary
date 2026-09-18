@@ -1,11 +1,11 @@
 [
   {
-    "slug": "mailbag-2026-09-16",
-    "title": "Filed Replies, Vol. 16",
-    "description": "Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 16.",
-    "date": "2026-09-16",
-    "author": "Bartholomew Whitmore",
-    "type": "mailbag"
+    "slug": "thiccc-beat-2026-09-18-spider-fat-bear-week-2026-bracket",
+    "title": "The Bracket Drops Today. I Have Already Cleared My Afternoon.",
+    "description": "The Thiccc Beat: Spider Hennessy on Fat Bear Week 2026 bracket reveal, Katmai National Park. Ruling: Thiccc (provisional, pending a bracket).",
+    "date": "2026-09-18",
+    "author": "Spider Hennessy",
+    "type": "thiccc-beat"
   },
   {
     "slug": "thiccc-beat-2026-09-16-bart-pier-39-unverified-sea-lion",
@@ -14,6 +14,14 @@
     "date": "2026-09-16",
     "author": "Bartholomew \"Bart\" Pruss",
     "type": "thiccc-beat"
+  },
+  {
+    "slug": "mailbag-2026-09-16",
+    "title": "Filed Replies, Vol. 16",
+    "description": "Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 16.",
+    "date": "2026-09-16",
+    "author": "Bartholomew Whitmore",
+    "type": "mailbag"
   },
   {
     "slug": "from-the-boat-2026-09-15",
