@@ -7,26 +7,6 @@
   ],
   "queue": [
     {
-      "subject": "Crockpot, Slow Cooker Oval",
-      "query": "slow cooker",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Pretzel, Bavarian Soft",
-      "query": "bavarian pretzel",
-      "category": "Foods of Substance"
-    },
-    {
-      "subject": "Wok, Commercial Kitchen",
-      "query": "wok kitchen",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Speaker, Concert PA Stack",
-      "query": "concert speaker stack",
-      "category": "Musical Instruments"
-    },
-    {
       "subject": "Rubber Duck, Giant Inflatable",
       "query": "giant rubber duck",
       "category": "Domestic Goods"
