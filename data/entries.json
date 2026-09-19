@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-19",
+    "word": "Speaker, Concert PA Stack",
+    "pronunciation": "/SPEE-ker, KON-sert PA STAK/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A towering assemblage of loudspeakers, characterized by its imposing verticality and ability to project sound with negligible diffidence; often seen in outdoor concert venues, where its acoustic breadth is rivaled only by its shadow.",
+      "<em>colloq.</em> The cornerstone of any respectable festival's soundscape, this sonic monument is known to vibrate both air and attendees with unapologetic resonance."
+    ],
+    "example": "The headliner took the stage, but the real showstopper was the thiccc concert PA stack, echoing across fields like a thunderous sentinel.",
+    "etymology": "From Middle English 'speker' (one who speaks), and Latin 'concertus' (agreement, harmony), reflecting the harmonious chaos it orchestrates. A stack with aspirations as high as its decibels.",
+    "image": "images/2026-09-19-speaker-concert-pa-stack.jpg",
+    "caption": "Plate CLVII., A concert PA stack, viewed in silhouette, commanding both sound and skyline.",
+    "tags": [
+      "architecture",
+      "industrial",
+      "instrument"
+    ],
+    "category": "Musical Instruments",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "Umanoide",
+    "photographerUrl": "https://unsplash.com/@umanoide",
+    "unsplashUrl": "https://unsplash.com/photos/a-large-metal-tower-with-a-light-on-top-of-it-IHadJLB-VtA",
+    "socialCaptions": {
+      "morning": "Speaker, Concert PA Stack.\nCapable of 130 decibels—enough to rattle the stars.\nThe audience may leave, but the tinnitus stays.",
+      "afternoon": "12 feet tall and feeling every inch.\nThe festival grounds tremble in anticipation.\nThicccer: this stack, or a Boeing 747 on takeoff?\nSpeaker, Concert PA Stack.",
+      "evening": "From the archives, Speaker, Concert PA Stack.\nFirst used at Woodstock '69—amplifying peace, love, and thicccness.\nThe grooviest giant, still on tour.",
+      "reels": "Each stack weighs 2,000 pounds—heavier than a small car.\nBut it moves the crowd like nothing else.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-18",
     "word": "Thiccc Road Roller",
     "pronunciation": "/thik rohd ROL-er/",
