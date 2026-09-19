@@ -1,0 +1,108 @@
+# Daily run trace 2026-09-19-004716
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35410420272
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-19
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="slow cooker" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "slow cooker")
+Found 3 candidate photos.
+Vision picked #1 of 3: the photo shows the full silhouette of the crockpot, emphasizing its overall girth in a kitchen setting.
+Saved image to images/2026-09-19-crockpot-slow-cooker-oval.jpg
+[webp] 2026-09-19-crockpot-slow-cooker-oval.jpg: 181KB -> 95KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Crockpot, Slow Cooker Oval" (2 candidates left).
+Vision picked #2 of 2: the full silhouette of the crockpot is visible, emphasizing its girth and shape.
+[webp] 2026-09-19-crockpot-slow-cooker-oval.jpg: 99KB -> 37KB (62% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Crockpot, Slow Cooker Oval" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo shows an orange cooking pot, not a Crockpot or slow cooker. The subject is misidentified, as the object lacks the features typical of a slow cooker, such as a control panel or electrical cord. The composition is clear and well-framed, but it does not depict the correct object, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Crockpot, Slow Cooker Oval"
+[bail] popped "Crockpot, Slow Cooker Oval" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-19.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-19 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Pretzel, Bavarian Soft" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Pretzel, Bavarian Soft" query="bavarian pretzel" (source: queue)
+Subject: Pretzel, Bavarian Soft (query: "bavarian pretzel")
+Found 3 candidate photos.
+Vision picked #2 of 3: the photo prominently features a large Bavarian pretzel alongside hearty food, emphasizing its thiccness.
+Saved image to images/2026-09-19-pretzel-bavarian-soft.jpg
+[webp] 2026-09-19-pretzel-bavarian-soft.jpg: 306KB -> 207KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 9; trying another photo for "Pretzel, Bavarian Soft" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 9  isSubject: false
+  critique: The photo does not primarily feature a Bavarian soft pretzel. Instead, it shows a meal with roasted chicken, fries, and a beer, with pretzels visible in the background. The pretzels are not the focal point, and the composition centers more on the meal and beer. The subject is not clearly identifiable as a Bavarian soft pretzel, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=9 - subject "Pretzel, Bavarian Soft"
+[bail] popped "Pretzel, Bavarian Soft" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-19.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-19 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Wok, Commercial Kitchen" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Wok, Commercial Kitchen" query="wok kitchen" (source: queue)
+Subject: Wok, Commercial Kitchen (query: "wok kitchen")
+Subject "Wok, Commercial Kitchen" returned zero Unsplash results for query "wok kitchen". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-19.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-19 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Speaker, Concert PA Stack" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Speaker, Concert PA Stack" query="concert speaker stack" (source: queue)
+Subject: Speaker, Concert PA Stack (query: "concert speaker stack")
+Found 29 candidate photos.
+Vision picked #5 of 12: this photo shows a tall PA stack clearly against the sky, emphasizing its thicc silhouette.
+Saved image to images/2026-09-19-speaker-concert-pa-stack.jpg
+[webp] 2026-09-19-speaker-concert-pa-stack.jpg: 143KB -> 75KB (47% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The entry lands well with a specific example and a punchline tag that adds humor. The etymology kicker is clever, though the definitions could use a bit more surprise or specificity to elevate the humor further.
+Generated social captions:
+  morning: Speaker, Concert PA Stack.
+  afternoon: 12 feet tall and feeling every inch.
+  evening: From the archives, Speaker, Concert PA Stack.
+  reels: Each stack weighs 2,000 pounds—heavier than a small car.
+Saved entry: Speaker, Concert PA Stack
+Built entry page: entries/2026-09-19.html
+Rebuilt prev entry page (2026-09-18) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 157 entries + 67 articles.
+Sitemap rebuilt with 157 entries.
+Subject queue updated: 2 item(s) remaining.
+[retry-wrapper] entry for 2026-09-19 landed on attempt 4.
+```
