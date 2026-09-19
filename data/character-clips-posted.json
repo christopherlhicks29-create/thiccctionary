@@ -211,7 +211,21 @@
           "id": "6aa59ed966679b076f157731"
         }
       ]
+    },
+    {
+      "path": "videos/characters/hugh-smokestack-call.mp4",
+      "at": "2026-09-19T19:01:10.575Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6aaedbf54594e3153f3e7b32"
+        },
+        {
+          "service": "instagram",
+          "id": "6aaedbf613d908add20358b6"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-09-12T18:50:01.310Z"
+  "lastPostedAt": "2026-09-19T19:01:10.575Z"
 }
