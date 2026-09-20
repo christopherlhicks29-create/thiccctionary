@@ -1,0 +1,113 @@
+# Daily run trace 2026-09-20-125731
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35512026697
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-20
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rubber Duck, Giant Inflatable" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rubber Duck, Giant Inflatable" query="giant rubber duck" (source: queue)
+Subject: Rubber Duck, Giant Inflatable (query: "giant rubber duck")
+Found 9 candidate photos.
+Vision rejected all 9 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Rubber Duck, Giant Inflatable"
+[bail] popped "Rubber Duck, Giant Inflatable" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-20 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Domino, Giant Novelty" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Domino, Giant Novelty" query="giant domino" (source: queue)
+Subject: Domino, Giant Novelty (query: "giant domino")
+Found 6 candidate photos.
+Vision picked #1 of 6: this photo showcases a giant novelty domino with a clear silhouette emphasizing its thiccness.
+Saved image to images/2026-09-20-domino-giant-novelty.jpg
+[webp] 2026-09-20-domino-giant-novelty.jpg: 73KB -> 31KB (58% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Domino, Giant Novelty" (5 candidates left).
+Vision picked #1 of 5: this photo features a large, colorful structure that emphasizes the novelty aspect and overall girth of the subject.
+[webp] 2026-09-20-domino-giant-novelty.jpg: 190KB -> 117KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Domino, Giant Novelty" (4 candidates left).
+Vision rejected all 4 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts a large sculpture made of colorful shipping containers arranged in the shape of the letter A, not a giant novelty domino. The subject does not match the description of a 'Domino, Giant Novelty.' The sculpture is well-framed and visually striking, but it does not fit the criteria for the intended subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Domino, Giant Novelty"
+[bail] popped "Domino, Giant Novelty" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-20 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Stone, Megalith Standing" - duplicates catalogued "Atlas Stone, Strongman".
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Popcorn Tub, Movie Theater" (5 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Titan, Nuclear Submarine (query: "nuclear submarine")
+Found 29 candidate photos.
+Vision picked #11 of 12: this photo shows the full silhouette of a submarine, emphasizing its substantial girth against the sunset.
+Saved image to images/2026-09-20-titan-nuclear-submarine.jpg
+[webp] 2026-09-20-titan-nuclear-submarine.jpg: 165KB -> 78KB (52% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Titan, Nuclear Submarine" (28 candidates left).
+Vision picked #10 of 12: this photo shows the massive structure of the submarine against the sky, emphasizing its girth.
+[webp] 2026-09-20-titan-nuclear-submarine.jpg: 193KB -> 119KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Titan, Nuclear Submarine" (27 candidates left).
+Vision picked #10 of 12: the silhouette of the submarine is prominently visible against the sunset, emphasizing its girth.
+[webp] 2026-09-20-titan-nuclear-submarine.jpg: 147KB -> 70KB (52% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo shows a large ship silhouetted against a sunset, but it does not depict a nuclear submarine, which is the specified subject. The silhouette and lighting make it difficult to identify specific features that would confirm it as a submarine. The composition is visually appealing, but it does not meet the criteria for the subject identity. Therefore, it is unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Titan, Nuclear Submarine"
+[bail] popped "Titan, Nuclear Submarine" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-20 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Titan Submarine (query: "Titan Submarine")
+Subject "Thiccc Titan Submarine" returned zero Unsplash results for query "Titan Submarine". (attempt 2)
+Fallback subject (#2): Thiccc Saturn V (query: "Saturn V")
+Found 7 candidate photos.
+Vision picked #7 of 7: this photo shows Saturn in full view, emphasizing its girth and iconic rings.
+Saved image to images/2026-09-20-thiccc-saturn-v.jpg
+[webp] 2026-09-20-thiccc-saturn-v.jpg: 109KB -> 42KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Saturn V" (6 candidates left).
+Vision rejected all 6 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts Saturn and its moons, not the 'Thiccc Saturn V' which refers to the Saturn V rocket. The image is a beautiful capture of the planet Saturn, but it does not match the subject description. The subject is not visible, leading to a rejection. The image is centered and well-framed for its actual content, but it does not fit the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Saturn V"
+[bail] popped "Thiccc Saturn V" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-20 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-20.
+```
