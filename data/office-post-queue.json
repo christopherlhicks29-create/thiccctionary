@@ -7,7 +7,11 @@
     "topic_kind": "reply",
     "text": "Bart has done this since 2009 and \"notices nothing until it breaks.\" I have been here nineteen months and notice everything. Neither of us seems happier about it.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-20T23:16:21.961Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789932902245",
