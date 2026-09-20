@@ -1,0 +1,111 @@
+# Daily run trace 2026-09-20-080214
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35498368699
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-20
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rubber Duck, Giant Inflatable" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rubber Duck, Giant Inflatable" query="giant rubber duck" (source: queue)
+Subject: Rubber Duck, Giant Inflatable (query: "giant rubber duck")
+Found 9 candidate photos.
+Vision rejected all 9 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Rubber Duck, Giant Inflatable"
+[bail] popped "Rubber Duck, Giant Inflatable" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-20 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Domino, Giant Novelty" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Domino, Giant Novelty" query="giant domino" (source: queue)
+Subject: Domino, Giant Novelty (query: "giant domino")
+Found 6 candidate photos.
+Vision picked #1 of 6: this photo showcases the giant novelty domino's unique shape and size prominently.
+Saved image to images/2026-09-20-domino-giant-novelty.jpg
+[webp] 2026-09-20-domino-giant-novelty.jpg: 73KB -> 31KB (58% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Domino, Giant Novelty" (5 candidates left).
+Vision picked #1 of 5: this photo shows a large and colorful structure that emphasizes girth and novelty.
+[webp] 2026-09-20-domino-giant-novelty.jpg: 190KB -> 117KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Domino, Giant Novelty" (4 candidates left).
+Vision rejected all 4 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a 'Domino, Giant Novelty' but rather a sculpture made of shipping containers shaped like the letter A. The subject is not a domino, and thus fails the identity test. The sculpture is well-framed and prominent, but it is not relevant to the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Domino, Giant Novelty"
+[bail] popped "Domino, Giant Novelty" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-20 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Popcorn Tub, Movie Theater" (5 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Titanic, RMS (query: "Titanic ship")
+Found 12 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 10 left.
+Vision picked #2 of 10: this photo shows the RMS Titanic's silhouette with a clear view of its size and structure.
+Saved image to images/2026-09-20-titanic-rms.jpg
+[webp] 2026-09-20-titanic-rms.jpg: 287KB -> 177KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Titanic, RMS" (9 candidates left).
+Vision picked #8 of 9: this photo shows the full silhouette of a large ship, emphasizing its girth and stature.
+[webp] 2026-09-20-titanic-rms.jpg: 172KB -> 101KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Titanic, RMS" (8 candidates left).
+Vision picked #8 of 8: this photo shows the full silhouette of a large ship, emphasizing its girth and presence.
+[webp] 2026-09-20-titanic-rms.jpg: 155KB -> 86KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict the RMS Titanic, but rather a modern ship docked at a pier. The subject is clearly not the Titanic, which is a historical ocean liner that sank in 1912. The ship in the photo is well-centered and clear, but it does not match the subject description. Therefore, the image is unsuitable for the intended entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Titanic, RMS"
+[bail] popped "Titanic, RMS" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-20 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Piggy Bank, Ceramic" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision picked #1 of 3: This photo shows a ceramic piggy bank with visible girth and a clear silhouette.
+Saved image to images/2026-09-20-piggy-bank-ceramic.jpg
+[webp] 2026-09-20-piggy-bank-ceramic.jpg: 136KB -> 52KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (2 candidates left).
+Vision rejected all 2 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank, but rather a ceramic globe with text. The subject is not centered, and the framing is tight, cutting off parts of the object. The image is cluttered with reflections and the globe is not the intended subject. The photo does not fit the brand's requirement for a documentary-style image of the specified object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-20.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-20 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-20.
+```
