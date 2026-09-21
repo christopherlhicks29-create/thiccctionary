@@ -1,66 +1,22 @@
 {
-  "generated_at": "2026-09-14T08:35:02.844Z",
-  "scanned": 150,
-  "passed": 144,
-  "failed": 6,
+  "generated_at": "2026-09-21T08:36:48.878Z",
+  "scanned": 157,
+  "passed": 155,
+  "failed": 2,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
     {
-      "date": "2026-09-03",
-      "word": "Cruise Ship, Ocean Liner",
-      "imageUrl": "https://thiccctionary.com/images/2026-09-03-cruise-ship-ocean-liner.jpg",
-      "score": 1,
-      "subjectPct": 10,
-      "verdict": "reject",
-      "photoSubject": "a river cruise ship navigating a waterway",
-      "critique": "The photo depicts a river cruise ship rather than an ocean liner, which disqualifies it for the subject 'Cruise Ship, Ocean Liner'. The ship is not centered, and the surrounding buildings and landscape dominate the frame, distracting from the subject. The image does not fit the brand's documentary style due to the scenic composition. Overall, it fails to meet the criteria for the intended subject.",
-      "passed": false
-    },
-    {
-      "date": "2026-09-09",
-      "word": "Big Top, Circus Tent",
-      "imageUrl": "https://thiccctionary.com/images/2026-09-09-big-top-circus-tent.jpg",
-      "score": 1,
-      "subjectPct": 16,
-      "verdict": "reject",
-      "photoSubject": "a small model of a circus tent in a field",
-      "critique": "The photo does not depict an actual big top circus tent but rather a small model or toy version set in a field. This fails the identity test as it is not the real subject. The image is well-composed and visually appealing, but it does not meet the criteria for a documentary-style photograph of a real circus tent. The presence of the model in a natural setting further emphasizes its depiction as a representation rather than the actual object.",
-      "passed": false
-    },
-    {
-      "date": "2026-08-21",
-      "word": "Anchor, Ship's",
-      "imageUrl": "https://thiccctionary.com/images/2026-08-21-anchor-ship-s.jpg",
-      "score": 1,
-      "subjectPct": 24,
-      "verdict": "reject",
-      "photoSubject": "a decorative anchor sculpture mounted on a pedestal",
-      "critique": "The photo shows a decorative anchor sculpture rather than an actual ship's anchor. The object is mounted on a pedestal, which suggests it is not functional. The composition is clear and centered, but the subject does not match the specified object, leading to a rejection.",
-      "passed": false
-    },
-    {
-      "date": "2026-09-08",
-      "word": "Clock, Grandfather",
-      "imageUrl": "https://thiccctionary.com/images/2026-09-08-clock-grandfather.jpg",
-      "score": 1,
-      "subjectPct": 48,
-      "verdict": "reject",
-      "photoSubject": "a close-up of an ornate clock face with decorative elements",
-      "critique": "The photo does not show the entire grandfather clock, only a close-up of the clock face and decorative elements. This fails the silhouette completeness test as the full structure, including the pendulum and weights, is not visible. The image does not meet the requirements for a dictionary-style entry as it lacks the necessary context and completeness to identify the subject as a 'Clock, Grandfather.'",
-      "passed": false
-    },
-    {
       "date": "2026-08-29",
       "word": "Thiccc Hydraulic Press",
       "imageUrl": "https://thiccctionary.com/images/2026-08-29-thiccc-hydraulic-press.jpg",
       "score": 1,
-      "subjectPct": 56,
+      "subjectPct": 40,
       "verdict": "reject",
-      "photoSubject": "a person using a mechanical press",
-      "critique": "The photo does not depict a hydraulic press but rather a mechanical press being operated by a person. The presence of the operator and the mechanical components suggest it is not the subject 'Thiccc Hydraulic Press.' The machine is not particularly thiccc for its kind, and the focus is more on the person than the machine itself. The image lacks the necessary elements to fit the subject description and does not meet the criteria for a documentary-style dictionary plate.",
+      "photoSubject": "a man operating a mechanical press",
+      "critique": "The photo does not show a hydraulic press but rather a mechanical press. The subject is not a 'Thiccc Hydraulic Press' as described, failing the identity test. The machine is partially visible, and the presence of a person operating it draws attention away from the machine itself. The composition includes distractions, and the focus is more on the operator than the machine. Therefore, it does not meet the criteria for the intended subject.",
       "passed": false
     },
     {
@@ -70,8 +26,8 @@
       "score": 1,
       "subjectPct": 64,
       "verdict": "reject",
-      "photoSubject": "a group of watermelons with a glove",
-      "critique": "The photo does not clearly depict a single 'Jumbo, Watermelon' as the subject. Instead, it shows multiple watermelons, making it unclear which one, if any, is the intended jumbo specimen. The presence of a glove adds clutter and distracts from identifying a singular subject. The image lacks the focus necessary for a dictionary-style entry, where the subject should be distinct and isolated.",
+      "photoSubject": "a group of watermelons with a glove in the middle",
+      "critique": "The photo does not focus on a single 'Jumbo, Watermelon' but rather shows multiple watermelons with a glove in the center, which distracts from the subject. The composition lacks a clear focal point on a singular, oversized watermelon, making it unsuitable for the entry. The presence of the glove further detracts from the intended subject, leading to a rejection.",
       "passed": false
     }
   ]
