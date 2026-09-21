@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790024976837",
+    "created": "2026-09-21T21:09:36.837Z",
+    "byline_id": "spider",
+    "byline_display": "\"Spider\"",
+    "topic_kind": "office",
+    "text": "SHEFFIELD, 0340\n\nFerry was specified. I specified it. The form has a notes column. Nobody reads the notes column. That is a Bart problem, not a ferry problem.\n\n\"Spider",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1789946179420",
     "created": "2026-09-20T23:16:19.420Z",
     "byline_id": "teddy",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-06-27T18:41:53.694Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1781811482780",
-    "created": "2026-06-18T19:38:02.780Z",
-    "byline_id": "margie",
-    "byline_display": "Margaret",
-    "topic_kind": "office",
-    "text": "Whitmore Reserve got a second review this week. \"Textured,\" said the concierge at the Belmond. I asked him to elaborate. He smiled. I have been thinking about the smile for four days.\n\nMargaret",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-06-18T19:38:05.384Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []

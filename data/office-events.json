@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1790024976838",
+      "date": "2026-09-21",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about spider-untraceable: \"SHEFFIELD, 0340\n\nFerry was specified. I specified it. The form has a notes column. Nobody reads the ...\""
+    },
+    {
       "id": "auto-1789946179422",
       "date": "2026-09-20",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-08-26",
       "byline_id": "margie",
       "summary": "Margaret posted about personal life: wherever you happen to be this week: a hotel, a vineyard, a : \"Boat to Corsica is delayed. The harbormaster, a man of extraordinary personal volume, shrugged in a ...\""
-    },
-    {
-      "id": "auto-1787607919779",
-      "date": "2026-08-24",
-      "byline_id": "teddy",
-      "summary": "Theodore posted about personal life: your college group chat, where your career is a running topi: \"Told my college group chat I catalogue objects of unusual girth for a living. Twelve people left the...\""
     }
   ]
 }
