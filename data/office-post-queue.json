@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "SHEFFIELD, 0340\n\nFerry was specified. I specified it. The form has a notes column. Nobody reads the notes column. That is a Bart problem, not a ferry problem.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-21T21:09:39.313Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1789946179420",
