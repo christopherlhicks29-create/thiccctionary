@@ -1,0 +1,119 @@
+# Daily run trace 2026-09-21-181300
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35636734674
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-21
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rubber Duck, Giant Inflatable" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rubber Duck, Giant Inflatable" query="giant rubber duck" (source: queue)
+Subject: Rubber Duck, Giant Inflatable (query: "giant rubber duck")
+Found 9 candidate photos.
+Vision rejected all 9 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Rubber Duck, Giant Inflatable"
+[bail] popped "Rubber Duck, Giant Inflatable" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-21.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-21 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Domino, Giant Novelty" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Domino, Giant Novelty" query="giant domino" (source: queue)
+Subject: Domino, Giant Novelty (query: "giant domino")
+Found 6 candidate photos.
+Vision picked #4 of 6: This photo shows a large domino-like structure in an outdoor setting, emphasizing its overall girth against the skyline.
+Saved image to images/2026-09-21-domino-giant-novelty.jpg
+[webp] 2026-09-21-domino-giant-novelty.jpg: 195KB -> 107KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 30; trying another photo for "Domino, Giant Novelty" (5 candidates left).
+Vision picked #1 of 5: this photo showcases a giant novelty domino with a clear silhouette emphasizing its thiccness.
+[webp] 2026-09-21-domino-giant-novelty.jpg: 73KB -> 31KB (58% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Domino, Giant Novelty" (4 candidates left).
+Vision rejected all 4 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The image shows a sculpture composed of stacked block-like structures, not a giant novelty domino. The subject does not match the description 'Domino, Giant Novelty.' The composition is visually interesting, but it does not fit the criteria for the specified subject. The photo is well-framed and uncluttered, but it fails the identity test as it does not depict the named object.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Domino, Giant Novelty"
+[bail] popped "Domino, Giant Novelty" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-21.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-21 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Stone, Megalith Standing" - duplicates catalogued "Atlas Stone, Strongman".
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 2 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Thiccc Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive and thicc structure.
+Saved image to images/2026-09-21-thiccc-bagger-293.jpg
+[webp] 2026-09-21-thiccc-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Bagger 293" (28 candidates left).
+Vision picked #12 of 12: this photo shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+[webp] 2026-09-21-thiccc-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Bagger 293" (27 candidates left).
+Vision picked #10 of 12: this photo prominently features the large, robust structure of the crane, emphasizing its thicc silhouette.
+[webp] 2026-09-21-thiccc-bagger-293.jpg: 163KB -> 98KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 48  isSubject: false
+  critique: The photo shows two old industrial cranes by the water, not the Bagger 293, which is a massive bucket-wheel excavator. The cranes are well-framed and centered, but they do not match the subject's identity. The image lacks the necessary girth and scale associated with the Bagger 293. Therefore, the photo is not suitable for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=48 - subject "Thiccc Bagger 293"
+[bail] popped "Thiccc Bagger 293" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-21.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-21 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Igloo, Snow Block" (2 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Igloo, Snow Block" query="snow block igloo" (source: queue)
+Subject: Igloo, Snow Block (query: "snow block igloo")
+Subject "Igloo, Snow Block" returned zero Unsplash results for query "snow block igloo". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo clearly shows the full silhouette of the Bagger 293, emphasizing its massive girth and structure.
+Saved image to images/2026-09-21-bagger-293.jpg
+[webp] 2026-09-21-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #2 of 12: This photo shows the Bagger 293's massive scale and girth from an aerial perspective, emphasizing its thicc silhouette.
+[webp] 2026-09-21-bagger-293.jpg: 418KB -> 354KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the full silhouette of a large crane, emphasizing its substantial girth and structure.
+[webp] 2026-09-21-bagger-293.jpg: 114KB -> 46KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 30  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a person sitting under a large orange structure, possibly part of a bridge or industrial equipment. The subject is not centered, and the composition focuses more on the structure and the person rather than the specific machinery. The image lacks the documentary style needed for a dictionary plate and does not fit the subject identity. Therefore, it is unsuitable for the entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=30 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-21.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-21 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-21.
+```
