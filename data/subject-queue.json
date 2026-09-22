@@ -7,14 +7,29 @@
   ],
   "queue": [
     {
-      "subject": "Rubber Duck, Giant Inflatable",
-      "query": "giant rubber duck",
+      "subject": "Container, Shipping 40-Foot",
+      "query": "40 foot shipping container",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Truck, Cement Mixer Drum",
+      "query": "concrete mixer truck drum",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Rock, Plymouth",
+      "query": "plymouth rock memorial",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Crockpot, Slow Cooker Oval",
+      "query": "oval slow cooker crockpot",
       "category": "Domestic Goods"
     },
     {
-      "subject": "Domino, Giant Novelty",
-      "query": "giant domino",
-      "category": "Domestic Goods"
+      "subject": "Garbage Truck, Front-Loader",
+      "query": "front loader garbage truck",
+      "category": "Vehicles & Transport"
     }
   ]
 }

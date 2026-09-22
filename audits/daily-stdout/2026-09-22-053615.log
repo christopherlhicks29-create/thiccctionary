@@ -1,0 +1,65 @@
+# Daily run trace 2026-09-22-053615
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/35691243681
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-22
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rubber Duck, Giant Inflatable" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rubber Duck, Giant Inflatable" query="giant rubber duck" (source: queue)
+Subject: Rubber Duck, Giant Inflatable (query: "giant rubber duck")
+Found 9 candidate photos.
+Vision rejected all 9 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Rubber Duck, Giant Inflatable"
+[bail] popped "Rubber Duck, Giant Inflatable" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-22.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-22 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Domino, Giant Novelty" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Domino, Giant Novelty" query="giant domino" (source: queue)
+Subject: Domino, Giant Novelty (query: "giant domino")
+Found 6 candidate photos.
+Vision picked #4 of 6: this photo shows a giant domino structure in a playful setting, emphasizing its size and girth.
+Saved image to images/2026-09-22-domino-giant-novelty.jpg
+[webp] 2026-09-22-domino-giant-novelty.jpg: 195KB -> 107KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 30; trying another photo for "Domino, Giant Novelty" (5 candidates left).
+Vision picked #1 of 5: this photo shows a giant domino structure with a clear silhouette and emphasizes its thiccness.
+[webp] 2026-09-22-domino-giant-novelty.jpg: 73KB -> 31KB (58% smaller)
+Design critique: score=8/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 2.
+Humor critique: score=7/10, verdict=ship, weakest=definitions
+  feedback: The example sentence lands well with a vivid scene and a comedic beat. The etymology has a nice ironic twist. However, the definitions use 'commanding presence,' an anti-pattern phrase, which detracts from the humor.
+Generated social captions:
+  morning: Domino, Giant Novelty.
+  afternoon: Domino, Giant Novelty.
+  evening: From the archives, Domino, Giant Novelty.
+  reels: Domino, Giant Novelty—
+Saved entry: Domino, Giant Novelty
+Built entry page: entries/2026-09-22.html
+Rebuilt prev entry page (2026-09-19) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 158 entries + 67 articles.
+Sitemap rebuilt with 158 entries.
+Subject queue updated: 5 item(s) remaining.
+[retry-wrapper] entry for 2026-09-22 landed on attempt 2.
+```
