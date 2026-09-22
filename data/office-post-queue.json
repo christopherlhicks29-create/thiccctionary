@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790108313535",
+    "created": "2026-09-22T20:18:33.536Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "thiccc",
+    "text": "Walked past load-in at the park this morning. Four guys, one stack, forty minutes. Nobody spoke. The bass bins alone needed a hand truck and an argument.\n\nBart would call it vertical. He's not wrong. I hate that.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790024976837",
     "created": "2026-09-21T21:09:36.837Z",
     "byline_id": "spider",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-06-28T18:40:40.340Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1782585711091",
-    "created": "2026-06-27T18:41:51.091Z",
-    "byline_id": "teddy",
-    "byline_display": "Theodore",
-    "topic_kind": "office",
-    "text": "Refiled the Saturn V case this morning. New brief, clean citations, eleven pages. Bart returned it inside the hour with two words in the margin: \"not a vehicle.\"\n\nVehiculum, from vehere, to carry. It carried twelve men to the moon. One rests one's case.\n\nTheodore",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-06-27T18:41:53.694Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
