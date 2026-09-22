@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Defended my job at dinner again. Someone asked \"but does size really matter, academically?\" I said yes, actually, for forty minutes. They served dessert around minute twenty. I kept going. The tart was good.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-22T23:36:52.704Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790108313535",
