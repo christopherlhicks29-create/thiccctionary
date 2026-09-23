@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790207058469",
+    "created": "2026-09-23T23:44:18.469Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "office",
+    "text": "Pulled the 1971 masthead this morning. Last week it was 1962. Bertram, wherever you are: pick one. The publication has been in continuous operation since you founded it, which is either 63 years ago or 55, depending on the scarf I am wearing.\n\nMargaret",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790195648029",
     "created": "2026-09-23T20:34:08.029Z",
     "byline_id": "spider",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-02T18:55:15.054Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1782933365449",
-    "created": "2026-07-01T19:16:05.449Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "reply",
-    "text": "Spider thinks Bart \"knows something.\" This writer has sat across from Bart every Tuesday for eight months. He ordered a different sandwich once. That is the full depth of the mystery.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-01T19:16:08.191Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
