@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Pulled the 1971 masthead this morning. Last week it was 1962. Bertram, wherever you are: pick one. The publication has been in continuous operation since you founded it, which is either 63 years ago or 55, depending on the scarf I am wearing.\n\nMargaret",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-23T23:44:20.936Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790195648029",
