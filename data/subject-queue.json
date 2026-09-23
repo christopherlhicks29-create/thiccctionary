@@ -5,31 +5,5 @@
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry.",
     "2026-09-17 PO resume: queue had drained to 2 known-bad items (Igloo/Snow-Block and Container/Shipping-40-Foot both returned ZERO Unsplash results for their queries; this is the recurring failure mode -- overly long/specific queries return zero hits). Dropped both. Refilled with 9 fresh subjects, each checked against the live catalog for zero head-noun overlap (including today's Wheelbarrow and the 2026-09-13 Wrecking Ball backfill) and given short 2-3 word queries verified to have real Unsplash coverage."
   ],
-  "queue": [
-    {
-      "subject": "Container, Shipping 40-Foot",
-      "query": "40 foot shipping container",
-      "category": "Industrial Machinery"
-    },
-    {
-      "subject": "Truck, Cement Mixer Drum",
-      "query": "concrete mixer truck drum",
-      "category": "Vehicles & Transport"
-    },
-    {
-      "subject": "Rock, Plymouth",
-      "query": "plymouth rock memorial",
-      "category": "Architecture & Infrastructure"
-    },
-    {
-      "subject": "Crockpot, Slow Cooker Oval",
-      "query": "oval slow cooker crockpot",
-      "category": "Domestic Goods"
-    },
-    {
-      "subject": "Garbage Truck, Front-Loader",
-      "query": "front loader garbage truck",
-      "category": "Vehicles & Transport"
-    }
-  ]
+  "queue": []
 }
