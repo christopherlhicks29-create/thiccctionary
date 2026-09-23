@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1790195648030",
+      "date": "2026-09-23",
+      "byline_id": "spider",
+      "summary": "\"Spider\" posted about personal life: a border crossing, a night train, or a hotel with a story: \"BELGRADE, 0220\n\nNight train from Budapest. Sat across from a man with a suitcase that took two borde...\""
+    },
+    {
       "id": "auto-1790120209515",
       "date": "2026-09-22",
       "byline_id": "teddy",
@@ -274,12 +280,6 @@
       "date": "2026-08-29",
       "byline_id": "teddy",
       "summary": "Theodore posted about personal life: your college group chat, where your career is a running topi: \"Sent \"update on the girth job\" to the group chat. Eight people watched it for forty minutes. Nobody ...\""
-    },
-    {
-      "id": "auto-1788033051077",
-      "date": "2026-08-29",
-      "byline_id": "eli",
-      "summary": "Eliza posted about personal life: the grocery store, alone, on a weeknight: \"Grocery store, 10pm. Lady in front of me had a cart so full she was basically chaperoning it. I had ...\""
     }
   ]
 }
