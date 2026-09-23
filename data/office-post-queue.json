@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "BELGRADE, 0220\n\nNight train from Budapest. Sat across from a man with a suitcase that took two border guards and a discussion to clear. Never opened it. Just sat there. Heavy, though. You could tell.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-23T20:34:11.750Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790120209513",
