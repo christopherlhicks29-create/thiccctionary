@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Called my mom. Told her I write about big things for the internet. She said \"like whales?\" I said kind of. She seemed satisfied. I was not ready for how much that helped.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-24T20:36:48.326Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790207058469",
