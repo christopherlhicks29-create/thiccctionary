@@ -5,5 +5,21 @@
     "Use the canonical 'Noun, Qualifier' form; do not queue a synonym of an existing entry.",
     "2026-09-17 PO resume: queue had drained to 2 known-bad items (Igloo/Snow-Block and Container/Shipping-40-Foot both returned ZERO Unsplash results for their queries; this is the recurring failure mode -- overly long/specific queries return zero hits). Dropped both. Refilled with 9 fresh subjects, each checked against the live catalog for zero head-noun overlap (including today's Wheelbarrow and the 2026-09-13 Wrecking Ball backfill) and given short 2-3 word queries verified to have real Unsplash coverage."
   ],
-  "queue": []
+  "queue": [
+    {
+      "subject": "Steam Locomotive, Big Boy",
+      "query": "big boy locomotive 4014",
+      "category": "Vehicles & Transport"
+    },
+    {
+      "subject": "Piggy Bank, Ceramic",
+      "query": "large ceramic piggy bank",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Gong, Chinese Brass",
+      "query": "chinese brass gong large",
+      "category": "Musical Instruments"
+    }
+  ]
 }
