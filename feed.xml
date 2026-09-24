@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Sep 2026 19:28:03 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 02:04:39 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Stack of Pancakes</title>
+      <link>https://thiccctionary.com/entries/2026-09-24.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-09-24.html</guid>
+      <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A culinary formation of notable verticality, typically composed of multiple pancake layers, each contributing to a unified mass of starchy indulgence. Often observed with a syrupy drizzle that underscores its stature.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-09-24-stack-of-pancakes.jpg" type="image/jpeg" length="222150" />
+      <category>culinary</category><category>domestic</category>
+    </item>
     <item>
       <title>Thiccc Lockheed Martin F-22 Raptor</title>
       <link>https://thiccctionary.com/entries/2026-09-23.html</link>
