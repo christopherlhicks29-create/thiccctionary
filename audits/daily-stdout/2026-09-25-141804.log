@@ -1,0 +1,59 @@
+# Daily run trace 2026-09-25-141804
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36146412241
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-25
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Piggy Bank, Ceramic" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision picked #2 of 2: The second photo shows a ceramic piggy bank with a full silhouette, emphasizing its girth.
+Saved image to images/2026-09-25-piggy-bank-ceramic.jpg
+[webp] 2026-09-25-piggy-bank-ceramic.jpg: 135KB -> 53KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank as specified. Instead, it depicts a ceramic object with text, likely a phrenology head. The subject is not centered, and the image is cropped too tightly, failing the silhouette completeness test. The object is prominent, but it is not the correct subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-25.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-25 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "caterpillar bulldozer")
+Found 1 candidate photos.
+Vision rejected all 1 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 7 left.
+Vision rejected all 7 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Caterpillar D11T"
+[bail] popped "Thiccc Caterpillar D11T" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-25.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-25 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-25.
+```
