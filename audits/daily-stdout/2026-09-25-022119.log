@@ -1,0 +1,72 @@
+# Daily run trace 2026-09-25-022119
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36085798944
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-25
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Piggy Bank, Ceramic" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision picked #2 of 2: This photo shows a ceramic piggy bank with a rounded silhouette, emphasizing its thiccness.
+Saved image to images/2026-09-25-piggy-bank-ceramic.jpg
+[webp] 2026-09-25-piggy-bank-ceramic.jpg: 135KB -> 53KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank, but rather a ceramic object with text, likely a phrenology head. The subject is not centered, and the composition does not fit the criteria for a piggy bank. The object is not clearly identifiable as the intended subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-25.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-25 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo shows the full structure of the Bagger 293, emphasizing its massive girth and silhouette.
+Saved image to images/2026-09-25-bagger-293.jpg
+[webp] 2026-09-25-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #4 of 12: This photo shows the full silhouette of the Bagger 293 with a strong emphasis on its massive structure and girth.
+[webp] 2026-09-25-bagger-293.jpg: 241KB -> 158KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #10 of 12: This photo shows the Bagger 293's full silhouette and emphasizes its massive size and girth.
+[webp] 2026-09-25-bagger-293.jpg: 114KB -> 46KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a person sitting under a large orange structure, possibly part of a bridge or industrial equipment. The subject of the image is not centered, and the person is not the focus of the photo. The composition is cluttered with structural elements, and the subject is not prominent. The image fails the identity test as it does not depict the named object, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-25.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-25 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-25.
+```
