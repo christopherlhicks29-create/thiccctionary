@@ -1,0 +1,62 @@
+# Daily run trace 2026-09-25-170616
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36164818094
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-25
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Piggy Bank, Ceramic" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision picked #2 of 2: This photo clearly shows the full silhouette of a ceramic piggy bank, emphasizing its rounded shape.
+Saved image to images/2026-09-25-piggy-bank-ceramic.jpg
+[webp] 2026-09-25-piggy-bank-ceramic.jpg: 135KB -> 53KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank, but rather a ceramic globe with text on it. The subject is not the named object, leading to a rejection. The image is well-composed and clear, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-25.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-25 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11 Dozer (query: "Caterpillar D11")
+Subject "Thiccc Caterpillar D11 Dozer" returned zero Unsplash results for query "Caterpillar D11". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-25.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-25 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-25.
+```
