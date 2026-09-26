@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790452854975",
+    "created": "2026-09-26T20:00:54.975Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Bakery had the loaf. Same corner, same paper, home by nine. Seventeen years and the routine holds. You stop noticing the weight of a thing until it shifts. This morning it did not shift.\n\nI noticed anyway.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790282204738",
     "created": "2026-09-24T20:36:44.738Z",
     "byline_id": "eli",
@@ -1387,20 +1397,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-07-03T16:39:06.728Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783096542038",
-    "created": "2026-07-03T16:35:42.038Z",
-    "byline_id": "teddy",
-    "byline_display": "Theodore",
-    "topic_kind": "personal",
-    "text": "Went to the natural history museum today, just to look. Stood in front of the blue whale skeleton for longer than was probably normal. The placard said 89 feet. I just kept nodding, like it had said something wise.\n\nTheodore",
-    "score": 7,
-    "status": "posted",
-    "posted_at": "2026-07-03T16:35:44.526Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
