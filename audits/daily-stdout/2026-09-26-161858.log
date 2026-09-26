@@ -1,0 +1,70 @@
+# Daily run trace 2026-09-26-161858
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36254929114
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-26
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Piggy Bank, Ceramic" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision picked #2 of 2: this photo shows a ceramic piggy bank with a rounded shape that emphasizes its thiccness.
+Saved image to images/2026-09-26-piggy-bank-ceramic.jpg
+[webp] 2026-09-26-piggy-bank-ceramic.jpg: 135KB -> 53KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a 'Piggy Bank, Ceramic' but rather a ceramic globe with text. The subject is not centered, and the framing is tight, cutting off parts of the object. The image lacks the documentary style suitable for a dictionary entry, and the object is not thiccc for its kind. Overall, the photo does not meet the criteria for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-26.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-26 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11 Dozer (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #1 of 3: This photo shows the D11 Dozer in a clear setting, emphasizing its size and girth against the backdrop of sand piles.
+Saved image to images/2026-09-26-thiccc-caterpillar-d11-dozer.jpg
+[webp] 2026-09-26-thiccc-caterpillar-d11-dozer.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 6; trying another photo for "Thiccc Caterpillar D11 Dozer" (2 candidates left).
+Vision picked #1 of 2: The aerial view showcases the full silhouette of the D11 Dozer, emphasizing its massive girth in the landscape.
+[webp] 2026-09-26-thiccc-caterpillar-d11-dozer.jpg: 418KB -> 354KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11 Dozer" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo does not show a Caterpillar D11 Dozer; instead, it features an excavator at a construction site. The subject is not centered, and the framing includes a large portion of the site rather than focusing on the machinery. The image lacks the necessary focus on the specified object and does not meet the criteria for silhouette completeness or subject prominence.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Thiccc Caterpillar D11 Dozer"
+[bail] popped "Thiccc Caterpillar D11 Dozer" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-26.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-26 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-26.
+```
