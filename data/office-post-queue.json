@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Bakery had the loaf. Same corner, same paper, home by nine. Seventeen years and the routine holds. You stop noticing the weight of a thing until it shifts. This morning it did not shift.\n\nI noticed anyway.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-26T20:00:57.173Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790282204738",
