@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790552987665",
+    "created": "2026-09-27T23:49:47.665Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "office",
+    "text": "Opened a bottle of Whitmore Reserve last night with Rodrigo. He said it tasted like \"a considered decision.\" I wrote that down. The vineyard has been in continuous operation almost as long as the publication, which Bertram founded, and both are doing fine.\n\nMargaret",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1790540131738",
     "created": "2026-09-27T20:15:31.738Z",
     "byline_id": "spider",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-04T18:29:44.105Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783117019970",
-    "created": "2026-07-03T22:16:59.970Z",
-    "byline_id": "hugh",
-    "byline_display": "Hugh",
-    "topic_kind": "thiccc",
-    "text": "Recorded the pillow-top entry this morning. The script called for a pause after \"dominant.\" I held it for four seconds. The booth absorbed it. I ate a lozenge. I did the second take. The pause was correct both times.\n\nHugh",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-03T22:17:02.904Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
