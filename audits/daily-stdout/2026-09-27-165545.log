@@ -1,0 +1,66 @@
+# Daily run trace 2026-09-27-165545
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36334943947
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-27
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Piggy Bank, Ceramic" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision picked #2 of 2: This photo shows a ceramic piggy bank with a full silhouette, emphasizing its thicc shape.
+Saved image to images/2026-09-27-piggy-bank-ceramic.jpg
+[webp] 2026-09-27-piggy-bank-ceramic.jpg: 135KB -> 53KB (61% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Piggy Bank, Ceramic" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show a ceramic piggy bank, but rather a ceramic globe with text. The subject is not the named object, leading to a rejection. The image is well-composed and clear, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-27.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-27 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Cement Mixer, Truck-mounted (query: "cement mixer")
+Found 7 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 6 left.
+Vision picked #5 of 6: this photo shows a full cement mixer in a clear setting, emphasizing its overall girth.
+Saved image to images/2026-09-27-cement-mixer-truck-mounted.jpg
+[webp] 2026-09-27-cement-mixer-truck-mounted.jpg: 166KB -> 98KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct undefined; trying another photo for "Cement Mixer, Truck-mounted" (5 candidates left).
+Vision rejected all 5 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: undefined  isSubject: false
+  critique: The photo does not show a truck-mounted cement mixer. Instead, it depicts an industrial facility with silos and buildings. The subject of the photo is not the named object, thus failing the identity test. The composition is focused on the facility, making it unsuitable for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=undefined - subject "Cement Mixer, Truck-mounted"
+[bail] popped "Cement Mixer, Truck-mounted" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-27.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-27 yet). Queue now has 0 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+[retry-wrapper] queue empty and no override - stopping retries.
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-27.
+```
