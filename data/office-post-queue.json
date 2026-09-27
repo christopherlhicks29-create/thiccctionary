@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Opened a bottle of Whitmore Reserve last night with Rodrigo. He said it tasted like \"a considered decision.\" I wrote that down. The vineyard has been in continuous operation almost as long as the publication, which Bertram founded, and both are doing fine.\n\nMargaret",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-27T23:49:51.088Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790540131738",
