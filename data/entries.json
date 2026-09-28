@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-09-28",
+    "word": "Thiccc Cargo Freighter",
+    "pronunciation": "/kahr-go FREY-ter/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A maritime vessel of considerable bulk, characterized by an expansive hull and a formidable silhouette, especially when viewed astern in low light.",
+      "<em>colloq.</em> A seafaring unit that doesn't so much dock as announce its presence with tidal authority."
+    ],
+    "example": "Navigating the channel was the thiccc cargo freighter, its displacement enough to warrant its own weather pattern.",
+    "etymology": "From Spanish 'cargar' meaning 'to load' and English 'freighter' from 'freight,' denoting goods carried by ship. Ships this thiccc, however, have been known to reshape coastlines.",
+    "image": "images/2026-09-28-thiccc-cargo-freighter.jpg",
+    "caption": "Plate CLXI., A thiccc cargo freighter at sunset, emphasizing its formidable hull.",
+    "tags": [
+      "girth",
+      "maritime",
+      "industrial",
+      "vehicle"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": true,
+    "humorScore": 8,
+    "photoScore": 8,
+    "photographer": "daniel melko",
+    "photographerUrl": "https://unsplash.com/@damelko",
+    "unsplashUrl": "https://unsplash.com/photos/silhouetted-ship-on-ocean-under-cloudy-sunset-sky-i-ZjBjFLUDQ",
+    "socialCaptions": {
+      "morning": "Thiccc Cargo Freighter.\nGross tonnage in the hundreds of thousands.\nThe ocean waves—merely ripples in its wake.",
+      "afternoon": "Measuring up to 1,300 feet in length.\nCan the Eiffel Tower lie down and compete?\nRate the thicccness, 1 to 10.\nThiccc Cargo Freighter.",
+      "evening": "From the archives, Thiccc Cargo Freighter.\nFirst launched in 1956—changed logistics forever.\nA floating city, with no need for a zip code.",
+      "reels": "Carries 20,000 containers—an introvert's dream.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-24",
     "word": "Stack of Pancakes",
     "pronunciation": "/STAK uv PAN-kayks/",
