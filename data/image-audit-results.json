@@ -1,13 +1,24 @@
 {
-  "generated_at": "2026-09-21T08:36:48.878Z",
-  "scanned": 157,
-  "passed": 155,
-  "failed": 2,
+  "generated_at": "2026-09-28T09:24:58.929Z",
+  "scanned": 160,
+  "passed": 157,
+  "failed": 3,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
+    {
+      "date": "2026-07-13",
+      "word": "Trophy, Stanley Cup",
+      "imageUrl": "https://thiccctionary.com/images/2026-07-13-trophy-stanley-cup.jpg",
+      "score": 1,
+      "subjectPct": 15,
+      "verdict": "reject",
+      "photoSubject": "a replica of the Stanley Cup in a display case",
+      "critique": "The photo shows a replica of the Stanley Cup in a display case, not the actual Stanley Cup itself. The subject is not centered, and the display case and surrounding elements dominate the frame, distracting from the trophy. The image does not fit the documentary style required, as it appears more like a museum exhibit rather than a dictionary plate. The presence of the display case and other elements makes it unclear and cluttered, failing to meet the criteria for a clear depiction of the subject.",
+      "passed": false
+    },
     {
       "date": "2026-08-29",
       "word": "Thiccc Hydraulic Press",
@@ -16,7 +27,7 @@
       "subjectPct": 40,
       "verdict": "reject",
       "photoSubject": "a man operating a mechanical press",
-      "critique": "The photo does not show a hydraulic press but rather a mechanical press. The subject is not a 'Thiccc Hydraulic Press' as described, failing the identity test. The machine is partially visible, and the presence of a person operating it draws attention away from the machine itself. The composition includes distractions, and the focus is more on the operator than the machine. Therefore, it does not meet the criteria for the intended subject.",
+      "critique": "The photo does not show a hydraulic press but rather a mechanical press being operated by a person. The subject is not centered, and the composition focuses more on the person than the machine itself. The image does not fit the brand's requirement for a thiccc object, as the press does not appear unusually large or imposing. Additionally, the presence of a person as the focal point disqualifies it from being suitable for the intended use.",
       "passed": false
     },
     {
@@ -26,8 +37,8 @@
       "score": 1,
       "subjectPct": 64,
       "verdict": "reject",
-      "photoSubject": "a group of watermelons with a glove in the middle",
-      "critique": "The photo does not focus on a single 'Jumbo, Watermelon' but rather shows multiple watermelons with a glove in the center, which distracts from the subject. The composition lacks a clear focal point on a singular, oversized watermelon, making it unsuitable for the entry. The presence of the glove further detracts from the intended subject, leading to a rejection.",
+      "photoSubject": "a group of watermelons with a glove",
+      "critique": "The photo does not focus on a single 'jumbo' watermelon but rather shows a group of watermelons, which makes it unclear if any are particularly large or noteworthy. The presence of a glove adds clutter and distracts from the subject. The image lacks the singular focus and clarity required for a dictionary entry. The composition does not highlight any one watermelon as being 'jumbo,' failing the identity test.",
       "passed": false
     }
   ]
