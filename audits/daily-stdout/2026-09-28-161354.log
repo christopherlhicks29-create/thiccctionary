@@ -1,0 +1,69 @@
+# Daily run trace 2026-09-28-161354
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36449309597
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-28
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 3
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Steam Locomotive, Big Boy" - duplicates catalogued "Boiler, Steam Locomotive".
+Subject queue: pulling "Piggy Bank, Ceramic" (3 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Piggy Bank, Ceramic" query="large ceramic piggy bank" (source: queue)
+Subject: Piggy Bank, Ceramic (query: "large ceramic piggy bank")
+Found 2 candidate photos.
+Vision rejected all 2 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 3 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Piggy Bank, Ceramic"
+[bail] popped "Piggy Bank, Ceramic" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-28.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-28 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Gong, Chinese Brass" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Cargo Freighter (query: "cargo ship")
+Found 18 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 17 left.
+Vision picked #4 of 12: this photo shows a cargo freighter in silhouette against a dramatic sky, emphasizing its large and thick profile.
+Saved image to images/2026-09-28-thiccc-cargo-freighter.jpg
+[webp] 2026-09-28-thiccc-cargo-freighter.jpg: 195KB -> 114KB (41% smaller)
+Design critique: score=8/10, verdict=ship
+  ⚠️ Banned terms found in entry "Thiccc Cargo Freighter":
+     [example] "a testament to" (banned-word)
+     [etymology] "a testament to" (banned-word)
+Banned-words attempt 1/3 rejected ("a testament to" in example, "a testament to" in etymology). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=8/10, verdict=ship, weakest=definitions
+  feedback: The entry is solid with a specific example that humorously suggests the freighter's size affects weather patterns. The etymology kicker is amusing, hinting at the freighter's geological impact. However, the definitions could be more playful or unexpected to enhance the comedic tone.
+Generated social captions:
+  morning: Thiccc Cargo Freighter.
+  afternoon: Measuring up to 1,300 feet in length.
+  evening: From the archives, Thiccc Cargo Freighter.
+  reels: Carries 20,000 containers—an introvert's dream.
+Saved entry: Thiccc Cargo Freighter
+Built entry page: entries/2026-09-28.html
+Rebuilt prev entry page (2026-09-24) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 161 entries + 69 articles.
+Sitemap rebuilt with 161 entries.
+Subject queue updated: 0 item(s) remaining.
+[retry-wrapper] entry for 2026-09-28 landed on attempt 2.
+```
