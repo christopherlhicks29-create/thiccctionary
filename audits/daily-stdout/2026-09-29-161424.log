@@ -1,0 +1,109 @@
+# Daily run trace 2026-09-29-161424
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36596002502
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-29
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Titan, Super Heavy Lift (query: "heavy lift rocket")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo captures the full silhouette of the Titan during launch, showcasing its impressive girth against the dramatic backdrop of smoke and light.
+Saved image to images/2026-09-29-titan-super-heavy-lift.jpg
+[webp] 2026-09-29-titan-super-heavy-lift.jpg: 84KB -> 42KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 36; trying another photo for "Titan, Super Heavy Lift" (29 candidates left).
+Vision picked #4 of 12: this photo shows the entire launch structure, emphasizing its massive scale and girth against the landscape.
+[webp] 2026-09-29-titan-super-heavy-lift.jpg: 152KB -> 85KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 8; trying another photo for "Titan, Super Heavy Lift" (28 candidates left).
+Vision picked #11 of 12: This photo shows a large crane silhouette against the sunset, emphasizing its impressive height and girth.
+[webp] 2026-09-29-titan-super-heavy-lift.jpg: 186KB -> 131KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo shows a large crane on a body of water, not a 'Titan, Super Heavy Lift' as specified. The crane is prominently featured, but it does not match the specific subject name. The silhouette is clear and well-framed, but the subject identity does not align with the description, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Titan, Super Heavy Lift"
+[bail] popped "Titan, Super Heavy Lift" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-29.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-29 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Crab, King Alaskan" (4 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Thiccc Tracked Loader (query: "tracked loader")
+Found 14 candidate photos.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 11 left.
+Vision picked #10 of 11: this photo shows a tracked loader in a full silhouette, emphasizing its robust and thicc design.
+Saved image to images/2026-09-29-thiccc-tracked-loader.jpg
+[webp] 2026-09-29-thiccc-tracked-loader.jpg: 213KB -> 126KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 56; trying another photo for "Thiccc Tracked Loader" (10 candidates left).
+Vision picked #5 of 10: This photo showcases the tracked loader's robust and powerful silhouette, emphasizing its thiccness.
+[webp] 2026-09-29-thiccc-tracked-loader.jpg: 199KB -> 116KB (41% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Tracked Loader" (9 candidates left).
+Vision picked #1 of 9: This photo shows a thicc tracked loader in a prominent position against a large sand pile, emphasizing its girth and silhouette.
+[webp] 2026-09-29-thiccc-tracked-loader.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo depicts a wheeled loader, not a tracked loader as specified. The subject is not centered and is partially obscured by sand, which detracts from its prominence. The composition includes significant background elements like sand piles and trees, causing distraction. The loader is not particularly thiccc for its kind, and the overall image does not fit the documentary style required. The subject identity is incorrect, leading to rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Thiccc Tracked Loader"
+[bail] popped "Thiccc Tracked Loader" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-29.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-29 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Snowplow, Municipal" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Snowplow, Municipal" query="municipal snowplow truck" (source: queue)
+Subject: Snowplow, Municipal (query: "municipal snowplow truck")
+Found 30 candidate photos.
+[photo-dedup] dropped 4 candidate(s) already used by another entry; 26 left.
+Vision picked #3 of 12: this photo shows a full municipal snowplow in action, emphasizing its size and girth against a snowy backdrop.
+Saved image to images/2026-09-29-snowplow-municipal.jpg
+[webp] 2026-09-29-snowplow-municipal.jpg: 124KB -> 56KB (55% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=5/10, verdict=regenerate, weakest=example
+  feedback: The entry lacks a specific scene in the example sentence, which diminishes its humor potential. The etymology is informative but lacks a deadpan kicker. The definition is solid, but the example could use a more vivid setting and a sharper punchline.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=7/10, verdict=ship
+Generated social captions:
+  morning: Snowplow, Municipal. Operational weight: 26,000 pounds.
+  afternoon: Clearing up to 1,500 tons of snow per hour—
+  evening: From the archives, Snowplow, Municipal.
+  reels: With blades up to 12 feet wide—
+Saved entry: Snowplow, Municipal
+Built entry page: entries/2026-09-29.html
+Rebuilt prev entry page (2026-09-28) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 162 entries + 70 articles.
+Sitemap rebuilt with 162 entries.
+Subject queue updated: 1 item(s) remaining.
+[retry-wrapper] entry for 2026-09-29 landed on attempt 3.
+```
