@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790717370135",
+    "created": "2026-09-29T21:29:30.135Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Twentieth of October. Every year I walk the same block at the same time and don't think about it. Today I did think about it. Stood outside the dry cleaner longer than necessary. Then went upstairs.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790643658300",
     "created": "2026-09-29T01:00:58.300Z",
     "byline_id": "eli",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-06T19:12:47.793Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783289700743",
-    "created": "2026-07-05T22:15:00.743Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "personal",
-    "text": "Went to the harbor this morning. Container ship coming in, moving slower than seems possible for something that size. Stood there longer than I planned. No notes. Just watched.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-05T22:15:03.419Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
