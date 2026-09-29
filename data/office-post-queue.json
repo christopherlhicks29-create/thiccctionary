@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790643658300",
+    "created": "2026-09-29T01:00:58.300Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "office",
+    "text": "Broken since March. Filed three complaints. The machine sits there anyway, taking up counter space like it has a lease.\n\nBart says the previous one was better. I asked which one. He said \"the one before.\"\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790552987665",
     "created": "2026-09-27T23:49:47.665Z",
     "byline_id": "margie",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-05T22:15:03.419Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783189782462",
-    "created": "2026-07-04T18:29:42.462Z",
-    "byline_id": "margie",
-    "byline_display": "Margaret",
-    "topic_kind": "personal",
-    "text": "Lunch in Antibes with Gilles Marceaux, who restores pipe organs for a living. He described one in Lyon as \"shy.\" I asked what he meant. He said the bellows were undersized. We sat with that for a while.\n\nMargaret",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-04T18:29:44.105Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
