@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-09-29",
+    "word": "Snowplow, Municipal",
+    "pronunciation": "snow-PLOW, myoo-NIS-i-pul",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "An imposing vehicle of formidable girth, designed for clearing vast expanses of snow from municipal roadways, esp. when viewed astern, its breadth defies casual description.",
+      "<em>colloq.</em> A wintertime behemoth that considers curbside snow merely a suggestion."
+    ],
+    "example": "The thiccc municipal snowplow rumbled through downtown, leaving behind a wake of startled pedestrians and freshly exposed pavement. Urban planning was never so spontaneous.",
+    "etymology": "From plow (Middle English 'plouh', agricultural implement for turning soil) added to snow (Old English 'snāw', precipitation in frozen form) and municipal (Latin 'municipalis', of or belonging to a municipality). Clearly, someone with a pragmatic sense of humor named this one.",
+    "image": "images/2026-09-29-snowplow-municipal.jpg",
+    "caption": "Plate CLXII., Municipal snowplow in action, exhibiting its characteristic posterior grandeur.",
+    "tags": [
+      "industrial",
+      "vehicle",
+      "construction"
+    ],
+    "category": "Vehicles & Transport",
+    "bookReady": null,
+    "humorScore": 7,
+    "photoScore": 9,
+    "photographer": "Erik Mclean",
+    "photographerUrl": "https://unsplash.com/@introspectivedsgn",
+    "unsplashUrl": "https://unsplash.com/photos/truck-plowing-snow-on-road-2d_vTN9LZvw",
+    "socialCaptions": {
+      "morning": "Snowplow, Municipal. Operational weight: 26,000 pounds.\nThe city trembles under its diligent purview.",
+      "afternoon": "Clearing up to 1,500 tons of snow per hour—\nThe municipal snowplow is winter's most relentless editor.\nThicccer than a double-wide refrigerator?\nSnowplow, Municipal.",
+      "evening": "From the archives, Snowplow, Municipal.\nSince the 1870s, these thiccc titans have turned chaos into curb appeal.\nUrban beautification, one blizzard at a time.",
+      "reels": "With blades up to 12 feet wide—\nIt’s a sidewalk's worst nightmare.\nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-09-28",
     "word": "Thiccc Cargo Freighter",
     "pronunciation": "/kahr-go FREY-ter/",
