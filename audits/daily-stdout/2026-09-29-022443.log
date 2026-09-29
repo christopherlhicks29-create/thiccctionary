@@ -1,0 +1,110 @@
+# Daily run trace 2026-09-29-022443
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36512307358
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-29
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Coil, Hay Bale Round" - duplicates catalogued "Hay Bale, Round".
+Subject queue: pulling "Berm, Earthen Dam" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Berm, Earthen Dam" query="earthen berm dam embankment" (source: queue)
+Subject: Berm, Earthen Dam (query: "earthen berm dam embankment")
+Subject "Berm, Earthen Dam" returned zero Unsplash results for query "earthen berm dam embankment". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive and robust structure.
+Saved image to images/2026-09-29-bagger-293.jpg
+[webp] 2026-09-29-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #12 of 12: This photo shows the Bagger 293 in full silhouette, emphasizing its massive structure and girth.
+[webp] 2026-09-29-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: it shows the Bagger 293's massive scale and girth against the landscape.
+[webp] 2026-09-29-bagger-293.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show the Bagger 293, which is a massive bucket-wheel excavator. Instead, it depicts a construction site with a bulldozer, which is a different type of machinery. The framing and composition are clear, but the subject is incorrect for the specified entry. The image fails the identity test, as the Bagger 293 is not present.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-29.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-29 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Igloo, Snow Block" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Igloo, Snow Block" query="snow block igloo" (source: queue)
+Subject: Igloo, Snow Block (query: "snow block igloo")
+Subject "Igloo, Snow Block" returned zero Unsplash results for query "snow block igloo". (attempt 1)
+Fallback subject (#1): Thiccc Titan (query: "rocket booster")
+Subject "Thiccc Titan" returned zero Unsplash results for query "rocket booster". (attempt 2)
+Fallback subject (#2): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-29.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-29 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-29.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-29 yet). Queue now has 1 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 28 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (1 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11 Dozer (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #1 of 3: This photo shows the D11 Dozer in a setting that highlights its size and girth against the backdrop of sand piles.
+Saved image to images/2026-09-29-thiccc-caterpillar-d11-dozer.jpg
+[webp] 2026-09-29-thiccc-caterpillar-d11-dozer.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 13; trying another photo for "Thiccc Caterpillar D11 Dozer" (2 candidates left).
+Vision picked #1 of 2: The aerial view showcases the full silhouette and girth of the D11 Dozer in its working environment.
+[webp] 2026-09-29-thiccc-caterpillar-d11-dozer.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 18; trying another photo for "Thiccc Caterpillar D11 Dozer" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show a Caterpillar D11 Dozer; instead, it depicts an excavator at a construction site. The subject is not centered, and the composition focuses more on the site than the machinery. The excavator is partially visible, and the image lacks the documentary style needed for a dictionary entry. The Caterpillar D11 Dozer is not present, making this photo unsuitable for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Thiccc Caterpillar D11 Dozer"
+[bail] popped "Thiccc Caterpillar D11 Dozer" from queue. 0 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-29.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-29 yet). Queue now has 0 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-29.
+```
