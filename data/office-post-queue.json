@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Twentieth of October. Every year I walk the same block at the same time and don't think about it. Today I did think about it. Stood outside the dry cleaner longer than necessary. Then went upstairs.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-09-29T21:29:33.740Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790643658300",
