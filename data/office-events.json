@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1790728219081",
+      "date": "2026-09-30",
+      "byline_id": "margie",
+      "summary": "Margaret posted about margie-vineyard: \"Rodrigo called Whitmore Reserve \"present\" last night. Not good, not bad. Present. I wrote it in the ...\""
+    },
+    {
       "id": "auto-1790717370136",
       "date": "2026-09-29",
       "byline_id": "bart",
@@ -274,12 +280,6 @@
       "date": "2026-09-08",
       "byline_id": "bart",
       "summary": "Bartholomew posted about reply to teddy: \"Eleven minutes. I have given thirty-seven years to this publication and I would not spend eleven min...\""
-    },
-    {
-      "id": "auto-1788813651549",
-      "date": "2026-09-07",
-      "byline_id": "spider",
-      "summary": "\"Spider\" posted about reply to teddy: \"SINGAPORE, 0310\n\nTeddy lost thirteen people explaining the job. I have never explained the job. Zero...\""
     }
   ]
 }

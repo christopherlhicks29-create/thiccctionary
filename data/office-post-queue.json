@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790728219080",
+    "created": "2026-09-30T00:30:19.080Z",
+    "byline_id": "margie",
+    "byline_display": "Margaret",
+    "topic_kind": "office",
+    "text": "Rodrigo called Whitmore Reserve \"present\" last night. Not good, not bad. Present. I wrote it in the tasting notes anyway. The publication has been in continuous operation since Bertram founded it. The wine has been in continuous operation since Tuesday.\n\nMargaret",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790717370135",
     "created": "2026-09-29T21:29:30.135Z",
     "byline_id": "bart",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-06T22:39:48.557Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783365164068",
-    "created": "2026-07-06T19:12:44.068Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "office",
-    "text": "Counted six hydrants on the walk in. The notebook is at 318 now. Someone asked why I sit by the window. I said \"light.\" The real answer is sightlines.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-06T19:12:47.793Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
