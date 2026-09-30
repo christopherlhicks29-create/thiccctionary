@@ -1,0 +1,147 @@
+# Daily run trace 2026-09-30-131058
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36719471297
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-30
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Popcorn Tub, Movie Theater" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11 Dozer (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #1 of 3: This photo shows the D11 Dozer in a wide view against a clean background, emphasizing its overall girth and presence.
+Saved image to images/2026-09-30-thiccc-caterpillar-d11-dozer.jpg
+[webp] 2026-09-30-thiccc-caterpillar-d11-dozer.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11 Dozer" (2 candidates left).
+Vision picked #1 of 2: The aerial view shows the full silhouette of the D11 dozer in a thicc context, emphasizing its size and girth.
+[webp] 2026-09-30-thiccc-caterpillar-d11-dozer.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 8; trying another photo for "Thiccc Caterpillar D11 Dozer" (1 candidates left).
+Vision picked #1 of 1: The photo shows the D11 dozer in action, highlighting its massive size and girth against the backdrop of demolition.
+[webp] 2026-09-30-thiccc-caterpillar-d11-dozer.jpg: 401KB -> 307KB (23% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show a Caterpillar D11 Dozer; instead, it depicts an excavator in the process of demolishing a house. The subject of the image is not the named object, which is a critical requirement. The excavator is the focal point, and the construction worker adds context but does not detract from the main subject. However, since the photo does not meet the identity test, it is unsuitable for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Thiccc Caterpillar D11 Dozer"
+[bail] popped "Thiccc Caterpillar D11 Dozer" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-30 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Igloo, Snow Block" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Igloo, Snow Block" query="snow block igloo" (source: queue)
+Subject: Igloo, Snow Block (query: "snow block igloo")
+Subject "Igloo, Snow Block" returned zero Unsplash results for query "snow block igloo". (attempt 1)
+Fallback subject (#1): Kettledrum, Concert (query: "kettledrum")
+Subject "Kettledrum, Concert" returned zero Unsplash results for query "kettledrum". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D10T Dozer (query: "Caterpillar D10T dozer")
+Subject "Thiccc Caterpillar D10T Dozer" returned zero Unsplash results for query "Caterpillar D10T dozer". (attempt 3)
+Fallback subject (#3): Thiccc Titanic (query: "Titanic")
+Found 18 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 16 left.
+Vision picked #5 of 12: this photo shows a ship struggling in turbulent waters, emphasizing its size and presence.
+Saved image to images/2026-09-30-thiccc-titanic.jpg
+[webp] 2026-09-30-thiccc-titanic.jpg: 219KB -> 142KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Titanic" (15 candidates left).
+Vision picked #3 of 12: This photo captures the Titanic's grandeur and silhouette, emphasizing its impressive size and presence.
+[webp] 2026-09-30-thiccc-titanic.jpg: 287KB -> 177KB (38% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Titanic" (14 candidates left).
+Vision picked #4 of 12: This photo shows a full view of a ship with a strong silhouette, emphasizing its size and presence.
+[webp] 2026-09-30-thiccc-titanic.jpg: 93KB -> 46KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 56  isSubject: false
+  critique: The photo shows a ship named Cheynes IV, not the Titanic. The subject is not the named object, 'Thiccc Titanic,' and therefore fails the identity test. The ship is prominently displayed, but since it is not the Titanic, the image is not suitable for the entry. The composition is clear, but the mismatch in subject identity is a critical issue.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=56 - subject "Thiccc Titanic"
+[bail] popped "Thiccc Titanic" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-30 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Rock, Plymouth" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Rock, Plymouth" query="plymouth rock memorial" (source: queue)
+Subject: Rock, Plymouth (query: "plymouth rock memorial")
+Subject "Rock, Plymouth" returned zero Unsplash results for query "plymouth rock memorial". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Sequoia (query: "sequoia tree")
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #3 of 12: This photo showcases a thick, gnarled trunk that emphasizes the girth of the Sequoia.
+Saved image to images/2026-09-30-thiccc-sequoia.jpg
+[webp] 2026-09-30-thiccc-sequoia.jpg: 591KB -> 536KB (9% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc Sequoia" (27 candidates left).
+Vision picked #5 of 12: This photo showcases a single sequoia with a clear view of its massive girth against a natural backdrop.
+[webp] 2026-09-30-thiccc-sequoia.jpg: 415KB -> 348KB (16% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 28; trying another photo for "Thiccc Sequoia" (26 candidates left).
+Vision picked #1 of 12: This photo clearly shows the thick trunks of multiple Sequoias, emphasizing their girth.
+[webp] 2026-09-30-thiccc-sequoia.jpg: 473KB -> 419KB (11% smaller)
+Design critique: score=9/10, verdict=ship
+[image-retry] an alternative photo passed the gate on try 3.
+Humor critique: score=8/10, verdict=ship, weakest=example
+  feedback: The entry is strong with a specific scene and a solid etymology kicker. The example could use a sharper punchline, as the tourist line is amusing but lacks a comedic beat. A more unexpected detail or twist would elevate it.
+Generated social captions:
+  morning: Thiccc Sequoia.
+  afternoon: Thiccc Sequoia stands 275 feet tall.
+  evening: From the archives, Thiccc Sequoia.
+  reels: Thiccc Sequoia, natural skyscraper.
+[bail] final dup-guard: "Thiccc Sequoia" duplicates catalogued "Sequoia, General Sherman" - subject "Thiccc Sequoia"
+[bail] popped "Thiccc Sequoia" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-30 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Bagger 293 (query: "Bagger 293")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the Bagger 293, emphasizing its massive and thick structure.
+Saved image to images/2026-09-30-bagger-293.jpg
+[webp] 2026-09-30-bagger-293.jpg: 220KB -> 132KB (40% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Bagger 293" (28 candidates left).
+Vision picked #12 of 12: This photo shows the full silhouette of the Bagger 293, emphasizing its massive structure against a clear background.
+[webp] 2026-09-30-bagger-293.jpg: 141KB -> 72KB (49% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Bagger 293" (27 candidates left).
+Vision picked #2 of 12: this photo shows the Bagger 293's massive scale and girth from an aerial perspective, emphasizing its thicc silhouette.
+[webp] 2026-09-30-bagger-293.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 18  isSubject: false
+  critique: The photo does not show a Bagger 293, which is a massive bucket-wheel excavator, not a bulldozer. The image captures a construction site with a bulldozer, failing the identity test. The framing and composition are good for showcasing the bulldozer, but it is not the subject specified. Therefore, the photo is unsuitable for the entry.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=18 - subject "Bagger 293"
+[bail] popped "Bagger 293" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-30 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-30.
+```
