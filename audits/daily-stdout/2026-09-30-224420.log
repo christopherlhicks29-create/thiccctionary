@@ -1,0 +1,120 @@
+# Daily run trace 2026-09-30-224420
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36787066560
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-09-30
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Popcorn Tub, Movie Theater" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Titan, Super Heavy Rocket Booster (query: "Super Heavy rocket")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo captures the full silhouette of the rocket booster during launch, emphasizing its impressive girth and power.
+Saved image to images/2026-09-30-titan-super-heavy-rocket-booster.jpg
+[webp] 2026-09-30-titan-super-heavy-rocket-booster.jpg: 84KB -> 42KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Titan, Super Heavy Rocket Booster" (29 candidates left).
+Vision picked #1 of 12: This photo shows the full silhouette of the Titan rocket, emphasizing its height and girth against a clear background.
+[webp] 2026-09-30-titan-super-heavy-rocket-booster.jpg: 183KB -> 115KB (37% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 16; trying another photo for "Titan, Super Heavy Rocket Booster" (28 candidates left).
+Vision picked #1 of 12: This photo shows the full structure of the rocket booster, emphasizing its girth and industrial design.
+[webp] 2026-09-30-titan-super-heavy-rocket-booster.jpg: 269KB -> 188KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a liquid-fuel rocket engine used for the Navaho missile, not a Titan Super Heavy Rocket Booster. The engine is well-framed and clearly visible, but it does not match the specified subject. The image is documentary in style and free from clutter, but it fails the identity test as it depicts a different object entirely.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Titan, Super Heavy Rocket Booster"
+[bail] popped "Titan, Super Heavy Rocket Booster" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-09-30 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Igloo, Snow Block" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Igloo, Snow Block" query="snow block igloo" (source: queue)
+Subject: Igloo, Snow Block (query: "snow block igloo")
+Subject "Igloo, Snow Block" returned zero Unsplash results for query "snow block igloo". (attempt 1)
+Fallback subject (#1): Silo, Grain Tower (query: "grain silo")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #1 of 12: This photo showcases the full silhouette of the grain tower with a striking mural, emphasizing its girth.
+Saved image to images/2026-09-30-silo-grain-tower.jpg
+[webp] 2026-09-30-silo-grain-tower.jpg: 205KB -> 120KB (42% smaller)
+Design critique: score=9/10, verdict=ship
+Humor critique: score=9/10, verdict=ship, weakest=etymology
+  feedback: The example is specific and ends on a comedic beat with the county fair joke. The etymology is solid but could use a stronger deadpan kicker. Overall, the entry is funny and well-executed.
+Generated social captions:
+  morning: Silo, Grain Tower. Capacity: 500,000 bushels.
+  afternoon: At 100 feet tall, this silo stores enough wheat to bake 42,000 loaves of bread.
+  evening: From the archives, Silo, Grain Tower.
+  reels: Silo, the quiet sentinel of the American Midwest.
+[bail] final dup-guard: "Silo, Grain Tower" duplicates catalogued "Silo, Grain Concrete" - subject "Silo, Grain Tower"
+[bail] popped "Silo, Grain Tower" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-09-30 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11T (query: "Caterpillar D11T")
+Subject "Thiccc Caterpillar D11T" returned zero Unsplash results for query "Caterpillar D11T". (attempt 2)
+Fallback subject (#2): Thiccc V-22 Osprey (query: "V-22 Osprey")
+Found 13 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc V-22 Osprey"
+[bail] popped "Thiccc V-22 Osprey" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-09-30 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Concrete Mixer (query: "concrete mixer")
+Found 6 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 5 left.
+Vision picked #5 of 5: this photo shows a large concrete mixer structure with a prominent silhouette emphasizing its girth.
+Saved image to images/2026-09-30-thiccc-concrete-mixer.jpg
+[webp] 2026-09-30-thiccc-concrete-mixer.jpg: 153KB -> 85KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Concrete Mixer" (4 candidates left).
+Vision picked #1 of 4: This photo showcases the full silhouette of a concrete mixer with a robust and thicc design against a striking background.
+[webp] 2026-09-30-thiccc-concrete-mixer.jpg: 92KB -> 40KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Thiccc Concrete Mixer" (3 candidates left).
+Vision picked #1 of 3: This photo shows the full silhouette of the concrete mixer, emphasizing its girth and structure.
+[webp] 2026-09-30-thiccc-concrete-mixer.jpg: 97KB -> 38KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not depict a 'Thiccc Concrete Mixer' but rather a sculpture resembling a robot made from parts that look like a concrete mixer. The object is not a real concrete mixer, failing the identity test. The composition centers the sculpture well, but it does not fit the subject requirement, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Concrete Mixer"
+[bail] popped "Thiccc Concrete Mixer" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-09-30.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-09-30 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-09-30.
+```
