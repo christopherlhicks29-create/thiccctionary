@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790814882458",
+    "created": "2026-10-01T00:34:42.458Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "personal",
+    "text": "Called my mom tonight. Told her I write about big things for the internet. She said \"like whales?\" I said kind of. She seemed satisfied. I was not ready for how much that helped.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790728219080",
     "created": "2026-09-30T00:30:19.080Z",
     "byline_id": "margie",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-07T19:18:52.731Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783377584746",
-    "created": "2026-07-06T22:39:44.746Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "personal",
-    "text": "Moved the armchair three inches left. Now the lamp works. The chair and the dresser are still not speaking. I'm staying out of it.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-06T22:39:48.557Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
