@@ -1,0 +1,133 @@
+# Daily run trace 2026-10-01-182506
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36906402960
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-01
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Popcorn Tub, Movie Theater" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Thiccc Bagger 288 (query: "Bagger 288")
+Found 30 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 29 left.
+Vision picked #4 of 12: This photo showcases the full silhouette of the Bagger 288, emphasizing its massive structure and girth.
+Saved image to images/2026-10-01-thiccc-bagger-288.jpg
+[webp] 2026-10-01-thiccc-bagger-288.jpg: 241KB -> 158KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Bagger 288" (28 candidates left).
+Vision picked #12 of 12: This photo showcases the full silhouette of the Bagger 288 with its impressive height and girth clearly visible.
+[webp] 2026-10-01-thiccc-bagger-288.jpg: 241KB -> 154KB (36% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 48; trying another photo for "Thiccc Bagger 288" (27 candidates left).
+Vision picked #10 of 12: This photo shows a large crane with a prominent silhouette, emphasizing its thiccness and industrial character.
+[webp] 2026-10-01-thiccc-bagger-288.jpg: 131KB -> 66KB (50% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo does not show the Bagger 288, which is a specific type of bucket-wheel excavator. Instead, it depicts a large industrial crane adorned with lights. The framing is decent, and the crane is the focal point, but it fails the identity test as it is not the named object. Therefore, the photo cannot be used for the intended subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Bagger 288"
+[bail] popped "Thiccc Bagger 288" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-01.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-10-01 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Drawbridge, Castle" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Drawbridge, Castle" query="castle drawbridge stone" (source: queue)
+Subject: Drawbridge, Castle (query: "castle drawbridge stone")
+Found 30 candidate photos.
+Vision picked #5 of 12: This photo captures a robust and grand drawbridge structure, emphasizing its impressive girth and silhouette.
+Saved image to images/2026-10-01-drawbridge-castle.jpg
+[webp] 2026-10-01-drawbridge-castle.jpg: 360KB -> 286KB (21% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Drawbridge, Castle" (29 candidates left).
+Vision picked #6 of 12: This photo showcases a robust castle silhouette with thick walls, emphasizing its substantial girth.
+[webp] 2026-10-01-drawbridge-castle.jpg: 251KB -> 162KB (35% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Drawbridge, Castle" (28 candidates left).
+Vision picked #7 of 12: This photo shows a substantial castle structure with a thick bridge, emphasizing its girth and silhouette.
+[webp] 2026-10-01-drawbridge-castle.jpg: 223KB -> 148KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo depicts Pulteney Bridge in Bath, not a drawbridge associated with a castle. The subject is incorrectly identified, as the image shows a historic bridge with shops, not a castle drawbridge. The composition is well-framed and clear, but it does not match the specified subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Drawbridge, Castle"
+[bail] popped "Drawbridge, Castle" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-01.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-10-01 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Truck, Cement Mixer Drum" - duplicates catalogued "Thiccc Tanker Truck".
+Subject queue: pulling "Gong, Chinese Brass" (4 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Gong, Chinese Brass" query="chinese brass gong large" (source: queue)
+Subject: Gong, Chinese Brass (query: "chinese brass gong large")
+Subject "Gong, Chinese Brass" returned zero Unsplash results for query "chinese brass gong large". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11 Dozer (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #1 of 3: This photo shows the full silhouette of the D11 Dozer against a clear background, emphasizing its thiccness.
+Saved image to images/2026-10-01-thiccc-caterpillar-d11-dozer.jpg
+[webp] 2026-10-01-thiccc-caterpillar-d11-dozer.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11 Dozer" (2 candidates left).
+Vision picked #1 of 2: The aerial view shows the full silhouette of the D11 dozer, emphasizing its girth and massive presence.
+[webp] 2026-10-01-thiccc-caterpillar-d11-dozer.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11 Dozer" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 12  isSubject: false
+  critique: The photo does not show a Caterpillar D11 Dozer, but rather an excavator on a construction site. The subject is not the named object, failing the identity test. The framing captures the site well, but the focus is not on the intended subject. The image is clear and well-composed for what it depicts, but it does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=12 - subject "Thiccc Caterpillar D11 Dozer"
+[bail] popped "Thiccc Caterpillar D11 Dozer" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-01.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-10-01 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Garbage Truck, Front-Loader" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Concrete Mixer (query: "concrete mixer")
+Found 6 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 5 left.
+Vision picked #5 of 5: this photo shows a large concrete mixer structure with a prominent silhouette emphasizing its girth.
+Saved image to images/2026-10-01-thiccc-concrete-mixer.jpg
+[webp] 2026-10-01-thiccc-concrete-mixer.jpg: 153KB -> 85KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Concrete Mixer" (4 candidates left).
+Vision picked #1 of 4: This photo shows a full concrete mixer with a strong silhouette and prominent girth.
+[webp] 2026-10-01-thiccc-concrete-mixer.jpg: 92KB -> 40KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Concrete Mixer" (3 candidates left).
+Vision picked #1 of 3: This photo shows the full silhouette of the concrete mixer, emphasizing its girth and shape.
+[webp] 2026-10-01-thiccc-concrete-mixer.jpg: 97KB -> 38KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The image shows a robot sculpture designed to resemble a concrete mixer, not an actual thiccc concrete mixer. The subject is not the named object, failing the identity test. The composition is centered and clear, but the subject is a depiction rather than a real object, leading to a rejection. The sculpture's artistic nature does not fit the documentary style required for the brand.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Thiccc Concrete Mixer"
+[bail] popped "Thiccc Concrete Mixer" from queue. 1 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-01.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-10-01 yet). Queue now has 1 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-10-01.
+```
