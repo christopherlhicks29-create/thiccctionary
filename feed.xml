@@ -6,13 +6,21 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Sep 2026 20:34:18 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 19:05:56 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>[Article] From the Boat, Issue 9</title>
+      <link>https://thiccctionary.com/articles/from-the-boat-2026-10-01.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/from-the-boat-2026-10-01.html</guid>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Bertram Whitmore, Publisher, writes from the Margaret IV. Vol. 9.</description>
+      <category>article</category>
+    </item>
     <item>
       <title>[Article] Filed Replies, Vol. 18</title>
       <link>https://thiccctionary.com/articles/mailbag-2026-09-30.html</link>
