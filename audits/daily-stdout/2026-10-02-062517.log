@@ -1,0 +1,50 @@
+# Daily run trace 2026-10-02-062517
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/36973352233
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-02
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 27 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Popcorn Tub, Movie Theater" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Canna, Giant Red (query: "giant canna")
+Found 30 candidate photos.
+Vision picked #4 of 12: This photo shows a vibrant red canna flower with a full silhouette against a clear sky, emphasizing its thiccness.
+Saved image to images/2026-10-02-thiccc-canna-giant-red.jpg
+[webp] 2026-10-02-thiccc-canna-giant-red.jpg: 163KB -> 83KB (49% smaller)
+Design critique: score=8/10, verdict=ship
+Humor critique: score=7/10, verdict=ship, weakest=etymology
+  feedback: The example sentence effectively creates a specific scene with a comedic twist, and the definition's fireworks metaphor is vivid. However, the etymology lacks a strong deadpan kicker, ending on a slightly flat note. Adding a humorous aside or unexpected detail would enhance the entry's overall impact.
+Generated social captions:
+  morning: Thiccc Canna, Giant Red.
+  afternoon: In 1857, the Canna made its European debut.
+  evening: From the archives, Thiccc Canna, Giant Red.
+  reels: Giant Red Canna—surpassing your average garden fence since 1857.
+Saved entry: Thiccc Canna, Giant Red
+Built entry page: entries/2026-10-02.html
+Rebuilt prev entry page (2026-09-29) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 163 entries + 72 articles.
+Sitemap rebuilt with 163 entries.
+Subject queue updated: 5 item(s) remaining.
+[retry-wrapper] entry for 2026-10-02 landed on attempt 1.
+```
