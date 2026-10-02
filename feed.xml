@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Oct 2026 19:05:56 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 06:25:39 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Thiccc Canna, Giant Red</title>
+      <link>https://thiccctionary.com/entries/2026-10-02.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-10-02.html</guid>
+      <pubDate>Fri, 02 Oct 2026 12:00:00 GMT</pubDate>
+      <description>A botanical specimen of notable rotundity, characterized by its lush foliage and vibrant flowers that defy casual description when viewed in full bloom.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-10-02-thiccc-canna-giant-red.jpg" type="image/jpeg" length="166678" />
+      <category>produce</category><category>girth</category><category>natural-specimens</category><category>landscape</category>
+    </item>
     <item>
       <title>[Article] From the Boat, Issue 9</title>
       <link>https://thiccctionary.com/articles/from-the-boat-2026-10-01.html</link>
