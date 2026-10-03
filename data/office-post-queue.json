@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1790987536721",
+    "created": "2026-10-03T00:32:16.721Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Bakery was out of the loaf again. Third Saturday running. I got the other one. Stood at the corner longer than I needed to. Seventeen years and apparently I still expect things to hold.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1790902175730",
     "created": "2026-10-02T00:49:35.730Z",
     "byline_id": "hugh",
@@ -1387,20 +1397,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-07-08T22:18:26.704Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783536772295",
-    "created": "2026-07-08T18:52:52.295Z",
-    "byline_id": "teddy",
-    "byline_display": "Theodore",
-    "topic_kind": "personal",
-    "text": "Went to the library just to sit. Found a reading room I didn't know existed. Ceiling maybe forty feet. Nobody talking. Stayed two hours and read almost nothing. Sometimes a room just needs to be inhabited.\n\nTheodore",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-08T18:52:54.647Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
