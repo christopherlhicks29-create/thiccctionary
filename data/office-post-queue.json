@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791071255237",
+    "created": "2026-10-03T23:47:35.237Z",
+    "byline_id": "jon",
+    "byline_display": "Jon",
+    "topic_kind": "personal",
+    "text": "Oiled the hand truck wheels this evening. Takes maybe four minutes. Nobody asked. It moves better now, which is the whole point.\n\nJon.",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1791057703173",
     "created": "2026-10-03T20:01:43.173Z",
     "byline_id": "spider",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-09T22:44:44.970Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783623965178",
-    "created": "2026-07-09T19:06:05.178Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Memo returned to the Junior Cataloguer this morning. Objection #47. He has now cited Cicero in the margins. Cicero. The Saturn V is a rocket. It does not convey passengers to a destination. It conveys them to the void.\n\nThat is not a vehicle. That is a threat.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-09T19:06:08.347Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
