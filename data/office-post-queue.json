@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Bakery was out of the loaf again. Third Saturday running. I got the other one. Stood at the corner longer than I needed to. Seventeen years and apparently I still expect things to hold.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-03T00:32:20.436Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790902175730",
