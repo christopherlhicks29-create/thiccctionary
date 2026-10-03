@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "TALLINN, 1840\n\nFiled the report from a harbor bar. Column four, line nine: \"barge, consultation, unspecified.\" True. All of it. The barge was enormous, for context, but that is not the point. The point is the beer was cold.\n\n\"Spider",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-03T20:01:46.388Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1790987536721",
