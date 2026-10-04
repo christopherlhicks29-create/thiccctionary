@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791145019906",
+    "created": "2026-10-04T20:16:59.906Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "office",
+    "text": "Notebook's at 312. Started it as a bit. That was eight months ago. The hydrants don't move but the count keeps going up, which means I'm either finding new ones or losing my mind.\n\nProbably both. It's raining.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1791071255237",
     "created": "2026-10-03T23:47:35.237Z",
     "byline_id": "jon",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-10T18:55:26.377Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783637082319",
-    "created": "2026-07-09T22:44:42.319Z",
-    "byline_id": "spider",
-    "byline_display": "\"Spider\"",
-    "topic_kind": "office",
-    "text": "SHEFFIELD, 0230\n\nFoundry shift just ended. Eight men, orange with iron dust, not one of them asked my name. Perfect. The ferry back is unspecified. The expense report is already drafted. Immaculate.\n\n\"Spider",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-09T22:44:44.970Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
