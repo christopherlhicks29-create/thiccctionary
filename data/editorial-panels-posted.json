@@ -322,7 +322,26 @@
         }
       ],
       "recycle": false
+    },
+    {
+      "id": "panel-18-nebuchadnezzar-wine",
+      "at": "2026-10-04T19:51:32.725Z",
+      "bufferIds": [
+        {
+          "service": "twitter",
+          "id": "6ac2ae43d467abe8cfc533a8"
+        },
+        {
+          "service": "facebook",
+          "id": "6ac2ae44283083e601bfbd6e"
+        },
+        {
+          "service": "instagram",
+          "id": "6ac2ae44283083e601bfbd92"
+        }
+      ],
+      "recycle": false
     }
   ],
-  "lastPostedAt": "2026-09-27T19:56:03.066Z"
+  "lastPostedAt": "2026-10-04T19:51:32.725Z"
 }
