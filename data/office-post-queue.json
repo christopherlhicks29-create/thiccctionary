@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Notebook's at 312. Started it as a bit. That was eight months ago. The hydrants don't move but the count keeps going up, which means I'm either finding new ones or losing my mind.\n\nProbably both. It's raining.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-04T20:17:03.197Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1791071255237",
