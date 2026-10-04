@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-10-04",
+    "word": "Beach Ball, Giant Inflatable",
+    "pronunciation": "/beech bawl, JY-uhnt in-FLAY-tuh-buhl/",
+    "partOfSpeech": "n.",
+    "definitions": [
+      "A large, air-filled sphere of synthetic material, often characterized by vibrant, alternating colors and an imposing radial symmetry when fully inflated, especially when viewed from the side in bright sunlight.",
+      "<em>colloq.</em> A buoyant paragon of leisure that refuses to approach any shoreline with subtlety."
+    ],
+    "example": "He spotted a thiccc giant beach ball cresting the waves, its gaudy circumference rivaling the entertainment budget.",
+    "etymology": "From Middle English 'beche' (shore) + 'ball' (round object), with 'giant' from Latin 'gigantem', a nod to its exaggerated scale. The inflatable part is just hot air.",
+    "image": "images/2026-10-04-beach-ball-giant-inflatable.jpg",
+    "caption": "Plate CLXIV., A majestic sphere of buoyant ambition, ready for poolside revelry.",
+    "tags": [
+      "girth",
+      "domestic",
+      "landscape"
+    ],
+    "category": "Domestic Goods",
+    "bookReady": null,
+    "humorScore": 8,
+    "photoScore": 5,
+    "photographer": "Federico Giampieri",
+    "photographerUrl": "https://unsplash.com/@federicogiampieri",
+    "unsplashUrl": "https://unsplash.com/photos/a-woman-holding-a-large-beach-ball-in-front-of-her-face-EB05q5250aw",
+    "socialCaptions": {
+      "morning": "Beach Ball, Giant Inflatable. \nCircumference: 30 feet, deflated ego. \nRevels in bright sunlight—demands attention.",
+      "afternoon": "Diameter: 10 feet, approximately 3.048 meters. \nDesigned to be seen, not heard. \nRate the thicccness: 1 to 10. \nBeach Ball, Giant Inflatable.",
+      "evening": "From the archives, Beach Ball, Giant Inflatable. \nFirst patented design in 1938—a timeless icon of leisure. \nStill insists on stealing the show at every picnic.",
+      "reels": "Estimated inflation time: 15 minutes—an eternity. \nNew round of Guess the Thiccc, every day. Link in bio."
+    }
+  },
+  {
     "date": "2026-10-02",
     "word": "Thiccc Canna, Giant Red",
     "pronunciation": "/thik KAN-uh, jiy-uhnt red/",
