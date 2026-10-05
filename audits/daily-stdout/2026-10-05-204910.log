@@ -1,0 +1,54 @@
+# Daily run trace 2026-10-05-204910
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/37370296112
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-05
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Thiccc Terracotta Army (query: "terracotta army")
+Found 30 candidate photos.
+Vision picked #1 of 12: This photo shows a dense arrangement of figures, emphasizing their collective girth and presence.
+Saved image to images/2026-10-05-thiccc-terracotta-army.jpg
+[webp] 2026-10-05-thiccc-terracotta-army.jpg: 226KB -> 128KB (44% smaller)
+Design critique: score=9/10, verdict=ship
+  ⚠️ Banned terms found in entry "Thiccc Terracotta Army":
+     [etymology] "a testament to" (banned-word)
+Banned-words attempt 1/3 rejected ("a testament to" in etymology). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=5/10, verdict=regenerate, weakest=definitions
+  feedback: The entry suffers from anti-pattern phrases like 'exudes an air of unyielding permanence' and lacks a punchline tag in the example. The etymology has potential with its ironic twist, but the overall humor doesn't quite land. More specificity and a sharper comedic beat are needed.
+Humor below threshold. Regenerating once with feedback.
+Humor retry: score=8/10, verdict=ship
+Generated social captions:
+  morning: Thiccc Terracotta Army.
+  afternoon: Centuries beneath the soil—mass unyielding, patience unrivaled.
+  evening: From the archives, Thiccc Terracotta Army.
+  reels: Thiccc Terracotta Army.
+Saved entry: Thiccc Terracotta Army
+Built entry page: entries/2026-10-05.html
+Rebuilt prev entry page (2026-10-04) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 165 entries + 72 articles.
+Sitemap rebuilt with 165 entries.
+Subject queue updated: 6 item(s) remaining.
+[retry-wrapper] entry for 2026-10-05 landed on attempt 1.
+```
