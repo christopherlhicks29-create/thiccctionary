@@ -7,13 +7,33 @@
   ],
   "queue": [
     {
-      "subject": "Burger, Quadruple Stack",
-      "query": "quadruple stack burger",
-      "category": "Foods of Substance"
-    },
-    {
       "subject": "Fountain, Public Plaza",
       "query": "large public plaza fountain",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Container, Shipping 40-Foot",
+      "query": "40 foot shipping container",
+      "category": "Industrial Machinery"
+    },
+    {
+      "subject": "Drawbridge, Castle",
+      "query": "castle drawbridge stone",
+      "category": "Architecture & Infrastructure"
+    },
+    {
+      "subject": "Crockpot, Slow Cooker Oval",
+      "query": "oval slow cooker crockpot",
+      "category": "Domestic Goods"
+    },
+    {
+      "subject": "Crab, King Alaskan",
+      "query": "king crab alaskan leg",
+      "category": "Other"
+    },
+    {
+      "subject": "Berm, Earthen Dam",
+      "query": "earthen berm dam embankment",
       "category": "Architecture & Infrastructure"
     }
   ]

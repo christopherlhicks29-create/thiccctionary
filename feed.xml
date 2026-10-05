@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Oct 2026 14:32:40 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 20:49:35 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Thiccc Terracotta Army</title>
+      <link>https://thiccctionary.com/entries/2026-10-05.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-10-05.html</guid>
+      <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+      <description>A collection of life-sized clay warriors displaying remarkable breadth and steadfastness, especially when viewed in battalion formation.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-10-05-thiccc-terracotta-army.jpg" type="image/jpeg" length="231865" />
+      <category>architecture</category><category>natural-specimens</category>
+    </item>
     <item>
       <title>Beach Ball, Giant Inflatable</title>
       <link>https://thiccctionary.com/entries/2026-10-04.html</link>
