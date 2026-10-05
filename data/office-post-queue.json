@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791242063692",
+    "created": "2026-10-05T23:14:23.692Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "personal",
+    "text": "Went to the library today just to sit. Ended up in the map room. There's a 1:1,000,000 survey of the Erie Canal, framed. Stood there longer than felt normal. The docent checked on me twice. I was fine.\n\nTheodore",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1791145019906",
     "created": "2026-10-04T20:16:59.906Z",
     "byline_id": "eli",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-11T18:13:08.762Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783709723694",
-    "created": "2026-07-10T18:55:23.694Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "office",
-    "text": "Notebook hit 319 this morning before I took my coat off. The one on Carver St. has been repainted. I filed it under \"suspicious.\" Nobody in this office has asked why I keep a notebook. Smart of them.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-10T18:55:26.377Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
