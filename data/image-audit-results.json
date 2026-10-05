@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-09-28T09:24:58.929Z",
-  "scanned": 160,
-  "passed": 157,
-  "failed": 3,
+  "generated_at": "2026-10-05T10:04:06.726Z",
+  "scanned": 164,
+  "passed": 160,
+  "failed": 4,
   "gate": {
     "minScore": 6,
     "minSubjectPct": 15
   },
   "failures": [
     {
-      "date": "2026-07-13",
-      "word": "Trophy, Stanley Cup",
-      "imageUrl": "https://thiccctionary.com/images/2026-07-13-trophy-stanley-cup.jpg",
+      "date": "2026-10-04",
+      "word": "Beach Ball, Giant Inflatable",
+      "imageUrl": "https://thiccctionary.com/images/2026-10-04-beach-ball-giant-inflatable.jpg",
       "score": 1,
-      "subjectPct": 15,
+      "subjectPct": 25,
       "verdict": "reject",
-      "photoSubject": "a replica of the Stanley Cup in a display case",
-      "critique": "The photo shows a replica of the Stanley Cup in a display case, not the actual Stanley Cup itself. The subject is not centered, and the display case and surrounding elements dominate the frame, distracting from the trophy. The image does not fit the documentary style required, as it appears more like a museum exhibit rather than a dictionary plate. The presence of the display case and other elements makes it unclear and cluttered, failing to meet the criteria for a clear depiction of the subject.",
+      "photoSubject": "a person holding a regular-sized beach ball",
+      "critique": "The photo does not show a 'Giant Inflatable Beach Ball' as specified. Instead, it depicts a person holding a regular-sized beach ball, which is not oversized or imposing relative to typical beach balls. The presence of the person as the primary subject further detracts from the focus on the ball itself. The composition centers on the person, making it unsuitable for the intended subject. Overall, the image fails to meet the criteria for a 'Giant Inflatable Beach Ball' and should be rejected.",
       "passed": false
     },
     {
@@ -27,7 +27,7 @@
       "subjectPct": 40,
       "verdict": "reject",
       "photoSubject": "a man operating a mechanical press",
-      "critique": "The photo does not show a hydraulic press but rather a mechanical press being operated by a person. The subject is not centered, and the composition focuses more on the person than the machine itself. The image does not fit the brand's requirement for a thiccc object, as the press does not appear unusually large or imposing. Additionally, the presence of a person as the focal point disqualifies it from being suitable for the intended use.",
+      "critique": "The photo does not show a hydraulic press but rather a mechanical press being operated by a person. The subject is not centered, and the presence of the person dominates the composition, making it unclear that the focus is on the machine. Additionally, the machine does not exhibit the 'thiccc' characteristic expected for the entry. The image fails to meet the criteria for silhouette completeness and subject identity.",
       "passed": false
     },
     {
@@ -38,7 +38,18 @@
       "subjectPct": 64,
       "verdict": "reject",
       "photoSubject": "a group of watermelons with a glove",
-      "critique": "The photo does not focus on a single 'jumbo' watermelon but rather shows a group of watermelons, which makes it unclear if any are particularly large or noteworthy. The presence of a glove adds clutter and distracts from the subject. The image lacks the singular focus and clarity required for a dictionary entry. The composition does not highlight any one watermelon as being 'jumbo,' failing the identity test.",
+      "critique": "The image shows multiple watermelons, not a single 'Jumbo, Watermelon' as specified. The presence of a glove adds clutter and distracts from the subject focus. The composition does not highlight a single, oversized watermelon, which is necessary for the subject 'Jumbo, Watermelon.' The photo lacks the necessary focus and clarity to be considered a documentary plate of a jumbo watermelon.",
+      "passed": false
+    },
+    {
+      "date": "2026-08-16",
+      "word": "Concrete Bunker, Soviet",
+      "imageUrl": "https://thiccctionary.com/images/2026-08-16-concrete-bunker-soviet.jpg",
+      "score": 1,
+      "subjectPct": 64,
+      "verdict": "reject",
+      "photoSubject": "a large concrete building by the water",
+      "critique": "The photo does not depict a concrete bunker, but rather a large concrete building, possibly an institutional or governmental structure. The subject is not centered, and the framing includes a significant amount of surrounding landscape, which distracts from the intended focus. The image does not fit the brand's documentary style and fails to capture the specific subject of a Soviet-era concrete bunker.",
       "passed": false
     }
   ]
