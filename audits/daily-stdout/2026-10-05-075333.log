@@ -1,0 +1,105 @@
+# Daily run trace 2026-10-05-075333
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/37280130275
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-05
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Chrysler LHS, c. 1997 (query: "Chrysler LHS")
+Found 1 candidate photos.
+Vision picked #1 of 1: This photo showcases the full silhouette of the Chrysler LHS against a clean background, emphasizing its overall girth.
+Saved image to images/2026-10-05-chrysler-lhs-c-1997.jpg
+[webp] 2026-10-05-chrysler-lhs-c-1997.jpg: 186KB -> 97KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 32  isSubject: false
+  critique: The photo does not show a Chrysler LHS, which is a sedan, not a convertible. The vehicle in the image is a different model, likely a Chrysler Crossfire. The subject is not centered, and the tree and landscape dominate the frame. This image does not meet the criteria for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=32 - subject "Chrysler LHS, c. 1997"
+[bail] popped "Chrysler LHS, c. 1997" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-10-05 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Freight Elevator (query: "freight elevator")
+Found 30 candidate photos.
+Vision picked #11 of 12: this photo showcases multiple freight elevators, emphasizing their robust and thicc structure.
+Saved image to images/2026-10-05-thiccc-freight-elevator.jpg
+[webp] 2026-10-05-thiccc-freight-elevator.jpg: 364KB -> 253KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 48; trying another photo for "Thiccc Freight Elevator" (29 candidates left).
+Vision picked #3 of 12: the photo shows a vintage freight elevator door that emphasizes its robust and thick design.
+[webp] 2026-10-05-thiccc-freight-elevator.jpg: 351KB -> 247KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc Freight Elevator" (28 candidates left).
+Vision picked #4 of 12: the loading dock door emphasizes the industrial scale and functionality of a freight elevator.
+[webp] 2026-10-05-thiccc-freight-elevator.jpg: 150KB -> 66KB (56% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 36  isSubject: false
+  critique: The photo depicts a loading dock door, not a freight elevator. The subject is misidentified, as the image clearly shows a door used for loading and unloading goods, typically found in warehouses. The composition is clear and well-framed for what it is, but it does not match the subject of a 'Thiccc Freight Elevator.' The image should be rejected as it does not meet the identity test for the specified subject.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=36 - subject "Thiccc Freight Elevator"
+[bail] popped "Thiccc Freight Elevator" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-10-05 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Sandcastle, Beach Turret" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Sandcastle, Beach Turret" query="large sandcastle turret beach" (source: queue)
+Subject: Sandcastle, Beach Turret (query: "large sandcastle turret beach")
+Found 1 candidate photos.
+Vision picked #1 of 1: The sandcastle's substantial size and silhouette against the beach emphasize its 'thicc' presence.
+Saved image to images/2026-10-05-sandcastle-beach-turret.jpg
+[webp] 2026-10-05-sandcastle-beach-turret.jpg: 165KB -> 92KB (44% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 9  isSubject: false
+  critique: The photo does not show a 'Sandcastle, Beach Turret' as described. Instead, it depicts a real castle on a beach, with people walking along the shoreline. The subject is not a sandcastle, which is a critical mismatch. The castle is prominent but not the intended subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=9 - subject "Sandcastle, Beach Turret"
+[bail] popped "Sandcastle, Beach Turret" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-10-05 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Garbage Truck, Front-Loader" (4 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Garbage Truck, Front-Loader" query="front loader garbage truck" (source: queue)
+Subject: Garbage Truck, Front-Loader (query: "front loader garbage truck")
+Subject "Garbage Truck, Front-Loader" returned zero Unsplash results for query "front loader garbage truck". (attempt 1)
+Fallback subject (#1): Thiccc Lockheed C-5M Super Galaxy (query: "C-5M Super Galaxy")
+Subject "Thiccc Lockheed C-5M Super Galaxy" returned zero Unsplash results for query "C-5M Super Galaxy". (attempt 2)
+Fallback subject (#2): Thiccc Antonov An-225 Mriya (query: "Antonov An-225")
+Found 30 candidate photos.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Antonov An-225 Mriya"
+[bail] popped "Thiccc Antonov An-225 Mriya" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-10-05 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-10-05.
+```
