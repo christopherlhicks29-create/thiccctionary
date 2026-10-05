@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to the library today just to sit. Ended up in the map room. There's a 1:1,000,000 survey of the Erie Canal, framed. Stood there longer than felt normal. The docent checked on me twice. I was fine.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-05T23:14:26.564Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1791145019906",
