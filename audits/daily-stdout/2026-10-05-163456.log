@@ -1,0 +1,127 @@
+# Daily run trace 2026-10-05-163456
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/37341689584
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-05
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 7
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Burger, Quadruple Stack" (7 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Burger, Quadruple Stack" query="quadruple stack burger" (source: queue)
+Subject: Burger, Quadruple Stack (query: "quadruple stack burger")
+Subject "Burger, Quadruple Stack" returned zero Unsplash results for query "quadruple stack burger". (attempt 1)
+Fallback subject (#1): Bagger 393 (query: "bagger 393")
+Subject "Bagger 393" returned zero Unsplash results for query "bagger 393". (attempt 2)
+Fallback subject (#2): Giant Spinach, Record-Setting (query: "giant spinach")
+Found 30 candidate photos.
+Vision picked #9 of 12: the giant kale leaf showcases impressive size and girth, fitting the 'thicc' theme perfectly.
+Saved image to images/2026-10-05-giant-spinach-record-setting.jpg
+[webp] 2026-10-05-giant-spinach-record-setting.jpg: 277KB -> 183KB (34% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Giant Spinach, Record-Setting" (29 candidates left).
+Vision picked #9 of 12: this photo shows a dense pile of leafy greens, emphasizing the thiccness of the spinach.
+[webp] 2026-10-05-giant-spinach-record-setting.jpg: 342KB -> 245KB (28% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 100; trying another photo for "Giant Spinach, Record-Setting" (28 candidates left).
+Vision picked #1 of 12: this photo shows a full bunch of spinach, emphasizing its volume and girth.
+[webp] 2026-10-05-giant-spinach-record-setting.jpg: 335KB -> 240KB (28% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 64  isSubject: false
+  critique: The photo shows a regular bunch of spinach, not a record-setting giant spinach. The spinach appears to be of typical size and does not exhibit the characteristics of being unusually large or imposing. The framing and focus are good, but the subject does not match the description of 'Giant Spinach, Record-Setting.' Therefore, it does not meet the criteria for the subject identity.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=64 - subject "Giant Spinach, Record-Setting"
+[bail] popped "Giant Spinach, Record-Setting" from queue. 6 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-10-05 yet). Queue now has 6 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Crawler Transport (query: "crawler transport")
+Found 30 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision picked #11 of 12: this photo shows a strong silhouette of large cranes, emphasizing their thiccness and industrial presence.
+Saved image to images/2026-10-05-thiccc-crawler-transport.jpg
+[webp] 2026-10-05-thiccc-crawler-transport.jpg: 318KB -> 224KB (30% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 100; trying another photo for "Thiccc Crawler Transport" (27 candidates left).
+Vision picked #3 of 12: this photo shows a robust transport truck with a strong silhouette emphasizing its thiccness.
+[webp] 2026-10-05-thiccc-crawler-transport.jpg: 112KB -> 58KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Thiccc Crawler Transport" (26 candidates left).
+Vision picked #8 of 12: this photo shows the full silhouette of the thicc crawler transport with a strong emphasis on its girth and bulk.
+[webp] 2026-10-05-thiccc-crawler-transport.jpg: 378KB -> 320KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo does not show a 'Thiccc Crawler Transport' but rather an aerial view of a coal mining site with machinery and coal deposits. The machinery visible is not identifiable as a crawler transport, which is the specified subject. The composition is visually interesting and well-framed, but it fails the identity test as it does not depict the named object. Therefore, it cannot be used for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Thiccc Crawler Transport"
+[bail] popped "Thiccc Crawler Transport" from queue. 5 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-10-05 yet). Queue now has 5 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: dropping "Door, Bank Vault Round" - duplicates catalogued "Vault Door, Bank".
+Subject queue: pulling "Popcorn Tub, Movie Theater" (5 item(s) before pull, 1 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Popcorn Tub, Movie Theater" query="movie theater popcorn tub" (source: queue)
+Subject: Popcorn Tub, Movie Theater (query: "movie theater popcorn tub")
+Subject "Popcorn Tub, Movie Theater" returned zero Unsplash results for query "movie theater popcorn tub". (attempt 1)
+Fallback subject (#1): Thiccc concrete mixer (query: "concrete mixer")
+Found 6 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 5 left.
+Vision picked #1 of 5: This photo shows a large concrete mixer with a prominent silhouette, emphasizing its thiccness against a striking background.
+Saved image to images/2026-10-05-thiccc-concrete-mixer.jpg
+[webp] 2026-10-05-thiccc-concrete-mixer.jpg: 92KB -> 40KB (57% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 64; trying another photo for "Thiccc concrete mixer" (4 candidates left).
+Vision picked #1 of 4: This photo shows the full silhouette of the concrete mixer, emphasizing its girth and distinct shape.
+[webp] 2026-10-05-thiccc-concrete-mixer.jpg: 97KB -> 38KB (60% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 64; trying another photo for "Thiccc concrete mixer" (3 candidates left).
+Vision picked #3 of 3: the industrial structure showcases a large, thick silhouette that emphasizes girth.
+[webp] 2026-10-05-thiccc-concrete-mixer.jpg: 153KB -> 85KB (45% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 100  isSubject: false
+  critique: The photo does not show a 'Thiccc concrete mixer' but rather a large industrial building. The subject is not visible, and the image focuses on the architecture of the building instead. The composition is centered and clear, but it does not meet the criteria for the specified subject, leading to a rejection.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=100 - subject "Thiccc concrete mixer"
+[bail] popped "Thiccc concrete mixer" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-10-05 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar D11 Dozer (query: "bulldozer")
+Found 9 candidate photos.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 6 left.
+Vision rejected all 6 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 27 left.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Thiccc Caterpillar D11 Dozer"
+[bail] popped "Thiccc Caterpillar D11 Dozer" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-05.md
+[retry-wrapper] attempt 4 bailed (no NEW entry for 2026-10-05 yet). Queue now has 2 item(s).
+[retry-wrapper] exhausted 4 attempts. No NEW entry landed for 2026-10-05.
+```
