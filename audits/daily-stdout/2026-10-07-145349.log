@@ -1,0 +1,59 @@
+# Daily run trace 2026-10-07-145349
+
+Triggered by: workflow_dispatch (actor=github-actions[bot])
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/37640271067
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: success
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-07
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 6
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Fountain, Public Plaza" (6 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Fountain, Public Plaza" query="large public plaza fountain" (source: queue)
+Subject: Fountain, Public Plaza (query: "large public plaza fountain")
+Subject "Fountain, Public Plaza" returned zero Unsplash results for query "large public plaza fountain". (attempt 1)
+Fallback subject (#1): Thiccc Liebherr R 9800 (query: "excavator")
+Found 14 candidate photos.
+[photo-dedup] dropped 3 candidate(s) already used by another entry; 11 left.
+Vision picked #3 of 11: this photo shows the Liebherr R 9800's massive silhouette and girth from an aerial perspective.
+Saved image to images/2026-10-07-thiccc-liebherr-r-9800.jpg
+[webp] 2026-10-07-thiccc-liebherr-r-9800.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Thiccc Liebherr R 9800" (10 candidates left).
+Vision picked #1 of 10: the photo shows the full silhouette of a large excavator, emphasizing its girth and size.
+[webp] 2026-10-07-thiccc-liebherr-r-9800.jpg: 213KB -> 126KB (41% smaller)
+[image-critic] chat returned 400, returning null
+Design critique unavailable (non-blocking).
+[image-retry] an alternative photo passed the gate on try 2.
+  ⚠️ Banned terms found in entry "Thiccc Liebherr R 9800":
+     [definitions] "a testament to" (banned-word)
+Banned-words attempt 1/3 rejected ("a testament to" in definitions). Retrying...
+Banned-words check passed on attempt 2.
+Humor critique: score=8/10, verdict=ship, weakest=example
+  feedback: The entry is strong with a specific scene and a solid etymology kicker. The example sentence could use a sharper punchline, as the mountain shifting is a bit predictable. Overall, the humor lands well with the 'stretch limousine' comparison and the extra-wide parking spaces detail.
+Generated social captions:
+  morning: Thiccc Liebherr R 9800.
+  afternoon: The R 9800 consumes 3,000 liters of fuel daily.
+  evening: From the archives, Thiccc Liebherr R 9800.
+  reels: R 9800: 42-cubic-meter bucket.
+Saved entry: Thiccc Liebherr R 9800
+Built entry page: entries/2026-10-07.html
+Rebuilt prev entry page (2026-10-05) so its next-link points to today.
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+[rss] image not on disk, falling back to og-default: https://images.unsplash.com/photo-1707948949585-4b9e45a1bf56?auto=format&fit=crop&w=1600&h=1600&q=80
+[rss] image not on disk, falling back to og-default: https://camo.githubusercontent.com/32976a9866eefe86c660e06e4f89c42d15c4f2f6657b04819519608839dfaea4/68747470733a2f2f696d616765732e756e73706c6173682e636f6d2f70686f746f2d313536313438363436322d3839383334613033636237323f773d38303026683d383030266669743d63726f7026666d3d6a706726713d3730
+Per-tag feeds: 13 written (tags with 2+ entries)
+RSS feed rebuilt with 166 entries + 72 articles.
+Sitemap rebuilt with 166 entries.
+Subject queue updated: 5 item(s) remaining.
+[retry-wrapper] entry for 2026-10-07 landed on attempt 1.
+```
