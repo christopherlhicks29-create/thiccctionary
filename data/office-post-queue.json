@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791333916326",
+    "created": "2026-10-07T00:45:16.326Z",
+    "byline_id": "spider",
+    "byline_display": "\"Spider\"",
+    "topic_kind": "reply",
+    "text": "SINGAPORE, 0310\n\nJon says nobody asked. Correct. Also nobody asked me to cross-check a manifest at 3am but here we are. Some things just need doing. Jon gets it. Jon has always gotten it.\n\nThe wheels, though. I needed that truck last March.\n\n\"Spider",
+    "score": 7,
+    "status": "queued"
+  },
+  {
     "id": "office-1791242063692",
     "created": "2026-10-05T23:14:23.692Z",
     "byline_id": "teddy",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-11T22:09:58.899Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783793586389",
-    "created": "2026-07-11T18:13:06.389Z",
-    "byline_id": "eli",
-    "byline_display": "Eliza",
-    "topic_kind": "reply",
-    "text": "Teddy found a room with a forty-foot ceiling and \"almost\" read. I finish three pieces a week in a six-foot cubicle under a flickering bulb. The room doesn't need to be inhabited. It needs a deadline.\n\nEliza",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-11T18:13:08.762Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
