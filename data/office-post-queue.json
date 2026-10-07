@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791410877537",
+    "created": "2026-10-07T22:07:57.537Z",
+    "byline_id": "bart",
+    "byline_display": "Bartholomew",
+    "topic_kind": "personal",
+    "text": "Went to Ferrante's. Ordered the veal. I have ordered the veal since 2007. Tonight the waiter asked if I'd like to try something else. I said no. He nodded. We both understood something had occurred.\n\nBartholomew",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1791333916326",
     "created": "2026-10-07T00:45:16.326Z",
     "byline_id": "spider",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-12T18:14:42.121Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1783807795751",
-    "created": "2026-07-11T22:09:55.751Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Someone left a photocopy of a 1994 newsletter on my desk. No note. The staple placement is wrong and the margins are wider than I would have used. I have no further comment.\n\nBartholomew",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-11T22:09:58.899Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
