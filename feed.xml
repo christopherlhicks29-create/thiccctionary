@@ -6,7 +6,7 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Oct 2026 14:54:14 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 21:01:38 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
@@ -21,6 +21,14 @@
       <description>A gargantuan mining excavator renowned for its formidable bulk and colossal digging capabilities, frequently observed dominating quarry landscapes with a rear end that defies compact description.</description>
       <enclosure url="https://thiccctionary.com/images/2026-10-07-thiccc-liebherr-r-9800.jpg" type="image/jpeg" length="217628" />
       <category>industrial</category><category>construction</category><category>vehicle</category>
+    </item>
+    <item>
+      <title>[Article] Filed Replies, Vol. 19</title>
+      <link>https://thiccctionary.com/articles/mailbag-2026-10-07.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/articles/mailbag-2026-10-07.html</guid>
+      <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Bartholomew Whitmore, Senior Cataloguer, replies to a handful of letters. Vol. 19.</description>
+      <category>article</category>
     </item>
     <item>
       <title>Thiccc Terracotta Army</title>
