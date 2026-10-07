@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to Ferrante's. Ordered the veal. I have ordered the veal since 2007. Tonight the waiter asked if I'd like to try something else. I said no. He nodded. We both understood something had occurred.\n\nBartholomew",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-07T22:08:01.304Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1791333916326",
