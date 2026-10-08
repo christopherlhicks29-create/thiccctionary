@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1791497696076",
+      "date": "2026-10-08",
+      "byline_id": "hugh",
+      "summary": "Hugh posted about personal life: a walk you took; you will report what was there: \"Walked the river path this morning. A heron was standing in the shallows. It did not move. I did not...\""
+    },
+    {
       "id": "auto-1791421339260",
       "date": "2026-10-08",
       "byline_id": "margie",
@@ -274,12 +280,6 @@
       "date": "2026-09-17",
       "byline_id": "eli",
       "summary": "Eliza posted about office-coffee: \"Broken since March. Filed three complaints. The machine sits there anyway, taking up counter space l...\""
-    },
-    {
-      "id": "auto-1789602004229",
-      "date": "2026-09-16",
-      "byline_id": "spider",
-      "summary": "\"Spider\" posted about personal life: a meal eaten somewhere improbable at an improbable hour: \"HAMBACH, 0415\n\nAte half a roast chicken on the bucket wheel. Alone. Wind coming off the pit. Bird wa...\""
     }
   ]
 }
