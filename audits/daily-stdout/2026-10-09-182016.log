@@ -1,0 +1,115 @@
+# Daily run trace 2026-10-09-182016
+
+Triggered by: schedule (actor=christopherlhicks29-create)
+Run URL: https://github.com/christopherlhicks29-create/thiccctionary/actions/runs/37972383852
+force_regenerate input: false
+collision.proceed: true
+Generate step ran: failure
+Verify step ran: SKIPPED
+entry_written: NOT_SET
+
+## generate-daily.js stdout
+```
+[retry-wrapper] target date: 2026-10-09
+[retry-wrapper] subject override: (none, will use queue)
+[retry-wrapper] queue length: 5
+
+[retry-wrapper] ===== attempt 1/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Container, Shipping 40-Foot" (5 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Container, Shipping 40-Foot" query="40 foot shipping container" (source: queue)
+Subject: Container, Shipping 40-Foot (query: "40 foot shipping container")
+Subject "Container, Shipping 40-Foot" returned zero Unsplash results for query "40 foot shipping container". (attempt 1)
+Fallback subject (#1): Dump Truck, Belaz 75710 (query: "dump truck")
+Found 27 candidate photos.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 25 left.
+Vision rejected all 12 candidates: all candidates fail veto
+Picker rejected all candidates. Retrying with photography bias.
+[photo-dedup] dropped 2 candidate(s) already used by another entry; 28 left.
+Vision rejected all 12 candidates: all candidates fail veto
+[bail] picker vetoed all candidates on both queries - subject "Dump Truck, Belaz 75710"
+[bail] popped "Dump Truck, Belaz 75710" from queue. 4 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-09.md
+[retry-wrapper] attempt 1 bailed (no NEW entry for 2026-10-09 yet). Queue now has 4 item(s).
+
+[retry-wrapper] ===== attempt 2/4 =====
+Found 24 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Drawbridge, Castle" (4 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Drawbridge, Castle" query="castle drawbridge stone" (source: queue)
+Subject: Drawbridge, Castle (query: "castle drawbridge stone")
+Subject "Drawbridge, Castle" returned zero Unsplash results for query "castle drawbridge stone". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D11 Dozer (query: "Caterpillar D11 dozer")
+Subject "Thiccc Caterpillar D11 Dozer" returned zero Unsplash results for query "Caterpillar D11 dozer". (attempt 3)
+Fallback subject (#3): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 4)
+Last-resort: picking from safe pool → "Concrete Mixer Truck".
+Found 3 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 2 left.
+Vision picked #1 of 2: This photo shows the full silhouette of the concrete mixer truck, emphasizing its girth and robust structure.
+Saved image to images/2026-10-09-concrete-mixer-truck.jpg
+[webp] 2026-10-09-concrete-mixer-truck.jpg: 112KB -> 58KB (48% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 24; trying another photo for "Concrete Mixer Truck" (1 candidates left).
+Vision picked #1 of 1: The photo clearly shows the full silhouette of the concrete mixer truck, emphasizing its girth and structure.
+[webp] 2026-10-09-concrete-mixer-truck.jpg: 141KB -> 76KB (46% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 8  isSubject: false
+  critique: The photo does not show a concrete mixer truck. Instead, it depicts a truck with a large fan or cannon-like structure on a bridge. The subject is not centered, and the bridge dominates the frame, making it difficult to focus on the truck. The image lacks the documentary style needed for a dictionary entry, and the actual subject is not the one specified. Therefore, it is not suitable for the intended purpose.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=8 - subject "Concrete Mixer Truck"
+[bail] popped "Concrete Mixer Truck" from queue. 3 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-09.md
+[retry-wrapper] attempt 2 bailed (no NEW entry for 2026-10-09 yet). Queue now has 3 item(s).
+
+[retry-wrapper] ===== attempt 3/4 =====
+Found 25 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crockpot, Slow Cooker Oval" (3 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crockpot, Slow Cooker Oval" query="oval slow cooker crockpot" (source: queue)
+Subject: Crockpot, Slow Cooker Oval (query: "oval slow cooker crockpot")
+Subject "Crockpot, Slow Cooker Oval" returned zero Unsplash results for query "oval slow cooker crockpot". (attempt 1)
+Fallback subject (#1): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar D11T (query: "caterpillar dozer")
+Found 4 candidate photos.
+[photo-dedup] dropped 1 candidate(s) already used by another entry; 3 left.
+Vision picked #1 of 3: This photo shows the Caterpillar D11T in a clear, full silhouette against a clean background, emphasizing its girth.
+Saved image to images/2026-10-09-thiccc-caterpillar-d11t.jpg
+[webp] 2026-10-09-thiccc-caterpillar-d11t.jpg: 239KB -> 162KB (32% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 1 scored 1 / subjectPct 12; trying another photo for "Thiccc Caterpillar D11T" (2 candidates left).
+Vision picked #1 of 2: the aerial view clearly shows the full silhouette and girth of the Caterpillar D11T in action.
+[webp] 2026-10-09-thiccc-caterpillar-d11t.jpg: 418KB -> 356KB (15% smaller)
+Design critique: score=1/10, verdict=reject, NOT THE SUBJECT
+[image-retry] image 2 scored 1 / subjectPct 24; trying another photo for "Thiccc Caterpillar D11T" (1 candidates left).
+Vision rejected all 1 candidates: all candidates fail veto
+GATE: critique flagged the image as unacceptable. Skipping before PR.
+  score: 1  verdict: reject  subjectPct: 24  isSubject: false
+  critique: The photo does not show a Caterpillar D11T bulldozer; instead, it depicts an excavator at a construction site. The subject is not centered, and the focus is more on the site itself rather than the machinery. The image lacks the documentary style needed for a dictionary entry, and the actual subject is not the one specified. The excavator is not thiccc for its kind, and the framing does not highlight the machinery effectively.
+[picker-learning] appended rejection to /home/runner/work/thiccctionary/thiccctionary/audits/picker-rejections.jsonl
+[bail] critique gate: verdict=reject score=1 subjectPct=24 - subject "Thiccc Caterpillar D11T"
+[bail] popped "Thiccc Caterpillar D11T" from queue. 2 item(s) remain.
+[bail] logged to audits/dead-subjects/2026-10-09.md
+[retry-wrapper] attempt 3 bailed (no NEW entry for 2026-10-09 yet). Queue now has 2 item(s).
+
+[retry-wrapper] ===== attempt 4/4 =====
+Found 26 dead subject(s) in last 14 days; will avoid.
+Subject queue: pulling "Crab, King Alaskan" (2 item(s) before pull, 0 dropped as dup).
+SUBJECT_OVERRIDE active: subject="Crab, King Alaskan" query="king crab alaskan leg" (source: queue)
+Subject: Crab, King Alaskan (query: "king crab alaskan leg")
+Subject "Crab, King Alaskan" returned zero Unsplash results for query "king crab alaskan leg". (attempt 1)
+Fallback subject (#1): Thiccc Lockheed C-5M Super Galaxy (query: "C-5M Super Galaxy")
+Subject "Thiccc Lockheed C-5M Super Galaxy" returned zero Unsplash results for query "C-5M Super Galaxy". (attempt 2)
+Fallback subject (#2): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 3)
+Fallback subject (#3): Thiccc Caterpillar 797F (query: "Caterpillar 797F")
+Subject "Thiccc Caterpillar 797F" returned zero Unsplash results for query "Caterpillar 797F". (attempt 4)
+Last-resort: picking from safe pool → "Pumpkin, Atlantic Giant".
+Error: No Unsplash results for query: giant pumpkin
+    at searchUnsplash (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:303:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async main (file:///home/runner/work/thiccctionary/thiccctionary/scripts/generate-daily.js:994:22)
+[retry-wrapper] attempt 4 threw: Command failed: node generate-daily.js
+```
