@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791508470216",
+    "created": "2026-10-09T01:14:30.216Z",
+    "byline_id": "eli",
+    "byline_display": "Eliza",
+    "topic_kind": "personal",
+    "text": "Went to get one thing at the grocery store. Left with a wheel of gouda I cannot explain and no memory of the bread aisle. Stood on the sidewalk after. Counted six pigeons. City got me again.\n\nEliza",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1791497696075",
     "created": "2026-10-08T22:14:56.075Z",
     "byline_id": "hugh",
@@ -1387,20 +1397,6 @@
     "score": 8,
     "status": "posted",
     "posted_at": "2026-07-14T22:14:16.935Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1784054144748",
-    "created": "2026-07-14T18:35:44.748Z",
-    "byline_id": "bart",
-    "byline_display": "Bartholomew",
-    "topic_kind": "office",
-    "text": "Someone left a photocopy of a 1994 newsletter on my desk. No note. The staple placement is wrong and the margins are wider than I would have used. I have no further comment.\n\nBartholomew",
-    "score": 7,
-    "status": "posted",
-    "posted_at": "2026-07-14T18:35:47.495Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []
