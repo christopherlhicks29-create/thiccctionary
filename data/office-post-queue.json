@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Went to get one thing at the grocery store. Left with a wheel of gouda I cannot explain and no memory of the bread aisle. Stood on the sidewalk after. Counted six pigeons. City got me again.\n\nEliza",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-09T01:14:32.666Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1791497696075",
