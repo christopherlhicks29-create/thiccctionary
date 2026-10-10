@@ -6,13 +6,22 @@
     <atom:link href="https://thiccctionary.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A satirical daily dictionary of objects of unusual girth. Strictly things, never people.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Oct 2026 21:01:38 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 23:05:32 GMT</lastBuildDate>
     <generator>Thiccctionary build pipeline</generator>
     <image>
       <url>https://thiccctionary.com/og-default.png</url>
       <title>Thiccctionary</title>
       <link>https://thiccctionary.com/</link>
     </image>
+    <item>
+      <title>Thiccc Volkswagen Type 2</title>
+      <link>https://thiccctionary.com/entries/2026-10-10.html</link>
+      <guid isPermaLink="true">https://thiccctionary.com/entries/2026-10-10.html</guid>
+      <pubDate>Sat, 10 Oct 2026 12:00:00 GMT</pubDate>
+      <description>A van of generous proportions, renowned for its considerable rear overhang and distinctive silhouette, especially prominent when viewed from the aft in flattering light.</description>
+      <enclosure url="https://thiccctionary.com/images/2026-10-10-thiccc-volkswagen-type-2.jpg" type="image/jpeg" length="228234" />
+      <category>girth</category><category>vehicle</category><category>domestic</category>
+    </item>
     <item>
       <title>Thiccc Liebherr R 9800</title>
       <link>https://thiccctionary.com/entries/2026-10-07.html</link>
