@@ -7,7 +7,11 @@
     "topic_kind": "personal",
     "text": "Zurich to Nice, one connection. The gate changed three times. My bag did not change gates with me on the second switch. We were reunited at baggage claim, which is not a reunion I planned for. The scarf survived.\n\nMargaret",
     "score": 7,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-10T20:37:11.302Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1791593694141",
