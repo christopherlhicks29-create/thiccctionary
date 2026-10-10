@@ -245,7 +245,21 @@
           "id": "6ac1589bad7fd83bc500b8ea"
         }
       ]
+    },
+    {
+      "path": "videos/characters/bart-filing-cabinet-glare.mp4",
+      "at": "2026-10-10T20:21:16.399Z",
+      "bufferIds": [
+        {
+          "service": "facebook",
+          "id": "6aca9e3bf91f772d45a6a008"
+        },
+        {
+          "service": "instagram",
+          "id": "6aca9e3cbba9419ccb14a362"
+        }
+      ]
     }
   ],
-  "lastPostedAt": "2026-10-03T19:33:47.320Z"
+  "lastPostedAt": "2026-10-10T20:21:16.399Z"
 }
