@@ -1,5 +1,15 @@
 [
   {
+    "id": "office-1791677718217",
+    "created": "2026-10-11T00:15:18.217Z",
+    "byline_id": "teddy",
+    "byline_display": "Theodore",
+    "topic_kind": "office",
+    "text": "Eighteen months in. Just got a card from HR saying my probation window \"remains open.\" I did not know probation had a window. I framed it anyway. Bart signed it. His handwriting is very small.\n\nTheodore",
+    "score": 8,
+    "status": "queued"
+  },
+  {
     "id": "office-1791664629015",
     "created": "2026-10-10T20:37:09.015Z",
     "byline_id": "margie",
@@ -1387,20 +1397,6 @@
     "score": 7,
     "status": "posted",
     "posted_at": "2026-07-17T18:31:53.681Z",
-    "success_count": 1,
-    "failure_count": 0,
-    "errors": []
-  },
-  {
-    "id": "office-1784240211366",
-    "created": "2026-07-16T22:16:51.366Z",
-    "byline_id": "teddy",
-    "byline_display": "Theodore",
-    "topic_kind": "office",
-    "text": "Fourteen months. I have submitted seven briefs, sourced three engineering manuals, and conjugated \"vehere\" in four tenses. Bart's total written response: six words. I am beginning to suspect the objection is not etymological.\n\nTheodore",
-    "score": 8,
-    "status": "posted",
-    "posted_at": "2026-07-16T22:16:54.457Z",
     "success_count": 1,
     "failure_count": 0,
     "errors": []

@@ -102,6 +102,12 @@
   ],
   "auto_extensions": [
     {
+      "id": "auto-1791677718219",
+      "date": "2026-10-11",
+      "byline_id": "teddy",
+      "summary": "Theodore posted about teddy-probation: \"Eighteen months in. Just got a card from HR saying my probation window \"remains open.\" I did not kno...\""
+    },
+    {
       "id": "auto-1791664629017",
       "date": "2026-10-10",
       "byline_id": "margie",
@@ -274,12 +280,6 @@
       "date": "2026-09-20",
       "byline_id": "teddy",
       "summary": "Theodore posted about reply to bart: \"Bart has done this since 2009 and \"notices nothing until it breaks.\" I have been here nineteen month...\""
-    },
-    {
-      "id": "auto-1789932902247",
-      "date": "2026-09-20",
-      "byline_id": "bart",
-      "summary": "Bartholomew posted about personal life: your Saturday routine, which has not changed since 2009: \"Bakery had the loaf today. Same corner, same paper, home by nine. I have done this since 2009 and I ...\""
     }
   ]
 }
