@@ -7,7 +7,11 @@
     "topic_kind": "office",
     "text": "Eighteen months in. Just got a card from HR saying my probation window \"remains open.\" I did not know probation had a window. I framed it anyway. Bart signed it. His handwriting is very small.\n\nTheodore",
     "score": 8,
-    "status": "queued"
+    "status": "posted",
+    "posted_at": "2026-10-11T00:15:20.642Z",
+    "success_count": 1,
+    "failure_count": 0,
+    "errors": []
   },
   {
     "id": "office-1791664629015",
